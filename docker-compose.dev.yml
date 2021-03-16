@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  web:
+    ports:
+      - "80:80"
+  triplestore:
+    ports:
+      - "8890:8890"
+    environment:
+      ENABLE_ENDPOINT_SELECTOR: "true"
+      DEFAULT_SPARQL_ENDPOINT: "http://localhost:8890/sparql"
