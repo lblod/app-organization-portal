@@ -12,8 +12,14 @@ Backend for the Contact Hub application based on the  mu.semte.ch microservices 
 You can shut down using `docker-compose stop` and remove everything using `docker-compose rm`.
 
 
-## Change default username/password
+## Add username/password for Basic Auth
 
-By default, username/password is equal to root/root. To change it:
+By default, there are two accounts you can use to log-in using basic auth:
 
-`docker run --rm --entrypoint htpasswd registry:2.7.0 -bn root root > ./config/proxy/nginx.htpasswd`
+- root/root
+- contacthub/contacthub
+
+To add new accounts, execute the following command, then add the result to `./config/proxy/nginx.htpasswd`
+
+`docker run --rm --entrypoint htpasswd registry:2.7.0 -bn username password`
+
