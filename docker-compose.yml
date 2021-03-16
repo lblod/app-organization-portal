@@ -24,6 +24,10 @@ services:
        - ./config/proxy/web.conf:/etc/nginx/nginx.conf:ro
     links:
       - identifier:identifier
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   dispatcher:
     image: semtech/mu-dispatcher:latest
     volumes:
