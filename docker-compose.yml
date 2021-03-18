@@ -49,7 +49,7 @@ services:
     restart: always
     logging: *default-logging
   db:
-    image: semtech/mu-authorization:0.6.0-beta.5
+    image: semtech/mu-authorization
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -85,7 +85,7 @@ services:
     labels:
       - "logging=true"
   resource-labels:
-    image: lblod/resource-label-service:0.0.3
+    image: lblod/resource-label-service:0.3.1
     links:
       - db:database
     restart: always
