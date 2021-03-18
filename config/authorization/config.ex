@@ -18,6 +18,7 @@ defmodule Acl.UserGroups.Config do
                     constraint: %ResourceConstraint{
                       resource_types: [
                           # todo add classes
+                          "http://purl.org/dc/elements/1.1/Agent",
                       ]
                     } } ] },
       %GraphCleanup{
