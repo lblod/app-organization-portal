@@ -9,7 +9,7 @@ x-logging:
 
 services:
   identifier:
-    image: semtech/mu-identifier:1.8.1
+    image: semtech/mu-identifier:1.9.1
     environment:
       DEFAULT_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "*"
       DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
@@ -49,7 +49,7 @@ services:
     restart: always
     logging: *default-logging
   db:
-    image: semtech/mu-authorization
+    image: semtech/mu-authorization:0.6.0-beta.7
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -58,7 +58,7 @@ services:
     volumes:
       - ./config/authorization:/config
   migrations:
-    image: semtech/mu-migrations-service
+    image: semtech/mu-migrations-service:0.7.0
     links:
       - triplestore:database
     volumes:
@@ -69,7 +69,7 @@ services:
     logging: *default-logging
   # Ember-Metis
   uri-info:
-    image: redpencil/mu-uri-info-service:0.2.0
+    image: redpencil/mu-uri-info-service:0.2.1
     links:
       - db:database
     restart: always
