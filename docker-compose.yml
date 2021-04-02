@@ -97,5 +97,7 @@ services:
     image: lblod/frontend-contact-hub
     labels:
       - "logging=true"
+    environment: 
+      EMBER_METIS_BASE_URL: "http://data.lblod.info/"
     restart: always
     logging: *default-logging
