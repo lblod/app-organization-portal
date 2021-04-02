@@ -17,8 +17,19 @@ defmodule Acl.UserGroups.Config do
                     graph: "http://mu.semte.ch/graphs/public",
                     constraint: %ResourceConstraint{
                       resource_types: [
-                          # todo add classes
-                          "http://purl.org/dc/elements/1.1/Agent",
+                          "http://www.w3.org/2004/02/skos/core#Concept",
+                          "http://www.w3.org/ns/org#Organization",
+                          "http://www.w3.org/ns/org#Site",
+                          "http://www.w3.org/ns/locn#Address",
+                          "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+                          "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+                          "http://www.w3.org/ns/person#Person",
+                          "http://schema.org/ContactPoint",
+                          "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+                          "https://data.vlaanderen.be/ns/organisatie#Oprichting",
+                          "https://data.vlaanderen.be/ns/organisatie#Stopzetting",
+                          "http://www.w3.org/ns/org#Post",
+                          "http://www.w3.org/ns/org#Role"
                       ]
                     } } ] },
       %GraphCleanup{
