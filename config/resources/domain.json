@@ -1,0 +1,160 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "org": "http://www.w3.org/ns/org#",
+    "locn": "http://www.w3.org/ns/locn#",
+    "organisatie": "https://data.vlaanderen.be/ns/organisatie#",
+    "dc_terms": "http://purl.org/dc/terms/",
+    "schema": "http://schema.org/",
+    "regorg": "http://www.w3.org/ns/regorg#",
+    "person": "http://www.w3.org/ns/person#",
+    "persoon": "https://data.vlaanderen.be/ns/persoon#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "adres": "https://data.vlaanderen.be/ns/adres#",
+    "generiek": "https://data.vlaanderen.be/ns/generiek#",
+    "euro": "http://data.europa.eu/m8g/",
+    "adms": "http://www.w3.org/ns/adms#",
+    "lblodlg": "https://data.lblod.info/vocabularies/leidinggevenden/",
+    "besluit": "http://data.vlaanderen.be/ns/besluit#",
+    "mandaat": "http://data.vlaanderen.be/ns/mandaat#",
+    "ere": "http://data.lblod.info/vocabularies/erediensten/",
+    "ch": "http://data.lblod.info/vocabularies/contacthub/"
+  },
+  "resources": {
+    "people": {
+      "name": "person",
+      "class": "person:Person",
+      "attributes": {
+        "given-name": {
+          "type": "string",
+          "predicate": "foaf:givenName"
+        },
+        "family-name": {
+          "type": "string",
+          "predicate": "foaf:familyName"
+        },
+        "first-name-used": {
+          "type": "string",
+          "predicate": "persoon:gebruikteVoornaam"
+        }
+      },
+      "relationships": {
+        "mandatories": {
+          "predicate": "mandaat:isAangesteldAls",
+          "target": "mandatory",
+          "cardinality": "many"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/persoon/"
+    },
+    "mandatories": {
+      "name": "mandatory",
+      "class": "mandaat:Mandataris",
+      "attributes": {
+        "start-date": {
+          "type": "dateTime",
+          "predicate": "mandaat:start"
+        },
+        "end-date": {
+          "type": "dateTime",
+          "predicate": "mandaat:einde"
+        }
+      },
+      "relationships": {
+        "status": {
+          "predicate": "mandaat:status",
+          "target": "mandatoryStatusCode",
+          "cardinality": "one"
+        },
+        "governingAlias": {
+          "predicate": "mandaat:isBestuurlijkeAliasVan",
+          "target": "person",
+          "cardinality": "one"
+        },
+        "contactPoint": {
+          "predicate": "schema:contactPoint",
+          "target": "contactPoint",
+          "cardinality": "many"
+        },
+        "mandate": {
+          "predicate": "org:holds",
+          "target": "mandate",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/mandataris/"
+    },
+    "mandatory-status-code": {
+      "name": "mandatoryStatusCode",
+      "class": "skos:Concept",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      }
+    },
+    "contactPoints": {
+      "name": "contactPoint",
+      "class": "schema:ContactPoint",
+      "attributes": {
+        "email": {
+          "type": "string",
+          "predicate": "schema:email"
+        },
+        "telephone": {
+          "type": "string",
+          "predicate": "schema:telephone"
+        },
+        "fax": {
+          "type": "string",
+          "predicate": "schema:faxNumber"
+        },
+        "website": {
+          "type": "uri",
+          "predicate": "foaf:page"
+        }
+      }, 
+      "relationships": {
+        "contact-address": {
+          "predicate": "locn:address",
+          "target": "address",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/contactpunt/"
+    },
+    "mandates": {
+      "name": "mandate",
+      "class": "Mandaat",
+      "relationships": {
+        "role": {
+          "predicate": "org:role",
+          "target": "roleConcept",
+          "cardinality": "one"
+        },
+        "governingBody": {
+          "predicate": "org:hasPost",
+          "target": "governingBody",
+          "cardinality": "many"
+        }
+      }
+    },
+    "governingBodies": {
+      "name": "governingBody",
+      "class": "besluit:Bestuursorgaan",
+      "attributes": {
+        "start-date": {
+          "type": "dateTime",
+          "predicate": "mandaat:bindingStart"
+        },
+        "end-date": {
+          "type": "dateTime",
+          "predicate": "mandaat:bindingEinde"
+        }
+      }
+    }
+  }
+}
