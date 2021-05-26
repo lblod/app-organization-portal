@@ -47,7 +47,7 @@
           "cardinality": "many"
         }
       },
-      "new-resource-base": "http://data.lblod.info/persoon/"
+      "new-resource-base": "http://data.lblod.info/id/persoon/"
     },
     "mandatories": {
       "name": "mandatory",
@@ -84,9 +84,9 @@
           "cardinality": "one"
         }
       },
-      "new-resource-base": "http://data.lblod.info/mandataris/"
+      "new-resource-base": "http://data.lblod.info/id/mandataris/"
     },
-    "mandatory-status-code": {
+    "mandatory-status-codes": {
       "name": "mandatoryStatusCode",
       "class": "skos:Concept",
       "attributes": {
@@ -94,9 +94,10 @@
           "type": "string",
           "predicate": "skos:prefLabel"
         }
-      }
+      },
+      "new-resource-base": "http://data.vlaanderen.be/id/concept/MandatarisStatusCode/"
     },
-    "contactPoints": {
+    "contact-points": {
       "name": "contactPoint",
       "class": "schema:ContactPoint",
       "attributes": {
@@ -124,7 +125,7 @@
           "cardinality": "one"
         }
       },
-      "new-resource-base": "http://data.lblod.info/contactpunt/"
+      "new-resource-base": "http://data.lblod.info/id/contactpunt/"
     },
     "mandates": {
       "name": "mandate",
@@ -135,14 +136,15 @@
           "target": "roleConcept",
           "cardinality": "one"
         },
-        "governingBody": {
+        "governingBodies": {
           "predicate": "org:hasPost",
           "target": "governingBody",
           "cardinality": "many"
         }
-      }
+      },
+      "new-resource-base": "http://data.lblod.info/id/mandaat/"
     },
-    "governingBodies": {
+    "governing-bodies": {
       "name": "governingBody",
       "class": "besluit:Bestuursorgaan",
       "attributes": {
@@ -154,7 +156,204 @@
           "type": "dateTime",
           "predicate": "mandaat:bindingEinde"
         }
-      }
+      },
+      "relationships": {
+        "administrativeUnit": {
+          "predicate": "besluit:bestuurt",
+          "target": "administrativUnit",
+          "cardinality": "one"
+        },
+        "classification": {
+          "predicate": "org:classification",
+          "target": "governingBodyClassificationCode",
+          "cardinality": "one"
+        },
+        "isTimeSpecializationOf": {
+          "predicate": "generiek:isTijdspecialisatieVan",
+          "target": "governingBody",
+          "cardinality": "one"
+        },
+        "hasTimeSpecializations": {
+          "predicate": "generiek:isTijdspecialisatieVan",
+          "target": "goveringBody",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "contains": {
+          "predicate": "org:hasPost",
+          "target": "mandate",
+          "cardinality": "many"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/bestuursorgaan/"
+    },
+    "governing-body-classification-codes": {
+      "name": "governingBodyClassificationCode",
+      "class": "skos:Concept",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/"
+    },
+    "administrative-units": {
+      "name": "administrativeUnit",
+      "class": "besluit:Bestuurseenheid",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "alternative-name": {
+          "type":  "string",
+          "predicate": "skos:altLabel"
+        }
+      },
+      "relationships": {
+        "classification": {
+          "predicate": "org:classification",
+          "target": "administrativeUnitClassificationCode",
+          "cardinality": "one"
+        },
+        "primary-site": {
+          "predicate": "org:hasPrimarySite",
+          "target": "site",
+          "cardinality": "one"
+        },
+        "identifiers": {
+          "predicate": "adms:idenfier",
+          "target": "identifier",
+          "cardinality": "many"
+        },
+        "governing-bodies": {
+          "predicate": "besluit:bestuurt",
+          "target": "governingBody",
+          "cardinality": "many",
+          "inverser": true
+        },
+        "contact-points": {
+          "predicate": "schema:contactPoint",
+          "target": "contactPoint",
+          "cardinality": "many"
+        },
+        "sites": {
+          "predicate": "org:hasSite",
+          "target": "site",
+          "cardinality": "many"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/bestuurseenheid/"
+    },
+    "administrative-unit-classification-codes": {
+      "name": "administrativeUnitClassificationCode",
+      "class": "skos:Concept",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/"
+    },
+    "identifiers": {
+      "name": "identifier",
+      "class": "adms:Identifier",
+      "attributes": {
+        "id-name": {
+          "type": "string",
+          "predicate": "skos:notation"
+        }
+      },
+      "relationships": {
+        "structured-identifier": {
+          "predicate": "generiek:gestructureerdeIdentificator",
+          "target": "structuredIdentifier",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/identificator/"
+    },
+    "structured-idenfiers": {
+      "name": "structuredIdentifier",
+      "class": "generiek:GestructureerdeIdentificator",
+      "attributes": {
+        "local-id": {
+          "type": "string",
+          "predicate": "generiek:lokaleIdentificator"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/gestructureerdeIdentificator/"
+    },
+    "addresses": {
+      "name": "address",
+      "class": "locn:Address",
+      "attributes": {
+        "number": {
+          "type": "string",
+          "predicate": "adres:Adresvoorstelling.huisnummer"
+        },
+        "box-number": {
+          "type": "string",
+          "predicate": "adres:Adresvoorstelling.busnummer"
+        },
+        "street": {
+          "type": "string",
+          "predicate": "locn:thoroughfare"
+        },
+        "postcode": {
+          "type": "string",
+          "predicate": "locn:postCode"
+        },
+        "municipality": {
+          "type": "string",
+          "predicate": "adres:gemeentenaam"
+        },
+        "province": {
+          "type": "string",
+          "predicate": "locn:adminUnitL2"
+        },
+        "country": {
+          "type": "string",
+          "predicate": "adres:land"
+        },
+        "full-address": {
+          "type": "string",
+          "predicate": "locn:fullAddress"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/adres/"
+    },
+    "sites": {
+      "name": "site",
+      "class": "org:Site",
+      "relationships": {
+        "contact": {
+          "predicate": "org:siteAddress",
+          "target": "contactPoint",
+          "cardinality": "many"
+        },
+        "address": {
+          "predicate": "organisatie:bestaatUit",
+          "target": "address",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/vestiging/"
+    },
+    "worship-services": {
+      "name": "worshipService",
+      "class": "ere:BestuurVanDeEredienst",
+      "super": ["administrativeUnit"],
+      "relationships": {
+        "type": {
+          "predicate": "ere:typeEredienst",
+          "target": "eredienstType",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/bestuurVanDeEredienst/"
     }
   }
 }

@@ -67,6 +67,24 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  resource:
+    image: semtech/mu-cl-resources:1.20.0
+    links:
+      - db:database
+    volumes:
+      - ./config/resources:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  cache:
+    image: semtech/mu-cache:2.0.1
+    links:
+      - resource:backend
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   # Ember-Metis
   uri-info:
     image: redpencil/mu-uri-info-service:0.2.1
@@ -92,7 +110,6 @@ services:
     logging: *default-logging
     labels:
       - "logging=true"
-
   frontend:
     image: lblod/frontend-contact-hub
     labels:
