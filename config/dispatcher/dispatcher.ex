@@ -8,7 +8,7 @@ defmodule Dispatcher do
     any: [ "*/*" ],
   ]
 
-  define_layers [ :api, :frontend, :not_found ]
+  define_layers [ :api_services, :api, :frontend, :not_found ]
 
   ###############################################################
   # sparql endpoint
@@ -16,6 +16,26 @@ defmodule Dispatcher do
   match "/sparql/*path", %{ accept: [:any], layer: :api} do
     forward conn, path, "http://db:8890/sparql/"
   end
+
+  ###############
+  # API SERVICES
+  ###############
+  match "/v3/api-docs/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://kalliope-api/v3/api-docs/"
+  end
+
+  match "/delta/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://kalliope-api/delta/"
+  end
+
+  match "/changes/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://kalliope-api/changes/"
+  end
+
+  match "/consolidated/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://kalliope-api/consolidated/"
+  end
+
 
   ###############################################################
   # ember metis
