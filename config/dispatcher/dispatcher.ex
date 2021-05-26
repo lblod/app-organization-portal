@@ -11,6 +11,65 @@ defmodule Dispatcher do
   define_layers [ :api, :frontend, :not_found ]
 
   ###############################################################
+  # domain.json
+  ###############################################################
+  match "/people/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/people/"
+  end
+
+  match "/mandatories/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/mandatories/"
+  end
+
+  match "/mandatory-status-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/mandatory-status-codes/"
+  end
+
+  match "/contact-points/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/contact-points/"
+  end
+
+  match "/mandates/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/mandates/"
+  end
+  
+  match "/governing-bories/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/governing-bories/"
+  end
+
+  match "/governing-body-classification-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/governing-body-classification-codes/"
+  end
+
+  match "/administrative-units/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/administrative-units/"
+  end
+
+  match "/administrative-unit-classification-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/administrative-unit-classification-codes/"
+  end
+
+  match "/addresses/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/addresses/"
+  end
+
+  match "/sites/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/sites/"
+  end
+
+  match "/identifiers/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/identifiers/"
+  end
+
+  match "/structured-identifiers/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/structured-identifiers/"
+  end
+
+  match "/worship-services/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/worship-services/"
+  end
+
+  ###############################################################
   # sparql endpoint
   ###############################################################
   match "/sparql/*path", %{ accept: [:any], layer: :api} do
@@ -46,7 +105,7 @@ defmodule Dispatcher do
   match "/*_path", %{ layer: :frontend } do
     Proxy.forward conn, [], "http://frontend/index.html"
   end
-
+  
   ###############################################################
   # errors
   ###############################################################
