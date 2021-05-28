@@ -93,7 +93,7 @@ services:
     labels:
       - "logging=true"
   kalliope-api:
-    image: lblod/app-kalliope-api
+    image: lblod/jsonld-delta-service
     volumes:
       - ./config/kalliope:/config
       - ./data/files:/share
