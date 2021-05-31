@@ -73,7 +73,7 @@
           "target": "person",
           "cardinality": "one"
         },
-        "contactPoint": {
+        "contactPoints": {
           "predicate": "schema:contactPoint",
           "target": "contactPoint",
           "cardinality": "many"
@@ -119,7 +119,7 @@
         }
       }, 
       "relationships": {
-        "contact-address": {
+        "contactAddress": {
           "predicate": "locn:address",
           "target": "address",
           "cardinality": "one"
@@ -217,7 +217,7 @@
           "target": "administrativeUnitClassificationCode",
           "cardinality": "one"
         },
-        "primary-site": {
+        "primarySite": {
           "predicate": "org:hasPrimarySite",
           "target": "site",
           "cardinality": "one"
@@ -227,13 +227,13 @@
           "target": "identifier",
           "cardinality": "many"
         },
-        "governing-bodies": {
+        "governingBodies": {
           "predicate": "besluit:bestuurt",
           "target": "governingBody",
           "cardinality": "many",
           "inverser": true
         },
-        "contact-points": {
+        "contactPoints": {
           "predicate": "schema:contactPoint",
           "target": "contactPoint",
           "cardinality": "many"
@@ -267,7 +267,7 @@
         }
       },
       "relationships": {
-        "structured-identifier": {
+        "structuredIdentifier": {
           "predicate": "generiek:gestructureerdeIdentificator",
           "target": "structuredIdentifier",
           "cardinality": "one"
@@ -275,7 +275,7 @@
       },
       "new-resource-base": "http://data.lblod.info/id/identificator/"
     },
-    "structured-idenfiers": {
+    "structured-identifiers": {
       "name": "structuredIdentifier",
       "class": "generiek:GestructureerdeIdentificator",
       "attributes": {
@@ -329,7 +329,7 @@
       "name": "site",
       "class": "org:Site",
       "relationships": {
-        "contact": {
+        "contacts": {
           "predicate": "org:siteAddress",
           "target": "contactPoint",
           "cardinality": "many"
@@ -347,13 +347,24 @@
       "class": "ere:BestuurVanDeEredienst",
       "super": ["administrativeUnit"],
       "relationships": {
-        "type": {
+        "typeEredienst": {
           "predicate": "ere:typeEredienst",
           "target": "eredienstType",
           "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/bestuurVanDeEredienst/"
+    },
+    "eredienst-types": {
+      "name": "eredienstType",
+      "class": "skos:Concept",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/typeEredienst/"
     }
   }
 }
