@@ -68,7 +68,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.20.0
+    image: semtech/mu-cl-resources:latest
     links:
       - db:database
     volumes:
@@ -115,6 +115,6 @@ services:
     labels:
       - "logging=true"
     environment: 
-      EMBER_METIS_BASE_URL: "http://data.lblod.info/"
+     EMBER_METIS_BASE_URL: "http://data.lblod.info/id/"
     restart: always
     logging: *default-logging
