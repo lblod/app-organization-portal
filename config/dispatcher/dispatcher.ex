@@ -17,12 +17,28 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/people/"
   end
 
+  match "/agent-in-position/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/agent-in-position/"
+  end
+
+  match "/posts/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/posts/"
+  end
+
   match "/mandatories/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/mandatories/"
   end
 
   match "/mandatory-status-codes/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/mandatory-status-codes/"
+  end
+
+  match "/worship-mandatories/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/worship-mandatories/"
+  end
+
+  match "/half-elections/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/half-elections/"
   end
 
   match "/contact-points/*path", %{ accept: [:json], layer: :api} do
@@ -32,13 +48,17 @@ defmodule Dispatcher do
   match "/mandates/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/mandates/"
   end
-  
-  match "/governing-bories/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/governing-bories/"
+
+  match "/board-positions/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/board-positions/"
   end
 
-  match "/governing-body-classification-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/governing-body-classification-codes/"
+  match "/roles/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/roles/"
+  end
+
+  match "/organizations/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/organizations/"
   end
 
   match "/administrative-units/*path", %{ accept: [:json], layer: :api} do
@@ -48,13 +68,41 @@ defmodule Dispatcher do
   match "/administrative-unit-classification-codes/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/administrative-unit-classification-codes/"
   end
-
-  match "/addresses/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/addresses/"
+  
+  match "/worship-services/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/worship-services/"
   end
 
-  match "/sites/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/sites/"
+  match "/honorary-service-types/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/honorary-service-types/"
+  end
+
+  match "/central-worship-services/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/central-worship-services/"
+  end
+
+  match "/representative-bodies/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/representative-bodies/"
+  end
+
+  match "/governing-bories/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/governing-bodies/"
+  end
+
+  match "/governing-body-classification-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/governing-body-classification-codes/"
+  end
+
+  match "/worship-governing-bodies/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/worship-governing-bodies/"
+  end
+
+  match "/central-governing-bodies/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/central-governing-bodies/"
+  end
+
+  match "/public-involvements/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/public-involvements/"
   end
 
   match "/identifiers/*path", %{ accept: [:json], layer: :api} do
@@ -65,9 +113,21 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/structured-identifiers/"
   end
 
-  match "/worship-services/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/worship-services/"
+  match "/addresses/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/addresses/"
   end
+
+  match "/sites/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/sites/"
+  end
+
+  match "/change-events/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/change-events/"
+  end
+
+  match "/change-event-types/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/change-event-types/"
+  end  
 
   ###############################################################
   # sparql endpoint
