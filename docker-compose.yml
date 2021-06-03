@@ -12,7 +12,7 @@ services:
     image: semtech/mu-identifier:1.9.1
     environment:
       DEFAULT_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "*"
-      DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
+      DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}, {\"variables\":[],\"name\":\"clean\"}]"
     labels:
       - "logging=true"
     restart: always
@@ -111,6 +111,20 @@ services:
     logging: *default-logging
     labels:
       - "logging=true"
+  kalliope-api:
+    image: lblod/jsonld-delta-service
+    volumes:
+      - ./config/kalliope:/config
+      - ./data/files:/share
+    environment:
+      SERVER_PORT: "80"
+      LOGGING_LEVEL: "INFO"
+      SPARQL_ENDPOINT: "http://db:8890/sparql"
+    restart: always
+  deltanotifier:
+    image: semtech/mu-delta-notifier:0.1.0
+    volumes:
+      - ./config/delta:/config
   frontend:
     image: lblod/frontend-contact-hub
     labels:
