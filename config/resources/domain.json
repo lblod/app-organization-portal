@@ -215,10 +215,10 @@
           "target": "board-positions",
           "cardinality": "one"
         },
-        "governing-bodies": {
+        "governing-body": {
           "predicate": "org:postIn",
           "target": "governing-bodies",
-          "cardinality": "many",
+          "cardinality": "one",
           "inverse": true
         },
         "held-by": {
@@ -268,6 +268,11 @@
           "target": "identifiers",
           "cardinality": "many"
         },
+        "organization-status": {
+          "predicate": "regorg:orgStatus",
+          "target": "organization-status-codes",
+          "cardinality": "one"
+        },
         "primary-site": {
           "predicate": "org:hasPrimarySite",
           "target": "sites",
@@ -309,9 +314,9 @@
           "predicate": "besluit:bestuurt",
           "target": "governing-bodies",
           "cardinality": "many",
-          "inverser": true
+          "inverse": true
         },
-        "involved-board": {
+        "involved-boards": {
           "predicate": "ere:betrokkenBestuur",
           "target": "public-involvements",
           "cardinality": "many"
@@ -501,7 +506,7 @@
           "cardinality": "one"
         }
       },
-      "new-resource-base": "http://data.lblod.info/id/publiekeBetrokkenheid/"
+      "new-resource-base": "http://data.lblod.info/id/publiekeBetrokkenheden/"
     },
     "identifiers": {
       "class": "adms:Identifier",
@@ -614,7 +619,16 @@
         }
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"
-    }
-    
+    },
+    "organization-status-codes": {
+      "class": "skos:Concept",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    }    
   }
 }
