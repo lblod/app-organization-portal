@@ -127,7 +127,11 @@ defmodule Dispatcher do
 
   match "/change-event-types/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/change-event-types/"
-  end  
+  end 
+
+  match "/organization-status-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/organization-status-codes/"
+  end   
 
   ###############################################################
   # sparql endpoint
