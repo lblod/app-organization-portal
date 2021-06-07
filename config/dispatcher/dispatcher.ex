@@ -93,14 +93,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/governing-body-classification-codes/"
   end
 
-  match "/worship-governing-bodies/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/worship-governing-bodies/"
-  end
-
-  match "/central-governing-bodies/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/central-governing-bodies/"
-  end
-
   match "/public-involvements/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/public-involvements/"
   end

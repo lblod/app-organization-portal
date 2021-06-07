@@ -425,7 +425,6 @@
     },
     "governing-bodies": {
       "class": "besluit:Bestuursorgaan",
-      "super": ["organizations"],
       "attributes": {
         "start-date": {
           "type": "datetime",
@@ -447,7 +446,7 @@
           "target": "governing-body-classification-codes",
           "cardinality": "one"
         },
-        "is-timeSpecialization-of": {
+        "is-time-specialization-of": {
           "predicate": "generiek:isTijdspecialisatieVan",
           "target": "governing-bodies",
           "cardinality": "one"
@@ -475,16 +474,6 @@
         }
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/"
-    },
-    "worship-governing-bodies": {
-      "class": "ere:Eredienstbestuursorgaan",
-      "super": ["governing-bodies"],
-      "new-resource-base": "http://data.lblod.info/id/bestuursorganenVanDeBesturenVanDeEredienst/"
-    },
-    "central-governing-bodies": {
-      "class": "ere:CentraleBestuursorgaan",
-      "super": ["governing-bodies"],
-      "new-resource-base": "http://data.lblod.info/id/bestuursorganenVanDeCentraleBesturenVanDeEredienst/"
     },
     "public-involvements": {
       "class": "ere:PubliekeBetrokkenheid",
