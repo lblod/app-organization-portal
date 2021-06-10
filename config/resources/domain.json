@@ -321,6 +321,16 @@
           "predicate": "ere:betrokkenBestuur",
           "target": "public-involvements",
           "cardinality": "many"
+        },
+        "municipality": {
+          "predicate": "besluit:werkingsgebied",
+          "type": "locations",
+          "cardinality": "one"
+        },
+        "province": {
+          "predicate": "vcard:hasRegion",
+          "type": "locations",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/bestuurseenheden/"
@@ -619,6 +629,16 @@
         }
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "locations": {
+      "class": "prov:Location",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "rdfs:label"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/werkingsgebieden/"
     }    
   }
 }
