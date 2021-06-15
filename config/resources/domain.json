@@ -354,7 +354,7 @@
           "predicate": "ere:denominatie"
         },
         "cross-border": {
-          "type": "string",
+          "type": "boolean",
           "predicate": "ere:grensoverscheidend"
         }
       },
@@ -506,7 +506,7 @@
           "cardinality": "one"
         }
       },
-      "new-resource-base": "http://data.lblod.info/id/PubliekeBetrokkenheid/"
+      "new-resource-base": "http://data.lblod.info/id/BetrokkenLokaleBesturen/"
     },
     "identifiers": {
       "class": "adms:Identifier",
@@ -636,6 +636,10 @@
         "label": {
           "type": "string",
           "predicate": "rdfs:label"
+        },
+        "level": {
+          "type": "string",
+          "predicate": "ext:werkingsgebiedNiveau"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/werkingsgebieden/"
