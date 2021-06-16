@@ -17,17 +17,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  web:
-    image: nginx
-    volumes:
-       - ./config/proxy:/etc/nginx/conf.d
-       - ./config/proxy/web.conf:/etc/nginx/nginx.conf:ro
-    links:
-      - identifier:identifier
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
   dispatcher:
     image: semtech/mu-dispatcher:latest
     volumes:
@@ -125,11 +114,3 @@ services:
     image: semtech/mu-delta-notifier:0.1.0
     volumes:
       - ./config/delta:/config
-  frontend:
-    image: lblod/frontend-contact-hub
-    labels:
-      - "logging=true"
-    environment: 
-     EMBER_METIS_BASE_URL: "http://data.lblod.info/id/"
-    restart: always
-    logging: *default-logging
