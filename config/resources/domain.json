@@ -22,7 +22,8 @@
     "prov": "http://www.w3.org/ns/prov#",
     "ere": "http://data.lblod.info/vocabularies/erediensten/",
     "ch": "http://data.lblod.info/vocabularies/contacthub/",
-    "code": "http://lblod.data.gift/vocabularies/organization/"
+    "code": "http://lblod.data.gift/vocabularies/organization/",
+    "ext": "http://mu.semte.ch/vocabularies/ext/"
   },
   "resources": {
     "people": {
@@ -489,7 +490,7 @@
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/"
     },
     "public-involvements": {
-      "class": "ere:PubliekeBetrokkenheid",
+      "class": "ere:BetrokkenLokaleBesturen",
       "attributes": {
         "percentage": {
           "type": "number",
@@ -508,7 +509,7 @@
           "cardinality": "one"
         }
       },
-      "new-resource-base": "http://data.lblod.info/id/BetrokkenLokaleBesturen/"
+      "new-resource-base": "http://data.lblod.info/id/betrokkenLokaleBesturen/"
     },
     "identifiers": {
       "class": "adms:Identifier",
