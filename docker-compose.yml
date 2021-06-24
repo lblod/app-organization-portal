@@ -45,6 +45,7 @@ services:
       LOG_INCOMING_SPARQL_QUERIES: "true"
       LOG_ACCESS_RIGHTS: "true"
       LOG_OUTGOING_SPARQL_QUERY_ROUNDTRIP: "true"
+      ERROR_ON_UNWRITTEN_DATA: "true"
     volumes:
       - ./config/authorization:/config
   migrations:

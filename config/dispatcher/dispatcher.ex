@@ -17,8 +17,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/people/"
   end
 
-  match "/agent-in-position/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/agent-in-position/"
+  match "/agents-in-position/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/agents-in-position/"
   end
 
   match "/posts/*path", %{ accept: [:json], layer: :api} do
@@ -93,8 +93,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/governing-body-classification-codes/"
   end
 
-  match "/public-involvements/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/public-involvements/"
+  match "/local-involvements/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/local-involvements/"
   end
 
   match "/identifiers/*path", %{ accept: [:json], layer: :api} do
@@ -127,6 +127,10 @@ defmodule Dispatcher do
 
   match "/locations/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/locations/"
+  end
+
+  match "/involvement-types/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/involvement-types/"
   end
 
   ###############################################################
