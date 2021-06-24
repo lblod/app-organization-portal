@@ -19,8 +19,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-    ports:
-      - "80:80"
   frontend:
     image: lblod/frontend-contact-hub
     labels:
