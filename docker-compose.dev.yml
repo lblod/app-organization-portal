@@ -1,6 +1,29 @@
 version: '3.4'
 
 services:
-  web:
+  identifier:
     ports:
       - "80:80"
+    restart: "no"
+  dispatcher:
+    restart: "no"
+  triplestore:
+    restart: "no"
+  db:
+    restart: "no"
+  migrations:
+    restart: "no"
+  resource:
+    restart: "no"
+  cache:
+    restart: "no"
+  uri-info:
+    restart: "no"
+  resource-labels-cache:
+    restart: "no"
+  resource-labels:
+    restart: "no"
+  kalliope-api:
+    restart: "no"
+  deltanotifier:
+    restart: "no"

@@ -1,0 +1,31 @@
+version: '3.4'
+
+x-logging:
+  &default-logging
+  driver: "json-file"
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  web:
+    image: nginx
+    volumes:
+       - ./config/proxy:/etc/nginx/conf.d
+       - ./config/proxy/web.conf:/etc/nginx/nginx.conf:ro
+    links:
+      - identifier:identifier
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+    ports:
+      - "80:80"
+  frontend:
+    image: lblod/frontend-contact-hub
+    labels:
+      - "logging=true"
+    environment: 
+     EMBER_METIS_BASE_URL: "http://data.lblod.info/id/"
+    restart: always
+    logging: *default-logging
