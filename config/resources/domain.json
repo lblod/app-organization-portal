@@ -1,28 +1,29 @@
 {
   "version": "0.1",
   "prefixes": {
-    "skos": "http://www.w3.org/2004/02/skos/core#",
     "org": "http://www.w3.org/ns/org#",
     "locn": "http://www.w3.org/ns/locn#",
-    "organisatie": "https://data.vlaanderen.be/ns/organisatie#",
-    "dc_terms": "http://purl.org/dc/terms/",
     "schema": "http://schema.org/",
     "regorg": "http://www.w3.org/ns/regorg#",
     "person": "http://www.w3.org/ns/person#",
-    "persoon": "https://data.vlaanderen.be/ns/persoon#",
-    "foaf": "http://xmlns.com/foaf/0.1/",
     "vcard": "http://www.w3.org/2006/vcard/ns#",
+    "dbpedia": "http://dbpedia.org/ontology/",
+    "adms": "http://www.w3.org/ns/adms#",
+    "euro": "http://data.europa.eu/m8g/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "organisatie": "https://data.vlaanderen.be/ns/organisatie#",
+    "persoon": "https://data.vlaanderen.be/ns/persoon#",
     "adres": "https://data.vlaanderen.be/ns/adres#",
     "generiek": "https://data.vlaanderen.be/ns/generiek#",
-    "euro": "http://data.europa.eu/m8g/",
-    "adms": "http://www.w3.org/ns/adms#",
-    "lblodlg": "https://data.lblod.info/vocabularies/leidinggevenden/",
-    "besluit": "http://data.vlaanderen.be/ns/besluit#",
     "mandaat": "http://data.vlaanderen.be/ns/mandaat#",
-    "prov": "http://www.w3.org/ns/prov#",
+    "besluit": "http://data.vlaanderen.be/ns/besluit#",
+    "lblodlg": "https://data.lblod.info/vocabularies/leidinggevenden/",
+    "dc_terms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
     "ere": "http://data.lblod.info/vocabularies/erediensten/",
-    "ch": "http://data.lblod.info/vocabularies/contacthub/",
-    "code": "http://lblod.data.gift/vocabularies/organization/",
+    "ch": "http://data.lblod.info/vocabularies/contacthub/",    
+    "code": "http://lblod.data.gift/vocabularies/organisatie/",
     "ext": "http://mu.semte.ch/vocabularies/ext/"
   },
   "resources": {
@@ -51,7 +52,7 @@
       },
       "new-resource-base": "http://data.lblod.info/id/personen/"
     },
-    "agent-in-position": {
+    "agents-in-position": {
       "class": "ch:AgentInPositie",
       "attributes": {
         "start-date": {
@@ -322,16 +323,11 @@
         },
         "involved-boards": {
           "predicate": "ere:betrokkenBestuur",
-          "target": "public-involvements",
+          "target": "local-engagements",
           "cardinality": "many"
         },
-        "municipality": {
+        "scope": {
           "predicate": "besluit:werkingsgebied",
-          "target": "locations",
-          "cardinality": "one"
-        },
-        "province": {
-          "predicate": "vcard:hasRegion",
           "target": "locations",
           "cardinality": "one"
         }
@@ -489,7 +485,7 @@
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/"
     },
-    "public-involvements": {
+    "local-involvements": {
       "class": "ere:BetrokkenLokaleBesturen",
       "attributes": {
         "percentage": {
@@ -507,6 +503,12 @@
           "predicate": "org:organization",
           "target": "worship-services",
           "cardinality": "one"
+        },
+        "administrative-unit": {
+          "predicate": "ere:betrokkenBestuur",
+          "target": "administrative-units",
+          "cardinality": "one",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/betrokkenLokaleBesturen/"
@@ -624,7 +626,7 @@
       "new-resource-base": "http://lblod.data.gift/concepts/"
     },
     "organization-status-codes": {
-      "class": "code:StatusCode",
+      "class": "code:OrganisatieStatusCode",
       "attributes": {
         "label": {
           "type": "string",
@@ -646,7 +648,25 @@
           "predicate": "ext:werkingsgebiedNiveau"
         }
       },
+      "relationships": {
+        "administrative-units": {
+          "predicate": "besluit:werkingsgebied",
+          "target": "administrative-units",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
       "new-resource-base": "http://data.lblod.info/id/werkingsgebieden/"
+    },
+    "involvement-types": {
+      "class": "code:TypeBetrokkenheid",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
     }    
   }
 }
