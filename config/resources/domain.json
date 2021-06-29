@@ -691,9 +691,41 @@
           "predicate": "ere:financering",
           "target": "financering-codes",
           "cardinality": "one"
+        },
+        "conditions": {
+          "predicate": "ere:voldoetAan",
+          "target": "minister-conditions",
+          "cardinality": "many"
         }  
       },
-      "new-resource-base": "http://data.lblod.info/id/rolsBedienaar/"    
+      "new-resource-base": "http://data.lblod.info/id/rollenBedienaar/"    
+    },
+    "minister-conditions": {
+      "class": "ere:VoorwaardenBedienaar",
+      "attributes": {
+        "satisfied": {
+          "type": "boolean",
+          "predicate": "ere:voldaan"
+        }
+      },
+      "relationships": {
+        "criterion": {
+          "predicate": "ere:criterium",
+          "target": "minister-conditions-criterions",
+          "cardinality": "one"
+        },
+        "document-type-criterion": {
+          "predicate": "ere:criteriumbewijsstuktype",
+          "target": "document-types-criterions",
+          "cardinality": "one"
+        },
+        "document": {
+          "predicate": "ere:bijlage",
+          "target": "documents",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/voorwaardenBedienaar/"
     },
     "dates-of-birth": {
       "class": "persoon:Geboorte",
