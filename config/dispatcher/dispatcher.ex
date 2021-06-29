@@ -133,6 +133,22 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/involvement-types/"
   end
 
+  match "/minister-roles/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/minister-roles/"
+  end 
+
+  match "/dates-of-birth/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/dates-of-birth/"
+  end   
+
+  match "/nationalities/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/nationalities/"
+  end
+
+  match "/gender-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/gender-codes/"
+  end
+
   ###############################################################
   # sparql endpoint
   ###############################################################
