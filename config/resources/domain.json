@@ -126,6 +126,7 @@
     },
     "mandatories": {
       "class": "mandaat:Mandataris",
+      "super": ["agents-in-position"],
       "attributes": {
         "start-date": {
           "type": "datetime",
@@ -410,6 +411,11 @@
           "target": "local-involvements",
           "cardinality": "many",
           "inverse": true
+        },
+        "associated-structures": {
+          "predicate": "ere:heeftVerbondenEntiteit",
+          "target": "associated-legal-structures",
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/besturenVanDeEredienst/"
@@ -726,6 +732,32 @@
         }
       },
       "new-resource-base": "http://data.lblod.info/id/voorwaardenBedienaar/"
+    },
+    "associated-legal-structures": {
+      "class": "ere:VerbondenJuridischeStructuren",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "relationships": {
+        "registration": {
+          "predicate": "regorg:registration",
+          "target": "identifiers",
+          "cardinality": "one"
+        },
+        "legal-type": {
+          "predicate": "organisatie:rechtsvorm",
+          "target": "legal-form-types",
+          "cardinality": "one"
+        },
+        "address": {
+          "predicate": "locn:address",
+          "target": "addresses",
+          "cardinality": "one"
+        }
+      }
     },
     "dates-of-birth": {
       "class": "persoon:Geboorte",
