@@ -48,6 +48,26 @@
           "predicate": "mandaat:isAangesteldAls",
           "target": "mandatories",
           "cardinality": "many"
+        },
+        "identifier": {
+          "predicate": "persoon:registratie",
+          "target": "identifiers",
+          "cardinality": "one"
+        },
+        "date-of-birth": {
+          "predicate": "persoon:heeftGeboorte",
+          "target": "dates-of-birth",
+          "cardinality": "one"
+        },
+        "nationality": {
+          "predicate": "persoon:heeftNationaliteit",
+          "target": "nationalities",
+          "cardinality": "many"
+        },
+        "gender": {
+          "predicate": "persoon:geslacht",
+          "target": "gender-codes",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/personen/"
@@ -302,6 +322,28 @@
           "predicate": "org:hasPost",
           "target": "posts",
           "cardinality": "many"
+        },
+        "associated-organizations": {
+          "predicate": "org:linkedTo",
+          "target": "organizations",
+          "cardinality": "many"
+        },
+        "sub-organizations": {
+          "predicate": "org:hasSubOrganization",
+          "target": "organizations",
+          "cardinality": "many"
+        },
+        "is-associated-with": {
+          "predicate": "org:linkedTo",
+          "target": "organizations",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "is-sub-organization-of": {
+          "predicate": "org:hasSubOrganization",
+          "target": "organizations",
+          "cardinality": "one",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/organisaties/"
@@ -323,7 +365,7 @@
         },
         "involved-boards": {
           "predicate": "ere:betrokkenBestuur",
-          "target": "local-engagements",
+          "target": "local-involvements",
           "cardinality": "many"
         },
         "scope": {
@@ -363,15 +405,11 @@
           "target": "honorary-service-types",
           "cardinality": "one"
         },
-        "central-service": {
-          "predicate": "org:linkedTo",
-          "target": "central-worship-services",
-          "cardinality": "one"
-        },
-        "representive-body": {
-          "predicate": "org:linkedTo",
-          "target": "representative-bodies",
-          "cardinality": "one"
+        "involvements": {
+          "predicate": "org:organization",
+          "target": "local-involvements",
+          "cardinality": "many",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/besturenVanDeEredienst/"
@@ -394,17 +432,6 @@
           "predicate": "ere:typeEredienst",
           "target": "honorary-service-types",
           "cardinality": "one"
-        },
-        "worship-service": {
-          "predicate": "org:linkedTo",
-          "target": "worship-services",
-          "cardinality": "many",
-          "inverse": true
-        },
-        "representive-body": {
-          "predicate": "org:linkedTo",
-          "target": "representative-bodies",
-          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/centraleBesturenVanDeEredienst/"
@@ -417,18 +444,6 @@
           "predicate": "ere:typeEredienst",
           "target": "honorary-service-types",
           "cardinality": "one"
-        },
-        "central-service": {
-          "predicate": "org:linkedTo",
-          "target": "central-worship-services",
-          "cardinality": "many",
-          "inverse": true
-        },
-        "worship-service": {
-          "predicate": "org:linkedTo",
-          "target": "worship-services",
-          "cardinality": "many",
-          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/representatieveOrganen/"
@@ -667,6 +682,48 @@
         }
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"
-    }    
+    },
+    "minister-roles": {
+      "class": "ere:RolBedienaar",
+      "super": ["agents-in-position"],
+      "relationships": {
+        "financiering": {
+          "predicate": "ere:financering",
+          "target": "financering-codes",
+          "cardinality": "one"
+        }  
+      },
+      "new-resource-base": "http://data.lblod.info/id/rolsBedienaar/"    
+    },
+    "dates-of-birth": {
+      "class": "persoon:Geboorte",
+      "attributes": {
+        "date": {
+          "type": "datetime",
+          "predicate": "persoon:datum"
+        } 
+      },
+      "new-resource-base": "http://data.lblod.info/id/geboortes/"
+    },
+    "nationalities": {
+      "class": "persoon:Nationaliteit",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "gender-codes": {
+      "class": "ext:GeslachtCode",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://data.vlaanderen.be/id/concept/GeslachtCode/"
+    }
   }
 }
