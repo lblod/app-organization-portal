@@ -59,7 +59,7 @@
           "target": "dates-of-birth",
           "cardinality": "one"
         },
-        "nationality": {
+        "nationalities": {
           "predicate": "persoon:heeftNationaliteit",
           "target": "nationalities",
           "cardinality": "many"
@@ -75,11 +75,11 @@
     "agents-in-position": {
       "class": "ch:AgentInPositie",
       "attributes": {
-        "start-date": {
+        "agent-start-date": {
           "type": "datetime",
           "predicate": "ch:startdatum"
         },
-        "end-date": {
+        "agent-end-date": {
           "type": "datetime",
           "predicate": "ch:eindedatum"
         }
@@ -689,10 +689,15 @@
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"
     },
-    "minister-roles": {
+    "ministers": {
       "class": "ere:RolBedienaar",
       "super": ["agents-in-position"],
       "relationships": {
+        "minister-position": {
+          "predicate": "ere:functie",
+          "target": "minister-positions",
+          "cardinality": "one"
+        },
         "financiering": {
           "predicate": "ere:financering",
           "target": "financering-codes",
@@ -717,17 +722,12 @@
       "relationships": {
         "criterion": {
           "predicate": "ere:criterium",
-          "target": "minister-conditions-criterions",
+          "target": "minister-condition-criterions",
           "cardinality": "one"
         },
         "document-type-criterion": {
           "predicate": "ere:criteriumbewijsstuktype",
           "target": "document-types-criterions",
-          "cardinality": "one"
-        },
-        "document": {
-          "predicate": "ere:bijlage",
-          "target": "documents",
           "cardinality": "one"
         }
       },
@@ -789,6 +789,56 @@
         }
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/GeslachtCode/"
+    },
+    "minister-positions": {
+      "class": "code:EredienstBeroepen",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "financering-codes": {
+      "class": "code:BedienaarFinanceringCode",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "minister-condition-criterions": {
+      "class": "code:VoorwaardenBedinaarCriterium",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "legal-form-types": {
+      "class": "code:Rechtsvormtype",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "document-types-criterions": {
+      "class": "code:BedinaarCriteriumBewijsstuk",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
     }
   }
 }
