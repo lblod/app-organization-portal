@@ -88,7 +88,8 @@
         "position": {
           "predicate": "org:hasPost",
           "target": "posts",
-          "cardinality": "one"
+          "cardinality": "one",
+          "inverse": true
         },
         "person": {
           "predicate": "org:heldBy",
@@ -120,6 +121,12 @@
           "predicate": "org:postIn",
           "target": "organization",
           "cardinality": "one"
+        },
+        "agent-in-position": {
+          "predicate": "org:hasPost",
+          "target": "agents-in-position",
+          "cardinality": "one",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/posities/"
