@@ -88,8 +88,7 @@
         "position": {
           "predicate": "org:hasPost",
           "target": "posts",
-          "cardinality": "one",
-          "inverse": true
+          "cardinality": "one"
         },
         "person": {
           "predicate": "org:heldBy",
@@ -125,7 +124,7 @@
         "agent-in-position": {
           "predicate": "org:hasPost",
           "target": "agents-in-position",
-          "cardinality": "one",
+          "cardinality": "many",
           "inverse": true
         }
       },
