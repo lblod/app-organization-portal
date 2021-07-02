@@ -120,6 +120,12 @@
           "predicate": "org:postIn",
           "target": "organization",
           "cardinality": "one"
+        },
+        "agents-in-position": {
+          "predicate": "org:hasPost",
+          "target": "agents-in-position",
+          "cardinality": "many",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/posities/"
