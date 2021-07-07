@@ -68,13 +68,17 @@ defmodule Dispatcher do
   match "/administrative-unit-classification-codes/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/administrative-unit-classification-codes/"
   end
+
+  match "/worship-administrative-units/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/worship-administrative-units/"
+  end
   
   match "/worship-services/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/worship-services/"
   end
 
-  match "/honorary-service-types/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/honorary-service-types/"
+  match "/recognized-worship-types/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/recognized-worship-types/"
   end
 
   match "/central-worship-services/*path", %{ accept: [:json], layer: :api} do
