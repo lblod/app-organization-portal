@@ -49,6 +49,12 @@
           "target": "mandatories",
           "cardinality": "many"
         },
+        "ministers": {
+          "predicate": "org:heldBy",
+          "target": "ministers",
+          "cardinality": "many",
+          "inverse": true
+        },
         "identifier": {
           "predicate": "persoon:registratie",
           "target": "identifiers",
@@ -86,7 +92,7 @@
       },
       "relationships": {
         "position": {
-          "predicate": "org:hasPost",
+          "predicate": "org:holds",
           "target": "posts",
           "cardinality": "one"
         },
@@ -106,11 +112,6 @@
     "posts": {
       "class": "org:Post",
       "relationships": {
-        "role-board": {
-          "predicate": "org:role",
-          "target": "board-positions",
-          "cardinality": "one"
-        },
         "general-role": {
           "predicate": "org:role",
           "target": "roles",
@@ -122,7 +123,7 @@
           "cardinality": "one"
         },
         "agents-in-position": {
-          "predicate": "org:hasPost",
+          "predicate": "org:holds",
           "target": "agents-in-position",
           "cardinality": "many",
           "inverse": true
@@ -241,6 +242,7 @@
     },
     "mandates": {
       "class": "mandaat:Mandaat",
+      "super": ["posts"],
       "relationships": {
         "role-board": {
           "predicate": "org:role",
@@ -430,6 +432,11 @@
           "predicate": "ere:heeftVerbondenEntiteit",
           "target": "associated-legal-structures",
           "cardinality": "many"
+        },
+        "minister-positions": {
+          "predicate": "ere:wordtBediendDoor",
+          "target": "minister-positions",
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/besturenVanDeEredienst/"
@@ -457,6 +464,11 @@
           "predicate": "ere:typeEredienst",
           "target": "recognized-worship-types",
           "cardinality": "one"
+        },
+        "minister-positions": {
+          "predicate": "ere:wordtAangeduidDoor",
+          "target": "minister-positions",
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/representatieveOrganen/"
@@ -639,6 +651,18 @@
           "predicate": "ch:typeWijziging",
           "target": "change-event-types",
           "cardinality": "one"
+        },
+        "resulting-organization": {
+          "predicate": "org:resultedFrom",
+          "target": "organizations",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "original-organization": {
+          "predicate": "org:changedBy",
+          "target": "organizations",
+          "cardinality": "many",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/veranderingsgebeurtenissen/"
@@ -701,7 +725,7 @@
       "super": ["agents-in-position"],
       "relationships": {
         "minister-position": {
-          "predicate": "ere:functie",
+          "predicate": "org:holds",
           "target": "minister-positions",
           "cardinality": "one"
         },
@@ -798,8 +822,38 @@
       "new-resource-base": "http://data.vlaanderen.be/id/concept/GeslachtCode/"
     },
     "minister-positions": {
+      "class": "ere:PositieBedienaar",
+      "super": ["posts"],
+      "relationships": {
+        "function": {
+          "predicate": "ere:functie",
+          "target": "minister-position-functions",
+          "cardinality": "one"
+        },
+        "held-by-ministers": {
+          "predicate": "org:holds",
+          "target": "ministers",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "worship-service": {
+          "predicate": "ere:wordtBediendDoor",
+          "target": "worship-services",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "representative-body": {
+          "predicate": "ere:wordtAangeduidDoor",
+          "target": "representative-bodies",
+          "cardinality": "one",
+          "inverse": true
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/positiesBedienaar/"
+    },
+    "minister-position-functions": {
       "class": "code:EredienstBeroepen",
-      "attributes": {
+      "attribute": {
         "label": {
           "type": "string",
           "predicate": "skos:prefLabel"
