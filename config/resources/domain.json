@@ -393,9 +393,22 @@
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/"
     },
+    "worship-administrative-units": {
+      "class": "ere:EredienstBestuurseenheid",
+      "super": ["administrative-units"],
+      "relationships": {
+        "recognized-worship-type": {
+          "predicate": "ere:typeEredienst",
+          "target": "recognized-worship-types",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/eredienstBestuurseenheden/"
+
+    },
     "worship-services": {
       "class": "ere:BestuurVanDeEredienst",
-      "super": ["administrative-units"],
+      "super": ["worship-administrative-units"],
       "attributes": {
         "denomination": {
           "type": "string",
@@ -407,11 +420,6 @@
         }
       },
       "relationships": {
-        "honorary-service-type": {
-          "predicate": "ere:typeEredienst",
-          "target": "honorary-service-types",
-          "cardinality": "one"
-        },
         "involvements": {
           "predicate": "org:organization",
           "target": "local-involvements",
@@ -426,7 +434,7 @@
       },
       "new-resource-base": "http://data.lblod.info/id/besturenVanDeEredienst/"
     },
-    "honorary-service-types": {
+    "recognized-worship-types": {
       "class": "code:TypeEredienst",
       "attributes": {
         "label": {
@@ -438,23 +446,16 @@
     },
     "central-worship-services": {
       "class": "ere:CentraalBestuurVanDeEredienst",
-      "super": ["administrative-units"],
-      "relationships": {
-        "honorary-service-type": {
-          "predicate": "ere:typeEredienst",
-          "target": "honorary-service-types",
-          "cardinality": "one"
-        }
-      },
+      "super": ["worship-administrative-units"],
       "new-resource-base": "http://data.lblod.info/id/centraleBesturenVanDeEredienst/"
     },
     "representative-bodies": {
       "class": "ere:RepresentatiefOrgaan",
       "super": ["organizations"],
       "relationships": {
-        "honorary-service-type": {
+        "recognized-worship-type": {
           "predicate": "ere:typeEredienst",
-          "target": "honorary-service-types",
+          "target": "recognized-worship-types",
           "cardinality": "one"
         }
       },
