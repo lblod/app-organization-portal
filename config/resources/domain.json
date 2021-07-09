@@ -730,9 +730,9 @@
           "target": "minister-positions",
           "cardinality": "one"
         },
-        "financiering": {
-          "predicate": "ere:financering",
-          "target": "financering-codes",
+        "financing": {
+          "predicate": "ere:financiering",
+          "target": "financing-codes",
           "cardinality": "one"
         },
         "conditions": {
@@ -861,7 +861,7 @@
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"
     },
-    "financering-codes": {
+    "financing-code": {
       "class": "code:BedienaarFinanceringCode",
       "attributes": {
         "label": {
