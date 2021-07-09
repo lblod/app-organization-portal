@@ -618,6 +618,11 @@
           "predicate": "organisatie:bestaatUit",
           "target": "addresses",
           "cardinality": "one"
+        },
+        "site-type": {
+          "predicate": "ere:vestigingstype",
+          "target": "site-types",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/vestigingen/"
@@ -839,6 +844,16 @@
     },
     "document-types-criterions": {
       "class": "code:BedinaarCriteriumBewijsstuk",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "site-types": {
+      "class": "code:TypeVestiging",
       "attributes": {
         "label": {
           "type": "string",
