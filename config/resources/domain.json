@@ -49,9 +49,9 @@
           "target": "mandatories",
           "cardinality": "many"
         },
-        "ministers": {
+        "agents-in-position": {
           "predicate": "org:heldBy",
-          "target": "ministers",
+          "target": "agents-in-position",
           "cardinality": "many",
           "inverse": true
         },
@@ -98,7 +98,7 @@
         },
         "person": {
           "predicate": "org:heldBy",
-          "target": "peolple",
+          "target": "people",
           "cardinality": "one"
         },
         "contacts": {
@@ -466,9 +466,10 @@
           "cardinality": "one"
         },
         "minister-positions": {
-          "predicate": "ere:wordtAangeduidDoor",
+          "predicate": "ere:behoort",
           "target": "minister-positions",
-          "cardinality": "many"
+          "cardinality": "many",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/representatieveOrganen/"
@@ -843,17 +844,16 @@
           "inverse": true
         },
         "representative-body": {
-          "predicate": "ere:wordtAangeduidDoor",
+          "predicate": "ere:behoort",
           "target": "representative-bodies",
-          "cardinality": "one",
-          "inverse": true
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/positiesBedienaar/"
     },
     "minister-position-functions": {
       "class": "code:EredienstBeroepen",
-      "attribute": {
+      "attributes": {
         "label": {
           "type": "string",
           "predicate": "skos:prefLabel"
