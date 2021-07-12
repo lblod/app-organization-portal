@@ -185,6 +185,11 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/document-types-criterions/"
   end  
 
+  match "/site-types/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/site-types/"
+  end
+  
+
   ###############################################################
   # sparql endpoint
   ###############################################################
