@@ -137,8 +137,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/involvement-types/"
   end
 
-  match "/minister-roles/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/minister-roles/"
+  match "/ministers/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/ministers/"
+  end 
+
+  match "/minister-conditions/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/minister-conditions/"
+  end 
+
+  match "/associated-legal-structures/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/associated-legal-structures/"
   end 
 
   match "/dates-of-birth/*path", %{ accept: [:json], layer: :api} do
@@ -153,10 +161,33 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/gender-codes/"
   end
 
+  match "/minister-positions/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/minister-positions/"
+  end
+
+  match "/minister-position-functions/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/minister-position-functions/"
+  end
+
+  match "/financing-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/financing-codes/"
+  end
+
+  match "/minister-condition-criterions/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/minister-condition-criterions/"
+  end
+
+  match "/legal-form-types/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/legal-form-types/"
+  end
+
+  match "/document-types-criterions/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/document-types-criterions/"
+  end  
+
   match "/site-types/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/site-types/"
   end
-
   
 
   ###############################################################
