@@ -1,0 +1,18 @@
+DELETE {
+  GRAPH  <http://mu.semte.ch/application> {
+    ?s ?p ?o .
+  }
+} INSERT {
+  GRAPH  <http://mu.semte.ch/graphs/public> {
+    ?s ?p ?o .
+  }
+} WHERE {
+  GRAPH  <http://mu.semte.ch/application> {
+    ?s a ?type ; ?p ?o .
+    VALUES ?type {
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>
+        <http://xmlns.com/foaf/0.1/Person>
+        <http://xmlns.com/foaf/0.1/OnlineAccount>
+    }
+  }
+}
