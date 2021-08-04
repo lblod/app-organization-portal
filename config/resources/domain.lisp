@@ -12,3 +12,4 @@
 (defparameter *supply-cache-headers-p* t)
 
 (read-domain-file "domain.json")
+(read-domain-file "auth.json")

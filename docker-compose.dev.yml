@@ -11,6 +11,9 @@ services:
     restart: "no"
   db:
     restart: "no"
+  triplestore:
+    ports: 
+      - "8890:8890"
   migrations:
     restart: "no"
   resource:
@@ -27,3 +30,7 @@ services:
     restart: "no"
   deltanotifier:
     restart: "no"
+  mocklogin:
+    image: lblod/mock-login-service:latest
+    links:
+      - db:database
