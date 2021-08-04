@@ -1,4 +1,3 @@
-
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
@@ -6,7 +5,7 @@ PREFIX mu:<http://mu.semte.ch/vocabularies/core/>
 PREFIX ext:<http://mu.semte.ch/vocabularies/ext/>
 
 INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/public> {
+  GRAPH <http://mu.semte.ch/application> {
     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> a foaf:Person ;
       mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3470" ;
       foaf:firstName "Mock" ;
