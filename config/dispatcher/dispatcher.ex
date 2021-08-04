@@ -194,7 +194,21 @@ defmodule Dispatcher do
   # sparql endpoint
   ###############################################################
   match "/sparql/*path", %{ accept: [:any], layer: :api} do
-    forward conn, path, "http://db:8890/sparql/"
+    Proxy.forward conn, path, "http://db:8890/sparql/"
+  end
+
+  ###############
+  # LOGIN
+  match "/accounts/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/accounts/"
+  end
+  
+  match "/groups/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/groups/"
+  end
+
+  match "/mock/sessions/*path", %{ accept: [:any], layer: :api} do
+    Proxy.forward conn, path, "http://mocklogin/sessions/"
   end
 
   ###############
