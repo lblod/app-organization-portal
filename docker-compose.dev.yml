@@ -34,3 +34,7 @@ services:
     image: lblod/mock-login-service:latest
     links:
       - db:database
+  sink:
+    restart: "no"
+  login:
+    restart: "no"
