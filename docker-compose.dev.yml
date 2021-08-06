@@ -38,3 +38,14 @@ services:
     restart: "no"
   login:
     restart: "no"
+  frontend:
+    image: lblod/frontend-contact-hub:latest
+    labels:
+      - "logging=true"
+    restart: always
+  proxy:
+    image: nginx:1.13
+    volumes:
+      - ./config/proxy-https:/etc/nginx/conf.d
+    ports:
+      - "443:443"
