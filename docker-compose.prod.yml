@@ -24,11 +24,9 @@ services:
     labels:
       - "logging=true"
     environment: 
-     OAUTH_REDIRECT_URL: "https://contact-hub.lblod.info/authorization/callback"
-     OAUTH_SWITCH_URL: "https://contact-hub.lblod.info/switch-login"
-     OAUTH_API_KEY: "677af572-2e2f-4e61-ad38-036723bb314c"
-     OAUTH_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
-     OAUTH_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
-     OAUTH_SCOPE: "openid vo profile abb_organisatieportaal"
+     EMBER_OAUTH_API_REDIRECT_URL: "https://organisaties.abb.lblod.info/authorization/callback"
+     EMBER_OAUTH_API_KEY: "677af572-2e2f-4e61-ad38-036723bb314c"
+     EMBER_OAUTH_API_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
+     EMBER_OAUTH_API_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
+     EMBER_OAUTH_API_SCOPE: "openid vo profile abb_organisatieportaal"
     restart: always
-    logging: *default-logging
