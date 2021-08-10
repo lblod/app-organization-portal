@@ -212,7 +212,6 @@ defmodule Dispatcher do
   end
 
   match "/sessions/*path", %{ accept: [:any], layer: :api} do
-    IO.puts "i'm here"
     Proxy.forward conn, path, "http://login/sessions/"
   end
   
