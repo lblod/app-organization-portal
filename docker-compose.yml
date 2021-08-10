@@ -124,22 +124,15 @@ services:
     restart: always
     logging: *default-logging
   login:
-    image: semtech/mu-javascript-template
-    ports:
-      - 8888:80
-      - 9229:9229
+    image: lblod/acmidm-login-service:0.9.2-organisatie_portaal
     links:
       - db:database
-    volumes:
-      - /Users/bittichn/acmidm-login-service/:/app/ 
     environment:
-      NODE_ENV: "development"
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "677af572-2e2f-4e61-ad38-036723bb314c"
       MU_APPLICATION_AUTH_REDIRECT_URI: "https://organisaties.abb.lblod.info/authorization/callback"
       MU_APPLICATION_AUTH_CLIENT_SECRET: "secret"
       LOG_SINK_URL: "https://organisaties.abb.lblod.info/sink"
-      DEBUG_LOG_TOKENSETS: "true"
     labels:
       - "logging=true"
     restart: always
