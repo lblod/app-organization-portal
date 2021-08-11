@@ -115,3 +115,27 @@ services:
     image: semtech/mu-delta-notifier:0.1.0
     volumes:
       - ./config/delta:/config
+  sink:
+    image: nginx:1.15.2
+    volumes:
+      - ./config/sink/sink.conf:/etc/nginx/conf.d/default.conf
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  login:
+    image: lblod/acmidm-login-service:0.9.2-organisatie_portaal
+    links:
+      - db:database
+    environment:
+      MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
+      MU_APPLICATION_AUTH_CLIENT_ID: "677af572-2e2f-4e61-ad38-036723bb314c"
+      MU_APPLICATION_AUTH_REDIRECT_URI: "https://organisaties.abb.lblod.info/authorization/callback"
+      MU_APPLICATION_AUTH_CLIENT_SECRET: ""
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+    links:
+      - db:database
+
