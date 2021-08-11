@@ -211,6 +211,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://mocklogin/sessions/"
   end
 
+  match "/sessions/*path", %{ accept: [:any], layer: :api} do
+    Proxy.forward conn, path, "http://login/sessions/"
+  end
+  
   ###############
   # API SERVICES
   ###############
@@ -236,19 +240,12 @@ defmodule Dispatcher do
 
 
   ###############################################################
-  # ember metis
-  ###############################################################
-  get "/uri-info/*path", %{ accept: [:json], layer: :api} do
-    forward conn, path, "http://uri-info/"
-  end
-
-  get "/resource-labels/*path", %{ accept: [:json], layer: :api} do
-    forward conn, path, "http://resource-labels/"
-  end  
-
-  ###############################################################
   # frontend layer
   ###############################################################
+  match "/torii/redirect.html", %{ accept: [:html], layer: :api } do
+    Proxy.forward conn, [], "http://frontend/torii/redirect.html"
+  end
+
   match "/assets/*path", %{ layer: :api } do
     Proxy.forward conn, path, "http://frontend/assets/"
   end

@@ -5,7 +5,7 @@ PREFIX mu:<http://mu.semte.ch/vocabularies/core/>
 PREFIX ext:<http://mu.semte.ch/vocabularies/ext/>
 
 INSERT DATA {
-  GRAPH <http://mu.semte.ch/application> {
+  GRAPH <http://mu.semte.ch/graphs/public> {
     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> a foaf:Person ;
       mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3470" ;
       foaf:firstName "Mock" ;
@@ -17,6 +17,7 @@ INSERT DATA {
       foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
       ext:sessionRole "ChAdmin".
   }
+
   GRAPH <http://mu.semte.ch/graphs/organizations/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> {
     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> a foaf:Person ;
       mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3470" ;
