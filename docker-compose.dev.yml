@@ -1,9 +1,19 @@
 version: '3.4'
 
 services:
-  identifier:
+  web:
+    image: nginx
+    volumes:
+       - ./config/proxy:/etc/nginx/conf.d
+       - ./config/proxy/web.conf:/etc/nginx/nginx.conf:ro
+    links:
+      - identifier:identifier
+    labels:
+      - "logging=true"
+    restart: always
     ports:
       - "80:80"
+  identifier:
     restart: "no"
   dispatcher:
     restart: "no"
