@@ -33,7 +33,6 @@ defmodule Acl.UserGroups.Config do
                         "http://schema.org/ContactPoint",                          
                         "http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie",
                         "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
-                        "http://data.lblod.info/vocabularies/erediensten/CentraleBestuursorgaan",
                         "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",                          
                         "http://www.w3.org/ns/org#Role",
                         "http://www.w3.org/ns/org#Post",
