@@ -75,7 +75,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  # Ember-Metis
   uri-info:
     image: redpencil/mu-uri-info-service:0.2.1
     links:
@@ -147,3 +146,25 @@ services:
       SESSION_GRAPH: "http://mu.semte.ch/graphs/sessions"
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.5.0
+  web:
+    image: nginx
+    volumes:
+       - ./config/proxy:/etc/nginx/conf.d
+       - ./config/proxy/web.conf:/etc/nginx/nginx.conf:ro
+    links:
+      - identifier:identifier
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  frontend:
+    image: lblod/frontend-contact-hub:1.0.0
+    labels:
+      - "logging=true"
+    environment:
+      EMBER_OAUTH_API_REDIRECT_URL: "https://organisaties.abb.lblod.info/authorization/callback"
+      EMBER_OAUTH_API_KEY: "677af572-2e2f-4e61-ad38-036723bb314c"
+      EMBER_OAUTH_API_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
+      EMBER_OAUTH_API_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
+      EMBER_OAUTH_API_SCOPE: "openid vo profile abb_organisatieportaal"
+    restart: always
