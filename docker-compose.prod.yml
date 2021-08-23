@@ -20,7 +20,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-contact-hub:0.3.0
+    image: lblod/frontend-contact-hub:0.4.0
     labels:
       - "logging=true"
     environment: 
