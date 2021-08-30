@@ -7,7 +7,7 @@ alias Acl.GroupSpec, as: GroupSpec
 alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
- @protectected_resource_type [
+ @protected_resource_type [
                            "http://www.w3.org/ns/org#Organization",
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
@@ -94,7 +94,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin",
             constraint: %ResourceConstraint{
-              resource_types: @protectected_resource_type
+              resource_types: @protected_resource_type
             }
           }
         ]
@@ -106,7 +106,7 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/contacthub/",
                     constraint: %ResourceConstraint{
-                      resource_types: @protectected_resource_type } } ] },
+                      resource_types: @protected_resource_type } } ] },
       %GroupSpec{
         name: "public",
         useage: [:read],
