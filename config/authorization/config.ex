@@ -15,7 +15,6 @@ defmodule Acl.UserGroups.Config do
                         "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
                         "http://data.lblod.info/vocabularies/erediensten/VoorwaardenBedienaar",
                         "https://data.vlaanderen.be/ns/persoon#Geboorte",
-                        "https://data.vlaanderen.be/ns/persoon#Nationaliteit",
                         "http://mu.semte.ch/vocabularies/ext/GeslachtCode",
                         "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
                         "http://www.w3.org/ns/adms#Identifier",
