@@ -55,7 +55,7 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/2004/02/skos/core#Concept",
                         "http://xmlns.com/foaf/0.1/Image",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-                        "http://publications.europa.eu/ontology/Country"
+                        "http://publications.europa.eu/ontology/euvoc#Country"
  ]
   defp access_by_role( group_string ) do
     %AccessByQuery{
