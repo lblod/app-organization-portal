@@ -15,7 +15,6 @@ defmodule Acl.UserGroups.Config do
                         "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
                         "http://data.lblod.info/vocabularies/erediensten/VoorwaardenBedienaar",
                         "https://data.vlaanderen.be/ns/persoon#Geboorte",
-                        "https://data.vlaanderen.be/ns/persoon#Nationaliteit",
                         "http://mu.semte.ch/vocabularies/ext/GeslachtCode",
                         "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
                         "http://www.w3.org/ns/adms#Identifier",
@@ -55,7 +54,8 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/2004/02/skos/core#ConceptScheme",
                         "http://www.w3.org/2004/02/skos/core#Concept",
                         "http://xmlns.com/foaf/0.1/Image",
-                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://publications.europa.eu/ontology/euvoc#Country"
  ]
   defp access_by_role( group_string ) do
     %AccessByQuery{
