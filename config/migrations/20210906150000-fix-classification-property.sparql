@@ -1,0 +1,12 @@
+PREFIX schema: <http://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g { ?s besluit:classificatie ?o . }
+} INSERT {
+  GRAPH ?g { ?s org:classification ?o . }
+} WHERE {
+  GRAPH ?g { ?s besluit:classificatie ?o . }
+}
