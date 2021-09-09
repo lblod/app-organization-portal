@@ -1,0 +1,19 @@
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  ere:  <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+
+# Part 2 of the percentage sort fix.
+
+DELETE {
+  GRAPH ?g {
+    ?s ext:decimalPercentage ?percentage.
+  }
+} INSERT {
+  GRAPH ?g {
+    ?s ere:financieringspercentage ?percentage.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s ext:decimalPercentage ?percentage.
+  }
+}
