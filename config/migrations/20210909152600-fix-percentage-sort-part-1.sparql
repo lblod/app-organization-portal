@@ -1,0 +1,22 @@
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  ere:  <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+
+# Convert the xsd:float typed percentages to xsd:decimal.
+# This is needed to work around a sorting issue that only happens with xsd:float.
+# The migration file is split up in 2 parts since Virtuoso has issues with doing the conversion in a single migration file.
+
+DELETE {
+  GRAPH ?g {
+    ?s ere:financieringspercentage ?percentage.
+  }
+} INSERT {
+  GRAPH ?g {
+    ?s ext:decimalPercentage ?decimalPercentage.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s ere:financieringspercentage ?percentage.
+    BIND (ROUND(xsd:decimal(?percentage)*100)/100 AS ?decimalPercentage).
+  }
+}
