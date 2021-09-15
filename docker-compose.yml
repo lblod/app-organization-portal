@@ -11,7 +11,6 @@ services:
   identifier:
     image: semtech/mu-identifier:1.8.1
     environment:
-      DEFAULT_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "*"
       DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
     labels:
       - "logging=true"
