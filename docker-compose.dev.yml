@@ -1,12 +1,12 @@
 version: '3.4'
 
 services:
-  identifier:    
+  identifier:
     restart: "no"
   dispatcher:
     restart: "no"
   triplestore:
-    ports: 
+    ports:
       - "8890:8890"
     restart: "no"
   db:
