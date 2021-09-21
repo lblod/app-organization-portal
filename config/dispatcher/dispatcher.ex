@@ -242,6 +242,14 @@ defmodule Dispatcher do
     forward conn, path, "http://adressenregister/"
   end
 
+  match "/person-information-updates/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy/person-information-updates"
+  end
+
+  match "/person-information-requests/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy/person-information-requests"
+  end
+
 
   ###############################################################
   # frontend layer
