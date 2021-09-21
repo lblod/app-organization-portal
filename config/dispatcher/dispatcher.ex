@@ -238,6 +238,10 @@ defmodule Dispatcher do
     forward conn, path, "http://kalliope-api/consolidated/"
   end
 
+  match "/adresses-register/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://adressenregister/"
+  end
+
 
   ###############################################################
   # frontend layer
