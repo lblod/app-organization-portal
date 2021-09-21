@@ -137,7 +137,13 @@ services:
     logging: *default-logging
     links:
       - db:database
-
-
+  privacy:
+    image: lblod/privacy-centric-service:0.0.1
+    environment:
+      SERVER_PORT: "80"
+      SPARQL_ENDPOINT: "http://db:8890/sparql"
+      LOGGING_LEVEL: "INFO"
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      SESSION_GRAPH: "http://mu.semte.ch/graphs/sessions"
   adressenregister:
-      image: lblod/adressenregister-fuzzy-search-service:0.5.0
+    image: lblod/adressenregister-fuzzy-search-service:0.5.0
