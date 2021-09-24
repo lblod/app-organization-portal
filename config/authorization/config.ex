@@ -104,7 +104,7 @@ defmodule Acl.UserGroups.Config do
         useage: [:read, :write, :read_for_write],
         access: access_by_role( "ChAdmin" ),
         graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/contacthub/",
+                    graph: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin",
                     constraint: %ResourceConstraint{
                       resource_types: @protected_resource_type } } ] },
       %GroupSpec{

@@ -197,6 +197,15 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://db:8890/sparql/"
   end
 
+  ###############################################################
+  # SEARCH
+  ###############################################################
+
+  match "/search/*path", %{ accept: [:json], layer: :api} do
+   IO.puts("hey")
+    Proxy.forward conn, path, "http://search/"
+  end
+
   ###############
   # LOGIN
   match "/accounts/*path", %{ accept: [:json], layer: :api} do
