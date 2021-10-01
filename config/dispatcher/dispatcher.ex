@@ -189,16 +189,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/site-types/"
   end
   
-
-  ###############################################################
-  # sparql endpoint
-  ###############################################################
-  match "/sparql/*path", %{ accept: [:any], layer: :api} do
-    Proxy.forward conn, path, "http://db:8890/sparql/"
-  end
-
   ###############
   # LOGIN
+  ###############
   match "/accounts/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/accounts/"
   end
