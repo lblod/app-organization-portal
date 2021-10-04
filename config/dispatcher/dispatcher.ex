@@ -164,6 +164,12 @@ defmodule Dispatcher do
   match "/minister-positions/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/minister-positions/"
   end
+  match "/person-information-reads/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/person-information-reads/"
+  end
+  match "/person-information-ups/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/person-information-ups/"
+  end
 
   match "/minister-position-functions/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/minister-position-functions/"

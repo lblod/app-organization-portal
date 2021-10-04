@@ -14,7 +14,9 @@ services:
       - db:database
     volumes:
       - ./config/search:/config
+      - /Users/bittichn/mu-search2/mu-search/:/app/
     environment: 
+      RACK_ENV: "development"
       LOG_SCOPE_SEARCH: "debug"
       LOG_SCOPE_AUTHORIZATION: "debug"
   elasticsearch:

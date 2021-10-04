@@ -23,11 +23,83 @@
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "euvoc": "http://publications.europa.eu/ontology/euvoc#",
     "ere": "http://data.lblod.info/vocabularies/erediensten/",
-    "ch": "http://data.lblod.info/vocabularies/contacthub/",    
+    "ch": "http://data.lblod.info/vocabularies/contacthub/",
     "code": "http://lblod.data.gift/vocabularies/organisatie/",
     "ext": "http://mu.semte.ch/vocabularies/ext/"
   },
   "resources": {
+    "person-information-reads": {
+      "class": "ext:PersonInformationRead",
+      "attributes": {
+        "date": {
+          "type": "string",
+          "predicate": "ext:date"
+        },
+        "requester": {
+          "type": "string",
+          "predicate": "ext:requester"
+        },
+        "person": {
+          "type": "string",
+          "predicate": "ext:person"
+        },
+        "reason-code": {
+          "type": "string",
+          "predicate": "ext:code"
+        }
+      },
+      "relationships": {},
+      "new-resource-base": "http://data.lblod.info/id/person-information-reads"
+    }  ,
+    "person-information-ups": {
+      "class": "ext:PersonInformationUpdate",
+      "attributes": {
+                "date": {
+                  "type": "string",
+                  "predicate": "ext:date"
+                },
+                "requester": {
+                  "type": "string",
+                  "predicate": "ext:requester"
+                },
+                "person": {
+                  "type": "string",
+                  "predicate": "ext:person"
+                },
+                "reason-code": {
+                  "type": "string",
+                  "predicate": "ext:code"
+                },
+        "registratie": {
+          "type": "string",
+          "predicate": "persoon:registratie"
+        },
+        "heeft-geboorte": {
+          "type": "string",
+          "predicate": "persoon:heeftGeboorte"
+        },
+        "heef-nationaliteit": {
+          "type": "string",
+          "predicate": "persoon:heeftNationaliteit"
+        }
+      },
+      "relationships": {},
+      "new-resource-base": "http://data.lblod.info/id/person-information-updates"
+    }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     "people": {
       "class": "person:Person",
       "attributes": {
@@ -134,7 +206,9 @@
     },
     "mandatories": {
       "class": "mandaat:Mandataris",
-      "super": ["agents-in-position"],
+      "super": [
+        "agents-in-position"
+      ],
       "attributes": {
         "start-date": {
           "type": "datetime",
@@ -177,12 +251,16 @@
           "predicate": "skos:prefLabel"
         }
       },
-      "features": ["include-uri"],
+      "features": [
+        "include-uri"
+      ],
       "new-resource-base": "http://data.vlaanderen.be/id/concept/MandatarisStatusCode/"
     },
     "worship-mandatories": {
       "class": "ere:EredienstMandataris",
-      "super": ["mandatories"],
+      "super": [
+        "mandatories"
+      ],
       "attributes": {
         "expected-end-date": {
           "type": "datetime",
@@ -231,7 +309,7 @@
           "type": "uri",
           "predicate": "foaf:page"
         }
-      }, 
+      },
       "relationships": {
         "contact-address": {
           "predicate": "locn:address",
@@ -243,7 +321,9 @@
     },
     "mandates": {
       "class": "mandaat:Mandaat",
-      "super": ["posts"],
+      "super": [
+        "posts"
+      ],
       "relationships": {
         "role-board": {
           "predicate": "org:role",
@@ -293,7 +373,7 @@
           "predicate": "skos:prefLabel"
         },
         "alternative-name": {
-          "type":  "string",
+          "type": "string",
           "predicate": "skos:altLabel"
         }
       },
@@ -360,7 +440,9 @@
     },
     "administrative-units": {
       "class": "besluit:Bestuurseenheid",
-      "super": ["organizations"],
+      "super": [
+        "organizations"
+      ],
       "relationships": {
         "classification": {
           "predicate": "org:classification",
@@ -398,7 +480,9 @@
     },
     "worship-administrative-units": {
       "class": "ere:EredienstBestuurseenheid",
-      "super": ["administrative-units"],
+      "super": [
+        "administrative-units"
+      ],
       "relationships": {
         "recognized-worship-type": {
           "predicate": "ere:typeEredienst",
@@ -407,11 +491,12 @@
         }
       },
       "new-resource-base": "http://data.lblod.info/id/eredienstBestuurseenheden/"
-
     },
     "worship-services": {
       "class": "ere:BestuurVanDeEredienst",
-      "super": ["worship-administrative-units"],
+      "super": [
+        "worship-administrative-units"
+      ],
       "attributes": {
         "denomination": {
           "type": "string",
@@ -454,12 +539,16 @@
     },
     "central-worship-services": {
       "class": "ere:CentraalBestuurVanDeEredienst",
-      "super": ["worship-administrative-units"],
+      "super": [
+        "worship-administrative-units"
+      ],
       "new-resource-base": "http://data.lblod.info/id/centraleBesturenVanDeEredienst/"
     },
     "representative-bodies": {
       "class": "ere:RepresentatiefOrgaan",
-      "super": ["organizations"],
+      "super": [
+        "organizations"
+      ],
       "relationships": {
         "recognized-worship-type": {
           "predicate": "ere:typeEredienst",
@@ -692,7 +781,9 @@
           "predicate": "skos:prefLabel"
         }
       },
-      "features": ["include-uri"],
+      "features": [
+        "include-uri"
+      ],
       "new-resource-base": "http://lblod.data.gift/concepts/"
     },
     "locations": {
@@ -729,7 +820,9 @@
     },
     "ministers": {
       "class": "ere:RolBedienaar",
-      "super": ["agents-in-position"],
+      "super": [
+        "agents-in-position"
+      ],
       "relationships": {
         "minister-position": {
           "predicate": "org:holds",
@@ -745,9 +838,9 @@
           "predicate": "ere:voldoetAan",
           "target": "minister-conditions",
           "cardinality": "many"
-        }  
+        }
       },
-      "new-resource-base": "http://data.lblod.info/id/rollenBedienaar/"    
+      "new-resource-base": "http://data.lblod.info/id/rollenBedienaar/"
     },
     "minister-conditions": {
       "class": "ere:VoorwaardenBedienaar",
@@ -804,7 +897,7 @@
         "date": {
           "type": "datetime",
           "predicate": "persoon:datum"
-        } 
+        }
       },
       "new-resource-base": "http://data.lblod.info/id/geboortes/"
     },
@@ -834,7 +927,9 @@
     },
     "minister-positions": {
       "class": "ere:PositieBedienaar",
-      "super": ["posts"],
+      "super": [
+        "posts"
+      ],
       "relationships": {
         "function": {
           "predicate": "ere:functie",
