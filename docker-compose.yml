@@ -123,7 +123,7 @@ services:
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.5.0
   web:
-    image: nginx
+    image: nginx:1.21.3
     volumes:
        - ./config/proxy:/etc/nginx/conf.d
        - ./config/proxy/web.conf:/etc/nginx/nginx.conf:ro
