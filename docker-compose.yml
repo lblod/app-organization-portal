@@ -98,7 +98,7 @@ services:
     restart: always
     logging: *default-logging
   login:
-    image: lblod/acmidm-login-service:v0.9.3-organisatie_portaal
+    image: lblod/acmidm-login-service:0.9.3-organisatie_portaal
     links:
       - db:database
     environment:
