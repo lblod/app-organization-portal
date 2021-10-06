@@ -8,8 +8,9 @@ alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
  @protected_resource_type [
-                           "http://www.w3.org/ns/org#Organization",
+                        "http://www.w3.org/ns/org#Organization",
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+                        "http://xmlns.com/foaf/0.1/OnlineAccount",
                         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
@@ -24,12 +25,13 @@ defmodule Acl.UserGroups.Config do
                         "http://data.lblod.info/vocabularies/erediensten/VerbondenJuridischeStructuren",
                         "http://www.w3.org/ns/prov#Location",
                         "http://www.w3.org/ns/org#Site",
-                        "http://www.w3.org/ns/locn#Address",                          
+                        "http://www.w3.org/ns/locn#Address",  
+                        "http://xmlns.com/foaf/0.1/Person",                        
                         "http://www.w3.org/ns/person#Person",
                         "http://data.vlaanderen.be/ns/mandaat#Mandaat",
                         "http://data.vlaanderen.be/ns/mandaat#Mandataris",
                         "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
-                        "http://schema.org/ContactPoint",                          
+                        "http://schema.org/ContactPoint",                      
                         "http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie",
                         "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
                         "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",                          
@@ -112,7 +114,7 @@ defmodule Acl.UserGroups.Config do
         useage: [:read],
         access: %AlwaysAccessible{}, 
         graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/public",
+                    graph: "http://mu.semte.ch/graphs/public", # mock login only
                     constraint: %ResourceConstraint{
                       resource_types: [
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
