@@ -7,10 +7,13 @@ alias Acl.GroupSpec, as: GroupSpec
 alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
+@account_type [
+      "http://xmlns.com/foaf/0.1/Person",
+      "http://xmlns.com/foaf/0.1/OnlineAccount"
+]
  @protected_resource_type [
                         "http://www.w3.org/ns/org#Organization",
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
-                        "http://xmlns.com/foaf/0.1/OnlineAccount",
                         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
@@ -25,8 +28,7 @@ defmodule Acl.UserGroups.Config do
                         "http://data.lblod.info/vocabularies/erediensten/VerbondenJuridischeStructuren",
                         "http://www.w3.org/ns/prov#Location",
                         "http://www.w3.org/ns/org#Site",
-                        "http://www.w3.org/ns/locn#Address",  
-                        "http://xmlns.com/foaf/0.1/Person",                        
+                        "http://www.w3.org/ns/locn#Address",                       
                         "http://www.w3.org/ns/person#Person",
                         "http://data.vlaanderen.be/ns/mandaat#Mandaat",
                         "http://data.vlaanderen.be/ns/mandaat#Mandataris",
@@ -77,18 +79,15 @@ defmodule Acl.UserGroups.Config do
 
   def user_groups do
     [
-            %GroupSpec{
+       %GroupSpec{
         name: "acmidm",
         useage: [:read, :write, :read_for_write],
         access: %AccessByQuery{
           query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
                   PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-                  PREFIX musession: <http://mu.semte.ch/vocabularies/session/>
-                  SELECT ?s WHERE {
-                    ?s ?p ?o.
-                    FILTER NOT EXISTS {
-                      <SESSION_ID> ext:hasAccount ?account.
-                    }
+                  PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+                  SELECT ?account WHERE {
+                    <SESSION_ID> session:account ?account.
                   } LIMIT 1",
           vars: []
         },
@@ -97,6 +96,26 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin",
             constraint: %ResourceConstraint{
               resource_types: @protected_resource_type
+            }
+          }
+        ]
+      },
+       %GroupSpec{
+        name: "account",
+        useage: [:read],
+        access: %AccessByQuery{
+          query: "PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+                  PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+                  SELECT ?account WHERE {
+                    <SESSION_ID> session:account ?account.
+                  } LIMIT 1",
+          vars: []
+        },
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/contacthub/accounts",
+            constraint: %ResourceConstraint{
+              resource_types: @account_type
             }
           }
         ]
@@ -121,16 +140,8 @@ defmodule Acl.UserGroups.Config do
                         "http://xmlns.com/foaf/0.1/Person",
                         "http://xmlns.com/foaf/0.1/OnlineAccount"
                       ]
-                    } },
-                  %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/sessions",
-                    constraint: %ResourceFormatConstraint{
-                      resource_prefix: "http://mu.semte.ch/sessions/"
-                    } } ] },
+                    } }]},
   
-     
-
-                      
       # // CLEANUP
       #
       %GraphCleanup{
