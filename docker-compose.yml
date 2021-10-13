@@ -137,6 +137,8 @@ services:
     image: lblod/frontend-contact-hub:1.1.0
     labels:
       - "logging=true"
+    volumes:
+      - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
       EMBER_OAUTH_API_REDIRECT_URL: "https://organisaties.abb.lblod.info/authorization/callback"
       EMBER_OAUTH_API_KEY: "677af572-2e2f-4e61-ad38-036723bb314c"
