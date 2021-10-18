@@ -243,6 +243,10 @@ defmodule Dispatcher do
     forward conn, path, "http://privacy/person-information-requests"
   end
 
+  get "/uri-info/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://uri-info/"
+  end
+
 
   ###############################################################
   # frontend layer
