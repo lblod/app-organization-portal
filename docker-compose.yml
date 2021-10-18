@@ -146,3 +146,11 @@ services:
       EMBER_OAUTH_API_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
       EMBER_OAUTH_API_SCOPE: "openid vo profile abb_organisatieportaal"
     restart: always
+  uri-info:
+    image: redpencil/mu-uri-info-service:0.2.1
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+    links:
+      - db:database
