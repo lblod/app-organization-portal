@@ -113,8 +113,18 @@ services:
     logging: *default-logging
     links:
       - db:database
+  accountdetail:
+    image: lblod/account-detail-service:latest
+    labels:
+      - "logging=true"
+    environment:
+      MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/contacthub/accounts"
+    links:
+      - db:database
   privacy:
     image: lblod/privacy-centric-service:0.0.1
+    labels:
+      - "logging=true"
     environment:
       SERVER_PORT: "80"
       SPARQL_ENDPOINT: "http://db:8890/sparql"
