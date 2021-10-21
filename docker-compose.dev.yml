@@ -18,7 +18,9 @@ services:
   cache:
     restart: "no"
   kalliope-api:
-    restart: "no"
+    environment:
+      SPRING_SECURITY_CONFIG: "/config/security-dev.yml"
+      restart: "no"
   deltanotifier:
     restart: "no"
   mocklogin:
@@ -28,10 +30,6 @@ services:
   sink:
     restart: "no"
   login:
-    restart: "no"
-  web:
-    ports:
-      - "80:80"
     restart: "no"
   frontend:
     restart: "no"
