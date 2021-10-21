@@ -17,8 +17,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-    ports:
-      - "80:80"
   dispatcher:
     image: semtech/mu-dispatcher:latest
     volumes:
