@@ -3,6 +3,8 @@ version: '3.4'
 services:
   identifier:
     restart: "no"
+    ports:
+      - "80:80"
   dispatcher:
     restart: "no"
   triplestore:
