@@ -61,7 +61,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:latest
+    image: semtech/mu-cl-resources:feature-all-errors-as-json-api-errors
     links:
       - db:database
     volumes:
