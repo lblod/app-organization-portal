@@ -79,7 +79,7 @@ services:
     restart: always
     logging: *default-logging
   kalliope-api:
-    image: lblod/jsonld-delta-service:0.2.0
+    image: lblod/jsonld-delta-service:0.3.2
     volumes:
       - ./config/kalliope:/config
       - ./data/files:/share
@@ -149,17 +149,6 @@ services:
     logging: *default-logging
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.5.0
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
-  web:
-    image: nginx:1.21.3
-    volumes:
-       - ./config/proxy:/etc/nginx/conf.d
-       - ./config/proxy/web.conf:/etc/nginx/nginx.conf:ro
-    links:
-      - identifier:identifier
     labels:
       - "logging=true"
     restart: always
