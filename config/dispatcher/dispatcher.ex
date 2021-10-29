@@ -10,9 +10,11 @@ defmodule Dispatcher do
 
   define_layers [ :api_services, :api, :frontend, :not_found ]
 
+
   ###############################################################
   # domain.json
   ###############################################################
+
   match "/people/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/people/"
   end
@@ -189,10 +191,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/site-types/"
   end
   
+
   ###############
   # LOGIN
   ###############
-  
 
   match "/accounts", %{ accept: [:json], layer: :api} do
    Proxy.forward conn, [], "http://resource/accounts/"
@@ -212,9 +214,11 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://login/sessions/"
   end
   
+
   ###############
   # API SERVICES
   ###############
+
   match "/v3/api-docs/*path", %{ layer: :api_services, accept: %{ json: true } } do
     forward conn, path, "http://kalliope-api/v3/api-docs/"
   end
@@ -255,6 +259,7 @@ defmodule Dispatcher do
   ###############################################################
   # frontend layer
   ###############################################################
+
   match "/torii/redirect.html", %{ accept: [:html], layer: :api } do
     Proxy.forward conn, [], "http://frontend/torii/redirect.html"
   end
@@ -275,9 +280,11 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://frontend/index.html"
   end
   
+
   ###############################################################
   # errors
   ###############################################################
+
   match "/*_path", %{ accept: [:any], layer: :not_found} do
     send_resp( conn, 404, "{\"error\": {\"code\": 404}")
   end
