@@ -133,6 +133,8 @@ services:
       MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/contacthub/accounts"
     links:
       - db:database
+    restart: always
+    logging: *default-logging
   privacy:
     image: lblod/privacy-centric-service:0.0.1
     labels:
