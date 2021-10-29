@@ -9,9 +9,10 @@ x-logging:
 
 services:
   identifier:
-    image: semtech/mu-identifier:1.8.1
+    image: semtech/mu-identifier:1.9.1
     environment:
       DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
+      SESSION_COOKIE_SECURE: "on"
     labels:
       - "logging=true"
     restart: always
@@ -32,8 +33,6 @@ services:
     volumes:
       - ./data/db:/data
       - ./config/db/virtuoso.ini:/data/virtuoso.ini
-    labels:
-      - "logging=true"
     restart: always
     logging: *default-logging
   db:
@@ -47,6 +46,10 @@ services:
       ERROR_ON_UNWRITTEN_DATA: "true"
     volumes:
       - ./config/authorization:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   migrations:
     image: semtech/mu-migrations-service:0.7.0
     links:
@@ -84,11 +87,18 @@ services:
       SERVER_PORT: "80"
       LOGGING_LEVEL: "INFO"
       SPARQL_ENDPOINT: "http://db:8890/sparql"
+    labels:
+      - "logging=true"
     restart: always
+    logging: *default-logging
   deltanotifier:
     image: semtech/mu-delta-notifier:0.1.0
     volumes:
       - ./config/delta:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   sink:
     image: nginx:1.15.2
     volumes:
@@ -106,7 +116,9 @@ services:
       MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
       MU_APPLICATION_AUTH_CLIENT_ID: "677af572-2e2f-4e61-ad38-036723bb314c"
       MU_APPLICATION_AUTH_REDIRECT_URI: "https://organisaties.abb.lblod.info/authorization/callback"
-      MU_APPLICATION_AUTH_CLIENT_SECRET: "secret"
+      MU_APPLICATION_AUTH_CLIENT_SECRET: ""
+    links:
+      - db:database
     labels:
       - "logging=true"
     restart: always
@@ -131,8 +143,16 @@ services:
       LOGGING_LEVEL: "INFO"
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
       SESSION_GRAPH: "http://mu.semte.ch/graphs/sessions"
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.5.0
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   web:
     image: nginx:1.21.3
     volumes:
@@ -146,12 +166,23 @@ services:
     logging: *default-logging
   frontend:
     image: lblod/frontend-contact-hub:1.1.0
-    labels:
-      - "logging=true"
+    volumes:
+      - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
       EMBER_OAUTH_API_REDIRECT_URL: "https://organisaties.abb.lblod.info/authorization/callback"
       EMBER_OAUTH_API_KEY: "677af572-2e2f-4e61-ad38-036723bb314c"
       EMBER_OAUTH_API_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
       EMBER_OAUTH_API_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
       EMBER_OAUTH_API_SCOPE: "openid vo profile abb_organisatieportaal"
+    labels:
+      - "logging=true"
     restart: always
+    logging: *default-logging
+  uri-info:
+    image: redpencil/mu-uri-info-service:0.2.1
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
