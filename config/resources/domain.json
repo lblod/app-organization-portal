@@ -616,6 +616,18 @@
         "full-address": {
           "type": "string",
           "predicate": "locn:fullAddress"
+        },
+        "adres-register-uri": {
+          "type": "url",
+          "predicate": "adres:verwijstNaar"
+        }
+
+      },
+      "relationships": {
+        "source": {
+          "predicate": "dct:source",
+          "target": "concepts",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/adressen/"
@@ -680,6 +692,20 @@
         "label": {
           "type": "string",
           "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "concepts": {
+      "class": "skos:Concept",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
         }
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"

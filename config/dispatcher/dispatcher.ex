@@ -162,6 +162,9 @@ defmodule Dispatcher do
   match "/gender-codes/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/gender-codes/"
   end
+  match "/concepts/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/concepts/"
+  end
 
   match "/minister-positions/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/minister-positions/"
