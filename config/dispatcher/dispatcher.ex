@@ -147,10 +147,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/minister-conditions/"
   end 
 
-  match "/associated-legal-structures/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/associated-legal-structures/"
-  end 
-
   match "/dates-of-birth/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/dates-of-birth/"
   end   
@@ -177,10 +173,6 @@ defmodule Dispatcher do
 
   match "/minister-condition-criterions/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/minister-condition-criterions/"
-  end
-
-  match "/legal-form-types/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/legal-form-types/"
   end
 
   match "/document-types-criterions/*path", %{ accept: [:json], layer: :api} do

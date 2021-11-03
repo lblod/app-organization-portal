@@ -429,11 +429,6 @@
           "cardinality": "many",
           "inverse": true
         },
-        "associated-structures": {
-          "predicate": "ere:heeftVerbondenEntiteit",
-          "target": "associated-legal-structures",
-          "cardinality": "many"
-        },
         "minister-positions": {
           "predicate": "ere:wordtBediendDoor",
           "target": "minister-positions",
@@ -771,33 +766,6 @@
       },
       "new-resource-base": "http://data.lblod.info/id/voorwaardenBedienaar/"
     },
-    "associated-legal-structures": {
-      "class": "ere:VerbondenJuridischeStructuren",
-      "attributes": {
-        "name": {
-          "type": "string",
-          "predicate": "skos:prefLabel"
-        }
-      },
-      "relationships": {
-        "registration": {
-          "predicate": "regorg:registration",
-          "target": "identifiers",
-          "cardinality": "one"
-        },
-        "legal-type": {
-          "predicate": "organisatie:rechtsvorm",
-          "target": "legal-form-types",
-          "cardinality": "one"
-        },
-        "address": {
-          "predicate": "locn:address",
-          "target": "addresses",
-          "cardinality": "one"
-        }
-      },
-      "new-resource-base": "http://data.lblod.info/id/verbondenJuridischeStructuren/"
-    },
     "dates-of-birth": {
       "class": "persoon:Geboorte",
       "attributes": {
@@ -883,16 +851,6 @@
     },
     "minister-condition-criterions": {
       "class": "code:VoorwaardenBedienaarCriterium",
-      "attributes": {
-        "label": {
-          "type": "string",
-          "predicate": "skos:prefLabel"
-        }
-      },
-      "new-resource-base": "http://lblod.data.gift/concepts/"
-    },
-    "legal-form-types": {
-      "class": "code:Rechtsvormtype",
       "attributes": {
         "label": {
           "type": "string",
