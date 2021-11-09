@@ -239,6 +239,10 @@ defmodule Dispatcher do
     forward conn, path, "http://uri-info/"
   end
 
+  get "/sparql/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://db/"
+  end
+
 
   ###############################################################
   # frontend layer
