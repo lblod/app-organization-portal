@@ -5,6 +5,7 @@ defmodule Dispatcher do
     html: ["text/html", "application/xhtml+html"],
     json: ["application/json", "application/vnd.api+json"],
     upload: ["multipart/form-data"],
+    sparql_json: ["application/sparql-results+json"],
     any: [ "*/*" ],
   ]
 
@@ -237,6 +238,10 @@ defmodule Dispatcher do
 
   get "/uri-info/*path", %{ layer: :api_services, accept: %{ json: true } } do
     forward conn, path, "http://uri-info/"
+  end
+
+  match "/sparql/*path", %{ layer: :api_services, accept: %{ sparql_json: true } } do
+    forward conn, path, "http://db:8890/sparql/"
   end
 
 
