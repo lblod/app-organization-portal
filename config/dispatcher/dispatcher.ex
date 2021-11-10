@@ -240,10 +240,6 @@ defmodule Dispatcher do
     forward conn, path, "http://uri-info/"
   end
 
-  match "/sparql/*path", %{ layer: :api_services, accept: %{ sparql_json: true } } do
-    forward conn, path, "http://db:8890/sparql/"
-  end
-
 
   ###############################################################
   # frontend layer
@@ -269,6 +265,13 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://frontend/index.html"
   end
   
+  ###############################################################
+  # sparql endpoint
+  ###############################################################
+  
+  match "/sparql/*path", %{ layer: :api_services, accept: %{ sparql_json: true } } do
+    forward conn, path, "http://db:8890/sparql/"
+  end
 
   ###############################################################
   # errors
