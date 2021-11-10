@@ -269,7 +269,7 @@ defmodule Dispatcher do
   # sparql endpoint
   ###############################################################
   
-  match "/sparql/*path", %{ layer: :api_services, accept: %{ sparql_json: true } } do
+  post "/sparql/*path", %{ layer: :api_services, accept: %{ sparql_json: true } } do
     forward conn, path, "http://db:8890/sparql/"
   end
 
