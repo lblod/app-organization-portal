@@ -1,4 +1,5 @@
 alias Acl.Accessibility.Always, as: AlwaysAccessible
+alias Acl.GraphSpec.Constraint.Resource.AllPredicates, as: AllPredicates
 alias Acl.GraphSpec.Constraint.Resource, as: ResourceConstraint
 alias Acl.GraphSpec.Constraint.ResourceFormat, as: ResourceFormatConstraint
 alias Acl.Accessibility.ByQuery, as: AccessByQuery
@@ -14,11 +15,8 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
                         "http://data.lblod.info/vocabularies/erediensten/VoorwaardenBedienaar",
-                        "https://data.vlaanderen.be/ns/persoon#Geboorte",
                         "http://mu.semte.ch/vocabularies/ext/GeslachtCode",
                         "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
-                        "http://www.w3.org/ns/adms#Identifier",
-                        "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
                         "http://www.w3.org/ns/org#ChangeEvent",
                         "http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen",
                         "http://data.lblod.info/vocabularies/erediensten/VerbondenJuridischeStructuren",
@@ -91,9 +89,17 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin",
             constraint: %ResourceConstraint{
-              resource_types: @protected_resource_type
-            }
-          }
+              resource_types: @protected_resource_type,
+              predicates: %AllPredicates{
+                except: [
+                  "https://data.vlaanderen.be/ns/persoon#heeftGeboorte",
+                  "https://data.vlaanderen.be/ns/persoon#geslacht",
+                  "https://data.vlaanderen.be/ns/persoon#registratie",
+                  "https://data.vlaanderen.be/ns/persoon#heeftNationaliteit" ] 
+              }
+            } }
+            
+          
         ]
       },
            %GroupSpec{
@@ -103,7 +109,16 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/contacthub/",
                     constraint: %ResourceConstraint{
-                      resource_types: @protected_resource_type } } ] },
+                      resource_types: @protected_resource_type,
+                      predicates: %AllPredicates{
+                        except: [
+                          "https://data.vlaanderen.be/ns/persoon#heeftGeboorte",
+                          "https://data.vlaanderen.be/ns/persoon#geslacht",
+                          "https://data.vlaanderen.be/ns/persoon#registratie",
+                          "https://data.vlaanderen.be/ns/persoon#heeftNationaliteit" ] 
+                      }
+                      
+                       } } ] },
       %GroupSpec{
         name: "public",
         useage: [:read],
