@@ -224,3 +224,24 @@ services:
       - db:database
     restart: always
     logging: *default-logging
+  delta-producer-pub-graph-maintainer-administrative-units:
+    image: lblod/delta-producer-publication-graph-maintainer:0.6.0
+    environment:
+      MAX_BODY_SIZE: "50mb"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      RELATIVE_FILE_PATH: "deltas/administrative-units"
+      PUBLICATION_GRAPH: 'http://redpencil.data.gift/id/deltas/producer/administrative-units'
+      HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/administrative-units'
+      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/administrative-units'
+      QUEUE_POLL_INTERVAL: 3000
+      USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true" # some queries are just too expensive
+      SKIP_MU_AUTH_INITIAL_SYNC: 'true'
+      HEALING_PATCH_GRAPH_BATCH_SIZE: 500
+    volumes:
+      - ./config/delta-producer/administrative-units:/config
+      - ./data/files/:/share
+    links:
+      - db:database
+      - triplestore:virtuoso
+    restart: always
+    logging: *default-logging
