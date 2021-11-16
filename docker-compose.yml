@@ -193,3 +193,18 @@ services:
       - db:database
     volumes:
       - ./config/jobs-controller/:/config/
+################################################################################
+# DELTA GENERAL
+################################################################################
+  delta-producer-dump-file-publisher:
+    image: lblod/delta-producer-dump-file-publisher:0.4.0
+    volumes:
+      - ./config/delta-producer/dump-file-publisher:/config
+      - ./data/files:/share
+    environment:
+      FILES_GRAPH: 'http://mu.semte.ch/graphs/public' # Note: this will be extracted in a config per job one day
+      DCAT_DATASET_GRAPH: 'http://mu.semte.ch/graphs/public'
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
