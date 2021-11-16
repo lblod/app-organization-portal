@@ -32,7 +32,7 @@ defmodule Acl.UserGroups.Config do
                         "http://schema.org/ContactPoint",
                         "http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie",
                         "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
-                        "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",                          
+                        "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",
                         "http://www.w3.org/ns/org#Role",
                         "http://www.w3.org/ns/org#Post",
                         "http://data.lblod.info/vocabularies/contacthub/AgentInPositie",
@@ -107,21 +107,21 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "public",
         useage: [:read],
-        access: %AlwaysAccessible{}, 
+        access: %AlwaysAccessible{},
         graphs: [ %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/public", # mock login only
                     constraint: %ResourceConstraint{
                       resource_types: [
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://xmlns.com/foaf/0.1/Person",
-                        "http://xmlns.com/foaf/0.1/OnlineAccount"
+                        "http://xmlns.com/foaf/0.1/OnlineAccount",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://www.w3.org/ns/dcat#Dataset",
                         "http://www.w3.org/ns/dcat#Distribution",
                         "http://www.w3.org/ns/dcat#Catalog"
                       ]
                     } }]},
-  
+
       # // CLEANUP
       #
       %GraphCleanup{

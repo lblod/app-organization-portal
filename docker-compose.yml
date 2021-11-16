@@ -208,6 +208,9 @@ services:
       - db:database
     restart: always
     logging: *default-logging
+################################################################################
+# DELTA ADMINISTRATIVE-UNITS: START
+################################################################################
   delta-producer-bg-jobs-initiator-administrative-units:
     image: lblod/delta-producer-background-jobs-initiator:0.3.1
     environment:
@@ -263,3 +266,6 @@ services:
       - db:database
     restart: always
     logging: *default-logging
+################################################################################
+# DELTA ADMINISTRATIVE-UNITS: END
+################################################################################
