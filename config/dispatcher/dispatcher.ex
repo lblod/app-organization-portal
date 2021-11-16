@@ -256,6 +256,17 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/files/"
   end
   #################################################################
+  # DCAT
+  #################################################################
+
+  get "/datasets/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/datasets/"
+  end
+
+  get "/distributions/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/distributions/"
+  end
+  #################################################################
   #  DELTA: administrative-units
   #################################################################
 
