@@ -187,3 +187,9 @@ services:
       - db:database
     restart: always
     logging: *default-logging
+  jobs-controller:
+    image: lblod/job-controller-service:0.7.0
+    links:
+      - db:database
+    volumes:
+      - ./config/jobs-controller/:/config/
