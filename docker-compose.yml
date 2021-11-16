@@ -177,3 +177,13 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  file:
+    image: semtech/mu-file-service:3.2.0
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging

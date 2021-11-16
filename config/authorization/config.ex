@@ -115,6 +115,7 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://xmlns.com/foaf/0.1/Person",
                         "http://xmlns.com/foaf/0.1/OnlineAccount"
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                       ]
                     } }]},
   
