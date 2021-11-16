@@ -116,6 +116,9 @@ defmodule Acl.UserGroups.Config do
                         "http://xmlns.com/foaf/0.1/Person",
                         "http://xmlns.com/foaf/0.1/OnlineAccount"
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://www.w3.org/ns/dcat#Dataset",
+                        "http://www.w3.org/ns/dcat#Distribution",
+                        "http://www.w3.org/ns/dcat#Catalog"
                       ]
                     } }]},
   
