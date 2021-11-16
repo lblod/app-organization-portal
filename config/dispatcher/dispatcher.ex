@@ -255,6 +255,13 @@ defmodule Dispatcher do
   get "/files/*path" , %{ layer: :api_services, accept: %{ json: true } } do
     Proxy.forward conn, path, "http://cache/files/"
   end
+  #################################################################
+  #  DELTA: administrative-units
+  #################################################################
+
+  get "/sync/administrative-units/files/*path" do
+    Proxy.forward conn, path, "http://delta-producer-json-diff-file-publisher-administrative-units/files/"
+  end
   ###############################################################
   # frontend layer
   ###############################################################
