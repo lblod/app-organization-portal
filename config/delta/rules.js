@@ -1,6 +1,10 @@
 export default [
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/adms#identifier'
@@ -18,6 +22,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer'
@@ -35,6 +43,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer'
@@ -52,6 +64,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/adres#gemeentenaam'
@@ -69,6 +85,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/adres#land'
@@ -86,6 +106,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.vlaanderen.be/ns/besluit#bestuurt'
@@ -103,6 +127,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.vlaanderen.be/ns/besluit#werkingsgebied'
@@ -120,6 +148,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/contacthub/eindedatum'
@@ -137,6 +169,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/contacthub/startdatum'
@@ -154,6 +190,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/contacthub/typeWijziging'
@@ -171,6 +211,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://purl.org/dc/terms/date'
@@ -188,6 +232,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://purl.org/dc/terms/description'
@@ -205,6 +253,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/behoort'
@@ -222,6 +274,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur'
@@ -239,6 +295,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/criterium'
@@ -256,6 +316,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/criteriumbewijsstuktype'
@@ -273,6 +337,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/denominatie'
@@ -290,6 +358,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/financiering'
@@ -307,6 +379,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/financieringspercentage'
@@ -324,6 +400,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/functie'
@@ -341,6 +421,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/geplandeEinddatumAanstelling'
@@ -358,6 +442,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/grensoverschrijdend'
@@ -375,6 +463,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/heeftVerbondenEntiteit'
@@ -392,6 +484,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/redenVanStopzetting'
@@ -409,6 +505,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/typebetrokkenheid'
@@ -426,6 +526,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/typeEredienst'
@@ -443,6 +547,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/typeHelft'
@@ -460,6 +568,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/vestigingstype'
@@ -477,6 +589,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/voldaan'
@@ -494,6 +610,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/voldoetAan'
@@ -511,6 +631,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor'
@@ -528,6 +652,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau'
@@ -545,6 +673,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://xmlns.com/foaf/0.1/familyName'
@@ -562,6 +694,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://xmlns.com/foaf/0.1/givenName'
@@ -579,6 +715,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://xmlns.com/foaf/0.1/page'
@@ -596,6 +736,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator'
@@ -613,6 +757,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan'
@@ -630,6 +778,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/generiek#lokaleIdentificator'
@@ -647,6 +799,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/locn#address'
@@ -664,6 +820,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/locn#adminUnitL2'
@@ -681,6 +841,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/locn#fullAddress'
@@ -698,6 +862,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/locn#postCode'
@@ -715,6 +883,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/locn#thoroughfare'
@@ -732,6 +904,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.vlaanderen.be/ns/mandaat#bindingEinde'
@@ -749,6 +925,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.vlaanderen.be/ns/mandaat#bindingStart'
@@ -766,6 +946,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.vlaanderen.be/ns/mandaat#einde'
@@ -783,6 +967,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.vlaanderen.be/ns/mandaat#isAangesteldAls'
@@ -800,6 +988,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan'
@@ -817,6 +1009,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.vlaanderen.be/ns/mandaat#start'
@@ -834,6 +1030,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://data.vlaanderen.be/ns/mandaat#status'
@@ -851,6 +1051,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/organisatie#bestaatUit'
@@ -868,6 +1072,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/organisatie#rechtsvorm'
@@ -885,6 +1093,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#changedBy'
@@ -902,6 +1114,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#classification'
@@ -919,6 +1135,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#hasPost'
@@ -936,6 +1156,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#hasPrimarySite'
@@ -953,6 +1177,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#hasSite'
@@ -970,6 +1198,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#hasSubOrganization'
@@ -987,6 +1219,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#heldBy'
@@ -1004,6 +1240,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#holds'
@@ -1021,6 +1261,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#linkedTo'
@@ -1038,6 +1282,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#organization'
@@ -1055,6 +1303,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#postIn'
@@ -1072,6 +1324,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#resultedFrom'
@@ -1089,6 +1345,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#role'
@@ -1106,6 +1366,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/org#siteAddress'
@@ -1123,6 +1387,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/persoon#datum'
@@ -1140,6 +1408,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam'
@@ -1157,6 +1429,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/persoon#geslacht'
@@ -1174,6 +1450,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/persoon#heeftGeboorte'
@@ -1191,6 +1471,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'https://data.vlaanderen.be/ns/persoon#heeftNationaliteit'
@@ -1208,6 +1492,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/2000/01/rdf-schema#:label'
@@ -1225,6 +1513,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/regorg#orgStatus'
@@ -1242,6 +1534,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/regorg#registration'
@@ -1259,6 +1555,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://schema.org/contactPoint'
@@ -1276,6 +1576,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://schema.org/email'
@@ -1293,6 +1597,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://schema.org/faxNumber'
@@ -1310,6 +1618,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://schema.org/telephone'
@@ -1327,6 +1639,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/2004/02/skos/core#altLabel'
@@ -1344,6 +1660,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/2004/02/skos/core#notation'
@@ -1361,6 +1681,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/2004/02/skos/core#prefLabel'
@@ -1378,6 +1702,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1399,6 +1727,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1420,6 +1752,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1441,6 +1777,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1462,6 +1802,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1483,6 +1827,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1504,6 +1852,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1525,6 +1877,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1546,6 +1902,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1567,6 +1927,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1588,6 +1952,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1609,6 +1977,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1630,6 +2002,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1651,6 +2027,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1672,6 +2052,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1693,6 +2077,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1714,6 +2102,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1735,6 +2127,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1756,6 +2152,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1777,6 +2177,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1798,6 +2202,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1819,6 +2227,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1840,6 +2252,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1861,6 +2277,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1882,6 +2302,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1903,6 +2327,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1924,6 +2352,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1945,6 +2377,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1966,6 +2402,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -1987,6 +2427,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2008,6 +2452,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2029,6 +2477,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2050,6 +2502,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2071,6 +2527,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2092,6 +2552,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2113,6 +2577,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2134,6 +2602,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2155,6 +2627,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2176,6 +2652,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2197,6 +2677,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2218,6 +2702,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2239,6 +2727,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2260,6 +2752,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
@@ -2281,6 +2777,10 @@ export default [
   },
   {
     match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin'
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
