@@ -1,0 +1,14 @@
+DELETE {
+  GRAPH  <http://mu.semte.ch/application> {
+    ?s ?p ?o
+  }
+} INSERT {
+  GRAPH  <http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin> {
+    ?s ?p ?o
+  }
+} WHERE {
+  GRAPH  <http://mu.semte.ch/application> {
+    ?s a <http://mu.semte.ch/vocabularies/ext/ReasonCode>;
+    ?p ?o.
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "ext": "http://mu.semte.ch/vocabularies/ext/"
+  },
+  "resources": {
+    "request-reasons": {
+      "name": "request-reason",
+      "class": "ext:ReasonCode",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/information-request-reason/"
+    }
+  }
+}
