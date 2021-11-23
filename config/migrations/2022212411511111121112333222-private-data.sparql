@@ -3,6 +3,7 @@
  PREFIX  mu:   <http://mu.semte.ch/vocabularies/core/>
  PREFIX  generiek: <https://data.vlaanderen.be/ns/generiek#>
  PREFIX  persoon: <https://data.vlaanderen.be/ns/persoon#>
+ PREFIX  person: <http://www.w3.org/ns/person#>
  
  DELETE {
    GRAPH <http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin> {
@@ -28,7 +29,9 @@
  }
  WHERE
    { GRAPH <http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin>
-       { OPTIONAL
+       { 
+         ?s a person:Person.
+         OPTIONAL
            { ?s        persoon:heeftGeboorte  ?heeftGeboorte .
              ?heeftGeboorte
                        ?p                    ?o
