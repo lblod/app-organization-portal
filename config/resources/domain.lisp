@@ -13,3 +13,4 @@
 
 (read-domain-file "domain.json")
 (read-domain-file "auth.json")
+(read-domain-file "privacy-centric-service.json")

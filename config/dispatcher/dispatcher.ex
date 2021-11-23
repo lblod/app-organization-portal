@@ -187,6 +187,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/site-types/"
   end
   
+  match "/request-reasons/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/request-reasons/"
+  end
 
   ###############
   # LOGIN
