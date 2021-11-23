@@ -1,0 +1,53 @@
+ PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+ PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+ PREFIX  mu:   <http://mu.semte.ch/vocabularies/core/>
+ PREFIX  generiek: <https://data.vlaanderen.be/ns/generiek#>
+ PREFIX  persoon: <https://data.vlaanderen.be/ns/persoon#>
+ PREFIX  person: <http://www.w3.org/ns/person#>
+ 
+ DELETE {
+   GRAPH <http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin> {
+     ?s persoon:heeftGeboorte ?heeftGeboorte .
+     ?s persoon:registratie ?registration .
+     ?registration generiek:gestructureerdeIdentificator ?identificator .
+     ?identificator ?x ?y .
+     ?registration ?t ?j .
+     ?s persoon:geslacht ?geslacht .
+     ?s persoon:heeftNationaliteit ?nationaliteit .
+   }
+ }
+ INSERT {
+   GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+     ?s persoon:heeftGeboorte ?heeftGeboorte .
+     ?s persoon:registratie ?registration .
+     ?registration generiek:gestructureerdeIdentificator ?identificator .
+     ?identificator ?x ?y .
+     ?registration ?t ?j .
+     ?s persoon:geslacht ?geslacht .
+     ?s persoon:heeftNationaliteit ?nationaliteit .
+   }
+ }
+ WHERE
+   { GRAPH <http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin>
+       { 
+         ?s a person:Person.
+         OPTIONAL
+           { ?s        persoon:heeftGeboorte  ?heeftGeboorte .
+             ?heeftGeboorte
+                       ?p                    ?o
+           }
+         OPTIONAL
+           { ?s        persoon:registratie   ?registration .
+             ?registration
+                       generiek:gestructureerdeIdentificator  ?identificator .
+             ?identificator
+                       ?x                    ?y .
+             ?registration
+                       ?t                    ?j
+           }
+         OPTIONAL
+           { ?s  persoon:geslacht  ?geslacht }
+         OPTIONAL
+           { ?s  persoon:heeftNationaliteit  ?nationaliteit }
+       }
+   }
