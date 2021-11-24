@@ -192,6 +192,15 @@ defmodule Dispatcher do
   end
 
 
+  ###############################################################
+  # SEARCH
+  ###############################################################
+
+  match "/search/*path", %{ accept: [:json], layer: :api} do
+   IO.puts("hey")
+    Proxy.forward conn, path, "http://search/"
+  end
+  
   ###############
   # LOGIN
   ###############

@@ -1,0 +1,57 @@
+{
+    "persist_indexes": true,
+    "automatic_index_updates": false,
+    "types": [
+        {
+            "type": "minister",
+            "on_path": "ministers",
+            "rdf_type": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
+            "properties": {
+                "people": "http://www.w3.org/ns/org#heldBy",
+                "contacts": "http://schema.org/contactPoint",
+                "position": "http://www.w3.org/ns/org#holds"
+            }
+        },
+        {
+            "type": "mandatory",
+            "on_path": "mandatories",
+            "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
+            "properties": {
+                "people": "http://www.w3.org/ns/org#heldBy",
+                "contacts": "http://schema.org/contactPoint",
+                "position": "http://www.w3.org/ns/org#holds"
+            }
+        },
+        {
+            "type": "composite_index",
+            "composite_types": [
+                "minister",
+                "mandatory"
+            ],
+            "on_path": "composite_indexes",
+            "properties": [
+                {
+                    "name": "position",
+                    "mappings": {
+                        "minister": "position",
+                        "mandatory": "position"
+                    }
+                },
+                {
+                    "name": "contacts",
+                    "mappings": {
+                        "minister": "contacts",
+                        "mandatory": "contacts"
+                    }
+                },
+                {
+                    "name": "people",
+                    "mappings": {
+                        "minister": "people",
+                        "mandatory": "people"
+                    }
+                }
+            ]
+        }
+    ]
+}

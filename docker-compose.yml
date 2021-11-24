@@ -8,6 +8,21 @@ x-logging:
     max-file: "3"
 
 services:
+  search:
+    image: semtech/mu-search:latest
+    links:
+      - db:database
+    volumes:
+      - ./config/search:/config
+    environment: 
+      LOG_SCOPE_SEARCH: "debug"
+      LOG_SCOPE_AUTHORIZATION: "debug"
+  elasticsearch:
+    image: semtech/mu-search-elastic-backend:1.0.0
+    volumes:
+      - ./data/elasticsearch/:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node
   identifier:
     image: semtech/mu-identifier:1.9.1
     environment:
