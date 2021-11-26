@@ -228,7 +228,7 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-pub-graph-maintainer-administrative-units:
-    image: lblod/delta-producer-publication-graph-maintainer:0.6.1
+    image: lblod/delta-producer-publication-graph-maintainer:0.7.0
     environment:
       MAX_BODY_SIZE: "50mb"
       JOBS_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
@@ -268,4 +268,65 @@ services:
     logging: *default-logging
 ################################################################################
 # DELTA ADMINISTRATIVE-UNITS: END
+################################################################################
+################################################################################
+# DELTA ORGANIZATIONS: START
+################################################################################
+  delta-producer-bg-jobs-initiator-organizations:
+    image: lblod/delta-producer-background-jobs-initiator:0.3.1
+    environment:
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      DUMP_FILE_CREATION_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/organizations'
+      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations'
+      HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations'
+      CRON_PATTERN_DUMP_JOB: '0 0 4 * * 6' # weekly on saturday
+      CRON_PATTERN_HEALING_JOB: '0 0 4 * * *' # everyday at 4 AM
+      START_INITIAL_SYNC: 'false' # prefer to disable it now. We want to have feeling with how the DB acts.
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
+  delta-producer-pub-graph-maintainer-organizations:
+    image: lblod/delta-producer-publication-graph-maintainer:0.7.0
+    environment:
+      MAX_BODY_SIZE: "50mb"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      RELATIVE_FILE_PATH: "deltas/organizations"
+      PUBLICATION_GRAPH: 'http://redpencil.data.gift/id/deltas/producer/organizations'
+      HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations'
+      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations'
+      QUEUE_POLL_INTERVAL: 3000
+      USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true" # some queries are just too expensive
+      SKIP_MU_AUTH_INITIAL_SYNC: 'true'
+      HEALING_PATCH_GRAPH_BATCH_SIZE: 500
+    volumes:
+      - ./config/delta-producer/organizations:/config
+      - ./data/files/:/share
+    links:
+      - db:database
+      - triplestore:virtuoso
+    restart: always
+    logging: *default-logging
+  delta-producer-json-diff-publisher-organizations:
+    image: lblod/delta-producer-json-diff-file-publisher:0.2.3
+    environment:
+      MAX_BODY_SIZE: "50mb"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      RELATIVE_FILE_PATH: "deltas/organizations"
+      PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/organizations"
+      PUBLICATION_GRAPH: 'http://redpencil.data.gift/id/deltas/producer/organizations'
+      DELTA_INTERVAL_MS: 10000
+      PRETTY_PRINT_DIFF_JSON: "true"
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
+################################################################################
+# DELTA ORGANIZATIONS: END
 ################################################################################

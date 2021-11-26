@@ -277,6 +277,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://delta-producer-json-diff-file-publisher-administrative-units/files/"
   end
 
+  #################################################################
+  #  DELTA: organizations
+  #################################################################
+
+  get "/sync/organizations/files/*path" do
+    Proxy.forward conn, path, "http://delta-producer-json-diff-file-publisher-organizations/files/"
+  end
+
   ###############################################################
   # frontend layer
   ###############################################################
