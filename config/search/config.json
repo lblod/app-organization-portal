@@ -1,15 +1,63 @@
 {
     "persist_indexes": true,
-    "automatic_index_updates": false,
+    "automatic_index_updates": true,
     "types": [
         {
             "type": "minister",
             "on_path": "ministers",
             "rdf_type": "http://data.lblod.info/vocabularies/contacthub/AgentInPositie",
             "properties": {
-                "people": "http://www.w3.org/ns/org#heldBy",
-                "contacts": "http://schema.org/contactPoint",
-                "position": "http://www.w3.org/ns/org#holds"
+                "people": {
+                    "via": "http://www.w3.org/ns/org#heldBy",
+                     "rdf_type" : "http://www.w3.org/ns/person#Person",
+                     "properties" : {
+                         "given-name": "http://xmlns.com/foaf/0.1/givenName",
+                         "first-name-used": "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
+                         "family-name": "http://xmlns.com/foaf/0.1/familyName"
+                     }
+
+                },
+                "contacts": {
+                    "via": "http://schema.org/contactPoint",
+                     "rdf_type" : "http://schema.org/ContactPoint",
+                    "properties": {
+                        "email": "http://schema.org/email",
+                        "telephone": "http://schema.org/telephone",
+                        "website": "http://xmlns.com/foaf/0.1/page",
+                        "contact-address": [
+                            "http://www.w3.org/ns/locn#address",
+                            "http://www.w3.org/ns/locn#fullAddress"
+                        ]
+                    }
+                },
+                "position": {
+                    "via" : "http://www.w3.org/ns/org#holds",
+                     "rdf_type" : "http://www.w3.org/ns/org#Post",
+                    "properties": {
+                        "general-role": [
+                            "http://www.w3.org/ns/org#role",
+                            "http://www.w3.org/2004/02/skos/core#prefLabel"
+                        ],
+                        "organization": [
+                            "http://www.w3.org/ns/org#postIn",
+                            "http://www.w3.org/2004/02/skos/core#prefLabel"
+                        ]
+
+                    }
+                }
+            },
+            "mappings": {
+              "properties": {
+                "contacts.email": { "type" : "text" },
+                "contacts.telephone": { "type" : "text" },
+                "contacts.website": { "type" : "text" },
+                "contacts.contact-address": { "type" : "text" },
+                "people.given-name": { "type" : "text" },
+                "position.general-role": { "type" : "text" },
+                "position.organization": { "type" : "text" },
+                "people.first-name-used": { "type" : "text" },
+                "people.family-name": { "type" : "text" }
+              }
             }
         },
         {
@@ -17,9 +65,57 @@
             "on_path": "mandatories",
             "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
             "properties": {
-                "people": "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-                "contacts": "http://schema.org/contactPoint",
-                "position": "http://www.w3.org/ns/org#holds"
+                "people": {
+                    "via": "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+                     "rdf_type" : "http://www.w3.org/ns/person# Person",
+                     "properties" : {
+                         "given-name": "http://xmlns.com/foaf/0.1/givenName",
+                         "first-name-used": "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
+                         "family-name": "http://xmlns.com/foaf/0.1/familyName"
+                     }
+
+                },
+                "contacts": {
+                    "via": "http://schema.org/contactPoint",
+                     "rdf_type" : "http://schema.org/ContactPoint",
+                    "properties": {
+                        "email": "http://schema.org/email",
+                        "telephone": "http://schema.org/telephone",
+                        "website": "http://xmlns.com/foaf/0.1/page",
+                        "contact-address": [
+                            "http://www.w3.org/ns/locn#address",
+                            "http://www.w3.org/ns/locn#fullAddress"
+                        ]
+                    }
+                },
+                "position": {
+                    "via" : "http://www.w3.org/ns/org#holds",
+                     "rdf_type" : "http://www.w3.org/ns/org#Post",
+                    "properties": {
+                        "general-role": [
+                            "http://www.w3.org/ns/org#role",
+                            "http://www.w3.org/2004/02/skos/core#prefLabel"
+                        ],
+                        "organization": [
+                            "http://www.w3.org/ns/org#postIn",
+                            "http://www.w3.org/2004/02/skos/core#prefLabel"
+                        ]
+
+                    }
+                }
+            },
+            "mappings": {
+              "properties": {
+                "contacts.email": { "type" : "text" },
+                "contacts.telephone": { "type" : "text" },
+                "contacts.website": { "type" : "text" },
+                "contacts.contact-address": { "type" : "text" },
+                "people.given-name": { "type" : "text" },
+                "position.general-role": { "type" : "text" },
+                "position.organization": { "type" : "text" },
+                "people.first-name-used": { "type" : "text" },
+                "people.family-name": { "type" : "text" }
+              }
             }
         },
         {
