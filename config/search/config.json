@@ -5,7 +5,7 @@
         {
             "type": "minister",
             "on_path": "ministers",
-            "rdf_type": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
+            "rdf_type": "http://data.lblod.info/vocabularies/contacthub/AgentInPositie",
             "properties": {
                 "people": "http://www.w3.org/ns/org#heldBy",
                 "contacts": "http://schema.org/contactPoint",
@@ -17,7 +17,7 @@
             "on_path": "mandatories",
             "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
             "properties": {
-                "people": "http://www.w3.org/ns/org#heldBy",
+                "people": "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
                 "contacts": "http://schema.org/contactPoint",
                 "position": "http://www.w3.org/ns/org#holds"
             }
