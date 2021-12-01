@@ -8,7 +8,8 @@
     "ext": "http://mu.semte.ch/vocabularies/ext/",
     "org": "http://www.w3.org/ns/org#",
     "regorg": "http://www.w3.org/ns/regorg#",
-    "skos": "http://www.w3.org/2004/02/skos/core#"
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "foaf": "http://xmlns.com/foaf/0.1/"
   },
   "resources": {
     "change-events": {
@@ -43,6 +44,11 @@
           "predicate": "code:veranderingsgebeurtenisResultaat",
           "target": "change-event-results",
           "cardinality": "many"
+        },
+        "decision": {
+          "predicate": "http://data.europa.eu/m8g/hasFormalFramework",
+          "target": "decisions",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/veranderingsgebeurtenissen/"
@@ -79,6 +85,20 @@
         }
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "decisions": {
+      "class": "http://data.vlaanderen.be/ns/besluit#Besluit",
+      "attributes": {
+        "publication-date": {
+          "type": "datetime",
+          "predicate": "http://data.europa.eu/eli/ontology#date_publication"
+        },
+        "document-link": {
+          "type": "url",
+          "predicate": "foaf:page"
+        }
+      },
+      "new-resource-base": "http://lblod.data.info/id/besluiten/"
     }
   }
 }
