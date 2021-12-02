@@ -72,10 +72,7 @@
       "properties": [
         "http://www.w3.org/ns/org#role",
         "http://www.w3.org/ns/org#postIn",
-        "^http://www.w3.org/ns/org#holds",
-        "http://www.w3.org/ns/org#role",
-        "^http://www.w3.org/ns/org#hasPost",
-        "^http://www.w3.org/ns/org#holds"
+        "http://www.w3.org/ns/org#role"
       ]
     },
     {
@@ -115,6 +112,32 @@
       ]
     },
     {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#changedBy",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/org#hasPost",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://www.w3.org/ns/org#hasSubOrganization",
+        "http://www.w3.org/ns/org#classification",
+        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
+        "http://data.lblod.info/vocabularies/erediensten/denominatie",
+        "http://data.lblod.info/vocabularies/erediensten/grensoverschrijdend",
+        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor"
+      ]
+    },
+    {
       "type": "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
       "strictTypeExport": "true",
       "graphsFilter": [
@@ -132,13 +155,9 @@
         "http://www.w3.org/ns/org#hasPost",
         "http://www.w3.org/ns/org#linkedTo",
         "http://www.w3.org/ns/org#hasSubOrganization",
-        "^http://www.w3.org/ns/org#linkedTo",
-        "^http://www.w3.org/ns/org#hasSubOrganization",
         "http://www.w3.org/ns/org#classification",
-        "^http://data.vlaanderen.be/ns/besluit#bestuurt",
         "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
-        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
-        "^http://data.lblod.info/vocabularies/erediensten/typeEredienst"
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau"
       ]
     },
     {
@@ -159,10 +178,7 @@
         "http://www.w3.org/ns/org#hasPost",
         "http://www.w3.org/ns/org#linkedTo",
         "http://www.w3.org/ns/org#hasSubOrganization",
-        "^http://www.w3.org/ns/org#linkedTo",
-        "^http://www.w3.org/ns/org#hasSubOrganization",
-        "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
-        "^http://data.lblod.info/vocabularies/erediensten/behoort"
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst"
       ]
     },
     {
@@ -177,7 +193,6 @@
         "http://data.vlaanderen.be/ns/besluit#bestuurt",
         "http://www.w3.org/ns/org#classification",
         "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-        "^https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
         "http://www.w3.org/ns/org#hasPost"
       ]
     },
@@ -198,8 +213,7 @@
       "properties": [
         "http://data.lblod.info/vocabularies/erediensten/financieringspercentage",
         "http://data.lblod.info/vocabularies/erediensten/typebetrokkenheid",
-        "http://www.w3.org/ns/org#organization",
-        "^http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur"
+        "http://www.w3.org/ns/org#organization"
       ]
     },
     {
@@ -352,9 +366,7 @@
       "properties": [
         "http://www.w3.org/ns/org#role",
         "http://www.w3.org/ns/org#postIn",
-        "^http://www.w3.org/ns/org#holds",
         "http://data.lblod.info/vocabularies/erediensten/functie",
-        "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
         "http://data.lblod.info/vocabularies/erediensten/behoort"
       ]
     },
