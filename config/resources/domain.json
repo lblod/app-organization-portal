@@ -55,26 +55,6 @@
           "target": "agents-in-position",
           "cardinality": "many",
           "inverse": true
-        },
-        "registration": {
-          "predicate": "persoon:registratie",
-          "target": "identifiers",
-          "cardinality": "one"
-        },
-        "date-of-birth": {
-          "predicate": "persoon:heeftGeboorte",
-          "target": "dates-of-birth",
-          "cardinality": "one"
-        },
-        "nationalities": {
-          "predicate": "persoon:heeftNationaliteit",
-          "target": "nationalities",
-          "cardinality": "many"
-        },
-        "gender": {
-          "predicate": "persoon:geslacht",
-          "target": "gender-codes",
-          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/personen/"
@@ -791,16 +771,6 @@
         }
       },
       "new-resource-base": "http://data.lblod.info/id/voorwaardenBedienaar/"
-    },
-    "dates-of-birth": {
-      "class": "persoon:Geboorte",
-      "attributes": {
-        "date": {
-          "type": "datetime",
-          "predicate": "persoon:datum"
-        } 
-      },
-      "new-resource-base": "http://data.lblod.info/id/geboortes/"
     },
     "nationalities": {
       "class": "euvoc:Country",
