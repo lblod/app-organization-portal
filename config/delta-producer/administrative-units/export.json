@@ -1,0 +1,65 @@
+{
+  "export": [
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#scopeNote"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://data.vlaanderen.be/ns/besluit#werkingsgebied",
+        "http://www.w3.org/ns/org#classification"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://data.vlaanderen.be/ns/besluit#bestuurt",
+        "http://www.w3.org/ns/org#classification",
+        "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
+        "http://data.vlaanderen.be/ns/mandaat#bindingStart",
+        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#scopeNote"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/prov#Location",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau"
+      ]
+    }
+  ]
+}
