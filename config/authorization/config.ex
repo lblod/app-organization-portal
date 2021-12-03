@@ -59,7 +59,8 @@ defmodule Acl.UserGroups.Config do
  ]
   defp access_by_role( group_string ) do
     %AccessByQuery{
-      vars: ["session_group","session_role"],
+#      vars: ["session_group","session_role"], todo we might have to  create multiple graph depending on role
+       vars: [],
       query: sparql_query_for_access_role( group_string ) }
   end
 
@@ -76,20 +77,38 @@ defmodule Acl.UserGroups.Config do
   def user_groups do
     [
        %GroupSpec{
-        name: "acmidm",
-        useage: [:read, :write, :read_for_write],
-        access: %AccessByQuery{
-          query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-                  PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-                  PREFIX session: <http://mu.semte.ch/vocabularies/session/>
-                  SELECT ?account WHERE {
-                    <SESSION_ID> session:account ?account.
-                  } LIMIT 1",
-          vars: []
-        },
+        name: "acmidm-lezer",
+        useage: [:read],
+        access: access_by_role( "ABBOrganisatiePortaalGebruiker-lezer" ),
         graphs: [
           %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin",
+            graph: "http://mu.semte.ch/graphs/organisatieportaal",
+            constraint: %ResourceConstraint{
+              resource_types: @protected_resource_type
+            }
+          }
+        ]
+      },
+       %GroupSpec{
+        name: "acmidm-editeerder",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role( "ABBOrganisatiePortaalGebruiker-editeerder" ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organisatieportaal",
+            constraint: %ResourceConstraint{
+              resource_types: @protected_resource_type
+            }
+          }
+        ]
+      },
+       %GroupSpec{
+        name: "acmidm-beheerder",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role( "ABBOrganisatiePortaalGebruiker-beheerder" ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/organisatieportaal",
             constraint: %ResourceConstraint{
               resource_types: @protected_resource_type
             }
@@ -97,11 +116,27 @@ defmodule Acl.UserGroups.Config do
         ]
       },
            %GroupSpec{
-        name: "ch-admin",
-        useage: [:read, :write, :read_for_write],
-        access: access_by_role( "ChAdmin" ),
+        name: "ch-lezer",
+        useage: [:read],
+        access: access_by_role( "ABBOrganisatiePortaalGebruiker-lezer" ),
         graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/contacthub/",
+                    graph: "http://mu.semte.ch/graphs/organisatieportaal",
+                    constraint: %ResourceConstraint{
+                      resource_types: @protected_resource_type } } ] },
+           %GroupSpec{
+        name: "ch-editeerder",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role( "ABBOrganisatiePortaalGebruiker-editeerder" ),
+        graphs: [ %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/organisatieportaal",
+                    constraint: %ResourceConstraint{
+                      resource_types: @protected_resource_type } } ] },
+           %GroupSpec{
+        name: "ch-beheerder",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role( "ABBOrganisatiePortaalGebruiker-beheerder" ),
+        graphs: [ %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/organisatieportaal",
                     constraint: %ResourceConstraint{
                       resource_types: @protected_resource_type } } ] },
       %GroupSpec{

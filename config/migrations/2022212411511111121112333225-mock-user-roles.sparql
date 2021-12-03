@@ -1,0 +1,91 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext:<http://mu.semte.ch/vocabularies/ext/>
+  DELETE {
+    GRAPH  <http://mu.semte.ch/graphs/public> {
+      ?s ?p ?o
+    }
+  } INSERT {
+    GRAPH  <http://mu.semte.ch/graphs/public> {
+       <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> a besluit:Bestuurseenheid ;
+          mu:uuid "141d9d6b-54af-4d17-b313-8d1c30bc3f5b" ;
+          skos:prefLabel "Agentschap Binnenlands Bestuur" ;
+          dcterms:identifier "OVO001835" .
+
+      <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> a foaf:Person ;
+          mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3470" ;
+          foaf:firstName "Josephine" ;
+          foaf:familyName "Lezer" ;
+          foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> ;
+          foaf:account <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0956> .
+      <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0956> a foaf:OnlineAccount ;
+          mu:uuid "3a91ff60-07c1-4136-ac5e-55cf401e0956" ;
+          foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+          ext:sessionRole "ABBOrganisatiePortaalGebruiker-lezer".
+
+      <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3471> a foaf:Person ;
+          mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3471" ;
+          foaf:firstName "Josephine" ;
+          foaf:familyName "Editeerder" ;
+          foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> ;
+          foaf:account <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0957> .
+      <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0957> a foaf:OnlineAccount ;
+          mu:uuid "3a91ff60-07c1-4136-ac5e-55cf401e0957" ;
+          foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+          ext:sessionRole "ABBOrganisatiePortaalGebruiker-editeerder".
+          
+      <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472> a foaf:Person ;
+          mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3472" ;
+          foaf:firstName "Josephine" ;
+          foaf:familyName "Beheerder" ;
+          foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> ;
+          foaf:account <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958> .
+      <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958> a foaf:OnlineAccount ;
+          mu:uuid "3a91ff60-07c1-4136-ac5e-55cf401e0958" ;
+          foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+          ext:sessionRole "ABBOrganisatiePortaalGebruiker-beheerder".
+    }
+
+    GRAPH <http://mu.semte.ch/graphs/organizations/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> {
+      
+      <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> a foaf:Person ;
+          mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3470" ;
+          foaf:firstName "Josephine" ;
+          foaf:familyName "Lezer" ;
+          foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> ;
+          foaf:account <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0956> .
+      <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0956> a foaf:OnlineAccount ;
+          mu:uuid "3a91ff60-07c1-4136-ac5e-55cf401e0956" ;
+          foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+          ext:sessionRole "ABBOrganisatiePortaalGebruiker-lezer".
+
+      <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3471> a foaf:Person ;
+          mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3471" ;
+          foaf:firstName "Josephine" ;
+          foaf:familyName "Editeerder" ;
+          foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> ;
+          foaf:account <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0957> .
+      <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0957> a foaf:OnlineAccount ;
+          mu:uuid "3a91ff60-07c1-4136-ac5e-55cf401e0957" ;
+          foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+          ext:sessionRole "ABBOrganisatiePortaalGebruiker-editeerder".
+          
+      <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472> a foaf:Person ;
+          mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3472" ;
+          foaf:firstName "Josephine" ;
+          foaf:familyName "Beheerder" ;
+          foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> ;
+          foaf:account <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958> .
+      <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958> a foaf:OnlineAccount ;
+          mu:uuid "3a91ff60-07c1-4136-ac5e-55cf401e0958" ;
+          foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+          ext:sessionRole "ABBOrganisatiePortaalGebruiker-beheerder".
+    }
+  } WHERE {
+    GRAPH  <http://mu.semte.ch/graphs/public> {
+      ?s ?p ?o
+    }
+  }
