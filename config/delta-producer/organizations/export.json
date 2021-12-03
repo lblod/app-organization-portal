@@ -1,0 +1,419 @@
+{
+  "export": [
+    {
+      "type": "http://www.w3.org/ns/person#Person",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [ 
+        "http://xmlns.com/foaf/0.1/givenName",
+        "http://xmlns.com/foaf/0.1/familyName",
+        "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
+        "http://data.vlaanderen.be/ns/mandaat#isAangesteldAls",
+        "http://www.w3.org/ns/org#heldBy"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/MandatarisStatusCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://data.lblod.info/vocabularies/contacthub/startdatum",
+        "http://data.lblod.info/vocabularies/contacthub/eindedatum",
+        "http://www.w3.org/ns/org#holds",
+        "http://www.w3.org/ns/org#heldBy",
+        "http://schema.org/contactPoint",
+        "http://data.vlaanderen.be/ns/mandaat#start",
+        "http://data.vlaanderen.be/ns/mandaat#einde",
+        "http://data.vlaanderen.be/ns/mandaat#status",
+        "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+        "http://data.lblod.info/vocabularies/erediensten/geplandeEinddatumAanstelling",
+        "http://data.lblod.info/vocabularies/erediensten/redenVanStopzetting",
+        "http://data.lblod.info/vocabularies/erediensten/typeHelft"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/HelftVerkiezing",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://schema.org/ContactPoint",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://schema.org/email",
+        "http://schema.org/faxNumber",
+        "http://schema.org/telephone",
+        "http://www.w3.org/ns/locn#address"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/ns/org#role",
+        "http://www.w3.org/ns/org#postIn",
+        "http://www.w3.org/ns/org#role"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/org#Role",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/TypeEredienst",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#changedBy",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/org#hasPost",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://www.w3.org/ns/org#hasSubOrganization",
+        "http://www.w3.org/ns/org#classification",
+        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
+        "http://data.lblod.info/vocabularies/erediensten/denominatie",
+        "http://data.lblod.info/vocabularies/erediensten/grensoverschrijdend",
+        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#changedBy",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/org#hasPost",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://www.w3.org/ns/org#hasSubOrganization",
+        "http://www.w3.org/ns/org#classification",
+        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#changedBy",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/org#hasPost",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://www.w3.org/ns/org#hasSubOrganization",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
+        "http://data.vlaanderen.be/ns/mandaat#bindingStart",
+        "http://data.vlaanderen.be/ns/besluit#bestuurt",
+        "http://www.w3.org/ns/org#classification",
+        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+        "http://www.w3.org/ns/org#hasPost"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://data.lblod.info/vocabularies/erediensten/financieringspercentage",
+        "http://data.lblod.info/vocabularies/erediensten/typebetrokkenheid",
+        "http://www.w3.org/ns/org#organization"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/adms#Identifier",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#notation",
+        "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator"
+      ]
+    },
+    {
+      "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/locn#Address",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
+        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer",
+        "http://www.w3.org/ns/locn#thoroughfare",
+        "http://www.w3.org/ns/locn#postCode",
+        "https://data.vlaanderen.be/ns/adres#gemeentenaam",
+        "http://www.w3.org/ns/locn#adminUnitL2",
+        "https://data.vlaanderen.be/ns/adres#land",
+        "http://www.w3.org/ns/locn#fullAddress",
+        "https://data.vlaanderen.be/ns/adres#verwijstNaar",
+        "http://purl.org/dc/terms/source"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/org#Site",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/ns/org#siteAddress",
+        "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+        "http://data.lblod.info/vocabularies/erediensten/vestigingstype"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/org#ChangeEvent",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://purl.org/dc/terms/date",
+        "http://purl.org/dc/terms/description",
+        "http://data.lblod.info/vocabularies/contacthub/typeWijziging",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/org#changedBy"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/2004/02/skos/core#Concept",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/prov#Location",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
+        "http://data.vlaanderen.be/ns/besluit#werkingsgebied"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/TypeBetrokkenheid",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar", 
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://data.lblod.info/vocabularies/contacthub/startdatum",
+        "http://data.lblod.info/vocabularies/contacthub/eindedatum",
+        "http://www.w3.org/ns/org#holds",
+        "http://www.w3.org/ns/org#heldBy",
+        "http://schema.org/contactPoint",
+        "http://data.lblod.info/vocabularies/erediensten/financiering",
+        "http://data.lblod.info/vocabularies/erediensten/voldoetAan"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/VoorwaardenBedienaar",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://data.lblod.info/vocabularies/erediensten/voldaan",
+        "http://data.lblod.info/vocabularies/erediensten/criterium",
+        "http://data.lblod.info/vocabularies/erediensten/criteriumbewijsstuktype"
+      ]
+    },{
+      "type": "http://publications.europa.eu/ontology/euvoc#Country",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2000/01/rdf-schema#label"
+      ]
+    },{
+      "type": "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/ns/org#role",
+        "http://www.w3.org/ns/org#postIn",
+        "http://data.lblod.info/vocabularies/erediensten/functie",
+        "http://data.lblod.info/vocabularies/erediensten/behoort"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/EredienstBeroepen",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BedienaarFinanceringCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/VoorwaardenBedienaarCriterium",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BedienaarCriteriumBewijsstuk",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/TypeVestiging",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    }
+  ]
+}

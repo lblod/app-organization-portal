@@ -1,4 +1,3 @@
-
 (in-package :mu-cl-resources)
 
 (defparameter *include-count-in-paginated-responses* t)
@@ -13,4 +12,6 @@
 
 (read-domain-file "domain.json")
 (read-domain-file "auth.json")
+(read-domain-file "files-domain.lisp")
+(read-domain-file "dcat.json")
 (read-domain-file "privacy-centric-service.json")

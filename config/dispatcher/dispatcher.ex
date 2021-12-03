@@ -75,7 +75,7 @@ defmodule Dispatcher do
   match "/worship-administrative-units/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/worship-administrative-units/"
   end
-  
+
   match "/worship-services/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/worship-services/"
   end
@@ -126,11 +126,11 @@ defmodule Dispatcher do
 
   match "/change-event-types/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/change-event-types/"
-  end 
+  end
 
   match "/organization-status-codes/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/organization-status-codes/"
-  end   
+  end
 
   match "/locations/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/locations/"
@@ -142,11 +142,15 @@ defmodule Dispatcher do
 
   match "/ministers/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/ministers/"
-  end 
+  end
 
   match "/minister-conditions/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/minister-conditions/"
-  end 
+  end
+
+  match "/dates-of-birth/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/dates-of-birth/"
+  end
 
   match "/nationalities/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/nationalities/"
@@ -177,7 +181,7 @@ defmodule Dispatcher do
 
   match "/document-types-criterions/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/document-types-criterions/"
-  end  
+  end
 
   match "/site-types/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/site-types/"
@@ -186,6 +190,7 @@ defmodule Dispatcher do
   match "/request-reasons/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/request-reasons/"
   end
+
 
   ###############
   # LOGIN
@@ -208,7 +213,7 @@ defmodule Dispatcher do
   match "/sessions/*path", %{ accept: [:any], layer: :api} do
     Proxy.forward conn, path, "http://login/sessions/"
   end
-  
+
 
   ###############
   # API SERVICES
@@ -243,6 +248,47 @@ defmodule Dispatcher do
   end
 
 
+  #################################################################
+  # FILES
+  #################################################################
+
+  get "/files/:id/download", %{ accept: [:any], } do
+    Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
+  end
+
+  get "/files/*path" , %{ layer: :api_services, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/files/"
+  end
+
+  #################################################################
+  # DCAT
+  #################################################################
+
+  get "/datasets/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/datasets/"
+  end
+
+  get "/distributions/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    Proxy.forward conn, path, "http://cache/distributions/"
+  end
+
+
+  #################################################################
+  #  DELTA: administrative-units
+  #################################################################
+
+  get "/sync/administrative-units/files/*path" do
+    Proxy.forward conn, path, "http://delta-producer-json-diff-file-publisher-administrative-units/files/"
+  end
+
+  #################################################################
+  #  DELTA: organizations
+  #################################################################
+
+  get "/sync/organizations/files/*path" do
+    Proxy.forward conn, path, "http://delta-producer-json-diff-file-publisher-organizations/files/"
+  end
+
   ###############################################################
   # frontend layer
   ###############################################################
@@ -266,11 +312,11 @@ defmodule Dispatcher do
   match "/*_path", %{ layer: :frontend } do
     Proxy.forward conn, [], "http://frontend/index.html"
   end
-  
+
   ###############################################################
   # sparql endpoint
   ###############################################################
-  
+
   post "/sparql/*path", %{ layer: :api_services, accept: %{ sparql_json: true } } do
     forward conn, path, "http://db:8890/sparql/"
   end
