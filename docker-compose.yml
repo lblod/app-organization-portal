@@ -215,7 +215,7 @@ services:
   delta-producer-bg-jobs-initiator-administrative-units:
     image: lblod/delta-producer-background-jobs-initiator:0.3.1
     environment:
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
       DUMP_FILE_CREATION_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/administrative-units'
       INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/administrative-units'
       HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/administrative-units'
@@ -232,7 +232,7 @@ services:
     image: lblod/delta-producer-publication-graph-maintainer:0.7.0
     environment:
       MAX_BODY_SIZE: "50mb"
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
       RELATIVE_FILE_PATH: "deltas/administrative-units"
       PUBLICATION_GRAPH: 'http://redpencil.data.gift/id/deltas/producer/administrative-units'
       HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/administrative-units'
@@ -253,7 +253,7 @@ services:
     image: lblod/delta-producer-json-diff-file-publisher:0.2.3
     environment:
       MAX_BODY_SIZE: "50mb"
-      ERROR_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
       RELATIVE_FILE_PATH: "deltas/administrative-units"
       PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/administrative-units"
       PUBLICATION_GRAPH: 'http://redpencil.data.gift/id/deltas/producer/administrative-units'
@@ -276,7 +276,7 @@ services:
   delta-producer-bg-jobs-initiator-organizations:
     image: lblod/delta-producer-background-jobs-initiator:0.3.1
     environment:
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
       DUMP_FILE_CREATION_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/organizations'
       INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations'
       HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations'
@@ -293,7 +293,7 @@ services:
     image: lblod/delta-producer-publication-graph-maintainer:0.7.0
     environment:
       MAX_BODY_SIZE: "50mb"
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
       RELATIVE_FILE_PATH: "deltas/organizations"
       PUBLICATION_GRAPH: 'http://redpencil.data.gift/id/deltas/producer/organizations'
       HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations'
@@ -314,7 +314,7 @@ services:
     image: lblod/delta-producer-json-diff-file-publisher:0.2.3
     environment:
       MAX_BODY_SIZE: "50mb"
-      ERROR_GRAPH: "http://mu.semte.ch/graphs/contacthub/141d9d6b-54af-4d17-b313-8d1c30bc3f5b/ChAdmin"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
       RELATIVE_FILE_PATH: "deltas/organizations"
       PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/organizations"
       PUBLICATION_GRAPH: 'http://redpencil.data.gift/id/deltas/producer/organizations'
