@@ -1,21 +1,21 @@
 export default [
-    {
-      match: {
-        graph: {
-          type: "uri",
-          value: "http://mu.semte.ch/graphs/organisatieportaal"
-        }
-      },
-      callback: {
-        url: "http://kalliope-api/delta", method: "POST"
-      },
-      options: {
-        resourceFormat: "v0.0.1",
-        gracePeriod: 1000,
-        ignoreFromSelf: true,
-        optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
+  {
+    match: {
+      graph: {
+        type: "uri",
+        value: "http://mu.semte.ch/graphs/organisatieportaal"
       }
     },
+    callback: {
+      url: "http://kalliope-api/delta", method: "POST"
+    },
+    options: {
+      resourceFormat: "v0.0.1",
+      gracePeriod: 1000,
+      ignoreFromSelf: true,
+      optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
+    }
+  },
   {
     match: {
       predicate: {
@@ -85,7 +85,7 @@ export default [
                           "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
                         ]
     }
-  },,
+  },
   {
     match: {
       graph: {
