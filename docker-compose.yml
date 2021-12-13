@@ -79,7 +79,7 @@ services:
     restart: always
     logging: *default-logging
   kalliope-api:
-    image: lblod/jsonld-delta-service:0.4.0
+    image: lblod/jsonld-delta-service:0.5.1
     volumes:
       - ./config/kalliope:/config
       - ./data/files:/share
@@ -137,7 +137,7 @@ services:
     restart: always
     logging: *default-logging
   privacy:
-    image: lblod/privacy-centric-service:0.1.1
+    image: lblod/privacy-centric-service:0.2.0
     labels:
       - "logging=true"
     environment:
