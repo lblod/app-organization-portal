@@ -157,7 +157,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-contact-hub:1.3.0
+    image: lblod/frontend-contact-hub:1.4.0
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
