@@ -299,14 +299,22 @@
           "cardinality": "many"
         },
         "changed-by": {
-          "predicate": "org:changedBy",
+          "predicate": "org:originalOrganization",
           "target": "change-events",
-          "cardinality": "many"
+          "cardinality": "many",
+          "inverse": true
         },
         "resulted-from": {
-          "predicate": "org:resultedFrom",
+          "predicate": "org:resultingOrganization",
           "target": "change-events",
-          "cardinality": "many"
+          "cardinality": "many",
+          "inverse": true
+        },
+        "change-event-results": {
+          "predicate": "org:organization",
+          "target": "change-event-results",
+          "cardinality": "many",
+          "inverse": true
         },
         "positions": {
           "predicate": "org:hasPost",
@@ -627,49 +635,6 @@
         }
       },
       "new-resource-base": "http://data.lblod.info/id/vestigingen/"
-    },
-    "change-events": {
-      "class": "org:ChangeEvent",
-      "attributes": {
-        "date": {
-          "type": "datetime",
-          "predicate": "dc_terms:date"
-        },
-        "description": {
-          "type": "string",
-          "predicate": "dc_terms:description"
-        }
-      },
-      "relationships": {
-        "type": {
-          "predicate": "ch:typeWijziging",
-          "target": "change-event-types",
-          "cardinality": "one"
-        },
-        "resulting-organization": {
-          "predicate": "org:resultedFrom",
-          "target": "organizations",
-          "cardinality": "many",
-          "inverse": true
-        },
-        "original-organization": {
-          "predicate": "org:changedBy",
-          "target": "organizations",
-          "cardinality": "many",
-          "inverse": true
-        }
-      },
-      "new-resource-base": "http://data.lblod.info/id/veranderingsgebeurtenissen/"
-    },
-    "change-event-types": {
-      "class": "code:Veranderingsgebeurtenis",
-      "attributes": {
-        "label": {
-          "type": "string",
-          "predicate": "skos:prefLabel"
-        }
-      },
-      "new-resource-base": "http://lblod.data.gift/concepts/"
     },
     "concepts": {
       "class": "skos:Concept",

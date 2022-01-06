@@ -9,6 +9,7 @@ alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 defmodule Acl.UserGroups.Config do
  @protected_resource_type [
                         "http://www.w3.org/ns/org#Organization",
+                        "http://data.vlaanderen.be/ns/besluit#Besluit",
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
@@ -42,6 +43,7 @@ defmodule Acl.UserGroups.Config do
                         "http://lblod.data.gift/vocabularies/organisatie/TypeEredienst",
                         "http://lblod.data.gift/vocabularies/organisatie/HelftVerkiezing",
                         "http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis",
+                        "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
                         "http://lblod.data.gift/vocabularies/organisatie/MandatarisStatusCode",
                         "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
                         "http://lblod.data.gift/vocabularies/organisatie/TypeBetrokkenheid",
