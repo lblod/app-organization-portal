@@ -4,6 +4,30 @@
   "number_of_threads": 6,
   "types": [
     {
+      "type": "administrative-unit",
+      "on_path": "administrative-units",
+      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
+      "properties": {
+        "classificationId": [
+          "http://www.w3.org/ns/org#classification",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "classificationName": [
+          "http://www.w3.org/ns/org#classification",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "recognizedWorshipTypeId": [
+         "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+         "http://mu.semte.ch/vocabularies/core/uuid"
+
+        ],
+        "recognizedWorshipTypeName": [
+         "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+         "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ]
+      }
+    },
+    {
       "type": "person",
       "on_path": "people",
       "rdf_type": "http://www.w3.org/ns/person#Person",
