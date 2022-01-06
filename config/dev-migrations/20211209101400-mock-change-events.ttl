@@ -1,0 +1,250 @@
+# Notes:
+# - current implementation has too many CE's.
+# <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> : Actief
+# <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab> In oprichting
+# <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> Niet Actief
+
+#<http://lblod.data.gift/concepts/343a00884d012cee6915bc7559cd69ef>
+#  skos:prefLabel  "Erkenning niet toegekend" .
+#<http://lblod.data.gift/concepts/6651dc69b0ae8f7ff9974e8a23db1dec>
+#  skos:prefLabel  "Naamswijziging" .
+#<http://lblod.data.gift/concepts/3dd7550843eaf18e1fa1ca6c6c3f2610>
+#  skos:prefLabel  "Erkenning toegekend" .
+#<http://lblod.data.gift/concepts/4297bc56c1a874240e4566e2c5b8816f>
+#  skos:prefLabel  "Erkenning opgeheven" .
+#concepts:d7bbc0ea17fccf7ea35c552d757c905f
+#  skos:prefLabel  "Samenvoeging" .
+#<http://lblod.data.gift/concepts/9f19f14910245f9b14737f1f1a2067f2>
+#  skos:prefLabel  "Wijziging Gebiedsomschrijving" .
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX concepts: <http://lblod.data.gift/concepts/>
+PREFIX bestuur: <http://data.lblod.info/id/besturenVanDeEredienst/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX contacthub: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ce:  <http://data.lblod.info/id/veranderingsgebeurtenissen/>
+PREFIX cer:  <http://data.lblod.info/id/veranderingsgebeurtenis-resultaten/>
+PREFIX m8g: <http://data.europa.eu/m8g/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+#code is a weird prefix but that's how it's called in the domain.json file so I reused it
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+
+
+
+# Extende CE for ZWALM: merger of many kerkraden
+
+<http://data.lblod.info/id/veranderingsgebeurtenissen/3940cca35440a8b51d1435fedd5b05fa>
+  rdf:type  org:ChangeEvent ;
+  contacthub:typeWijziging  concepts:d7bbc0ea17fccf7ea35c552d757c905f ; # Samenvoeging
+  org:resultingOrganization  bestuur:dc32dbe8d1f85999cd39a5c9893a9c7d ;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_1;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_2;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_3;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_4;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_5;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_6;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_7;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_8;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_9;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_10;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_11;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_12;
+  org:originalOrganization bestuur:dc32dbe8d1f85999cd39a5c9893a9c7d;
+  org:originalOrganization bestuur:6b910ac3244fb94f6ff2574cd5c91df0;
+  org:originalOrganization bestuur:cace83d9d7b40b310b43defd0acb9da5;
+  org:originalOrganization bestuur:3eb0946f3c30eeec932be0cccba15645;
+  org:originalOrganization bestuur:750db3adf47c16061911818dcbefacc2;
+  org:originalOrganization bestuur:3c8596af2a8aa4d11a6dcc0d32993c7a;
+  org:originalOrganization bestuur:57137d40d46aeb342b89ae2d50b127c3;
+  org:originalOrganization bestuur:9a1ca4b0731d15b683d116fef02f0f9e;
+  org:originalOrganization bestuur:10ccaccbbfcd79c5fad7fbd3747221a1;
+  org:originalOrganization bestuur:a6451f9c7503c2b7c56898fe12e97993;
+  org:originalOrganization bestuur:bbd46776125da4bd88e82e879863bbd6;
+  org:originalOrganization bestuur:edca1c6822af59d219d3652bd749f7fb;
+  dct:date  "2019-07-15T00:00:00"^^xsd:dateTime ;
+  m8g:hasFormalFramework <http://lblod.data.info/id/besluiten/f2ec4db3-6154-41b4-a5be-e0bc129e98d7>;
+  dct:description  "Opheffing 11 parochies, allen samengevoegd bij de parochie Alle Heiligen Nederzwalm - MB 15 juli 2019" .
+
+<http://lblod.data.info/id/besluiten/f2ec4db3-6154-41b4-a5be-e0bc129e98d7>
+  a besluit:Besluit;
+  mu:uuid "f2ec4db3-6154-41b4-a5be-e0bc129e98d7";
+  eli:date_publication  "2019-07-14T00:00:00"^^xsd:dateTime;
+  foaf:page "https://www.vlaanderen.be/agentschap-binnenlands-bestuur".
+
+cer:71879559ac2045499def_DUMMY_CER_1
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_1";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>; #Actief
+  org:organization  bestuur:dc32dbe8d1f85999cd39a5c9893a9c7d .
+
+cer:71879559ac2045499def_DUMMY_CER_2
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_2";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:6b910ac3244fb94f6ff2574cd5c91df0 .
+
+cer:71879559ac2045499def_DUMMY_CER_3
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_3";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:cace83d9d7b40b310b43defd0acb9da5 .
+
+cer:71879559ac2045499def_DUMMY_CER_4
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_4";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:3eb0946f3c30eeec932be0cccba15645 .
+
+cer:71879559ac2045499def_DUMMY_CER_5
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_5";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:750db3adf47c16061911818dcbefacc2 .
+
+cer:71879559ac2045499def_DUMMY_CER_6
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_6";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:3c8596af2a8aa4d11a6dcc0d32993c7a .
+
+cer:71879559ac2045499def_DUMMY_CER_7
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_7";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:57137d40d46aeb342b89ae2d50b127c3 .
+
+cer:71879559ac2045499def_DUMMY_CER_8
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_8";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:9a1ca4b0731d15b683d116fef02f0f9e .
+
+cer:71879559ac2045499def_DUMMY_CER_9
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_9";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:10ccaccbbfcd79c5fad7fbd3747221a1 .
+
+cer:71879559ac2045499def_DUMMY_CER_10
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_10";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:a6451f9c7503c2b7c56898fe12e97993 .
+
+cer:71879559ac2045499def_DUMMY_CER_11
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_11";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:bbd46776125da4bd88e82e879863bbd6 .
+
+cer:71879559ac2045499def_DUMMY_CER_12
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_12";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; #Niet Actief
+  org:organization  bestuur:edca1c6822af59d219d3652bd749f7fb .
+
+
+# Dummy naamsverandering
+<http://data.lblod.info/id/veranderingsgebeurtenissen/3940cca35440_DUMMY_CE_A>
+  rdf:type  org:ChangeEvent ;
+  mu:uuid "3940cca35440_DUMMY_CE_A" ;
+  contacthub:typeWijziging  concepts:6651dc69b0ae8f7ff9974e8a23db1dec ; # Naamswijziging
+  org:resultingOrganization  bestuur:edca1c6822af59d219d3652bd749f7fb ;
+  dct:date  "2010-01-01T00:00:00"^^xsd:dateTime ;
+  dct:description  "Dummy CE de parochie previously known as something else" ;
+  m8g:hasFormalFramework <http://lblod.data.info/id/besluiten/db80b68d-c858-4c75-ae27-92b9125881c4>;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_A.
+
+<http://lblod.data.info/id/besluiten/db80b68d-c858-4c75-ae27-92b9125881c4>
+  a besluit:Besluit;
+  mu:uuid "db80b68d-c858-4c75-ae27-92b9125881c4";
+  eli:date_publication  "2010-01-01T00:00:00"^^xsd:dateTime;
+  foaf:page "https://www.vlaanderen.be/agentschap-binnenlands-bestuur".
+
+cer:71879559ac2045499def_DUMMY_CER_A
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_A";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>; #Actief
+  org:organization  bestuur:edca1c6822af59d219d3652bd749f7fb .
+
+
+#Dummy erkenningen
+<http://data.lblod.info/id/veranderingsgebeurtenissen/3940cca35440_DUMMY_CE_B>
+  rdf:type  org:ChangeEvent ;
+  mu:uuid "3940cca35440_DUMMY_CE_B" ;
+  contacthub:typeWijziging  concepts:3dd7550843eaf18e1fa1ca6c6c3f2610 ; # Erkenning Toegekend
+  org:resultingOrganization  bestuur:edca1c6822af59d219d3652bd749f7fb ;
+  dct:date  "2000-01-01T00:00:00"^^xsd:dateTime ;
+  dct:description  "Dummy CE erkenning toegekend (1)" ;
+  m8g:hasFormalFramework <http://lblod.data.info/id/besluiten/7151e2ca-21f9-42a9-a657-0bbab6aeec7d>;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_B.
+
+<http://lblod.data.info/id/besluiten/7151e2ca-21f9-42a9-a657-0bbab6aeec7d>
+  a besluit:Besluit;
+  mu:uuid "7151e2ca-21f9-42a9-a657-0bbab6aeec7d";
+  eli:date_publication "2000-01-01T00:00:00"^^xsd:dateTime;
+  foaf:page "https://www.vlaanderen.be/agentschap-binnenlands-bestuur".
+  
+cer:71879559ac2045499def_DUMMY_CER_B
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_B";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>; #Actief
+  org:organization  bestuur:edca1c6822af59d219d3652bd749f7fb .
+
+
+<http://data.lblod.info/id/veranderingsgebeurtenissen/3940cca35440_DUMMY_CE_C>
+  rdf:type  org:ChangeEvent ;
+  mu:uuid "3940cca35440_DUMMY_CE_C" ;
+  contacthub:typeWijziging  concepts:3dd7550843eaf18e1fa1ca6c6c3f2610 ; # Erkenning Toegekend
+  org:resultingOrganization  bestuur:bbd46776125da4bd88e82e879863bbd6 ;
+  dct:date  "2001-01-01T00:00:00"^^xsd:dateTime ;
+  dct:description  "Dummy CE erkenning toegekend  (2)";
+  m8g:hasFormalFramework <http://lblod.data.info/id/besluiten/3e9b2e03-2888-4397-a2df-bc5a240accc1>;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_C.
+
+<http://lblod.data.info/id/besluiten/3e9b2e03-2888-4397-a2df-bc5a240accc1>
+  a besluit:Besluit;
+  mu:uuid "3e9b2e03-2888-4397-a2df-bc5a240accc1";
+  eli:date_publication "2001-01-01T00:00:00"^^xsd:dateTime;
+  foaf:page "https://www.vlaanderen.be/agentschap-binnenlands-bestuur".
+
+cer:71879559ac2045499def_DUMMY_CER_C
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_C";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>; #Actief
+  org:organization  bestuur:bbd46776125da4bd88e82e879863bbd6 .
+
+
+<http://data.lblod.info/id/veranderingsgebeurtenissen/3940cca35440_DUMMY_CE_D>
+  rdf:type  org:ChangeEvent ;
+  mu:uuid "3940cca35440_DUMMY_CE_D" ;
+  contacthub:typeWijziging  concepts:3dd7550843eaf18e1fa1ca6c6c3f2610 ; # Erkenning Toegekend
+  org:resultingOrganization  bestuur:dc32dbe8d1f85999cd39a5c9893a9c7d ;
+  dct:date  "2002-01-01T00:00:00"^^xsd:dateTime ;
+  dct:description  "Dummy CE erkenning toegekend  (3)";
+  m8g:hasFormalFramework <http://lblod.data.info/id/besluiten/e09c3d9e-9230-4a13-9ba7-83cf1a055a05>;
+  code:veranderingsgebeurtenisResultaat cer:71879559ac2045499def_DUMMY_CER_D.
+
+<http://lblod.data.info/id/besluiten/e09c3d9e-9230-4a13-9ba7-83cf1a055a05>
+  a besluit:Besluit;
+  mu:uuid "e09c3d9e-9230-4a13-9ba7-83cf1a055a05";
+  eli:date_publication  "2002-01-01T00:00:00"^^xsd:dateTime;
+  foaf:page "https://www.vlaanderen.be/agentschap-binnenlands-bestuur".
+
+cer:71879559ac2045499def_DUMMY_CER_D
+  a code:VeranderingsgebeurtenisResultaat;
+  mu:uuid "71879559ac2045499def_DUMMY_CER_D";
+  code:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>; #Actief
+  org:organization  bestuur:dc32dbe8d1f85999cd39a5c9893a9c7d .

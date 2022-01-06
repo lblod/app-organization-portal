@@ -128,6 +128,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/change-event-types/"
   end
 
+  match "/change-event-results/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/change-event-results/"
+  end
+
   match "/organization-status-codes/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/organization-status-codes/"
   end
@@ -186,9 +190,13 @@ defmodule Dispatcher do
   match "/site-types/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/site-types/"
   end
-  
+
   match "/request-reasons/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/request-reasons/"
+  end
+
+  match "/decisions/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/decisions/"
   end
 
 
