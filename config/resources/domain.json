@@ -63,11 +63,11 @@
       "class": "ch:AgentInPositie",
       "attributes": {
         "agent-start-date": {
-          "type": "datetime",
+          "type": "date",
           "predicate": "ch:startdatum"
         },
         "agent-end-date": {
-          "type": "datetime",
+          "type": "date",
           "predicate": "ch:eindedatum"
         }
       },
@@ -117,11 +117,11 @@
       "super": ["agents-in-position"],
       "attributes": {
         "start-date": {
-          "type": "datetime",
+          "type": "date",
           "predicate": "mandaat:start"
         },
         "end-date": {
-          "type": "datetime",
+          "type": "date",
           "predicate": "mandaat:einde"
         }
       },
@@ -165,7 +165,7 @@
       "super": ["mandatories"],
       "attributes": {
         "expected-end-date": {
-          "type": "datetime",
+          "type": "date",
           "predicate": "ere:geplandeEinddatumAanstelling"
         },
         "reason-stopped": {
@@ -462,11 +462,11 @@
       "class": "besluit:Bestuursorgaan",
       "attributes": {
         "start-date": {
-          "type": "datetime",
+          "type": "date",
           "predicate": "mandaat:bindingStart"
         },
         "end-date": {
-          "type": "datetime",
+          "type": "date",
           "predicate": "mandaat:bindingEinde"
         }
       },
