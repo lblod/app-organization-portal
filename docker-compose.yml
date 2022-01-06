@@ -335,13 +335,16 @@ services:
 
 
   search:
-    image: semtech/mu-search:0.8.0-beta.3
+    image: semtech/mu-search:latest
     links:
       - db:database
     volumes:
       - ./config/search:/config
+    environment:
+         LOG_SCOPE_DELTA: "debug"
+
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:1.0.0
+    image: semtech/mu-search-elastic-backend:latest
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     environment:
