@@ -1,29 +1,33 @@
 {
   "automatic_index_updates": true,
   "persist_indexes": true,
+  "enable_raw_dsl_endpoint": true,
   "number_of_threads": 6,
   "types": [
     {
-      "type": "administrative-unit",
-      "on_path": "administrative-units",
-      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
+      "type": "rust",
+      "on_path": "rusts",
+      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
       "properties": {
-        "classificationId": [
+        "classification_id": [
           "http://www.w3.org/ns/org#classification",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
-        "classificationName": [
+        "classification_name": [
           "http://www.w3.org/ns/org#classification",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "recognizedWorshipTypeId": [
-         "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
-         "http://mu.semte.ch/vocabularies/core/uuid"
-
+        "fallback_status": [
+          "http://www.w3.org/ns/regorg#orgStatus",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "recognizedWorshipTypeName": [
-         "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
-         "http://www.w3.org/2004/02/skos/core#prefLabel"
+        "recognized_worship_type_id": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "recognized_worship_type_name": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
         "province": [
           "http://www.w3.org/ns/org#hasPrimarySite",
@@ -33,8 +37,84 @@
         "municipality": [
           "http://www.w3.org/ns/org#hasPrimarySite",
           "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-          "http://www.w3.org/ns/locn#gemeentenaam"
-        ]
+          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ],
+        "change_event_results": {
+          "via": "^http://www.w3.org/ns/org#organization",
+          "rdf_type": "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
+          "properties": {
+            "status": [
+              "http://lblod.data.gift/vocabularies/organisatie/resulterendeStatus",
+              "http://www.w3.org/2004/02/skos/core#prefLabel"
+            ],
+            "event_date": [
+              "^http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat",
+              "http://purl.org/dc/terms/date"
+            ]
+          }
+        }
+      },
+      "mappings": {
+        "properties": {
+          "classification_id": { "type": "text" },
+          "recognized_worship_type_id": { "type": "text" },
+          "classification_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "fallback_status": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "recognized_worship_type_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "municipality": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "change_event_results.status": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "change_event_results.event_date": {
+            "type": "date",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          }
+        }
       }
     },
     {
@@ -147,7 +227,7 @@
               }
             }
           },
-          "mandates.end_date": { "type": "text" }
+          "mandates.end_date": { "type": "date" }
         }
       }
     }
