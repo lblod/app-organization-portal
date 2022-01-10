@@ -1,0 +1,23 @@
+# cf 20220110100000-secondary-contacts.sparql for context.
+# In case it's not a secondary contactpoint (a contactpoint without an address if multiple contact points exist for one entity/mandataris)
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX shema: <http://schema.org/>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?contactPoint
+      schema:contactType "Primary"
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?contactPoint 
+      a schema:ContactPoint.
+    FILTER NOT EXISTS {
+      ?contactPoint
+        schema:contactType "Secondary"
+    }
+  }
+}
