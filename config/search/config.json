@@ -1,14 +1,19 @@
 {
   "automatic_index_updates": true,
   "persist_indexes": true,
-  "enable_raw_dsl_endpoint": true,
   "number_of_threads": 6,
+  "eager_indexing_groups": [
+    [{ "variables": [], "name": "acmidm-lezer" }],
+    [{ "variables": [], "name": "acmidm-editeerder" }],
+    [{ "variables": [], "name": "acmidm-beheerder" }]
+  ],
   "types": [
     {
-      "type": "goroutine",
-      "on_path": "goroutines",
+      "type": "cbe",
+      "on_path": "cbes",
       "rdf_type": "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
       "properties": {
+        "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
         "classification_id": [
           "http://www.w3.org/ns/org#classification",
           "http://mu.semte.ch/vocabularies/core/uuid"
@@ -17,7 +22,7 @@
           "http://www.w3.org/ns/org#classification",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "fallback_status": [
+        "status": [
           "http://www.w3.org/ns/regorg#orgStatus",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
@@ -38,26 +43,20 @@
           "http://www.w3.org/ns/org#hasPrimarySite",
           "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
           "https://data.vlaanderen.be/ns/adres#gemeentenaam"
-        ],
-        "change_event_results": {
-          "via": "^http://www.w3.org/ns/org#organization",
-          "rdf_type": "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
-          "properties": {
-            "status": [
-              "http://lblod.data.gift/vocabularies/organisatie/resulterendeStatus",
-              "http://www.w3.org/2004/02/skos/core#prefLabel"
-            ],
-            "event_date": [
-              "^http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat",
-              "http://purl.org/dc/terms/date"
-            ]
-          }
-        }
+        ]
       },
       "mappings": {
         "properties": {
           "classification_id": { "type": "text" },
           "recognized_worship_type_id": { "type": "text" },
+          "name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
           "classification_name": {
             "type": "text",
             "fields": {
@@ -66,7 +65,7 @@
               }
             }
           },
-          "fallback_status": {
+          "status": {
             "type": "text",
             "fields": {
               "field": {
@@ -97,25 +96,96 @@
                 "type": "keyword"
               }
             }
+          }
+        }
+      }
+    },
+    {
+      "type": "be",
+      "on_path": "bes",
+      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+      "properties": {
+        "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "classification_id": [
+          "http://www.w3.org/ns/org#classification",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "classification_name": [
+          "http://www.w3.org/ns/org#classification",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "status": [
+          "http://www.w3.org/ns/regorg#orgStatus",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "recognized_worship_type_id": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "recognized_worship_type_name": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "province": [
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "http://www.w3.org/ns/locn#adminUnitL2"
+        ],
+        "municipality": [
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ]
+      },
+      "mappings": {
+        "properties": {
+          "classification_id": { "type": "text" },
+          "recognized_worship_type_id": { "type": "text" },
+          "name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
           },
-          "change_event_results": {
-            "type": "nested",
-            "properties": {
-              "status": {
-                "type": "text",
-                "fields": {
-                  "field": {
-                    "type": "keyword"
-                  }
-                }
-              },
-              "event_date": {
-                "type": "date",
-                "fields": {
-                  "field": {
-                    "type": "keyword"
-                  }
-                }
+          "classification_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "status": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "recognized_worship_type_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "municipality": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
               }
             }
           }
@@ -123,66 +193,47 @@
       }
     },
     {
-      "type": "person",
-      "on_path": "people",
-      "rdf_type": "http://www.w3.org/ns/person#Person",
+      "type": "besluit",
+      "on_path": "besluits",
+      "rdf_type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "properties": {
-        "given_name": "http://xmlns.com/foaf/0.1/givenName",
-        "family_name": "http://xmlns.com/foaf/0.1/familyName",
-        "first_name_used": "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
-        "mandates": {
-          "via": "http://data.vlaanderen.be/ns/mandaat#isAangesteldAls",
-          "rdf_type": "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-          "properties": {
-            "end_date": "http://data.vlaanderen.be/ns/mandaat#einde",
-            "organization_id": [
-              "http://www.w3.org/ns/org#holds",
-              "^http://www.w3.org/ns/org#hasPost",
-              "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-              "http://data.vlaanderen.be/ns/besluit#bestuurt",
-              "http://mu.semte.ch/vocabularies/core/uuid"
-            ],
-            "organization_name": [
-              "http://www.w3.org/ns/org#holds",
-              "^http://www.w3.org/ns/org#hasPost",
-              "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-              "http://data.vlaanderen.be/ns/besluit#bestuurt",
-              "http://www.w3.org/2004/02/skos/core#prefLabel"
-            ],
-            "organization_municipality": [
-              "http://www.w3.org/ns/org#holds",
-              "^http://www.w3.org/ns/org#hasPost",
-              "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-              "http://data.vlaanderen.be/ns/besluit#bestuurt",
-              "http://www.w3.org/ns/org#hasPrimarySite",
-              "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-              "https://data.vlaanderen.be/ns/adres#gemeentenaam"
-            ],
-            "organization_province": [
-              "http://www.w3.org/ns/org#holds",
-              "^http://www.w3.org/ns/org#hasPost",
-              "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-              "http://data.vlaanderen.be/ns/besluit#bestuurt",
-              "http://www.w3.org/ns/org#hasPrimarySite",
-              "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-              "http://www.w3.org/ns/locn#adminUnitL2"
-            ],
-            "position_id": [
-              "http://www.w3.org/ns/org#holds",
-              "http://www.w3.org/ns/org#role",
-              "http://mu.semte.ch/vocabularies/core/uuid"
-            ],
-            "position_name": [
-              "http://www.w3.org/ns/org#holds",
-              "http://www.w3.org/ns/org#role",
-              "http://www.w3.org/2004/02/skos/core#prefLabel"
-            ]
-          }
-        }
+        "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "classification_id": [
+          "http://www.w3.org/ns/org#classification",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "classification_name": [
+          "http://www.w3.org/ns/org#classification",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "status": [
+          "http://www.w3.org/ns/regorg#orgStatus",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "recognized_worship_type_id": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "recognized_worship_type_name": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "province": [
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "http://www.w3.org/ns/locn#adminUnitL2"
+        ],
+        "municipality": [
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ]
       },
       "mappings": {
         "properties": {
-          "family_name": {
+          "classification_id": { "type": "text" },
+          "recognized_worship_type_id": { "type": "text" },
+          "name": {
             "type": "text",
             "fields": {
               "field": {
@@ -190,7 +241,7 @@
               }
             }
           },
-          "given_name": {
+          "classification_name": {
             "type": "text",
             "fields": {
               "field": {
@@ -198,8 +249,7 @@
               }
             }
           },
-          "mandates.organization_id": { "type": "text" },
-          "mandates.organization_province": {
+          "status": {
             "type": "text",
             "fields": {
               "field": {
@@ -207,7 +257,7 @@
               }
             }
           },
-          "mandates.organization_name": {
+          "recognized_worship_type_name": {
             "type": "text",
             "fields": {
               "field": {
@@ -215,7 +265,7 @@
               }
             }
           },
-          "mandates.organization_municipality": {
+          "province": {
             "type": "text",
             "fields": {
               "field": {
@@ -223,18 +273,180 @@
               }
             }
           },
-          "mandates.position_id": { "type": "text" },
-          "mandates.position_name": {
+          "municipality": {
             "type": "text",
             "fields": {
               "field": {
                 "type": "keyword"
               }
             }
-          },
-          "mandates.end_date": { "type": "date" }
+          }
         }
       }
-    }
+    },
+    {
+      "type": "re",
+      "on_path": "res",
+      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",
+      "properties": {
+        "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "classification_id": [
+          "http://www.w3.org/ns/org#classification",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "classification_name": [
+          "http://www.w3.org/ns/org#classification",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "status": [
+          "http://www.w3.org/ns/regorg#orgStatus",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "recognized_worship_type_id": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "recognized_worship_type_name": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "province": [
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "http://www.w3.org/ns/locn#adminUnitL2"
+        ],
+        "municipality": [
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ]
+      },
+      "mappings": {
+        "properties": {
+          "classification_id": { "type": "text" },
+          "recognized_worship_type_id": { "type": "text" },
+          "name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "classification_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "status": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "recognized_worship_type_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "municipality": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          }
+        }
+      }
+    },
+
+             {
+               "type": "unit",
+               "composite_types": ["cbe", "be","besluit", "re"],
+               "on_path": "units",
+               "properties": [
+                 {
+                   "name": "name",
+                   "mappings": {
+                     "cbe": "name",
+                     "besluit": "name",
+                     "re": "name",
+                     "be": "name"
+                   }
+                 },
+                 {
+                   "name": "classification_id",
+                   "mappings": {
+                     "cbe": "classification_id",
+                     "besluit": "classification_id",
+                     "re": "classification_id",
+                     "be": "classification_id"
+                   }
+                 },
+                 {
+                   "name": "classification_name",
+                   "mappings": {
+                     "cbe": "classification_name",
+                     "besluit": "classification_name",
+                     "re": "classification_name",
+                     "be": "classification_name"
+                   }
+                 },
+                 {
+                   "name": "status",
+                   "mappings": {
+                     "cbe": "status",
+                     "besluit": "status",
+                     "re": "status",
+                     "be": "status"
+                   }
+                 },
+                 {
+                   "name": "recognized_worship_type_name",
+                   "mappings": {
+                     "cbe": "recognized_worship_type_name",
+                     "besluit": "recognized_worship_type_name",
+                     "re": "recognized_worship_type_name",
+                     "be": "recognized_worship_type_name"
+                   }
+                 },
+                 {
+                   "name": "province",
+                   "mappings": {
+                     "cbe": "province",
+                     "besluit": "province",
+                     "re": "province",
+                     "be": "province"
+                   }
+                 },
+                 {
+                   "name": "municipality",
+                   "mappings": {
+                     "cbe": "municipality",
+                     "besluit": "municipality",
+                     "re": "municipality",
+                     "be": "municipality"
+                   }
+                 }
+                 
+               ]
+             }
   ]
 }
