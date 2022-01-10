@@ -344,6 +344,8 @@ services:
          LOG_SCOPE_DELTA: "debug"
 
   elasticsearch:
+    ports:
+      - "9200:9200"
     image: semtech/mu-search-elastic-backend:latest
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data

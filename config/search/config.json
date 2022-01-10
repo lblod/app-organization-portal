@@ -5,8 +5,8 @@
   "number_of_threads": 6,
   "types": [
     {
-      "type": "rust",
-      "on_path": "rusts",
+      "type": "goroutine",
+      "on_path": "goroutines",
       "rdf_type": "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
       "properties": {
         "classification_id": [
@@ -98,19 +98,24 @@
               }
             }
           },
-          "change_event_results.status": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
-              }
-            }
-          },
-          "change_event_results.event_date": {
-            "type": "date",
-            "fields": {
-              "field": {
-                "type": "keyword"
+          "change_event_results": {
+            "type": "nested",
+            "properties": {
+              "status": {
+                "type": "text",
+                "fields": {
+                  "field": {
+                    "type": "keyword"
+                  }
+                }
+              },
+              "event_date": {
+                "type": "date",
+                "fields": {
+                  "field": {
+                    "type": "keyword"
+                  }
+                }
               }
             }
           }
