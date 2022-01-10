@@ -1,0 +1,8 @@
+delete { GRAPH ?g {?s ?p ?o} }
+
+where {
+ GRAPH ?g {
+    ?s a ?type; ?p ?o.
+    filter(?type = <http://www.w3.org/ns/org#ChangeEvent> || ?p = <http://www.w3.org/ns/org#resultedFrom>)
+ }
+}
