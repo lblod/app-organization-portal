@@ -12,6 +12,7 @@
       "type": "cbe",
       "on_path": "cbes",
       "rdf_type": "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
+      "is_sub_class": true,
       "properties": {
         "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
         "classification_id": [
@@ -379,7 +380,7 @@
 
              {
                "type": "unit",
-               "composite_types": ["cbe", "be","besluit", "re"],
+               "composite_types": ["cbe", "be", "besluit", "re"],
                "on_path": "units",
                "properties": [
                  {
@@ -445,8 +446,62 @@
                      "be": "municipality"
                    }
                  }
-                 
-               ]
+               ],
+
+               "mappings": {
+                 "properties": {
+                   "classification_id": { "type": "text" },
+                   "recognized_worship_type_id": { "type": "text" },
+                   "name": {
+                     "type": "text",
+                     "fields": {
+                       "field": {
+                         "type": "keyword"
+                       }
+                     }
+                   },
+                   "classification_name": {
+                     "type": "text",
+                     "fields": {
+                       "field": {
+                         "type": "keyword"
+                       }
+                     }
+                   },
+                   "status": {
+                     "type": "text",
+                     "fields": {
+                       "field": {
+                         "type": "keyword"
+                       }
+                     }
+                   },
+                   "recognized_worship_type_name": {
+                     "type": "text",
+                     "fields": {
+                       "field": {
+                         "type": "keyword"
+                       }
+                     }
+                   },
+                   "province": {
+                     "type": "text",
+                     "fields": {
+                       "field": {
+                         "type": "keyword"
+                       }
+                     }
+                   },
+                   "municipality": {
+                     "type": "text",
+                     "fields": {
+                       "field": {
+                         "type": "keyword"
+                       }
+                     }
+                   }
+                 }
+               }
              }
   ]
 }
