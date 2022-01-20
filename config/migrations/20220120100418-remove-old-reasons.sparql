@@ -1,0 +1,11 @@
+DELETE {
+  GRAPH  <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s ?p ?o
+  }
+}
+ WHERE {
+  GRAPH  <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a <http://mu.semte.ch/vocabularies/ext/ReasonCode>;
+        ?p ?o.
+  }
+}
