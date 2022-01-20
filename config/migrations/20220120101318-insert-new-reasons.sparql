@@ -1,0 +1,37 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+ INSERT DATA {
+  GRAPH  <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/information-request-reason/3aeec145-acf3-4b6e-9c00-5b8e285736e0> a ext:ReasonCode,
+        skos:Concept;
+        mu:uuid "3aeec145-acf3-4b6e-9c00-5b8e285736e0";
+        skos:prefLabel "Aanmaken van een persoon".
+
+    <http://data.lblod.info/id/information-request-reason/3beec145-acf3-4b6e-9c00-5b8e285736e1> a ext:ReasonCode,
+        skos:Concept;
+        mu:uuid "3beec145-acf3-4b6e-9c00-5b8e285736e1";
+        skos:prefLabel "In het kader van administratief toezicht".
+
+    <http://data.lblod.info/id/information-request-reason/3beec145-acf3-4b6e-9c00-5b8e285736e2> a ext:ReasonCode,
+        skos:Concept;
+        mu:uuid "3beec145-acf3-4b6e-9c00-5b8e285736e2";
+        skos:prefLabel "In het kader van een screeningsdossier".
+
+    <http://data.lblod.info/id/information-request-reason/3beec145-acf3-4b6e-9c00-5b8e285736e3> a ext:ReasonCode,
+        skos:Concept;
+        mu:uuid "3beec145-acf3-4b6e-9c00-5b8e285736e3";
+        skos:prefLabel "In het kader van een erkenningsdossier".
+
+    <http://data.lblod.info/id/information-request-reason/3beec145-acf3-4b6e-9c00-5b8e285736e4> a ext:ReasonCode,
+        skos:Concept;
+        mu:uuid "3beec145-acf3-4b6e-9c00-5b8e285736e4";
+        skos:prefLabel "In het kader van een wijzigingsdossier".
+
+    <http://data.lblod.info/id/information-request-reason/3beec145-acf3-4b6e-9c00-5b8e285736e5> a ext:ReasonCode,
+        skos:Concept;
+        mu:uuid "3beec145-acf3-4b6e-9c00-5b8e285736e5";
+        skos:prefLabel "In het kader van een informatie-uitwisseling (cfr. protocol) met een overheidsinstelling".
+  }
+}
