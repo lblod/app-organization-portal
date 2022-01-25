@@ -1,0 +1,18 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+    GRAPH ?g {
+      ?changeEventResult org:organization ?organization .
+    }
+} INSERT {
+    GRAPH ?g {
+      ?changeEventResult ext:resultingOrganization ?organization .
+    }
+} WHERE {
+  GRAPH ?g {
+    ?changeEventResult a <http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat> ;
+            org:organization ?organization .
+  }
+}
