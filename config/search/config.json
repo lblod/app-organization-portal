@@ -109,68 +109,71 @@
         }
       }
     },
-
     {
       "type": "person",
       "on_path": "people",
-      "rdf_type": "http://www.w3.org/ns/person#Person",
+      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
       "properties": {
-        "given_name": "http://xmlns.com/foaf/0.1/givenName",
-        "family_name": "http://xmlns.com/foaf/0.1/familyName",
-        "first_name_used": "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
-        "mandates": {
-          "via": "http://data.vlaanderen.be/ns/mandaat#isAangesteldAls",
-          "rdf_type": "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-          "properties": {
-            "end_date": "http://data.vlaanderen.be/ns/mandaat#einde",
-            "organization_id": [
-              "http://www.w3.org/ns/org#holds",
-              "^http://www.w3.org/ns/org#hasPost",
-              "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-              "http://data.vlaanderen.be/ns/besluit#bestuurt",
-              "http://mu.semte.ch/vocabularies/core/uuid"
-            ],
-            "organization_name": [
-              "http://www.w3.org/ns/org#holds",
-              "^http://www.w3.org/ns/org#hasPost",
-              "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-              "http://data.vlaanderen.be/ns/besluit#bestuurt",
-              "http://www.w3.org/2004/02/skos/core#prefLabel"
-            ],
-            "organization_municipality": [
-              "http://www.w3.org/ns/org#holds",
-              "^http://www.w3.org/ns/org#hasPost",
-              "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-              "http://data.vlaanderen.be/ns/besluit#bestuurt",
-              "http://www.w3.org/ns/org#hasPrimarySite",
-              "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-              "https://data.vlaanderen.be/ns/adres#gemeentenaam"
-            ],
-            "organization_province": [
-              "http://www.w3.org/ns/org#holds",
-              "^http://www.w3.org/ns/org#hasPost",
-              "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-              "http://data.vlaanderen.be/ns/besluit#bestuurt",
-              "http://www.w3.org/ns/org#hasPrimarySite",
-              "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-              "http://www.w3.org/ns/locn#adminUnitL2"
-            ],
-            "position_id": [
-              "http://www.w3.org/ns/org#holds",
-              "http://www.w3.org/ns/org#role",
-              "http://mu.semte.ch/vocabularies/core/uuid"
-            ],
-            "position_name": [
-              "http://www.w3.org/ns/org#holds",
-              "http://www.w3.org/ns/org#role",
-              "http://www.w3.org/2004/02/skos/core#prefLabel"
-            ]
-          }
-        }
+        "given_name": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan","http://xmlns.com/foaf/0.1/givenName"],
+        "id": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan","http://mu.semte.ch/vocabularies/core/uuid"],
+        "family_name": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan","http://xmlns.com/foaf/0.1/familyName"],
+        "first_name_used": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan","https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"],
+        "end_date": "http://data.vlaanderen.be/ns/mandaat#einde",
+        "organization_id": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://www.w3.org/ns/org#hasPost",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "organization_name": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://www.w3.org/ns/org#hasPost",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "organization_municipality": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://www.w3.org/ns/org#hasPost",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ],
+        "organization_province": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://www.w3.org/ns/org#hasPost",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "http://www.w3.org/ns/locn#adminUnitL2"
+        ],
+        "position_id": [
+          "http://www.w3.org/ns/org#holds",
+          "http://www.w3.org/ns/org#role",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "position_name": [
+          "http://www.w3.org/ns/org#holds",
+          "http://www.w3.org/ns/org#role",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ]
       },
+
       "mappings": {
         "properties": {
           "family_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "id": {
             "type": "text",
             "fields": {
               "field": {
@@ -186,8 +189,8 @@
               }
             }
           },
-          "mandates.organization_id": { "type": "text" },
-          "mandates.organization_province": {
+          "organization_id": { "type": "text" },
+          "organization_province": {
             "type": "text",
             "fields": {
               "field": {
@@ -195,7 +198,7 @@
               }
             }
           },
-          "mandates.organization_name": {
+          "organization_name": {
             "type": "text",
             "fields": {
               "field": {
@@ -203,7 +206,7 @@
               }
             }
           },
-          "mandates.organization_municipality": {
+          "organization_municipality": {
             "type": "text",
             "fields": {
               "field": {
@@ -211,8 +214,8 @@
               }
             }
           },
-          "mandates.position_id": { "type": "text" },
-          "mandates.position_name": {
+          "position_id": { "type": "text" },
+          "position_name": {
             "type": "text",
             "fields": {
               "field": {
@@ -220,7 +223,7 @@
               }
             }
           },
-          "mandates.end_date": { "type": "date" }
+          "end_date": { "type": "date" }
         }
       }
     }

@@ -340,11 +340,11 @@ services:
       - db:database
     volumes:
       - ./config/search:/config
-      - /Users/bittichn/mu-search/:/app/
     environment:
-         RACK_ENV: "development"
          LOG_SCOPE_DELTA: "debug"
          LOG_SCOPE_UPDATE_HANDLER: "debug"
+         LOG_SCOPE_SEARCH: "debug"
+         LOG_SCOPE_ELASTICSEARCH: "debug"
 
   elasticsearch:
     ports:
