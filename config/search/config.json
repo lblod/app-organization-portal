@@ -160,6 +160,11 @@
           "http://www.w3.org/ns/org#holds",
           "http://www.w3.org/ns/org#role",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "planned_end_date": [
+          "http://www.w3.org/ns/org#holds",
+          "http://www.w3.org/ns/org#role",
+          "https://data.lblod.info/vocabularies/erediensten/geplandeEinddatumAanstelling"
         ]
       },
 
@@ -223,7 +228,8 @@
               }
             }
           },
-          "end_date": { "type": "date" }
+          "end_date": { "type": "date" },
+          "planned_end_date": { "type": "date" }
         }
       }
     }
