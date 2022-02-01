@@ -1,12 +1,7 @@
 {
   "automatic_index_updates": true,
   "persist_indexes": true,
-  "number_of_threads": 6,
-  "eager_indexing_groups": [
-    [{ "variables": [], "name": "acmidm-lezer" }],
-    [{ "variables": [], "name": "acmidm-editeerder" }],
-    [{ "variables": [], "name": "acmidm-beheerder" }]
-  ],
+  "number_of_threads": 10,
   "types": [
     {
       "type": "unit",
@@ -161,11 +156,7 @@
           "http://www.w3.org/ns/org#role",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "planned_end_date": [
-          "http://www.w3.org/ns/org#holds",
-          "http://www.w3.org/ns/org#role",
-          "https://data.lblod.info/vocabularies/erediensten/geplandeEinddatumAanstelling"
-        ]
+        "planned_end_date": "https://data.lblod.info/vocabularies/erediensten/geplandeEinddatumAanstelling"
       },
 
       "mappings": {
