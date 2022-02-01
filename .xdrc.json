@@ -1,5 +1,17 @@
 {
   "commands": {
+    "down": {
+      "command": "docker-compose",
+      "args": [
+        "down"
+      ]
+    },
+    "kill": {
+      "command": "docker-compose",
+      "args": [
+        "kill"
+      ]
+    },
     "ps": {
       "command": "docker-compose",
       "args": [
@@ -12,16 +24,17 @@
         "logs"
       ]
     },
+    "restart": {
+      "command": "docker-compose",
+      "args": [
+        "restart"
+      ]
+    },
     "rm": {
       "command": "docker-compose",
       "args": [
-        "rm"
-      ]
-    },
-    "down": {
-      "command": "docker-compose",
-      "args": [
-        "down"
+        "rm",
+        "-y"
       ]
     },
     "up": {
