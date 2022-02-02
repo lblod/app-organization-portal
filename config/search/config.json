@@ -2,6 +2,11 @@
   "automatic_index_updates": true,
   "persist_indexes": true,
   "number_of_threads": 10,
+  "eager_indexing_groups": [
+    [{ "variables": [], "name": "acmidm-lezer" }],
+    [{ "variables": [], "name": "acmidm-editeerder" }],
+    [{ "variables": [], "name": "acmidm-beheerder" }]
+  ],
   "types": [
     {
       "type": "unit",
@@ -105,141 +110,6 @@
       }
     },
     {
-      "type": "mandate",
-      "on_path": "mandates",
-      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
-      "properties": {
-        "given_name": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan","http://xmlns.com/foaf/0.1/givenName"],
-        "id": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan","http://mu.semte.ch/vocabularies/core/uuid"],
-        "family_name": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan","http://xmlns.com/foaf/0.1/familyName"],
-        "first_name_used": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan","https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"],
-        "end_date": "http://data.vlaanderen.be/ns/mandaat#einde",
-        "organization_id": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://www.w3.org/ns/org#hasPost",
-          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-          "http://data.vlaanderen.be/ns/besluit#bestuurt",
-          "http://mu.semte.ch/vocabularies/core/uuid"
-        ],
-        "organization_name": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://www.w3.org/ns/org#hasPost",
-          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-          "http://data.vlaanderen.be/ns/besluit#bestuurt",
-          "http://www.w3.org/2004/02/skos/core#prefLabel"
-        ],
-        "organization_municipality": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://www.w3.org/ns/org#hasPost",
-          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-          "http://data.vlaanderen.be/ns/besluit#bestuurt",
-          "http://www.w3.org/ns/org#hasPrimarySite",
-          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
-        ],
-        "organization_province": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://www.w3.org/ns/org#hasPost",
-          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-          "http://data.vlaanderen.be/ns/besluit#bestuurt",
-          "http://www.w3.org/ns/org#hasPrimarySite",
-          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-          "http://www.w3.org/ns/locn#adminUnitL2"
-        ],
-        "position_id": [
-          "http://www.w3.org/ns/org#holds",
-          "http://www.w3.org/ns/org#role",
-          "http://mu.semte.ch/vocabularies/core/uuid"
-        ],
-        "position_name": [
-          "http://www.w3.org/ns/org#holds",
-          "http://www.w3.org/ns/org#role",
-          "http://www.w3.org/2004/02/skos/core#prefLabel"
-        ],
-        "planned_end_date": "https://data.lblod.info/vocabularies/erediensten/geplandeEinddatumAanstelling"
-      },
-
-      "mappings": {
-        "properties": {
-          "family_name": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
-              }
-            }
-          },
-          "id": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
-              }
-            }
-          },
-          "given_name": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
-              }
-            }
-          },
-          "organization_id": { "type": "text" },
-          "organization_province": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
-              }
-            }
-          },
-          "organization_name": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
-              }
-            }
-          },
-          "organization_municipality": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
-              }
-            }
-          },
-          "position_id": { "type": "text" },
-          "position_name": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
-              }
-            }
-          },
-          "end_date": { "type": "date" },
-          "planned_end_date": { "type": "date" }
-        }
-      }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ,
-    {
       "type": "person",
       "on_path": "people",
       "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
@@ -291,11 +161,7 @@
           "http://www.w3.org/ns/org#role",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "planned_end_date": [
-          "http://www.w3.org/ns/org#holds",
-          "http://www.w3.org/ns/org#role",
-          "https://data.lblod.info/vocabularies/erediensten/geplandeEinddatumAanstelling"
-        ]
+        "planned_end_date": "https://data.lblod.info/vocabularies/erediensten/geplandeEinddatumAanstelling"
       },
 
       "mappings": {
