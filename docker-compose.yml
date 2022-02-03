@@ -332,3 +332,27 @@ services:
 ################################################################################
 # DELTA ORGANIZATIONS: END
 ################################################################################
+
+
+################################################################################
+# MU SEARCH - TODO USE THE CORRECT IMAGE ONCE INHERITANCE IS IN MU SEARCH
+################################################################################
+  search:
+      image: nbittich/mu-search:wip
+      links:
+        - db:database
+      volumes:
+        - ./config/search:/config
+    # environment:
+          # LOG_SCOPE_DELTA: "debug"
+          # LOG_SCOPE_UPDATE_HANDLER: "debug"
+          # LOG_SCOPE_SEARCH: "debug"
+          # LOG_SCOPE_ELASTICSEARCH: "info"
+  elasticsearch:
+    ports:
+      - "9200:9200"
+    image: semtech/mu-search-elastic-backend:latest
+    volumes:
+      - ./data/elasticsearch/:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node 
