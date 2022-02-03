@@ -343,11 +343,6 @@ services:
         - db:database
       volumes:
         - ./config/search:/config
-    # environment:
-          # LOG_SCOPE_DELTA: "debug"
-          # LOG_SCOPE_UPDATE_HANDLER: "debug"
-          # LOG_SCOPE_SEARCH: "debug"
-          # LOG_SCOPE_ELASTICSEARCH: "info"
   elasticsearch:
     ports:
       - "9200:9200"
