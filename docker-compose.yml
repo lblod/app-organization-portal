@@ -230,7 +230,7 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-pub-graph-maintainer-administrative-units:
-    image: lblod/delta-producer-publication-graph-maintainer:0.7.0
+    image: lblod/delta-producer-publication-graph-maintainer:0.11.1
     environment:
       MAX_BODY_SIZE: "50mb"
       JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
@@ -291,7 +291,7 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-pub-graph-maintainer-organizations:
-    image: lblod/delta-producer-publication-graph-maintainer:0.7.0
+    image: lblod/delta-producer-publication-graph-maintainer:0.11.1
     environment:
       MAX_BODY_SIZE: "50mb"
       JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
