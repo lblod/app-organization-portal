@@ -46,9 +46,10 @@
       },
       "relationships": {
         "mandatories": {
-          "predicate": "mandaat:isAangesteldAls",
+          "predicate": "mandaat:isBestuurlijkeAliasVan",
           "target": "mandatories",
-          "cardinality": "many"
+          "cardinality": "many",
+          "inverse": true
         },
         "agents-in-position": {
           "predicate": "org:heldBy",
