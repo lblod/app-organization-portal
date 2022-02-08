@@ -9,8 +9,8 @@
   ],
   "types": [
     {
-      "type": "person",
-      "on_path": "people",
+      "type": "mandatory",
+      "on_path": "mandatories",
       "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
       "properties": {
         "given_name": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan","http://xmlns.com/foaf/0.1/givenName"],
@@ -59,8 +59,7 @@
           "http://www.w3.org/ns/org#holds",
           "http://www.w3.org/ns/org#role",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
-        ],
-        "planned_end_date": "https://data.lblod.info/vocabularies/erediensten/geplandeEinddatumAanstelling"
+        ]
       },
 
       "mappings": {
@@ -123,8 +122,118 @@
               }
             }
           },
-          "end_date": { "type": "date" },
-          "planned_end_date": { "type": "date" }
+          "end_date": { "type": "date" }
+        }
+      }
+    },
+    {
+      "type": "minister",
+      "on_path": "ministers",
+      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
+      "sub_types": ["http://data.lblod.info/vocabularies/contacthub/AgentInPositie"],
+      "properties": {
+        "given_name": ["http://www.w3.org/ns/org#heldBy","http://xmlns.com/foaf/0.1/givenName"],
+        "id": ["http://www.w3.org/ns/org#heldBy","http://mu.semte.ch/vocabularies/core/uuid"],
+        "family_name": ["http://www.w3.org/ns/org#heldBy","http://xmlns.com/foaf/0.1/familyName"],
+        "first_name_used": ["http://www.w3.org/ns/org#heldBy","https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"],
+        "end_date": "http://data.lblod.info/vocabularies/contacthub/eindedatum",
+        "organization_id": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "organization_name": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "organization_municipality": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ],
+        "organization_province": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "http://www.w3.org/ns/locn#adminUnitL2"
+        ],
+        "position_id": [
+          "http://www.w3.org/ns/org#holds",
+          "http://data.lblod.info/vocabularies/erediensten/functie",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "position_name": [
+          "http://www.w3.org/ns/org#holds",
+          "http://data.lblod.info/vocabularies/erediensten/functie",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ]
+      },
+
+      "mappings": {
+        "properties": {
+          "family_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "id": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "given_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "organization_id": { "type": "text" },
+          "organization_province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "organization_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "organization_municipality": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "position_id": { "type": "text" },
+          "position_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "end_date": { "type": "date" }
         }
       }
     }
