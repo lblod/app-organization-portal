@@ -236,7 +236,91 @@
           "end_date": { "type": "date" }
         }
       }
-    }
+    },
+    {
+      "type" : "person",
+      "composite_types" : ["minister", "mandatory"],
+      "on_path" : "people",
+      "properties" : [
+          {
+              "name" : "given_name",
+              "mappings" : {
+                  "minister" : "given_name",
+                  "mandatory" : "given_name"
+              }
+          },
+          {
+              "name" : "id",
+              "mappings" : {
+                  "minister" : "id",
+                  "mandatory" : "id"
+              }
+          },
+          {
+              "name" : "family_name",
+              "mappings" : {
+                  "minister" : "family_name",
+                  "mandatory" : "family_name"
+              }
+          },
+          {
+              "name" : "first_name_used",
+              "mappings" : {
+                  "minister" : "first_name_used",
+                  "mandatory" : "first_name_used"
+              }
+          },
+          {
+              "name" : "end_date",
+              "mappings" : {
+                  "minister" : "end_date",
+                  "mandatory" : "end_date"
+              }
+          },
+          {
+              "name" : "organization_id",
+              "mappings" : {
+                  "minister" : "organization_id",
+                  "mandatory" : "organization_id"
+              }
+          },
+          {
+              "name" : "organization_name",
+              "mappings" : {
+                  "minister" : "organization_name",
+                  "mandatory" : "organization_name"
+              }
+          },
+          {
+              "name" : "organization_municipality",
+              "mappings" : {
+                  "minister" : "organization_municipality",
+                  "mandatory" : "organization_municipality"
+              }
+          },
+          {
+              "name" : "organization_province",
+              "mappings" : {
+                  "minister" : "organization_province",
+                  "mandatory" : "organization_province"
+              }
+          },
+          {
+              "name" : "position_id",
+              "mappings" : {
+                  "minister" : "position_id",
+                  "mandatory" : "position_id"
+              }
+          },
+          {
+              "name" : "position_name",
+              "mappings" : {
+                  "minister" : "position_name",
+                  "mandatory" : "position_name"
+              }
+          }
+      ]
+   }
 
   ]
 }
