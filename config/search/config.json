@@ -2,11 +2,6 @@
   "automatic_index_updates": true,
   "persist_indexes": true,
   "number_of_threads": 10,
-  "eager_indexing_groups": [
-    [{ "variables": [], "name": "acmidm-lezer" }],
-    [{ "variables": [], "name": "acmidm-editeerder" }],
-    [{ "variables": [], "name": "acmidm-beheerder" }]
-  ],
   "types": [
     {
       "type": "mandatory",
@@ -319,7 +314,70 @@
                   "mandatory" : "position_name"
               }
           }
-      ]
+      ],
+      "mappings": {
+        "properties": {
+          "family_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "id": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "given_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "organization_id": { "type": "text" },
+          "organization_province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "organization_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "organization_municipality": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "position_id": { "type": "text" },
+          "position_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "end_date": { "type": "date" }
+        }
+      }
    }
 
   ]
