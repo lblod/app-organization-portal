@@ -344,8 +344,6 @@ services:
       volumes:
         - ./config/search:/config
   elasticsearch:
-    ports:
-      - "9200:9200"
     image: semtech/mu-search-elastic-backend:latest
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
