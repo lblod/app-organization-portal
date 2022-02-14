@@ -341,6 +341,7 @@ services:
       image: nbittich/mu-search:wip
       links:
         - db:database
+      restart: always
       volumes:
         - ./config/search:/config
   elasticsearch:
@@ -349,3 +350,5 @@ services:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node 
+    restart: always
+    
