@@ -195,6 +195,16 @@ services:
       - db:database
     volumes:
       - ./config/jobs-controller/:/config/
+  sync-with-sharepoint:
+    image: lblod/op-sync-with-sharepoint-service
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+    volumes:
+      - ./config/sharepoint/sync/:/config/
 ################################################################################
 # DELTA GENERAL
 ################################################################################
@@ -350,9 +360,4 @@ services:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node 
-    restart: always
-  sync-with-sharepoint:
-    image: lblod/op-sync-with-sharepoint-service  
-    links:
-      - db:database
     restart: always

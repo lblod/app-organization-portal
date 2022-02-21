@@ -1,0 +1,88 @@
+{
+  "objects": [
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "mappings": [
+        {
+          "op": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "sl": "Titel"
+        }
+      ],
+      "pathToSharepointId": "?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/adms#identifier> ?sharepointIdentifier .\n ?sharepointIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?sharepointIdentifierDetails .\n ?sharepointIdentifierDetails <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?sharepointId ."
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
+      "mappings": [
+        {
+          "op": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "sl": "Type Entiteit"
+        }
+      ],
+      "pathToSharepointId": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/org#classification> ?s ;\n\t <http://www.w3.org/ns/adms#identifier> ?sharepointIdentifier .\n ?sharepointIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?sharepointIdentifierDetails .\n ?sharepointIdentifierDetails <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?sharepointId ."
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode",
+      "mappings": [
+        {
+          "op": "http://www.w3.org/2004/02/skos/core#prefLabel",
+          "sl": "Organisatiestatus"
+        }
+      ],
+      "pathToSharepointId": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/regorg#orgStatus> ?s ;\n\t <http://www.w3.org/ns/adms#identifier> ?sharepointIdentifier .\n ?sharepointIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?sharepointIdentifierDetails .\n ?sharepointIdentifierDetails <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?sharepointId ."
+    },
+    {
+      "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "mappings": [
+        {
+          "op": "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator",
+          "sl": "KBOnr"
+        }
+      ],
+      "pathToSharepointId": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/adms#identifier> ?sharepointIdentifier ;\n\t <http://www.w3.org/ns/adms#identifier> ?kboIdentifier .\n ?sharepointIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?sharepointIdentifierDetails .\n ?sharepointIdentifierDetails <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?sharepointId .\n ?kboIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"KBO nummer\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?s ."
+    },
+    {
+      "type": "http://www.w3.org/ns/locn#Address",
+      "mappings": [
+        {
+          "op": "http://www.w3.org/ns/locn#thoroughfare",
+          "sl": "Straat"
+        },
+        {
+          "op": "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
+          "sl": "Huisnr"
+        },
+        {
+          "op": "http://www.w3.org/ns/locn#postCode",
+          "sl": "Postcode van de organisatie"
+        },
+        {
+          "op": "https://data.vlaanderen.be/ns/adres#gemeentenaam",
+          "sl": "Gemeente van de organisatie"
+        },
+        {
+          "op": "http://www.w3.org/ns/locn#adminUnitL2",
+          "sl": "Provincie van de organisatie"
+        }
+      ],
+      "pathToSharepointId": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?s ;\n\t <http://www.w3.org/ns/adms#identifier> ?sharepointIdentifier .\n ?sharepointIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?sharepointIdentifierDetails .\n ?sharepointIdentifierDetails <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?sharepointId ."
+    },
+    {
+      "type": "http://schema.org/ContactPoint",
+      "mappings": [
+        {
+          "op": "http://schema.org/telephone",
+          "sl": "Algemeen telefoonnr"
+        },
+        {
+          "op": "http://xmlns.com/foaf/0.1/page",
+          "sl": "Website"
+        },
+        {
+          "op": "http://schema.org/email",
+          "sl": "Algemeen mailadres"
+        }
+      ],
+      "pathToSharepointId": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<http://www.w3.org/ns/org#siteAddress> ?s ;\n\t <http://www.w3.org/ns/adms#identifier> ?sharepointIdentifier .\n ?sharepointIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?sharepointIdentifierDetails .\n ?sharepointIdentifierDetails <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?sharepointId ."
+    }
+  ]
+}
