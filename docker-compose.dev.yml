@@ -58,6 +58,10 @@ services:
     restart: "no"
   search:
     restart: "no"
+    environment:
+      RACK_ENV: "development"
+    volumes:
+      - /home/nbittich/lblod/mu-search:/app/
   elasticsearch:
     restart: "no"
   file:
