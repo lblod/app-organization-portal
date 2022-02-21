@@ -351,4 +351,8 @@ services:
     environment:
       - discovery.type=single-node 
     restart: always
-    
+  sync-with-sharepoint:
+    image: lblod/op-sync-with-sharepoint-service  
+    links:
+      - db:database
+    restart: always
