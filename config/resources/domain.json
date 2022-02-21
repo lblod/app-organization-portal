@@ -46,9 +46,10 @@
       },
       "relationships": {
         "mandatories": {
-          "predicate": "mandaat:isAangesteldAls",
+          "predicate": "mandaat:isBestuurlijkeAliasVan",
           "target": "mandatories",
-          "cardinality": "many"
+          "cardinality": "many",
+          "inverse": true
         },
         "agents-in-position": {
           "predicate": "org:heldBy",
@@ -210,6 +211,10 @@
         "website": {
           "type": "uri",
           "predicate": "foaf:page"
+        },
+        "type": {
+          "type": "string",
+          "predicate": "schema:contactType"
         }
       }, 
       "relationships": {
@@ -311,7 +316,7 @@
           "inverse": true
         },
         "change-event-results": {
-          "predicate": "org:organization",
+          "predicate": "ext:resultingOrganization",
           "target": "change-event-results",
           "cardinality": "many",
           "inverse": true

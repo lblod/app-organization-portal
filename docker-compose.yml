@@ -152,13 +152,13 @@ services:
     restart: always
     logging: *default-logging
   adressenregister:
-    image: lblod/adressenregister-fuzzy-search-service:0.5.0
+    image: lblod/adressenregister-fuzzy-search-service:0.6.0
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-contact-hub:1.5.0
+    image: lblod/frontend-contact-hub:1.6.0
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
@@ -332,3 +332,23 @@ services:
 ################################################################################
 # DELTA ORGANIZATIONS: END
 ################################################################################
+
+
+################################################################################
+# MU SEARCH - TODO USE THE CORRECT IMAGE ONCE INHERITANCE IS IN MU SEARCH
+################################################################################
+  search:
+      image: nbittich/mu-search:wip
+      links:
+        - db:database
+      restart: always
+      volumes:
+        - ./config/search:/config
+  elasticsearch:
+    image: semtech/mu-search-elastic-backend:latest
+    volumes:
+      - ./data/elasticsearch/:/usr/share/elasticsearch/data
+    environment:
+      - discovery.type=single-node 
+    restart: always
+    
