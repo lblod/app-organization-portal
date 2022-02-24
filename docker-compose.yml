@@ -79,7 +79,7 @@ services:
     restart: always
     logging: *default-logging
   kalliope-api:
-    image: lblod/jsonld-delta-service:0.5.4
+    image: lblod/jsonld-delta-service:0.5.5-beta.1
     volumes:
       - ./config/kalliope:/config
       - ./data/files:/share
@@ -90,6 +90,7 @@ services:
       LOGGING_LEVEL: "INFO"
       SPARQL_ENDPOINT: "http://db:8890/sparql"
       LIMIT_SIZE: "10000"
+      MU_AUTH_SUDO: "false"
     labels:
       - "logging=true"
     restart: always
@@ -351,4 +352,3 @@ services:
     environment:
       - discovery.type=single-node 
     restart: always
-    
