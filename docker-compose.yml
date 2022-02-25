@@ -18,7 +18,7 @@ services:
     restart: always
     logging: *default-logging
   dispatcher:
-    image: semtech/mu-dispatcher:latest
+    image: semtech/mu-dispatcher:2.1.0-beta.2
     volumes:
       - ./config/dispatcher:/config
     labels:
@@ -61,7 +61,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:feature-all-errors-as-json-api-errors
+    image: semtech/mu-cl-resources:feature-all-errors-as-json-api-errors # Bump to fixed version when merged and release
     links:
       - db:database
     volumes:
@@ -127,7 +127,7 @@ services:
     links:
       - db:database
   accountdetail:
-    image: lblod/account-detail-service:latest
+    image: lblod/account-detail-service:0.1.0
     labels:
       - "logging=true"
     environment:
@@ -338,14 +338,14 @@ services:
 # MU SEARCH - TODO USE THE CORRECT IMAGE ONCE INHERITANCE IS IN MU SEARCH
 ################################################################################
   search:
-      image: nbittich/mu-search:wip
-      links:
-        - db:database
-      restart: always
-      volumes:
-        - ./config/search:/config
+    image: nbittich/mu-search:wip # Bump to fixed version when merged and release to the original repo
+    links:
+      - db:database
+    restart: always
+    volumes:
+      - ./config/search:/config
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:latest
+    image: semtech/mu-search-elastic-backend:1.0.1
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
     environment:
