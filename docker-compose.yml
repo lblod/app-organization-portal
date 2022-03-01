@@ -200,7 +200,7 @@ services:
 # DELTA GENERAL
 ################################################################################
   delta-producer-dump-file-publisher:
-    image: lblod/delta-producer-dump-file-publisher:0.4.0
+    image: bdevloed/delta-producer-dump-file-publisher:0.5.0-beta
     volumes:
       - ./config/delta-producer/dump-file-publisher:/config
       - ./data/files:/share
