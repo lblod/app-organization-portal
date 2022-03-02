@@ -282,7 +282,7 @@ services:
       DUMP_FILE_CREATION_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/organizations'
       INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations'
       HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations'
-      CRON_PATTERN_DUMP_JOB: '42 * * * *' # At second :30, at minute :09, every 2 hours between hours 08am and 18pm, every day between Monday and Friday, every month
+      CRON_PATTERN_DUMP_JOB: '42 * * * *' # At minute 42 every hour
       CRON_PATTERN_HEALING_JOB: '0 0 4 * * *' # everyday at 4 AM
       START_INITIAL_SYNC: 'false' # prefer to disable it now. We want to have feeling with how the DB acts.
     labels:
