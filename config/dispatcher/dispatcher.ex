@@ -222,6 +222,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://login/sessions/"
   end
 
+  ###############################################################
+  # SEARCH
+  ###############################################################
+
+  match "/search/*path", %{  accept: %{ json: true }, layer: :api_services} do
+   IO.puts("hey")
+    Proxy.forward conn, path, "http://search/"
+  end
 
   ###############
   # API SERVICES
@@ -229,10 +237,6 @@ defmodule Dispatcher do
 
   match "/v3/api-docs/*path", %{ layer: :api_services, accept: %{ json: true } } do
     forward conn, path, "http://kalliope-api/v3/api-docs/"
-  end
-
-  match "/changes/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://kalliope-api/changes/"
   end
 
   match "/consolidated/*path", %{ layer: :api_services, accept: %{ json: true } } do
