@@ -42,6 +42,7 @@ DELETE {
       ?address adres:gemeentenaam ?gemeente_s.
     }
 } WHERE {
+  VALUES ?g { <http://mu.semte.ch/graphs/organisatieportaal> <http://redpencil.data.gift/id/deltas/producer/organizations>}
   GRAPH ?g {
     BIND("REPLACE_ME_WITH_A_RANDOM_STRING" AS ?salt).
     ?person a person:Person.
