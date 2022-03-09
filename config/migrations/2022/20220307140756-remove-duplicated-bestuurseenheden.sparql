@@ -1,0 +1,77 @@
+# Splitting the query in two because of execution time
+
+## Links to the bestuur
+
+
+
+DELETE {
+  GRAPH ?g {
+    ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur .
+    ?orgaanInTijd ?porgaanInTijd ?oorgaanInTijd .
+    ?orgaan ?porgaan ?oorgaan .
+    ?betrokken ?pbetrokken ?obetrokken .
+    ?eenheid <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> ?betrokken .
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES ?bestuur {
+      <http://data.lblod.info/id/besturenVanDeEredienst/6183A207375CFC000A000933>
+      <http://data.lblod.info/id/besturenVanDeEredienst/61AE0A9B3C1A230C43B44FFF>
+    }
+
+    ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur .
+
+    OPTIONAL {
+      ?orgaanInTijd <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur ;
+        ?porgaanInTijd ?oorgaanInTijd .
+      
+      ?orgaan <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaanInTijd ;
+        ?porgaan ?oorgaan .
+    }
+
+    OPTIONAL {
+      ?betrokken <http://www.w3.org/ns/org#organization> ?bestuur ;
+        ?pbetrokken ?obetrokken .
+      ?eenheid <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> ?betrokken .
+    }
+  }
+}
+
+;
+
+## Links from the bestuur
+
+DELETE {
+  GRAPH ?g {
+    ?bestuur ?pbestuur ?obestuur .
+    ?primarySite ?pprimarySite ?oprimarySite .
+    ?address ?paddress ?oaddress .
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+    ?identifier ?pidentifier ?oidentifier .
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES ?bestuur {
+      <http://data.lblod.info/id/besturenVanDeEredienst/6183A207375CFC000A000933>
+      <http://data.lblod.info/id/besturenVanDeEredienst/61AE0A9B3C1A230C43B44FFF>
+    }
+
+    ?bestuur <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite ;
+      <http://www.w3.org/ns/adms#identifier> ?identifier ;
+      ?pbestuur ?obestuur .
+
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address ;
+      <http://www.w3.org/ns/org#siteAddress> ?contactPoint ;
+      ?pprimarySite ?oprimarySite .
+
+    ?address ?paddress ?oaddress .
+
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+
+    ?identifier <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier ;
+      ?pidentifier ?oidentifier .
+
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+}
