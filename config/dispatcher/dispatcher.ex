@@ -195,6 +195,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/decisions/"
   end
 
+  match "/decision-activities/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/decision-activities/"
+  end
 
   ###############
   # LOGIN
