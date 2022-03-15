@@ -10,6 +10,7 @@ defmodule Acl.UserGroups.Config do
  @protected_resource_type [
                         "http://www.w3.org/ns/org#Organization",
                         "http://data.vlaanderen.be/ns/besluit#Besluit",
+                        "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
