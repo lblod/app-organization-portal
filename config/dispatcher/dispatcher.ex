@@ -254,6 +254,14 @@ defmodule Dispatcher do
     forward conn, path, "http://privacy/person-information-requests"
   end
 
+  match "/person-information-ask/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy/person-information-ask/"
+  end
+
+  match "/person-information-validate-ssn/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy/person-information-validate-ssn/"
+  end
+
   get "/uri-info/*path", %{ layer: :api_services, accept: %{ json: true } } do
     forward conn, path, "http://uri-info/"
   end

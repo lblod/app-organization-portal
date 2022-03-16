@@ -138,7 +138,7 @@ services:
     restart: always
     logging: *default-logging
   privacy:
-    image: lblod/privacy-centric-service:0.3.0
+    image: lblod/privacy-centric-service:validate-ssn
     labels:
       - "logging=true"
     environment:
