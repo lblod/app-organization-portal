@@ -1,0 +1,19 @@
+# Deletes 2 worships services and their attributes (id, address, ...)
+
+DELETE {
+  GRAPH ?g {
+    ?bestuur ?p ?o.
+    ?o ?p2 ?o2.
+    ?o2 ?p3 ?o3.
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES ?bestuur {
+      <http://data.lblod.info/id/besturenVanDeEredienst/616FE3A6375CFC000A00088B>
+      <http://data.lblod.info/id/besturenVanDeEredienst/61839F8F375CFC000A00092B>
+    }
+    ?bestuur ?p ?o.
+    ?o ?p2 ?o2.
+    ?o2 ?p3 ?o3.
+  }
+}
