@@ -1,10 +1,12 @@
-# Deletes 2 worships services and their attributes (id, address, ...)
-
 DELETE {
   GRAPH ?g {
-    ?bestuur ?p ?o.
-    ?o ?p2 ?o2.
-    ?o2 ?p3 ?o3.
+    ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur .
+    ?bestuur ?pbestuur ?obestuur .
+    ?primarySite ?pprimarySite ?oprimarySite .
+    ?address ?paddress ?oaddress .
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+    ?identifier ?pidentifier ?oidentifier .
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
   }
 } WHERE {
   GRAPH ?g {
@@ -12,8 +14,23 @@ DELETE {
       <http://data.lblod.info/id/besturenVanDeEredienst/616FE3A6375CFC000A00088B>
       <http://data.lblod.info/id/besturenVanDeEredienst/61839F8F375CFC000A00092B>
     }
-    ?bestuur ?p ?o.
-    ?o ?p2 ?o2.
-    ?o2 ?p3 ?o3.
+
+    ?bestuur <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite ;
+      <http://www.w3.org/ns/adms#identifier> ?identifier ;
+      ?pbestuur ?obestuur .
+
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address ;
+      <http://www.w3.org/ns/org#siteAddress> ?contactPoint ;
+      ?pprimarySite ?oprimarySite .
+
+    ?address ?paddress ?oaddress .
+
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+
+    ?identifier <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier ;
+      ?pidentifier ?oidentifier .
+
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
   }
 }
+
