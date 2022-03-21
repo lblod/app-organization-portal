@@ -159,7 +159,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-organization-portal:1.6.4-2 # Pre patch (similar to "-beta" but using the convention of release-it)
+    image: lblod/frontend-organization-portal:1.6.4-3 # Pre patch (similar to "-beta" but using the convention of release-it)
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
