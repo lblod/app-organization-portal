@@ -1,0 +1,15 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/61F92B8D51BFC225E4ECF307> dct:date "2021-02-04"^^xsd:date .
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/61F92B8D51BFC225E4ECF307> dct:date "2022-02-04"^^xsd:date .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/61F92B8D51BFC225E4ECF307> dct:date "2021-02-04"^^xsd:date .
+  }
+}
