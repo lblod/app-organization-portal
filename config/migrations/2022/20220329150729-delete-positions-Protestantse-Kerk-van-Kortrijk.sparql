@@ -1,0 +1,38 @@
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/eredienstbestuursorganen/3c07a7f0db44632737d1657ea9035e9f>
+      <http://www.w3.org/ns/org#hasPost> ?post .
+
+    ?post ?ppost ?opost .
+
+    ?role <http://www.w3.org/ns/org#holds> ?post ;
+      <http://schema.org/contactPoint> ?contactPoint ;
+      ?prole ?orole .
+
+    ?contactPoint <http://www.w3.org/ns/locn#address> ?address ;
+      ?pcontactPoint ?ocontactPoint .
+
+    ?address ?paddress ?oaddress .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/eredienstbestuursorganen/3c07a7f0db44632737d1657ea9035e9f>
+      <http://www.w3.org/ns/org#hasPost> ?post .
+
+    ?post ?ppost ?opost .
+
+    ?role <http://www.w3.org/ns/org#holds> ?post ;
+      ?prole ?orole .
+
+    OPTIONAL {
+      ?role <http://schema.org/contactPoint> ?contactPoint .
+
+      ?contactPoint ?pcontactPoint ?ocontactPoint .
+
+      OPTIONAL {
+        ?contactPoint <http://www.w3.org/ns/locn#address> ?address .
+        ?address ?paddress ?oaddress .
+      }
+    }
+  }
+}
