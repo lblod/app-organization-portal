@@ -122,6 +122,20 @@
       }
     ]
   ],
+  "default_settings" : {
+    "analysis": {
+      "normalizer": {
+        "custom_sort_normalizer": {
+            "type": "custom",
+            "char_filter": [],
+            "filter": [
+                "lowercase",
+                "asciifolding"
+            ]
+        }
+    }
+    }
+  },
   "types": [
     {
       "type": "mandatory",
