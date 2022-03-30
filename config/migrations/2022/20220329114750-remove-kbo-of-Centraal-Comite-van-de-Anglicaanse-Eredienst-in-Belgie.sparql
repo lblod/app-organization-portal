@@ -1,0 +1,19 @@
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/representatieveOrganen/bf83abb71bd810ad1ebe05ac8cb72a1c>
+      <http://www.w3.org/ns/adms#identifier> ?identifier .
+    ?identifier
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier ;
+      ?pidentifier ?oidentifier .
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/representatieveOrganen/bf83abb71bd810ad1ebe05ac8cb72a1c>
+      <http://www.w3.org/ns/adms#identifier> ?identifier .
+    ?identifier
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier ;
+      ?pidentifier ?oidentifier .
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+}
