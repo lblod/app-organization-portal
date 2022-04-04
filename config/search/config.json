@@ -122,6 +122,21 @@
       }
     ]
   ],
+  "default_settings" : {
+    "analysis": {
+      "normalizer": {
+        "custom_sort_normalizer": {
+            "type": "custom",
+            "char_filter": [],
+            "filter": [
+                "lowercase",
+                "trim",
+                "asciifolding"
+            ]
+        }
+    }
+    }
+  },
   "types": [
     {
       "type": "mandatory",
@@ -198,7 +213,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -214,7 +230,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -225,7 +242,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -233,7 +251,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -241,7 +260,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -252,7 +272,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -332,7 +353,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -348,7 +370,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -359,7 +382,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -367,7 +391,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -375,7 +400,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -386,7 +412,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -488,7 +515,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -504,7 +532,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -515,7 +544,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -523,7 +553,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -531,7 +562,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -542,7 +574,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -609,7 +642,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -617,7 +651,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -625,7 +660,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -633,7 +669,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -641,7 +678,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -649,7 +687,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           }
