@@ -1,7 +1,7 @@
 {
   "automatic_index_updates": true,
   "persist_indexes": true,
-  "number_of_threads": 6,
+  "number_of_threads": 11,
   "eager_indexing_groups": [
     [
       {
@@ -46,6 +46,21 @@
       }
     ]
   ],
+  "default_settings" : {
+    "analysis": {
+      "normalizer": {
+        "custom_sort_normalizer": {
+            "type": "custom",
+            "char_filter": [],
+            "filter": [
+                "lowercase",
+                "trim",
+                "asciifolding"
+            ]
+        }
+    }
+    }
+  },
   "types": [
     {
       "type": "mandatory",
@@ -122,7 +137,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -138,7 +154,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -149,7 +166,9 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+                
               }
             }
           },
@@ -157,7 +176,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -165,7 +185,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -176,7 +197,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -256,7 +278,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -272,7 +295,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -283,7 +307,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -291,7 +316,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -299,7 +325,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -310,7 +337,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -412,7 +440,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -420,7 +449,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -428,7 +458,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -439,7 +470,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -447,7 +479,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -455,7 +488,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -466,7 +500,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -533,7 +568,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -541,7 +577,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -549,7 +586,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -557,7 +595,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -565,7 +604,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },
@@ -573,7 +613,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           }
