@@ -1,0 +1,42 @@
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s ?p ?o .
+    VALUES ?s {
+      <http://publications.europa.eu/resource/authority/human-sex/OP_DATPRO>
+      <http://publications.europa.eu/resource/authority/human-sex/NAP>
+    }
+  }      
+}
+
+;
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://publications.europa.eu/resource/authority/human-sex/NST> a <http://mu.semte.ch/vocabularies/ext/GeslachtCode>,
+        <http://www.w3.org/2004/02/skos/core#Concept>;
+      <http://mu.semte.ch/vocabularies/core/uuid> "c11b47dd-cacd-4664-9a72-14730e00eaed";
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Ander";
+      <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://publications.europa.eu/resource/authority/human-sex> ;
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://publications.europa.eu/resource/authority/human-sex> .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    <http://publications.europa.eu/resource/authority/human-sex/NKN> skos:prefLabel ?label .
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://publications.europa.eu/resource/authority/human-sex/NKN> skos:prefLabel "Niet gekend" .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://publications.europa.eu/resource/authority/human-sex/NKN> skos:prefLabel ?label .
+  }
+}
