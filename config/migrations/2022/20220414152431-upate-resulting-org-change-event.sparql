@@ -1,0 +1,18 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/620E5CF95747C883CA1D2ED5>
+      org:resultingOrganization <http://data.lblod.info/id/besturenVanDeEredienst/6180d2f3e76d711b9bb0ce5881c5b57d> .
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/620E5CF95747C883CA1D2ED5>
+      org:resultingOrganization <http://data.lblod.info/id/besturenVanDeEredienst/2b871d9f7cf6bec8c2732a8901f23788> .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/620E5CF95747C883CA1D2ED5>
+      org:resultingOrganization <http://data.lblod.info/id/besturenVanDeEredienst/6180d2f3e76d711b9bb0ce5881c5b57d> .
+  }
+}
