@@ -1,0 +1,35 @@
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/besturenVanDeEredienst/fed2ed3a65993012a7e768f1d75be8bc>
+      <http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor> ?position .
+
+    ?position ?pposition ?oposition .
+
+    ?role ?prole ?orole .
+
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+
+    ?address ?paddress ?oaddress .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/besturenVanDeEredienst/fed2ed3a65993012a7e768f1d75be8bc>
+      <http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor> ?position .
+
+    ?position ?pposition ?oposition .
+
+    ?role <http://www.w3.org/ns/org#holds> ?position ;
+      ?prole ?orole .
+
+    OPTIONAL {
+      ?role <http://schema.org/contactPoint> ?contactPoint .
+
+      ?contactPoint ?pcontactPoint ?ocontactPoint .
+
+      OPTIONAL {
+        ?contactPoint <http://www.w3.org/ns/locn#address> ?address .
+        ?address ?paddress ?oaddress .
+      }
+    }
+  }
+}
