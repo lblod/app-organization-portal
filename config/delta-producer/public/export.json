@@ -1,0 +1,266 @@
+{
+  "conceptScheme": "http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b",
+  "export": [
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#changedBy",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/org#hasPost",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://www.w3.org/ns/org#hasSubOrganization",
+        "http://www.w3.org/ns/org#classification",
+        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
+        "http://data.lblod.info/vocabularies/erediensten/denominatie",
+        "http://data.lblod.info/vocabularies/erediensten/grensoverschrijdend",
+        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#changedBy",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/org#hasPost",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://www.w3.org/ns/org#hasSubOrganization",
+        "http://www.w3.org/ns/org#classification",
+        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/org#Site",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "^http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+
+      ],
+      "properties": [
+        "http://www.w3.org/ns/org#siteAddress",
+        "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+        "http://data.lblod.info/vocabularies/erediensten/vestigingstype"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/locn#Address",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "^https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+        "^http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+
+      ],
+      "properties": [
+        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
+        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer",
+        "http://www.w3.org/ns/locn#thoroughfare",
+        "http://www.w3.org/ns/locn#postCode",
+        "https://data.vlaanderen.be/ns/adres#gemeentenaam",
+        "http://www.w3.org/ns/locn#adminUnitL2",
+        "https://data.vlaanderen.be/ns/adres#land",
+        "http://www.w3.org/ns/locn#fullAddress",
+        "https://data.vlaanderen.be/ns/adres#verwijstNaar",
+        "http://purl.org/dc/terms/source"
+      ]
+    },
+    {
+      "type": "http://schema.org/ContactPoint",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "^http://www.w3.org/ns/org#siteAddress",
+        "^http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/locn#address",
+        "http://xmlns.com/foaf/0.1/page",
+        "http://schema.org/faxNumber",
+        "http://schema.org/contactType",
+        "http://xmlns.com/foaf/0.1/page",
+        "http://schema.org/email",
+        "http://schema.org/telephone"
+        
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/adms#Identifier",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "^http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#notation",
+        "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator"
+      ]
+    },
+    {
+      "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "^https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator",
+        "^http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
+        "http://data.vlaanderen.be/ns/mandaat#bindingStart",
+        "http://data.vlaanderen.be/ns/besluit#bestuurt",
+        "http://www.w3.org/ns/org#classification",
+        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/TypeEredienst",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/org#ChangeEvent",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://data.lblod.info/vocabularies/contacthub/typeWijziging",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://purl.org/dc/terms/date",
+        "http://purl.org/dc/terms/description",
+        "http://data.lblod.info/vocabularies/contacthub/typeWijziging",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/org#changedBy"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/TypeVestiging",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    }
+  ]
+}
