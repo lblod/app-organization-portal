@@ -336,6 +336,69 @@ services:
 
 
 ################################################################################
+# DELTA PUBLIC INFORMATION: START
+################################################################################
+  delta-producer-bg-jobs-initiator-public:
+    image: lblod/delta-producer-background-jobs-initiator:0.3.1
+    environment:
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      DUMP_FILE_CREATION_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/public'
+      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/public'
+      HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/public'
+      CRON_PATTERN_DUMP_JOB: '42 * * * *' # At minute 42 every hour
+      CRON_PATTERN_HEALING_JOB: '0 0 4 * * *' # everyday at 4 AM
+      START_INITIAL_SYNC: 'false' # prefer to disable it now. We want to have feeling with how the DB acts.
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
+  delta-producer-pub-graph-maintainer-public:
+    image: lblod/delta-producer-publication-graph-maintainer:0.15.1
+    environment:
+      MAX_BODY_SIZE: "50mb"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      RELATIVE_FILE_PATH: "deltas/public"
+      PUBLICATION_GRAPH: 'http://redpencil.data.gift/id/deltas/producer/public'
+      HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/public'
+      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/public'
+      QUEUE_POLL_INTERVAL: 3000
+      USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true" # some queries are just too expensive
+      SKIP_MU_AUTH_INITIAL_SYNC: 'true'
+      HEALING_PATCH_GRAPH_BATCH_SIZE: 500
+    volumes:
+      - ./config/delta-producer/public:/config
+      - ./data/files/:/share
+    links:
+      - db:database
+      - triplestore:virtuoso
+    restart: always
+    logging: *default-logging
+  delta-producer-json-diff-publisher-public:
+    image: lblod/delta-producer-json-diff-file-publisher:0.2.3
+    environment:
+      MAX_BODY_SIZE: "50mb"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      RELATIVE_FILE_PATH: "deltas/public"
+      PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/public"
+      PUBLICATION_GRAPH: 'http://redpencil.data.gift/id/deltas/producer/public'
+      DELTA_INTERVAL_MS: 10000
+      PRETTY_PRINT_DIFF_JSON: "true"
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
+################################################################################
+# DELTA PUBLIC INFORMATION: END
+################################################################################
+
+
+################################################################################
 # MU SEARCH - TODO USE THE CORRECT IMAGE ONCE INHERITANCE IS IN MU SEARCH
 ################################################################################
   search:
