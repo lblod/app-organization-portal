@@ -62,6 +62,8 @@ services:
     logging: *default-logging
   resource:
     image: semtech/mu-cl-resources:feature-all-errors-as-json-api-errors # Bump to fixed version when merged and release
+    environment:
+      CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     links:
       - db:database
     volumes:
