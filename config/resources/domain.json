@@ -222,6 +222,18 @@
           "predicate": "locn:address",
           "target": "addresses",
           "cardinality": "one"
+        },
+        "belongs-to-agent-in-position": {
+          "predicate": "schema:contactPoint",
+          "target": "agents-in-position",
+          "cardinality": "one",
+          "inverse": true
+        },
+        "belongs-to-mandatory": {
+          "predicate": "schema:contactPoint",
+          "target": "mandatories",
+          "cardinality": "one",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/contact-punten/"
@@ -611,6 +623,12 @@
           "predicate": "dc_terms:source",
           "target": "concepts",
           "cardinality": "one"
+        },
+        "belongs-to-contact": {
+          "predicate": "locn:address",
+          "target": "contact-points",
+          "cardinality": "one",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/adressen/"
