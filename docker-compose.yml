@@ -200,7 +200,7 @@ services:
 # DELTA GENERAL
 ################################################################################
   delta-producer-dump-file-publisher:
-    image: bdevloed/delta-producer-dump-file-publisher:0.5.0-beta
+    image: bdevloed/delta-producer-dump-file-publisher:0.8.0-beta
     volumes:
       - ./config/delta-producer/dump-file-publisher:/config
       - ./data/files:/share
@@ -345,7 +345,7 @@ services:
       DUMP_FILE_CREATION_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/public'
       INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/public'
       HEALING_JOB_OPERATION: 'http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/public'
-      CRON_PATTERN_DUMP_JOB: '42 * * * *' # At minute 42 every hour
+      CRON_PATTERN_DUMP_JOB: '11 */4 * * *' # At minute 11 every 4 hours
       CRON_PATTERN_HEALING_JOB: '0 0 4 * * *' # everyday at 4 AM
       START_INITIAL_SYNC: 'false' # prefer to disable it now. We want to have feeling with how the DB acts.
     labels:
