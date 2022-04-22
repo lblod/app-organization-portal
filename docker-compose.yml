@@ -61,7 +61,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:feature-all-errors-as-json-api-errors # Bump to fixed version when merged and release
+    image: semtech/mu-cl-resources:1.21.0 
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     links:
