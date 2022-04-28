@@ -140,13 +140,10 @@ services:
     restart: always
     logging: *default-logging
   privacy:
-    image: lblod/privacy-centric-service:0.4.2
+    image: lblod/privacy-centric-service:0.5.0
     labels:
       - "logging=true"
     environment:
-      SERVER_PORT: "80"
-      SPARQL_ENDPOINT: "http://db:8890/sparql"
-      LOGGING_LEVEL: "INFO"
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/privacy-centric-graph"
       SESSION_GRAPH: "http://mu.semte.ch/graphs/sessions"
       APP_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
@@ -154,6 +151,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+    links:
+      - db:database
   adressenregister:
     image: lblod/adressenregister-fuzzy-search-service:0.6.0
     labels:
