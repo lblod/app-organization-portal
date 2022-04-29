@@ -370,11 +370,6 @@
           "predicate": "ere:betrokkenBestuur",
           "target": "local-involvements",
           "cardinality": "many"
-        },
-        "scope": {
-          "predicate": "besluit:werkingsgebied",
-          "target": "locations",
-          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/bestuurseenheden/"
@@ -397,6 +392,11 @@
           "predicate": "ere:typeEredienst",
           "target": "recognized-worship-types",
           "cardinality": "one"
+        },
+        "minister-positions": {
+          "predicate": "ere:wordtBediendDoor",
+          "target": "minister-positions",
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/eredienstBestuurseenheden/"
@@ -421,11 +421,6 @@
           "target": "local-involvements",
           "cardinality": "many",
           "inverse": true
-        },
-        "minister-positions": {
-          "predicate": "ere:wordtBediendDoor",
-          "target": "minister-positions",
-          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/besturenVanDeEredienst/"
@@ -666,28 +661,6 @@
       "features": ["include-uri"],
       "new-resource-base": "http://lblod.data.gift/concepts/"
     },
-    "locations": {
-      "class": "prov:Location",
-      "attributes": {
-        "label": {
-          "type": "string",
-          "predicate": "rdfs:label"
-        },
-        "level": {
-          "type": "string",
-          "predicate": "ext:werkingsgebiedNiveau"
-        }
-      },
-      "relationships": {
-        "administrative-units": {
-          "predicate": "besluit:werkingsgebied",
-          "target": "administrative-units",
-          "cardinality": "many",
-          "inverse": true
-        }
-      },
-      "new-resource-base": "http://data.lblod.info/id/werkingsgebieden/"
-    },
     "involvement-types": {
       "class": "code:TypeBetrokkenheid",
       "attributes": {
@@ -783,7 +756,7 @@
         },
         "worship-service": {
           "predicate": "ere:wordtBediendDoor",
-          "target": "worship-services",
+          "target": "worship-administrative-units",
           "cardinality": "one",
           "inverse": true
         },

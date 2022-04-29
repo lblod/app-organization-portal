@@ -1,0 +1,38 @@
+DELETE {
+  GRAPH ?g {
+    ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur .
+    ?bestuur ?pbestuur ?obestuur .
+    ?primarySite ?pprimarySite ?oprimarySite .
+    ?address ?paddress ?oaddress .
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+    ?identifier ?pidentifier ?oidentifier .
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES ?bestuur {
+      <http://data.lblod.info/id/centraleBesturenVanDeEredienst/6167E3E2375CFC000A0007C2>
+      <http://data.lblod.info/id/centraleBesturenVanDeEredienst/616FE419375CFC000A000893>
+    }
+
+    ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur .
+
+    ?bestuur <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite ;
+      <http://www.w3.org/ns/adms#identifier> ?identifier ;
+      ?pbestuur ?obestuur .
+
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address ;
+      <http://www.w3.org/ns/org#siteAddress> ?contactPoint ;
+      ?pprimarySite ?oprimarySite .
+
+    ?address ?paddress ?oaddress .
+
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+
+    ?identifier <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier ;
+      ?pidentifier ?oidentifier .
+
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+}
+

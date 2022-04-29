@@ -1,7 +1,7 @@
 {
   "automatic_index_updates": true,
   "persist_indexes": true,
-  "number_of_threads": 6,
+  "number_of_threads": 11,
   "eager_indexing_groups": [
     [
       {
@@ -32,82 +32,6 @@
       }
     ],
     [
-      {
-        "variables": [],
-        "name": "acmidm-beheerder"
-      },
-      {
-        "variables": [],
-        "name": "clean"
-      },
-      {
-        "variables": [],
-        "name": "public"
-      }
-    ],
-    [
-      {
-        "variables": [],
-        "name": "acmidm-beheerder"
-      },
-      {
-        "variables": [],
-        "name": "acmidm-editeerder"
-      },
-      {
-        "variables": [],
-        "name": "acmidm-lezer"
-      },
-      {
-        "variables": [],
-        "name": "clean"
-      },
-      {
-        "variables": [],
-        "name": "public"
-      }
-    ],
-    [
-      {
-        "variables": [],
-        "name": "acmidm-editeerder"
-      },
-      {
-        "variables": [],
-        "name": "acmidm-lezer"
-      },
-      {
-        "variables": [],
-        "name": "clean"
-      },
-      {
-        "variables": [],
-        "name": "public"
-      }
-    ],
-    [
-      {
-        "variables": [],
-        "name": "acmidm-editeerder"
-      },
-      {
-        "variables": [],
-        "name": "acmidm-beheerder"
-      },
-      {
-        "variables": [],
-        "name": "clean"
-      },
-      {
-        "variables": [],
-        "name": "public"
-      }
-    ],
-    [
-      {
-        "variables": [],
-        "name": "acmidm-lezer"
-      },
       {
         "variables": [],
         "name": "acmidm-beheerder"
@@ -244,6 +168,7 @@
               "field": {
                 "type": "keyword",
                 "normalizer": "custom_sort_normalizer"
+                
               }
             }
           },
@@ -524,7 +449,8 @@
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword"
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           },

@@ -1,0 +1,26 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/61F92B0A51BFC225E4ECF2FF>
+      dct:date "2021-02-04"^^xsd:date .
+    <http://data.lblod.info/id/besturenVanDeEredienst/2a75e67f9a8aacf52896944c59b09eb0>
+      regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> . # Actief
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/61F92B0A51BFC225E4ECF2FF>
+      dct:date "2022-02-04"^^xsd:date .
+    <http://data.lblod.info/id/besturenVanDeEredienst/2a75e67f9a8aacf52896944c59b09eb0>
+      regorg:orgStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> . # Niet Actief
+
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/61F92B0A51BFC225E4ECF2FF>
+      dct:date "2021-02-04"^^xsd:date .
+    <http://data.lblod.info/id/besturenVanDeEredienst/2a75e67f9a8aacf52896944c59b09eb0>
+      regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+  }
+}

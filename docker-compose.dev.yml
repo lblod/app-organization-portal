@@ -14,6 +14,8 @@ services:
   db:
     restart: "no"
   migrations:
+    volumes:
+      - ./config/dev-migrations:/data/migrations/dev/
     restart: "no"
   resource:
     restart: "no"
@@ -29,6 +31,7 @@ services:
     image: lblod/mock-login-service:latest
     links:
       - db:database
+    restart: "no"
   sink:
     restart: "no"
   login:
@@ -40,7 +43,7 @@ services:
   adressenregister:
     restart: "no"
   frontend:
-    image: lblod/frontend-contact-hub:latest
+    image: lblod/frontend-organization-portal:latest
     restart: "no"
   uri-info:
     restart: "no"
@@ -60,6 +63,8 @@ services:
     restart: "no"
   search:
     restart: "no"
+    volumes:
+      - ./config/search/dev:/config
   elasticsearch:
     restart: "no"
   file:
