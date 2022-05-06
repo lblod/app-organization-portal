@@ -1,0 +1,17 @@
+# A person has been wrongly added (it's a duplicate) and someone attached to him a wrong position
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/624EE12ED5CA8D65E42B3150> ?pperson ?operson .
+    <http://data.lblod.info/id/mandatarissen/624EE15FD5CA8D65E42B3154> ?pmandataris ?omandataris .
+    <http://data.lblod.info/id/contact-punten/624EE15ED5CA8D65E42B3152> ?pcontact ?ocontact .
+    <http://data.lblod.info/id/adressen/624EE15ED5CA8D65E42B3151> ?paddress ?oaddress .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/personen/624EE12ED5CA8D65E42B3150> ?pperson ?operson .
+    <http://data.lblod.info/id/mandatarissen/624EE15FD5CA8D65E42B3154> ?pmandataris ?omandataris .
+    <http://data.lblod.info/id/contact-punten/624EE15ED5CA8D65E42B3152> ?pcontact ?ocontact .
+    <http://data.lblod.info/id/adressen/624EE15ED5CA8D65E42B3151> ?paddress ?oaddress .
+  }
+}
