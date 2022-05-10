@@ -10,6 +10,7 @@ defmodule Acl.UserGroups.Config do
  @protected_resource_type [
                         "http://www.w3.org/ns/org#Organization",
                         "http://data.vlaanderen.be/ns/besluit#Besluit",
+                        "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
@@ -68,7 +69,7 @@ defmodule Acl.UserGroups.Config do
   defp sparql_query_for_access_role( group_string ) do
     "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-    SELECT ?session_group ?session_role WHERE {
+    SELECT distinct ?session_group ?session_role WHERE {
       <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                    ext:sessionRole ?session_role.
       FILTER( ?session_role = \"#{group_string}\" )
@@ -116,30 +117,6 @@ defmodule Acl.UserGroups.Config do
           }
         ]
       },
-           %GroupSpec{
-        name: "ch-lezer",
-        useage: [:read],
-        access: access_by_role( "ABBOrganisatiePortaalGebruiker-lezer" ),
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organisatieportaal",
-                    constraint: %ResourceConstraint{
-                      resource_types: @protected_resource_type } } ] },
-           %GroupSpec{
-        name: "ch-editeerder",
-        useage: [:read, :write, :read_for_write],
-        access: access_by_role( "ABBOrganisatiePortaalGebruiker-editeerder" ),
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organisatieportaal",
-                    constraint: %ResourceConstraint{
-                      resource_types: @protected_resource_type } } ] },
-           %GroupSpec{
-        name: "ch-beheerder",
-        useage: [:read, :write, :read_for_write],
-        access: access_by_role( "ABBOrganisatiePortaalGebruiker-beheerder" ),
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organisatieportaal",
-                    constraint: %ResourceConstraint{
-                      resource_types: @protected_resource_type } } ] },
       %GroupSpec{
         name: "public",
         useage: [:read],
