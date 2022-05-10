@@ -43,7 +43,7 @@ services:
   adressenregister:
     restart: "no"
   frontend:
-    image: lblod/frontend-contact-hub:latest
+    image: lblod/frontend-organization-portal:latest
     restart: "no"
   uri-info:
     restart: "no"
@@ -61,6 +61,8 @@ services:
     restart: "no"
   search:
     restart: "no"
+    volumes:
+      - ./config/search/dev:/config
   elasticsearch:
     restart: "no"
   file:

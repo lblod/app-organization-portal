@@ -392,6 +392,11 @@
           "predicate": "ere:typeEredienst",
           "target": "recognized-worship-types",
           "cardinality": "one"
+        },
+        "minister-positions": {
+          "predicate": "ere:wordtBediendDoor",
+          "target": "minister-positions",
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/eredienstBestuurseenheden/"
@@ -416,11 +421,6 @@
           "target": "local-involvements",
           "cardinality": "many",
           "inverse": true
-        },
-        "minister-positions": {
-          "predicate": "ere:wordtBediendDoor",
-          "target": "minister-positions",
-          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/besturenVanDeEredienst/"
@@ -756,7 +756,7 @@
         },
         "worship-service": {
           "predicate": "ere:wordtBediendDoor",
-          "target": "worship-services",
+          "target": "worship-administrative-units",
           "cardinality": "one",
           "inverse": true
         },

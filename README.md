@@ -1,6 +1,6 @@
-# Contact Hub
+# Organization portal
 
-Backend for the Contact Hub application based on the  mu.semte.ch microservices stack.
+Backend for the organization portal application, based on the mu.semte.ch microservices stack.
 
 ## How to
 

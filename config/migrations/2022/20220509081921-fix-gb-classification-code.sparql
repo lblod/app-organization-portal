@@ -1,0 +1,22 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/> 
+PREFIX org: <http://www.w3.org/ns/org#> 
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#> 
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#> 
+
+
+DELETE {
+  graph ?g {
+    <http://data.lblod.info/id/bestuursorganen/3703cf09-f9c0-451b-b8b1-e373e1367a85> org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/a0701624aefb115b7eda2ff39139c2dd>.
+  }
+}
+INSERT {
+  graph ?g {
+    <http://data.lblod.info/id/bestuursorganen/3703cf09-f9c0-451b-b8b1-e373e1367a85> org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/04f65457bf125b2dc59fd71917ac3d08>.
+  }
+
+}WHERE {
+  graph ?g {
+  <http://data.lblod.info/id/bestuursorganen/3703cf09-f9c0-451b-b8b1-e373e1367a85> org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/a0701624aefb115b7eda2ff39139c2dd>.
+  }
+
+}

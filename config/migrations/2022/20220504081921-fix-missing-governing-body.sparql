@@ -1,0 +1,17 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/> 
+PREFIX org: <http://www.w3.org/ns/org#> 
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#> 
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#> 
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+
+   <http://data.lblod.info/id/bestuursorganen/3703cf09-f9c0-451b-b8b1-e373e1367a85> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+                                                                                    mu:uuid "3703cf09-f9c0-451b-b8b1-e373e1367a85";
+                                                                                    besluit:bestuurt <http://data.lblod.info/id/besturenVanDeEredienst/617AAE56375CFC000A0008DE>;
+                                                                                    org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/a0701624aefb115b7eda2ff39139c2dd>.
+   <http://data.lblod.info/id/bestuursorganen/bdf61666-05fe-4a70-8e13-7a98e8e72707> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+                                                                                    mu:uuid "bdf61666-05fe-4a70-8e13-7a98e8e72707";
+                                                                                    generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/3703cf09-f9c0-451b-b8b1-e373e1367a85> .
+  }
+}
