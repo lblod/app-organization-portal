@@ -1,0 +1,43 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b>
+      a
+        skos:ConceptScheme ;
+      mu:uuid
+        "10caf4a4-1ff5-4c05-917e-56489910d68b" ;
+      skos:prefLabel
+        "Public OP Export" .
+    ?code 
+      skos:inScheme
+        <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+  }
+} WHERE {
+    VALUES ?type {
+    	<http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode>
+    	<http://lblod.data.gift/vocabularies/organisatie/TypeEredienst>
+    	<http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis>
+    	<http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode>
+    	<http://lblod.data.gift/vocabularies/organisatie/TypeVestiging>
+    }
+    GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+      ?code
+        a
+          ?type .
+    }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>
+      skos:inScheme
+        <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>
+      skos:inScheme
+        <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+  }
+}
+
