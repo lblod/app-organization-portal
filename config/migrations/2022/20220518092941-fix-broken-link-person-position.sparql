@@ -1,0 +1,21 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/mandatarissen/61B762983C1A230C43B4522F> <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> <http://data.lblod.info/id/personen/db8e4a5d76da636c6268487fb5339f00> .
+  }
+}
+
+# The associated call to trigger a reindex is :
+# curl --location --request POST '<ip-addres-search>/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw '    [
+#       {
+#           "deletes": [],
+#           "inserts": [
+#               {
+#                   "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/61B762983C1A230C43B4522F" },
+#                   "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#                   "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris" }
+#               }
+#           ]
+#       }
+#     ]'
