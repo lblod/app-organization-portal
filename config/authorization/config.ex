@@ -92,6 +92,19 @@ defmodule Acl.UserGroups.Config do
         ]
       },
        %GroupSpec{
+        name: "gemeente-lezer",
+        useage: [:read],
+        access: access_by_role( "Gemeente-lezer" ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/gemeente",
+            constraint: %ResourceConstraint{
+              resource_types: @protected_resource_type
+            }
+          }
+        ]
+      },
+       %GroupSpec{
         name: "acmidm-editeerder",
         useage: [:read, :write, :read_for_write],
         access: access_by_role( "ABBOrganisatiePortaalGebruiker-editeerder" ),
