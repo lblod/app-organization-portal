@@ -1,0 +1,51 @@
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/eredienstbestuursorganen/6807c53e4474343331d31577bc1e9166>
+      <http://www.w3.org/ns/org#hasPost> ?post .
+
+    ?post ?ppost ?opost .
+
+    ?role <http://www.w3.org/ns/org#holds> ?post ;
+      <http://schema.org/contactPoint> ?contactPoint ;
+      ?prole ?orole .
+
+    ?contactPoint <http://www.w3.org/ns/locn#address> ?address ;
+      ?pcontactPoint ?ocontactPoint .
+
+    ?address ?paddress ?oaddress .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/eredienstbestuursorganen/6807c53e4474343331d31577bc1e9166>
+      <http://www.w3.org/ns/org#hasPost> ?post .
+
+    ?post ?ppost ?opost .
+
+    ?role <http://www.w3.org/ns/org#holds> ?post ;
+      ?prole ?orole .
+
+    OPTIONAL {
+      ?role <http://schema.org/contactPoint> ?contactPoint .
+
+      ?contactPoint ?pcontactPoint ?ocontactPoint .
+
+      OPTIONAL {
+        ?contactPoint <http://www.w3.org/ns/locn#address> ?address .
+        ?address ?paddress ?oaddress .
+      }
+    }
+
+    FILTER(
+      ?role NOT IN (
+        <http://data.lblod.info/id/mandatarissen/19f21fc41077ddf80b0679f2465438d6>,
+        <http://data.lblod.info/id/mandatarissen/4908a3d11300f1df876b749a3009d097>,
+        <http://data.lblod.info/id/mandatarissen/a2e0749d26d7dc3ce46ebbec21ae0f5c>,
+        <http://data.lblod.info/id/mandatarissen/1773a92782ef3201719c636e835577f7>,
+        <http://data.lblod.info/id/mandatarissen/c97e46465d129b91e9f9772919088e95>,
+        <http://data.lblod.info/id/mandatarissen/0df45364976635807d721fd13adb5d88>,
+        <http://data.lblod.info/id/mandatarissen/d386eff67844ada5f56466fe61be468b>,
+        <http://data.lblod.info/id/mandatarissen/8771130ab6cb3bda7cb2dc79e7896129>
+      )
+    )
+  }
+}
