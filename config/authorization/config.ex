@@ -92,12 +92,12 @@ defmodule Acl.UserGroups.Config do
         ]
       },
        %GroupSpec{
-        name: "gemeente-lezer",
+        name: "gemeente-skywalker",
         useage: [:read],
-        access: access_by_role( "Gemeente-lezer" ),
+        access: access_by_role( "Gemeente-Skywalker" ),
         graphs: [
           %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/gemeente",
+            graph: "http://mu.semte.ch/graphs/gemeenteskywalker",
             constraint: %ResourceConstraint{
               resource_types: @protected_resource_type
             }

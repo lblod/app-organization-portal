@@ -1,0 +1,39 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ext:<http://mu.semte.ch/vocabularies/ext/>
+ INSERT DATA {
+    GRAPH  <http://mu.semte.ch/graphs/public> {
+       <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-bz03-9X3c30bc3f5b> a besluit:Bestuurseenheid ;
+          mu:uuid "141d9d6b-54af-4d17-bz03-9X3c30bc3f5b" ;
+          skos:prefLabel "Gemeenten" ;
+          dcterms:identifier "OVO001093" .
+
+      <http://data.lblod.info/id/persoon/d39fe09e-d339-5D91-8681-dbbcfb3d3470> a foaf:Person ;
+          mu:uuid "d39fe09e-d339-5D91-8681-dbbcfb3d3470" ;
+          foaf:firstName "Luke" ;
+          foaf:familyName "Skywalker" ;
+          foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-bz03-9X3c30bc3f5b> ;
+          foaf:account <http://data.lblod.info/id/account/7762gg12-07c1-4136-ac5e-55cf401e0989> .
+      <http://data.lblod.info/id/account/7762gg12-07c1-4136-ac5e-55cf401e0989> a foaf:OnlineAccount ;
+          mu:uuid "7762gg12-07c1-4136-ac5e-55cf401e0989" ;
+          foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+          ext:sessionRole "Gemeente-Skywalker".
+    }
+
+    GRAPH <http://mu.semte.ch/graphs/organizations/141d9d6b-54af-4d17-bz03-9X3c30bc3f5b> {
+      
+      <http://data.lblod.info/id/persoon/d39fe09e-d339-5D91-8681-dbbcfb3d3470> a foaf:Person ;
+          mu:uuid "d39fe09e-d339-5D91-8681-dbbcfb3d3470" ;
+          foaf:firstName "Luke" ;
+          foaf:familyName "Skywalker" ;
+          foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-bz03-9X3c30bc3f5b> ;
+          foaf:account <http://data.lblod.info/id/account/7762gg12-07c1-4136-ac5e-55cf401e0989> .
+      <http://data.lblod.info/id/account/7762gg12-07c1-4136-ac5e-55cf401e0989> a foaf:OnlineAccount ;
+          mu:uuid "7762gg12-07c1-4136-ac5e-55cf401e0989" ;
+          foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+          ext:sessionRole "Gemeente-Skywalker".
+  } 
+ }
