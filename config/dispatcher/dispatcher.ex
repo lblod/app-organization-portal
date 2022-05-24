@@ -268,6 +268,14 @@ defmodule Dispatcher do
 
 
   #################################################################
+  # ERROR REPORT
+  #################################################################
+
+  match "/error-reports/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://error-report-service/error-reports/"
+  end
+
+  #################################################################
   # FILES
   #################################################################
 
