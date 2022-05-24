@@ -1,0 +1,1099 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/87ef15306f1242643fdae05810b64d5a>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/87ef15306f1242643fdae05810b64d5a> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/87ef15306f1242643fdae05810b64d5a> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/87ef15306f1242643fdae05810b64d5a> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/87ef15306f1242643fdae05810b64d5a> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/87ef15306f1242643fdae05810b64d5a> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/87ef15306f1242643fdae05810b64d5a> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/87ef15306f1242643fdae05810b64d5a>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Brecht" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zandgroefweg" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "2B" ;
+			<http://www.w3.org/ns/locn#postCode> "2960" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zandgroefweg 2B, 2960 Brecht" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/49e54ba614d122e8a07b0e641b643450>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/49e54ba614d122e8a07b0e641b643450> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/49e54ba614d122e8a07b0e641b643450> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/49e54ba614d122e8a07b0e641b643450> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/49e54ba614d122e8a07b0e641b643450> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/49e54ba614d122e8a07b0e641b643450> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/49e54ba614d122e8a07b0e641b643450> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/49e54ba614d122e8a07b0e641b643450>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Beveren" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zandstraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1" ;
+			<http://www.w3.org/ns/locn#postCode> "9120" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zandstraat 1, 9120 Beveren" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/7920ad0b6a82db729703c4c38d963231>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7920ad0b6a82db729703c4c38d963231> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7920ad0b6a82db729703c4c38d963231> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7920ad0b6a82db729703c4c38d963231> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7920ad0b6a82db729703c4c38d963231> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7920ad0b6a82db729703c4c38d963231> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7920ad0b6a82db729703c4c38d963231> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/7920ad0b6a82db729703c4c38d963231>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Zonnebeke" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zandvoordestraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "26A" ;
+			<http://www.w3.org/ns/locn#postCode> "8980" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zandvoordestraat 26A, 8980 Zonnebeke" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/51d6bf33155c204b03c64fc2faf5da33>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/51d6bf33155c204b03c64fc2faf5da33> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/51d6bf33155c204b03c64fc2faf5da33> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/51d6bf33155c204b03c64fc2faf5da33> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/51d6bf33155c204b03c64fc2faf5da33> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/51d6bf33155c204b03c64fc2faf5da33> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/51d6bf33155c204b03c64fc2faf5da33> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/51d6bf33155c204b03c64fc2faf5da33>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Oostende" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zeedijk" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "146" ;
+			<http://www.w3.org/ns/locn#postCode> "8400" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zeedijk 146, 8400 Oostende" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/c29761edfaa4bc3afbd1c80a2790f319>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/c29761edfaa4bc3afbd1c80a2790f319> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/c29761edfaa4bc3afbd1c80a2790f319> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/c29761edfaa4bc3afbd1c80a2790f319> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/c29761edfaa4bc3afbd1c80a2790f319> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/c29761edfaa4bc3afbd1c80a2790f319> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/c29761edfaa4bc3afbd1c80a2790f319> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/c29761edfaa4bc3afbd1c80a2790f319>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Middelkerke" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zeelaan" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1" ;
+			<http://www.w3.org/ns/locn#postCode> "8434" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zeelaan 1, 8434 Middelkerke" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/892f4c00a4f6606de313cc5128fe48ea>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/892f4c00a4f6606de313cc5128fe48ea> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/892f4c00a4f6606de313cc5128fe48ea> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/892f4c00a4f6606de313cc5128fe48ea> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/892f4c00a4f6606de313cc5128fe48ea> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/892f4c00a4f6606de313cc5128fe48ea> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/892f4c00a4f6606de313cc5128fe48ea> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/892f4c00a4f6606de313cc5128fe48ea>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Koksijde" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zeelaan" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "292" ;
+			<http://www.w3.org/ns/locn#postCode> "8670" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zeelaan 292, 8670 Koksijde" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/870349b979a4d292cda5c15364108898>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/870349b979a4d292cda5c15364108898> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/870349b979a4d292cda5c15364108898> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/870349b979a4d292cda5c15364108898> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/870349b979a4d292cda5c15364108898> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/870349b979a4d292cda5c15364108898> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/870349b979a4d292cda5c15364108898> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/870349b979a4d292cda5c15364108898>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Genk" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zenobe Grammestraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "70" ;
+			<http://www.w3.org/ns/locn#postCode> "3600" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zenobe Grammestraat 70, 3600 Genk" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/b6ef9e63eb4d16d6290d6df3ab286628>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/b6ef9e63eb4d16d6290d6df3ab286628> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/b6ef9e63eb4d16d6290d6df3ab286628> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/b6ef9e63eb4d16d6290d6df3ab286628> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/b6ef9e63eb4d16d6290d6df3ab286628> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/b6ef9e63eb4d16d6290d6df3ab286628> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/b6ef9e63eb4d16d6290d6df3ab286628> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/b6ef9e63eb4d16d6290d6df3ab286628>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Veurne" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zevecotestraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "3" ;
+			<http://www.w3.org/ns/locn#postCode> "8630" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zevecotestraat 3, 8630 Veurne" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/50cd6e8c2f0f575d2bf8279bf9cc1951>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/50cd6e8c2f0f575d2bf8279bf9cc1951> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/50cd6e8c2f0f575d2bf8279bf9cc1951> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/50cd6e8c2f0f575d2bf8279bf9cc1951> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/50cd6e8c2f0f575d2bf8279bf9cc1951> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/50cd6e8c2f0f575d2bf8279bf9cc1951> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/50cd6e8c2f0f575d2bf8279bf9cc1951> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/50cd6e8c2f0f575d2bf8279bf9cc1951>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Sint-Niklaas" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zeveneekhoekstraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "40" ;
+			<http://www.w3.org/ns/locn#postCode> "9100" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zeveneekhoekstraat 40, 9100 Sint-Niklaas" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/5e9c4bd5ea6afacc6eb3ea659eaefe9a>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/5e9c4bd5ea6afacc6eb3ea659eaefe9a> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/5e9c4bd5ea6afacc6eb3ea659eaefe9a> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/5e9c4bd5ea6afacc6eb3ea659eaefe9a> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/5e9c4bd5ea6afacc6eb3ea659eaefe9a> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/5e9c4bd5ea6afacc6eb3ea659eaefe9a> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/5e9c4bd5ea6afacc6eb3ea659eaefe9a> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/5e9c4bd5ea6afacc6eb3ea659eaefe9a>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Lochristi" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zeveneken-Dorp" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "101" ;
+			<http://www.w3.org/ns/locn#postCode> "9080" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zeveneken-Dorp 101, 9080 Lochristi" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/0658a7828b73ce879ab681b87d8c4050>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/0658a7828b73ce879ab681b87d8c4050> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/0658a7828b73ce879ab681b87d8c4050> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/0658a7828b73ce879ab681b87d8c4050> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/0658a7828b73ce879ab681b87d8c4050> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/0658a7828b73ce879ab681b87d8c4050> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/0658a7828b73ce879ab681b87d8c4050> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/0658a7828b73ce879ab681b87d8c4050>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Lint" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zevenhuizenstraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "67" ;
+			<http://www.w3.org/ns/locn#postCode> "2547" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zevenhuizenstraat 67, 2547 Lint" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/7cb4c8d7351e223e45d571e829bc1ca2>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7cb4c8d7351e223e45d571e829bc1ca2> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7cb4c8d7351e223e45d571e829bc1ca2> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7cb4c8d7351e223e45d571e829bc1ca2> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7cb4c8d7351e223e45d571e829bc1ca2> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7cb4c8d7351e223e45d571e829bc1ca2> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/7cb4c8d7351e223e45d571e829bc1ca2> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/7cb4c8d7351e223e45d571e829bc1ca2>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Bonheiden" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zilverberklaan" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "4" ;
+			<http://www.w3.org/ns/locn#postCode> "2820" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zilverberklaan 4, 2820 Bonheiden" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/fb3319724a5fa73815dcb74179afebba>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fb3319724a5fa73815dcb74179afebba> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fb3319724a5fa73815dcb74179afebba> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fb3319724a5fa73815dcb74179afebba> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fb3319724a5fa73815dcb74179afebba> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fb3319724a5fa73815dcb74179afebba> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fb3319724a5fa73815dcb74179afebba> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/fb3319724a5fa73815dcb74179afebba>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Beerse" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zilvereind" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "6" ;
+			<http://www.w3.org/ns/locn#postCode> "2340" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zilvereind 6, 2340 Beerse" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/83af22ba08105a576b83eceb18aaf66b>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/83af22ba08105a576b83eceb18aaf66b> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/83af22ba08105a576b83eceb18aaf66b> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/83af22ba08105a576b83eceb18aaf66b> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/83af22ba08105a576b83eceb18aaf66b> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/83af22ba08105a576b83eceb18aaf66b> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/83af22ba08105a576b83eceb18aaf66b> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/83af22ba08105a576b83eceb18aaf66b>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Kapellen" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zinnialaan" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "4" ;
+			<http://www.w3.org/ns/locn#postCode> "2950" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zinnialaan 4, 2950 Kapellen" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/79f65df4d015d887f59aa40d7bb8c467>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/79f65df4d015d887f59aa40d7bb8c467> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/79f65df4d015d887f59aa40d7bb8c467> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/79f65df4d015d887f59aa40d7bb8c467> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/79f65df4d015d887f59aa40d7bb8c467> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/79f65df4d015d887f59aa40d7bb8c467> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/79f65df4d015d887f59aa40d7bb8c467> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/79f65df4d015d887f59aa40d7bb8c467>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Maldegem" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zoetendale" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "4" ;
+			<http://www.w3.org/ns/locn#postCode> "9992" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zoetendale 4, 9992 Maldegem" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/4e319006311cec6eae1fb95e8cc081cc>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/4e319006311cec6eae1fb95e8cc081cc> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/4e319006311cec6eae1fb95e8cc081cc> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/4e319006311cec6eae1fb95e8cc081cc> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/4e319006311cec6eae1fb95e8cc081cc> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/4e319006311cec6eae1fb95e8cc081cc> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/4e319006311cec6eae1fb95e8cc081cc> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/4e319006311cec6eae1fb95e8cc081cc>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Hasselt" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zolderse kiezel" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "103" ;
+			<http://www.w3.org/ns/locn#postCode> "3511" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zolderse kiezel 103, 3511 Hasselt" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/9baa22a897722f672263d47ed2d8df4d>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/9baa22a897722f672263d47ed2d8df4d> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/9baa22a897722f672263d47ed2d8df4d> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/9baa22a897722f672263d47ed2d8df4d> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/9baa22a897722f672263d47ed2d8df4d> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/9baa22a897722f672263d47ed2d8df4d> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/9baa22a897722f672263d47ed2d8df4d> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/9baa22a897722f672263d47ed2d8df4d>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zomerdijklaan" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "4" ;
+			<http://www.w3.org/ns/locn#postCode> "2660" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zomerdijklaan 4, 2660 Antwerpen" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/a9048f2de60a20c510927a87eb640e28>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/a9048f2de60a20c510927a87eb640e28> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/a9048f2de60a20c510927a87eb640e28> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/a9048f2de60a20c510927a87eb640e28> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/a9048f2de60a20c510927a87eb640e28> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/a9048f2de60a20c510927a87eb640e28> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/a9048f2de60a20c510927a87eb640e28> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/a9048f2de60a20c510927a87eb640e28>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Anzegem" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zonnestraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "9" ;
+			<http://www.w3.org/ns/locn#postCode> "8573" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zonnestraat 9, 8573 Anzegem" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/595b8c97d400fb9e56b3c7146d47616e>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/595b8c97d400fb9e56b3c7146d47616e> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/595b8c97d400fb9e56b3c7146d47616e> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/595b8c97d400fb9e56b3c7146d47616e> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/595b8c97d400fb9e56b3c7146d47616e> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/595b8c97d400fb9e56b3c7146d47616e> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/595b8c97d400fb9e56b3c7146d47616e> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/595b8c97d400fb9e56b3c7146d47616e>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zonstraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "75" ;
+			<http://www.w3.org/ns/locn#postCode> "2140" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zonstraat 75, 2140 Antwerpen" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/cbb090b9e43b76415fb48a9f992d0c2b>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/cbb090b9e43b76415fb48a9f992d0c2b> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/cbb090b9e43b76415fb48a9f992d0c2b> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/cbb090b9e43b76415fb48a9f992d0c2b> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/cbb090b9e43b76415fb48a9f992d0c2b> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/cbb090b9e43b76415fb48a9f992d0c2b> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/cbb090b9e43b76415fb48a9f992d0c2b> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/cbb090b9e43b76415fb48a9f992d0c2b>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Ieper" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zuidschote-Dorp" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "6" ;
+			<http://www.w3.org/ns/locn#postCode> "8904" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zuidschote-Dorp 6, 8904 Ieper" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/160cec9ae77b08c2efe04df1ab1415ec>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/160cec9ae77b08c2efe04df1ab1415ec> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/160cec9ae77b08c2efe04df1ab1415ec> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/160cec9ae77b08c2efe04df1ab1415ec> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/160cec9ae77b08c2efe04df1ab1415ec> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/160cec9ae77b08c2efe04df1ab1415ec> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/160cec9ae77b08c2efe04df1ab1415ec> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/160cec9ae77b08c2efe04df1ab1415ec>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Zonnebeke" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zuidstraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "12" ;
+			<http://www.w3.org/ns/locn#postCode> "8980" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zuidstraat 12, 8980 Zonnebeke" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/fbd3448ae4ae4017c388b7029e56d107>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fbd3448ae4ae4017c388b7029e56d107> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fbd3448ae4ae4017c388b7029e56d107> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fbd3448ae4ae4017c388b7029e56d107> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fbd3448ae4ae4017c388b7029e56d107> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fbd3448ae4ae4017c388b7029e56d107> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/fbd3448ae4ae4017c388b7029e56d107> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/fbd3448ae4ae4017c388b7029e56d107>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Kaprijke" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zuidstraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "41" ;
+			<http://www.w3.org/ns/locn#postCode> "9970" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zuidstraat 41, 9970 Kaprijke" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/ed9e6c72881c13df1cb134a81d06ac1d>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/ed9e6c72881c13df1cb134a81d06ac1d> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/ed9e6c72881c13df1cb134a81d06ac1d> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/ed9e6c72881c13df1cb134a81d06ac1d> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/ed9e6c72881c13df1cb134a81d06ac1d> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/ed9e6c72881c13df1cb134a81d06ac1d> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/ed9e6c72881c13df1cb134a81d06ac1d> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/ed9e6c72881c13df1cb134a81d06ac1d>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Londerzeel" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zwaluwstraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "72" ;
+			<http://www.w3.org/ns/locn#postCode> "1840" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zwaluwstraat 72, 1840 Londerzeel" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/feb08f5bfcefd809a27893f64594e951>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/feb08f5bfcefd809a27893f64594e951> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/feb08f5bfcefd809a27893f64594e951> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/feb08f5bfcefd809a27893f64594e951> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/feb08f5bfcefd809a27893f64594e951> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/feb08f5bfcefd809a27893f64594e951> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/feb08f5bfcefd809a27893f64594e951> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/feb08f5bfcefd809a27893f64594e951>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Middelkerke" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zwarteweg" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "15" ;
+			<http://www.w3.org/ns/locn#postCode> "8433" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zwarteweg 15, 8433 Middelkerke" .
+	}
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/3ddc034586a049fcf903eeeab31c331c>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city ;
+      <http://www.w3.org/ns/locn#thoroughfare> ?street ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber ;
+      <http://www.w3.org/ns/locn#postCode> ?postCode ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber ;
+      <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/3ddc034586a049fcf903eeeab31c331c> <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?city .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/3ddc034586a049fcf903eeeab31c331c> <http://www.w3.org/ns/locn#thoroughfare> ?street .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/3ddc034586a049fcf903eeeab31c331c> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> ?houseNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/3ddc034586a049fcf903eeeab31c331c> <http://www.w3.org/ns/locn#postCode> ?postCode .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/3ddc034586a049fcf903eeeab31c331c> <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> ?busNumber .
+    }
+    OPTIONAL {
+      <http://data.lblod.info/id/adressen/3ddc034586a049fcf903eeeab31c331c> <http://www.w3.org/ns/locn#fullAddress> ?fullAddress .
+    }
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/adressen/3ddc034586a049fcf903eeeab31c331c>
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Zwevegem" ;
+			<http://www.w3.org/ns/locn#thoroughfare> "Zwevegemstraat" ;
+			<https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "11" ;
+			<http://www.w3.org/ns/locn#postCode> "8553" ;
+			<http://www.w3.org/ns/locn#fullAddress> "Zwevegemstraat 11, 8553 Zwevegem" .
+  }
+}
