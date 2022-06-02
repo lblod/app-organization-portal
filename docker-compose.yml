@@ -414,3 +414,8 @@ services:
     environment:
       - discovery.type=single-node 
     restart: always
+
+  error-report-service:
+    image: lblod/error-report-service:0.1.0
+    links:
+      - db:database
