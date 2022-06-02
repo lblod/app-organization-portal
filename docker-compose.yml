@@ -416,10 +416,6 @@ services:
     restart: always
 
   error-report-service:
-    image: semtech/mu-javascript-template
+    image: lblod/error-report-service:0.1.0
     links:
-      - db:database    
-    volumes:
-      - /home/nbittich/lblod/error-logging/:/app
-    environment:
-      NODE_ENV: "development"
+      - db:database
