@@ -77,7 +77,7 @@ defmodule Dispatcher do
   end
 
   match "/worship-services/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/worship-services/"
+    Proxy.forward conn, path, "http://resource/worship-services/" # DISABLE CACHING FOR NOW (BUG OP-1404)
   end
 
   match "/recognized-worship-types/*path", %{ accept: [:json], layer: :api} do
@@ -266,6 +266,14 @@ defmodule Dispatcher do
     forward conn, path, "http://uri-info/"
   end
 
+
+  #################################################################
+  # ERROR REPORT
+  #################################################################
+
+  match "/error-reports/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://error-report-service/error-reports/"
+  end
 
   #################################################################
   # FILES
