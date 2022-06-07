@@ -7,6 +7,11 @@ alias Acl.GroupSpec, as: GroupSpec
 alias Acl.GroupSpec.GraphCleanup, as: GraphCleanup
 
 defmodule Acl.UserGroups.Config do
+
+ @error_type [
+   "https://docs.oasis-open-projects.org/oslc-op/core/v3.0/os/core-vocab.html#Error"
+ ]
+
  @protected_resource_type [
                         "http://www.w3.org/ns/org#Organization",
                         "http://data.vlaanderen.be/ns/besluit#Besluit",
@@ -99,7 +104,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organisatieportaal",
             constraint: %ResourceConstraint{
-              resource_types: @protected_resource_type
+              resource_types: @protected_resource_type ++ @error_type
             }
           }
         ]
@@ -112,7 +117,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/organisatieportaal",
             constraint: %ResourceConstraint{
-              resource_types: @protected_resource_type
+              resource_types: @protected_resource_type ++ @error_type
             }
           }
         ]
