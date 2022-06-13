@@ -1,0 +1,19 @@
+DELETE {
+  graph <http://mu.semte.ch/graphs/organisatieportaal> {
+   ?s ?p ?o.
+  }
+
+}
+INSERT {
+  graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s ?p ?normalize.
+  }
+}
+WHERE {
+  graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s ?p ?o.
+    BIND (replace(?o, "^(\\s+)|(\\s+)$", "") as ?removeTrailingSpace).
+    BIND (replace(?removeTrailingSpace, "\\s{2,}", " ") as ?normalize).
+    filter(isLITERAL(?o) && (regex(?o, "\\s{2,}") || regex(?o, "^(\\s+)|(\\s+)$")) )
+  }
+}
