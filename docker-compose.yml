@@ -36,7 +36,7 @@ services:
     restart: always
     logging: *default-logging
   db:
-    image: cecemel/mu-authorization:0.6.0-beta.8
+    image: semtech/mu-authorization:feature-share-mu-session-id-in-delta
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -101,6 +101,9 @@ services:
     image: cecemel/delta-notifier:0.2.0-beta.2
     volumes:
       - ./config/delta:/config
+      - /home/nbittich/lblod/delta-notifier:/app
+    environment:
+      NODE_ENV: "development"
     labels:
       - "logging=true"
     restart: always
@@ -417,5 +420,17 @@ services:
 
   error-report-service:
     image: lblod/error-report-service:0.1.0
+    links:
+      - db:database
+
+  testx:
+    image: semtech/mu-javascript-template
+    volumes:
+      - /home/nbittich/lblod/test-delta:/app
+      - /home/nbittich/lblod/test-delta/data:/data
+    environment:
+      NODE_ENV: "development"
+      LOG_SPARQL_ALL: "false"
+      DEBUG_AUTH_HEADERS: "false"
     links:
       - db:database
