@@ -29,6 +29,7 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/ns/org#ChangeEvent",
                         "http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen",
                         "http://data.lblod.info/vocabularies/erediensten/VerbondenJuridischeStructuren",
+                        "http://www.w3.org/ns/prov#Location",
                         "http://www.w3.org/ns/org#Site",
                         "http://www.w3.org/ns/locn#Address",
                         "http://www.w3.org/ns/person#Person",
