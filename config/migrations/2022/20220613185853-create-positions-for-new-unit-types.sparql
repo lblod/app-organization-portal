@@ -1,0 +1,167 @@
+# URIs taken from Loket when they exist
+
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+
+    # Burgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000013>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000013" ;
+      skos:prefLabel "Burgemeester" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # College van Burgemeester & Schepenen
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/2aaad652-d2eb-4333-9e9d-ce2888037ba8>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "2aaad652-d2eb-4333-9e9d-ce2888037ba8" ;
+      skos:prefLabel "Voorzitter van het college" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/7b038cc40bba10bec833ecfe6f15bc7a>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "7b038cc40bba10bec833ecfe6f15bc7a" ;
+      skos:prefLabel "Aangewezen burgemeester" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/fa0201b3-2cda-4821-a15e-350ff57d77e0>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "fa0201b3-2cda-4821-a15e-350ff57d77e0" ;
+      skos:prefLabel "Lid van college" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/59a90e03-4f22-4bb9-8c91-132618db4b38>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "59a90e03-4f22-4bb9-8c91-132618db4b38" ;
+      skos:prefLabel "Toegevoegde schepen" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Gemeenteraad
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000012" ;
+      skos:prefLabel "Voorzitter van de gemeenteraad" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000011" ;
+      skos:prefLabel "Gemeenteraadslid" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Voorzitter van het Bijzonder Comité voor de Sociale Dienst
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001a>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e00001a" ;
+      skos:prefLabel "Voorzitter van het Bijzonder Comité voor de Sociale Dienst" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Vast Bureau
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000018>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000018" ;
+      skos:prefLabel "Voorzitter van het Vast Bureau" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000017>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000017" ;
+      skos:prefLabel "Lid van het Vast Bureau" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Bijzonder Comité voor de Sociale Dienst (BCSD)
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001a>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e00001a" ;
+      skos:prefLabel "Voorzitter van het Bijzonder Comité voor de Sociale Dienst" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000019>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000019" ;
+      skos:prefLabel "Lid van het Bijzonder Comité voor de Sociale Dienst" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Raad voor Maatschappelijk Welzijn
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000016>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000016" ;
+      skos:prefLabel "Voorzitter van de Raad voor Maatschappelijk Welzijn" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000015>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000015" ;
+      skos:prefLabel "Lid van de Raad voor Maatschappelijk Welzijn" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Districtsburgemeester & Districtscollege
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001d>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e00001d" ;
+      skos:prefLabel "Districtsburgemeester" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Districtscollege
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001e>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e00001e" ;
+      skos:prefLabel "Districtsschepen" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Districtsraad
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001b>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e00001b" ;
+      skos:prefLabel "Districtsraadslid" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001c>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e00001c" ;
+      skos:prefLabel "Voorzitter van de districtsraad" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Deputatie
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000020>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000020" ;
+      skos:prefLabel "Gedeputeerde" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Gouverneur
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/d7c00cd1-baf1-4346-83c0-6796c0bedd85>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "d7c00cd1-baf1-4346-83c0-6796c0bedd85" ;
+      skos:prefLabel "Gouverneur" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    # Provincieraad
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000027>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e000027" ;
+      skos:prefLabel "Voorzitter van de provincieraad" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001f>
+      a <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode> ;
+      mu:uuid "5ab0e9b8a3b2ca7c5e00001f" ;
+      skos:prefLabel "Provincieraadslid" ;
+      skos:inScheme <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> ;
+      skos:topConceptOf <http://data.vlaanderen.be/id/conceptscheme/BestuursfunctieCode> .
+  }
+}
