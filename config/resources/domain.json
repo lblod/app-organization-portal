@@ -25,7 +25,8 @@
     "ere": "http://data.lblod.info/vocabularies/erediensten/",
     "ch": "http://data.lblod.info/vocabularies/contacthub/",    
     "code": "http://lblod.data.gift/vocabularies/organisatie/",
-    "ext": "http://mu.semte.ch/vocabularies/ext/"
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "geo": "http://www.opengis.net/ont/geosparql#"
   },
   "resources": {
     "people": {
@@ -258,6 +259,13 @@
           "predicate": "skos:prefLabel"
         }
       },
+      "relationships": {
+        "applies-to": {
+          "predicate": "ext:appliesTo",
+          "target": "governing-body-classification-codes",
+          "cardinality": "one"
+        }
+      },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuursfunctieCode/"
     },
     "roles": {
@@ -370,6 +378,11 @@
           "predicate": "ere:betrokkenBestuur",
           "target": "local-involvements",
           "cardinality": "many"
+        },
+        "located-within": {
+          "predicate": "geo:sfWithin",
+          "target": "locations",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/bestuurseenheden/"
@@ -506,6 +519,13 @@
         "label": {
           "type": "string",
           "predicate": "skos:prefLabel"
+        }
+      },
+      "relationships": {
+        "applies-within": {
+          "predicate": "ext:appliesWithin",
+          "target": "administrative-unit-classification-codes",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/"
@@ -660,6 +680,39 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "locations": {
+      "class": "prov:Location",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "rdfs:label"
+        },
+        "level": {
+          "type": "string",
+          "predicate": "ext:werkingsgebiedNiveau"
+        }
+      },
+      "relationships": {
+        "administrative-units": {
+          "predicate": "geo:sfWithin",
+          "target": "administrative-units",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "located-within": {
+          "predicate": "geo:sfWithin",
+          "target": "locations",
+          "cardinality": "one"
+        },
+        "locations": {
+          "predicate": "geo:sfWithin",
+          "target": "locations",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/werkingsgebieden/"
     },
     "involvement-types": {
       "class": "code:TypeBetrokkenheid",
