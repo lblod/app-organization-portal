@@ -199,6 +199,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/decision-activities/"
   end
 
+
+
+  match "/history-changes/*path", %{ accept: [:any], layer: :api} do
+    Proxy.forward conn, path, "http://testx/history-changes/"
+  end
+
   ###############
   # LOGIN
   ###############
