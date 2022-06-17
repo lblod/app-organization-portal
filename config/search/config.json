@@ -141,7 +141,10 @@
     {
       "type": "mandatory",
       "on_path": "mandatories",
-      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
+      "rdf_type": "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+      "sub_types": [
+        "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris"
+      ],
       "properties": {
         "given_name": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
