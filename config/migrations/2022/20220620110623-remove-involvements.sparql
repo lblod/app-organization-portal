@@ -1,0 +1,19 @@
+
+prefix org: <http://www.w3.org/ns/org#>
+prefix ere: <http://data.lblod.info/vocabularies/erediensten/>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+
+delete where {
+
+graph <http://mu.semte.ch/graphs/organisatieportaal>  {
+
+?involvement a ere:BetrokkenLokaleBesturen;
+               org:organization ?worshipService;
+               ere:typebetrokkenheid ?typebetrokkenheid.
+
+?betrokkenBestuur  ere:betrokkenBestuur ?involvement.
+?involvement ?p ?o.
+
+filter (?typebetrokkenheid = <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e> && ?worshipService = <http://data.lblod.info/id/besturenVanDeEredienst/0277a5125962d8d5f0f00606d200be9a>)
+}
+} 
