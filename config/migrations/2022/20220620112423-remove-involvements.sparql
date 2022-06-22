@@ -1,0 +1,32 @@
+
+# OP-1520 & OP-1529 - OP-1519 & OP-1518
+
+prefix org: <http://www.w3.org/ns/org#>
+prefix ere: <http://data.lblod.info/vocabularies/erediensten/>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+
+delete where {
+
+graph <http://mu.semte.ch/graphs/organisatieportaal>  {
+
+?involvement a ere:BetrokkenLokaleBesturen;
+               org:organization ?worshipService;
+               ere:typebetrokkenheid ?typebetrokkenheid.
+
+?betrokkenBestuur  ere:betrokkenBestuur ?involvement.
+?involvement ?p ?o.
+
+filter (?typebetrokkenheid = <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e> && 
+(?worshipService = <http://data.lblod.info/id/besturenVanDeEredienst/1f3b446da13c8ebd75ee52ac7746c53a> 
+|| ?worshipService = <http://data.lblod.info/id/besturenVanDeEredienst/f99035f2eca9a50996e719c445d2cfd2>
+|| ?worshipService = <http://data.lblod.info/id/besturenVanDeEredienst/0277a5125962d8d5f0f00606d200be9a>
+|| ?worshipService = <http://data.lblod.info/id/besturenVanDeEredienst/9222f5c5557cb2ca0c07873fbaf02da7>
+|| ?worshipService = <http://data.lblod.info/id/besturenVanDeEredienst/8d4c1066736ac9be7886d273b86751b8>
+ 
+ ))
+}
+} 
+
+
+
+
