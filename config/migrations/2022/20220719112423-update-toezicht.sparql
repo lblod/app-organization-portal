@@ -1,0 +1,90 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX schema: <http://schema.org/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lblodlg: <https://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>    
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+
+SELECT DISTINCT ?bestuur ?label ?typeEredienst ?provincie ?municipality ?betrokkenheid WHERE {
+  {
+    SELECT ?bestuur ?betrokkenheid (COUNT(DISTINCT ?betrokkenheid) as ?betrokkenheidCount)  WHERE {
+      ?bestuur
+        a
+          ?type.
+
+      FILTER (?type IN (
+        <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>,
+        <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
+      ))
+
+       ?betrokkenheid
+          org:organization
+            ?bestuur;
+          ere:typebetrokkenheid <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1>;
+          a 
+            ere:BetrokkenLokaleBesturen.
+    }
+    GROUP BY ?bestuur ?betrokkenheid
+    HAVING(COUNT(DISTINCT ?betrokkenheid) > 1)
+    ORDER BY DESC(?betrokkenheidCount)
+  }
+  OPTIONAL {
+    ?bestuur
+      skos:prefLabel
+        ?label
+  }
+  OPTIONAL {
+  	?bestuur
+    	ere:typeEredienst
+     		?typeEredienstUri.
+    OPTIONAL {
+    	?typeEredienstUri
+       	skos:prefLabel
+        	?typeEredienst.
+	  }
+  }
+  OPTIONAL {
+    ?bestuur
+      org:hasPrimarySite
+        ?primarySite.
+	  OPTIONAL {    
+      ?primarySite
+        organisatie:bestaatUit
+          ?sa.
+		  OPTIONAL {
+        ?sa
+          locn:adminUnitL2
+            ?provincie.
+        }
+		  OPTIONAL {
+        ?sa
+          adres:gemeentenaam
+            ?municipality.
+        }
+      }
+    }
+}
+
+  
