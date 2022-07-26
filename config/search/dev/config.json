@@ -98,6 +98,14 @@
           "http://data.vlaanderen.be/ns/besluit#bestuurt",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "organization_classification": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://www.w3.org/ns/org#hasPost",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://www.w3.org/ns/org#classification",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
         "organization_name": [
           "http://www.w3.org/ns/org#holds",
           "^http://www.w3.org/ns/org#hasPost",
@@ -164,6 +172,15 @@
           },
           "organization_id": {
             "type": "text"
+          },
+          "organization_classification": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
           },
           "organization_province": {
             "type": "text",
@@ -245,6 +262,12 @@
           "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "organization_classification": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+          "http://www.w3.org/ns/org#classification",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
         "organization_name": [
           "http://www.w3.org/ns/org#holds",
           "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
@@ -305,6 +328,15 @@
           },
           "organization_id": {
             "type": "text"
+          },
+          "organization_classification": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
           },
           "organization_province": {
             "type": "text",
@@ -402,6 +434,13 @@
           }
         },
         {
+          "name": "organization_classification",
+          "mappings": {
+            "minister": "organization_classification",
+            "mandatory": "organization_classification"
+          }
+        },
+        {
           "name": "organization_name",
           "mappings": {
             "minister": "organization_name",
@@ -468,6 +507,15 @@
           },
           "organization_id": {
             "type": "text"
+          },
+          "organization_classification": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
           },
           "organization_province": {
             "type": "text",
