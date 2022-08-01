@@ -71,11 +71,5 @@ services:
     restart: "no"
   delta-producer-dump-file-publisher:
     restart: "no"
-  sync-with-sharepoint:
-    environment:
-      TENANT_ID: "test"
-      CLIENT_ID: "test"
-      CLIENT_SECRET: "test"
-      AAD_ENDPOINT: "test"
-      GRAPH_ENDPOINT: "test"
-    restart: "no"
+  #sync-with-sharepoint:
+  #  restart: "no"
