@@ -35,6 +35,8 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/ns/person#Person",
                         "http://data.vlaanderen.be/ns/mandaat#Mandaat",
                         "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+                        "http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode",
+                        "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
                         "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
                         "http://schema.org/ContactPoint",
                         "http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie",
