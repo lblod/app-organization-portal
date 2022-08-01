@@ -1,0 +1,19 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+INSERT {
+  GRAPH ?h {
+    ?gemeente org:linkedTo ?ocmw .
+    ?ocmw org:linkedTo ?gemeente .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?ocmw a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> ;
+      skos:prefLabel ?label .
+
+    ?gemeente a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      skos:prefLabel ?label .
+  }
+  BIND(?g as ?h)
+}
