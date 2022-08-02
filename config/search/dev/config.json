@@ -188,7 +188,6 @@
               "field": {
                 "type": "keyword",
                 "normalizer": "custom_sort_normalizer"
-                
               }
             }
           },
@@ -256,14 +255,14 @@
         "end_date": "http://data.vlaanderen.be/ns/mandaat#einde",
         "organization_id": [
           "http://www.w3.org/ns/org#holds",
-          "http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
           "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
           "http://data.vlaanderen.be/ns/besluit#bestuurt",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "organization_classification": [
           "http://www.w3.org/ns/org#holds",
-          "http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
           "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
           "http://data.vlaanderen.be/ns/besluit#bestuurt",
           "http://www.w3.org/ns/org#classification",
@@ -271,14 +270,14 @@
         ],
         "organization_name": [
           "http://www.w3.org/ns/org#holds",
-          "http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
           "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
           "http://data.vlaanderen.be/ns/besluit#bestuurt",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
         "organization_municipality": [
           "http://www.w3.org/ns/org#holds",
-          "http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
           "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
           "http://data.vlaanderen.be/ns/besluit#bestuurt",
           "http://www.w3.org/ns/org#hasPrimarySite",
@@ -287,7 +286,7 @@
         ],
         "organization_province": [
           "http://www.w3.org/ns/org#holds",
-          "http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
           "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
           "http://data.vlaanderen.be/ns/besluit#bestuurt",
           "http://www.w3.org/ns/org#hasPrimarySite",
