@@ -1,0 +1,26 @@
+
+# OP-1565
+
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+
+delete {
+    graph <http://mu.semte.ch/graphs/organisatieportaal>{
+        <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1> skos:prefLabel ?prefLabel1.
+        <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e> skos:prefLabel ?prefLabel2.
+        <http://lblod.data.gift/concepts/0f845f00ee76099c89518cbaf6a7b77f> skos:prefLabel ?prefLabel3.
+    }
+    
+}insert {
+    graph <http://mu.semte.ch/graphs/organisatieportaal>{
+        <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1> skos:prefLabel "Toezichthoudend".
+        <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e> skos:prefLabel "Mede-financierend".
+        <http://lblod.data.gift/concepts/0f845f00ee76099c89518cbaf6a7b77f> skos:prefLabel "Adviserend".
+    }
+
+}where {
+    graph <http://mu.semte.ch/graphs/organisatieportaal>{
+        <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1> skos:prefLabel ?prefLabel1.
+        <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e> skos:prefLabel ?prefLabel2.
+        <http://lblod.data.gift/concepts/0f845f00ee76099c89518cbaf6a7b77f> skos:prefLabel ?prefLabel3.
+    }
+}
