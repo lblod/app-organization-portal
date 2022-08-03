@@ -1,0 +1,69 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX schema: <http://schema.org/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lblodlg: <https://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+DELETE { GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { ?betrokkenheid ere:typebetrokkenheid <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1>. } }
+INSERT { GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { ?betrokkenheid ere:typebetrokkenheid <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e>. } }
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    {
+      SELECT DISTINCT ?bestuur ?label ?typeEredienst ?provincie ?municipality ?betrokkenheidCount WHERE {
+        {
+          SELECT ?bestuur (COUNT(DISTINCT ?betrokkenheid) AS ?betrokkenheidCount) WHERE {
+            ?bestuur rdf:type ?type.
+            FILTER(?type IN(ere:CentraalBestuurVanDeEredienst, ere:BestuurVanDeEredienst))
+            ?betrokkenheid org:organization ?bestuur;
+              ere:typebetrokkenheid <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1>;
+              rdf:type ere:BetrokkenLokaleBesturen.
+          }
+          GROUP BY ?bestuur
+          HAVING ((COUNT(DISTINCT ?betrokkenheid)) > 1 )
+          ORDER BY DESC (?betrokkenheidCount)
+        }
+        OPTIONAL { ?bestuur skos:prefLabel ?label. }
+        OPTIONAL {
+          ?bestuur ere:typeEredienst ?typeEredienstUri.
+          OPTIONAL { ?typeEredienstUri skos:prefLabel ?typeEredienst. }
+        }
+        OPTIONAL {
+          ?bestuur org:hasPrimarySite ?primarySite.
+          OPTIONAL {
+            ?primarySite organisatie:bestaatUit ?sa.
+            OPTIONAL { ?sa locn:adminUnitL2 ?provincie. }
+            OPTIONAL { ?sa adres:gemeentenaam ?municipality. }
+          }
+        }
+      }
+    }
+    ?betrokkenheid org:organization ?bestuur;
+      ere:typebetrokkenheid <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1>;
+      rdf:type ere:BetrokkenLokaleBesturen.
+    ?administrativeUnit ere:betrokkenBestuur ?betrokkenheid.
+    OPTIONAL { ?administrativeUnit skos:prefLabel ?administrativeUnitLabel. }
+    FILTER(?administrativeUnitLabel != ?municipality)
+  }
+}
