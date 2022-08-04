@@ -1,0 +1,12 @@
+INSERT {
+  GRAPH ?g {
+    ?province <http://www.w3.org/ns/org#hasSubOrganization> ?ocmw .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?ocmw <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> ;
+      <http://www.w3.org/ns/org#linkedTo> ?gemeente .
+    
+    ?province <http://www.w3.org/ns/org#hasSubOrganization> ?gemeente .
+  }
+}
