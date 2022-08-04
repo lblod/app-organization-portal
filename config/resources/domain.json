@@ -314,10 +314,10 @@
           "target": "contact-points",
           "cardinality": "one"
         },
-        "governing-body": {
+        "governing-bodies": {
           "predicate": "lblodlg:heeftBestuursfunctie",
           "target": "governing-bodies",
-          "cardinality": "one",
+          "cardinality": "many",
           "inverse": true
         }
       },
@@ -580,6 +580,11 @@
         "mandates": {
           "predicate": "org:hasPost",
           "target": "mandates",
+          "cardinality": "many"
+        },
+        "board-positions": {
+          "predicate": "org:hasPost",
+          "target": "board-positions",
           "cardinality": "many"
         }
       },
