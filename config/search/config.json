@@ -304,6 +304,168 @@
       }
     },
     {
+      "type": "agent",
+      "on_path": "agents",
+      "rdf_type": "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
+      "properties": {
+        "given_name": [
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/givenName"
+        ],
+        "id": [
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "uuid": [
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "family_name": [
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/familyName"
+        ],
+        "first_name_used": [
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam"
+        ],
+        "end_date": "http://data.vlaanderen.be/ns/mandaat#einde",
+        "organization_id": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "organization_classification": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://www.w3.org/ns/org#classification",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "organization_name": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "organization_municipality": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ],
+        "organization_province": [
+          "http://www.w3.org/ns/org#holds",
+          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+          "http://data.vlaanderen.be/ns/besluit#bestuurt",
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "http://www.w3.org/ns/locn#adminUnitL2"
+        ],
+        "position_id": [
+          "http://www.w3.org/ns/org#holds",
+          "http://www.w3.org/ns/org#role",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "position_name": [
+          "http://www.w3.org/ns/org#holds",
+          "http://www.w3.org/ns/org#role",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ]
+      },
+      "mappings": {
+        "properties": {
+          "family_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "id": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
+          "given_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "organization_id": {
+            "type": "text"
+          },
+          "organization_classification": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "organization_province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "organization_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "organization_municipality": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "position_id": {
+            "type": "text"
+          },
+          "position_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "end_date": {
+            "type": "date"
+          }
+        }
+      }
+    },
+    {
       "type": "minister",
       "on_path": "ministers",
       "rdf_type": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
@@ -462,6 +624,7 @@
       "type": "person",
       "composite_types": [
         "minister",
+        "agent",
         "mandatory"
       ],
       "on_path": "people",
@@ -470,6 +633,7 @@
           "name": "given_name",
           "mappings": {
             "minister": "given_name",
+            "agent": "given_name",
             "mandatory": "given_name"
           }
         },
@@ -477,6 +641,7 @@
           "name": "id",
           "mappings": {
             "minister": "id",
+            "agent": "id",
             "mandatory": "id"
           }
         },
@@ -484,6 +649,7 @@
           "name": "family_name",
           "mappings": {
             "minister": "family_name",
+            "agent": "family_name",
             "mandatory": "family_name"
           }
         },
@@ -491,6 +657,7 @@
           "name": "first_name_used",
           "mappings": {
             "minister": "first_name_used",
+            "agent": "first_name_used",
             "mandatory": "first_name_used"
           }
         },
@@ -498,6 +665,7 @@
           "name": "end_date",
           "mappings": {
             "minister": "end_date",
+            "agent": "end_date",
             "mandatory": "end_date"
           }
         },
@@ -505,6 +673,7 @@
           "name": "organization_id",
           "mappings": {
             "minister": "organization_id",
+            "agent": "organization_id",
             "mandatory": "organization_id"
           }
         },
@@ -512,6 +681,7 @@
           "name": "organization_classification",
           "mappings": {
             "minister": "organization_classification",
+            "agent": "organization_classification",
             "mandatory": "organization_classification"
           }
         },
@@ -519,6 +689,7 @@
           "name": "organization_name",
           "mappings": {
             "minister": "organization_name",
+            "agent": "organization_name",
             "mandatory": "organization_name"
           }
         },
@@ -526,6 +697,7 @@
           "name": "organization_municipality",
           "mappings": {
             "minister": "organization_municipality",
+            "agent": "organization_municipality",
             "mandatory": "organization_municipality"
           }
         },
@@ -533,6 +705,7 @@
           "name": "organization_province",
           "mappings": {
             "minister": "organization_province",
+            "agent": "organization_province",
             "mandatory": "organization_province"
           }
         },
@@ -540,6 +713,7 @@
           "name": "position_id",
           "mappings": {
             "minister": "position_id",
+            "agent": "position_id",
             "mandatory": "position_id"
           }
         },
@@ -547,6 +721,7 @@
           "name": "position_name",
           "mappings": {
             "minister": "position_name",
+            "agent": "position_name",
             "mandatory": "position_name"
           }
         }

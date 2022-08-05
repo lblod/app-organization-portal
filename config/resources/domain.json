@@ -314,10 +314,10 @@
           "target": "contact-points",
           "cardinality": "one"
         },
-        "governing-body": {
+        "governing-bodies": {
           "predicate": "lblodlg:heeftBestuursfunctie",
           "target": "governing-bodies",
-          "cardinality": "one",
+          "cardinality": "many",
           "inverse": true
         }
       },
@@ -581,6 +581,11 @@
           "predicate": "org:hasPost",
           "target": "mandates",
           "cardinality": "many"
+        },
+        "board-positions": {
+          "predicate": "org:hasPost",
+          "target": "board-positions",
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/bestuursorganen/"
@@ -597,7 +602,7 @@
         "applies-within": {
           "predicate": "ext:appliesWithin",
           "target": "administrative-unit-classification-codes",
-          "cardinality": "one"
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/"
