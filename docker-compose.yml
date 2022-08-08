@@ -195,7 +195,7 @@ services:
       - db:database
     volumes:
       - ./config/jobs-controller/:/config/
-  sync-with-sharepoint:
+  organizations-sync-with-sharepoint:
     image: lblod/op-sync-with-sharepoint-service
     links:
       - db:database
@@ -204,7 +204,17 @@ services:
     restart: always
     logging: *default-logging
     volumes:
-      - ./config/sharepoint/sync/:/config/
+      - ./config/sharepoint/sync/organizations/:/config/
+  contacts-sync-with-sharepoint:
+    image: lblod/op-sync-with-sharepoint-service
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+    volumes:
+      - ./config/sharepoint/sync/contacts/:/config/
 ################################################################################
 # DELTA GENERAL
 ################################################################################

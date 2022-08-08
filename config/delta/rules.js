@@ -178,7 +178,7 @@ export default [
       optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
     }
   },
-/*   {
+  {
     match: {
       graph: {
         type: 'uri',
@@ -195,7 +195,7 @@ export default [
       ignoreFromSelf: true,
       optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
     }
-  }, */
+  },
   {
     match: {
       graph: {
