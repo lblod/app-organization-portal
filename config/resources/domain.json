@@ -17,7 +17,7 @@
     "generiek": "https://data.vlaanderen.be/ns/generiek#",
     "mandaat": "http://data.vlaanderen.be/ns/mandaat#",
     "besluit": "http://data.vlaanderen.be/ns/besluit#",
-    "lblodlg": "https://data.lblod.info/vocabularies/leidinggevenden/",
+    "lblodlg": "http://data.lblod.info/vocabularies/leidinggevenden/",
     "dc_terms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
@@ -25,7 +25,8 @@
     "ere": "http://data.lblod.info/vocabularies/erediensten/",
     "ch": "http://data.lblod.info/vocabularies/contacthub/",    
     "code": "http://lblod.data.gift/vocabularies/organisatie/",
-    "ext": "http://mu.semte.ch/vocabularies/ext/"
+    "ext": "http://mu.semte.ch/vocabularies/ext/",
+    "geo": "http://www.opengis.net/ont/geosparql#"
   },
   "resources": {
     "people": {
@@ -56,7 +57,13 @@
           "target": "agents-in-position",
           "cardinality": "many",
           "inverse": true
-        }
+        },
+        "agents": {
+          "predicate": "mandaat:isBestuurlijkeAliasVan",
+          "target": "agents",
+          "cardinality": "many",
+          "inverse": true
+        },
       },
       "new-resource-base": "http://data.lblod.info/id/personen/"
     },
@@ -232,7 +239,7 @@
       "relationships": {
         "role-board": {
           "predicate": "org:role",
-          "target": "board-positions",
+          "target": "board-position-codes",
           "cardinality": "one"
         },
         "governing-body": {
@@ -250,12 +257,85 @@
       },
       "new-resource-base": "http://data.lblod.info/id/mandaten/"
     },
+    "agents": {
+      "class": "lblodlg:Functionaris",
+      "super": ["agents-in-position"],
+      "attributes": {
+        "start-date": {
+          "type": "datetime",
+          "predicate": "mandaat:start"
+        },
+        "end-date": {
+          "type": "datetime",
+          "predicate": "mandaat:einde"
+        }
+      }, 
+      "relationships": {
+        "board-position": {
+          "predicate": "org:holds",
+          "target": "board-positions",
+          "cardinality": "one"
+        },
+        "status": {
+          "predicate": "mandaat:status",
+          "target": "agent-status-codes",
+          "cardinality": "one"
+        },
+        "governing-alias": {
+          "predicate": "mandaat:isBestuurlijkeAliasVan",
+          "target": "people",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/functionarissen/"
+    },
+    "agent-status-codes": {
+      "class": "lblodlg:FunctionarisStatusCode",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.vlaanderen.be/id/concept/functionarisStatusCode/"
+    },
     "board-positions": {
+      "class": "lblodlg:Bestuursfunctie",
+      "super": ["posts"],
+      "relationships": {
+        "role-board": {
+          "predicate": "org:role",
+          "target": "board-position-codes",
+          "cardinality": "one"
+        },
+        "contact-point": {
+          "predicate": "schema:contactPoint",
+          "target": "contact-points",
+          "cardinality": "one"
+        },
+        "governing-bodies": {
+          "predicate": "lblodlg:heeftBestuursfunctie",
+          "target": "governing-bodies",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/bestuursfuncties/"
+    },
+    "board-position-codes": {
       "class": "code:BestuursfunctieCode",
       "attributes": {
         "label": {
           "type": "string",
           "predicate": "skos:prefLabel"
+        }
+      },
+      "relationships": {
+        "applies-to": {
+          "predicate": "ext:appliesTo",
+          "target": "governing-body-classification-codes",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuursfunctieCode/"
@@ -370,6 +450,11 @@
           "predicate": "ere:betrokkenBestuur",
           "target": "local-involvements",
           "cardinality": "many"
+        },
+        "located-within": {
+          "predicate": "geo:sfWithin",
+          "target": "locations",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/bestuurseenheden/"
@@ -496,6 +581,11 @@
           "predicate": "org:hasPost",
           "target": "mandates",
           "cardinality": "many"
+        },
+        "board-positions": {
+          "predicate": "org:hasPost",
+          "target": "board-positions",
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/bestuursorganen/"
@@ -506,6 +596,13 @@
         "label": {
           "type": "string",
           "predicate": "skos:prefLabel"
+        }
+      },
+      "relationships": {
+        "applies-within": {
+          "predicate": "ext:appliesWithin",
+          "target": "administrative-unit-classification-codes",
+          "cardinality": "many"
         }
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/"
@@ -660,6 +757,39 @@
       },
       "features": ["include-uri"],
       "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "locations": {
+      "class": "prov:Location",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "rdfs:label"
+        },
+        "level": {
+          "type": "string",
+          "predicate": "ext:werkingsgebiedNiveau"
+        }
+      },
+      "relationships": {
+        "administrative-units": {
+          "predicate": "geo:sfWithin",
+          "target": "administrative-units",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "located-within": {
+          "predicate": "geo:sfWithin",
+          "target": "locations",
+          "cardinality": "one"
+        },
+        "locations": {
+          "predicate": "geo:sfWithin",
+          "target": "locations",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/werkingsgebieden/"
     },
     "involvement-types": {
       "class": "code:TypeBetrokkenheid",
