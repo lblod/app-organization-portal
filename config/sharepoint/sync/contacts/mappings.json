@@ -1,0 +1,232 @@
+{
+  "objects": [
+    {
+      "type": "http://data.vlaanderen.be/ns/mandaat#Mandataris",
+      "mappings": [
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://www.w3.org/ns/org#role", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "Functietitel"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "^http://www.w3.org/ns/org#hasPost", "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan", "http://data.vlaanderen.be/ns/besluit#bestuurt", "http://www.w3.org/ns/org#classification", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "nzde"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "^http://www.w3.org/ns/org#hasPost", "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan", "http://data.vlaanderen.be/ns/besluit#bestuurt", "http://www.w3.org/ns/regorg#orgStatus", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "fkxo"
+        },
+        {
+          "op": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan", "http://xmlns.com/foaf/0.1/givenName"],
+          "sl": "Voornaam_x0020_Van_x0020_Contact"
+        },
+        {
+          "op": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan", "http://xmlns.com/foaf/0.1/familyName"],
+          "sl": "Familienaam"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "^http://www.w3.org/ns/org#hasPost", "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan", "http://data.vlaanderen.be/ns/besluit#bestuurt", "http://www.w3.org/ns/adms#identifier", "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator", "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
+          "queryFilter": "?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/adms#identifier> ?id . ?id <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ; <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>/<https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?value .",
+          "sl": "oydd"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "^http://www.w3.org/ns/org#hasPost", "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan", "http://data.vlaanderen.be/ns/besluit#bestuurt", "http://www.w3.org/ns/adms#identifier", "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator", "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
+          "queryFilter": "?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/adms#identifier> ?id . ?id <http://www.w3.org/2004/02/skos/core#notation> \"KBO nummer\"@nl ; <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>/<https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?value .",
+          "sl": "_x0070_og9"
+        },
+        {
+          "op": ["http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "http://www.w3.org/ns/locn#thoroughfare"],
+          "sl": "j0ny"
+        },
+        {
+          "op": ["http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer"],
+          "sl": "_x0067_kn4"
+        },
+        {
+          "op": ["http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "http://www.w3.org/ns/locn#postCode"],
+          "sl": "vpjz"
+        },
+        {
+          "op": ["http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "https://data.vlaanderen.be/ns/adres#gemeentenaam"],
+          "sl": "_x0072_ta1"
+        },
+        {
+          "op": ["http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "http://www.w3.org/ns/locn#adminUnitL2"],
+          "sl": "hydj"
+        },
+        {
+          "op": ["http://schema.org/contactPoint", "http://schema.org/telephone"],
+          "queryFilter": "FILTER NOT EXISTS { ?s <http://schema.org/contactPoint> ?contactPoint . ?contactPoint <http://schema.org/contactType> \"Secondary\" ; <http://schema.org/telephone> ?value . }",
+          "sl": "Telefoonnr_x0020_Contact"
+        },
+        {
+          "op": ["http://schema.org/contactPoint", "http://schema.org/telephone"],
+          "queryFilter": "?s <http://schema.org/contactPoint> ?contactPoint . ?contactPoint <http://schema.org/contactType> \"Secondary\" ; <http://schema.org/telephone> ?value .",
+          "sl": "GSMnr_x0020_Contact"
+        },
+        {
+          "op": ["http://schema.org/contactPoint", "http://schema.org/email"],
+          "sl": "Title"
+        }
+      ],
+      "pathToMatchingUuid": "?s a ?type ;\n\t <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid .\n FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst> . }\n FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst> .}"
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
+      "mappings": [
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://www.w3.org/ns/org#role", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "Functietitel"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://www.w3.org/ns/org#role", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "Decretale_x0020_functie"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie", "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan", "http://data.vlaanderen.be/ns/besluit#bestuurt", "http://www.w3.org/ns/org#classification", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "nzde"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie", "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan", "http://data.vlaanderen.be/ns/besluit#bestuurt", "http://www.w3.org/ns/regorg#orgStatus", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "fkxo"
+        },
+        {
+          "op": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan", "http://xmlns.com/foaf/0.1/givenName"],
+          "sl": "Voornaam_x0020_Van_x0020_Contact"
+        },
+        {
+          "op": ["http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan", "http://xmlns.com/foaf/0.1/familyName"],
+          "sl": "Familienaam"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie", "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan", "http://data.vlaanderen.be/ns/besluit#bestuurt", "http://www.w3.org/ns/adms#identifier", "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator", "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
+          "queryFilter": "?s <http://www.w3.org/ns/org#holds>/^<http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/adms#identifier> ?id . ?id <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ; <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>/<https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?value .",
+          "sl": "oydd"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie", "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan", "http://data.vlaanderen.be/ns/besluit#bestuurt", "http://www.w3.org/ns/adms#identifier", "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator", "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
+          "queryFilter": "?s <http://www.w3.org/ns/org#holds>/^<http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/adms#identifier> ?id . ?id <http://www.w3.org/2004/02/skos/core#notation> \"KBO nummer\"@nl ; <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>/<https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?value .",
+          "sl": "_x0070_og9"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "http://www.w3.org/ns/locn#thoroughfare"],
+          "sl": "j0ny"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer"],
+          "sl": "_x0067_kn4"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "http://www.w3.org/ns/locn#postCode"],
+          "sl": "vpjz"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "https://data.vlaanderen.be/ns/adres#gemeentenaam"],
+          "sl": "_x0072_ta1"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://schema.org/contactPoint", "http://www.w3.org/ns/locn#address", "http://www.w3.org/ns/locn#adminUnitL2"],
+          "sl": "hydj"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://schema.org/contactPoint", "http://schema.org/telephone"],
+          "queryFilter": "FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/<http://schema.org/contactPoint> ?contactPoint . ?contactPoint <http://schema.org/contactType> \"Secondary\" ; <http://schema.org/telephone> ?value . }",
+          "sl": "Telefoonnr_x0020_Contact"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://schema.org/contactPoint", "http://schema.org/telephone"],
+          "queryFilter": "?s <http://www.w3.org/ns/org#holds>/<http://schema.org/contactPoint> ?contactPoint . ?contactPoint <http://schema.org/contactType> \"Secondary\" ; <http://schema.org/telephone> ?value .",
+          "sl": "GSMnr_x0020_Contact"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#holds", "http://schema.org/contactPoint", "http://schema.org/email"],
+          "sl": "Title"
+        }
+      ],
+      "pathToMatchingUuid": "?s a ?type ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid .\n FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst> . }\n FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst> .}"
+    },
+    {
+      "type": "http://www.w3.org/ns/locn#Address",
+      "mappings": [
+        {
+          "op": ["http://www.w3.org/ns/locn#thoroughfare"],
+          "sl": "j0ny"
+        },
+        {
+          "op": ["https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer"],
+          "sl": "_x0067_kn4"
+        },
+        {
+          "op": ["http://www.w3.org/ns/locn#postCode"],
+          "sl": "vpjz"
+        },
+        {
+          "op": ["https://data.vlaanderen.be/ns/adres#gemeentenaam"],
+          "sl": "_x0072_ta1"
+        },
+        {
+          "op": ["http://www.w3.org/ns/locn#adminUnitL2"],
+          "sl": "hydj"
+        }
+      ],
+      "pathToMatchingUuid": "?position a ?type ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t (<http://schema.org/contactPoint>)|(<http://www.w3.org/ns/org#holds>/<http://schema.org/contactPoint>) ?contactPoint .\n ?contactPoint <http://www.w3.org/ns/locn#address> ?s .\n FILTER (?type IN (<http://data.vlaanderen.be/ns/mandaat#Mandataris>, <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>) ). \n FILTER NOT EXISTS { ?position <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst> . }\n FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst> .}"
+    },
+    {
+      "type": "http://schema.org/ContactPoint",
+      "mappings": [
+        {
+          "op": ["http://schema.org/telephone"],
+          "sl": "Telefoonnr_x0020_Contact"
+        },
+        {
+          "op": ["http://schema.org/email"],
+          "sl": "Title"
+        }
+      ],
+      "pathToMatchingUuid": "?position a ?type ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t (<http://schema.org/contactPoint>)|(<http://www.w3.org/ns/org#holds>/<http://schema.org/contactPoint>) ?s .\n FILTER (?type IN (<http://data.vlaanderen.be/ns/mandaat#Mandataris>, <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>) ). \n FILTER NOT EXISTS { ?position <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst> . }\n FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst> .}"
+    },
+    {
+      "type": "http://www.w3.org/ns/person#Person",
+      "mappings": [
+        {
+          "op": ["http://xmlns.com/foaf/0.1/givenName"],
+          "sl": "Voornaam_x0020_Van_x0020_Contact"
+        },
+        {
+          "op": ["http://xmlns.com/foaf/0.1/familyName"],
+          "sl": "Familienaam"
+        }
+      ],
+      "pathToMatchingUuid": "?position a ?type ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?s .\n FILTER (?type IN (<http://data.vlaanderen.be/ns/mandaat#Mandataris>, <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>) ). \n FILTER NOT EXISTS { ?position <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst> . }\n FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst> .}"
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "mappings": [
+        {
+          "op": ["http://www.w3.org/ns/org#classification", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "nzde"
+        },
+        {
+          "op": ["http://www.w3.org/ns/regorg#orgStatus", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "fkxo"
+        }
+      ],
+      "pathToMatchingUuid": "?position a ?type ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/org#holds> ?function .\n FILTER (?type IN (<http://data.vlaanderen.be/ns/mandaat#Mandataris>, <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>) ).\n ?function <http://www.w3.org/ns/org#role> ?role .\n ?orgaanInTime <http://www.w3.org/ns/org#hasPost>|<http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?function ;\n\t <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .\n ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?s . \n FILTER NOT EXISTS { ?position <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst> . }\n FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst> .}"
+    },
+    {
+      "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "mappings": [
+        {
+          "op": ["https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
+          "queryFilter": "?s ^<https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?id . ?id <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" .",
+          "sl": "oydd"
+        },
+        {
+          "op": ["https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
+          "queryFilter": "?s ^<https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?id . ?id <http://www.w3.org/2004/02/skos/core#notation> \"KBO nummer\"@nl .",
+          "sl": "_x0070_og9"
+        }
+      ],
+      "pathToMatchingUuid": "?position a ?type ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/org#holds> ?function .\n FILTER (?type IN (<http://data.vlaanderen.be/ns/mandaat#Mandataris>, <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>) ).\n ?function <http://www.w3.org/ns/org#role> ?role .\n ?orgaanInTime <http://www.w3.org/ns/org#hasPost>|<http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?function ;\n\t <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .\n ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid .\n ?bestuurseenheid <http://www.w3.org/ns/adms#identifier> ?id .\n ?id <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?s . \n FILTER NOT EXISTS { ?position <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst> . }\n FILTER NOT EXISTS { ?s <http://www.w3.org/ns/org#holds>/^<http://www.w3.org/ns/org#hasPost>/<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid. ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst> .}"
+    }
+  ]
+}
