@@ -446,6 +446,11 @@
           "cardinality": "many",
           "inverse": true
         },
+        "scope": {
+          "predicate": "besluit:werkingsgebied",
+          "target": "locations",
+          "cardinality": "one"
+        },
         "involved-boards": {
           "predicate": "ere:betrokkenBestuur",
           "target": "local-involvements",
@@ -454,6 +459,11 @@
         "located-within": {
           "predicate": "geo:sfWithin",
           "target": "locations",
+          "cardinality": "one"
+        },
+        "exact-match": {
+          "predicate": "skos:exactMatch",
+          "target": "concepts",
           "cardinality": "one"
         }
       },
@@ -740,6 +750,10 @@
           "type": "string",
           "predicate": "skos:prefLabel"
         },
+        "notation": {
+          "type": "string",
+          "predicate": "skos:notation"
+        },
         "alt-label": {
           "type": "string",
           "predicate": "skos:altLabel"
@@ -787,6 +801,11 @@
           "target": "locations",
           "cardinality": "many",
           "inverse": true
+        },
+        "exact-match": {
+          "predicate": "skos:exactMatch",
+          "target": "concepts",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/werkingsgebieden/"
