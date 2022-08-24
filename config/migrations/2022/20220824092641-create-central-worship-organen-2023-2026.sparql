@@ -1,0 +1,65 @@
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?orgaanInTime a besluit:Bestuursorgaan ;
+      mu:uuid ?uuidOrgaanInTime ;
+      org:hasPost ?lidVanRechtswege ;
+      org:hasPost ?voorzitter ;
+      org:hasPost ?secretaris ;
+      org:hasPost ?penningmeester ;
+      org:hasPost ?bestuurslidGH ;
+      org:hasPost ?bestuurslidKH ;
+      mandaat:bindingStart "2023-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      mandaat:bindingEinde "2026-04-30T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      generiek:isTijdspecialisatieVan ?orgaan .
+
+    ?expert a mandaat:Mandaat ;
+      mu:uuid ?uuidExpert ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/8c91c321ad477c4fc372ee36358d3ed4> .
+  
+    ?vertegenwoordiger a mandaat:Mandaat ;
+      mu:uuid ?uuidVertegenwoordiger ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/6e26e94ea4b127eeb850fb6debe07271> .
+  
+    ?secretaris a mandaat:Mandaat ;
+      mu:uuid ?uuidSecretaris ;
+      org:role <hhttp://data.vlaanderen.be/id/concept/BestuursfunctieCode/e2af0ea1a6af96cfb698ac39ad985eea> .
+
+    ?voorzitter a mandaat:Mandaat ;
+      mu:uuid ?uuidVoorzitter ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5960262f753661cf84329f3afa9f7df7> .
+  
+    ?bestuurslid a mandaat:Mandaat ;
+      mu:uuid ?uuidBestuurslid ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/f848fa3cc2c5fb7c581a116866293925> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?orgaan besluit:bestuurt ?worshipService .
+  }
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan)) as ?uuidOrgaanInTime)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/eredienstbestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Expert")) as ?uuidExpert)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidExpert)) AS ?expert)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Vertegenwoordiger")) as ?uuidVertegenwoordiger)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidVertegenwoordiger)) AS ?vertegenwoordiger)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Secretaris")) as ?uuidSecretaris)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidSecretaris)) AS ?secretaris)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Voorzitter")) as ?uuidVoorzitter)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidVoorzitter)) AS ?voorzitter)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Bestuurslid")) as ?uuidBestuurslid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidBestuurslid)) AS ?bestuurslid)
+}

@@ -1,0 +1,72 @@
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?orgaanInTime a besluit:Bestuursorgaan ;
+      mu:uuid ?uuidOrgaanInTime ;
+      org:hasPost ?lidVanRechtswege ;
+      org:hasPost ?voorzitter ;
+      org:hasPost ?secretaris ;
+      org:hasPost ?penningmeester ;
+      org:hasPost ?bestuurslidGH ;
+      org:hasPost ?bestuurslidKH ;
+      mandaat:bindingStart "2023-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      mandaat:bindingEinde "2026-04-30T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      generiek:isTijdspecialisatieVan ?orgaan .
+
+    ?lidVanRechtswege a mandaat:Mandaat ;
+      mu:uuid ?uuidLidVanRechtswege ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5972fccd87f864c4ec06bfbd20b5008b> .
+  
+    ?voorzitter a mandaat:Mandaat ;
+      mu:uuid ?uuidVoorzitter ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/67e6e585166cd97575b3e17ffc430a43> .
+  
+    ?secretaris a mandaat:Mandaat ;
+      mu:uuid ?uuidSecretaris ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ac134b9800b81da3c450d6b9605cef2> .
+
+    ?penningmeester a mandaat:Mandaat ;
+      mu:uuid ?uuidPenningmeester ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/180d13930d6f1a3938e0aa7fa9990002> .
+  
+    ?bestuurslidGH a mandaat:Mandaat ;
+      mu:uuid ?uuidBestuurslidGH ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/a8b5509b-f86b-48f8-94d6-fe463a9b77e3> .
+    
+    ?bestuurslidKH a mandaat:Mandaat ;
+      mu:uuid ?uuidBestuurslidKH ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/2962f0bd-2836-4758-9866-8ce8ea2c536f> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?worshipService a ere:BestuurVanDeEredienst .
+    ?orgaan besluit:bestuurt ?worshipService .
+  }
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan)) as ?uuidOrgaanInTime)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/eredienstbestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Rechtswege")) as ?uuidLidVanRechtswege)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidLidVanRechtswege)) AS ?lidVanRechtswege)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Voorzitter")) as ?uuidVoorzitter)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidVoorzitter)) AS ?voorzitter)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Secretaris")) as ?uuidSecretaris)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidSecretaris)) AS ?secretaris)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Penningmeester")) as ?uuidPenningmeester)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidPenningmeester)) AS ?penningmeester)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "BestuurslidGH")) as ?uuidBestuurslidGH)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidBestuurslidGH)) AS ?bestuurslidGH)
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "BestuurslidKH")) as ?uuidBestuurslidKH)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidBestuurslidKH)) AS ?bestuurslidKH)
+}
