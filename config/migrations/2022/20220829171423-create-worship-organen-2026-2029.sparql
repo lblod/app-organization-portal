@@ -15,8 +15,8 @@ INSERT {
       org:hasPost ?penningmeester ;
       org:hasPost ?bestuurslidGH ;
       org:hasPost ?bestuurslidKH ;
-      mandaat:bindingStart "2023-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
-      mandaat:bindingEinde "2026-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      mandaat:bindingStart "2026-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      mandaat:bindingEinde "2029-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
       generiek:isTijdspecialisatieVan ?orgaan .
 
     ?lidVanRechtswege a mandaat:Mandaat ;
@@ -49,22 +49,22 @@ INSERT {
     ?orgaan besluit:bestuurt ?worshipService .
   }
 
-  BIND(MD5(CONCAT(?worshipService, ?orgaan, "2023-2026")) as ?uuidOrgaanInTime)
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "2026-2029")) as ?uuidOrgaanInTime)
   BIND(IRI(CONCAT("http://data.lblod.info/id/eredienstbestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
 
-  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Rechtswege 2023-2026")) as ?uuidLidVanRechtswege)
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Rechtswege 2026-2029")) as ?uuidLidVanRechtswege)
   BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidLidVanRechtswege)) AS ?lidVanRechtswege)
 
-  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Voorzitter 2023-2026")) as ?uuidVoorzitter)
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Voorzitter 2026-2029")) as ?uuidVoorzitter)
   BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidVoorzitter)) AS ?voorzitter)
 
-  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Secretaris 2023-2026")) as ?uuidSecretaris)
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Secretaris 2026-2029")) as ?uuidSecretaris)
   BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidSecretaris)) AS ?secretaris)
 
-  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Penningmeester 2023-2026")) as ?uuidPenningmeester)
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Penningmeester 2026-2029")) as ?uuidPenningmeester)
   BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidPenningmeester)) AS ?penningmeester)
 
-  BIND(MD5(CONCAT(?worshipService, ?orgaan, "BestuurslidGH 2020-2026")) as ?uuidBestuurslidGH)
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "BestuurslidGH 2026-2032")) as ?uuidBestuurslidGH)
   BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidBestuurslidGH)) AS ?bestuurslidGH)
 
   BIND(MD5(CONCAT(?worshipService, ?orgaan, "BestuurslidKH 2023-2029")) as ?uuidBestuurslidKH)
