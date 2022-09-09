@@ -52,7 +52,7 @@ INSERT {
   BIND(MD5(CONCAT(?worshipService, ?orgaan, "2023-2026")) as ?uuidOrgaanInTime)
   BIND(IRI(CONCAT("http://data.lblod.info/id/eredienstbestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
 
-  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Rechtswege 2023-2026")) as ?uuidLidVanRechtswege)
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Rechtswege")) as ?uuidLidVanRechtswege)
   BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidLidVanRechtswege)) AS ?lidVanRechtswege)
 
   BIND(MD5(CONCAT(?worshipService, ?orgaan, "Voorzitter 2023-2026")) as ?uuidVoorzitter)
