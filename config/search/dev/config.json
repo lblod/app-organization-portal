@@ -6,34 +6,6 @@
     [
       {
         "variables": [],
-        "name": "acmidm-lezer"
-      },
-      {
-        "variables": [],
-        "name": "clean"
-      },
-      {
-        "variables": [],
-        "name": "public"
-      }
-    ],
-    [
-      {
-        "variables": [],
-        "name": "acmidm-editeerder"
-      },
-      {
-        "variables": [],
-        "name": "clean"
-      },
-      {
-        "variables": [],
-        "name": "public"
-      }
-    ],
-    [
-      {
-        "variables": [],
         "name": "acmidm-beheerder"
       },
       {
@@ -65,8 +37,8 @@
     {
       "type": "mandatory",
       "on_path": "mandatories",
-      "rdf_type": "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-      "sub_types": [
+      "rdf_type": [
+        "http://data.vlaanderen.be/ns/mandaat#Mandataris",
         "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris"
       ],
       "properties": {
@@ -392,8 +364,8 @@
     {
       "type": "minister",
       "on_path": "ministers",
-      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
-      "sub_types": [
+      "rdf_type": [
+        "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
         "http://data.lblod.info/vocabularies/contacthub/AgentInPositie"
       ],
       "properties": {
@@ -739,8 +711,8 @@
     {
       "type": "unit",
       "on_path": "units",
-      "rdf_type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
-      "sub_types": [
+      "rdf_type": [
+        "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
         "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
         "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst"

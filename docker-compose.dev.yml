@@ -60,6 +60,7 @@ services:
   delta-producer-json-diff-publisher-organizations:
     restart: "no"
   search:
+    image: semtech/mu-search:feature-inheritance-and-composite-types
     restart: "no"
     volumes:
       - ./config/search/dev:/config
