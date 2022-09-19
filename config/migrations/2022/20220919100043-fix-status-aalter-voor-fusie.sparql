@@ -1,72 +1,9 @@
-PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
-PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-PREFIX org: <http://www.w3.org/ns/org#>
-PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX lblodOrg: <http://lblod.data.gift/vocabularies/organisatie/>
 
-INSERT {
-  GRAPH ?g {
-    ?betrokkeLokaleBesturen a ere:BetrokkenLokaleBesturen ;
-      mu:uuid ?uuidBetrokkeLokaleBesturen ;
-      ere:financieringspercentage "100"^^xsd:integer ;
-      org:organization ?worshipAdminUnit ;
-      ere:typebetrokkenheid <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1> .
-
-    ?bestuurseenheid ere:betrokkenBestuur ?betrokkeLokaleBesturen .
+INSERT DATA{
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/bestuurseenheden/c895809729a165666fc111a40affe229f3c8e8f1ce9dec2dcc1be1ed81b52d9b>
+      regorg:orgStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> . # Niet Actief
   }
-} WHERE {
-  GRAPH ?g {
-    VALUES ?typeEredienst {
-      <http://lblod.data.gift/concepts/b13d1d623626bc1ee75c7d20bc60e3c0>
-      <http://lblod.data.gift/concepts/e8cba1540b35a32e9cb45126c38c03c6>
-      <http://lblod.data.gift/concepts/1a1abeafc973d27cebcb2d7a15b2d823>
-      <http://lblod.data.gift/concepts/99536dd6eb0d2ef38a89efafb17e7389>
-    }
-  
-    ?worshipAdminUnit a ere:CentraalBestuurVanDeEredienst ;
-      ere:typeEredienst ?typeEredienst ;
-      <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address .
-  
-    ?address <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?gemeente .
-
-    ?bestuurseenheid a besluit:Bestuurseenheid ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
-      skos:prefLabel ?gemeente .
-  }
-
-  BIND(MD5(CONCAT(?bestuurseenheid, 'Betrokken lokale besturen')) as ?uuidBetrokkeLokaleBesturen)
-  BIND(IRI(CONCAT("http://data.lblod.info/id/betrokkenLokaleBesturen/", ?uuidBetrokkeLokaleBesturen)) AS ?betrokkeLokaleBesturen)
-}
-
-;
-
-INSERT {
-  GRAPH ?g {
-    ?betrokkeLokaleBesturen a ere:BetrokkenLokaleBesturen ;
-      mu:uuid ?uuidBetrokkeLokaleBesturen ;
-      ere:financieringspercentage "100"^^xsd:integer ;
-      org:organization ?worshipAdminUnit ;
-      ere:typebetrokkenheid <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1> .
-
-    ?bestuurseenheid ere:betrokkenBestuur ?betrokkeLokaleBesturen .
-  }
-} WHERE {
-  GRAPH ?g {
-    VALUES ?typeEredienst {
-      <http://lblod.data.gift/concepts/84bcd6896f575bae4857ff8d2764bed8>
-      <http://lblod.data.gift/concepts/9d8bd472a00bf0a5c7b7186606365a52>
-    }
-  
-    ?worshipAdminUnit a ere:CentraalBestuurVanDeEredienst ;
-    ere:typeEredienst ?typeEredienst ;
-      <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address .
-  
-    ?address <http://www.w3.org/ns/locn#adminUnitL2> ?provincie .
-
-    ?bestuurseenheid a besluit:Bestuurseenheid ;
-      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> ;
-      skos:prefLabel ?provincie .
-  }
-
-  BIND(MD5(CONCAT(?bestuurseenheid, 'Betrokken lokale besturen')) as ?uuidBetrokkeLokaleBesturen)
-  BIND(IRI(CONCAT("http://data.lblod.info/id/betrokkenLokaleBesturen/", ?uuidBetrokkeLokaleBesturen)) AS ?betrokkeLokaleBesturen)
-}
+} 
