@@ -1,0 +1,124 @@
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX concepts: <http://lblod.data.gift/concepts/>
+PREFIX bestuur: <http://data.lblod.info/id/besturenVanDeEredienst/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX contacthub: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ce:  <http://data.lblod.info/id/veranderingsgebeurtenissen/>
+PREFIX cer:  <http://data.lblod.info/id/veranderingsgebeurtenis-resultaten/>
+PREFIX m8g: <http://data.europa.eu/m8g/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+INSERT {
+  graph ?g {
+    ?changeEvent a <http://www.w3.org/ns/org#ChangeEvent>;
+    <http://www.w3.org/ns/org#resultingOrganization> ?administrativeUnit;
+    <http://www.w3.org/ns/org#originalOrganization> ?administrativeUnit;
+    <http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat> ?changeEventResult; 
+    mu:uuid ?uuidChangeEvent;
+    <http://data.lblod.info/vocabularies/contacthub/typeWijziging> <http://lblod.data.gift/concepts/e4c3d1ef-a34d-43b0-a18c-f4e60e2c8af3>.
+
+    ?changeEventResult a <http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat>;
+    mu:uuid ?uuidChangeEventResult;
+    <http://lblod.data.gift/vocabularies/organisatie/resulterendeStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>;
+    <http://mu.semte.ch/vocabularies/ext/resultingOrganization> ?administrativeUnit.
+
+  }
+}
+  where {
+  graph ?g {
+    ?administrativeUnit a besluit:Bestuurseenheid;
+                      mu:uuid ?id;
+                      skos:prefLabel ?label;
+                      org:classification ?classification.
+    ?classification mu:uuid ?classificationCode.
+
+    filter (?classificationCode = "5ab0e9b8a3b2ca7c5e000001").
+    filter(?label in ("Aalst",
+    "Aarschot",
+    "Antwerpen",
+    "Beringen",
+    "Bilzen",
+    "Blankenberge",
+    "Borgloon",
+    "Bree",
+    "Brugge",
+    "Damme",
+    "Deinze",
+    "Dendermonde",
+    "Diest",
+    "Diksmuide",
+    "Dilsen-Stokkem",
+    "Eeklo",
+    "Geel",
+    "Genk",
+    "Gent",
+    "Geraardsbergen",
+    "Gistel",
+    "Halen",
+    "Halle",
+    "Hamont-Achel",
+    "Harelbeke",
+    "Hasselt",
+    "Herentals",
+    "Herk-de-Stad",
+    "Hoogstraten",
+    "Ieper",
+    "Izegem",
+    "Kortrijk",
+    "Landen",
+    "Leuven",
+    "Lier",
+    "Lokeren",
+    "Lommel",
+    "Lo-Reninge",
+    "Maaseik",
+    "Mechelen",
+    "Menen",
+    "Mesen",
+    "Mortsel",
+    "Nieuwpoort",
+    "Ninove",
+    "Oostende",
+    "Oudenaarde",
+    "Oudenburg",
+    "Peer",
+    "Poperinge",
+    "Roeselare",
+    "Ronse",
+    "Scherpenheuvel-Zichem",
+    "Sint-Niklaas",
+    "Sint-Truiden",
+    "Tielt",
+    "Tienen",
+    "Tongeren",
+    "Torhout",
+    "Turnhout",
+    "Veurne",
+    "Vilvoorde",
+    "Waregem",
+    "Wervik",
+    "Zottegem",
+    "Zoutleeuw"))
+
+  } 
+  BIND(MD5(CONCAT(?administrativeUnit, 'Stadstitel')) as ?uuidChangeEvent)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/veranderingsgebeurtenissen/", ?uuidChangeEvent)) AS ?changeEvent)
+  BIND(MD5(CONCAT(?changeEvent, 'Stadstitel')) as ?uuidChangeEventResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", ?uuidChangeEventResult)) AS ?changeEventResult)
+
+
+}
+
