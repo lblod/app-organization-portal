@@ -1,0 +1,26 @@
+PREFIX adms: <http://www.w3.org/ns/adms#> 
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#> 
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/> 
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#> 
+PREFIX locn: <http://www.w3.org/ns/locn#> 
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/> 
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#> 
+PREFIX regorg: <http://www.w3.org/ns/regorg#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#> 
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal>  {
+    <http://data.lblod.info/id/adressen/7fad170b6755d0e424498ed460d3322a> a locn:Address ;
+    mu:uuid "7fad170b6755d0e424498ed460d3322a" ;
+    locn:adminUnitL2 "Oost-Vlaanderen" ;
+    locn:fullAddress "Europalaan 22, 9880 Aalter, België" ;
+    locn:postCode "9880" ;
+    locn:thoroughfare "Europalaan" ;
+    adres:Adresvoorstelling.huisnummer "22" ;
+    adres:gemeentenaam "Aalter" ;
+    adres:land "België" .
+    <http://data.lblod.info/id/vestigingen/7c6b24aac9de9c25aec3a1b3962235f6> <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/7fad170b6755d0e424498ed460d3322a> 
+  }
+}
