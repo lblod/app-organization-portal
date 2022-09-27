@@ -1,0 +1,21 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+# In order to be consistent with the rest of the OP application.
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address locn:fullAddress ?fullAddressWithCountry
+}
+INSERT {
+  ?address locn:fullAddress ?fullAddressWithoutCountry
+}
+WHERE {
+  ?address locn:fullAddress ?fullAddressWithCountry
+
+  FILTER(STRENDS(?fullAddressWithCountry, ", België"))
+  
+  BIND(STRBEFORE(?fullAddressWithCountry, ", België") AS ?fullAddressWithoutCountry)
+}
