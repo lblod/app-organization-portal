@@ -1,0 +1,185 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+# When only a language typed address literal is available, replace it with a plain literal
+# When both plain and language typed are available, remove the language typed literal
+# Rationale: lang typed literals are inserted via the migrations. When both types are available
+#    this new value is the plain literal, the old language typed literal is not deleted by the application
+#    and thus should be deleted via this migration - without - copying the value to a plain literal.
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address locn:fullAddress ?literal_withLang
+}
+INSERT {
+  ?address locn:fullAddress ?literal_cleansed
+}
+WHERE {
+  ?address locn:fullAddress ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER NOT EXISTS {
+    ?address locn:fullAddress ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  }
+  
+  BIND(str(?literal_withLang) AS ?literal_cleansed)
+}
+;
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address locn:fullAddress ?literal_withLang
+}
+WHERE {
+  ?address locn:fullAddress ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER EXISTS {
+    ?address locn:fullAddress ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  } 
+}
+;
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address locn:adminUnitL2 ?literal_withLang
+}
+INSERT {
+  ?address locn:adminUnitL2 ?literal_cleansed
+}
+WHERE {
+  ?address locn:adminUnitL2 ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER NOT EXISTS {
+    ?address locn:adminUnitL2 ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  }
+  
+  BIND(str(?literal_withLang) AS ?literal_cleansed)
+}
+;
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address locn:adminUnitL2 ?literal_withLang
+}
+WHERE {
+  ?address locn:adminUnitL2 ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER EXISTS {
+    ?address locn:adminUnitL2 ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  }
+}
+;
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address locn:thoroughfare ?literal_withLang
+}
+INSERT {
+  ?address locn:thoroughfare ?literal_cleansed
+}
+WHERE {
+  ?address locn:thoroughfare ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER NOT EXISTS {
+    ?address locn:thoroughfare ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  }
+  
+  BIND(str(?literal_withLang) AS ?literal_cleansed)
+}
+;
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address locn:thoroughfare ?literal_withLang
+}
+WHERE {
+  ?address locn:thoroughfare ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER EXISTS {
+    ?address locn:thoroughfare ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  }
+}
+;
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address adres:gemeentenaam ?literal_withLang
+}
+INSERT {
+  ?address adres:gemeentenaam ?literal_cleansed
+}
+WHERE {
+  ?address adres:gemeentenaam ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER NOT EXISTS {
+    ?address adres:gemeentenaam ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  }
+  
+  BIND(str(?literal_withLang) AS ?literal_cleansed)
+}
+;
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address adres:gemeentenaam ?literal_withLang
+}
+WHERE {
+  ?address adres:gemeentenaam ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER EXISTS {
+    ?address adres:gemeentenaam ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  }
+}
+;
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address adres:land ?literal_withLang
+}
+INSERT {
+  ?address adres:land ?literal_cleansed
+}
+WHERE {
+  ?address adres:land ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER NOT EXISTS {
+    ?address adres:land ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  }
+  
+  BIND(str(?literal_withLang) AS ?literal_cleansed)
+}
+;
+
+WITH <http://mu.semte.ch/graphs/organisatieportaal>
+DELETE {
+  ?address adres:land ?literal_withLang
+}
+WHERE {
+  ?address adres:land ?literal_withLang.
+  FILTER(lang(?literal_withLang) != "")
+
+  FILTER EXISTS {
+    ?address adres:land ?literal_withoutLang
+    FILTER(lang(?literal_withoutLang) = "")
+  }
+}
+;
