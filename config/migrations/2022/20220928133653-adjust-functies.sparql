@@ -1,6 +1,6 @@
 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 # change functie for persoon with kerkbedienaar
 DELETE {
@@ -53,6 +53,9 @@ where {
       <http://lblod.data.gift/concepts/158b739bc1087d5246df2fa54acff29c> # Secretaris bij het voorzitterschap van de Synode
       <http://lblod.data.gift/concepts/92aad8fc5cc7a13a7b0ddc7cc13c02aa> # Hulppredikant
       <http://lblod.data.gift/concepts/67548f1fe5bf52e5a7ad33dcce47472d> # Kapelaan van de andere kerken
+      <http://lblod.data.gift/concepts/85543bba7601ca598212f0feb9bdb4c2> # Predikant bij het voorzitterschap van de Synode
+
+
     }
     }
 
@@ -69,7 +72,6 @@ DELETE {
         <http://lblod.data.gift/concepts/83d50e9184ae4a628851370079d162f6>  skos:prefLabel "Eerste predikant".
         <http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254>  skos:prefLabel "Pastoor-deken".
         <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2>  skos:prefLabel "Bedienaar".
-        <http://lblod.data.gift/concepts/59837b12c14f215a4efadae950be0072>  skos:prefLabel "Onderpastoor".
         <http://lblod.data.gift/concepts/fa4191f9d7050fe62ec3fc0e16541711>  skos:prefLabel "Kapelaan van de kerken te Antwerpen en te Elsene (Geünifieerde anglicaanse kerk)".
     }
 }
@@ -81,7 +83,6 @@ INSERT {
         <http://lblod.data.gift/concepts/83d50e9184ae4a628851370079d162f6>  skos:prefLabel "Predikant".
         <http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254>  skos:prefLabel "Rector".
         <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2>  skos:prefLabel "Priester".
-        <http://lblod.data.gift/concepts/59837b12c14f215a4efadae950be0072>  skos:prefLabel "Diaken".
         <http://lblod.data.gift/concepts/fa4191f9d7050fe62ec3fc0e16541711>  skos:prefLabel "Kapelaan".
 
 
@@ -95,8 +96,19 @@ WHERE {
         <http://lblod.data.gift/concepts/83d50e9184ae4a628851370079d162f6>  skos:prefLabel "Eerste predikant".
         <http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254>  skos:prefLabel "Pastoor-deken".
         <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2>  skos:prefLabel "Bedienaar".
-        <http://lblod.data.gift/concepts/59837b12c14f215a4efadae950be0072>  skos:prefLabel "Onderpastoor".
         <http://lblod.data.gift/concepts/fa4191f9d7050fe62ec3fc0e16541711>  skos:prefLabel "Kapelaan van de kerken te Antwerpen en te Elsene (Geünifieerde anglicaanse kerk)".
 
+    }
+}
+
+;
+
+INSERT DATA {
+    graph <http://mu.semte.ch/graphs/organisatieportaal> {
+        <http://lblod.data.gift/concepts/f274cb5a-ba44-4931-a1a8-38ec34513215> a <http://lblod.data.gift/vocabularies/organisatie/EredienstBeroepen>;
+                                                                               mu:uuid "f274cb5a-ba44-4931-a1a8-38ec34513215";
+                                                                               skos:prefLabel "Diaken";
+                                                                               <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/0637cccd657df25049af6c4580c6b2be>;
+                                                                               <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/0637cccd657df25049af6c4580c6b2be>.
     }
 }
