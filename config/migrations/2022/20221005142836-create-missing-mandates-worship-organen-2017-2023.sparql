@@ -52,7 +52,7 @@ INSERT {
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?worshipService a ere:BestuurVanDeEredienst .
     ?orgaan besluit:bestuurt ?worshipService .
     ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
       mandaat:bindingStart "2020-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
@@ -80,7 +80,7 @@ INSERT {
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?worshipService a ere:BestuurVanDeEredienst .
     ?orgaan besluit:bestuurt ?worshipService .
     ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
       mandaat:bindingStart "2017-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
@@ -92,7 +92,7 @@ INSERT {
     }
   }
 
-  BIND(MD5(CONCAT(?worshipService, ?orgaan, "BestuurslidGH 2024-2020")) as ?uuidBestuurslidGH)
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "BestuurslidGH 2014-2020")) as ?uuidBestuurslidGH)
   BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidBestuurslidGH)) AS ?bestuurslidGH)
 }
 
@@ -145,7 +145,7 @@ INSERT {
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?worshipService a ere:BestuurVanDeEredienst .
     ?orgaan besluit:bestuurt ?worshipService .
     ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
       mandaat:bindingStart "2020-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
@@ -173,7 +173,7 @@ INSERT {
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?worshipService a ere:BestuurVanDeEredienst .
     ?orgaan besluit:bestuurt ?worshipService .
     ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
       mandaat:bindingStart "2020-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
@@ -201,7 +201,7 @@ INSERT {
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?worshipService a ere:BestuurVanDeEredienst .
     ?orgaan besluit:bestuurt ?worshipService .
     ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
       mandaat:bindingStart "2020-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
@@ -229,7 +229,7 @@ INSERT {
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?worshipService a ere:BestuurVanDeEredienst .
     ?orgaan besluit:bestuurt ?worshipService .
     ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
       mandaat:bindingStart "2017-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
@@ -257,7 +257,7 @@ INSERT {
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?worshipService a ere:BestuurVanDeEredienst .
     ?orgaan besluit:bestuurt ?worshipService .
     ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
       mandaat:bindingStart "2017-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
@@ -285,7 +285,7 @@ INSERT {
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?worshipService a ere:BestuurVanDeEredienst .
     ?orgaan besluit:bestuurt ?worshipService .
     ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
       mandaat:bindingStart "2017-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
