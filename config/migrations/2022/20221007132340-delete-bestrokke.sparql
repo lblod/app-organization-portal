@@ -1,0 +1,59 @@
+  PREFIX org: <http://www.w3.org/ns/org#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+  PREFIX locn: <http://www.w3.org/ns/locn#>
+  PREFIX schema: <http://schema.org/>
+  PREFIX regorg: <http://www.w3.org/ns/regorg#>
+  PREFIX person: <http://www.w3.org/ns/person#>
+  PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+  PREFIX dbpedia: <http://dbpedia.org/ontology/>
+  PREFIX adms: <http://www.w3.org/ns/adms#>
+  PREFIX euro: <http://data.europa.eu/m8g/>
+  PREFIX prov: <http://www.w3.org/ns/prov#>
+  PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+  PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+  PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+  PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX lblodlg: <https://data.lblod.info/vocabularies/leidinggevenden/>
+  PREFIX dc_terms: <http://purl.org/dc/terms/>
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+  PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+  PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+  PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+  DELETE {GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+  ?administrativeUnit ere:betrokkenBestuur ?betrokkenheid.
+  ?betrokkenheid ?p ?o 
+
+  } 
+
+
+  } 
+
+  where {
+
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+      ?betrokkenheid org:organization ?bestuur;
+        rdf:type ere:BetrokkenLokaleBesturen.
+      ?administrativeUnit ere:betrokkenBestuur ?betrokkenheid.
+
+        ?betrokkenheid org:organization ?worshipService.
+
+      ?betrokkenheid ere:typebetrokkenheid ?typebetrokkenheid.
+        
+        ?betrokkenheid ?p ?o.
+            
+      filter(?worshipService = <http://data.lblod.info/id/besturenVanDeEredienst/3292a5d26db54a3173eeab234727be29> && 
+      ?betrokkenheid = <http://data.lblod.info/id/betrokkenLokaleBesturen/ca7e4f721a9c16a8cb263209b0cdcdb6>)
+
+      
+    }
+  }
+
+
