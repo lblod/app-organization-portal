@@ -1,0 +1,61 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX schema: <http://schema.org/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lblodlg: <https://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?administrativeUnit ere:betrokkenBestuur ?betrokkenheid.
+    ?betrokkenheid ?p ?o
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    VALUES ?administrativeUnit{
+      <http://data.lblod.info/id/bestuurseenheden/b456cda7fa9b2b176adb216e5598aeeb60ff19753a5a08ade6ffd32e9a0ead89> # Edegem
+      <http://data.lblod.info/id/bestuurseenheden/38dc63f50a4f7ea61ef741d8944a874a59ba84b69b9ff3e73f69680da2c6ef37> # Aartselaar
+      <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c> # Antwerpen
+    }
+
+    VALUES ?worshipService {
+      <http://data.lblod.info/id/besturenVanDeEredienst/168d5fec5ee04be393c30d5d5bc88074> # Kerkfabriek St.-Niklaas van Hemiksem
+    }
+
+    ?betrokkenheid
+      org:organization ?bestuur;
+      rdf:type ere:BetrokkenLokaleBesturen.
+
+    ?administrativeUnit ere:betrokkenBestuur ?betrokkenheid.
+
+    ?betrokkenheid
+      org:organization ?worshipService;
+      ere:typebetrokkenheid ?typebetrokkenheid;
+      ?p ?o.
+  }
+}
+
+
