@@ -195,6 +195,12 @@ services:
       - db:database
     volumes:
       - ./config/jobs-controller/:/config/
+  construct-administrative-unit-relationships:
+    image: lblod/construct-administrative-unit-relationships-service:0.1.0
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
 ################################################################################
 # DELTA GENERAL
 ################################################################################
