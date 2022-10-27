@@ -68,7 +68,7 @@ services:
   elasticsearch2:
     restart: "no"
   hq:
-    image: elastichq/elasticsearch-hq
+    image: elastichq/elasticsearch-hq # use elasticsearch hq to monitor elasticsearch cluster. host for elastic should be : "http://elasticsearch:9200"
     ports:
       - 5000:5000
   file:
