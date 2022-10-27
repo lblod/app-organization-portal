@@ -65,6 +65,12 @@ services:
       - ./config/search/dev:/config
   elasticsearch:
     restart: "no"
+  elasticsearch2:
+    restart: "no"
+  hq:
+    image: elastichq/elasticsearch-hq
+    ports:
+      - 5000:5000
   file:
     restart: "no"
   delta-producer-dump-file-publisher:

@@ -396,26 +396,75 @@ services:
 # DELTA PUBLIC INFORMATION: END
 ################################################################################
 
+  error-report-service:
+    image: lblod/error-report-service:0.1.0
+    links:
+      - db:database
+
+
 
 ################################################################################
-# MU SEARCH - TODO USE THE CORRECT IMAGE ONCE INHERITANCE IS IN MU SEARCH
+# MU SEARCH 
 ################################################################################
   search:
-    image: nbittich/mu-search:wip-inheritance-alpha2 # Bump to fixed version when merged and release to the original repo
+    image: semtech/mu-search:feature-inheritance-and-composite-types
+    environment:
+      NUMBER_OF_THREADS: 6
     links:
       - db:database
     restart: always
     volumes:
       - ./config/search:/config
   elasticsearch:
-    image: semtech/mu-search-elastic-backend:1.0.1
+    image: semtech/mu-search-elastic-backend:1.1.0
     volumes:
       - ./data/elasticsearch/:/usr/share/elasticsearch/data
+      - ./data/elastic_cluster_shared_folder:/shared_folder
     environment:
-      - discovery.type=single-node 
+      - "node.name=elasticsearch"
+      - "bootstrap.memory_lock=false"  # don't know if it has to be set to true
+      - "cluster.name=es-cluster"
+      - "discovery.seed_hosts=elasticsearch23"
+      - "cluster.initial_master_nodes=elasticsearch,elasticsearch2"
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m -Des.index.number_of_replicas=0 -Des.enforce.bootstrap.checks=true"
+      - "xpack.security.enabled=false"
+      - "xpack.security.http.ssl.enabled=false"
+      - "xpack.security.transport.ssl.enabled=false"
+      - "xpack.ml.enabled=false"
+      - "xpack.graph.enabled=false"
+      - "xpack.watcher.enabled=false"
+      - "path.repo=/shared_folder"
+      # - discovery.type=single-node
+      - http.max_content_length=2000MB
     restart: always
-
-  error-report-service:
-    image: lblod/error-report-service:0.1.0
-    links:
-      - db:database
+    logging: *default-logging
+  elasticsearch2:
+    image: semtech/mu-search-elastic-backend:1.1.0
+    volumes:
+      - ./data/elasticsearch2/:/usr/share/elasticsearch/data
+      - ./data/elastic_cluster_shared_folder:/shared_folder
+    environment:
+      - "node.name=elasticsearch2"
+      - "bootstrap.memory_lock=false" # don't know if it has to be set to true
+      - "cluster.name=es-cluster"
+      - "discovery.seed_hosts=elasticsearch"
+      - "cluster.initial_master_nodes=elasticsearch,elasticsearch2"
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m -Des.index.number_of_replicas=0 -Des.enforce.bootstrap.checks=true"
+      - "xpack.security.enabled=false"
+      - "xpack.security.http.ssl.enabled=false"
+      - "xpack.security.transport.ssl.enabled=false"
+      - "xpack.ml.enabled=false"
+      - "xpack.graph.enabled=false"
+      - "xpack.watcher.enabled=false"
+      - "path.repo=/shared_folder"
+      - http.max_content_length=2000MB
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200"]
+      interval: 30s
+      timeout: 10s
+      retries: 30
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    restart: always
