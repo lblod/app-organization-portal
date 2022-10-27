@@ -424,7 +424,7 @@ services:
       - "node.name=elasticsearch"
       - "bootstrap.memory_lock=false"  # don't know if it has to be set to true
       - "cluster.name=es-cluster"
-      - "discovery.seed_hosts=elasticsearch23"
+      - "discovery.seed_hosts=elasticsearch2"
       - "cluster.initial_master_nodes=elasticsearch,elasticsearch2"
       - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m -Des.index.number_of_replicas=0 -Des.enforce.bootstrap.checks=true"
       - "xpack.security.enabled=false"
