@@ -282,6 +282,9 @@ defmodule Dispatcher do
     forward conn, path, "http://uri-info/"
   end
 
+  post "/create-administrative-unit-relationships/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://construct-administrative-unit-relationships/create-relationships/"
+  end
 
   #################################################################
   # ERROR REPORT
