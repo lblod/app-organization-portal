@@ -1,0 +1,38 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?org org:hasPrimarySite ?site.
+    ?site
+      organisatie:bestaatUit ?address;
+      ?sp ?so.
+    ?address ?ap ?ao.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?org org:hasPrimarySite ?site.
+    ?site
+      organisatie:bestaatUit ?address;
+      ?sp ?so.
+    ?address ?ap ?ao.
+    {
+      SELECT ?site (count(?o) AS ?c)
+      WHERE {
+          ?o org:hasPrimarySite ?site
+      }
+      GROUP BY ?site
+      HAVING (COUNT(DISTINCT ?o) > 1)
+      ORDER BY ?site
+    }
+  }
+}
