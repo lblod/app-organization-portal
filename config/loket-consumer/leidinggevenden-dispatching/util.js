@@ -74,9 +74,9 @@ function partition(arr, fn) {
  * Send triples to reasoning service for conversion
  *
  */
-function transformGraph(fetch, triples) {
+function transformTriples(fetch, triples) {
   return preProcess(fetch, triples)
-          .then(preprocessed => mainConversion(fetch, preprocessed));
+    .then(preprocessed => mainConversion(fetch, preprocessed));
 }
 
 
@@ -121,7 +121,7 @@ function mainConversion(fetch, triples) {
 }
 
 function transformStatements(fetch, triples) {
-  return transformGraph(fetch, triples.join('\n')).then(
+  return transformTriples(fetch, triples.join('\n')).then(
     graph => {
       statements = graph.replace(/\n{2,}/g, '').split('\n')
       console.log(`CONVERSION: FROM ${triples.length} triples to ${statements.length}`)
