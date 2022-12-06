@@ -1,0 +1,27 @@
+# Delete duplicate person Jan Tweepenninckx
+
+DELETE {
+  GRAPH ?G {
+    <http://data.lblod.info/id/personen/6368DB668DE5818A7C9F441B> ?pp ?op .
+    <http://data.lblod.info/id/mandatarissen/6368DBCB8DE5818A7C9F441F> ?pm ?om .
+  }
+} WHERE {
+  GRAPH ?G {
+    <http://data.lblod.info/id/personen/6368DB668DE5818A7C9F441B> ?pp ?op .
+    <http://data.lblod.info/id/mandatarissen/6368DBCB8DE5818A7C9F441F> ?pm ?om .
+  }
+}
+;
+# Delete duplicate person Mia Deglin
+
+DELETE {
+  GRAPH ?G {
+    <http://data.lblod.info/id/personen/6368DAB48DE5818A7C9F4417> ?pp ?op .
+    <http://data.lblod.info/id/mandatarissen/6368DB2F8DE5818A7C9F441A> ?pm ?om .
+  }
+} WHERE {
+  GRAPH ?G {
+    <http://data.lblod.info/id/personen/6368DAB48DE5818A7C9F4417> ?pp ?op .
+    <http://data.lblod.info/id/mandatarissen/6368DB2F8DE5818A7C9F441A> ?pm ?om .
+  }
+}
