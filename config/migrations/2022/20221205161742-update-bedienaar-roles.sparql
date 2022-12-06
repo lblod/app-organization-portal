@@ -1,0 +1,26 @@
+DELETE {
+  GRAPH ?g {
+    ?role <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/e357bc8f4cc3a694fde2239748768a22> .
+  }
+} INSERT {
+  GRAPH ?g {
+    ?role <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/5ebb798bd59c3b48c25116032caa02b7> .
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES ?bedienaar {
+      <http://data.lblod.info/id/rollenBedienaar/6332F3D4036B579F0A26FF25>
+      <http://data.lblod.info/id/rollenBedienaar/6363D2938DE5818A7C9F43F1>
+      <http://data.lblod.info/id/rollenBedienaar/63568F678DE5818A7C9F4253>
+      <http://data.lblod.info/id/rollenBedienaar/6363D6068DE5818A7C9F4408>
+      <http://data.lblod.info/id/rollenBedienaar/63568E2B8DE5818A7C9F424C>
+      <http://data.lblod.info/id/rollenBedienaar/636A5E368DE5818A7C9F447C>
+      <http://data.lblod.info/id/rollenBedienaar/636A5D1B8DE5818A7C9F4478>
+      <http://data.lblod.info/id/rollenBedienaar/63330740036B579F0A26FF43>
+      <http://data.lblod.info/id/rollenBedienaar/63330552036B579F0A26FF3E>
+    }
+
+    ?bedienaar <http://www.w3.org/ns/org#holds> ?role .
+    ?role <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/e357bc8f4cc3a694fde2239748768a22> .
+  }
+}
