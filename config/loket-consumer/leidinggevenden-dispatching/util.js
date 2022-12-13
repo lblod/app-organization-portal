@@ -1,3 +1,8 @@
+const {
+  MAX_REASONING_RETRY_ATTEMPTS,
+  SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION
+} = require('./config');
+
 async function batchedDbUpdate(muUpdate,
   graph,
   triples,
@@ -25,19 +30,22 @@ ${batch}
 `, extraHeaders, endpoint);
     };
 
-    await dbOperationWithRetry(insertCall, 0, maxAttempts, sleepTimeOnFail);
+    await operationWithRetry(insertCall, 0, maxAttempts, sleepTimeOnFail);
 
     console.log(`Sleeping before next query execution: ${sleepBetweenBatches}`);
     await new Promise(r => setTimeout(r, sleepBetweenBatches));
   }
 }
 
-async function dbOperationWithRetry(callback,
+async function operationWithRetry(callback,
   attempt,
   maxAttempts,
   sleepTimeOnFail) {
   try {
-    return await callback();
+    if (typeof callback === "function")
+      return await callback();
+    else // Catch error from promise - not how I would do it normally, but allows re use of existing code.
+      return await callback;
   }
   catch (e) {
     console.log(`Operation failed for ${callback.toString()}, attempt: ${attempt} of ${maxAttempts}`);
@@ -50,7 +58,7 @@ async function dbOperationWithRetry(callback,
     }
 
     await new Promise(r => setTimeout(r, sleepTimeOnFail));
-    return dbOperationWithRetry(callback, ++attempt, maxAttempts, sleepTimeOnFail);
+    return operationWithRetry(callback, ++attempt, maxAttempts, sleepTimeOnFail);
   }
 }
 
@@ -75,8 +83,10 @@ function partition(arr, fn) {
  *
  */
 function transformTriples(fetch, triples) {
-  return preProcess(fetch, triples)
-    .then(preprocessed => mainConversion(fetch, preprocessed));
+  return operationWithRetry(preProcess(fetch, triples), 0,
+    MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION)
+    .then(preprocessed => operationWithRetry(mainConversion(fetch, preprocessed), 0,
+      MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION));
 }
 
 
@@ -90,15 +100,8 @@ function preProcess(fetch, triples) {
     redirect: 'follow'
   };
 
-  // console.log('!!! Input\n' + triples)
-
   return fetch("http://reasoner/reason/dl2op/preprocess", requestOptions)
-    .then(response => response.text())
-    // .then(result => {
-    //   console.log(`!!! PREPROCESS\n${result}`)
-    //   return result
-    // })
-    .catch(error => console.log('error', error));
+    .then(response => response.text());
 }
 
 function mainConversion(fetch, triples) {
@@ -112,12 +115,7 @@ function mainConversion(fetch, triples) {
   };
 
   return fetch("http://reasoner/reason/dl2op/main", requestOptions)
-    .then(response => response.text())
-    // .then(result => {
-    //   console.log(`!!! MAIN\n${result}`)
-    //   return result
-    // })
-    .catch(error => console.log('error', error));
+    .then(response => response.text());
 }
 
 function transformStatements(fetch, triples) {
