@@ -1,0 +1,92 @@
+PREFIX : <#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX ex: <http://example.org/test#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+# First name
+# persoon:gebruikteVoornaam => foaf:givenName (done in pre-processing)
+# Alternatieve voornaam
+# foaf:name => persoon:gebruikteVoornaam
+
+# Test Mock LLB
+# <http://example.org/person> foaf:name "Didier".
+{
+  {
+    ?s foaf:name ?o
+  } e:becomes {
+    ?s persoon:gebruikteVoornaam ?o
+  }
+} => {
+  ?s persoon:gebruikteVoornaam ?o
+}.
+
+# Test
+# ex:s <http://data.vlaanderen.be/ns/mandaat#start> "2019-01-01T19:32:52+00:00"^^xsd:dateTime.
+{
+  ?s mandaat:start ?startDateTime.
+  # use backward arrow rule defined below
+  ?startDateTime :dateFromDateTime ?startDate.
+  {
+    ?s mandaat:start ?startDateTime
+  } e:becomes {
+    ?s mandaat:start ?startDate
+  }.
+} => {
+  ?s mandaat:start ?startDate
+}.
+
+# ex:s <http://data.vlaanderen.be/ns/mandaat#einde> "2019-02-01T10:32:52+00:00"^^xsd:dateTime.
+{
+  ?s mandaat:einde ?eindeDateTime.
+  # use backward arrow rule defined below
+  ?eindeDateTime :dateFromDateTime ?eindeDate.
+  {
+    ?s mandaat:einde ?eindeDateTime
+  } e:becomes {
+    ?s mandaat:einde ?eindeDate
+  }.
+} => {
+  ?s mandaat:einde ?eindeDate
+}.
+
+
+# Backward arrow rule is like a function call.
+# Removes time info in the returned date
+# The user in DL selects a date via the UI.
+# These dates are persisted as midnight dateTimes in UTC.
+# Meaning that 1st of July is stored as
+# "2022-06-30T22:00:00Z"^^xsd:dateTime
+# and 1 December
+# "2022-11-30T23:00:00Z"^^xsd:dateTime
+# So, the following rule adds 2 hours to the datetime, and then takes the date part of the UTC date time
+# to come to the date that the DL user selected (in CE(S)T)
+{
+   ?dateTime :dateFromDateTime ?date
+} <= {
+  (?dateTimeLiteral xsd:dateTime) log:dtlit ?dateTime.
+  (?dateTime "PT2H"^^xsd:dayTimeDuration) func:add-dayTimeDuration-to-dateTime ?localDateTime.
+  (?localDateTimeLiteral xsd:dateTime) log:dtlit ?localDateTime.
+  (?localDateTimeLiteral 0 11) func:substring ?dateLiteral.
+  (?dateLiteral xsd:date) log:dtlit ?date.
+}.
+
+
+# ex:orgA besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>.
+{
+  {
+    ?s besluit:classificatie ?o
+  } e:becomes {
+    ?s org:classification ?o
+  }
+} => {
+  ?s org:classification ?o
+}.
