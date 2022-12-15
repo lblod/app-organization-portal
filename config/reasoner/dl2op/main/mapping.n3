@@ -1,4 +1,5 @@
 PREFIX : <#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 PREFIX ex: <http://example.org/test#>
@@ -89,4 +90,16 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   }
 } => {
   ?s org:classification ?o
+}.
+
+# fix typo V -> v
+# <http://data.lblod.info/id/adressen/606D972BC20E70000900001C> 	<https://data.vlaanderen.be/ns/adres#AdresVoorstelling.huisnummer>	"1" .
+{
+  {
+    ?s adres:AdresVoorstelling.huisnummer ?o
+  } e:becomes {
+    ?s adres:Adresvoorstelling.huisnummer ?o
+  }
+} => {
+  ?s adres:Adresvoorstelling.huisnummer ?o
 }.
