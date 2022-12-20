@@ -1,0 +1,17 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+
+DELETE {
+  GRAPH ?g {
+    ?role ere:functie <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2> . # Priester
+  }
+} INSERT {
+  GRAPH ?g {
+    ?role ere:functie <http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254> . # Rector
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/rollenBedienaar/6371F9448DE5818A7C9F44AC> org:holds ?role .
+    ?role ere:functie <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2> .
+  }
+}
