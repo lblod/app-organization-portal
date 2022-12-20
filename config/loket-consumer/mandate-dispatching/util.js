@@ -83,26 +83,10 @@ function partition(arr, fn) {
  *
  */
 function transformTriples(fetch, triples) {
-  return operationWithRetry(preProcess(fetch, triples), 0,
-    MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION)
-    .then(preprocessed => operationWithRetry(mainConversion(fetch, preprocessed), 0,
-      MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION));
+  return operationWithRetry(mainConversion(fetch, triples), 0,
+    MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION);
 }
 
-
-function preProcess(fetch, triples) {
-  let formdata = new URLSearchParams();
-  formdata.append("data", triples);
-
-  let requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-  };
-
-  return fetch("http://reasoner/reason/dl2op/preprocess", requestOptions)
-    .then(response => response.text());
-}
 
 function mainConversion(fetch, triples) {
   let formdata = new URLSearchParams();
