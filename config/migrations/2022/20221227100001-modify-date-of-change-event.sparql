@@ -1,0 +1,17 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/63A1BE5026577078270F82DA> dct:date "2022-12-21"^^xsd:date .
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/63A1BE5026577078270F82DA> dct:date "2022-12-20"^^xsd:date .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/63A1BE5026577078270F82DA> dct:date "2022-12-21"^^xsd:date .
+  }
+}
+
+# OP-1981
