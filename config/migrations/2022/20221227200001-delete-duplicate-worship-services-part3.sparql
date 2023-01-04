@@ -1,43 +1,26 @@
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX org: <http://www.w3.org/ns/org#>
-PREFIX regorg: <http://www.w3.org/ns/regorg#>
-PREFIX adms: <http://www.w3.org/ns/adms#>
-PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
-PREFIX mu:  <http://mu.semte.ch/vocabularies/core/>
-
 DELETE {
-  GRAPH ?g {
-    ?bestuur rdf:type ere:BestuurVanDeEredienst ;
-      mu:uuid ?uuid ;
-      skos:prefLabel ?label ;
-      org:hasPrimarySite ?site ;
-      regorg:orgStatus ?status ;
-      adms:identifier ?identifier ;
-      org:classification ?classification ;
-      ere:grensoverschrijdend ?grens ;
-      ere:denominatie ?denominatie ;
-      ere:wordtBediendDoor ?bediend .
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?identifier ?pidentifier ?oidentifier .
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
   }
 } WHERE {
-  GRAPH ?g {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
     VALUES ?bestuur {
       <http://data.lblod.info/id/besturenVanDeEredienst/999b011fe6b90b3b546612c25db4b607> # OP-1980
       <http://data.lblod.info/id/besturenVanDeEredienst/da2184c3dca9eb7c4828a50c0e9f5af4> # OP-1978
       <http://data.lblod.info/id/besturenVanDeEredienst/a6b5c5db3a261ca024a42fe9489496a9> # OP-1979
-      <http://data.lblod.info/id/besturenVanDeEredienst/260312c07d8e00358064a362dee3506f> # OP-1977      
+      <http://data.lblod.info/id/besturenVanDeEredienst/260312c07d8e00358064a362dee3506f> # OP-1977
     }
-
-    ?bestuur rdf:type ere:BestuurVanDeEredienst ;
-      mu:uuid ?uuid ;
-      skos:prefLabel ?label ;
-      org:hasPrimarySite ?site ;
-      regorg:orgStatus ?status ;
-      adms:identifier ?identifier ;
-      org:classification ?classification ;
-      ere:grensoverschrijdend ?grens ;
-      ere:denominatie ?denominatie ;
-      ere:wordtBediendDoor ?bediend .
+   
+    OPTIONAL { 
+      ?bestuur <http://www.w3.org/ns/adms#identifier> ?identifier . 
+      ?identifier ?pidentifier ?oidentifier .
+    }
+        
+    OPTIONAL {
+      ?identifier <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier.
+      ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+    }
   }
 }
 
