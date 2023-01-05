@@ -1,0 +1,65 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+        GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+          ?person ?ppPerson ?ooPerson.
+          ?heeftGeboorte ?p ?o.
+          ?registration <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?identificator.
+          ?identificator ?x ?y.
+          ?registration ?t ?j.
+      } 
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?person a <http://www.w3.org/ns/person#Person>.
+    FILTER((NOT EXISTS { ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person. }) 
+    && (NOT EXISTS { ?ministers <http://www.w3.org/ns/org#heldBy> ?person. }))
+  }
+
+      GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+          optional {?person ?ppPerson ?ooPerson.}
+          optional {
+           ?person persoon:heeftGeboorte  ?heeftGeboorte.
+            ?heeftGeboorte ?p ?o.
+          }
+         
+          optional {
+          ?person persoon:registratie ?registration.
+            ?registration ?t ?j.
+          }
+           optional {
+            
+            ?registration <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?identificator.
+            ?identificator ?x ?y.
+           }  
+      }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+     ?person ?pPerson ?oPerson.
+  }
+      
+}
+
+
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?person a <http://www.w3.org/ns/person#Person>;
+      ?pPerson ?oPerson.
+    FILTER((NOT EXISTS { ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person. }) && (NOT EXISTS { ?ministers <http://www.w3.org/ns/org#heldBy> ?person. }))
+  }
+
+     
+}
