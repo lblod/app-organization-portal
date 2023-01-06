@@ -7,10 +7,9 @@
       ],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
-        "http://www.w3.org/ns/org#role",
-        "http://www.w3.org/ns/org#postIn",
         "http://www.w3.org/ns/org#role"
-      ]
+      ],
+      "additionalFilter": "?orgaan <http://www.w3.org/ns/org#hasPost> ?subject ; <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid . ?bestuurseenheid a ?type. FILTER (?type IN (<http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>, <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>))"
     },
     {
       "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
@@ -30,7 +29,8 @@
       ],
       "properties": [
         "http://www.w3.org/ns/org#hasPost"
-      ]
+      ],
+      "additionalFilter": "?subject <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid . ?bestuurseenheid a ?type. FILTER (?type IN (<http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>, <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>))"
     },
     {
       "type": "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
@@ -40,9 +40,7 @@
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/ns/org#role",
-        "http://www.w3.org/ns/org#postIn",
-        "http://data.lblod.info/vocabularies/erediensten/functie",
-        "http://data.lblod.info/vocabularies/erediensten/behoort"
+        "http://data.lblod.info/vocabularies/erediensten/functie"
       ]
     }
   ]
