@@ -160,7 +160,7 @@ export default [
     match: {
     },
     callback: {
-      url: 'http://delta-producer-pub-graph-maintainer-posts/delta',
+      url: 'http://delta-producer-pub-graph-maintainer-worship-posts/delta',
       method: 'POST'
     },
     options: {
@@ -177,11 +177,11 @@ export default [
     match: {
       graph: {
         type: 'uri',
-        value: 'http://redpencil.data.gift/id/deltas/producer/posts'
+        value: 'http://redpencil.data.gift/id/deltas/producer/worship-posts'
       }
     },
     callback: {
-      url: 'http://delta-producer-json-diff-publisher-posts/delta',
+      url: 'http://delta-producer-json-diff-publisher-worship-posts/delta',
       method: 'POST'
     },
     options: {
