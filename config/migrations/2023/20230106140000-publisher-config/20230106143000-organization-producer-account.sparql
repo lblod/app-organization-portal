@@ -1,0 +1,16 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/accounts/deltas> {
+    <http://data.lblod.info/foaf/account/id/8df6f1e4-869f-4223-9834-961b01a7bd48>
+      a foaf:OnlineAccount.
+
+    <http://data.lblod.info/foaf/agent/id/3d204ad9-3f20-407a-ab40-81a3268d5594>
+      a foaf:Agent;
+      foaf:account <http://data.lblod.info/foaf/account/id/8df6f1e4-869f-4223-9834-961b01a7bd48>.
+
+    <http://data.lblod.info/foaf/group/id/44a6640d-b24d-43e2-a23d-7462f77e0adc>
+      a foaf:Group;
+      foaf:member <http://data.lblod.info/foaf/agent/id/3d204ad9-3f20-407a-ab40-81a3268d5594>;
+      foaf:name "organizations".
+  }
+}
