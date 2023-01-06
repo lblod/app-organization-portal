@@ -1,0 +1,49 @@
+{
+  "export": [
+    {
+      "type": "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#role",
+        "http://www.w3.org/ns/org#postIn",
+        "http://www.w3.org/ns/org#role"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://www.w3.org/ns/org#hasPost"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#role",
+        "http://www.w3.org/ns/org#postIn",
+        "http://data.lblod.info/vocabularies/erediensten/functie",
+        "http://data.lblod.info/vocabularies/erediensten/behoort"
+      ]
+    }
+  ]
+}
