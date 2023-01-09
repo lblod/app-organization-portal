@@ -404,6 +404,68 @@ services:
   ################################################################################
 
   ################################################################################
+  # DELTA WORSHIP POSTS: START
+  ################################################################################
+  delta-producer-bg-jobs-initiator-worship-posts:
+    image: lblod/delta-producer-background-jobs-initiator:0.3.1
+    environment:
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      DUMP_FILE_CREATION_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/worship-posts"
+      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/worship-posts"
+      HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/worship-posts"
+      CRON_PATTERN_DUMP_JOB: "17 */4 * * *" # At minute 17 every 4 hours
+      CRON_PATTERN_HEALING_JOB: "0 0 3 * * *" # everyday at 3 AM
+      START_INITIAL_SYNC: "false" # prefer to disable it now. We want to have feeling with how the DB acts.
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
+  delta-producer-pub-graph-maintainer-worship-posts:
+    image: lblod/delta-producer-publication-graph-maintainer:0.15.1
+    environment:
+      MAX_BODY_SIZE: "50mb"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      RELATIVE_FILE_PATH: "deltas/worship-posts"
+      PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/worship-posts"
+      HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/worship-posts"
+      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/worship-posts"
+      QUEUE_POLL_INTERVAL: 3000
+      USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true" # some queries are just too expensive
+      SKIP_MU_AUTH_INITIAL_SYNC: "true"
+      HEALING_PATCH_GRAPH_BATCH_SIZE: 500
+    volumes:
+      - ./config/delta-producer/worship-posts:/config
+      - ./data/files/:/share
+    links:
+      - db:database
+      - triplestore:virtuoso
+    restart: always
+    logging: *default-logging
+  delta-producer-json-diff-publisher-worship-posts:
+    image: lblod/delta-producer-json-diff-file-publisher:0.2.3
+    environment:
+      MAX_BODY_SIZE: "50mb"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      RELATIVE_FILE_PATH: "deltas/worship-posts"
+      PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/worship-posts"
+      PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/worship-posts"
+      DELTA_INTERVAL_MS: 10000
+      PRETTY_PRINT_DIFF_JSON: "true"
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
+  ################################################################################
+  # DELTA WORSHIP POSTS: END
+  ################################################################################
+
+  ################################################################################
   # DELTA CONSUMERS
   ################################################################################
   ################################################################################
@@ -465,10 +527,10 @@ services:
   ################################################################################
 
   ################################################################################
-  # MU SEARCH - TODO USE THE CORRECT IMAGE ONCE INHERITANCE IS IN MU SEARCH
+  # MU SEARCH 
   ################################################################################
   search:
-    image: nbittich/mu-search:wip-inheritance-alpha2 # Bump to fixed version when merged and release to the original repo
+    image: semtech/mu-search:0.9.0-beta.1 
     links:
       - db:database
     restart: always
