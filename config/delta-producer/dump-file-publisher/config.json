@@ -1,50 +1,66 @@
 {
-  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/administrative-units" : {
+  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/administrative-units": {
     "dcatDataSetSubject": "http://data.lblod.info/datasets/delta-producer/dumps/AdministrativeUnitsCacheGraphDump",
     "targetGraph": "http://redpencil.data.gift/id/deltas/producer/administrative-units",
     "fileBaseName": "dump-administrative-units",
-    "compression": true
+    "targetDcatGraph": "http://mu.semte.ch/graphs/public",
+    "targetFilesGraph": "http://mu.semte.ch/graphs/public",
+    "cleanupOldDumps": true
   },
-  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/administrative-units" : {
+  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/administrative-units": {
     "dcatDataSetSubject": "http://data.lblod.info/datasets/delta-producer/dumps/AdministrativeUnitsCacheGraphDump",
     "targetGraph": "http://redpencil.data.gift/id/deltas/producer/administrative-units",
     "fileBaseName": "dump-administrative-units",
-    "compression": true
+    "targetDcatGraph": "http://mu.semte.ch/graphs/public",
+    "targetFilesGraph": "http://mu.semte.ch/graphs/public",
+    "cleanupOldDumps": true
   },
-  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/organizations" : {
+  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/organizations": {
     "dcatDataSetSubject": "http://data.lblod.info/datasets/delta-producer/dumps/OrganizationsCacheGraphDump",
     "targetGraph": "http://redpencil.data.gift/id/deltas/producer/organizations",
     "fileBaseName": "dump-organizations",
-    "compression": true
+    "targetDcatGraph": "http://redpencil.data.gift/id/deltas/producer/organizations-deltas",
+    "targetFilesGraph": "http://redpencil.data.gift/id/deltas/producer/organizationsdeltas",
+    "cleanupOldDumps": true
   },
-  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations" : {
+  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations": {
     "dcatDataSetSubject": "http://data.lblod.info/datasets/delta-producer/dumps/OrganizationsCacheGraphDump",
     "targetGraph": "http://redpencil.data.gift/id/deltas/producer/organizations",
     "fileBaseName": "dump-organizations",
-    "compression": true
+    "targetDcatGraph": "http://redpencil.data.gift/id/deltas/producer/organizations-deltas",
+    "targetFilesGraph": "http://redpencil.data.gift/id/deltas/producer/organizationsdeltas",
+    "cleanupOldDumps": true
   },
-  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/public" : {
+  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/public": {
     "dcatDataSetSubject": "http://data.lblod.info/datasets/delta-producer/dumps/PublicCacheGraphDump",
     "targetGraph": "http://redpencil.data.gift/id/deltas/producer/public",
     "fileBaseName": "dump-public",
-    "compression": false
+    "targetDcatGraph": "http://mu.semte.ch/graphs/public",
+    "targetFilesGraph": "http://mu.semte.ch/graphs/public",
+    "cleanupOldDumps": true
   },
-  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/public" : {
+  "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/public": {
     "dcatDataSetSubject": "http://data.lblod.info/datasets/delta-producer/dumps/PublicCacheGraphDump",
     "targetGraph": "http://redpencil.data.gift/id/deltas/producer/public",
     "fileBaseName": "dump-public",
-    "compression": false
+    "targetDcatGraph": "http://mu.semte.ch/graphs/public",
+    "targetFilesGraph": "http://mu.semte.ch/graphs/public",
+    "cleanupOldDumps": true
   },
   "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/worship-posts" : {
     "dcatDataSetSubject": "http://data.lblod.info/datasets/delta-producer/dumps/WorshipPostsCacheGraphDump",
     "targetGraph": "http://redpencil.data.gift/id/deltas/producer/worship-posts",
     "fileBaseName": "dump-worship-posts",
-    "compression": false
+    "targetDcatGraph": "http://mu.semte.ch/graphs/public",
+    "targetFilesGraph": "http://mu.semte.ch/graphs/public",
+    "cleanupOldDumps": true
   },
   "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/worship-posts" : {
     "dcatDataSetSubject": "http://data.lblod.info/datasets/delta-producer/dumps/WorshipPostsCacheGraphDump",
     "targetGraph": "http://redpencil.data.gift/id/deltas/producer/worship-posts",
     "fileBaseName": "dump-worship-posts",
-    "compression": false
+    "targetDcatGraph": "http://mu.semte.ch/graphs/public",
+    "targetFilesGraph": "http://mu.semte.ch/graphs/public",
+    "cleanupOldDumps": true
   }
 }

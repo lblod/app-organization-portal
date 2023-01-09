@@ -91,7 +91,7 @@ services:
       LOGGING_LEVEL: "INFO"
       SPARQL_ENDPOINT: "http://db:8890/sparql"
       LIMIT_SIZE: "10000"
-      MU_AUTH_SUDO: "false"
+      MU_AUTH_SUDO: "true"
     labels:
       - "logging=true"
     restart: always
@@ -208,13 +208,10 @@ services:
   # DELTA GENERAL
   ################################################################################
   delta-producer-dump-file-publisher:
-    image: bdevloed/delta-producer-dump-file-publisher:0.8.0-beta
+    image: lblod/delta-producer-dump-file-publisher:0.9.0
     volumes:
       - ./config/delta-producer/dump-file-publisher:/config
       - ./data/files:/share
-    environment:
-      FILES_GRAPH: "http://mu.semte.ch/graphs/public" # Note: this will be extracted in a config per job one day
-      DCAT_DATASET_GRAPH: "http://mu.semte.ch/graphs/public"
     links:
       - db:database
     restart: always
@@ -312,6 +309,8 @@ services:
       USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true" # some queries are just too expensive
       SKIP_MU_AUTH_INITIAL_SYNC: "true"
       HEALING_PATCH_GRAPH_BATCH_SIZE: 500
+      FILES_GRAPH: "http://redpencil.data.gift/id/deltas/producer/organizations-deltas"
+      ACCOUNT: "http://data.lblod.info/foaf/account/id/8df6f1e4-869f-4223-9834-961b01a7bd48"
     volumes:
       - ./config/delta-producer/organizations:/config
       - ./data/files/:/share

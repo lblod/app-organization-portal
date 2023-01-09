@@ -1,0 +1,34 @@
+PREFIX nie:  <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+PREFIX dct:  <http://purl.org/dc/terms/>
+PREFIX dcat: <http://www.w3.org/ns/dcat#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?sub
+      dct:subject <http://data.lblod.info/datasets/delta-producer/dumps/OrganizationsCacheGraphDump> ;
+      dcat:distribution ?distribution.
+    ?distribution
+      dct:subject ?file ;
+      dct:created ?created .
+    ?phyiscalFile
+      nie:dataSource ?file
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?sub
+      dct:subject <http://data.lblod.info/datasets/delta-producer/dumps/OrganizationsCacheGraphDump> ;
+      dcat:distribution ?distribution.
+    FILTER NOT EXISTS {
+      ?revision
+        prov:wasRevisionOf ?sub
+    }
+    ?distribution
+      dct:subject ?file ;
+      dct:created ?created .
+    ?phyiscalFile
+      nie:dataSource ?file
+  }
+}
