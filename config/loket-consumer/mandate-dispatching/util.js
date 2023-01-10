@@ -37,6 +37,39 @@ ${batch}
   }
 }
 
+async function deleteFromAllGraphs(muUpdate,
+  triples,
+  extraHeaders,
+  endpoint,
+  maxAttempts,
+  sleepBetweenBatches = 1000,
+  sleepTimeOnFail = 1000,
+) {
+
+  for (const triple of triples) {
+
+    console.log(`Deleting a triple from all graphs in triplestore`);
+
+    const deleteCall = async () => {
+      await muUpdate(`
+      DELETE {
+        GRAPH ?g {
+          ${triple}
+        }
+      } WHERE {
+        GRAPH ?g {
+          ${triple}
+        }
+      }
+      `, extraHeaders, endpoint);
+    };
+
+    await operationWithRetry(deleteCall, 0, maxAttempts, sleepTimeOnFail);
+    console.log(`Sleeping before next query execution: ${sleepBetweenBatches}`);
+    await new Promise(r => setTimeout(r, sleepBetweenBatches));
+  }
+}
+
 async function operationWithRetry(callback,
   attempt,
   maxAttempts,
@@ -83,26 +116,10 @@ function partition(arr, fn) {
  *
  */
 function transformTriples(fetch, triples) {
-  return operationWithRetry(preProcess(fetch, triples), 0,
-    MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION)
-    .then(preprocessed => operationWithRetry(mainConversion(fetch, preprocessed), 0,
-      MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION));
+  return operationWithRetry(mainConversion(fetch, triples), 0,
+    MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION);
 }
 
-
-function preProcess(fetch, triples) {
-  let formdata = new URLSearchParams();
-  formdata.append("data", triples);
-
-  let requestOptions = {
-    method: 'POST',
-    body: formdata,
-    redirect: 'follow'
-  };
-
-  return fetch("http://reasoner/reason/dl2op/preprocess", requestOptions)
-    .then(response => response.text());
-}
 
 function mainConversion(fetch, triples) {
   let formdata = new URLSearchParams();
@@ -130,6 +147,7 @@ function transformStatements(fetch, triples) {
 
 module.exports = {
   batchedDbUpdate,
+  deleteFromAllGraphs,
   partition,
   transformStatements
 };

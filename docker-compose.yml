@@ -201,7 +201,7 @@ services:
     restart: always
     logging: *default-logging
   reasoner:
-    image: bdevloed/mu-reasoner
+    image: eyereasoner/reasoning-service:1.0.0
     volumes:
       - ./config/reasoner:/config
   ################################################################################
@@ -460,7 +460,7 @@ services:
   # LOKET MANDATEN CONSUMERS
   ################################################################################
   mandaten-consumer:
-    image: bdevloed/delta-consumer:fetch
+    image: lblod/delta-consumer:0.0.14
     environment:
       DCR_SERVICE_NAME: "mandatendatabank-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
@@ -487,7 +487,7 @@ services:
   # LOKET LEIDINGGEVENDEN CONSUMERS
   ################################################################################
   leidinggevenden-consumer:
-    image: bdevloed/delta-consumer:fetch
+    image: lblod/delta-consumer:0.0.14
     environment:
       DCR_SERVICE_NAME: "leidinggevenden-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
@@ -511,14 +511,41 @@ services:
     logging: *default-logging
 
   ################################################################################
+  # LOKET WORSHIP SENSITIVE CONSUMERS
+  ################################################################################
+  worship-services-sensitive-consumer:
+    image: lblod/delta-consumer:0.0.14
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
+      DCR_SERVICE_NAME: "worship-services-sensitive-consumer"
+      DCR_SYNC_FILES_PATH: "/sync/worship-services-sensitive/files"
+      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/WorshipServicesSensitiveCacheGraphDump"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitive"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitiveDeltaFileSyncing"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/worship-services-sensitive-consumer"
+      DCR_DISABLE_INITIAL_SYNC: "true"
+      DCR_KEEP_DELTA_FILES: "true"
+      DCR_DELTA_FILE_FOLDER: "/consumer-files"
+      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "false"
+    volumes:
+      - ./config/worship-services-sensitive-consumer/positions-dispatching:/config/triples-dispatching/custom-dispatching
+    restart: always
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+      - triplestore:virtuoso
+    logging: *default-logging
+
+  ################################################################################
   # DELTA CONSUMERS: END
   ################################################################################
 
   ################################################################################
-  # MU SEARCH 
+  # MU SEARCH
   ################################################################################
   search:
-    image: semtech/mu-search:0.9.0-beta.1 
+    image: semtech/mu-search:0.9.0-beta.1
     links:
       - db:database
     restart: always
