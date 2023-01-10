@@ -335,6 +335,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://delta-producer-json-diff-file-publisher-organizations/files/"
   end
 
+  #################################################################
+  #  DELTA: posts
+  #################################################################
+
+  get "/sync/worship-posts/files/*path" do
+    Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-worship-posts/files/"
+  end
+
   ###############################################################
   # frontend layer
   ###############################################################
