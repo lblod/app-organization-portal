@@ -1,0 +1,148 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX person: <http://www.w3.org/ns/person#>	
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX mu:  <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX ere:	<http://data.lblod.info/vocabularies/erediensten/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur .
+    ?bestuur ?pbestuur ?obestuur .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    VALUES ?bestuur {
+      <http://data.lblod.info/id/besturenVanDeEredienst/999b011fe6b90b3b546612c25db4b607> # OP-1980
+      <http://data.lblod.info/id/besturenVanDeEredienst/da2184c3dca9eb7c4828a50c0e9f5af4> # OP-1978
+      <http://data.lblod.info/id/besturenVanDeEredienst/a6b5c5db3a261ca024a42fe9489496a9> # OP-1979
+      <http://data.lblod.info/id/besturenVanDeEredienst/260312c07d8e00358064a362dee3506f> # OP-1977
+    }
+	
+    OPTIONAL { ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur }
+
+    ?bestuur ?pbestuur ?obestuur .
+
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?primarySite ?pprimarySite ?oprimarySite .
+    ?address ?paddress ?oaddress .
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    VALUES ?bestuur {
+      <http://data.lblod.info/id/besturenVanDeEredienst/999b011fe6b90b3b546612c25db4b607> # OP-1980
+      <http://data.lblod.info/id/besturenVanDeEredienst/da2184c3dca9eb7c4828a50c0e9f5af4> # OP-1978
+      <http://data.lblod.info/id/besturenVanDeEredienst/a6b5c5db3a261ca024a42fe9489496a9> # OP-1979
+      <http://data.lblod.info/id/besturenVanDeEredienst/260312c07d8e00358064a362dee3506f> # OP-1977
+    }
+
+    OPTIONAL {
+      ?bestuur <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite.
+      ?primarySite ?pprimarySite ?oprimarySite .
+    } 
+
+    OPTIONAL {
+    	?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address.
+    	?address ?paddress ?oaddress .
+    }
+    
+    OPTIONAL {
+    	?primarySite <http://www.w3.org/ns/org#siteAddress> ?contactPoint .
+    	?contactPoint ?pcontactPoint ?ocontactPoint .
+    }
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?identifier ?pidentifier ?oidentifier .
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    VALUES ?bestuur {
+      <http://data.lblod.info/id/besturenVanDeEredienst/999b011fe6b90b3b546612c25db4b607> # OP-1980
+      <http://data.lblod.info/id/besturenVanDeEredienst/da2184c3dca9eb7c4828a50c0e9f5af4> # OP-1978
+      <http://data.lblod.info/id/besturenVanDeEredienst/a6b5c5db3a261ca024a42fe9489496a9> # OP-1979
+      <http://data.lblod.info/id/besturenVanDeEredienst/260312c07d8e00358064a362dee3506f> # OP-1977
+    }
+   
+    OPTIONAL { 
+      ?bestuur <http://www.w3.org/ns/adms#identifier> ?identifier . 
+      ?identifier ?pidentifier ?oidentifier .
+    }
+        
+    OPTIONAL {
+      ?identifier <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier.
+      ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+    }
+  }
+}
+
+;
+
+# Clean reminiscences
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    VALUES ?o {
+      <http://data.lblod.info/id/besturenVanDeEredienst/999b011fe6b90b3b546612c25db4b607> # OP-1980
+      <http://data.lblod.info/id/besturenVanDeEredienst/da2184c3dca9eb7c4828a50c0e9f5af4> # OP-1978
+      <http://data.lblod.info/id/besturenVanDeEredienst/a6b5c5db3a261ca024a42fe9489496a9> # OP-1979
+      <http://data.lblod.info/id/besturenVanDeEredienst/260312c07d8e00358064a362dee3506f> # OP-1977
+    }
+
+    OPTIONAL{ ?s ?p ?o }
+  }
+}
+
+# The associated call to trigger a reindex is :
+
+# curl --location --request POST '172.20.0.15/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw ' [
+#   {
+#     "deletes": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/besturenVanDeEredienst/999b011fe6b90b3b546612c25db4b607" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "999b011fe6b90b3b546612c25db4b607" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/besturenVanDeEredienst/da2184c3dca9eb7c4828a50c0e9f5af4" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "da2184c3dca9eb7c4828a50c0e9f5af4" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/besturenVanDeEredienst/a6b5c5db3a261ca024a42fe9489496a9" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "a6b5c5db3a261ca024a42fe9489496a9" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/besturenVanDeEredienst/260312c07d8e00358064a362dee3506f" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "260312c07d8e00358064a362dee3506f" }
+#       }
+#     ],
+#     "inserts": []
+#   }
+# ]'
