@@ -35,57 +35,50 @@ async function dispatch(lib, data) {
     const insertStatements = inserts.map(o => `${o.subject} ${o.predicate} ${o.object}.`);
 
     if (deleteStatements.length) {
-      await transformStatements(fetch, deleteStatements, UNFILTERED_MAPPING).then(
-        transformedStatements => {
-          deleteFromAllGraphs(
-            muAuthSudo.updateSudo,
-            transformedStatements,
-            { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
-            process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
-            MAX_DB_RETRY_ATTEMPTS,
-            SLEEP_BETWEEN_BATCHES,
-            SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
-          );
-        }
-      )
+      const transformedStatementsToDelete = await transformStatements(fetch, deleteStatements, UNFILTERED_MAPPING);
+      if (transformedStatementsToDelete.length) {
+        await deleteFromAllGraphs(
+          muAuthSudo.updateSudo,
+          transformedStatementsToDelete,
+          { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
+          process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
+          MAX_DB_RETRY_ATTEMPTS,
+          SLEEP_BETWEEN_BATCHES,
+          SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
+        );
+      }
     }
 
-
     if (insertStatements.length) {
-      await transformStatements(fetch, insertStatements, MAIN_INFO_MAPPING).then(
-        transformedStatements => {
-          if (transformedStatements.length) {
-            batchedDbUpdate(
-              muAuthSudo.updateSudo,
-              INGEST_GRAPH,
-              transformedStatements,
-              { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
-              process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
-              BATCH_SIZE,
-              MAX_DB_RETRY_ATTEMPTS,
-              SLEEP_BETWEEN_BATCHES,
-              SLEEP_TIME_AFTER_FAILED_DB_OPERATION
-            );
-          }
-        }
-      );
-      await transformStatements(fetch, insertStatements, PRIVATE_INFO_MAPPING).then(
-        transformedStatements => {
-          if (transformedStatements.length) {
-            batchedDbUpdate(
-              muAuthSudo.updateSudo,
-              PRIVACY_SENSITIVE_GRAPH,
-              transformedStatements,
-              { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
-              process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
-              BATCH_SIZE,
-              MAX_DB_RETRY_ATTEMPTS,
-              SLEEP_BETWEEN_BATCHES,
-              SLEEP_TIME_AFTER_FAILED_DB_OPERATION
-            );
-          }
-        }
-      );
+      const transformedStatementsToInsert = await transformStatements(fetch, insertStatements, MAIN_INFO_MAPPING);
+      if (transformedStatementsToInsert.length) {
+        await batchedDbUpdate(
+          muAuthSudo.updateSudo,
+          INGEST_GRAPH,
+          transformedStatementsToInsert,
+          { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
+          process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
+          BATCH_SIZE,
+          MAX_DB_RETRY_ATTEMPTS,
+          SLEEP_BETWEEN_BATCHES,
+          SLEEP_TIME_AFTER_FAILED_DB_OPERATION
+        );
+      }
+
+      const transformedStatementsToInsertPrivate = await transformStatements(fetch, insertStatements, PRIVATE_INFO_MAPPING);
+      if (transformedStatementsToInsertPrivate.length) {
+        await batchedDbUpdate(
+          muAuthSudo.updateSudo,
+          PRIVACY_SENSITIVE_GRAPH,
+          transformedStatementsToInsertPrivate,
+          { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
+          process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
+          BATCH_SIZE,
+          MAX_DB_RETRY_ATTEMPTS,
+          SLEEP_BETWEEN_BATCHES,
+          SLEEP_TIME_AFTER_FAILED_DB_OPERATION
+        );
+      }
     }
   }
 }
