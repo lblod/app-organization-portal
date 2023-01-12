@@ -1,13 +1,14 @@
 const { transformStatements, batchedDbUpdate, partition, deleteFromAllGraphs } = require('./util');
-const { BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES,
-  DIRECT_DATABASE_ENDPOINT,
-  MU_CALL_SCOPE_ID_INITIAL_SYNC,
+const {
   BATCH_SIZE,
   MAX_DB_RETRY_ATTEMPTS,
   SLEEP_BETWEEN_BATCHES,
   SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
   INGEST_GRAPH,
-  FILE_SYNC_GRAPH
+  PRIVACY_SENSITIVE_GRAPH,
+  UNFILTERED_MAPPING,
+  MAIN_INFO_MAPPING,
+  PRIVATE_INFO_MAPPING,
 } = require('./config');
 
 /**
@@ -34,7 +35,7 @@ async function dispatch(lib, data) {
     const insertStatements = inserts.map(o => `${o.subject} ${o.predicate} ${o.object}.`);
 
     if (deleteStatements.length) {
-      await transformStatements(fetch, deleteStatements).then(
+      await transformStatements(fetch, deleteStatements, UNFILTERED_MAPPING).then(
         transformedStatements => {
           deleteFromAllGraphs(
             muAuthSudo.updateSudo,
@@ -51,22 +52,40 @@ async function dispatch(lib, data) {
 
 
     if (insertStatements.length) {
-      await transformStatements(fetch, insertStatements).then(
+      await transformStatements(fetch, insertStatements, MAIN_INFO_MAPPING).then(
         transformedStatements => {
-          batchedDbUpdate(
-            muAuthSudo.updateSudo,
-            INGEST_GRAPH,
-            transformedStatements,
-            { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
-            process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
-            BATCH_SIZE,
-            MAX_DB_RETRY_ATTEMPTS,
-            SLEEP_BETWEEN_BATCHES,
-            SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
-            "INSERT"
-          );
+          if (transformedStatements.length) {
+            batchedDbUpdate(
+              muAuthSudo.updateSudo,
+              INGEST_GRAPH,
+              transformedStatements,
+              { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
+              process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
+              BATCH_SIZE,
+              MAX_DB_RETRY_ATTEMPTS,
+              SLEEP_BETWEEN_BATCHES,
+              SLEEP_TIME_AFTER_FAILED_DB_OPERATION
+            );
+          }
         }
-      )
+      );
+      await transformStatements(fetch, insertStatements, PRIVATE_INFO_MAPPING).then(
+        transformedStatements => {
+          if (transformedStatements.length) {
+            batchedDbUpdate(
+              muAuthSudo.updateSudo,
+              PRIVACY_SENSITIVE_GRAPH,
+              transformedStatements,
+              { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
+              process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
+              BATCH_SIZE,
+              MAX_DB_RETRY_ATTEMPTS,
+              SLEEP_BETWEEN_BATCHES,
+              SLEEP_TIME_AFTER_FAILED_DB_OPERATION
+            );
+          }
+        }
+      );
     }
   }
 }

@@ -201,7 +201,7 @@ services:
     restart: always
     logging: *default-logging
   reasoner:
-    image: eyereasoner/reasoning-service:1.0.0
+    image: eyereasoner/reasoning-service:1.0.1
     volumes:
       - ./config/reasoner:/config
   ################################################################################
@@ -524,11 +524,12 @@ services:
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitiveDeltaFileSyncing"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/worship-services-sensitive-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
+      FILE_SYNC_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
       DCR_KEEP_DELTA_FILES: "true"
       DCR_DELTA_FILE_FOLDER: "/consumer-files"
       BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "false"
     volumes:
-      - ./config/worship-services-sensitive-consumer/positions-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./config/loket-consumer/positions-dispatching:/config/triples-dispatching/custom-dispatching
     restart: always
     labels:
       - "logging=true"
