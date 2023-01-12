@@ -475,6 +475,7 @@ services:
       KEEP_DELTA_FILES: "true"
     volumes:
       - ./config/loket-consumer/mandate-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./data/files/consumer-files/mandaten:/consumer-files/
     restart: always
     labels:
       - "logging=true"
@@ -502,6 +503,7 @@ services:
       KEEP_DELTA_FILES: "true"
     volumes:
       - ./config/loket-consumer/leidinggevenden-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./data/files/consumer-files/leidinggevenden:/consumer-files/
     restart: always
     labels:
       - "logging=true"
@@ -530,6 +532,7 @@ services:
       BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "false"
     volumes:
       - ./config/loket-consumer/positions-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./data/files/consumer-files/worship-services-sensitive:/consumer-files/
     restart: always
     labels:
       - "logging=true"
