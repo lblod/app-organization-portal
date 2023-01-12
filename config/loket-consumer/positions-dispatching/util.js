@@ -141,7 +141,6 @@ function transformStatements(fetch, triples, mapping) {
     graph => {
       statements = graph ? graph.split('\n') : [];
       console.log(`CONVERSION ${mapping}: FROM ${triples.length} triples to ${statements.length}`)
-      console.log(statements)
       return statements
     }
   )
