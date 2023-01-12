@@ -47,6 +47,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   ?s persoon:registratie ?o
 }.
 
+# Nationality
+{
+  ?s persoon:heeftNationaliteit ?o
+} => {
+  ?s persoon:heeftNationaliteit ?o
+}.
+
+
 # Birth and related  attributes
 {
   ?s a persoon:Geboorte;
@@ -60,4 +68,17 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   ?s persoon:heeftGeboorte ?o
 } => {
   ?s persoon:heeftGeboorte ?o
+}.
+
+{
+  ?s persoon:datum ?o
+} => {
+  ?s persoon:datum ?o
+}.
+
+# Gender
+{
+  ?s persoon:geslacht ?o
+} => {
+  ?s persoon:geslacht ?o
 }.
