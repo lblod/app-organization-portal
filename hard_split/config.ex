@@ -49,7 +49,6 @@ defmodule Acl.UserGroups.Config do
                         "http://lblod.data.gift/vocabularies/organisatie/TypeVestiging",
                         "http://lblod.data.gift/vocabularies/organisatie/HelftVerkiezing",
                         "http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis",
-                        "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
                         "http://lblod.data.gift/vocabularies/organisatie/TypeBetrokkenheid",
                         "http://lblod.data.gift/vocabularies/organisatie/VoorwaardenBedienaarCriterium",
                         "http://lblod.data.gift/vocabularies/organisatie/BedienaarCriteriumBewijsstuk",
@@ -73,6 +72,7 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/ns/org#Role",
                         "http://www.w3.org/ns/org#Post",
                         "http://www.w3.org/ns/org#ChangeEvent",
+                        "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
                         "http://data.lblod.info/vocabularies/contacthub/AgentInPositie"
 ]
 

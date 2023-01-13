@@ -14,6 +14,7 @@ PREFIX generiek: <https://data.vlaanderen.be/ns/generiek>
 INSERT  {
   graph <http://mu.semte.ch/graphs/worship-service> {
      ?person a person:Person;
+             mu:uuid ?uuid;
              foaf:givenName ?givenName;
              foaf:familyName ?familyName;
              persoon:gebruikteVoornaam ?firstNameUsed.
@@ -23,6 +24,7 @@ INSERT  {
 WHERE {
   graph <http://mu.semte.ch/graphs/organisatieportaal> {
      ?person a person:Person;
+             mu:uuid ?uuid;
              foaf:givenName ?givenName;
              foaf:familyName ?familyName;
              persoon:gebruikteVoornaam ?firstNameUsed.
