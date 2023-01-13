@@ -47,6 +47,12 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   ?s persoon:registratie ?o
 }.
 
+{
+  ?s a <http://www.w3.org/ns/adms#Identifier>
+ } => {
+  ?s a <http://www.w3.org/ns/adms#Identifier>
+}.
+
 # Nationality
 {
   ?s persoon:heeftNationaliteit ?o
