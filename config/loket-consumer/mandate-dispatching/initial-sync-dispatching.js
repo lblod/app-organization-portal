@@ -28,45 +28,20 @@ async function dispatch(lib, data) {
   const { mu, muAuthSudo, fetch } = lib;
   const { termObjects } = data;
 
-  const partitions = partition(termObjects, o => o.subject.startsWith('<share://'));
-  const regularInserts = partitions.fails;
-  const fileInserts = partitions.passes;
-
   if (BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES) {
     console.warn(`Service configured to skip MU_AUTH!`);
   }
   console.log(`Using ${endpoint} to insert triples`);
 
-  if (regularInserts.length) {
-    originalRegularInsertTriples = regularInserts.map(o => `${o.subject} ${o.predicate} ${o.object}.`)
+  if (termObjects.length) {
+    originalInsertTriples = termObjects.map(o => `${o.subject} ${o.predicate} ${o.object}.`)
 
-    await transformStatements(fetch, originalRegularInsertTriples).then(
-      transformedRegularInsertTriples => {
-        // console.log(transformedRegularInsertTriples);
+    await transformStatements(fetch, originalInsertTriples).then(
+      transformedInsertTriples => {
         batchedDbUpdate(
           muAuthSudo.updateSudo,
           INGEST_GRAPH,
-          transformedRegularInsertTriples,
-          { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
-          endpoint,
-          BATCH_SIZE,
-          MAX_DB_RETRY_ATTEMPTS,
-          SLEEP_BETWEEN_BATCHES,
-          SLEEP_TIME_AFTER_FAILED_DB_OPERATION
-        )
-      }
-    )
-  }
-
-  if (fileInserts.length) {
-    originalFileInsertTriples = fileInserts.map(o => `${o.subject} ${o.predicate} ${o.object}.`)
-    await transformStatements(fetch, originalFileInsertTriples).then(
-      transformedFileInsertTriples => {
-        // console.log(transformedFileInsertTriples);
-        batchedDbUpdate(
-          muAuthSudo.updateSudo,
-          FILE_SYNC_GRAPH,
-          transformedFileInsertTriples,
+          transformedInsertTriples,
           { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
           endpoint,
           BATCH_SIZE,

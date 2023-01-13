@@ -1,4 +1,4 @@
-const { transformStatements, batchedDbUpdate, partition } = require('./util');
+const { transformStatements, batchedDbUpdate, partition, deleteFromAllGraphs } = require('./util');
 const { BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES,
   DIRECT_DATABASE_ENDPOINT,
   MU_CALL_SCOPE_ID_INITIAL_SYNC,
@@ -30,85 +30,35 @@ async function dispatch(lib, data) {
   const { termObjectChangeSets } = data;
 
   for (let { deletes, inserts } of termObjectChangeSets) {
-    const deletePartitions = partition(deletes, o => o.subject.startsWith('<share://'));
-    const regularDeletes = deletePartitions.fails;
-    const fileDeletes = deletePartitions.passes;
-    const fileDeleteStatements = fileDeletes.map(o => `${o.subject} ${o.predicate} ${o.object}.`);
-    const deleteStatements = regularDeletes.map(o => `${o.subject} ${o.predicate} ${o.object}.`);
+    const deleteStatements = deletes.map(o => `${o.subject} ${o.predicate} ${o.object}.`);
+    const insertStatements = inserts.map(o => `${o.subject} ${o.predicate} ${o.object}.`);
 
     if (deleteStatements.length) {
       await transformStatements(fetch, deleteStatements).then(
         transformedStatements => {
+          deleteFromAllGraphs(
+            muAuthSudo.updateSudo,
+            transformedStatements,
+            { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
+            process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
+            MAX_DB_RETRY_ATTEMPTS,
+            SLEEP_BETWEEN_BATCHES,
+            SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
+          );
+        }
+      )
+    }
+
+
+    if (insertStatements.length) {
+      await transformStatements(fetch, insertStatements).then(
+        transformedStatements => {
           batchedDbUpdate(
             muAuthSudo.updateSudo,
             INGEST_GRAPH,
             transformedStatements,
             { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
             process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
-            BATCH_SIZE,
-            MAX_DB_RETRY_ATTEMPTS,
-            SLEEP_BETWEEN_BATCHES,
-            SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
-            "DELETE"
-          );
-        }
-      )
-    }
-
-    if (fileDeleteStatements.length) {
-      await transformStatements(fetch, fileDeleteStatements).then(
-        transformedStatements => {
-          batchedDbUpdate(
-            muAuthSudo.updateSudo,
-            FILE_SYNC_GRAPH,
-            transformedStatements,
-            { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
-            process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
-            BATCH_SIZE,
-            MAX_DB_RETRY_ATTEMPTS,
-            SLEEP_BETWEEN_BATCHES,
-            SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
-            "DELETE"
-          );
-        }
-      )
-    }
-
-    const insertPartitions = partition(inserts, o => o.subject.startsWith('<share://'));
-    const regularInserts = insertPartitions.fails;
-    const fileInserts = insertPartitions.passes;
-    const regularInsertStatements = regularInserts.map(o => `${o.subject} ${o.predicate} ${o.object}.`);
-    const fileInsertStatements = fileInserts.map(o => `${o.subject} ${o.predicate} ${o.object}.`);
-
-
-    if (regularInsertStatements.length) {
-      await transformStatements(fetch, regularInsertStatements).then(
-        transformedStatements => {
-            batchedDbUpdate(
-            muAuthSudo.updateSudo,
-            INGEST_GRAPH,
-            transformedStatements,
-            {},
-            process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
-            BATCH_SIZE,
-            MAX_DB_RETRY_ATTEMPTS,
-            SLEEP_BETWEEN_BATCHES,
-            SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
-            "INSERT"
-          );
-        }
-      )
-    }
-
-    if (fileInsertStatements.length) {
-      await transformStatements(fetch, fileInsertStatements).then(
-        transformedStatements => {
-          batchedDbUpdate(
-            muAuthSudo.updateSudo,
-            FILE_SYNC_GRAPH,
-            transformedStatements,
-            {},
-            process.env.MU_SPARQL_ENDPOINT,
             BATCH_SIZE,
             MAX_DB_RETRY_ATTEMPTS,
             SLEEP_BETWEEN_BATCHES,
