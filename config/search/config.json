@@ -141,8 +141,8 @@
     {
       "type": "mandatory",
       "on_path": "mandatories",
-      "rdf_type": "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-      "sub_types": [
+      "rdf_type": [
+        "http://data.vlaanderen.be/ns/mandaat#Mandataris",
         "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris"
       ],
       "properties": {
@@ -150,11 +150,11 @@
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/givenName"
         ],
-        "id": [
+        "person_id": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
-        "uuid": [
+        "person_uuid": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
@@ -312,11 +312,11 @@
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/givenName"
         ],
-        "id": [
+        "person_id": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
-        "uuid": [
+        "person_uuid": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
@@ -468,8 +468,8 @@
     {
       "type": "minister",
       "on_path": "ministers",
-      "rdf_type": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
-      "sub_types": [
+      "rdf_type": [
+        "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
         "http://data.lblod.info/vocabularies/contacthub/AgentInPositie"
       ],
       "properties": {
@@ -477,11 +477,11 @@
           "http://www.w3.org/ns/org#heldBy",
           "http://xmlns.com/foaf/0.1/givenName"
         ],
-        "id": [
+        "person_id": [
           "http://www.w3.org/ns/org#heldBy",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
-        "uuid": [
+        "person_uuid": [
           "http://www.w3.org/ns/org#heldBy",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
@@ -546,7 +546,7 @@
               }
             }
           },
-          "id": {
+          "person_id": {
             "type": "text",
             "fields": {
               "field": {
@@ -638,11 +638,11 @@
           }
         },
         {
-          "name": "id",
+          "name": "person_id",
           "mappings": {
-            "minister": "id",
-            "agent": "id",
-            "mandatory": "id"
+            "minister": "person_id",
+            "agent": "person_id",
+            "mandatory": "person_id"
           }
         },
         {
@@ -814,8 +814,8 @@
     {
       "type": "unit",
       "on_path": "units",
-      "rdf_type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
-      "sub_types": [
+      "rdf_type": [
+        "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
         "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
         "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst"

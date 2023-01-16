@@ -1,0 +1,47 @@
+{
+  "export": [
+    {
+      "type": "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#role"
+      ],
+      "additionalFilter": "?orgaan <http://www.w3.org/ns/org#hasPost> ?subject ; <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid . ?bestuurseenheid a ?type. FILTER (?type IN (<http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>, <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>))"
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://www.w3.org/ns/org#hasPost"
+      ],
+      "additionalFilter": "?subject <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid . ?bestuurseenheid a ?type. FILTER (?type IN (<http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>, <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>))"
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#role",
+        "http://data.lblod.info/vocabularies/erediensten/functie"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+# OP-1928 : Remove worship members in "Kerkfabriek St.-Franciscus van Glabbeek"
+
+# Delete duplicate persons
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/personen/635BD6EC8DE5818A7C9F4310> ?pm ?om .
+    <http://data.lblod.info/id/personen/635BD7518DE5818A7C9F4313> ?pj ?oj .
+    <http://data.lblod.info/id/mandatarissen/635BD7148DE5818A7C9F4312> ?pd ?od .
+    <http://data.lblod.info/id/mandatarissen/635BD76D8DE5818A7C9F4314> ?pt ?ot .
+  }
+} 
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/personen/635BD6EC8DE5818A7C9F4310> ?pm ?om .
+    <http://data.lblod.info/id/personen/635BD7518DE5818A7C9F4313> ?pj ?oj .
+    <http://data.lblod.info/id/mandatarissen/635BD7148DE5818A7C9F4312> ?pd ?od .
+    <http://data.lblod.info/id/mandatarissen/635BD76D8DE5818A7C9F4314> ?pt ?ot .
+  }
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+    <http://data.lblod.info/id/personen/635BD6EC8DE5818A7C9F4310> ?pm ?om .
+    <http://data.lblod.info/id/personen/635BD7518DE5818A7C9F4313> ?pj ?oj .
+  }
+} 
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+    <http://data.lblod.info/id/personen/635BD6EC8DE5818A7C9F4310> ?pm ?om .
+    <http://data.lblod.info/id/personen/635BD7518DE5818A7C9F4313> ?pj ?oj .
+  }
+}
+;
+# Change Start Date
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandatarissen/6368DBCB8DE5818A7C9F441F> <http://data.vlaanderen.be/ns/mandaat#start> "2022-05-04"^^xsd:date .
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandatarissen/6368DBCB8DE5818A7C9F441F> <http://data.vlaanderen.be/ns/mandaat#start> "2022-01-28"^^xsd:date .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandatarissen/6368DBCB8DE5818A7C9F441F> <http://data.vlaanderen.be/ns/mandaat#start> "2022-05-04"^^xsd:date .
+  }
+}
+;
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandatarissen/6368DB2F8DE5818A7C9F441A> <http://data.vlaanderen.be/ns/mandaat#start> "2022-05-04"^^xsd:date .
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandatarissen/6368DB2F8DE5818A7C9F441A> <http://data.vlaanderen.be/ns/mandaat#start> "2022-01-28"^^xsd:date .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/mandatarissen/6368DB2F8DE5818A7C9F441A> <http://data.vlaanderen.be/ns/mandaat#start> "2022-05-04"^^xsd:date .
+  }
+}
+
+# The associated call to trigger a reindex is :
+
+# curl --location --request POST '172.19.0.23/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw ' [
+#   {
+#     "deletes": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/635BD6EC8DE5818A7C9F4310" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "635BD6EC8DE5818A7C9F4310" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/635BD7518DE5818A7C9F4313" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "635BD7518DE5818A7C9F4313" }
+#       }
+#     ],
+#     "inserts": []
+#   }
+# ]'
