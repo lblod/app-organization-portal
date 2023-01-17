@@ -28,7 +28,6 @@ DELETE {
     OPTIONAL { ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur }
 
     ?bestuur ?pbestuur ?obestuur .
-
   }
 }
 
@@ -52,16 +51,16 @@ DELETE {
     OPTIONAL {
       ?bestuur <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite.
       ?primarySite ?pprimarySite ?oprimarySite .
-    } 
 
-    OPTIONAL {
-    	?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address.
-    	?address ?paddress ?oaddress .
-    }
-    
-    OPTIONAL {
-    	?primarySite <http://www.w3.org/ns/org#siteAddress> ?contactPoint .
-    	?contactPoint ?pcontactPoint ?ocontactPoint .
+      OPTIONAL {
+        ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address.
+        ?address ?paddress ?oaddress .
+      }
+
+      OPTIONAL {
+        ?primarySite <http://www.w3.org/ns/org#siteAddress> ?contactPoint .
+        ?contactPoint ?pcontactPoint ?ocontactPoint .
+      }
     }
   }
 }
@@ -85,11 +84,11 @@ DELETE {
     OPTIONAL { 
       ?bestuur <http://www.w3.org/ns/adms#identifier> ?identifier . 
       ?identifier ?pidentifier ?oidentifier .
-    }
-        
-    OPTIONAL {
-      ?identifier <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier.
-      ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+
+      OPTIONAL {
+        ?identifier <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier.
+        ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+      }
     }
   }
 }
