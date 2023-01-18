@@ -1,0 +1,20 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { 
+    ?rolBedienaar ?pRolBedienaar ?oRolBedienaar .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { 
+
+    VALUES ?rolBedienaar {
+      <http://data.lblod.info/id/rollenBedienaar/6332F770036B579F0A26FF2F>    # OP-2043
+      <http://data.lblod.info/id/rollenBedienaar/6332F6C9036B579F0A26FF2A>    # OP-2043
+      <http://data.lblod.info/id/rollenBedienaar/6332F7FB036B579F0A26FF34>    # OP-2043 
+      <http://data.lblod.info/id/rollenBedienaar/638F083FA742F4FD4AB55907>    # OP-2047
+    }
+
+    ?rolBedienaar ?pRolBedienaar ?oRolBedienaar .
+  }
+}
+
+# No reindexing by a curl call is required
