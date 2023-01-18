@@ -1,0 +1,56 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+
+DELETE {
+  GRAPH ?g {
+    ?role ere:functie <http://lblod.data.gift/concepts/e357bc8f4cc3a694fde2239748768a22> . # Eerste Imam in rang
+  }
+} INSERT {
+  GRAPH ?g {
+    ?role ere:functie <http://lblod.data.gift/concepts/5ebb798bd59c3b48c25116032caa02b7> . # Derde Imam in rang
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES ?rolBedienaar {
+        <http://data.lblod.info/id/rollenBedienaar/6332F95A036B579F0A26FF39>    # OP-2045
+        <http://data.lblod.info/id/rollenBedienaar/63515D0E8DE5818A7C9F41B6>    # OP-2046
+    }
+    ?rolBedienaar org:holds ?role .
+    ?role ere:functie <http://lblod.data.gift/concepts/e357bc8f4cc3a694fde2239748768a22> .
+  }
+}
+;
+DELETE {
+  GRAPH ?g {
+    ?role ere:functie <http://lblod.data.gift/concepts/c4a3fd586211b17b06f574885e23f355> . # Tweede Imam in rang
+  }
+} INSERT {
+  GRAPH ?g {
+    ?role ere:functie <http://lblod.data.gift/concepts/5ebb798bd59c3b48c25116032caa02b7> . # Derde Imam in rang
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/rollenBedienaar/63515DDE8DE5818A7C9F41BB> org:holds ?role .  # OP-2046
+    ?role ere:functie <http://lblod.data.gift/concepts/c4a3fd586211b17b06f574885e23f355> .
+  }
+}
+;
+DELETE {
+  GRAPH ?g {
+    ?role ere:functie <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2> . # Priester
+  }
+} INSERT {
+  GRAPH ?g {
+    ?role ere:functie <http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254> . # Rector
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES ?rolBedienaar {
+        <http://data.lblod.info/id/rollenBedienaar/633309B8036B579F0A26FF4D>    # OP-2056
+        <http://data.lblod.info/id/rollenBedienaar/6308BA29BB4106FB970C4D15>    # OP-2057
+        <http://data.lblod.info/id/rollenBedienaar/633308FD036B579F0A26FF48>    # OP-2060
+    }
+    ?rolBedienaar org:holds ?role .
+    ?role ere:functie <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2> .
+  }
+}
