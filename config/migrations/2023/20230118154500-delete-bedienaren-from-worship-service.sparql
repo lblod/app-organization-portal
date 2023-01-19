@@ -1,6 +1,8 @@
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { 
     ?rolBedienaar ?pRolBedienaar ?oRolBedienaar .
+    ?rolBedienaar <http://schema.org/contactPoint> ?contactPoint .
+    ?contactPoint ?p ?o .
   }
 }
 WHERE {
@@ -14,7 +16,42 @@ WHERE {
     }
 
     ?rolBedienaar ?pRolBedienaar ?oRolBedienaar .
+
+    OPTIONAL {
+      ?rolBedienaar <http://schema.org/contactPoint> ?contactPoint .
+      ?contactPoint ?p ?o . 
+    }
   }
 }
 
-# No reindexing by a curl call is required
+# The associated call to trigger a reindex is :
+
+# curl --location --request POST '172.25.0.32/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw ' [
+#   {
+#     "deletes": [
+#       {
+#         "subject": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/6332F770036B579F0A26FF2F" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/6332F6C9036B579F0A26FF2A" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/6332F7FB036B579F0A26FF34" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/638F083FA742F4FD4AB55907" }
+#       }
+#     ],
+#     "inserts": []
+#   }
+# ]'
