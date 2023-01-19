@@ -18,6 +18,7 @@ defmodule Acl.UserGroups.Config do
                         "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+                        "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
                         "http://data.lblod.info/vocabularies/erediensten/VoorwaardenBedienaar",
