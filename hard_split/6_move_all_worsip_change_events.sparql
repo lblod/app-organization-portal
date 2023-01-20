@@ -8,7 +8,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-PREFIX org: <http://www.w3.org/ns/org>
+PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
 
@@ -25,7 +25,7 @@ INSERT {
 
 WHERE {
    GRAPH <http://mu.semte.ch/graphs/worship-service> {
-        ?resultingOrganization a besluit:Bestuurseenheid.
+        ?resultingOrganization a ?type.
 
    }
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
@@ -50,7 +50,7 @@ INSERT {
 
 WHERE {
    GRAPH <http://mu.semte.ch/graphs/worship-service> {
-        ?resultingOrganization a besluit:Bestuurseenheid.
+        ?resultingOrganization a ?type.
 
    }
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
@@ -60,4 +60,28 @@ WHERE {
   }
 
 }
- 
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s ?p ?o.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s ?p ?o.
+  }
+}
+
+WHERE {
+   GRAPH <http://mu.semte.ch/graphs/worship-service> {
+        ?resultingOrganization a ?type.
+
+   }
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+
+     ?s org:resultingOrganization ?resultingOrganization.
+     ?s  ?p ?o.
+  }
+
+}
+

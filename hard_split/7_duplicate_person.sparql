@@ -17,6 +17,7 @@ INSERT  {
              mu:uuid ?uuid;
              foaf:givenName ?givenName;
              foaf:familyName ?familyName;
+             <http://data.vlaanderen.be/ns/mandaat#isAangesteldAls> ?isAangesteldAls;
              persoon:gebruikteVoornaam ?firstNameUsed.
   }
 
@@ -28,6 +29,7 @@ WHERE {
              foaf:givenName ?givenName;
              foaf:familyName ?familyName;
              persoon:gebruikteVoornaam ?firstNameUsed.
+      optional {?person   <http://data.vlaanderen.be/ns/mandaat#isAangesteldAls> ?isAangesteldAls.}
     
     filter (exists
       {
@@ -52,6 +54,7 @@ DELETE {
      ?person a person:Person;
              foaf:givenName ?givenName;
              foaf:familyName ?familyName;
+            <http://data.vlaanderen.be/ns/mandaat#isAangesteldAls> ?isAangesteldAls;
              persoon:gebruikteVoornaam ?firstNameUsed.
   }
 
@@ -62,7 +65,8 @@ WHERE {
              foaf:givenName ?givenName;
              foaf:familyName ?familyName;
              persoon:gebruikteVoornaam ?firstNameUsed.
-    
+      optional {?person   <http://data.vlaanderen.be/ns/mandaat#isAangesteldAls> ?isAangesteldAls.}
+
     FILTER((NOT EXISTS { ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person. })
     && (NOT EXISTS { ?ministers <http://www.w3.org/ns/org#heldBy> ?person. }))
 
