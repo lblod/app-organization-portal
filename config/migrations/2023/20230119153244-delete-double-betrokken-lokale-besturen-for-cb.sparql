@@ -1,0 +1,19 @@
+# We already had betrokken lokale besturen entered for some CB.
+# Too keep data aligned with the other applications (Loket, CVP etc), we first flush them
+# before re-adding only the necessary ones
+
+DELETE {
+  GRAPH ?g {
+    ?localInvolvement ?plocalInvolvement ?olocalInvolvement .
+    ?bestuur <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> ?localInvolvement .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?centraalBestuur a <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst> . 
+
+    ?localInvolvement <http://www.w3.org/ns/org#organization> ?centraalBestuur ;
+      ?plocalInvolvement ?olocalInvolvement .
+
+    ?bestuur <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> ?localInvolvement .
+  }
+}

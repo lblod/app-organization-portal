@@ -97,7 +97,7 @@ defmodule Dispatcher do
   end
 
   match "/central-worship-services/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/central-worship-services/"
+    Proxy.forward conn, path, "http://resource/central-worship-services/"
   end
 
   match "/representative-bodies/*path", %{ accept: [:json], layer: :api} do
@@ -113,7 +113,7 @@ defmodule Dispatcher do
   end
 
   match "/local-involvements/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/local-involvements/"
+    Proxy.forward conn, path, "http://resource/local-involvements/"
   end
 
   match "/identifiers/*path", %{ accept: [:json], layer: :api} do
