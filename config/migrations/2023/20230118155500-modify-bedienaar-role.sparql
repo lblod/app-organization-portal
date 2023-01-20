@@ -54,3 +54,76 @@ DELETE {
     ?role ere:functie <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2> .
   }
 }
+
+# The associated call to trigger a reindex is :
+
+# curl --location --request POST '172.26.0.28/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw ' [
+#   {
+#     "deletes": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/63515D0E8DE5818A7C9F41B5" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/e357bc8f4cc3a694fde2239748768a22" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/6332F959036B579F0A26FF38" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/e357bc8f4cc3a694fde2239748768a22" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/63515DDE8DE5818A7C9F41BA" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/c4a3fd586211b17b06f574885e23f355" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/6308BA29BB4106FB970C4D14" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/633308FC036B579F0A26FF47" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/633309B8036B579F0A26FF4C" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2" }
+#       }
+#     ],
+#     "inserts": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/63515D0E8DE5818A7C9F41B5" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/5ebb798bd59c3b48c25116032caa02b7" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/6332F959036B579F0A26FF38" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/5ebb798bd59c3b48c25116032caa02b7" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/63515DDE8DE5818A7C9F41BA" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/5ebb798bd59c3b48c25116032caa02b7" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/6308BA29BB4106FB970C4D14" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/633308FC036B579F0A26FF47" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/positiesBedienaar/633309B8036B579F0A26FF4C" },
+#         "predicate": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/functie" },
+#         "object": { "type": "uri", "value": "http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254" }
+#       }      
+#     ]
+#   }
+# ]'
