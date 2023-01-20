@@ -1,0 +1,4 @@
+# MOVE SILENT <http://redpencil.data.gift/id/deltas/producer/organizationsdeltas> <http://redpencil.data.gift/id/deltas/producer/organizations-deltas>
+DELETE { GRAPH <http://redpencil.data.gift/id/deltas/producer/organizationsdeltas> { ?s ?p ?o } }
+INSERT { GRAPH <http://redpencil.data.gift/id/deltas/producer/organizations-deltas> { ?s ?p ?o } }
+WHERE { GRAPH <http://redpencil.data.gift/id/deltas/producer/organizationsdeltas> { ?s ?p ?o } }
