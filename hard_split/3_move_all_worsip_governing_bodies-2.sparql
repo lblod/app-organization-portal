@@ -37,6 +37,37 @@ WHERE {
   }
 
 }
+;
 
 
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+     ?post a ?type;
+           mu:uuid ?uuid;
+     <http://www.w3.org/ns/org#role> ?role.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+       ?post a ?type; mu:uuid ?uuid;
+       <http://www.w3.org/ns/org#role> ?role.
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?post a ?type;
+          mu:uuid ?uuid;
+
+    <http://www.w3.org/ns/org#role> ?role.
+
+    filter exists {
+      GRAPH <http://mu.semte.ch/graphs/worship-service> {
+        ?mandatories <http://www.w3.org/ns/org#holds> ?post.
+    
+      }
+    }
+  }
+
+}
 

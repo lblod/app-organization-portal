@@ -27,8 +27,8 @@ WHERE {
      ?person a person:Person;
              mu:uuid ?uuid;
              foaf:givenName ?givenName;
-             foaf:familyName ?familyName;
-             persoon:gebruikteVoornaam ?firstNameUsed.
+             foaf:familyName ?familyName.
+      optional {?person  persoon:gebruikteVoornaam ?firstNameUsed. }
       optional {?person   <http://data.vlaanderen.be/ns/mandaat#isAangesteldAls> ?isAangesteldAls.}
     
     filter (exists
@@ -63,8 +63,8 @@ WHERE {
   graph <http://mu.semte.ch/graphs/organisatieportaal> {
      ?person a person:Person;
              foaf:givenName ?givenName;
-             foaf:familyName ?familyName;
-             persoon:gebruikteVoornaam ?firstNameUsed.
+             foaf:familyName ?familyName.
+      optional{?person persoon:gebruikteVoornaam ?firstNameUsed.}
       optional {?person   <http://data.vlaanderen.be/ns/mandaat#isAangesteldAls> ?isAangesteldAls.}
 
     FILTER((NOT EXISTS { ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person. })

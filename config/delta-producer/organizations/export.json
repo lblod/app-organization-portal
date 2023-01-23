@@ -3,9 +3,10 @@
     {
       "type": "http://www.w3.org/ns/person#Person",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
       ],
-      "properties": [ 
+      "properties": [
         "http://xmlns.com/foaf/0.1/givenName",
         "http://xmlns.com/foaf/0.1/familyName",
         "https://data.vlaanderen.be/ns/persoon#gebruikteVoornaam",
@@ -16,7 +17,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/MandatarisStatusCode",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -26,7 +27,7 @@
       "type": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
       "strictTypeExport": "true",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://data.lblod.info/vocabularies/contacthub/startdatum",
@@ -46,7 +47,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/HelftVerkiezing",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -55,7 +56,8 @@
     {
       "type": "http://schema.org/ContactPoint",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
       ],
       "properties": [
         "http://schema.org/email",
@@ -67,7 +69,8 @@
     {
       "type": "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
       ],
       "properties": [
         "http://www.w3.org/ns/org#role",
@@ -78,7 +81,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -87,7 +90,7 @@
     {
       "type": "http://www.w3.org/ns/org#Role",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -96,7 +99,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -105,7 +108,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/TypeEredienst",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -115,7 +118,8 @@
       "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
       "strictTypeExport": "true",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/administrative-unit",
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel",
@@ -142,7 +146,7 @@
       "type": "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
       "strictTypeExport": "true",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel",
@@ -166,7 +170,7 @@
       "type": "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",
       "strictTypeExport": "true",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel",
@@ -187,7 +191,8 @@
       "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
       "strictTypeExport": "true",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
       ],
       "properties": [
         "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
@@ -201,7 +206,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -210,7 +215,7 @@
     {
       "type": "http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://data.lblod.info/vocabularies/erediensten/financieringspercentage",
@@ -221,7 +226,8 @@
     {
       "type": "http://www.w3.org/ns/adms#Identifier",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/administrative-unit",
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#notation",
@@ -231,7 +237,8 @@
     {
       "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/administrative-unit",
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
@@ -240,7 +247,8 @@
     {
       "type": "http://www.w3.org/ns/locn#Address",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
       ],
       "properties": [
         "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
@@ -258,7 +266,8 @@
     {
       "type": "http://www.w3.org/ns/org#Site",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
       ],
       "properties": [
         "http://www.w3.org/ns/org#siteAddress",
@@ -269,7 +278,8 @@
     {
       "type": "http://www.w3.org/ns/org#ChangeEvent",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
       ],
       "properties": [
         "http://purl.org/dc/terms/date",
@@ -282,7 +292,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -291,7 +301,7 @@
     {
       "type": "http://www.w3.org/2004/02/skos/core#Concept",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -300,7 +310,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -309,16 +319,16 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/TypeBetrokkenheid",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
     },
     {
-      "type": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar", 
+      "type": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://data.lblod.info/vocabularies/contacthub/startdatum",
@@ -333,26 +343,28 @@
     {
       "type": "http://data.lblod.info/vocabularies/erediensten/VoorwaardenBedienaar",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://data.lblod.info/vocabularies/erediensten/voldaan",
         "http://data.lblod.info/vocabularies/erediensten/criterium",
         "http://data.lblod.info/vocabularies/erediensten/criteriumbewijsstuktype"
       ]
-    },{
+    },
+    {
       "type": "http://publications.europa.eu/ontology/euvoc#Country",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel",
         "http://www.w3.org/2000/01/rdf-schema#label"
       ]
-    },{
+    },
+    {
       "type": "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://www.w3.org/ns/org#role",
@@ -364,7 +376,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/EredienstBeroepen",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -373,7 +385,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/BedienaarFinanceringCode",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -382,7 +394,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/VoorwaardenBedienaarCriterium",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -391,7 +403,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/BedienaarCriteriumBewijsstuk",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -400,7 +412,7 @@
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/TypeVestiging",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/public"
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
