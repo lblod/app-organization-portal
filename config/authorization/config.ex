@@ -77,7 +77,7 @@ defmodule Acl.UserGroups.Config do
 ]
 
  @shared_protected_type [
-                        "https://data.vlaanderen.be/ns/persoon#Geboorte",
+                        #"https://data.vlaanderen.be/ns/persoon#Geboorte",
                         "http://www.w3.org/ns/prov#Location",
                         "http://www.w3.org/ns/org#Site",
                         "http://www.w3.org/ns/locn#Address",
