@@ -36,30 +36,30 @@ WHERE {
 
 # The associated call to trigger a reindex is :
 
-# curl --location --request POST '172.20.0.38/update' \
+# curl --location --request POST '172.22.0.30/update' \
 # --header 'Content-Type: application/vnd.api+json' \
 # --data-raw ' [
 #   {
 #     "deletes": [
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/6332F770036B579F0A26FF2F" },
-#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
-#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" }
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/ns/org#heldBy" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/personen/6332F6FD036B579F0A26FF2B" }
 #       },
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/6332F6C9036B579F0A26FF2A" },
-#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
-#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" }
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/ns/org#heldBy" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/personen/6332F648036B579F0A26FF26" }
 #       },
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/6332F7FB036B579F0A26FF34" },
-#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
-#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" }
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/ns/org#heldBy" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/personen/6332F7AF036B579F0A26FF30" }
 #       },
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/638F083FA742F4FD4AB55907" },
-#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
-#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" }
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/ns/org#heldBy" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/personen/638F07A6A742F4FD4AB55903" }
 #       }
 #     ],
 #     "inserts": []
