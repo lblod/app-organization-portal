@@ -10,8 +10,6 @@ DELETE {
     ?rolBedienaar ?pRolBedienaar ?oRolBedienaar .
     ?contactPoint ?pContactPoint ?ocontactPoint .
     ?address ?pAddress ?oAddress .
-    ?positieBedienaar ?pPositieBedienaar ?oPositieBedienaar .
-    ?functie ?pFunctie ?oFunctie .
   }
 }
 WHERE {
@@ -26,48 +24,42 @@ WHERE {
 
     ?rolBedienaar rdf:type ere:RolBedienaar ;
       schema:contactPoint ?contactPoint ;
-      org:holds ?positieBedienaar ;
       ?pRolBedienaar ?oRolBedienaar .
 
     ?contactPoint locn:address ?address ;
       ?pContactPoint ?ocontactPoint .
 
     ?address ?pAddress ?oAddress .
-
-    ?positieBedienaar ere:functie ?functie ;
-      ?pPositieBedienaar ?oPositieBedienaar .
-
-    ?functie ?pFunctie ?oFunctie .
     
   }
 }
 
 # The associated call to trigger a reindex is :
 
-# curl --location --request POST '172.26.0.22/update' \
+# curl --location --request POST '172.20.0.38/update' \
 # --header 'Content-Type: application/vnd.api+json' \
 # --data-raw ' [
 #   {
 #     "deletes": [
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/6332F770036B579F0A26FF2F" },
-#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
-#         "object": { "type": "string", "value": "6332F770036B579F0A26FF2F" }
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" }
 #       },
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/6332F6C9036B579F0A26FF2A" },
-#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
-#         "object": { "type": "string", "value": "6332F6C9036B579F0A26FF2A" }
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" }
 #       },
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/6332F7FB036B579F0A26FF34" },
-#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
-#         "object": { "type": "string", "value": "6332F7FB036B579F0A26FF34" }
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" }
 #       },
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/rollenBedienaar/638F083FA742F4FD4AB55907" },
-#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
-#         "object": { "type": "string", "value": "638F083FA742F4FD4AB55907" }
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/RolBedienaar" }
 #       }
 #     ],
 #     "inserts": []
