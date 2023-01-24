@@ -1,0 +1,48 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX person: <http://www.w3.org/ns/person#>	
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu:  <http://mu.semte.ch/vocabularies/core/>
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/organisatieportaal>  {
+        ?mandatarissen ?pMandatarissen ?oMandatarissen .
+        ?mandaat ?pMandaat ?oMandaat .
+        ?person ?pPerson ?oPerson .
+    }
+} WHERE {
+    GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+        VALUES ?mandatarissen {
+            <http://data.lblod.info/id/mandatarissen/807a3e07c95fe40962d64695069af946> #1
+            <http://data.lblod.info/id/mandatarissen/40ed3cb19f9fa33e47b39016780dce1d> #2
+        }
+
+        ?mandatarissen org:holds ?mandaat ;
+            mandaat:isBestuurlijkeAliasVan ?person ;
+            ?pMandatarissen ?oMandatarissen .
+
+        ?person ?pPerson ?oPerson . 
+        ?mandaat ?pMandaat ?oMandaat .            
+    }
+}
+
+# An associated call to trigger a reindex is:
+
+# curl --location --request POST '172.32.0.21/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw ' [
+#   {
+#     "deletes": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/807a3e07c95fe40962d64695069af946" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "807a3e07c95fe40962d64695069af946" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/40ed3cb19f9fa33e47b39016780dce1d" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "40ed3cb19f9fa33e47b39016780dce1d" }
+#       }
+#     ],
+#     "inserts": []
+#   }
+# ]'
