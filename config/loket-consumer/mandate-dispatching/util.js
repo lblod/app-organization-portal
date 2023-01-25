@@ -150,4 +150,3 @@ module.exports = {
   deleteFromAllGraphs,
   partition,
   transformStatements
-};

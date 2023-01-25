@@ -27,7 +27,6 @@ defmodule Acl.UserGroups.Config do
 
  @public_type [
 
-                        "http://www.w3.org/ns/org#Role",
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://xmlns.com/foaf/0.1/Person",
                         "http://xmlns.com/foaf/0.1/OnlineAccount",
@@ -70,14 +69,15 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/mandaat#Mandataris",
                         "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
                         "http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie",
-                        "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
+                        "http://www.w3.org/ns/org#Role",
                         "http://www.w3.org/ns/org#Post",
                         "http://www.w3.org/ns/org#ChangeEvent",
+                        "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
                         "http://data.lblod.info/vocabularies/contacthub/AgentInPositie"
 ]
 
  @shared_protected_type [
-                        #"https://data.vlaanderen.be/ns/persoon#Geboorte",
+                        "https://data.vlaanderen.be/ns/persoon#Geboorte",
                         "http://www.w3.org/ns/prov#Location",
                         "http://www.w3.org/ns/org#Site",
                         "http://www.w3.org/ns/locn#Address",
@@ -119,7 +119,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/shared",
             constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
+              resource_types: @shared_protected_type
             }
           }
         ]
@@ -138,7 +138,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/shared",
             constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
+              resource_types: @shared_protected_type
             }
           }
         ]
@@ -157,7 +157,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/shared",
             constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
+              resource_types: @shared_protected_type
             }
           }
         ]
@@ -176,7 +176,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/shared",
             constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
+              resource_types: @shared_protected_type
             }
           }
         ]
@@ -195,7 +195,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/shared",
             constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
+              resource_types: @shared_protected_type
             }
           }
         ]
@@ -214,7 +214,7 @@ defmodule Acl.UserGroups.Config do
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/shared",
             constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
+              resource_types: @shared_protected_type
             }
           }
         ]

@@ -56,4 +56,3 @@ async function dispatch(lib, data) {
 
 module.exports = {
   dispatch
-};
