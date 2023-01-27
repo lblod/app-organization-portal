@@ -1,0 +1,59 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX schema: <http://schema.org/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/organisatieportaal>  {
+        ?mandatarissen ?pMandatarissen ?oMandatarissen .
+        ?mandaat ?pMandaat ?oMandaat .
+        ?person ?pPerson ?oPerson .
+        ?contactPoint ?pContactPoint ?oContactPoint .
+        ?address ?pAddress ?oAddress .
+    }
+} WHERE {
+    GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+        VALUES ?mandatarissen {
+            <http://data.lblod.info/id/mandatarissen/807a3e07c95fe40962d64695069af946> #1
+            <http://data.lblod.info/id/mandatarissen/40ed3cb19f9fa33e47b39016780dce1d> #2
+        }
+
+        ?mandatarissen org:holds ?mandaat ;
+            mandaat:isBestuurlijkeAliasVan ?person ;
+            ?pMandatarissen ?oMandatarissen .
+
+        OPTIONAL {
+            ?mandatarissen schema:contactPoint ?contactPoint .
+            OPTIONAL {
+                ?contactPoint locn:address ?address ;
+                    ?pContactPoint ?oContactPoint .
+                ?address ?pAddress ?oAddress .
+            }
+        }
+
+        ?person ?pPerson ?oPerson . 
+        ?mandaat ?pMandaat ?oMandaat .            
+    }
+}
+
+# An associated call to trigger a reindex is:
+
+# curl --location --request POST '172.32.0.21/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw ' [
+#   {
+#     "deletes": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/807a3e07c95fe40962d64695069af946" },
+#         "predicate": { "type": "uri", "value": "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/personen/620523C451BFC225E4ECFA97" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/40ed3cb19f9fa33e47b39016780dce1d" },
+#         "predicate": { "type": "uri", "value": "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/personen/620523C451BFC225E4ECFA97" }
+#       }
+#     ],
+#     "inserts": []
+#   }
+# ]'
