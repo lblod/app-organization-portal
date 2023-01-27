@@ -1,13 +1,15 @@
-PREFIX org: <http://www.w3.org/ns/org#>
-PREFIX person: <http://www.w3.org/ns/person#>	
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-PREFIX mu:  <http://mu.semte.ch/vocabularies/core/>
+PREFIX schema: <http://schema.org/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX org: <http://www.w3.org/ns/org#>
 
 DELETE {
     GRAPH <http://mu.semte.ch/graphs/organisatieportaal>  {
         ?mandatarissen ?pMandatarissen ?oMandatarissen .
         ?mandaat ?pMandaat ?oMandaat .
         ?person ?pPerson ?oPerson .
+        ?contactPoint ?pContactPoint ?oContactPoint .
+        ?address ?pAddress ?oAddress .
     }
 } WHERE {
     GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
@@ -19,6 +21,15 @@ DELETE {
         ?mandatarissen org:holds ?mandaat ;
             mandaat:isBestuurlijkeAliasVan ?person ;
             ?pMandatarissen ?oMandatarissen .
+
+        OPTIONAL {
+            ?mandatarissen schema:contactPoint ?contactPoint .
+            OPTIONAL {
+                ?contactPoint locn:address ?address ;
+                    ?pContactPoint ?oContactPoint .
+                ?address ?pAddress ?oAddress .
+            }
+        }
 
         ?person ?pPerson ?oPerson . 
         ?mandaat ?pMandaat ?oMandaat .            
@@ -34,13 +45,13 @@ DELETE {
 #     "deletes": [
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/807a3e07c95fe40962d64695069af946" },
-#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
-#         "object": { "type": "string", "value": "807a3e07c95fe40962d64695069af946" }
+#         "predicate": { "type": "uri", "value": "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/personen/620523C451BFC225E4ECFA97" }
 #       },
 #       {
 #         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/40ed3cb19f9fa33e47b39016780dce1d" },
-#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
-#         "object": { "type": "string", "value": "40ed3cb19f9fa33e47b39016780dce1d" }
+#         "predicate": { "type": "uri", "value": "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/id/personen/620523C451BFC225E4ECFA97" }
 #       }
 #     ],
 #     "inserts": []
