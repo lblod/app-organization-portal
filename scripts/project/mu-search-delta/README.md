@@ -1,7 +1,6 @@
 #### Scripts mu-search-delta
-- Build elasticsearch config:
-  * make the script executable: `chmod a+x scripts/project/mu-search-delta/build.sh`
-  * add your delta messages in json format in `config/search-migrations`, e.g:
+* make the script executable: `chmod a+x scripts/project/mu-search-delta/build.sh`
+* add your delta messages in json format in `config/search-migrations`, e.g:
   ```js
     // config/search-migrations/2023/001-delete-bedinaeren.json
     {
@@ -38,5 +37,5 @@
       "inserts": []
     }
   ```
-  * make sure virtuoso, mu-auth, elasticsearch & mu search are running
-  * run `mu script project-scripts mu-search-delta`
+* make sure virtuoso, mu-auth, elasticsearch & mu search are running
+* run `mu script project-scripts mu-search-delta`
