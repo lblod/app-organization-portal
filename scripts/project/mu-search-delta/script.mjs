@@ -24,7 +24,7 @@ function readDirRecursive(dir, filterHistory = [], filterExtensions = ["json"]) 
     const filePath = path.join(dir, file);
     const stat = fs.statSync(filePath);
     if (stat.isDirectory()) {
-      resultFiles.push(...(readDirRecursive(`${dir}/${file}`)));
+      resultFiles.push(...(readDirRecursive(`${dir}/${file}`, filterHistory)));
     } else if (filterExtensions.some((ext) => filePath.endsWith(ext)) && !filterHistory.includes(filePath)) {
       resultFiles.push({
         time: stat.atimeMs,
