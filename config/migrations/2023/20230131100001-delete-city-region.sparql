@@ -1,0 +1,20 @@
+PREFIX rdf:         <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX besluit:     <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+
+    ?locatie ?pLocatie ?oLocatie .
+
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+
+<http://data.lblod.info/id/bestuurseenheden/25b05f670144f166a485a1d0ac37faca672b36642cf1647d846010d6fe9cabb5>
+    rdf:type besluit:Bestuurseenheid ;
+    besluit:werkingsgebied ?locatie .
+
+    ?locatie ?pLocatie ?oLocatie .
+
+  }
+}
