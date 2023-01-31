@@ -53,7 +53,14 @@ async function main() {
   console.log(`processing ${fileNames.length} migration(s)`);
   for (const { file } of fileNames) {
     console.log(`Current file: ${file}`);
-    const payload = JSON.parse(fs.readFileSync(file));
+    const payload = fs.readFileSync(file);
+
+    try {
+      JSON.parse(payload);
+    } catch (e) {
+      console.error("Verify your migration. Exit...");
+      process.exit(1);
+    }
 
     const r = await fetch(MU_SEARCH_DELTA_URL, {
       method: "post",
