@@ -5,7 +5,7 @@ PREFIX geo:     <http://www.opengis.net/ont/geosparql#>
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
 
-    ?locatie ?pLocatie ?oLocatie .
+    ?werkingsgebied geo:sfWithin ?locatie .
 
   }
 } WHERE {
@@ -17,9 +17,9 @@ DELETE {
   }
 
     ?bestuurseenheid rdf:type besluit:Bestuurseenheid ;
-      besluit:werkingsgebied/geo:sfWithin ?locatie .
-
-    ?locatie ?pLocatie ?oLocatie .
+      besluit:werkingsgebied ?werkingsgebied .
+      
+      ?werkingsgebied geo:sfWithin ?locatie .
 
   }
 }
