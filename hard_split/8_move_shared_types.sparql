@@ -36,6 +36,37 @@ WHERE {
 ;
 
 DELETE {
+  graph  <http://mu.semte.ch/graphs/organisatieportaal>  {
+    ?contactPoint ?p ?o.
+    ?addr ?x ?y.
+  }
+}
+insert {
+  graph  <http://mu.semte.ch/graphs/worship-service>  {
+    ?contactPoint ?p ?o.
+    ?addr ?x ?y.
+
+  }
+}
+where {
+  graph  <http://mu.semte.ch/graphs/organisatieportaal>  {
+
+    ?contactPoint ?p ?o.
+    optional {
+      ?contactPoint <http://www.w3.org/ns/locn#address> ?addr.
+      ?addr ?x ?y.
+    }
+    filter (exists {
+      graph <http://mu.semte.ch/graphs/worship-service> {
+        ?s <http://schema.org/contactPoint> ?contactPoint.
+      }
+    })
+  }
+}
+;
+
+
+DELETE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
     ?primarySite <http://www.w3.org/ns/org#siteAddress> ?siteAddr; ?p ?o.
     ?siteAddr ?x ?y.
