@@ -8,12 +8,12 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-PREFIX org: <http://www.w3.org/ns/org>
+PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX generiek: <https://data.vlaanderen.be/ns/generiek>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX schema: <http://schema.org/>
-
-
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX locn: <ttp://www.w3.org/ns/locn#>
 # move geboorte to private graph
 
 DELETE {
@@ -37,6 +37,80 @@ WHERE {
 
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?primarySite <http://www.w3.org/ns/org#siteAddress> ?siteAddr; ?p ?o.
+    ?siteAddr ?x ?y.
+     ?addr ?addrP ?addrO.
+     ?locAddr ?locP ?locO
+   }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?primarySite <http://www.w3.org/ns/org#siteAddress> ?siteAddr; ?p ?o.
+    ?siteAddr ?x ?y.
+     ?addr ?addrP ?addrO.
+     ?locAddr ?locP ?locO
+  }
+}
+Where {
+  Graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?primarySite <http://www.w3.org/ns/org#siteAddress> ?siteAddr; 
+    ?p ?o.
+    ?siteAddr ?x ?y.
+    optional {
+     ?siteAddr locn:address ?locAddr .
+     ?locAddr ?locP ?locO.
+    }
+    optional {
+        ?primarySite organisatie:bestaatUit ?addr.
+        ?addr ?addrP ?addrO.
+    }
+
+
+    filter (exists {
+                      graph <http://mu.semte.ch/graphs/worship-service> {
+                         ?s <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite.
+                      }
+                    }
+            )
+     
+
+  }
+}
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a ?type; ?p ?o.
+   }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a ?type; ?p ?o.
+  }
+}
+Where {
+  Graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a ?type; ?p ?o.
+    filter (?type in(<http://www.w3.org/ns/org#Site>,
+                            <http://www.w3.org/ns/locn#Address>,
+                            <http://schema.org/ContactPoint>
+                    )
+                    && exists {
+                      graph <http://mu.semte.ch/graphs/worship-service> {
+                          ?x ?y ?z.
+                          filter(?z=?s)
+                      }
+                    }
+            )
+     
+
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
     ?s a ?type; ?p ?o.
    }
 }
@@ -50,10 +124,7 @@ Where {
   Graph <http://mu.semte.ch/graphs/organisatieportaal> {
     ?s a ?type; ?p ?o.
     filter (?type in(<http://www.w3.org/ns/prov#Location>,
-                            <http://www.w3.org/ns/org#Site>,
-                            <http://www.w3.org/ns/locn#Address>,
                             <http://www.w3.org/ns/person#Person>,
-                            <http://schema.org/ContactPoint>,
                             <http://xmlns.com/foaf/0.1/Image>,
                             <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>
                     )
