@@ -566,3 +566,13 @@ services:
     image: lblod/error-report-service:0.1.0
     links:
       - db:database
+
+
+###################################################################################
+# MU SCRIPTS
+# #################################################################################
+  project-scripts:
+    image: semtech/mu-scripts:1.0.0
+    volumes:
+      - ./scripts/project:/app/scripts/
+    restart: "no"
