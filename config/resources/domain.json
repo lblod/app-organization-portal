@@ -23,7 +23,7 @@
     "skos": "http://www.w3.org/2004/02/skos/core#",
     "euvoc": "http://publications.europa.eu/ontology/euvoc#",
     "ere": "http://data.lblod.info/vocabularies/erediensten/",
-    "ch": "http://data.lblod.info/vocabularies/contacthub/",    
+    "ch": "http://data.lblod.info/vocabularies/contacthub/",
     "code": "http://lblod.data.gift/vocabularies/organisatie/",
     "ext": "http://mu.semte.ch/vocabularies/ext/",
     "geo": "http://www.opengis.net/ont/geosparql#"
@@ -63,7 +63,7 @@
           "target": "agents",
           "cardinality": "many",
           "inverse": true
-        },
+        }
       },
       "new-resource-base": "http://data.lblod.info/id/personen/"
     },
@@ -108,7 +108,7 @@
         },
         "organization": {
           "predicate": "org:postIn",
-          "target": "organization",
+          "target": "organizations",
           "cardinality": "one"
         },
         "agents-in-position": {
@@ -223,7 +223,7 @@
           "type": "string",
           "predicate": "schema:contactType"
         }
-      }, 
+      },
       "relationships": {
         "contact-address": {
           "predicate": "locn:address",
@@ -269,7 +269,7 @@
           "type": "datetime",
           "predicate": "mandaat:einde"
         }
-      }, 
+      },
       "relationships": {
         "board-position": {
           "predicate": "org:holds",
@@ -358,7 +358,7 @@
           "predicate": "skos:prefLabel"
         },
         "alternative-name": {
-          "type":  "string",
+          "type": "string",
           "predicate": "skos:altLabel"
         }
       },
@@ -492,10 +492,15 @@
           "predicate": "ere:wordtBediendDoor",
           "target": "minister-positions",
           "cardinality": "many"
+        },
+        "involvements": {
+          "predicate": "org:organization",
+          "target": "local-involvements",
+          "cardinality": "many",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/eredienstBestuurseenheden/"
-
     },
     "worship-services": {
       "class": "ere:BestuurVanDeEredienst",
@@ -508,14 +513,6 @@
         "cross-border": {
           "type": "boolean",
           "predicate": "ere:grensoverschrijdend"
-        }
-      },
-      "relationships": {
-        "involvements": {
-          "predicate": "org:organization",
-          "target": "local-involvements",
-          "cardinality": "many",
-          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/besturenVanDeEredienst/"
@@ -631,9 +628,9 @@
           "target": "involvement-types",
           "cardinality": "one"
         },
-        "worship-service": {
+        "worship-administrative-unit": {
           "predicate": "org:organization",
-          "target": "worship-services",
+          "target": "worship-administrative-units",
           "cardinality": "one"
         },
         "administrative-unit": {
@@ -711,7 +708,6 @@
           "type": "url",
           "predicate": "adres:verwijstNaar"
         }
-
       },
       "relationships": {
         "source": {
@@ -838,9 +834,9 @@
           "predicate": "ere:voldoetAan",
           "target": "minister-conditions",
           "cardinality": "many"
-        }  
+        }
       },
-      "new-resource-base": "http://data.lblod.info/id/rollenBedienaar/"    
+      "new-resource-base": "http://data.lblod.info/id/rollenBedienaar/"
     },
     "minister-conditions": {
       "class": "ere:VoorwaardenBedienaar",
