@@ -62,6 +62,9 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/ns/org#Organization",
                         "http://data.vlaanderen.be/ns/besluit#Besluit",
                         "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
+                        "http://www.w3.org/ns/org#Site",
+                        "http://www.w3.org/ns/locn#Address",
+                        "http://schema.org/ContactPoint",
                         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://www.w3.org/ns/adms#Identifier",
@@ -78,11 +81,8 @@ defmodule Acl.UserGroups.Config do
 
  @shared_protected_type [
                         #"https://data.vlaanderen.be/ns/persoon#Geboorte",
-                        "http://www.w3.org/ns/prov#Location",
-                        "http://www.w3.org/ns/org#Site",
-                        "http://www.w3.org/ns/locn#Address",
                         "http://www.w3.org/ns/person#Person",
-                        "http://schema.org/ContactPoint",
+                        "http://www.w3.org/ns/prov#Location",
                         "http://xmlns.com/foaf/0.1/Image",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
  ]

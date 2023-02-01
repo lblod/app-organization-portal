@@ -65,6 +65,9 @@ WHERE {
 
 ;
 
+
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
     ?bestuur ?bestuurP ?bestuurO.
@@ -78,11 +81,11 @@ INSERT {
 
 WHERE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-       ?bestuur ?bestuurP ?bestuurO.
+       ?bestuur besluit:bestuurt ?s;?bestuurP ?bestuurO.
     filter exists {
       GRAPH <http://mu.semte.ch/graphs/worship-service> {
     
-       ?specialization besluit:bestuurt ?bestuur.
+       ?s ?p ?o.
       }
     }
   }
