@@ -1,0 +1,37 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX schema: <http://schema.org/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {   
+
+    ?mandatarissen ?pMandatarissen ?oMandatarissen .
+    ?mandaat ?pMandaat ?oMandaat .
+    ?contactPoint ?pContactPoint ?oContactPoint .
+    ?address ?pAddress ?oAddress .
+
+  }
+} 
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { 
+
+    VALUES ?mandatarissen {
+      <http://data.lblod.info/id/mandatarissen/62629ED7FEE49A5CF118F11D>
+      <http://data.lblod.info/id/mandatarissen/63D24E975410CAD909EF6CD0>
+    }
+
+    ?mandatarissen org:holds ?mandaat ;
+      ?pMandatarissen ?oMandatarissen .
+    ?mandaat ?pMandaat ?oMandaat .
+
+    OPTIONAL {
+      ?mandatarissen schema:contactPoint ?contactPoint .
+      OPTIONAL {
+        ?contactPoint locn:address ?address ;
+          ?pContactPoint ?oContactPoint .
+        ?address ?pAddress ?oAddress .
+      }
+    }
+
+  }    
+}
