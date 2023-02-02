@@ -7,7 +7,7 @@ const MAX_REASONING_RETRY_ATTEMPTS = parseInt(process.env.MAX_REASONING_RETRY_AT
 const SLEEP_BETWEEN_BATCHES = parseInt(process.env.SLEEP_BETWEEN_BATCHES || 1000);
 const SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION = parseInt(process.env.SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION || 10000);
 const SLEEP_TIME_AFTER_FAILED_DB_OPERATION = parseInt(process.env.SLEEP_TIME_AFTER_FAILED_DB_OPERATION || 60000);
-const INGEST_GRAPH = process.env.INGEST_GRAPH || `http://mu.semte.ch/graphs/organisatieportaal`;
+const INGEST_GRAPH = process.env.INGEST_GRAPH || `http://mu.semte.ch/graphs/administrative-unit`;
 
 
 if (!process.env.FILE_SYNC_GRAPH)
