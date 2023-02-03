@@ -145,7 +145,7 @@ services:
     environment:
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/worship-privacy-centric-graph"
       SESSION_GRAPH: "http://mu.semte.ch/graphs/sessions"
-      APP_GRAPH: "http://mu.semte.ch/graphs/worship-service"
+      APP_GRAPH: "http://mu.semte.ch/graphs/public"
     restart: always
     logging: *default-logging
     links:
@@ -157,7 +157,7 @@ services:
     environment:
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/administrative-unit-privacy-centric-graph"
       SESSION_GRAPH: "http://mu.semte.ch/graphs/sessions"
-      APP_GRAPH: "http://mu.semte.ch/graphs/administrative-unit"
+      APP_GRAPH: "http://mu.semte.ch/graphs/public"
     restart: always
     logging: *default-logging
     links:
