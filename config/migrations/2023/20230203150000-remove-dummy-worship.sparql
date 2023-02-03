@@ -1,0 +1,67 @@
+PREFIX org:  <http://www.w3.org/ns/org#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX generiek:    <https://data.vlaanderen.be/ns/generiek#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?bestuur ?pbestuur ?obestuur .
+    ?primarySite ?pprimarySite ?oprimarySite .
+    ?address ?paddress ?oaddress .
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+    ?identifier ?pidentifier ?oidentifier .
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {    
+    BIND(<http://data.lblod.info/id/besturenVanDeEredienst/578bf96f86056e2260dc21cee91aa519> as ?bestuur)
+
+    ?bestuur ?pbestuur ?obestuur .
+
+    OPTIONAL {
+
+      ?bestuur org:hasPrimarySite ?primarySite . 
+
+        OPTIONAL {
+          ?primarySite organisatie:bestaatUit ?address .
+          ?address ?paddress ?oaddress .
+        }
+        OPTIONAL {
+          ?primarySite org:siteAddress ?contactPoint .            
+          ?contactPoint ?pcontactPoint ?ocontactPoint .
+        }
+
+      ?primarySite ?pprimarySite ?oprimarySite .
+
+    }
+    OPTIONAL {
+
+      ?bestuur adms:identifier ?identifier .
+
+        OPTIONAL {
+          ?identifier generiek:gestructureerdeIdentificator ?structuredIdentifier .
+          ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .            
+        }
+
+      ?identifier ?pidentifier ?oidentifier .
+      
+    }        
+  }
+}
+
+# The associated call to trigger a reindex is :
+
+# curl --location --request POST '172.25.0.34/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw ' [
+#   {
+#     "deletes": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/besturenVanDeEredienst/578bf96f86056e2260dc21cee91aa519" },
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid" }
+#       }
+#     ],
+#     "inserts": []
+#   }
+# ]'
