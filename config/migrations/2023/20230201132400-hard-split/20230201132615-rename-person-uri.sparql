@@ -6,7 +6,7 @@ PREFIX person: <http://www.w3.org/ns/person#>
 PREFIX session: <http://mu.semte.ch/vocabularies/session/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
 
 INSERT {
      graph <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
@@ -66,6 +66,7 @@ DELETE {
 INSERT {
     graph <http://mu.semte.ch/graphs/worship-service> {
      ?newPerson ?wp ?wo.
+     ?newPerson owl:sameAs ?person.
      ?ws ?wx ?newPerson.
   }
 
