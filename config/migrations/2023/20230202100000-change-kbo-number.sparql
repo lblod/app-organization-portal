@@ -1,0 +1,18 @@
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/b4af7f119ea6a0b012e01ef8494c5f72> 
+        generiek:lokaleIdentificator ?kbo .
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/b4af7f119ea6a0b012e01ef8494c5f72> 
+        generiek:lokaleIdentificator "0655698422" .    
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/b4af7f119ea6a0b012e01ef8494c5f72> 
+        generiek:lokaleIdentificator ?kbo .
+  }
+}

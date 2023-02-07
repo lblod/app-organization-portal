@@ -17,6 +17,8 @@ services:
     volumes:
       - ./config/dev-migrations:/data/migrations/dev/
     restart: "no"
+  migrations-triggering-indexing:
+    restart: "no"
   resource:
     restart: "no"
   cache:
