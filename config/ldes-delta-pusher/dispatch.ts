@@ -7,14 +7,40 @@ export default async function dispatch(changesets: Changeset[]) {
 		const subjects = new Set(changeset.inserts.map((insert) => insert.subject.value));
 		for (const subject of subjects) {
 			const { results: { bindings } } = await query(`
-				PREFIX org: <http://www.w3.org/ns/org#>
-				CONSTRUCT {
-					${sparqlEscapeUri(subject)} a org:Organization;
-																			?p ?o.
-				}
-        WHERE { 
-          ${sparqlEscapeUri(subject)} a org:Organization;
-                                      ?p ?o.
+        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+        PREFIX code: <http://telegraphis.net/ontology/measurement/code#>
+        PREFIX org: <http://www.w3.org/ns/org#>
+        PREFIX adms: <http://www.w3.org/ns/adms#>
+  
+        CONSTRUCT {
+          ?organization a org:Organization;
+                        adms:identifier ?identifier;
+                        org:hasPrimarySite ?site.
+          ?site org:siteAddress ?siteAddress.
+          ?siteAddress ?p ?o.
+        } WHERE {
+          {
+            VALUES ?organization { ${sparqlEscapeUri(subject)} }
+            ?organization a org:Organization;
+                          adms:identifier ?identifier;
+                          org:hasPrimarySite ?site.
+            ?site org:siteAddress ?siteAddress.
+            ?siteAddress ?p ?o.
+          } UNION {
+            VALUES ?site { ${sparqlEscapeUri(subject)} }
+            ?organization a org:Organization;
+                          adms:identifier ?identifier;
+                          org:hasPrimarySite ?site.
+            ?site org:siteAddress ?siteAddress.
+            ?siteAddress ?p ?o.
+          } UNION {
+            VALUES ?siteAddress { ${sparqlEscapeUri(subject)} }
+            ?organization a org:Organization;
+                          adms:identifier ?identifier;
+                          org:hasPrimarySite ?site.
+            ?site org:siteAddress ?siteAddress.
+            ?siteAddress ?p ?o.
+          } 
         }
 			`);
       if(bindings.length){
