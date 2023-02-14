@@ -564,11 +564,13 @@ services:
   ldes-delta-pusher:
     image: redpencil/ldes-delta-pusher:latest
     environment:
-      LDES_ENDPOINT: 'http://fragmentation-producer/organizations'
+      LDES_ENDPOINT: 'http://ldes-backend/organizations'
     volumes:
       - ./config/ldes-delta-pusher/:/config/
+    links:
+      - db:database
 
-  fragmentation-producer:
+  ldes-backend:
     image: redpencil/fragmentation-producer:0.1.3
     environment:
       FOLDER_DEPTH: 1
