@@ -214,6 +214,9 @@ services:
     image: eyereasoner/reasoning-service:1.0.1
     volumes:
       - ./config/reasoner:/config
+  
+
+    
   ################################################################################
   # DELTA GENERAL
   ################################################################################
@@ -553,6 +556,30 @@ services:
   ################################################################################
   # DELTA CONSUMERS: END
   ################################################################################
+
+  ################################################################################
+  # LDES PRODUCERS
+  ################################################################################
+
+  ldes-delta-pusher:
+    image: redpencil/ldes-delta-pusher:latest
+    environment:
+      LDES_ENDPOINT: 'http://fragmentation-producer/organizations'
+    volumes:
+      - ./config/ldes-delta-pusher/:/config/
+
+  fragmentation-producer:
+    image: redpencil/fragmentation-producer:0.1.3
+    environment:
+      FOLDER_DEPTH: 1
+      PAGE_RESOURCES_COUNT: 50
+      LDES_STREAM_PREFIX: 'http://data.lblod.info/streams/op/'
+      TIME_TREE_RELATION_PATH: 'http://www.w3.org/ns/prov#generatedAtTime'
+      CACHE_SIZE: 10
+      DATA_FOLDER: '/data'
+      ENABLE_AUTH: 'false'
+    volumes:
+      - './data/ldes-feed/:/data/'
 
   ################################################################################
   # MU SEARCH

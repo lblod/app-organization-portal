@@ -195,5 +195,17 @@ export default [
       ignoreFromSelf: true,
       optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
     }
+  },
+  {
+    match: {
+
+    },
+    callback: {
+      url: 'http://ldes-delta-pusher/publish',
+      method: 'POST',
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+    }
   }
 ]
