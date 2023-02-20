@@ -36,20 +36,24 @@ async function dispatch(lib, data) {
   if (termObjects.length) {
     originalInsertTriples = termObjects.map(o => `${o.subject} ${o.predicate} ${o.object}.`)
 
-    await transformStatements(fetch, originalInsertTriples).then(
-      transformedInsertTriples => {
-        batchedDbUpdate(
-          muAuthSudo.updateSudo,
-          INGEST_GRAPH,
-          transformedInsertTriples,
-          { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
-          endpoint,
-          BATCH_SIZE,
-          MAX_DB_RETRY_ATTEMPTS,
-          SLEEP_BETWEEN_BATCHES,
-          SLEEP_TIME_AFTER_FAILED_DB_OPERATION
-        )
-      }
+    let transformedInsertTriples;
+    try {
+      transformedInsertTriples = await transformStatements(fetch, originalInsertTriples);
+    } catch (e) {
+      console.log('Something went wrong during the reasoning:', e);
+      throw e;
+    }
+
+    await batchedDbUpdate(
+      muAuthSudo.updateSudo,
+      INGEST_GRAPH,
+      transformedInsertTriples,
+      { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
+      endpoint,
+      BATCH_SIZE,
+      MAX_DB_RETRY_ATTEMPTS,
+      SLEEP_BETWEEN_BATCHES,
+      SLEEP_TIME_AFTER_FAILED_DB_OPERATION
     )
   }
 }

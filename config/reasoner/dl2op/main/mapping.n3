@@ -92,6 +92,31 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   ?s mandaat:einde ?eindeDate
 }.
 
+{
+  ?s mandaat:bindingStart ?bindingStartDateTime.
+  # use backward arrow rule defined below
+  ?bindingStartDateTime :dateFromDateTime ?bindingStartDate.
+  {
+    ?s mandaat:bindingStart ?bindingStartDateTime
+  } e:becomes {
+    ?s mandaat:bindingStart ?bindingStartDate
+  }.
+} => {
+  ?s mandaat:bindingStart ?bindingStartDate
+}.
+
+{
+  ?s mandaat:bindingEinde ?bindingEindeDateTime.
+  # use backward arrow rule defined below
+  ?bindingEindeDateTime :dateFromDateTime ?bindingEindeDate.
+  {
+    ?s mandaat:bindingEinde ?bindingEindeDateTime
+  } e:becomes {
+    ?s mandaat:bindingEinde ?bindingEindeDate
+  }.
+} => {
+  ?s mandaat:bindingEinde ?bindingEindeDate
+}.
 
 # Backward arrow rule is like a function call.
 # Removes time info in the returned date
