@@ -576,3 +576,16 @@ services:
     image: lblod/error-report-service:0.1.0
     links:
       - db:database
+
+  roles:
+    image: semtech/mu-javascript-template:1.5.0
+    labels:
+      - "logging=true"
+    volumes:
+      - /home/nbittich/lblod/select-role-service/:/app/
+    environment:
+      NODE_ENV: "development"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging

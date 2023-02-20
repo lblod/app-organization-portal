@@ -225,6 +225,9 @@ defmodule Dispatcher do
   match "/accounts/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://accountdetail/accounts/"
   end
+  match "/active-role/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://roles/"
+  end
   match "/groups/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/groups/"
   end

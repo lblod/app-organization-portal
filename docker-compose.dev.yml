@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
   identifier:
@@ -77,3 +77,13 @@ services:
     restart: "no"
   delta-producer-pub-graph-maintainer-worship-posts:
     restart: "no"
+
+  tlsproxy:
+    image: caddy:2
+    restart: "no"
+    ports:
+      - "443:443"
+    environment:
+      OP_ADDRESS: "organisaties.abb.lblod.info"
+    volumes:
+      - ./config/tlsproxy-mock/Caddyfile:/etc/caddy/Caddyfile

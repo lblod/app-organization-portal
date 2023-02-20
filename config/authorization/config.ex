@@ -96,10 +96,11 @@ defmodule Acl.UserGroups.Config do
     PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
     SELECT distinct ?session_group ?session_role WHERE {
       <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
-                   ext:sessionRole ?session_role.
+                   ext:activeSessionRole ?session_role.
       FILTER( ?session_role = \"#{group_string}\" )
     }"
   end
+
 
   def user_groups do
     [
@@ -163,7 +164,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "acmidm-worship-lezer",
         useage: [:read],
-        access: access_by_role( "ABBOrganisatiePortaalGebruiker-worship-lezer" ),
+        access: access_by_role( "ABBOrganisatiePortaalErediensten-lezer" ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/worship-service",
@@ -182,7 +183,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "acmidm-worship-editeerder",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( "ABBOrganisatiePortaalGebruiker-worship-editeerder" ),
+        access: access_by_role( "ABBOrganisatiePortaalErediensten-editeerder" ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/worship-service",
@@ -201,7 +202,7 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "acmidm-worship-beheerder",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role( "ABBOrganisatiePortaalGebruiker-worship-beheerder" ),
+        access: access_by_role( "ABBOrganisatiePortaalErediensten-beheerder" ),
         graphs: [
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/worship-service",
