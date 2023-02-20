@@ -220,7 +220,7 @@ defmodule Dispatcher do
   ###############
 
   match "/accounts", %{ accept: [:json], layer: :api} do
-   Proxy.forward conn, [], "http://resource/accounts/"
+    Proxy.forward conn, [], "http://resource/accounts/"
   end
   match "/accounts/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://accountdetail/accounts/"
@@ -242,7 +242,7 @@ defmodule Dispatcher do
   ###############################################################
 
   match "/search/*path", %{  accept: %{ json: true }, layer: :api_services} do
-   IO.puts("hey")
+  IO.puts("hey")
     Proxy.forward conn, path, "http://search/"
   end
 
@@ -303,7 +303,7 @@ defmodule Dispatcher do
   end
 
   get "/files/*path" , %{ layer: :api_services, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/files/"
+    Proxy.forward conn, path, "http://resource/files/"
   end
 
   #################################################################
