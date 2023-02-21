@@ -108,7 +108,7 @@
         },
         "organization": {
           "predicate": "org:postIn",
-          "target": "organization",
+          "target": "organizations",
           "cardinality": "one"
         },
         "agents-in-position": {
@@ -510,6 +510,12 @@
           "predicate": "ere:wordtBediendDoor",
           "target": "minister-positions",
           "cardinality": "many"
+        },
+        "involvements": {
+          "predicate": "org:organization",
+          "target": "local-involvements",
+          "cardinality": "many",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/eredienstBestuurseenheden/"
@@ -527,14 +533,6 @@
         "cross-border": {
           "type": "boolean",
           "predicate": "ere:grensoverschrijdend"
-        }
-      },
-      "relationships": {
-        "involvements": {
-          "predicate": "org:organization",
-          "target": "local-involvements",
-          "cardinality": "many",
-          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/besturenVanDeEredienst/"
@@ -654,9 +652,9 @@
           "target": "involvement-types",
           "cardinality": "one"
         },
-        "worship-service": {
+        "worship-administrative-unit": {
           "predicate": "org:organization",
-          "target": "worship-services",
+          "target": "worship-administrative-units",
           "cardinality": "one"
         },
         "administrative-unit": {

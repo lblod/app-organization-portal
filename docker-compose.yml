@@ -59,6 +59,16 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  migrations-triggering-indexing:
+    image: semtech/mu-migrations-service:0.8.0
+    links:
+      - db:database
+    volumes:
+      - ./config/migrations-triggering-indexing:/data/migrations
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   resource:
     image: semtech/mu-cl-resources:1.21.1
     environment:
@@ -169,7 +179,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-organization-portal:1.14.0
+    image: lblod/frontend-organization-portal:1.15.0
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
@@ -589,3 +599,12 @@ services:
       - db:database
     restart: always
     logging: *default-logging
+
+###################################################################################
+# MU SCRIPTS
+# #################################################################################
+  project-scripts:
+    image: semtech/mu-scripts:1.0.0
+    volumes:
+      - ./scripts/project:/app/scripts/
+    restart: "no"

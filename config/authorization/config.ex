@@ -15,12 +15,12 @@ defmodule Acl.UserGroups.Config do
   @worship_type [
                         "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
                         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+                        "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
+                        "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
+                        "http://data.lblod.info/vocabularies/erediensten/VoorwaardenBedienaar",
                         "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
                         "http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen",
                         "http://data.lblod.info/vocabularies/erediensten/VerbondenJuridischeStructuren",
-                        "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
-                        "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
-                        "http://data.lblod.info/vocabularies/erediensten/VoorwaardenBedienaar",
                         "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
                         "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",
   ]

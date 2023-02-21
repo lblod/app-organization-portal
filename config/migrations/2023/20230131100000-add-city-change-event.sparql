@@ -1,0 +1,26 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+
+    <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/0b2f1b62-a15d-11ed-a8fc-0242ac120002> 
+      rdf:type code:VeranderingsgebeurtenisResultaat;
+      mu:uuid "0b2f1b62-a15d-11ed-a8fc-0242ac120002" ;
+      code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+      ext:resultingOrganization <http://data.lblod.info/id/bestuurseenheden/25b05f670144f166a485a1d0ac37faca672b36642cf1647d846010d6fe9cabb5> .
+
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/63D7E7E07A8167ED439EC88E> 
+      rdf:type org:ChangeEvent ;
+      mu:uuid "63D7E7E07A8167ED439EC88E" ;
+      ch:typeWijziging <http://lblod.data.gift/concepts/e4c3d1ef-a34d-43b0-a18c-f4e60e2c8af3> ;
+      org:resultingOrganization <http://data.lblod.info/id/bestuurseenheden/25b05f670144f166a485a1d0ac37faca672b36642cf1647d846010d6fe9cabb5> ;
+      org:originalOrganization <http://data.lblod.info/id/bestuurseenheden/25b05f670144f166a485a1d0ac37faca672b36642cf1647d846010d6fe9cabb5> ;
+      code:veranderingsgebeurtenisResultaat <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/0b2f1b62-a15d-11ed-a8fc-0242ac120002> .
+
+  }
+}

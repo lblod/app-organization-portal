@@ -17,6 +17,8 @@ services:
     volumes:
       - ./config/dev-migrations:/data/migrations/dev/
     restart: "no"
+  migrations-triggering-indexing:
+    restart: "no"
   resource:
     restart: "no"
   cache:
@@ -48,12 +50,6 @@ services:
     image: lblod/frontend-organization-portal:latest
     restart: "no"
   uri-info:
-    restart: "no"
-  delta-producer-bg-jobs-initiator-administrative-units:
-    restart: "no"
-  delta-producer-pub-graph-maintainer-administrative-units:
-    restart: "no"
-  delta-producer-json-diff-publisher-administrative-units:
     restart: "no"
   delta-producer-bg-jobs-initiator-organizations:
     restart: "no"
