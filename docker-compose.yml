@@ -588,21 +588,17 @@ services:
       - db:database
 
   roles:
-    image: semtech/mu-javascript-template:1.5.0
+    image: lblod/select-role-service
     labels:
       - "logging=true"
-    volumes:
-      - /home/nbittich/lblod/select-role-service/:/app/
-    environment:
-      NODE_ENV: "development"
     links:
       - db:database
     restart: always
     logging: *default-logging
 
-###################################################################################
-# MU SCRIPTS
-# #################################################################################
+  ###################################################################################
+  # MU SCRIPTS
+  # #################################################################################
   project-scripts:
     image: semtech/mu-scripts:1.0.0
     volumes:
