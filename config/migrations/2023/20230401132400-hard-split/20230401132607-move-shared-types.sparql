@@ -142,6 +142,39 @@ Where {
 
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+  
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?bestaatUit; ?p ?o.
+    ?bestaatUit ?bestaatUitP ?bestaatUitO.
+
+  } 
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?bestaatUit; ?p ?o.
+    ?bestaatUit ?bestaatUitP ?bestaatUitO.
+}
+}
+Where {
+  Graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?bestaatUit; ?p ?o.
+    ?bestaatUit ?bestaatUitP ?bestaatUitO.
+
+
+    filter (exists {
+                      graph <http://mu.semte.ch/graphs/worship-service> {
+                         ?unit <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite.
+                      }
+                    }
+            )
+     
+
+  }
+}
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
     ?s a ?type; ?p ?o.
    }
 }
