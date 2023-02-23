@@ -240,3 +240,51 @@ WHERE {
 
   }
 }
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+    mu:uuid ?uuid;
+    <http://www.w3.org/ns/org#classification> ?classification;
+    skos:prefLabel ?name.
+
+
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+        mu:uuid ?uuid;
+    <http://www.w3.org/ns/org#classification> ?classification;
+    
+    skos:prefLabel ?name.
+
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>; 
+    <http://www.w3.org/ns/org#classification> ?classification;
+        mu:uuid ?uuid;
+    skos:prefLabel ?name.
+
+
+    filter(?classification in (
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+    )&& exists {
+
+     graph <http://mu.semte.ch/graphs/shared> {
+
+     ?subOrg org:hasSubOrganization ?s  .
+}
+
+})
+    
+
+  }
+}
+
