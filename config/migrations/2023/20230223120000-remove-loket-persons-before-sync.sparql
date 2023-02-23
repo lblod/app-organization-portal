@@ -1,0 +1,86 @@
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>    
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX schema: <http://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { 
+    ?person
+      ?p ?o
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { 
+    ?person
+      a person:Person;
+      ?p ?o
+
+    FILTER NOT EXISTS {
+      {
+        ?s
+          a <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan>;
+          org:hasPost ?post.
+        ?aip
+          org:holds ?post;
+          org:heldBy ?person.
+      } UNION {
+        ?ebe 
+          ere:wordtBediendDoor
+            ?bedienaar.
+        ?x
+          org:holds
+            ?bedienaar;
+          org:heldBy
+            ?person.
+      } UNION {
+        ?mandataris_or_functionaris
+          org:holds ?post;
+          mandaat:isBestuurlijkeAliasVan ?person.
+
+        ?bestuursOrgaanInDeTijd
+          generiek:isTijdspecialisatieVan ?bestuursOrgaan.
+
+        {
+          ?bestuursOrgaanInDeTijd
+            lblodlg:heeftBestuursfunctie ?post.
+        } UNION {
+          ?bestuursOrgaanInDeTijd
+            org:hasPost ?post
+        }
+
+        VALUES ?boClassification {
+          <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/04f65457bf125b2dc59fd71917ac3d08> # Kerkraad
+          <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/af811edba97c6ec34874d0830cbb1183> # Kerkfabriekraad
+          <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/a0701624aefb115b7eda2ff39139c2dd> # Kathedrale kerkraad
+          <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> # Centraal kerkbestuur
+        }
+        ?bestuursOrgaan
+          org:classification ?boClassification;
+          besluit:bestuurt ?bestuursEenheid.
+      }
+    }
+  }
+}
