@@ -101,9 +101,9 @@ defmodule Acl.UserGroups.Config do
     }"
   end
 
-
   def user_groups do
     [
+
       %GroupSpec{
         name: "acmidm-lezer",
         useage: [:read],
@@ -113,12 +113,6 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/administrative-unit",
             constraint: %ResourceConstraint{
               resource_types: @org_type
-            }
-          },
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/shared",
-            constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
             }
           }
         ]
@@ -133,12 +127,6 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type
             }
-          },
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/shared",
-            constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
-            }
           }
         ]
       },
@@ -151,12 +139,6 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/administrative-unit",
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type
-            }
-          },
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/shared",
-            constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
             }
           }
         ]
@@ -171,12 +153,6 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @worship_type
             }
-          },
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/shared",
-            constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
-            }
           }
         ]
       },
@@ -189,12 +165,6 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/worship-service",
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type ++ @worship_type
-            }
-          },
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/shared",
-            constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
             }
           }
         ]
@@ -209,12 +179,6 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type ++ @worship_type
             }
-          },
-          %GraphSpec{
-            graph: "http://mu.semte.ch/graphs/shared",
-            constraint: %ResourceConstraint{
-              resource_types: @shared_protected_type ++ @org_type
-            }
           }
         ]
       },
@@ -222,11 +186,21 @@ defmodule Acl.UserGroups.Config do
         name: "public",
         useage: [:read],
         access: %AlwaysAccessible{},
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/public", # mock login only
+        graphs: [ 
+          %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/public", 
                     constraint: %ResourceConstraint{
                       resource_types: @public_type
-                    } }]},
+                    } 
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/shared",
+            constraint: %ResourceConstraint{
+              resource_types: @shared_protected_type ++ @org_type
+            }
+          }
+
+        ]},
 
       # // CLEANUP
       #
