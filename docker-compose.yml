@@ -43,6 +43,8 @@ services:
       LOG_ACCESS_RIGHTS: "true"
       LOG_OUTGOING_SPARQL_QUERY_ROUNDTRIP: "true"
       ERROR_ON_UNWRITTEN_DATA: "true"
+      QUERY_MAX_PROCESSING_TIME: "300000"
+      QUERY_MAX_EXECUTION_TIME: "300000"
     volumes:
       - ./config/authorization:/config
     labels:
