@@ -225,6 +225,9 @@ defmodule Dispatcher do
   match "/accounts/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://accountdetail/accounts/"
   end
+  match "/active-role/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://roles/"
+  end
   match "/groups/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/groups/"
   end
@@ -262,20 +265,36 @@ defmodule Dispatcher do
     forward conn, path, "http://adressenregister/"
   end
 
+  match "/worship/person-information-updates/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy-worship/person-information-updates"
+  end
+
+  match "/worship/person-information-requests/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy-worship/person-information-requests"
+  end
+
+  match "/worship/person-information-ask/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy-worship/person-information-ask/"
+  end
+
+  match "/worship/person-information-validate-ssn/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy-worship/person-information-validate-ssn/"
+  end
+
   match "/person-information-updates/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy/person-information-updates"
+    forward conn, path, "http://privacy-unit/person-information-updates"
   end
 
   match "/person-information-requests/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy/person-information-requests"
+    forward conn, path, "http://privacy-unit/person-information-requests"
   end
 
   match "/person-information-ask/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy/person-information-ask/"
+    forward conn, path, "http://privacy-unit/person-information-ask/"
   end
 
   match "/person-information-validate-ssn/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy/person-information-validate-ssn/"
+    forward conn, path, "http://privacy-unit/person-information-validate-ssn/"
   end
 
   get "/uri-info/*path", %{ layer: :api_services, accept: %{ json: true } } do

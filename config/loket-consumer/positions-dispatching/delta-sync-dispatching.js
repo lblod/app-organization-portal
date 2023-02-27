@@ -1,4 +1,4 @@
-const { transformStatements, batchedDbUpdate, partition, deleteFromAllGraphs } = require('./util');
+const { transformStatements, batchedDbUpdate, deleteFromAllGraphs } = require('./util');
 const {
   BATCH_SIZE,
   MAX_DB_RETRY_ATTEMPTS,
@@ -72,7 +72,7 @@ async function dispatch(lib, data) {
           PRIVACY_SENSITIVE_GRAPH,
           transformedStatementsToInsertPrivate,
           { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
-          process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
+          process.env.MU_SPARQL_ENDPOINT, // Note: this is the default endpoint through auth
           BATCH_SIZE,
           MAX_DB_RETRY_ATTEMPTS,
           SLEEP_BETWEEN_BATCHES,
