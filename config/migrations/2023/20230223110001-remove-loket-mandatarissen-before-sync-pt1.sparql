@@ -28,10 +28,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
-    ?mandataris
-      ?p ?o.
-    ?cp
-        ?cp_p ?cp_o.
     ?m
         ?m_p ?m_o.
   }
@@ -67,23 +63,12 @@ DELETE {
   }
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { 
     ?mandataris
-      ?p ?o;
-      org:holds ?mandaat;
-      mandaat:isBestuurlijkeAliasVan ?person.
+      org:holds ?mandaat.
 
-    OPTIONAL {
-      ?mandataris
-        schema:contactPoint ?cp.
-      ?cp
-        ?cp_p ?cp_o.
-    }
-
-    OPTIONAL {
-      ?mandataris
-        org:hasMembership ?m.   
-      ?m
-        ?m_p ?m_o.
-    }
+    ?mandataris
+      org:hasMembership ?m.   
+    ?m
+      ?m_p ?m_o.
 
     ?bestuursOrgaanInDeTijd
       org:hasPost ?mandaat;
