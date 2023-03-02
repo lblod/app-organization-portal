@@ -336,6 +336,14 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  #  DELTA: public
+  #################################################################
+
+  get "/sync/public/files/*path" do
+    Proxy.forward conn, path, "http://delta-producer-json-diff-publisher-public/files/"
+  end
+
+  #################################################################
   #  DELTA: posts
   #################################################################
 
