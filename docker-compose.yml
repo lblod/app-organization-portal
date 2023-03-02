@@ -217,7 +217,7 @@ services:
     volumes:
       - ./config/jobs-controller/:/config/
   construct-administrative-unit-relationships:
-    image: lblod/construct-administrative-unit-relationships-service:0.1.0
+    image: lblod/construct-administrative-unit-relationships-service:0.1.1
     links:
       - db:database
     restart: always
