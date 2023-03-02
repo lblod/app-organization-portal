@@ -115,13 +115,13 @@ function partition(arr, fn) {
  * Send triples to reasoning service for conversion
  *
  */
-function transformTriples(fetch, triples) {
-  return operationWithRetry(mainConversion(fetch, triples), 0,
+function transformTriples(fetch, triples, mapping) {
+  return operationWithRetry(mainConversion(fetch, triples, mapping), 0,
     MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION);
 }
 
 
-function mainConversion(fetch, triples) {
+function mainConversion(fetch, triples, mapping) {
   let formdata = new URLSearchParams();
   formdata.append("data", triples);
 
@@ -131,18 +131,26 @@ function mainConversion(fetch, triples) {
     redirect: 'follow'
   };
 
-  return fetch("http://reasoner/reason/dl2op/main", requestOptions)
-    .then(response => response.text());
+  return fetch(`http://reasoner/reason/dl2op/${mapping}`, requestOptions)
+    .then(response => response.text())
+    .catch(error => {
+      console.log('error', error)
+      throw error
+    });
 }
 
-function transformStatements(fetch, triples) {
-  return transformTriples(fetch, triples.join('\n')).then(
+
+async function transformStatements(fetch, triples, mapping = 'main') {
+  return await transformTriples(fetch, triples.join('\n'), mapping).then(
     graph => {
-      statements = graph.replace(/\n{2,}/g, '').split('\n')
-      console.log(`CONVERSION: FROM ${triples.length} triples to ${statements.length}`)
+      statements = graph ? graph.split('\n') : [];
+      console.log(`CONVERSION ${mapping}: FROM ${triples.length} triples to ${statements.length}`)
       return statements
     }
-  )
+  ).catch(error => {
+    console.log('error', error)
+    throw error
+  });
 }
 
 module.exports = {
