@@ -8,8 +8,8 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-PREFIX org: <http://www.w3.org/ns/org>
-PREFIX generiek: <https://data.vlaanderen.be/ns/generiek>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
 
 DELETE {
@@ -41,4 +41,60 @@ WHERE {
     ))
 
   }
+}
+;
+  
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?governingBody ?p ?o.
+    ?specialization ?specializationP ?specializationO.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?governingBody ?p ?o.
+    ?specialization ?specializationP ?specializationO.
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+     ?governingBody generiek:isTijdspecialisatieVan ?specialization;
+     ?p ?o.
+      ?specialization <http://www.w3.org/ns/org#classification> ?classification;
+                     ?specializationP ?specializationO.
+      
+            ?classification <http://mu.semte.ch/vocabularies/ext/appliesWithin> ?appliesWithin.
+             ?appliesWithin mu:uuid ?classificationUuid.
+
+    filter(?classificationUuid in ("66ec74fd-8cfc-4e16-99c6-350b35012e86","f9cac08a-13c1-49da-9bcb-f650b0604054"))
+}
+
+
+}
+;
+  
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?mandaat ?p ?o.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+     ?mandaat ?p ?o.
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+      ?mandaat ?p ?o.
+      filter exists {
+         GRAPH <http://mu.semte.ch/graphs/worship-service> {
+             ?orgaan <http://www.w3.org/ns/org#hasPost> ?mandaat.
+         
+          }
+      }
+}
+
+
 }
