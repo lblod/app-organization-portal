@@ -13,6 +13,52 @@ PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
 
 DELETE {
+ GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+        ?s ?p ?o.
+  }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ; ?p ?o.
+    FILTER NOT EXISTS {?s <http://data.vlaanderen.be/ns/besluit#bestuurt> ?eenheid .}
+
+ }
+}
+;
+
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?governingBody ?p ?o.
+    ?bestuur ?bestuurP ?bestuurO.
+    ?specialization ?specializationP ?specializationO.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?governingBody ?p ?o.
+    ?bestuur ?bestuurP ?bestuurO.
+    ?specialization ?specializationP ?specializationO.
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+     ?governingBody generiek:isTijdspecialisatieVan ?specialization;
+     ?p ?o.
+      ?specialization besluit:bestuurt ?bestuur; 
+                     ?specializationP ?specializationO.
+      ?bestuur <http://www.w3.org/ns/org#classification> ?classification; ?bestuurP ?bestuurO.
+      ?classification mu:uuid ?classificationUuid.
+
+    filter(?classificationUuid in ("66ec74fd-8cfc-4e16-99c6-350b35012e86","f9cac08a-13c1-49da-9bcb-f650b0604054"))
+}
+
+
+}
+;
+
+DELETE {
   GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
       ?s ?p ?o
   }
@@ -126,3 +172,34 @@ WHERE {
 
 
 }
+;
+
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+  ?s ?p ?o.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   ?s ?p ?o.
+   }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+  ?s a  <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://www.w3.org/ns/org#classification> ?classification;
+                     ?p ?o.
+                     
+      ?classification <http://mu.semte.ch/vocabularies/ext/appliesWithin> ?appliesWithin.
+      ?appliesWithin mu:uuid ?classificationUuid.
+
+    filter(?classificationUuid in ("66ec74fd-8cfc-4e16-99c6-350b35012e86","f9cac08a-13c1-49da-9bcb-f650b0604054"))
+
+ 
+
+}
+
+}
+
