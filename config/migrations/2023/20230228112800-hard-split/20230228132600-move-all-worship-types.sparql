@@ -98,3 +98,31 @@ WHERE {
 
 
 }
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+  ?s ?p ?o.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   ?s ?p ?o.
+   }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+  ?s a  <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?specialization;
+                     ?p ?o.
+      
+         filter exists {
+           GRAPH <http://mu.semte.ch/graphs/worship-service> {
+              ?specialization a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>.
+            }
+         }
+}
+
+
+}
