@@ -92,41 +92,6 @@ export default [
     match: {
     },
     callback: {
-      url: 'http://delta-producer-pub-graph-maintainer-administrative-units/delta',
-      method: 'POST'
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: [
-        "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
-        "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
-      ]
-    }
-  },
-  {
-    match: {
-      graph: {
-        type: 'uri',
-        value: 'http://redpencil.data.gift/id/deltas/producer/administrative-units'
-      }
-    },
-    callback: {
-      url: 'http://delta-producer-json-diff-publisher-administrative-units/delta',
-      method: 'POST'
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
-    }
-  },
-  {
-    match: {
-    },
-    callback: {
       url: 'http://delta-producer-pub-graph-maintainer-organizations/delta',
       method: 'POST'
     },
