@@ -1,0 +1,362 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+   ?person persoon:heeftGeboorte ?heeftGeboorte.
+    ?heeftGeboorte ?p ?o.
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+   ?person persoon:heeftGeboorte ?heeftGeboorte.
+    ?heeftGeboorte ?p ?o.
+
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+    ?person persoon:heeftGeboorte  ?heeftGeboorte.
+            ?heeftGeboorte ?p ?o.
+
+                filter (exists
+      {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+;
+
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+   ?person persoon:heeftGeboorte ?heeftGeboorte.
+    ?heeftGeboorte ?p ?o.
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/administrative-unit-privacy-centric-graph> {
+   ?person persoon:heeftGeboorte ?heeftGeboorte.
+    ?heeftGeboorte ?p ?o.
+
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+    ?person persoon:heeftGeboorte  ?heeftGeboorte.
+            ?heeftGeboorte ?p ?o.
+
+                filter (exists
+      {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+;
+
+# geslacht
+
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+    ?person persoon:geslacht ?geslacht.
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+    ?person persoon:geslacht ?geslacht.
+
+
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+        ?person persoon:geslacht ?geslacht.
+
+
+                filter (exists
+      {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+;
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+    ?person persoon:geslacht ?geslacht.
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/administrative-unit-privacy-centric-graph> {
+         ?person persoon:geslacht ?geslacht.
+
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+  
+        ?person persoon:geslacht ?geslacht.
+
+                filter (exists
+      {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+;
+
+# nationaliteit
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+          ?person  persoon:heeftNationaliteit ?nationaliteit.
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+          ?person  persoon:heeftNationaliteit ?nationaliteit.
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+          ?person  persoon:heeftNationaliteit ?nationaliteit.
+
+                filter (exists
+      {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+;
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+          ?person  persoon:heeftNationaliteit ?nationaliteit.
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/administrative-unit-privacy-centric-graph> {
+          ?person  persoon:heeftNationaliteit ?nationaliteit.
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+  
+          ?person  persoon:heeftNationaliteit ?nationaliteit.
+
+                filter (exists
+      {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+;
+
+
+# registration
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+          ?person persoon:registratie ?registration.
+          ?registration <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?identificator.
+          ?identificator ?x ?y.
+          ?registration ?t ?j.
+
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+          ?person persoon:registratie ?registration.
+          ?registration <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?identificator.
+          ?identificator ?x ?y.
+          ?registration ?t ?j.
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+          ?person persoon:registratie ?registration.
+          ?registration <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?identificator.
+          ?identificator ?x ?y.
+         optional { ?registration ?t ?j. }
+
+                filter (exists
+      {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+;
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+                  ?person persoon:registratie ?registration.
+          ?registration <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?identificator.
+          ?identificator ?x ?y.
+          ?registration ?t ?j.
+
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/administrative-unit-privacy-centric-graph> {
+          ?person persoon:registratie ?registration.
+          ?registration <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?identificator.
+          ?identificator ?x ?y.
+          ?registration ?t ?j.
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+          ?person persoon:registratie ?registration.
+          ?registration <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?identificator.
+          ?identificator ?x ?y.
+          optional {?registration ?t ?j.}
+
+                filter (exists
+      {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+
+;
+
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+              ?s ?p ?o
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+         ?s ?p ?o 
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+             ?s a ?type; <http://mu.semte.ch/vocabularies/ext/person> ?person; ?p ?o.
+                filter (
+(?type = <http://mu.semte.ch/vocabularies/ext/PersonInformationUpdate> || ?type = <http://mu.semte.ch/vocabularies/ext/PersonInformationRead>) 
+&&
+
+                exists
+      {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/worship-service> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+
+;
+
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+              ?s ?p ?o
+ }
+}
+INSERT {
+GRAPH <http://mu.semte.ch/graphs/administrative-unit-privacy-centric-graph> {
+         ?s ?p ?o 
+ }
+}
+WHERE {
+ GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+             ?s a ?type; <http://mu.semte.ch/vocabularies/ext/person> ?person; ?p ?o.
+                filter (
+(?type = <http://mu.semte.ch/vocabularies/ext/PersonInformationUpdate> || ?type = <http://mu.semte.ch/vocabularies/ext/PersonInformationRead>) 
+&&
+
+                exists
+      {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+           ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
+        }
+      } 
+
+     || exists {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
+          ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
+      }
+    })
+
+ }
+}
+
