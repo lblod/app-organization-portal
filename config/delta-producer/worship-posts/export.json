@@ -10,7 +10,7 @@
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/ns/org#role"
       ],
-      "additionalFilter": "} GRAPH ?h { ?orgaan <http://www.w3.org/ns/org#hasPost> ?subject ; <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid . ?bestuurseenheid a ?type. FILTER (?type IN (<http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>, <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>))"
+      "additionalFilter": "?orgaan <http://www.w3.org/ns/org#hasPost> ?subject ; <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid . ?bestuurseenheid a ?type. FILTER (?type IN (<http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>, <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>))"
     },
     {
       "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
@@ -60,7 +60,7 @@
         "http://www.w3.org/ns/org#classification",
         "http://www.w3.org/ns/adms#identifier"
       ],
-      "additionalFilter": "} GRAPH ?h { ?subject <http://www.w3.org/ns/org#classification> ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>))"
+      "additionalFilter": "?subject <http://www.w3.org/ns/org#classification> ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>))"
     },
     {
       "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
@@ -87,7 +87,7 @@
         "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
         "http://www.w3.org/ns/org#hasPost"
       ],
-      "additionalFilter": "} GRAPH ?h { ?subject (<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/org#classification>)|(<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/org#classification>) ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>))"
+      "additionalFilter": "?subject (<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/org#classification>)|(<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/org#classification>) ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>))"
     },
     {
       "type": "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
@@ -142,7 +142,7 @@
         "http://www.w3.org/2004/02/skos/core#notation",
         "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator"
       ],
-      "additionalFilter": "} GRAPH ?h { ?bestuur <http://www.w3.org/ns/adms#identifier> ?subject ; <http://www.w3.org/ns/org#classification> ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>))"
+      "additionalFilter": "?bestuur <http://www.w3.org/ns/adms#identifier> ?subject ; <http://www.w3.org/ns/org#classification> ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>))"
     },
     {
       "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
@@ -154,7 +154,7 @@
         "http://mu.semte.ch/vocabularies/core/uuid",
         "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
       ],
-      "additionalFilter": "} GRAPH ?h { ?bestuur <http://www.w3.org/ns/adms#identifier> ?id ; <http://www.w3.org/ns/org#classification> ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>)) . ?id <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?subject ."
+      "additionalFilter": "?bestuur <http://www.w3.org/ns/adms#identifier> ?id ; <http://www.w3.org/ns/org#classification> ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>)) . ?id <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?subject ."
     },
     {
       "type": "http://www.w3.org/ns/adms#Identifier",
@@ -166,7 +166,7 @@
         "http://www.w3.org/2004/02/skos/core#notation",
         "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator"
       ],
-      "additionalFilter": "} GRAPH ?h { ?bestuur <http://www.w3.org/ns/adms#identifier> ?subject . ?bestuur a <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan> ."
+      "additionalFilter": "?bestuur <http://www.w3.org/ns/adms#identifier> ?subject . ?bestuur a <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan> ."
     },
     {
       "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
@@ -177,7 +177,7 @@
         "http://mu.semte.ch/vocabularies/core/uuid",
         "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
       ],
-      "additionalFilter": "} GRAPH ?h { ?bestuur <http://www.w3.org/ns/adms#identifier> ?id . ?bestuur a <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan> . ?id <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?subject ."
+      "additionalFilter": "?bestuur <http://www.w3.org/ns/adms#identifier> ?id . ?bestuur a <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan> . ?id <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?subject ."
     },
     {
       "type": "http://www.w3.org/ns/org#Site",
@@ -207,7 +207,7 @@
         "http://www.w3.org/ns/locn#adminUnitL2",
         "http://www.w3.org/ns/locn#fullAddress"
       ],
-      "additionalFilter": "} GRAPH ?h { ?subject ^<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?site. ?site a <http://www.w3.org/ns/org#Site>."
+      "additionalFilter": "?subject ^<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?site. ?site a <http://www.w3.org/ns/org#Site>."
     },
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
