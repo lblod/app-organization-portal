@@ -330,11 +330,11 @@ defmodule Dispatcher do
   #################################################################
 
   get "/datasets/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/datasets/"
+    Proxy.forward conn, path, "http://resource/datasets/"
   end
 
   get "/distributions/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/distributions/"
+    Proxy.forward conn, path, "http://resource/distributions/"
   end
 
 
