@@ -19,11 +19,8 @@ GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
 }
 WHERE {
  GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
-             ?s a ?type; <http://mu.semte.ch/vocabularies/ext/person> ?person; ?p ?o.
+             ?s a <http://mu.semte.ch/vocabularies/ext/PersonInformationUpdate>; <http://mu.semte.ch/vocabularies/ext/person> ?person; ?p ?o.
                 filter (
-(?type = <http://mu.semte.ch/vocabularies/ext/PersonInformationUpdate> || ?type = <http://mu.semte.ch/vocabularies/ext/PersonInformationRead>) 
-&&
-
                 exists
       {
         graph <http://mu.semte.ch/graphs/worship-service> {
