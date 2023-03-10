@@ -7,13 +7,14 @@ PREFIX session: <http://mu.semte.ch/vocabularies/session/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 
+
 DELETE {
  GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
               ?s ?p ?o
  }
 }
 INSERT {
-GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+GRAPH <http://mu.semte.ch/graphs/administrative-unit-privacy-centric-graph> {
          ?s ?p ?o 
  }
 }
@@ -26,18 +27,17 @@ WHERE {
 
                 exists
       {
-        graph <http://mu.semte.ch/graphs/worship-service> {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
            ?mandatories <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?person.
         }
       } 
 
      || exists {
-        graph <http://mu.semte.ch/graphs/worship-service> {
+        graph <http://mu.semte.ch/graphs/administrative-unit> {
           ?ministers <http://www.w3.org/ns/org#heldBy> ?person.
       }
     })
 
  }
 }
-
 
