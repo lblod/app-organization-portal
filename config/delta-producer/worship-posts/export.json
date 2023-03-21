@@ -3,7 +3,8 @@
     {
       "type": "http://data.vlaanderen.be/ns/mandaat#Mandaat",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
@@ -12,35 +13,281 @@
       "additionalFilter": "?orgaan <http://www.w3.org/ns/org#hasPost> ?subject ; <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid . ?bestuurseenheid a ?type. FILTER (?type IN (<http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>, <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>))"
     },
     {
-      "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
-      "strictTypeExport": "true",
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/administrative-unit"
       ],
       "properties": [
-        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor"
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+        "http://www.w3.org/ns/org#classification",
+        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/adms#identifier",
+        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur"
+      ],
+      "additionalFilter": "?subject <http://www.w3.org/ns/org#classification> ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>))"
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+        "http://www.w3.org/ns/org#classification",
+        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/adms#identifier"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/adms#identifier"
       ]
     },
     {
       "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
-      "strictTypeExport": "true",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://data.vlaanderen.be/ns/besluit#bestuurt",
+        "http://www.w3.org/ns/org#classification",
+        "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
+        "http://data.vlaanderen.be/ns/mandaat#bindingStart",
+        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
         "http://www.w3.org/ns/org#hasPost"
       ],
-      "additionalFilter": "?subject <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid . ?bestuurseenheid a ?type. FILTER (?type IN (<http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>, <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>))"
+      "additionalFilter": "?subject (<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/org#classification>)|(<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/org#classification>) ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>))"
     },
     {
       "type": "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
       "graphsFilter": [
-        "http://mu.semte.ch/graphs/organisatieportaal"
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/ns/org#role",
         "http://data.lblod.info/vocabularies/erediensten/functie"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://data.lblod.info/vocabularies/erediensten/typebetrokkenheid",
+        "http://www.w3.org/ns/org#organization"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+        "http://www.w3.org/ns/adms#identifier"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/adms#Identifier",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/administrative-unit"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#notation",
+        "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator"
+      ],
+      "additionalFilter": "?subject <http://www.w3.org/2004/02/skos/core#notation> \"KBO nummer\" ."
+    },
+    {
+      "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/administrative-unit"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
+      ],
+      "additionalFilter": "?subject ^<https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>/<http://www.w3.org/2004/02/skos/core#notation> \"KBO nummer\" ."
+    },
+    {
+      "type": "http://www.w3.org/ns/org#Site",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+        "http://data.lblod.info/vocabularies/erediensten/vestigingstype"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/locn#Address",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
+        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer",
+        "http://www.w3.org/ns/locn#thoroughfare",
+        "http://www.w3.org/ns/locn#postCode",
+        "https://data.vlaanderen.be/ns/adres#gemeentenaam",
+        "http://www.w3.org/ns/locn#adminUnitL2",
+        "http://www.w3.org/ns/locn#fullAddress"
+      ],
+      "additionalFilter": "?subject ^<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?site. ?site a <http://www.w3.org/ns/org#Site>."
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#scopeNote"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#scopeNote"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/TypeVestiging",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/TypeBetrokkenheid",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/TypeEredienst",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/EredienstBeroepen",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://mu.semte.ch/vocabularies/ext/GeslachtCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://publications.europa.eu/ontology/euvoc#Country",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
     }
   ]

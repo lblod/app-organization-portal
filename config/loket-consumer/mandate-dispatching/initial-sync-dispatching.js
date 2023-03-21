@@ -1,4 +1,4 @@
-const { transformStatements, batchedDbUpdate, partition } = require('./util');
+const { transformStatements, batchedDbUpdate } = require('./util');
 const { BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES,
   DIRECT_DATABASE_ENDPOINT,
   MU_CALL_SCOPE_ID_INITIAL_SYNC,
@@ -6,8 +6,7 @@ const { BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES,
   MAX_DB_RETRY_ATTEMPTS,
   SLEEP_BETWEEN_BATCHES,
   SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
-  INGEST_GRAPH,
-  FILE_SYNC_GRAPH
+  INGEST_GRAPH
 } = require('./config');
 const endpoint = BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES ? DIRECT_DATABASE_ENDPOINT : process.env.MU_SPARQL_ENDPOINT;
 
@@ -36,21 +35,20 @@ async function dispatch(lib, data) {
   if (termObjects.length) {
     originalInsertTriples = termObjects.map(o => `${o.subject} ${o.predicate} ${o.object}.`)
 
-    await transformStatements(fetch, originalInsertTriples).then(
-      transformedInsertTriples => {
-        batchedDbUpdate(
-          muAuthSudo.updateSudo,
-          INGEST_GRAPH,
-          transformedInsertTriples,
-          { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
-          endpoint,
-          BATCH_SIZE,
-          MAX_DB_RETRY_ATTEMPTS,
-          SLEEP_BETWEEN_BATCHES,
-          SLEEP_TIME_AFTER_FAILED_DB_OPERATION
-        )
-      }
-    )
+    const transformedStatementsToInsert = await transformStatements(fetch, originalInsertTriples);
+    if (transformedStatementsToInsert.length) {
+      await batchedDbUpdate(
+        muAuthSudo.updateSudo,
+        INGEST_GRAPH,
+        transformedStatementsToInsert,
+        { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
+        endpoint,
+        BATCH_SIZE,
+        MAX_DB_RETRY_ATTEMPTS,
+        SLEEP_BETWEEN_BATCHES,
+        SLEEP_TIME_AFTER_FAILED_DB_OPERATION
+      )
+    }
   }
 }
 

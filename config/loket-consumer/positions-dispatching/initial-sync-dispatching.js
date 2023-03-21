@@ -38,40 +38,35 @@ async function dispatch(lib, data) {
   if (termObjects.length) {
     originalInsertTriples = termObjects.map(o => `${o.subject} ${o.predicate} ${o.object}.`)
 
-    await transformStatements(fetch, originalInsertTriples, MAIN_INFO_MAPPING).then(
-      transformedInsertTriples => {
-        if (transformedInsertTriples.length) {
-          batchedDbUpdate(
-            muAuthSudo.updateSudo,
-            INGEST_GRAPH,
-            transformedInsertTriples,
-            { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
-            endpoint,
-            BATCH_SIZE,
-            MAX_DB_RETRY_ATTEMPTS,
-            SLEEP_BETWEEN_BATCHES,
-            SLEEP_TIME_AFTER_FAILED_DB_OPERATION
-          )
-        }
-      }
-    );
-    await transformStatements(fetch, originalInsertTriples, PRIVATE_INFO_MAPPING).then(
-      transformedInsertTriples => {
-        if (transformedInsertTriples.length) {
-          batchedDbUpdate(
-            muAuthSudo.updateSudo,
-            PRIVACY_SENSITIVE_GRAPH,
-            transformedInsertTriples,
-            { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
-            endpoint,
-            BATCH_SIZE,
-            MAX_DB_RETRY_ATTEMPTS,
-            SLEEP_BETWEEN_BATCHES,
-            SLEEP_TIME_AFTER_FAILED_DB_OPERATION
-          )
-        }
-      }
-    );
+    const transformedStatementsToInsert = await transformStatements(fetch, originalInsertTriples, MAIN_INFO_MAPPING);
+    if (transformedStatementsToInsert.length) {
+      await batchedDbUpdate(
+        muAuthSudo.updateSudo,
+        INGEST_GRAPH,
+        transformedStatementsToInsert,
+        { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
+        endpoint,
+        BATCH_SIZE,
+        MAX_DB_RETRY_ATTEMPTS,
+        SLEEP_BETWEEN_BATCHES,
+        SLEEP_TIME_AFTER_FAILED_DB_OPERATION
+      );
+    }
+
+    const transformedStatementsToInsertPrivate = await transformStatements(fetch, originalInsertTriples, PRIVATE_INFO_MAPPING);
+    if (transformedStatementsToInsertPrivate.length) {
+      await batchedDbUpdate(
+        muAuthSudo.updateSudo,
+        PRIVACY_SENSITIVE_GRAPH,
+        transformedStatementsToInsertPrivate,
+        { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
+        endpoint,
+        BATCH_SIZE,
+        MAX_DB_RETRY_ATTEMPTS,
+        SLEEP_BETWEEN_BATCHES,
+        SLEEP_TIME_AFTER_FAILED_DB_OPERATION
+      );
+    }
   }
 }
 

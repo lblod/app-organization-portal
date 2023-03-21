@@ -1,0 +1,35 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/> 
+PREFIX org: <http://www.w3.org/ns/org#> 
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#> 
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#> 
+
+# OP-2070
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+
+   <http://data.lblod.info/id/bestuursorganen/56c71a29-bff0-4b67-804d-2c98fd4bd10f> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+                                                                                    mu:uuid "56c71a29-bff0-4b67-804d-2c98fd4bd10f";
+                                                                                    besluit:bestuurt <http://data.lblod.info/id/besturenVanDeEredienst/6232329df9377210c3576b17e116de8b>;
+                                                                                    org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b475fa47e17a8a05ae04a9e1fb9c9258>.
+   <http://data.lblod.info/id/bestuursorganen/54f16d44-2f2c-45df-83c1-5a9fbe4756ca> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+                                                                                    mu:uuid "54f16d44-2f2c-45df-83c1-5a9fbe4756ca";
+                                                                                    generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/56c71a29-bff0-4b67-804d-2c98fd4bd10f> .
+  }
+}
+
+;
+
+# OP-2084
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+
+   <http://data.lblod.info/id/bestuursorganen/1179426b-69d4-4974-8aa2-c4d46a22c9cc> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+                                                                                    mu:uuid "1179426b-69d4-4974-8aa2-c4d46a22c9cc";
+                                                                                    besluit:bestuurt <http://data.lblod.info/id/besturenVanDeEredienst/88cc9ab83a5a94caeb2f4b04615b20f2>;
+                                                                                    org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b475fa47e17a8a05ae04a9e1fb9c9258>.
+   <http://data.lblod.info/id/bestuursorganen/b3db6a8d-d6cb-4b78-af87-b80dfda580c7> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+                                                                                    mu:uuid "b3db6a8d-d6cb-4b78-af87-b80dfda580c7";
+                                                                                    generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/1179426b-69d4-4974-8aa2-c4d46a22c9cc> .
+  }
+}
