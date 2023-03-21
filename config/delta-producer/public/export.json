@@ -12,6 +12,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel",
         "http://www.w3.org/2004/02/skos/core#altLabel",
         "http://www.w3.org/ns/adms#identifier",
@@ -24,8 +25,6 @@
         "http://www.w3.org/ns/org#linkedTo",
         "http://www.w3.org/ns/org#hasSubOrganization",
         "http://www.w3.org/ns/org#classification",
-        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
-        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
         "http://data.lblod.info/vocabularies/erediensten/denominatie",
         "http://data.lblod.info/vocabularies/erediensten/grensoverschrijdend",
         "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
@@ -43,6 +42,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel",
         "http://www.w3.org/2004/02/skos/core#altLabel",
         "http://www.w3.org/ns/adms#identifier",
@@ -55,9 +55,77 @@
         "http://www.w3.org/ns/org#linkedTo",
         "http://www.w3.org/ns/org#hasSubOrganization",
         "http://www.w3.org/ns/org#classification",
-        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
-        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
         "http://data.lblod.info/vocabularies/erediensten/typeEredienst"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
+        "http://data.lblod.info/vocabularies/erediensten/denominatie",
+        "http://data.lblod.info/vocabularies/erediensten/grensoverschrijdend",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+        "http://data.vlaanderen.be/ns/besluit#werkingsgebied",
+        "http://www.opengis.net/ont/geosparql#sfWithin",
+        "http://www.w3.org/2002/07/owl#sameAs",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/org#changedBy",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/ns/org#hasPost",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#hasSubOrganization",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/regorg#orgStatus"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+        "http://www.w3.org/ns/adms#identifier"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://data.lblod.info/vocabularies/erediensten/typebetrokkenheid",
+        "http://www.w3.org/ns/org#organization",
+        "http://data.lblod.info/vocabularies/erediensten/financieringspercentage"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#role",
+        "http://data.lblod.info/vocabularies/erediensten/functie"
       ]
     },
     {
@@ -72,6 +140,7 @@
 
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/ns/org#siteAddress",
         "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
         "http://data.lblod.info/vocabularies/erediensten/vestigingstype"
@@ -90,6 +159,7 @@
 
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
         "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer",
         "http://www.w3.org/ns/locn#thoroughfare",
@@ -136,6 +206,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#notation",
         "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator"
       ]
@@ -152,6 +223,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
       ]
     },
@@ -164,6 +236,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
     },
@@ -178,11 +251,34 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
         "http://data.vlaanderen.be/ns/mandaat#bindingStart",
         "http://data.vlaanderen.be/ns/besluit#bestuurt",
         "http://www.w3.org/ns/org#classification",
-        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan"
+        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+        "http://www.w3.org/ns/org#hasPost"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
+        "http://data.vlaanderen.be/ns/mandaat#bindingStart",
+        "http://data.vlaanderen.be/ns/besluit#bestuurt",
+        "http://www.w3.org/ns/org#classification",
+        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+        "http://www.w3.org/ns/org#hasPost"
       ]
     },
     {
@@ -194,6 +290,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
     },
@@ -206,6 +303,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
     },
@@ -219,6 +317,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://purl.org/dc/terms/date",
         "http://purl.org/dc/terms/description",
         "http://data.lblod.info/vocabularies/contacthub/typeWijziging",
@@ -239,6 +338,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
     },
@@ -251,6 +351,7 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
     },
@@ -263,6 +364,40 @@
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
       "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/mandaat#Mandaat",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "^http://www.w3.org/ns/org#hasPost",
+        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#role"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "pathToConceptScheme": [
+        "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
+        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#role",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
     }
