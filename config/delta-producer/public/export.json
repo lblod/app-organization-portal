@@ -25,7 +25,6 @@
         "http://www.w3.org/ns/org#linkedTo",
         "http://www.w3.org/ns/org#hasSubOrganization",
         "http://www.w3.org/ns/org#classification",
-        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
         "http://data.lblod.info/vocabularies/erediensten/denominatie",
         "http://data.lblod.info/vocabularies/erediensten/grensoverschrijdend",
         "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
@@ -56,7 +55,6 @@
         "http://www.w3.org/ns/org#linkedTo",
         "http://www.w3.org/ns/org#hasSubOrganization",
         "http://www.w3.org/ns/org#classification",
-        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
         "http://data.lblod.info/vocabularies/erediensten/typeEredienst"
       ]
     },
@@ -105,6 +103,29 @@
         "http://www.w3.org/ns/org#linkedTo",
         "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
         "http://www.w3.org/ns/adms#identifier"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/BetrokkenLokaleBesturen",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://data.lblod.info/vocabularies/erediensten/typebetrokkenheid",
+        "http://www.w3.org/ns/org#organization",
+        "http://data.lblod.info/vocabularies/erediensten/financieringspercentage"
+      ]
+    },
+    {
+      "type": "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/organisatieportaal"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#role",
+        "http://data.lblod.info/vocabularies/erediensten/functie"
       ]
     },
     {
