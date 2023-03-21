@@ -131,6 +131,32 @@ defmodule Acl.UserGroups.Config do
         ]
       },
       %GroupSpec{
+        name: "acmidm-agbapb-lezer",
+        useage: [:read],
+        access: access_by_role( "ABBOrganisatiePortaalAgbApb-lezer" ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/agb-and-apb",
+            constraint: %ResourceConstraint{
+              resource_types: @org_type
+            }
+          }
+        ]
+      },
+      %GroupSpec{
+        name: "acmidm-agbapb-editeerder",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role( "ABBOrganisatiePortaalAgbApb-editeerder" ),
+        graphs: [
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/agb-and-apb",
+            constraint: %ResourceConstraint{
+              resource_types: @org_type ++ @error_type
+            }
+          }
+        ]
+      },
+      %GroupSpec{
         name: "acmidm-beheerder",
         useage: [:read, :write, :read_for_write],
         access: access_by_role( "ABBOrganisatiePortaalGebruiker-beheerder" ),
