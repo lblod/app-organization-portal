@@ -186,12 +186,12 @@ defmodule Acl.UserGroups.Config do
         name: "public",
         useage: [:read],
         access: %AlwaysAccessible{},
-        graphs: [ 
+        graphs: [
           %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/public", 
+                    graph: "http://mu.semte.ch/graphs/public",
                     constraint: %ResourceConstraint{
                       resource_types: @public_type
-                    } 
+                    }
           },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/shared",
