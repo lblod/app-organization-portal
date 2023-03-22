@@ -16,7 +16,6 @@ defmodule Acl.UserGroups.Config do
                         "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris",
                         "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
                         "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
-                        "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://data.lblod.info/vocabularies/erediensten/RolBedienaar",
                         "http://data.lblod.info/vocabularies/erediensten/VoorwaardenBedienaar",
                         "http://data.lblod.info/vocabularies/erediensten/PositieBedienaar",
@@ -187,12 +186,12 @@ defmodule Acl.UserGroups.Config do
         name: "public",
         useage: [:read],
         access: %AlwaysAccessible{},
-        graphs: [ 
+        graphs: [
           %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/public", 
+                    graph: "http://mu.semte.ch/graphs/public",
                     constraint: %ResourceConstraint{
                       resource_types: @public_type
-                    } 
+                    }
           },
           %GraphSpec{
             graph: "http://mu.semte.ch/graphs/shared",
