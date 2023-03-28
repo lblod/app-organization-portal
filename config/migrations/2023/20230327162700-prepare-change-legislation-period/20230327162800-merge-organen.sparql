@@ -1,0 +1,42 @@
+# We have two bestuursorganen of the same classification for 2 bestuurseenheden.
+# Then need to be merged, as we should only have one orgaan (not in time) per classification.
+
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?otherBestuursorgaan ?potherBestuursorgaan ?ootherBestuursorgaan .
+    ?s ?p ?otherBestuursorgaan .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s ?p ?bestuursorgaan .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    VALUES ?type {
+      ere:BestuurVanDeEredienst
+      ere:CentraalBestuurVanDeEredienst
+    }
+
+    ?bestuurseenheid a ?type .
+
+    FILTER NOT EXISTS {
+      ?bestuurseenheid <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> .
+    }
+
+    ?bestuursorgaan besluit:bestuurt ?bestuurseenheid ;
+      <http://www.w3.org/ns/org#classification> ?classif .
+
+    ?otherBestuursorgaan besluit:bestuurt ?bestuurseenheid ;
+      <http://www.w3.org/ns/org#classification> ?classif ;
+      ?potherBestuursorgaan ?ootherBestuursorgaan .
+
+    ?s ?p ?otherBestuursorgaan .
+
+    FILTER (str(?bestuursorgaan) > str(?otherBestuursorgaan))
+  }
+}
