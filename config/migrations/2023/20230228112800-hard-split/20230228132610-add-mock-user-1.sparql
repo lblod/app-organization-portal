@@ -1,0 +1,44 @@
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+ PREFIX  besluit: <http://data.vlaanderen.be/ns/besluit#>
+ PREFIX  mu:   <http://mu.semte.ch/vocabularies/core/>
+ PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
+ PREFIX  dcterms: <http://purl.org/dc/terms/>
+ PREFIX  foaf: <http://xmlns.com/foaf/0.1/>
+ 
+ INSERT DATA {
+   GRAPH <http://mu.semte.ch/graphs/public> {
+     <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> besluit:Bestuurseenheid .
+     <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> mu:uuid "141d9d6b-54af-4d17-b313-8d1c30bc3f5b" .
+     <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> skos:prefLabel "Agentschap Binnenlands Bestuur" .
+     <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> dcterms:identifier "OVO001835" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> foaf:Person .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3470" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> foaf:firstName "Josephine" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> foaf:familyName "Lezer" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3470> foaf:account <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0989> .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0989> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> foaf:OnlineAccount .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0989> mu:uuid "3a91ff60-07c1-4136-ac5e-55cf401e0989" .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0989> foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service> .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0989> ext:sessionRole "ABBOrganisatiePortaalGebruiker-lezer" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3471> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> foaf:Person .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3471> mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3471" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3471> foaf:firstName "Josephine" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3471> foaf:familyName "Editeerder" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3471> foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3471> foaf:account <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0957> .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0957> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> foaf:OnlineAccount .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0957> mu:uuid "3a91ff60-07c1-4136-ac5e-55cf401e0957" .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0957> foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service> .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0957> ext:sessionRole "ABBOrganisatiePortaalGebruiker-editeerder" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> foaf:Person .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472> mu:uuid "d39fe09e-d339-4e43-8680-dbbcfb3d3472" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472> foaf:firstName "Josephine" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472> foaf:familyName "Beheerder" .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472> foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> .
+     <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472> foaf:account <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958> .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> foaf:OnlineAccount .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958> mu:uuid "3a91ff60-07c1-4136-ac5e-55cf401e0958" .
+     <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958> foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service> .
+    }
+   }

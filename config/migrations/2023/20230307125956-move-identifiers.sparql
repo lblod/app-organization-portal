@@ -1,0 +1,37 @@
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX lblodOrg: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit>  {
+    
+  ?identifier generiek:gestructureerdeIdentificator ?structuredIdentifier;
+                          ?p ?o.
+  ?structuredIdentifier ?sp ?so.
+
+ }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service>  {
+  
+  ?identifier generiek:gestructureerdeIdentificator ?structuredIdentifier;
+                          ?p ?o.
+  ?structuredIdentifier ?sp ?so.
+
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit>  {
+  
+  ?identifier generiek:gestructureerdeIdentificator ?structuredIdentifier;
+                          ?p ?o.
+  ?structuredIdentifier ?sp ?so.
+  filter exists {
+     GRAPH <http://mu.semte.ch/graphs/worship-service> {
+         ?org adms:identifier ?identifier.
+
+     }
+  }
+
+  }
+}

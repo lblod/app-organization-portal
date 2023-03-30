@@ -1,13 +1,10 @@
-const { transformStatements, batchedDbUpdate, partition, deleteFromAllGraphs } = require('./util');
-const { BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES,
-  DIRECT_DATABASE_ENDPOINT,
-  MU_CALL_SCOPE_ID_INITIAL_SYNC,
+const { transformStatements, batchedDbUpdate, deleteFromAllGraphs } = require('./util');
+const {
   BATCH_SIZE,
   MAX_DB_RETRY_ATTEMPTS,
   SLEEP_BETWEEN_BATCHES,
   SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
-  INGEST_GRAPH,
-  FILE_SYNC_GRAPH
+  INGEST_GRAPH
 } = require('./config');
 
 /**
@@ -34,46 +31,36 @@ async function dispatch(lib, data) {
     const insertStatements = inserts.map(o => `${o.subject} ${o.predicate} ${o.object}.`);
 
     if (deleteStatements.length) {
-      let transformedDeleteTriples;
-      try {
-        transformedDeleteTriples = await transformStatements(fetch, deleteStatements);
-      } catch (e) {
-        console.log('Something went wrong during the reasoning:', e);
-        throw e;
+      const transformedStatementsToDelete = await transformStatements(fetch, deleteStatements);
+      if (transformedStatementsToDelete.length) {
+        await deleteFromAllGraphs(
+          muAuthSudo.updateSudo,
+          transformedStatementsToDelete,
+          { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
+          process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
+          MAX_DB_RETRY_ATTEMPTS,
+          SLEEP_BETWEEN_BATCHES,
+          SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
+        );
       }
-
-      await deleteFromAllGraphs(
-        muAuthSudo.updateSudo,
-        transformedDeleteTriples,
-        { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
-        process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
-        MAX_DB_RETRY_ATTEMPTS,
-        SLEEP_BETWEEN_BATCHES,
-        SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
-      );
     }
 
     if (insertStatements.length) {
-      let transformedInsertTriples;
-      try {
-        transformedInsertTriples = await transformStatements(fetch, insertStatements);
-      } catch (e) {
-        console.log('Something went wrong during the reasoning:', e);
-        throw e;
+      const transformedStatementsToInsert = await transformStatements(fetch, insertStatements);
+      if (transformedStatementsToInsert.length) {
+        await batchedDbUpdate(
+          muAuthSudo.updateSudo,
+          INGEST_GRAPH,
+          transformedStatementsToInsert,
+          { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
+          process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
+          BATCH_SIZE,
+          MAX_DB_RETRY_ATTEMPTS,
+          SLEEP_BETWEEN_BATCHES,
+          SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
+          "INSERT"
+        );
       }
-
-      await batchedDbUpdate(
-        muAuthSudo.updateSudo,
-        INGEST_GRAPH,
-        transformedInsertTriples,
-        { 'mu-call-scope-id': 'http://redpencil.data.gift/id/concept/muScope/deltas/write-for-dispatch' },
-        process.env.MU_SPARQL_ENDPOINT, //Note: this is the default endpoint through auth
-        BATCH_SIZE,
-        MAX_DB_RETRY_ATTEMPTS,
-        SLEEP_BETWEEN_BATCHES,
-        SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
-        "INSERT"
-      );
     }
   }
 }
