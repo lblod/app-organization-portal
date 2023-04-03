@@ -1,0 +1,24 @@
+delete {
+    graph <http://mu.semte.ch/graphs/worship-service> {
+      ?position <http://data.lblod.info/vocabularies/erediensten/functie> ?function.
+    }
+}
+
+insert {
+    graph <http://mu.semte.ch/graphs/worship-service> {
+      ?position <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/7d8e0c15-7726-4196-9416-6dc40ed858bb>.
+    }
+}
+where {
+    graph <http://mu.semte.ch/graphs/worship-service> {
+      ?position <http://data.lblod.info/vocabularies/erediensten/functie> ?function.
+      ?worshipService <http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor> ?position;
+                      <http://www.w3.org/ns/regorg#orgStatus> ?worshipStatus.
+	      
+      filter (?function in (<http://lblod.data.gift/concepts/5ebb798bd59c3b48c25116032caa02b7>,
+	                    <http://lblod.data.gift/concepts/c4a3fd586211b17b06f574885e23f355>,
+	                    <http://lblod.data.gift/concepts/e357bc8f4cc3a694fde2239748768a22>) 
+	      && ?worshipStatus = <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab>)
+    }
+
+}
