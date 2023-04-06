@@ -8,8 +8,11 @@ const {
   SLEEP_BETWEEN_BATCHES,
   SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
   TARGET_GRAPH,
+  PRIVACY_SENSITIVE_GRAPH,
   LANDING_ZONE_GRAPH,
-  LANDING_ZONE_DATABASE_ENDPOINT
+  LANDING_ZONE_DATABASE_ENDPOINT,
+  MAIN_INFO_MAPPING,
+  PRIVATE_INFO_MAPPING
 } = require('./config');
 
 const endpoint = BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES ? DIRECT_DATABASE_ENDPOINT : process.env.MU_SPARQL_ENDPOINT;
@@ -62,21 +65,39 @@ async function onFinishInitialIngest(lib) {
 
   console.log(`!! On-finish triggered !!`);
 
-  const transformedInsertTriples = await transformLandingZoneGraph(fetch, endpoint);
+  const transformedMainInsertTriples = await transformLandingZoneGraph(fetch, endpoint, MAIN_INFO_MAPPING);
+  console.log(`Transformed ${transformedMainInsertTriples.length} main triples`);
 
-  console.log(`Transformed ${transformedInsertTriples.length} triples`);
+  if (transformedMainInsertTriples.length) {
+    await batchedDbUpdate(
+      muAuthSudo.updateSudo,
+      TARGET_GRAPH,
+      transformedMainInsertTriples,
+      { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
+      endpoint,
+      BATCH_SIZE,
+      MAX_DB_RETRY_ATTEMPTS,
+      SLEEP_BETWEEN_BATCHES,
+      SLEEP_TIME_AFTER_FAILED_DB_OPERATION
+    );
+  }
 
-  await batchedDbUpdate(
-    muAuthSudo.updateSudo,
-    TARGET_GRAPH,
-    transformedInsertTriples,
-    { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
-    endpoint,
-    BATCH_SIZE,
-    MAX_DB_RETRY_ATTEMPTS,
-    SLEEP_BETWEEN_BATCHES,
-    SLEEP_TIME_AFTER_FAILED_DB_OPERATION
-  );
+  const transformedPrivateInsertTriples = await transformLandingZoneGraph(fetch, endpoint, PRIVATE_INFO_MAPPING);
+  console.log(`Transformed ${transformedPrivateInsertTriples.length} private triples`);
+
+  if (transformedPrivateInsertTriples.length) {
+    await batchedDbUpdate(
+      muAuthSudo.updateSudo,
+      PRIVACY_SENSITIVE_GRAPH,
+      transformedPrivateInsertTriples,
+      { 'mu-call-scope-id': MU_CALL_SCOPE_ID_INITIAL_SYNC },
+      endpoint,
+      BATCH_SIZE,
+      MAX_DB_RETRY_ATTEMPTS,
+      SLEEP_BETWEEN_BATCHES,
+      SLEEP_TIME_AFTER_FAILED_DB_OPERATION
+    );
+  }
 }
 
 module.exports = {

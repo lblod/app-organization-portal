@@ -1,9 +1,16 @@
 const {
   MAX_REASONING_RETRY_ATTEMPTS,
-  SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION
+  SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION,
+  MAX_DB_RETRY_ATTEMPTS,
+  SLEEP_BETWEEN_BATCHES,
+  SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
+  TARGET_GRAPH,
+  LANDING_ZONE_GRAPH,
+  BATCH_SIZE
 } = require('./config');
 
-async function batchedDbUpdate(muUpdate,
+async function batchedDbUpdate(
+  muUpdate,
   graph,
   triples,
   extraHeaders,
@@ -32,39 +39,6 @@ ${batch}
 
     await operationWithRetry(insertCall, 0, maxAttempts, sleepTimeOnFail);
 
-    console.log(`Sleeping before next query execution: ${sleepBetweenBatches}`);
-    await new Promise(r => setTimeout(r, sleepBetweenBatches));
-  }
-}
-
-async function deleteFromAllGraphs(muUpdate,
-  triples,
-  extraHeaders,
-  endpoint,
-  maxAttempts,
-  sleepBetweenBatches = 1000,
-  sleepTimeOnFail = 1000,
-) {
-
-  for (const triple of triples) {
-
-    console.log(`Deleting a triple from all graphs in triplestore`);
-
-    const deleteCall = async () => {
-      await muUpdate(`
-      DELETE {
-        GRAPH ?g {
-          ${triple}
-        }
-      } WHERE {
-        GRAPH ?g {
-          ${triple}
-        }
-      }
-      `, extraHeaders, endpoint);
-    };
-
-    await operationWithRetry(deleteCall, 0, maxAttempts, sleepTimeOnFail);
     console.log(`Sleeping before next query execution: ${sleepBetweenBatches}`);
     await new Promise(r => setTimeout(r, sleepBetweenBatches));
   }
@@ -110,18 +84,16 @@ function partition(arr, fn) {
   return { passes, fails };
 }
 
-
 /**
  * Send triples to reasoning service for conversion
  *
  */
-function transformTriples(fetch, triples, mapping) {
-  return operationWithRetry(mainConversion(fetch, triples, mapping), 0,
+async function transformTriples(fetch, triples, mapping) {
+  return await operationWithRetry(mainConversion(fetch, triples, mapping), 0,
     MAX_REASONING_RETRY_ATTEMPTS, SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION);
 }
 
-
-function mainConversion(fetch, triples, mapping) {
+async function mainConversion(fetch, triples, mapping) {
   let formdata = new URLSearchParams();
   formdata.append("data", triples);
 
@@ -131,31 +103,66 @@ function mainConversion(fetch, triples, mapping) {
     redirect: 'follow'
   };
 
-  return fetch(`http://reasoner/reason/dl2op/${mapping}`, requestOptions)
-    .then(response => response.text())
-    .catch(error => {
-      console.log('error', error)
-      throw error
-    });
+  const response = await fetch(`http://reasoner/reason/dl2op/${mapping}`, requestOptions)
+  return await response.text();
 }
 
-
 async function transformStatements(fetch, triples, mapping = 'main') {
-  return await transformTriples(fetch, triples.join('\n'), mapping).then(
-    graph => {
-      statements = graph ? graph.split('\n') : [];
-      console.log(`CONVERSION ${mapping}: FROM ${triples.length} triples to ${statements.length}`)
-      return statements
-    }
-  ).catch(error => {
-    console.log('error', error)
-    throw error
-  });
+  console.log(`Received ${JSON.stringify(triples)} to transform`);
+  const transformedTriples = await transformTriples(fetch, triples.join('\n'), mapping);
+  statements = transformedTriples ? transformedTriples.replace(/\n{2,}/g, '').split('\n') : [];
+  console.log(`CONVERSION: FROM ${triples.length} triples to ${statements.length}`);
+  return statements;
+}
+
+async function deleteFromTargetGraph(lib, statements) {
+  console.log(`Deleting ${statements.length} statements from target graph`);
+  console.log(`Statements:  ${JSON.stringify(statements)}`)
+  await batchedDbUpdate(
+    lib.muAuthSudo.updateSudo,
+    TARGET_GRAPH,
+    statements,
+    {},
+    process.env.MU_SPARQL_ENDPOINT,
+    BATCH_SIZE,
+    MAX_DB_RETRY_ATTEMPTS,
+    SLEEP_BETWEEN_BATCHES,
+    SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
+    'DELETE');
+}
+
+async function insertIntoTargetGraph(lib, statements) {
+  console.log(`Inserting ${statements.length} statements into target graph`);
+  console.log(`Statements:  ${JSON.stringify(statements)}`)
+
+  await batchedDbUpdate(
+    lib.muAuthSudo.updateSudo,
+    TARGET_GRAPH,
+    statements,
+    {},
+    process.env.MU_SPARQL_ENDPOINT,
+    BATCH_SIZE,
+    MAX_DB_RETRY_ATTEMPTS,
+    SLEEP_BETWEEN_BATCHES,
+    SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
+    'INSERT');
+}
+
+async function transformLandingZoneGraph(fetch, endpoint, mapping = 'main') {
+  console.log(`Transforming landing zone graph: ${LANDING_ZONE_GRAPH}`);
+
+  const response = await fetch(`http://reasoner/reason/dl2op/${mapping}?data=${encodeURIComponent(`${endpoint}?default-graph-uri=&query=CONSTRUCT+%7B%0D%0A%3Fs+%3Fp+%3Fo%0D%0A%7D+WHERE+%7B%0D%0A+GRAPH+<${LANDING_ZONE_GRAPH}>+%7B%0D%0A%3Fs+%3Fp+%3Fo%0D%0A%7D%0D%0A%7D&should-sponge=&format=text%2Fplain&timeout=0&run=+Run+Query`)}`);
+  const text = await response.text();
+  const statements = text.replace(/\n{2,}/g, '').split('\n');
+
+  return statements;
 }
 
 module.exports = {
   batchedDbUpdate,
-  deleteFromAllGraphs,
   partition,
-  transformStatements
+  transformStatements,
+  transformLandingZoneGraph,
+  deleteFromTargetGraph,
+  insertIntoTargetGraph
 };

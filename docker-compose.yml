@@ -228,7 +228,7 @@ services:
     restart: always
     logging: *default-logging
   reasoner:
-    image: eyereasoner/reasoning-service:1.0.1
+    image: eyereasoner/reasoning-service:1.0.2
     volumes:
       - ./config/reasoner:/config
   ################################################################################
@@ -420,40 +420,28 @@ services:
   # DELTA CONSUMERS
   ################################################################################
   ################################################################################
-  # CONSUMER DISPATCHER
+  # LOKET MANDATARISSEN CONSUMERS
   ################################################################################
-  consumer-dispatcher:
-    image: bdevloed/dispatcher:dev
+  mandatarissen-consumer:
+    image: lblod/delta-consumer:0.0.17-rc.6
     environment:
-      DIRECT_DATABASE_ENDPOINT: "http://triplestore:8890/sparql"
-    links:
-      - triplestore:virtuoso
-      - db:database
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
-  ################################################################################
-  # LOKET MANDATEN CONSUMERS
-  ################################################################################
-  mandaten-consumer:
-    image: lblod/delta-consumer:0.0.14
-    environment:
-      DCR_SERVICE_NAME: "mandatendatabank-consumer"
+      DCR_SERVICE_NAME: "mandatarissen-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/MandatarissenCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/mandatarissen"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/mandatarissen"
-      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/mandatendatabank-consumer"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/mandatarissen-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
       BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
+      BATCH_SIZE: 1000
       DCR_SYNC_FILES_PATH: "/sync/mandatarissen/files"
-      FILE_SYNC_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
-      KEEP_DELTA_FILES: "true"
-      INGEST_GRAPH: "http://mu.semte.ch/graphs/ingest"
+      DCR_KEEP_DELTA_FILES: "true"
+      DCR_ENABLE_DELTA_CONTEXT: "true"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/mandatarissen"
     volumes:
-      - ./config/loket-consumer/mandate-dispatching:/config/triples-dispatching/custom-dispatching
-      - ./data/files/consumer-files/mandaten:/consumer-files/
+      - ./config/loket-consumer/mandatarissen-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./data/files/consumer-files/mandatarissen:/consumer-files/
     restart: always
     labels:
       - "logging=true"
@@ -466,7 +454,7 @@ services:
   # LOKET LEIDINGGEVENDEN CONSUMERS
   ################################################################################
   leidinggevenden-consumer:
-    image: lblod/delta-consumer:0.0.14
+    image: lblod/delta-consumer:0.0.17-rc.6
     environment:
       DCR_SERVICE_NAME: "leidinggevenden-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
@@ -477,9 +465,11 @@ services:
       DCR_DISABLE_INITIAL_SYNC: "true"
       BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
       DCR_SYNC_FILES_PATH: "/sync/leidinggevenden/files"
-      FILE_SYNC_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
-      KEEP_DELTA_FILES: "true"
-      INGEST_GRAPH: "http://mu.semte.ch/graphs/ingest"
+      DCR_KEEP_DELTA_FILES: "true"
+      BATCH_SIZE: 1000
+      DCR_ENABLE_DELTA_CONTEXT: "true"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/leidinggevenden"
     volumes:
       - ./config/loket-consumer/leidinggevenden-dispatching:/config/triples-dispatching/custom-dispatching
       - ./data/files/consumer-files/leidinggevenden:/consumer-files/
@@ -495,22 +485,24 @@ services:
   # LOKET WORSHIP SENSITIVE CONSUMERS
   ################################################################################
   worship-services-sensitive-consumer:
-    image: lblod/delta-consumer:0.0.14
+    image: lblod/delta-consumer:0.0.17-rc.6
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "worship-services-sensitive-consumer"
-      DCR_SYNC_FILES_PATH: "/sync/worship-services-sensitive/files"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/WorshipServicesSensitiveCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitive"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitiveDeltaFileSyncing"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/worship-services-sensitive-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
-      FILE_SYNC_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
+      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
+      DCR_SYNC_FILES_PATH: "/sync/worship-services-sensitive/files"
+      BATCH_SIZE: 1000
       DCR_KEEP_DELTA_FILES: "true"
-      DCR_DELTA_FILE_FOLDER: "/consumer-files"
-      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "false"
+      DCR_ENABLE_DELTA_CONTEXT: "true"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/worship-services-sensitive"
     volumes:
-      - ./config/loket-consumer/positions-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./config/loket-consumer/worship-services-sensitive-dispatching:/config/triples-dispatching/custom-dispatching
       - ./data/files/consumer-files/worship-services-sensitive:/consumer-files/
     restart: always
     labels:
