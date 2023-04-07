@@ -35,7 +35,7 @@ services:
     restart: always
     logging: *default-logging
   db:
-    image: semtech/mu-authorization:feature-service-roam-r1
+    image: semtech/mu-authorization:feature-service-roam-r1.1
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -72,7 +72,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.21.1
+    image: semtech/mu-cl-resources:1.22.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     links:
