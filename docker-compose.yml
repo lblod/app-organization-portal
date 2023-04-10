@@ -218,6 +218,9 @@ services:
       - ./config/jobs-controller/:/config/
   construct-administrative-unit-relationships:
     image: lblod/construct-administrative-unit-relationships-service:0.1.1
+    environment:
+      START_DATE_WORSHIP_GOVERNING_BODY: "2023-04-01T00:00:00"
+      END_DATE_WORSHIP_GOVERNING_BODY: "2026-03-31T00:00:00"
     links:
       - db:database
     restart: always
@@ -230,7 +233,7 @@ services:
   # DELTA GENERAL
   ################################################################################
   delta-producer-dump-file-publisher:
-    image: lblod/delta-producer-dump-file-publisher:0.9.0
+    image: lblod/delta-producer-dump-file-publisher:0.9.1
     volumes:
       - ./config/delta-producer/dump-file-publisher:/config
       - ./data/files:/share
