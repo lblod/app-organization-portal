@@ -1,0 +1,41 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur .
+    ?bestuur ?pbestuur ?obestuur .
+    ?primarySite ?pprimarySite ?oprimarySite .
+    ?address ?paddress ?oaddress .
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+    ?identifier ?pidentifier ?oidentifier .
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    VALUES ?bestuur {
+      <http://data.lblod.info/id/besturenVanDeEredienst/63638B718DE5818A7C9F4358> # OP-1909 :: Ensar
+      <http://data.lblod.info/id/besturenVanDeEredienst/6374E1604B5FEAF28DEDE73C> # OP-1913 :: Attaqwa
+      <http://data.lblod.info/id/besturenVanDeEredienst/6374E0034B5FEAF28DEDE730> # OP-1914 :: Imam-i Buhari
+      <http://data.lblod.info/id/besturenVanDeEredienst/62C2DB1AD7779543F7779588> # OP-1926 :: Orthodoxe Parochie van de Heilige Nino
+      <http://data.lblod.info/id/besturenVanDeEredienst/625E764BFEE49A5CF118EE5C> # OP-1924 :: Islamitisch en cultureel centrum Al Umma Linkeroever
+      <http://data.lblod.info/id/besturenVanDeEredienst/62E8C415D7779543F77796A7> # OP-1922 :: Essalaam
+    }
+
+    ?representatieveOrgaan <http://www.w3.org/ns/org#linkedTo> ?bestuur .
+
+    ?bestuur <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite ;
+      <http://www.w3.org/ns/adms#identifier> ?identifier ;
+      ?pbestuur ?obestuur .
+
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address ;
+      <http://www.w3.org/ns/org#siteAddress> ?contactPoint ;
+      ?pprimarySite ?oprimarySite .
+
+    ?address ?paddress ?oaddress .
+
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+
+    ?identifier <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredIdentifier ;
+      ?pidentifier ?oidentifier .
+
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+}

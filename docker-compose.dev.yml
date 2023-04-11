@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
   identifier:
@@ -16,6 +16,8 @@ services:
   migrations:
     volumes:
       - ./config/dev-migrations:/data/migrations/dev/
+    restart: "no"
+  migrations-triggering-indexing:
     restart: "no"
   resource:
     restart: "no"
@@ -38,7 +40,9 @@ services:
     restart: "no"
   accountdetail:
     restart: "no"
-  privacy:
+  privacy-unit:
+    restart: "no"
+  privacy-worship:
     restart: "no"
   adressenregister:
     restart: "no"
@@ -46,12 +50,6 @@ services:
     image: lblod/frontend-organization-portal:latest
     restart: "no"
   uri-info:
-    restart: "no"
-  delta-producer-bg-jobs-initiator-administrative-units:
-    restart: "no"
-  delta-producer-pub-graph-maintainer-administrative-units:
-    restart: "no"
-  delta-producer-json-diff-publisher-administrative-units:
     restart: "no"
   delta-producer-bg-jobs-initiator-organizations:
     restart: "no"
@@ -71,5 +69,23 @@ services:
     restart: "no"
   delta-producer-dump-file-publisher:
     restart: "no"
-  #sync-with-sharepoint:
+  organizations-sync-with-sharepoint:
+    restart: "no"
+  #contacts-sync-with-sharepoint:
   #  restart: "no"
+  construct-administrative-unit-relationships:
+    restart: "no"
+  delta-producer-bg-jobs-initiator-worship-posts:
+    restart: "no"
+  delta-producer-pub-graph-maintainer-worship-posts:
+    restart: "no"
+  # use this to test acmidm
+  # tlsproxy:
+  #   image: caddy:2
+  #   restart: "no"
+  #   ports:
+  #     - "443:443"
+  #   environment:
+  #     OP_ADDRESS: "organisaties.abb.lblod.info"
+  #   volumes:
+  #     - ./config/tlsproxy-mock/Caddyfile:/etc/caddy/Caddyfile

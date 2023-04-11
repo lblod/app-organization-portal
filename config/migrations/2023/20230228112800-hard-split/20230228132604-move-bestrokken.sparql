@@ -1,0 +1,36 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> ?bestrokke.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> ?bestrokke.
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    
+    ?s <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> ?bestrokke.
+
+    }
+
+}
+
+
+

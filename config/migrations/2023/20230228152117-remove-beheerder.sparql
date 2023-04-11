@@ -1,0 +1,58 @@
+PREFIX  ext:  <http://mu.semte.ch/vocabularies/ext/>
+DELETE where {
+    graph <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472>  ?p ?o.
+    <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958>  ?aP ?aO.
+    <http://data.lblod.info/id/persoon/f3610493-f6e1-4490-9723-628fe0213491> ?wp ?wo.
+    <http://data.lblod.info/id/account/2a88a4b4-4672-45eb-b072-c930bf3b40ae> ?wpap ?wpao.
+    }
+}
+;
+DELETE where {
+    graph <http://mu.semte.ch/graphs/organizations/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> {
+    <http://data.lblod.info/id/persoon/d39fe09e-d339-4e43-8680-dbbcfb3d3472>  ?p ?o.
+    <http://data.lblod.info/id/account/3a91ff60-07c1-4136-ac5e-55cf401e0958>  ?aP ?aO.
+    <http://data.lblod.info/id/persoon/f3610493-f6e1-4490-9723-628fe0213491> ?wp ?wo.
+    <http://data.lblod.info/id/account/2a88a4b4-4672-45eb-b072-c930bf3b40ae> ?wpap ?wpao.
+    }
+}
+;
+
+DELETE WHERE {
+    graph <http://mu.semte.ch/graphs/public> {
+            <http://data.lblod.info/id/account/cd52ed34-7bcd-41df-a7d4-c805c1d1a197> ext:sessionRole "ABBOrganisatiePortaalErediensten-beheerder",
+                                                                                              "ABBOrganisatiePortaalGebruiker-beheerder" .
+                                                                                              
+    }
+}
+
+;
+
+;
+
+DELETE WHERE {
+    graph <http://mu.semte.ch/graphs/organizations/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> {
+            <http://data.lblod.info/id/account/cd52ed34-7bcd-41df-a7d4-c805c1d1a197> ext:sessionRole "ABBOrganisatiePortaalErediensten-beheerder",
+                                                                                              "ABBOrganisatiePortaalGebruiker-beheerder" .
+                                                                                              
+
+    }
+}
+
+
+INSERT DATA {
+GRAPH  <http://mu.semte.ch/graphs/organizations/141d9d6b-54af-4d17-b313-8d1c30bc3f5b>{
+  <http://data.lblod.info/id/account/cd52ed34-7bcd-41df-a7d4-c805c1d1a197> ext:sessionRole "ABBOrganisatiePortaalErediensten-editeerder",
+                                                                                              "ABBOrganisatiePortaalGebruiker-editeerder" .
+
+}
+}
+;
+
+INSERT DATA {
+GRAPH  <http://mu.semte.ch/graphs/organizations/public>{
+  <http://data.lblod.info/id/account/cd52ed34-7bcd-41df-a7d4-c805c1d1a197> ext:sessionRole "ABBOrganisatiePortaalErediensten-editeerder",
+                                                                                              "ABBOrganisatiePortaalGebruiker-editeerder" .
+
+}
+}

@@ -77,7 +77,7 @@ defmodule Dispatcher do
   end
 
   match "/administrative-units/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/administrative-units/"
+    Proxy.forward conn, path, "http://resource/administrative-units/"
   end
 
   match "/administrative-unit-classification-codes/*path", %{ accept: [:json], layer: :api} do
@@ -85,7 +85,7 @@ defmodule Dispatcher do
   end
 
   match "/worship-administrative-units/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/worship-administrative-units/"
+    Proxy.forward conn, path, "http://resource/worship-administrative-units/"
   end
 
   match "/worship-services/*path", %{ accept: [:json], layer: :api} do
@@ -97,7 +97,7 @@ defmodule Dispatcher do
   end
 
   match "/central-worship-services/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/central-worship-services/"
+    Proxy.forward conn, path, "http://resource/central-worship-services/"
   end
 
   match "/representative-bodies/*path", %{ accept: [:json], layer: :api} do
@@ -113,7 +113,7 @@ defmodule Dispatcher do
   end
 
   match "/local-involvements/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/local-involvements/"
+    Proxy.forward conn, path, "http://resource/local-involvements/"
   end
 
   match "/identifiers/*path", %{ accept: [:json], layer: :api} do
@@ -220,10 +220,13 @@ defmodule Dispatcher do
   ###############
 
   match "/accounts", %{ accept: [:json], layer: :api} do
-   Proxy.forward conn, [], "http://resource/accounts/"
+    Proxy.forward conn, [], "http://resource/accounts/"
   end
   match "/accounts/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://accountdetail/accounts/"
+  end
+  match "/active-role/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://roles/"
   end
   match "/groups/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/groups/"
@@ -242,7 +245,7 @@ defmodule Dispatcher do
   ###############################################################
 
   match "/search/*path", %{  accept: %{ json: true }, layer: :api_services} do
-   IO.puts("hey")
+  IO.puts("hey")
     Proxy.forward conn, path, "http://search/"
   end
 
@@ -262,26 +265,45 @@ defmodule Dispatcher do
     forward conn, path, "http://adressenregister/"
   end
 
+  match "/worship/person-information-updates/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy-worship/person-information-updates"
+  end
+
+  match "/worship/person-information-requests/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy-worship/person-information-requests"
+  end
+
+  match "/worship/person-information-ask/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy-worship/person-information-ask/"
+  end
+
+  match "/worship/person-information-validate-ssn/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://privacy-worship/person-information-validate-ssn/"
+  end
+
   match "/person-information-updates/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy/person-information-updates"
+    forward conn, path, "http://privacy-unit/person-information-updates"
   end
 
   match "/person-information-requests/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy/person-information-requests"
+    forward conn, path, "http://privacy-unit/person-information-requests"
   end
 
   match "/person-information-ask/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy/person-information-ask/"
+    forward conn, path, "http://privacy-unit/person-information-ask/"
   end
 
   match "/person-information-validate-ssn/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy/person-information-validate-ssn/"
+    forward conn, path, "http://privacy-unit/person-information-validate-ssn/"
   end
 
   get "/uri-info/*path", %{ layer: :api_services, accept: %{ json: true } } do
     forward conn, path, "http://uri-info/"
   end
 
+  post "/create-administrative-unit-relationships/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://construct-administrative-unit-relationships/create-relationships/"
+  end
 
   #################################################################
   # ERROR REPORT
@@ -300,7 +322,7 @@ defmodule Dispatcher do
   end
 
   get "/files/*path" , %{ layer: :api_services, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/files/"
+    Proxy.forward conn, path, "http://resource/files/"
   end
 
   #################################################################
@@ -308,11 +330,11 @@ defmodule Dispatcher do
   #################################################################
 
   get "/datasets/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/datasets/"
+    Proxy.forward conn, path, "http://resource/datasets/"
   end
 
   get "/distributions/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://cache/distributions/"
+    Proxy.forward conn, path, "http://resource/distributions/"
   end
 
 
@@ -330,6 +352,22 @@ defmodule Dispatcher do
 
   get "/sync/organizations/files/*path" do
     Proxy.forward conn, path, "http://delta-producer-json-diff-file-publisher-organizations/files/"
+  end
+
+  #################################################################
+  #  DELTA: public
+  #################################################################
+
+  get "/sync/public/files/*path" do
+    Proxy.forward conn, path, "http://delta-producer-json-diff-publisher-public/files/"
+  end
+
+  #################################################################
+  #  DELTA: posts
+  #################################################################
+
+  get "/sync/worship-posts/files/*path" do
+    Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-worship-posts/files/"
   end
 
   ###############################################################

@@ -1,0 +1,80 @@
+# http://data.lblod.info/id/centraleBesturenVanDeEredienst/c5908a253d1aa2fccb75e6fff439c93a	CKB Kruisem --> Stays
+# http://data.lblod.info/id/centraleBesturenVanDeEredienst/64dcf0eaafd13dea75717d9014982106	CKB Kruishoutem --> DELETE KBO +
+# http://data.lblod.info/id/centraleBesturenVanDeEredienst/6d4226a920cc47e4d4bbfddb451f4883	CKB Aalter NIET actief --> Change to "0535.589.755" +
+# http://data.lblod.info/id/centraleBesturenVanDeEredienst/e08a8bc5828bd44e735724a79b588b13	CKB Aalter actief --> Stays
+# http://data.lblod.info/id/centraleBesturenVanDeEredienst/9e0e8f060ca954da6263243642433f44	CKB De Pinte --> Stays
+# http://data.lblod.info/id/centraleBesturenVanDeEredienst/fa51c0cd4530f0db4caea031f75305d3	CKB Sint-Martens-Latem  --> DELETE KBO +
+# http://data.lblod.info/id/besturenVanDeEredienst/619a5721094b28807dca8d04de69e3e0	Islamitische geloofsgemeenschap Yunus Emre van Genk --> Stays
+# http://data.lblod.info/id/centraleBesturenVanDeEredienst/e17dabfaf8f562ad181f422006c42e97	CB van de Islamitische gemeenschappen in Limburg --> Delete KBO +
+
+
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX lblodlg: <https://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu:  <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX schema: <http://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+  GRAPH ?g {
+    ?bestuur
+        adms:identifier
+          ?identifier_kbo.
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/centraleBesturenVanDeEredienst/6d4226a920cc47e4d4bbfddb451f4883>
+        adms:identifier
+          <http://data.lblod.info/id/identificatoren/d029ebdf899249f2b3d1ae88be0ebf65>.
+      <http://data.lblod.info/id/identificatoren/d029ebdf899249f2b3d1ae88be0ebf65>
+        a adms:Identifier;
+        mu:uuid "d029ebdf899249f2b3d1ae88be0ebf65";
+        skos:notation
+          "KBO nummer";
+        generiek:gestructureerdeIdentificator
+          <http://data.lblod.info/id/gestructureerdeIdentificatoren/6a197d71a59d41ca900009ef84c72002>.
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/6a197d71a59d41ca900009ef84c72002>
+        a generiek:GestructureerdeIdentificator;
+        mu:uuid "6a197d71a59d41ca900009ef84c72002";
+        generiek:lokaleIdentificator
+          "0535589755".
+  }
+} WHERE {
+  GRAPH ?g {
+    VALUES ?bestuur {
+      <http://data.lblod.info/id/centraleBesturenVanDeEredienst/64dcf0eaafd13dea75717d9014982106>
+      <http://data.lblod.info/id/centraleBesturenVanDeEredienst/fa51c0cd4530f0db4caea031f75305d3>
+      <http://data.lblod.info/id/centraleBesturenVanDeEredienst/e17dabfaf8f562ad181f422006c42e97>
+      <http://data.lblod.info/id/centraleBesturenVanDeEredienst/6d4226a920cc47e4d4bbfddb451f4883>
+    }
+
+    ?bestuur
+        adms:identifier
+          ?identifier_kbo.
+    ?identifier_kbo
+      skos:notation
+        "KBO nummer".
+  }
+}

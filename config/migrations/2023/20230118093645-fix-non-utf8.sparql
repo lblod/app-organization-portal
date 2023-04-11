@@ -1,0 +1,92 @@
+delete {
+graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s <http://xmlns.com/foaf/0.1/givenName> ?givenName.
+  }
+}
+
+insert {
+graph <http://mu.semte.ch/graphs/organisatieportaal> {
+     ?s <http://xmlns.com/foaf/0.1/givenName> "André".
+}
+}
+
+where {
+graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s  <http://xmlns.com/foaf/0.1/givenName> ?givenName.
+
+    FILTER (?s in(
+         <http://data.lblod.info/id/personen/6246DD30D5CA8D65E42B3030>,
+         <http://data.lblod.info/id/personen/635BD7518DE5818A7C9F4313>,
+         <http://data.lblod.info/id/personen/6246DDA3D5CA8D65E42B3031>,
+         <http://data.lblod.info/id/personen/62384F97B72F9F4B33508056>,
+         <http://data.lblod.info/id/personen/623993F1B72F9F4B3350808E>
+    ))
+}
+
+}
+
+# The associated call to trigger a reindex is :
+
+# curl --location --request POST '172.19.0.23/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw ' [
+#   {
+#     "deletes": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/6246DD30D5CA8D65E42B3030" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "6246DD30D5CA8D65E42B3030" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/635BD7518DE5818A7C9F4313" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "635BD7518DE5818A7C9F4313" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/6246DDA3D5CA8D65E42B3031" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "6246DDA3D5CA8D65E42B3031" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/62384F97B72F9F4B33508056" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "62384F97B72F9F4B33508056" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/623993F1B72F9F4B3350808E" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "623993F1B72F9F4B3350808E" }
+#       }
+#
+#     ],
+#     "inserts": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/6246DD30D5CA8D65E42B3030" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "6246DD30D5CA8D65E42B3030" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/635BD7518DE5818A7C9F4313" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "635BD7518DE5818A7C9F4313" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/6246DDA3D5CA8D65E42B3031" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "6246DDA3D5CA8D65E42B3031" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/62384F97B72F9F4B33508056" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "62384F97B72F9F4B33508056" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/623993F1B72F9F4B3350808E" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "623993F1B72F9F4B3350808E" }
+#       }
+#
+#
+#     ]
+#   }
+# ]'

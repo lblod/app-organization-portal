@@ -1,0 +1,24 @@
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?secondary
+      schema:contactType "Primary"
+  }
+}
+WHERE  {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?primary 
+      a schema:ContactPoint;
+      locn:address ?a1;
+      schema:telephone ?t1.
+    ?mandataris schema:contactPoint ?primary, ?secondary.
+    ?secondary
+      schema:telephone ?t2.
+    FILTER NOT EXISTS {
+     ?secondary locn:address ?a2.
+    }
+  }
+}    

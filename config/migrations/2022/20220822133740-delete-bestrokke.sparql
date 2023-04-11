@@ -1,0 +1,87 @@
+  PREFIX org: <http://www.w3.org/ns/org#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+  PREFIX locn: <http://www.w3.org/ns/locn#>
+  PREFIX schema: <http://schema.org/>
+  PREFIX regorg: <http://www.w3.org/ns/regorg#>
+  PREFIX person: <http://www.w3.org/ns/person#>
+  PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+  PREFIX dbpedia: <http://dbpedia.org/ontology/>
+  PREFIX adms: <http://www.w3.org/ns/adms#>
+  PREFIX euro: <http://data.europa.eu/m8g/>
+  PREFIX prov: <http://www.w3.org/ns/prov#>
+  PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+  PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+  PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+  PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX lblodlg: <https://data.lblod.info/vocabularies/leidinggevenden/>
+  PREFIX dc_terms: <http://purl.org/dc/terms/>
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+  PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+  PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+  PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+  DELETE {GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+  ?administrativeUnit ere:betrokkenBestuur ?betrokkenheid.
+  ?betrokkenheid ?p ?o 
+
+  } 
+
+
+  } 
+
+  where {
+
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+      ?betrokkenheid org:organization ?bestuur;
+        rdf:type ere:BetrokkenLokaleBesturen.
+      ?administrativeUnit ere:betrokkenBestuur ?betrokkenheid.
+
+        ?betrokkenheid org:organization ?worshipService.
+
+      ?betrokkenheid ere:typebetrokkenheid ?typebetrokkenheid.
+        
+        ?betrokkenheid ?p ?o.
+      FILTER(?typebetrokkenheid = <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e>  ).
+      
+      FILTER (?betrokkenheid IN (
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6206138D5747C883CA1D2C73>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/62061D515747C883CA1D2C8E>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/b683c8cfa57948756d870020effe6c5a>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/1db65cbda72a1977c68640cc96055942>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD256D51BFC225E4ECF769>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD254851BFC225E4ECF768>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD251C51BFC225E4ECF767>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD24EA51BFC225E4ECF766>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD25ED51BFC225E4ECF76B>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FA3C3851BFC225E4ECF478>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD28A051BFC225E4ECF76E>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/328d25723be80d86c5a84ed004055693>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/1d4d7f8bd65da0e060ec67d4f4873cb3>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD21FF51BFC225E4ECF756>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD219051BFC225E4ECF754>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD20AA51BFC225E4ECF752>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/620611665747C883CA1D2C6F>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD215251BFC225E4ECF753>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD21C351BFC225E4ECF755>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD22AD51BFC225E4ECF758>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD1F7951BFC225E4ECF750>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD1F4551BFC225E4ECF74F>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD1F0E51BFC225E4ECF74E>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/61FD1FE551BFC225E4ECF751>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6206126C5747C883CA1D2C71>,
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/62061EB65747C883CA1D2C98>
+  
+      ))
+
+      
+    }
+  }
+
+

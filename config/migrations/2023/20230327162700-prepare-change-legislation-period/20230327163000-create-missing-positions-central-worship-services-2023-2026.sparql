@@ -1,0 +1,152 @@
+# Add missing mandates to central worship services
+
+## 2023 - 2026
+
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?orgaanInTime org:hasPost ?expert .
+
+    ?expert a mandaat:Mandaat ;
+      mu:uuid ?uuidExpert ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/8c91c321ad477c4fc372ee36358d3ed4> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?orgaan besluit:bestuurt ?worshipService .
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
+      mandaat:bindingStart "2023-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      mandaat:bindingEinde "2026-03-31T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+    FILTER NOT EXISTS {
+      ?orgaanInTime org:hasPost ?expert .
+      ?expert org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/8c91c321ad477c4fc372ee36358d3ed4> .
+    }
+  }
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Expert 2023-2026")) as ?uuidExpert)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidExpert)) AS ?expert)
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?orgaanInTime org:hasPost ?vertegenwoordiger .
+
+    ?vertegenwoordiger a mandaat:Mandaat ;
+      mu:uuid ?uuidVertegenwoordiger ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/6e26e94ea4b127eeb850fb6debe07271> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?orgaan besluit:bestuurt ?worshipService .
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
+      mandaat:bindingStart "2023-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      mandaat:bindingEinde "2026-03-31T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+    FILTER NOT EXISTS {
+      ?orgaanInTime org:hasPost ?vertegenwoordiger .
+      ?vertegenwoordiger org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/6e26e94ea4b127eeb850fb6debe07271> .
+    }
+  }
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Vertegenwoordiger 2023-2026")) as ?uuidVertegenwoordiger)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidVertegenwoordiger)) AS ?vertegenwoordiger)
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?orgaanInTime org:hasPost ?secretaris .
+
+    ?secretaris a mandaat:Mandaat ;
+      mu:uuid ?uuidSecretaris ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/e2af0ea1a6af96cfb698ac39ad985eea> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?orgaan besluit:bestuurt ?worshipService .
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
+      mandaat:bindingStart "2023-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      mandaat:bindingEinde "2026-03-31T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+    FILTER NOT EXISTS {
+      ?orgaanInTime org:hasPost ?secretaris .
+      ?secretaris org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/e2af0ea1a6af96cfb698ac39ad985eea> .
+    }
+  }
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Secretaris 2023-2026")) as ?uuidSecretaris)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidSecretaris)) AS ?secretaris)
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?orgaanInTime org:hasPost ?voorzitter .
+
+    ?voorzitter a mandaat:Mandaat ;
+      mu:uuid ?uuidVoorzitter ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5960262f753661cf84329f3afa9f7df7> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?orgaan besluit:bestuurt ?worshipService .
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
+      mandaat:bindingStart "2023-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      mandaat:bindingEinde "2026-03-31T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+    FILTER NOT EXISTS {
+      ?orgaanInTime org:hasPost ?voorzitter .
+      ?voorzitter org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5960262f753661cf84329f3afa9f7df7> .
+    }
+  }
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Voorzitter 2023-2026")) as ?uuidVoorzitter)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidVoorzitter)) AS ?voorzitter)
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?orgaanInTime org:hasPost ?bestuurslid .
+
+    ?bestuurslid a mandaat:Mandaat ;
+      mu:uuid ?uuidBestuurslid ;
+      org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/f848fa3cc2c5fb7c581a116866293925> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?worshipService a ere:CentraalBestuurVanDeEredienst .
+    ?orgaan besluit:bestuurt ?worshipService .
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
+      mandaat:bindingStart "2023-04-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      mandaat:bindingEinde "2026-03-31T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+    FILTER NOT EXISTS {
+      ?worshipService <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> .
+    }
+
+    FILTER NOT EXISTS {
+      ?orgaanInTime org:hasPost ?bestuurslid .
+      ?bestuurslid org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/f848fa3cc2c5fb7c581a116866293925> .
+    }
+  }
+
+  BIND(MD5(CONCAT(?worshipService, ?orgaan, "Bestuurslid 2023-2026")) as ?uuidBestuurslid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?uuidBestuurslid)) AS ?bestuurslid)
+}

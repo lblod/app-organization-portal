@@ -1,0 +1,101 @@
+  PREFIX org: <http://www.w3.org/ns/org#>
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+  PREFIX locn: <http://www.w3.org/ns/locn#>
+  PREFIX schema: <http://schema.org/>
+  PREFIX regorg: <http://www.w3.org/ns/regorg#>
+  PREFIX person: <http://www.w3.org/ns/person#>
+  PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+  PREFIX dbpedia: <http://dbpedia.org/ontology/>
+  PREFIX adms: <http://www.w3.org/ns/adms#>
+  PREFIX euro: <http://data.europa.eu/m8g/>
+  PREFIX prov: <http://www.w3.org/ns/prov#>
+  PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+  PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+  PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+  PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+  PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+  PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+  PREFIX lblodlg: <https://data.lblod.info/vocabularies/leidinggevenden/>
+  PREFIX dc_terms: <http://purl.org/dc/terms/>
+  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+  PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+  PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+  PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+  PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+  PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+  PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+  PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+  DELETE {GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+  ?administrativeUnit ere:betrokkenBestuur ?betrokkenheid.
+  ?betrokkenheid ?p ?o 
+
+  } 
+
+
+  } 
+
+  where {
+
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+      ?betrokkenheid org:organization ?bestuur;
+        rdf:type ere:BetrokkenLokaleBesturen.
+      ?administrativeUnit ere:betrokkenBestuur ?betrokkenheid.
+
+        ?betrokkenheid org:organization ?worshipService.
+
+      ?betrokkenheid ere:typebetrokkenheid ?typebetrokkenheid.
+        
+        ?betrokkenheid ?p ?o.
+      FILTER(?typebetrokkenheid = <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e>  ).
+      
+      FILTER (?worshipService IN (
+      <http://data.lblod.info/id/besturenVanDeEredienst/6232329df9377210c3576b17e116de8b>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/43fb31ca870d9c3ea47d02f153c8be6f>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/bba84f42c09cd7c8b2e5a9829a820cf5>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/fd4ae252fffca29852354b12ef37b086>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/ca0daee18a29e187017bf236e26f1ec2>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/619a5721094b28807dca8d04de69e3e0>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/0f2a4604a962926d67518bb3846af1c9>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/58d6bea16bd86c7df65caa9625af97aa>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/928335b5a7b1cb7850c7cc98574e9ec9>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/a6b5c5db3a261ca024a42fe9489496a9>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/da2184c3dca9eb7c4828a50c0e9f5af4>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/e0e7121368dfc45d9a809a1a36b65e32>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/6b860cbdc90a8952bdd14b707817225e>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/a8faa182c59167da7551f40979dc5022>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/999b011fe6b90b3b546612c25db4b607>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/c7d6827eb88cd977146e72583461071b>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/c85d82dfc9fcf2ab5857bb9891a6c447>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/c8c12d03182f27ce8710f4c2cf927f3d>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/7e3fb673922f9495c48251f316c5c4ff>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/a8880f3d8b482788c5f3adbf58f01b4f>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/a8d9f1a45c11c6761306bdf680349593>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/b81199eddd02f291bd4c1a0e29e5b9c8>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/b540096ac8be2c9c72dafd59e61080c5>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/24ff08070bc1e47b498ab8139b9d3792>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/adeaab8a02815bf2c5816165a45ad4c5>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/260312c07d8e00358064a362dee3506f>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/934cb872a84a86ceb9a9e10abb1d08fa>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/ef77bb3094fdc4a7ed7e09551500acfe>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/08fe04ba8cb033d7d1d59f85c31f9ee0>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/8c46fc84fb7a11cca44bde007a0c081c>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/db46915e77fbf8f083e9861c802b2b13>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/104a6b6eabd0192afdeb70d3b517aef1>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/8f37ce5f576a898f5b281fa118a7d9a4>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/62C7DAFED7779543F77795E5>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/cd7d4208e8e6291d75b33d89e3a0a439>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/a6e0531c6c4b5885552604163cfabfbc>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/7b0d877894765abf5052e12c7bed553e>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/4fd6da5f1e1ea6e60f611abc4df28456>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/7343155a8b9a107bdbd4b65cc6318d50>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/f95b761af55091b491fd62bd6bed11dc>,
+  <http://data.lblod.info/id/besturenVanDeEredienst/c1c334a2cc56ac501badce5e879aec65>
+      ))
+
+      
+    }
+  }
+
+

@@ -1,0 +1,79 @@
+# OP-1929 : Delete duplicated members from worship service
+
+# Delete wrong peson and mandatarissen
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { ?s ?p ?o . }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> { 
+    VALUES ?s {
+      <http://data.lblod.info/id/personen/74c5800e8489c825f318acc9dcb031d0> 
+      <http://data.lblod.info/id/mandatarissen/6380A02F4B5FEAF28DEDE975>
+      <http://data.lblod.info/id/mandatarissen/6380BBB04B5FEAF28DEDE97E>
+      <http://data.lblod.info/id/mandatarissen/63809FC24B5FEAF28DEDE974>
+      <http://data.lblod.info/id/mandatarissen/63809F414B5FEAF28DEDE972>
+      <http://data.lblod.info/id/mandatarissen/63809F804B5FEAF28DEDE973>
+      <http://data.lblod.info/id/mandatarissen/6380D0854B5FEAF28DEDE97F>
+    }
+    ?s ?p ?o . 
+  }
+}
+;
+# Delete sensitive data
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> { 
+    <http://data.lblod.info/id/personen/74c5800e8489c825f318acc9dcb031d0> ?pp ?op . 
+  }
+} 
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> { 
+    <http://data.lblod.info/id/personen/74c5800e8489c825f318acc9dcb031d0> ?pp ?op . 
+  }
+}
+
+# The associated call to trigger a reindex is :
+
+# curl --location --request POST '172.20.0.26/update' \
+# --header 'Content-Type: application/vnd.api+json' \
+# --data-raw ' [
+#   {
+#     "deletes": [
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/personen/74c5800e8489c825f318acc9dcb031d0" },
+#         "predicate": { "type": "uri", "value": "http://mu.semte.ch/vocabularies/core/uuid" },
+#         "object": { "type": "string", "value": "74c5800e8489c825f318acc9dcb031d0" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/6380A02F4B5FEAF28DEDE975" },
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/6380BBB04B5FEAF28DEDE97E" },
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/63809FC24B5FEAF28DEDE974" },
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/63809F414B5FEAF28DEDE972" },
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/63809F804B5FEAF28DEDE973" },
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris" }
+#       },
+#       {
+#         "subject": { "type": "uri", "value": "http://data.lblod.info/id/mandatarissen/6380D0854B5FEAF28DEDE97F" },
+#         "predicate": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" },
+#         "object": { "type": "uri", "value": "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris" }
+#       }
+#     ],
+#     "inserts": []
+#   }
+# ]'

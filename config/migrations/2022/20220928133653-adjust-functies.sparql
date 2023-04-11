@@ -1,0 +1,114 @@
+
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# change functie for persoon with kerkbedienaar
+DELETE {
+    graph ?g {
+       <http://data.lblod.info/id/positiesBedienaar/615C0FB9375CFC000A0005DB> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/61C1A7043C1A230C43B452EC> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/61EAC54BBA00DD4BE2501C75> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/61373446375CFC000A0002DA> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/631994372F583C7A1CD0DBE5> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/6156C06B375CFC000A000548> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+    }
+}
+INSERT {
+    graph ?g {
+       <http://data.lblod.info/id/positiesBedienaar/615C0FB9375CFC000A0005DB> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2>.
+       <http://data.lblod.info/id/positiesBedienaar/61C1A7043C1A230C43B452EC> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/5c7fefe1b921dfd4c550924bb7a9331d>.
+       <http://data.lblod.info/id/positiesBedienaar/61EAC54BBA00DD4BE2501C75> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/5c7fefe1b921dfd4c550924bb7a9331d>.
+       <http://data.lblod.info/id/positiesBedienaar/61373446375CFC000A0002DA> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/5c7fefe1b921dfd4c550924bb7a9331d>.
+       <http://data.lblod.info/id/positiesBedienaar/631994372F583C7A1CD0DBE5> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/5c7fefe1b921dfd4c550924bb7a9331d>.
+       <http://data.lblod.info/id/positiesBedienaar/6156C06B375CFC000A000548> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/fa4191f9d7050fe62ec3fc0e16541711>.
+    }
+}
+WHERE {
+    graph ?g {
+       <http://data.lblod.info/id/positiesBedienaar/615C0FB9375CFC000A0005DB> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/61C1A7043C1A230C43B452EC> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/61EAC54BBA00DD4BE2501C75> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/61373446375CFC000A0002DA> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/631994372F583C7A1CD0DBE5> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+       <http://data.lblod.info/id/positiesBedienaar/6156C06B375CFC000A000548> <http://data.lblod.info/vocabularies/erediensten/functie> <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb>.
+
+    }
+}
+
+;
+
+# remove the old functies
+DELETE {
+    graph ?g {
+        ?functie ?p ?o.
+    }
+}
+where {
+    graph ?g {
+    ?functie ?p ?o.
+
+    VALUES ?functie {
+      <http://lblod.data.gift/concepts/689b3123e29cff78e310df38a774b9bb> # Kerkbedienaar
+      <http://lblod.data.gift/concepts/97083de35cd36b36a72185807e941c8a> # Tweede predikant
+      <http://lblod.data.gift/concepts/158b739bc1087d5246df2fa54acff29c> # Secretaris bij het voorzitterschap van de Synode
+      <http://lblod.data.gift/concepts/92aad8fc5cc7a13a7b0ddc7cc13c02aa> # Hulppredikant
+      <http://lblod.data.gift/concepts/67548f1fe5bf52e5a7ad33dcce47472d> # Kapelaan van de andere kerken
+      <http://lblod.data.gift/concepts/85543bba7601ca598212f0feb9bdb4c2> # Predikant bij het voorzitterschap van de Synode
+
+
+    }
+    }
+
+}
+
+;
+
+# rename functies
+DELETE {
+    graph ?g {
+        <http://lblod.data.gift/concepts/ea58c73d9b4fc8a24a4b3eaa73a33995>  skos:prefLabel "Kapelaan".
+        <http://lblod.data.gift/concepts/59837b12c14f215a4efadae950be0072>  skos:prefLabel "Onderpastoor".
+        <http://lblod.data.gift/concepts/84b3a2321d1b69b6de782bb04e1a6862>  skos:prefLabel "Parochieassistent".
+        <http://lblod.data.gift/concepts/83d50e9184ae4a628851370079d162f6>  skos:prefLabel "Eerste predikant".
+        <http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254>  skos:prefLabel "Pastoor-deken".
+        <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2>  skos:prefLabel "Bedienaar".
+        <http://lblod.data.gift/concepts/fa4191f9d7050fe62ec3fc0e16541711>  skos:prefLabel "Kapelaan van de kerken te Antwerpen en te Elsene (Geünifieerde anglicaanse kerk)".
+    }
+}
+INSERT {
+    graph ?g {
+        <http://lblod.data.gift/concepts/ea58c73d9b4fc8a24a4b3eaa73a33995>  skos:prefLabel "Coördinator".
+        <http://lblod.data.gift/concepts/59837b12c14f215a4efadae950be0072>  skos:prefLabel "Medepastoor".
+        <http://lblod.data.gift/concepts/84b3a2321d1b69b6de782bb04e1a6862>  skos:prefLabel "Aangesteld priester".
+        <http://lblod.data.gift/concepts/83d50e9184ae4a628851370079d162f6>  skos:prefLabel "Predikant".
+        <http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254>  skos:prefLabel "Rector".
+        <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2>  skos:prefLabel "Priester".
+        <http://lblod.data.gift/concepts/fa4191f9d7050fe62ec3fc0e16541711>  skos:prefLabel "Kapelaan".
+
+
+    }
+}
+WHERE {
+    graph ?g {
+        <http://lblod.data.gift/concepts/ea58c73d9b4fc8a24a4b3eaa73a33995>  skos:prefLabel "Kapelaan".
+        <http://lblod.data.gift/concepts/59837b12c14f215a4efadae950be0072>  skos:prefLabel "Onderpastoor".
+        <http://lblod.data.gift/concepts/84b3a2321d1b69b6de782bb04e1a6862>  skos:prefLabel "Parochieassistent".
+        <http://lblod.data.gift/concepts/83d50e9184ae4a628851370079d162f6>  skos:prefLabel "Eerste predikant".
+        <http://lblod.data.gift/concepts/04d3b5325f2ebc5eaf96849519af4254>  skos:prefLabel "Pastoor-deken".
+        <http://lblod.data.gift/concepts/efbf2ff50b5c4f693f129ac03319c4f2>  skos:prefLabel "Bedienaar".
+        <http://lblod.data.gift/concepts/fa4191f9d7050fe62ec3fc0e16541711>  skos:prefLabel "Kapelaan van de kerken te Antwerpen en te Elsene (Geünifieerde anglicaanse kerk)".
+
+    }
+}
+
+;
+
+INSERT DATA {
+    graph <http://mu.semte.ch/graphs/organisatieportaal> {
+        <http://lblod.data.gift/concepts/f274cb5a-ba44-4931-a1a8-38ec34513215> a <http://lblod.data.gift/vocabularies/organisatie/EredienstBeroepen>;
+                                                                               mu:uuid "f274cb5a-ba44-4931-a1a8-38ec34513215";
+                                                                               skos:prefLabel "Diaken";
+                                                                               <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/0637cccd657df25049af6c4580c6b2be>;
+                                                                               <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/0637cccd657df25049af6c4580c6b2be>.
+    }
+}

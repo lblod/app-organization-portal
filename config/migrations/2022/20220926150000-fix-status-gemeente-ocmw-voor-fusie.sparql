@@ -1,0 +1,40 @@
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?org
+      regorg:orgStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> . # Niet Actief
+  }
+} WHERE {
+  VALUES ?org {
+    <http://data.lblod.info/id/bestuurseenheden/1d43739442010a95b1910af237a4f6aa9a26ca6c9c83f646bad44a8181d407c7> # Gemeente Lovendegem
+    <http://data.lblod.info/id/bestuurseenheden/1b11f7f11c3c74c54acf86b8c1a9b8b2865e22b8973818486045a5d3aa8dff14> # Gemeente Puurs
+    <http://data.lblod.info/id/bestuurseenheden/b85b33fb0ce57e2b332599d2aaafcab35a3560b709add3cec98e21dca6cdc210> # Gemeente Knesselare
+    <http://data.lblod.info/id/bestuurseenheden/8ed14ecd083fb231f9af0f2698de728bba3f11deb0f4ea4caf9d5c1f9e3a771b> # Gemeente Nevele
+    <http://data.lblod.info/id/bestuurseenheden/db046b577b77c00cc82b51b1cdf14396364cbe1ebc0f4cfee09619bec9b0bd5e> # Gemeente Kruishoutem
+    <http://data.lblod.info/id/bestuurseenheden/e3fc7eb1c6f50aa4277e0ae180b002eddf243dab630e9278996df9951316da68> # Gemeente Neerpelt
+    <http://data.lblod.info/id/bestuurseenheden/25b05f670144f166a485a1d0ac37faca672b36642cf1647d846010d6fe9cabb5> # Gemeente Deinze (voor fusie)
+    <http://data.lblod.info/id/bestuurseenheden/d7d9ef5babd2876ad492a71c2019f02cf90c813c00befcf3682ba49186d0f4b1> # Gemeente Overpelt
+    <http://data.lblod.info/id/bestuurseenheden/5eaaceb01cc2a6bc418d5fcdc6c855bdfe1d1fcbc8abf8bb9cfcea76edbc8936> # Gemeente Meeuwen-Gruitrode
+    <http://data.lblod.info/id/bestuurseenheden/571b85dc585067ac92f9de90133e747c75f3f7e7948087ae193583b9f0fe1141> # Gemeente Sint-Amands
+    <http://data.lblod.info/id/bestuurseenheden/19537690173d82d774bf34abaa07f3b1af78139014e53aa8f172a0a558bc5e09> # Gemeente Zingem
+    <http://data.lblod.info/id/bestuurseenheden/be8c097326db7ba0e0e7c81b832da8b4cdeabe22b515494753dd95d33d9ea295> # Gemeente Opglabbeek
+    <http://data.lblod.info/id/bestuurseenheden/66374f1f46137c3240ba0690b24056a014f9ad5f36ae81e10bc14ad5a6305089> # Gemeente Zomergem
+    <http://data.lblod.info/id/bestuurseenheden/46a7ee2627bf51959f9a72fdb6f5aec942f5e07484c1bfe7da2fb8a74c830326> # Gemeente Waarschoot
+
+    <http://data.lblod.info/id/bestuurseenheden/cb6ea2dd7a009bca2aa4c1058cce5545420792b9db0a6b5516e49a4ae4b03701> # OCMW Zingem
+    <http://data.lblod.info/id/bestuurseenheden/56db39c0bb1c85e9c5aec9adb3f5af9720d4702e30f4772aecd272f03c7becea> # OCMW Deinze (voor fusie)
+    <http://data.lblod.info/id/bestuurseenheden/43ad404aee5fd4f07d575e118883934b0ad0ead0ef8cee0793b7f72e4c1ce19f> # OCMW Opglabbeek
+    <http://data.lblod.info/id/bestuurseenheden/c78f64baa2f264a2c8b5207f788c285ffc1c0393cf20e6fc83ab61548a2baf9c> # OCMW Nevele
+    <http://data.lblod.info/id/bestuurseenheden/f879d68d0f66af67aa045b1194cde7dc5d82e3bfe07746cc682be472c9556631> # OCMW Waarschoot
+    <http://data.lblod.info/id/bestuurseenheden/be5f63236aacb5478334077a901dbda6816a7b923753b49c06295777b47e6aa4> # OCMW Meeuwen-Gruitrode
+    <http://data.lblod.info/id/bestuurseenheden/19673274e30b682be3dd3178352611aa26c28ea8907fd4990ff69e01af7019f6> # OCMW Kruishoutem
+    <http://data.lblod.info/id/bestuurseenheden/2712dbaca999e57d26f1f0d3e72b2ed96113d6ac62d72b7228fd682e1324e4e5> # OCMW Puurs
+    <http://data.lblod.info/id/bestuurseenheden/51793f0f16c2b06e9c64cbc141407fcafaa340576c96988971dc0855f032940c> # OCMW Zomergem
+    <http://data.lblod.info/id/bestuurseenheden/be274f73ffbd75a9cf28222f45044f468b40692ca9c80c8c5899acf554498e24> # OCMW Sint-Amands
+    <http://data.lblod.info/id/bestuurseenheden/e3289466b88127a445e1467a360f24221bdac2723613b8adabeb131e8d9a3659> # OCMW Overpelt
+    <http://data.lblod.info/id/bestuurseenheden/92207a4e09455f59f19553e95ebc4ea1b33e6f7b2e5cf317ea31ba7ac0cbca45> # OCMW Knesselare
+    <http://data.lblod.info/id/bestuurseenheden/32d0fce422c04b004e3cf640d3aa06468f8ec8f650d578806642c1097b95d782> # OCMW Lovendegem
+    <http://data.lblod.info/id/bestuurseenheden/f5077ea4d13ee6d74749b2d9e7de428b0633388a10b436984859021cf62731b9> # OCMW Neerpelt
+  }
+}

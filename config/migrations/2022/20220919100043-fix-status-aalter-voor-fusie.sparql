@@ -1,0 +1,9 @@
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX lblodOrg: <http://lblod.data.gift/vocabularies/organisatie/>
+
+INSERT DATA{
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    <http://data.lblod.info/id/bestuurseenheden/c895809729a165666fc111a40affe229f3c8e8f1ce9dec2dcc1be1ed81b52d9b>
+      regorg:orgStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> . # Niet Actief
+  }
+} 

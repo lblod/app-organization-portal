@@ -1,0 +1,21 @@
+{
+  "version": "0.1",
+  "scripts": [
+    {
+      "documentation": {
+        "command": "mu-search-delta",
+        "description": "produce delta for mu-search",
+        "arguments": []
+      },
+      "environment": {
+        "image": "node:16",
+        "interactive": true,
+        "script": "mu-search-delta/build.sh",
+        "join_networks": true
+      },
+      "mounts": {
+        "app": "/data/app/"
+      }
+    }
+  ]
+}
