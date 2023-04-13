@@ -202,7 +202,7 @@ export default [
     match: {
       graph: {
         type: 'uri',
-        value: 'http://redpencil.data.gift/id/deltas/producer/organizations'
+        value: 'http://mu.semte.ch/graphs/administrative-unit'
       }
     },
     callback: {
@@ -215,7 +215,7 @@ export default [
       ignoreFromSelf: true,
       optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
     }
-  },
+  }/* ,
   {
     match: {
       graph: {
@@ -233,5 +233,5 @@ export default [
       ignoreFromSelf: true,
       optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
     }
-  }
+  } */
 ]
