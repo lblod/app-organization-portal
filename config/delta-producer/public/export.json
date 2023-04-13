@@ -224,6 +224,18 @@
       ]
     },
     {
+      "type": "http://www.w3.org/ns/adms#Identifier",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#notation",
+        "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator"
+      ],
+      "additionalFilter": "?ro <http://www.w3.org/ns/adms#identifier> ?subject ; a <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan> ."
+    },
+    {
       "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "graphsFilter": [
         "http://mu.semte.ch/graphs/shared",
@@ -240,6 +252,17 @@
         "http://mu.semte.ch/vocabularies/core/uuid",
         "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
       ]
+    },
+    {
+      "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
+      ],
+      "additionalFilter": "?ro <http://www.w3.org/ns/adms#identifier>/<https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?subject ; a <http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan> ."
     },
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
