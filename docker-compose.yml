@@ -218,6 +218,8 @@ services:
       - ./config/jobs-controller/:/config/
   organizations-sync-with-sharepoint:
     image: lblod/op-sync-with-sharepoint-service
+    environment:
+      SERVICE_NAME: 'organizations-sync-with-sharepoint'
     links:
       - db:database
     labels:
@@ -228,6 +230,8 @@ services:
       - ./config/sharepoint/sync/organizations/:/config/
   #contacts-sync-with-sharepoint:
   #  image: lblod/op-sync-with-sharepoint-service
+  #  environment:
+  #    SERVICE_NAME: 'contacts-sync-with-sharepoint'
   #  links:
   #    - db:database
   #  labels:
