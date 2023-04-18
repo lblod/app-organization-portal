@@ -1,0 +1,17 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+delete {
+graph <http://mu.semte.ch/graphs/worship-service> {
+<http://data.lblod.info/id/veranderingsgebeurtenissen/642E815DE025A7C706F41E5D> <http://purl.org/dc/terms/date> "2023-03-30"^^xsd:date .
+}
+}
+insert {
+graph <http://mu.semte.ch/graphs/worship-service> {
+<http://data.lblod.info/id/veranderingsgebeurtenissen/642E815DE025A7C706F41E5D> <http://purl.org/dc/terms/date> "2023-04-06"^^xsd:date .
+}
+}
+where {
+graph <http://mu.semte.ch/graphs/worship-service> {
+<http://data.lblod.info/id/veranderingsgebeurtenissen/642E815DE025A7C706F41E5D> <http://purl.org/dc/terms/date> "2023-03-30"^^xsd:date .
+}
+}
