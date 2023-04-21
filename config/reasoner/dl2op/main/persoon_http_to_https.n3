@@ -294,16 +294,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 {
   {
-    ?s persoon_loket:gebruikteVoornaam ?o
-  } e:becomes {
-    ?s persoon:gebruikteVoornaam ?o
-  }
-} => {
-  ?s persoon:gebruikteVoornaam ?o
-}.
-
-{
-  {
     ?s persoon_loket:geslacht ?o
   } e:becomes {
     ?s persoon:geslacht ?o
