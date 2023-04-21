@@ -530,7 +530,7 @@ services:
       - db:database
 
   roles:
-    image: lblod/select-role-service
+    image: lblod/select-role-service:0.1.0
     labels:
       - "logging=true"
     links:
