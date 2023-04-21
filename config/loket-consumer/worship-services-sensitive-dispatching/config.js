@@ -9,8 +9,13 @@ const SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION = parseInt(process.env.SLEEP_T
 const SLEEP_TIME_AFTER_FAILED_DB_OPERATION = parseInt(process.env.SLEEP_TIME_AFTER_FAILED_DB_OPERATION || 60000);
 
 // Graphs
-const TARGET_GRAPH = process.env.TARGET_GRAPH || `http://mu.semte.ch/graphs/administrative-unit`;
+const TARGET_GRAPH = process.env.TARGET_GRAPH || `http://mu.semte.ch/graphs/worship-service`;
+const PRIVACY_SENSITIVE_GRAPH = process.env.PRIVACY_SENSITIVE_GRAPH || `http://mu.semte.ch/graphs/worship-privacy-centric-graph`;
 const LANDING_ZONE_GRAPH = process.env.DCR_LANDING_ZONE_GRAPH || `http://mu.semte.ch/graphs/landing-zone/leidinggevenden`;
+
+// Mappings
+const MAIN_INFO_MAPPING = "main-info";
+const PRIVATE_INFO_MAPPING = "private-info";
 
 // ENDPOINTS
 const LANDING_ZONE_DATABASE = process.env.DCR_LANDING_ZONE_DATABASE || 'db';
@@ -27,6 +32,9 @@ module.exports = {
   SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
   SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION,
   LANDING_ZONE_GRAPH,
+  LANDING_ZONE_DATABASE_ENDPOINT,
   TARGET_GRAPH,
-  LANDING_ZONE_DATABASE_ENDPOINT
+  PRIVACY_SENSITIVE_GRAPH,
+  MAIN_INFO_MAPPING,
+  PRIVATE_INFO_MAPPING
 };

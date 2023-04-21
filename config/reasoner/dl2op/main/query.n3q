@@ -1,0 +1,63 @@
+# Filtering classes to ingest
+
+{
+  ?s a <http://www.w3.org/ns/person#Person> ;
+    ?p ?o .
+ } => {
+  ?s a <http://www.w3.org/ns/person#Person> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://www.w3.org/ns/locn#Address> ;
+    ?p ?o .
+ } => {
+  ?s a <http://www.w3.org/ns/locn#Address> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://schema.org/ContactPoint> ;
+    ?p ?o .
+ } => {
+  ?s a <http://schema.org/ContactPoint> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    ?p ?o .
+ } => {
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    ?p ?o .
+ } => {
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://www.w3.org/ns/org#Membership> ;
+    ?p ?o .
+ } => {
+  ?s a <http://www.w3.org/ns/org#Membership> ;
+    ?p ?o .
+}.
+{
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Fractie> ;
+    ?p ?o .
+ } => {
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Fractie> ;
+    ?p ?o .
+}.
+{
+  ?s a <http://www.w3.org/ns/prov#Location> ;
+    ?p ?o .
+ } => {
+  ?s a <http://www.w3.org/ns/prov#Location> ;
+    ?p ?o .
+}.
