@@ -1,0 +1,15 @@
+delete {
+graph <http://mu.semte.ch/graphs/worship-service> {
+<http://data.lblod.info/id/veranderingsgebeurtenissen/644616FDF08BCC5A4747B5A2> <http://purl.org/dc/terms/date> ?date.
+}
+}
+insert {
+graph <http://mu.semte.ch/graphs/worship-service> {
+<http://data.lblod.info/id/veranderingsgebeurtenissen/644616FDF08BCC5A4747B5A2> <http://purl.org/dc/terms/date> "2022-04-22".
+}
+}
+where {
+graph <http://mu.semte.ch/graphs/worship-service> {
+<http://data.lblod.info/id/veranderingsgebeurtenissen/644616FDF08BCC5A4747B5A2> <http://purl.org/dc/terms/date> ?date.
+}
+}
