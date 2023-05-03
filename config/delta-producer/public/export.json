@@ -279,48 +279,20 @@
     },
     {
       "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
-      "strictTypeExport": "true",
       "graphsFilter": [
         "http://mu.semte.ch/graphs/shared",
-        "http://mu.semte.ch/graphs/worship-service",
-        "http://mu.semte.ch/graphs/administrative-unit"
-      ],
-      "pathToConceptScheme": [
-        "http://www.w3.org/ns/org#classification",
-        "http://www.w3.org/2004/02/skos/core#inScheme"
+        "http://mu.semte.ch/graphs/worship-service"
       ],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
-        "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
-        "http://data.vlaanderen.be/ns/mandaat#bindingStart",
         "http://data.vlaanderen.be/ns/besluit#bestuurt",
         "http://www.w3.org/ns/org#classification",
-        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-        "http://www.w3.org/ns/org#hasPost"
-      ]
-    },
-    {
-      "type": "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
-      "strictTypeExport": "true",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/shared",
-        "http://mu.semte.ch/graphs/worship-service",
-        "http://mu.semte.ch/graphs/administrative-unit"
-      ],
-      "pathToConceptScheme": [
-        "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-        "http://www.w3.org/ns/org#classification",
-        "http://www.w3.org/2004/02/skos/core#inScheme"
-      ],
-      "properties": [
-        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
         "http://data.vlaanderen.be/ns/mandaat#bindingStart",
-        "http://data.vlaanderen.be/ns/besluit#bestuurt",
-        "http://www.w3.org/ns/org#classification",
         "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
         "http://www.w3.org/ns/org#hasPost"
-      ]
+      ],
+      "additionalFilter": "?subject (<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/org#classification>)|(<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://www.w3.org/ns/org#classification>) ?bestuurClassification . FILTER (?bestuurClassification IN (<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>))"
     },
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/TypeEredienst",
