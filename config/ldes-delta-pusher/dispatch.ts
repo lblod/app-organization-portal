@@ -14,6 +14,7 @@ export default async function dispatch(changesets: Changeset[]) {
   
         CONSTRUCT {
           ?organization a org:Organization;
+                        skos:prefLabel ?prefLabel;
                         adms:identifier ?identifier;
                         org:hasPrimarySite ?site.
           ?site org:siteAddress ?siteAddress.
@@ -22,6 +23,7 @@ export default async function dispatch(changesets: Changeset[]) {
           {
             VALUES ?organization { ${sparqlEscapeUri(subject)} }
             ?organization a org:Organization;
+                          skos:prefLabel ?prefLabel;
                           adms:identifier ?identifier;
                           org:hasPrimarySite ?site.
             ?site org:siteAddress ?siteAddress.
@@ -29,6 +31,7 @@ export default async function dispatch(changesets: Changeset[]) {
           } UNION {
             VALUES ?site { ${sparqlEscapeUri(subject)} }
             ?organization a org:Organization;
+                          skos:prefLabel ?prefLabel;
                           adms:identifier ?identifier;
                           org:hasPrimarySite ?site.
             ?site org:siteAddress ?siteAddress.
@@ -36,6 +39,7 @@ export default async function dispatch(changesets: Changeset[]) {
           } UNION {
             VALUES ?siteAddress { ${sparqlEscapeUri(subject)} }
             ?organization a org:Organization;
+                          skos:prefLabel ?prefLabel;
                           adms:identifier ?identifier;
                           org:hasPrimarySite ?site.
             ?site org:siteAddress ?siteAddress.
