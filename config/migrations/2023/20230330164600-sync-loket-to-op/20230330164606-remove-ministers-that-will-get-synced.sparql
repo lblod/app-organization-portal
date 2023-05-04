@@ -1,13 +1,14 @@
+PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/worship-service> {
-    ?ministerPosition ?p ?o .
-    ?worshipService <http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor> ?ministerPosition .
+    ?minister ?p ?o .
   }
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/worship-service> { 
-    ?ministerPosition a ere:PositieBedienaar ;
+    ?minister a ere:RolBedienaar ;
+      org:holds ?ministerPosition ;
       ?p ?o .
 
     VALUES ?status {
