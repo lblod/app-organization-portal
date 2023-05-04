@@ -1,0 +1,290 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX schema: <http://schema.org/>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX locn: <ttp://www.w3.org/ns/locn#>
+# move geboorte to private graph
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+      ?s ?p ?o
+  }
+}
+ INSERT {
+  GRAPH <http://mu.semte.ch/graphs/privacy-centric-graph> {
+    ?s ?p ?o
+  }
+}
+WHERE {
+
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a  <https://data.vlaanderen.be/ns/persoon#Geboorte>; ?p ?o.
+  }
+}
+
+;
+
+DELETE {
+  graph  <http://mu.semte.ch/graphs/organisatieportaal>  {
+    ?contactPoint ?p ?o.
+    ?addr ?x ?y.
+  }
+}
+insert {
+  graph  <http://mu.semte.ch/graphs/worship-service>  {
+    ?contactPoint ?p ?o.
+    ?addr ?x ?y.
+
+  }
+}
+where {
+  graph  <http://mu.semte.ch/graphs/organisatieportaal>  {
+
+    ?contactPoint ?p ?o.
+    optional {
+      ?contactPoint <http://www.w3.org/ns/locn#address> ?addr.
+      ?addr ?x ?y.
+    }
+    filter (exists {
+      graph <http://mu.semte.ch/graphs/worship-service> {
+        ?s <http://schema.org/contactPoint> ?contactPoint.
+      }
+    })
+  }
+}
+;
+
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?primarySite <http://www.w3.org/ns/org#siteAddress> ?siteAddr; ?p ?o.
+    ?siteAddr ?x ?y.
+     ?addr ?addrP ?addrO.
+     ?locAddr ?locP ?locO
+   }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?primarySite <http://www.w3.org/ns/org#siteAddress> ?siteAddr; ?p ?o.
+    ?siteAddr ?x ?y.
+     ?addr ?addrP ?addrO.
+     ?locAddr ?locP ?locO
+  }
+}
+Where {
+  Graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?primarySite <http://www.w3.org/ns/org#siteAddress> ?siteAddr; 
+    ?p ?o.
+    ?siteAddr ?x ?y.
+    optional {
+     ?siteAddr locn:address ?locAddr .
+     ?locAddr ?locP ?locO.
+    }
+    optional {
+        ?primarySite organisatie:bestaatUit ?addr.
+        ?addr ?addrP ?addrO.
+    }
+
+
+    filter (exists {
+                      graph <http://mu.semte.ch/graphs/worship-service> {
+                         ?s <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite.
+                      }
+                    }
+            )
+     
+
+  }
+}
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a ?type; ?p ?o.
+   }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a ?type; ?p ?o.
+  }
+}
+Where {
+  Graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a ?type; ?p ?o.
+    filter (?type in(<http://www.w3.org/ns/org#Site>,
+                            <http://www.w3.org/ns/locn#Address>,
+                            <http://schema.org/ContactPoint>
+                    )
+                    && exists {
+                      graph <http://mu.semte.ch/graphs/worship-service> {
+                          ?x ?y ?z.
+                          filter(?z=?s)
+                      }
+                    }
+            )
+     
+
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+  
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?bestaatUit; ?p ?o.
+    ?bestaatUit ?bestaatUitP ?bestaatUitO.
+
+  } 
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?bestaatUit; ?p ?o.
+    ?bestaatUit ?bestaatUitP ?bestaatUitO.
+}
+}
+Where {
+  Graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?primarySite <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?bestaatUit; ?p ?o.
+    ?bestaatUit ?bestaatUitP ?bestaatUitO.
+
+
+    filter (exists {
+                      graph <http://mu.semte.ch/graphs/worship-service> {
+                         ?unit <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite.
+                      }
+                    }
+            )
+     
+
+  }
+}
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a ?type; ?p ?o.
+   }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?s a ?type; ?p ?o.
+  }
+}
+
+Where {
+  Graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a ?type; ?p ?o.
+    filter (?type in(<http://www.w3.org/ns/prov#Location>,
+                            <http://www.w3.org/ns/person#Person>,
+                            <http://xmlns.com/foaf/0.1/Image>,
+                            <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>
+                    )
+            )
+     
+
+  }
+}
+
+
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+    mu:uuid ?uuid;
+    <http://www.w3.org/ns/org#classification> ?classification;
+    org:hasSubOrganization ?subOrg;
+    skos:prefLabel ?name.
+
+
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+        mu:uuid ?uuid;
+    <http://www.w3.org/ns/org#classification> ?classification;
+    org:hasSubOrganization ?subOrg;
+    skos:prefLabel ?name.
+
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>; 
+    <http://www.w3.org/ns/org#classification> ?classification;
+        mu:uuid ?uuid;
+        org:hasSubOrganization ?subOrg;
+    skos:prefLabel ?name.
+
+    filter(?classification in (
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+    ))
+    
+
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+    mu:uuid ?uuid;
+    <http://www.w3.org/ns/org#classification> ?classification;
+    skos:prefLabel ?name.
+
+
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+        mu:uuid ?uuid;
+    <http://www.w3.org/ns/org#classification> ?classification;
+    
+    skos:prefLabel ?name.
+
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>; 
+    <http://www.w3.org/ns/org#classification> ?classification;
+        mu:uuid ?uuid;
+    skos:prefLabel ?name.
+
+
+    filter(?classification in (
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+    )&& exists {
+
+     graph <http://mu.semte.ch/graphs/shared> {
+
+     ?subOrg org:hasSubOrganization ?s  .
+}
+
+})
+    
+
+  }
+}
+

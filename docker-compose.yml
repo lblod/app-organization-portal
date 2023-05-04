@@ -35,7 +35,7 @@ services:
     restart: always
     logging: *default-logging
   db:
-    image: semtech/mu-authorization:feature-service-roam-r1
+    image: semtech/mu-authorization:feature-service-roam-r1.1
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -43,6 +43,8 @@ services:
       LOG_ACCESS_RIGHTS: "true"
       LOG_OUTGOING_SPARQL_QUERY_ROUNDTRIP: "true"
       ERROR_ON_UNWRITTEN_DATA: "true"
+      QUERY_MAX_PROCESSING_TIME: "300000"
+      QUERY_MAX_EXECUTION_TIME: "300000"
     volumes:
       - ./config/authorization:/config
     labels:
@@ -70,7 +72,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.21.1
+    image: semtech/mu-cl-resources:1.22.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     links:
@@ -82,7 +84,7 @@ services:
     restart: always
     logging: *default-logging
   cache:
-    image: semtech/mu-cache:2.0.1
+    image: semtech/mu-cache:2.0.2
     links:
       - resource:backend
     labels:
@@ -148,26 +150,38 @@ services:
       - db:database
     restart: always
     logging: *default-logging
-  privacy:
+  privacy-worship:
     image: lblod/privacy-centric-service:0.6.0
     labels:
       - "logging=true"
     environment:
-      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/privacy-centric-graph"
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/worship-privacy-centric-graph"
       SESSION_GRAPH: "http://mu.semte.ch/graphs/sessions"
-      APP_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      APP_GRAPH: "http://mu.semte.ch/graphs/public"
+    restart: always
+    logging: *default-logging
+    links:
+      - db:database
+  privacy-unit:
+    image: lblod/privacy-centric-service:0.6.0
+    labels:
+      - "logging=true"
+    environment:
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/administrative-unit-privacy-centric-graph"
+      SESSION_GRAPH: "http://mu.semte.ch/graphs/sessions"
+      APP_GRAPH: "http://mu.semte.ch/graphs/public"
     restart: always
     logging: *default-logging
     links:
       - db:database
   adressenregister:
-    image: lblod/adressenregister-fuzzy-search-service:0.6.2
+    image: lblod/adressenregister-fuzzy-search-service:0.6.3
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-organization-portal:1.15.0
+    image: lblod/frontend-organization-portal:1.16.0
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
@@ -205,13 +219,16 @@ services:
     volumes:
       - ./config/jobs-controller/:/config/
   construct-administrative-unit-relationships:
-    image: lblod/construct-administrative-unit-relationships-service:0.1.0
+    image: lblod/construct-administrative-unit-relationships-service:0.1.1
+    environment:
+      START_DATE_WORSHIP_GOVERNING_BODY: "2023-04-01T00:00:00"
+      END_DATE_WORSHIP_GOVERNING_BODY: "2026-03-31T00:00:00"
     links:
       - db:database
     restart: always
     logging: *default-logging
   reasoner:
-    image: eyereasoner/reasoning-service:1.0.1
+    image: eyereasoner/reasoning-service:1.0.2
     volumes:
       - ./config/reasoner:/config
   
@@ -221,7 +238,7 @@ services:
   # DELTA GENERAL
   ################################################################################
   delta-producer-dump-file-publisher:
-    image: lblod/delta-producer-dump-file-publisher:0.9.0
+    image: lblod/delta-producer-dump-file-publisher:0.9.1
     volumes:
       - ./config/delta-producer/dump-file-publisher:/config
       - ./data/files:/share
@@ -230,77 +247,16 @@ services:
     restart: always
     logging: *default-logging
   ################################################################################
-  # DELTA ADMINISTRATIVE-UNITS: START
-  ################################################################################
-  delta-producer-bg-jobs-initiator-administrative-units:
-    image: lblod/delta-producer-background-jobs-initiator:0.3.1
-    environment:
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
-      DUMP_FILE_CREATION_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/administrative-units"
-      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/administrative-units"
-      HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/administrative-units"
-      CRON_PATTERN_DUMP_JOB: "0 0 4 * * 6" # weekly on saturday
-      CRON_PATTERN_HEALING_JOB: "0 0 4 * * *" # everyday at 4 AM
-      START_INITIAL_SYNC: "false" # prefer to disable it now. We want to have feeling with how the DB acts.
-    labels:
-      - "logging=true"
-    links:
-      - db:database
-    restart: always
-    logging: *default-logging
-  delta-producer-pub-graph-maintainer-administrative-units:
-    image: lblod/delta-producer-publication-graph-maintainer:0.7.0
-    environment:
-      MAX_BODY_SIZE: "50mb"
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
-      RELATIVE_FILE_PATH: "deltas/administrative-units"
-      PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/administrative-units"
-      HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/administrative-units"
-      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/administrative-units"
-      QUEUE_POLL_INTERVAL: 3000
-      USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true" # some queries are just too expensive
-      SKIP_MU_AUTH_INITIAL_SYNC: "true"
-      HEALING_PATCH_GRAPH_BATCH_SIZE: 500
-    volumes:
-      - ./config/delta-producer/administrative-units:/config
-      - ./data/files/:/share
-    links:
-      - db:database
-      - triplestore:virtuoso
-    restart: always
-    logging: *default-logging
-  delta-producer-json-diff-publisher-administrative-units:
-    image: lblod/delta-producer-json-diff-file-publisher:0.2.3
-    environment:
-      MAX_BODY_SIZE: "50mb"
-      ERROR_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
-      RELATIVE_FILE_PATH: "deltas/administrative-units"
-      PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/administrative-units"
-      PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/administrative-units"
-      DELTA_INTERVAL_MS: 10000
-      PRETTY_PRINT_DIFF_JSON: "true"
-    volumes:
-      - ./data/files:/share
-    labels:
-      - "logging=true"
-    links:
-      - db:database
-    restart: always
-    logging: *default-logging
-  ################################################################################
-  # DELTA ADMINISTRATIVE-UNITS: END
-  ################################################################################
-  ################################################################################
   # DELTA ORGANIZATIONS: START
   ################################################################################
   delta-producer-bg-jobs-initiator-organizations:
     image: lblod/delta-producer-background-jobs-initiator:0.3.1
     environment:
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
       DUMP_FILE_CREATION_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/organizations"
       INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations"
-      CRON_PATTERN_DUMP_JOB: "40 * * * *" # At minute 40 every hour
+      CRON_PATTERN_DUMP_JOB: "42 * * * *" # At minute 42 every hour
       CRON_PATTERN_HEALING_JOB: "0 0 4 * * *" # everyday at 4 AM
       START_INITIAL_SYNC: "false" # prefer to disable it now. We want to have feeling with how the DB acts.
     labels:
@@ -313,7 +269,7 @@ services:
     image: lblod/delta-producer-publication-graph-maintainer:0.7.0
     environment:
       MAX_BODY_SIZE: "50mb"
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
       RELATIVE_FILE_PATH: "deltas/organizations"
       PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/organizations"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations"
@@ -322,8 +278,6 @@ services:
       USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true" # some queries are just too expensive
       SKIP_MU_AUTH_INITIAL_SYNC: "true"
       HEALING_PATCH_GRAPH_BATCH_SIZE: 500
-      FILES_GRAPH: "http://redpencil.data.gift/id/deltas/producer/organizations-deltas"
-      ACCOUNT: "http://data.lblod.info/foaf/account/id/8df6f1e4-869f-4223-9834-961b01a7bd48"
     volumes:
       - ./config/delta-producer/organizations:/config
       - ./data/files/:/share
@@ -336,7 +290,7 @@ services:
     image: lblod/delta-producer-json-diff-file-publisher:0.2.3
     environment:
       MAX_BODY_SIZE: "50mb"
-      ERROR_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/jobs"
       RELATIVE_FILE_PATH: "deltas/organizations"
       PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/organizations"
       PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/organizations"
@@ -360,7 +314,7 @@ services:
   delta-producer-bg-jobs-initiator-public:
     image: lblod/delta-producer-background-jobs-initiator:0.3.1
     environment:
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
       DUMP_FILE_CREATION_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/public"
       INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/public"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/public"
@@ -374,10 +328,10 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-pub-graph-maintainer-public:
-    image: lblod/delta-producer-publication-graph-maintainer:0.15.1
+    image: lblod/delta-producer-publication-graph-maintainer:0.15.4
     environment:
       MAX_BODY_SIZE: "50mb"
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
       RELATIVE_FILE_PATH: "deltas/public"
       PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/public"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/public"
@@ -398,7 +352,7 @@ services:
     image: lblod/delta-producer-json-diff-file-publisher:0.2.3
     environment:
       MAX_BODY_SIZE: "50mb"
-      ERROR_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/jobs"
       RELATIVE_FILE_PATH: "deltas/public"
       PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/public"
       PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/public"
@@ -422,7 +376,7 @@ services:
   delta-producer-bg-jobs-initiator-worship-posts:
     image: lblod/delta-producer-background-jobs-initiator:0.3.1
     environment:
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
       DUMP_FILE_CREATION_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/worship-posts"
       INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/worship-posts"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/worship-posts"
@@ -436,10 +390,10 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-pub-graph-maintainer-worship-posts:
-    image: lblod/delta-producer-publication-graph-maintainer:0.15.1
+    image: lblod/delta-producer-publication-graph-maintainer:0.15.4
     environment:
       MAX_BODY_SIZE: "50mb"
-      JOBS_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
       RELATIVE_FILE_PATH: "deltas/worship-posts"
       PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/worship-posts"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/worship-posts"
@@ -452,7 +406,7 @@ services:
       PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/worship-posts"
       DELTA_INTERVAL_MS: 10000
       PRETTY_PRINT_DIFF_JSON: "true"
-      ERROR_GRAPH: "http://mu.semte.ch/graphs/organisatieportaal"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/jobs"
     volumes:
       - ./config/delta-producer/worship-posts:/config
       - ./data/files/:/share
@@ -469,25 +423,28 @@ services:
   # DELTA CONSUMERS
   ################################################################################
   ################################################################################
-  # LOKET MANDATEN CONSUMERS
+  # LOKET MANDATARISSEN CONSUMERS
   ################################################################################
-  mandaten-consumer:
-    image: lblod/delta-consumer:0.0.14
+  mandatarissen-consumer:
+    image: lblod/delta-consumer:0.0.17-rc.7
     environment:
-      DCR_SERVICE_NAME: "mandatendatabank-consumer"
+      DCR_SERVICE_NAME: "mandatarissen-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/MandatarissenCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/mandatarissen"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/mandatarissen"
-      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/mandatendatabank-consumer"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/mandatarissen-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
       BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
+      BATCH_SIZE: 1000
       DCR_SYNC_FILES_PATH: "/sync/mandatarissen/files"
-      FILE_SYNC_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
-      KEEP_DELTA_FILES: "true"
+      DCR_KEEP_DELTA_FILES: "true"
+      DCR_ENABLE_DELTA_CONTEXT: "true"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/mandatarissen"
     volumes:
-      - ./config/loket-consumer/mandate-dispatching:/config/triples-dispatching/custom-dispatching
-      - ./data/files/consumer-files/mandaten:/consumer-files/
+      - ./config/loket-consumer/mandatarissen-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./data/files/consumer-files/mandatarissen:/consumer-files/
     restart: always
     labels:
       - "logging=true"
@@ -500,7 +457,7 @@ services:
   # LOKET LEIDINGGEVENDEN CONSUMERS
   ################################################################################
   leidinggevenden-consumer:
-    image: lblod/delta-consumer:0.0.14
+    image: lblod/delta-consumer:0.0.17-rc.7
     environment:
       DCR_SERVICE_NAME: "leidinggevenden-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
@@ -511,8 +468,11 @@ services:
       DCR_DISABLE_INITIAL_SYNC: "true"
       BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
       DCR_SYNC_FILES_PATH: "/sync/leidinggevenden/files"
-      FILE_SYNC_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
-      KEEP_DELTA_FILES: "true"
+      DCR_KEEP_DELTA_FILES: "true"
+      BATCH_SIZE: 1000
+      DCR_ENABLE_DELTA_CONTEXT: "true"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/leidinggevenden"
     volumes:
       - ./config/loket-consumer/leidinggevenden-dispatching:/config/triples-dispatching/custom-dispatching
       - ./data/files/consumer-files/leidinggevenden:/consumer-files/
@@ -528,22 +488,24 @@ services:
   # LOKET WORSHIP SENSITIVE CONSUMERS
   ################################################################################
   worship-services-sensitive-consumer:
-    image: lblod/delta-consumer:0.0.14
+    image: lblod/delta-consumer:0.0.17-rc.7
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "worship-services-sensitive-consumer"
-      DCR_SYNC_FILES_PATH: "/sync/worship-services-sensitive/files"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/WorshipServicesSensitiveCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitive"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitiveDeltaFileSyncing"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/worship-services-sensitive-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
-      FILE_SYNC_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
+      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
+      DCR_SYNC_FILES_PATH: "/sync/worship-services-sensitive/files"
+      BATCH_SIZE: 1000
       DCR_KEEP_DELTA_FILES: "true"
-      DCR_DELTA_FILE_FOLDER: "/consumer-files"
-      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "false"
+      DCR_ENABLE_DELTA_CONTEXT: "true"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/worship-services-sensitive"
     volumes:
-      - ./config/loket-consumer/positions-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./config/loket-consumer/worship-services-sensitive-dispatching:/config/triples-dispatching/custom-dispatching
       - ./data/files/consumer-files/worship-services-sensitive:/consumer-files/
     restart: always
     labels:
@@ -588,7 +550,7 @@ services:
   # MU SEARCH
   ################################################################################
   search:
-    image: semtech/mu-search:0.9.0-beta.2
+    image: semtech/mu-search:0.9.0-beta.3
     links:
       - db:database
     restart: always
@@ -607,10 +569,18 @@ services:
     links:
       - db:database
 
+  roles:
+    image: lblod/select-role-service:0.1.0
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
 
-###################################################################################
-# MU SCRIPTS
-# #################################################################################
+  ###################################################################################
+  # MU SCRIPTS
+  # #################################################################################
   project-scripts:
     image: semtech/mu-scripts:1.0.0
     volumes:

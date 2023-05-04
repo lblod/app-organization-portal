@@ -3,7 +3,7 @@ export default [
     match: {
       graph: {
         type: "uri",
-        value: "http://mu.semte.ch/graphs/organisatieportaal"
+        value: "http://mu.semte.ch/graphs/administrative-unit"
       }
     },
     callback: {
@@ -20,7 +20,25 @@ export default [
     match: {
       graph: {
         type: "uri",
-        value: "http://mu.semte.ch/graphs/organisatieportaal"
+        value: "http://mu.semte.ch/graphs/worship-service"
+      }
+    },
+    callback: {
+      url: 'http://search/update',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: "v0.0.1",
+      gracePeriod: 10000,
+      ignoreFromSelf: true
+    }
+  },
+
+  {
+    match: {
+      graph: {
+        type: "uri",
+        value: "http://mu.semte.ch/graphs/administrative-unit"
       }
     },
     callback: {
@@ -33,6 +51,25 @@ export default [
       ignoreFromSelf: true
     }
   },
+
+  {
+    match: {
+      graph: {
+        type: "uri",
+        value: "http://mu.semte.ch/graphs/worship-service"
+      }
+    },
+    callback: {
+      url: 'http://resource/.mu/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: "v0.0.1",
+      gracePeriod: 250,
+      ignoreFromSelf: true
+    }
+  },
+
   {
     match: {
       predicate: {
@@ -48,42 +85,7 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
-    }
-  },
-  {
-    match: {
-    },
-    callback: {
-      url: 'http://delta-producer-pub-graph-maintainer-administrative-units/delta',
-      method: 'POST'
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: [
-                          "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
-                          "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
-                        ]
-    }
-  },
-  {
-    match: {
-      graph: {
-        type: 'uri',
-        value: 'http://redpencil.data.gift/id/deltas/producer/administrative-units'
-      }
-    },
-    callback: {
-      url: 'http://delta-producer-json-diff-publisher-administrative-units/delta',
-      method: 'POST'
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
+      optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
     }
   },
   {
@@ -98,9 +100,9 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       optOutMuScopeIds: [
-                          "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
-                          "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
-                        ]
+        "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
+        "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
+      ]
     }
   },
   {
@@ -118,7 +120,7 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
+      optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
     }
   },
   {
@@ -133,9 +135,9 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       optOutMuScopeIds: [
-                          "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
-                          "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
-                        ]
+        "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
+        "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
+      ]
     }
   },
   {
@@ -153,7 +155,7 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
+      optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
     }
   },
   {
@@ -169,9 +171,9 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       optOutMuScopeIds: [
-                          "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
-                          "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
-                        ]
+        "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
+        "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
+      ]
     }
   },
   {
@@ -193,7 +195,7 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
+      optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
     }
   },
   {

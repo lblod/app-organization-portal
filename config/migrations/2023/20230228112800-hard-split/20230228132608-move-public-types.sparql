@@ -1,0 +1,40 @@
+delete {
+  graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s ?p ?o
+  }
+}
+insert {
+  graph <http://mu.semte.ch/graphs/public>  {
+    ?s ?p ?o
+  }
+}
+where {
+  graph <http://mu.semte.ch/graphs/organisatieportaal> {
+    ?s a ?type; ?p ?o.
+    filter (?type in (
+                        <http://mu.semte.ch/vocabularies/ext/GeslachtCode>,
+                        <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>,
+                        <http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode>,
+                        <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode>,
+                        <http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode>,
+                        <http://lblod.data.gift/vocabularies/organisatie/MandatarisStatusCode>,
+                        <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>,
+                        <http://lblod.data.gift/vocabularies/organisatie/TypeEredienst>,
+                        <http://www.w3.org/2004/02/skos/core#ConceptScheme>,
+                        <http://lblod.data.gift/vocabularies/organisatie/BedienaarFinanceringCode>,
+                        <http://www.w3.org/2004/02/skos/core#Concept>,
+                        <http://publications.europa.eu/ontology/euvoc#Country>,
+                        <http://lblod.data.gift/vocabularies/organisatie/TypeVestiging>,
+                        <http://lblod.data.gift/vocabularies/organisatie/HelftVerkiezing>,
+                        <http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis>,
+                        <http://lblod.data.gift/vocabularies/organisatie/TypeBetrokkenheid>,
+                        <http://lblod.data.gift/vocabularies/organisatie/VoorwaardenBedienaarCriterium>,
+                        <http://lblod.data.gift/vocabularies/organisatie/BedienaarCriteriumBewijsstuk>,
+                        <http://lblod.data.gift/vocabularies/organisatie/EredienstBeroepen>,
+                        <http://lblod.data.gift/vocabularies/organisatie/Rechtsvormtype>,
+                        <http://www.w3.org/ns/org#Role>
+
+
+    ))
+  }
+}

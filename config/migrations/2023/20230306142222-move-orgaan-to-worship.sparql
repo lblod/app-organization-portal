@@ -1,0 +1,107 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  ?s ?p ?o.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   ?s ?p ?o.
+   }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  ?s a  <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://www.w3.org/ns/org#classification> ?classification;
+                     ?p ?o.
+
+filter exists {
+      graph <http://mu.semte.ch/graphs/public> {
+           ?classification <http://mu.semte.ch/vocabularies/ext/appliesWithin> ?appliesWithin.
+      ?appliesWithin mu:uuid ?classificationUuid.
+
+    filter(?classificationUuid in ("66ec74fd-8cfc-4e16-99c6-350b35012e86","f9cac08a-13c1-49da-9bcb-f650b0604054"))
+       }
+}
+
+
+
+
+}
+
+}
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?specialization ?specializationP ?specializationO.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?specialization ?specializationP ?specializationO.
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?specialization a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;  generiek:isTijdspecialisatieVan ?specialization2; ?specializationP ?specializationO.
+
+filter exists{
+
+graph <http://mu.semte.ch/graphs/worship-service> {
+
+
+ ?specialization2  a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>.
+}
+}
+}
+
+
+}
+;
+
+
+
+
+;
+
+
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?mandaat ?p ?o.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+     ?mandaat ?p ?o.
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+      ?mandaat ?p ?o.
+      filter exists {
+         GRAPH <http://mu.semte.ch/graphs/worship-service> {
+             ?orgaan <http://www.w3.org/ns/org#hasPost> ?mandaat.
+
+          }
+      }
+}
+
+
+}
