@@ -1,0 +1,60 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH ?g {
+    ?orgaanInTime mandaat:bindingEinde ?end .
+  }
+} INSERT {
+  GRAPH ?g {
+    ?orgaanInTime mandaat:bindingEinde ?endDateTime .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
+  GRAPH ?g {
+    ?bestuurseenheid a ?type .
+
+    ?bestuursorgaan besluit:bestuurt ?bestuurseenheid .
+
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan .
+
+    ?orgaanInTime mandaat:bindingEinde ?end .
+
+    FILTER (HOURS(?end) = 1)
+    BIND(strdt(concat(xsd:date(?end), 'T00:00:00'), xsd:dateTime) as ?endDateTime)
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?orgaanInTime mandaat:bindingStart ?start .
+  }
+} INSERT {
+  GRAPH ?g {
+    ?orgaanInTime mandaat:bindingStart ?startDateTime .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
+  GRAPH ?g {
+    ?bestuurseenheid a ?type .
+
+    ?bestuursorgaan besluit:bestuurt ?bestuurseenheid .
+
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan .
+
+    ?orgaanInTime mandaat:bindingStart ?start .
+
+    FILTER (HOURS(?start) = 1)
+    BIND(strdt(concat(xsd:date(?start), 'T00:00:00'), xsd:dateTime) as ?startDateTime)
+  }
+}
