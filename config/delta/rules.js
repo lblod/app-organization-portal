@@ -200,7 +200,42 @@ export default [
   },
   {
     match: {
-
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/shared',
+      }
+    },
+    callback: {
+      url: 'http://ldes-delta-pusher/publish',
+      method: 'POST',
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
+    }
+  },
+  {
+    match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/worship-service',
+      }
+    },
+    callback: {
+      url: 'http://ldes-delta-pusher/publish',
+      method: 'POST',
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
+    }
+  },
+  {
+    match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/administrative-unit',
+      }
     },
     callback: {
       url: 'http://ldes-delta-pusher/publish',
