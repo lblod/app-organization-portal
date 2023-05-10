@@ -26,6 +26,7 @@ DELETE {
     ?changeEvent ?p ?o.
     ?changeEventResult ?cP ?cO.
     ?decision ?decisionP ?decisionO.
+    ?decisionActivity  ?decisionActivityP ?desitionActivityO.
   }
 }
 WHERE {
@@ -41,6 +42,12 @@ WHERE {
     optional {
      ?changeEvent <http://data.europa.eu/m8g/hasFormalFramework> ?decision.
      ?decision ?decisionP ?decisionO.
+        optional {
+         ?decisionActivity a <https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit>; 
+                           <http://www.w3.org/ns/prov#generated> ?decision;
+                          ?decisionActivityP ?desitionActivityO.
+        }
+
     }
 
     filter(?uuidChangeEvent in ("63343865036B579F0A26FF5C", "63343E99036B579F0A26FF6F", "633446D6036B579F0A26FF87","63345772036B579F0A26FF93"))
