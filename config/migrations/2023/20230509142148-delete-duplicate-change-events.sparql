@@ -20,16 +20,28 @@ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX eli: <http://data.europa.eu/eli/ontology#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-DELETE WHERE {
+
+DELETE {
+  graph ?g {
+    ?changeEvent ?p ?o.
+    ?changeEventResult ?cP ?cO.
+    ?decision ?decisionP ?decisionO.
+  }
+}
+WHERE {
   graph ?g {
     ?changeEvent a <http://www.w3.org/ns/org#ChangeEvent>;
-    <http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat> ?changeEventResult; 
-    mu:uuid ?uuidChangeEvent;
-    ?p ?o.
-
+                <http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat> ?changeEventResult; 
+                mu:uuid ?uuidChangeEvent;
+                ?p ?o.
     ?changeEventResult a <http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat>;
-    mu:uuid ?uuidChangeEventResult;
-    ?cP ?cO.
+                       mu:uuid ?uuidChangeEventResult;
+                      ?cP ?cO.
+
+    optional {
+     ?changeEvent <http://data.europa.eu/m8g/hasFormalFramework> ?decision.
+     ?decision ?decisionP ?decisionO.
+    }
 
     filter(?uuidChangeEvent in ("63343865036B579F0A26FF5C", "63343E99036B579F0A26FF6F", "633446D6036B579F0A26FF87","63345772036B579F0A26FF93"))
 
