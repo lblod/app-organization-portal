@@ -1,0 +1,57 @@
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX concepts: <http://lblod.data.gift/concepts/>
+PREFIX bestuur: <http://data.lblod.info/id/besturenVanDeEredienst/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX contacthub: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ce:  <http://data.lblod.info/id/veranderingsgebeurtenissen/>
+PREFIX cer:  <http://data.lblod.info/id/veranderingsgebeurtenis-resultaten/>
+PREFIX m8g: <http://data.europa.eu/m8g/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+
+DELETE {
+  graph ?g {
+    ?changeEvent ?p ?o.
+    ?changeEventResult ?cP ?cO.
+    ?decision ?decisionP ?decisionO.
+    ?decisionActivity  ?decisionActivityP ?desitionActivityO.
+  }
+}
+WHERE {
+  graph ?g {
+    ?changeEvent a <http://www.w3.org/ns/org#ChangeEvent>;
+                <http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat> ?changeEventResult; 
+                mu:uuid ?uuidChangeEvent;
+                ?p ?o.
+    ?changeEventResult a <http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat>;
+                       mu:uuid ?uuidChangeEventResult;
+                      ?cP ?cO.
+
+    optional {
+     ?changeEvent <http://data.europa.eu/m8g/hasFormalFramework> ?decision.
+     ?decision ?decisionP ?decisionO.
+        optional {
+         ?decisionActivity a <https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit>; 
+                           <http://www.w3.org/ns/prov#generated> ?decision;
+                          ?decisionActivityP ?desitionActivityO.
+        }
+
+    }
+
+    filter(?uuidChangeEvent in ("63343865036B579F0A26FF5C", "63343E99036B579F0A26FF6F", "633446D6036B579F0A26FF87","63345772036B579F0A26FF93"))
+
+  }
+}
+
