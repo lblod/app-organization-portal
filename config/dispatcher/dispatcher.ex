@@ -305,6 +305,10 @@ defmodule Dispatcher do
     forward conn, path, "http://construct-administrative-unit-relationships/create-relationships/"
   end
 
+  get "/ldes/*path", %{ layer: :api_services } do
+    forward conn, path, "http://ldes-backend/"
+  end
+
   #################################################################
   # ERROR REPORT
   #################################################################

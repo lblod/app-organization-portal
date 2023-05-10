@@ -1,0 +1,24 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+INSERT {
+  GRAPH ?g {
+    ?org a org:Organization .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/shared>
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
+  GRAPH ?g {
+    VALUES ?type { 
+      besluit:Bestuurseenheid 
+      ere:RepresentatiefOrgaan 
+      ere:EredienstBestuurseenheid 
+      ere:BestuurVanDeEredienst 
+      ere:CentraalBestuurVanDeEredienst 
+    }
+    ?org a ?type .
+  }
+}
