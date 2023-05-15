@@ -1,5 +1,7 @@
 # Filtering classes to ingest
 
+@prefix log: <http://www.w3.org/2000/10/swap/log#> .
+
 {
   ?s a <http://www.w3.org/ns/person#Person> ;
     ?p ?o .
@@ -24,17 +26,117 @@
     ?p ?o .
 }.
 
+# Functionarissen should be linked to a gemeente, district, provincie or ocmw only (FOR NOW)
+
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
     ?p ?o .
+
+  ?orgaanInTime <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
  } => {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
+    ?p ?o .
+
+  ?orgaanInTime <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+ } => {
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
+    ?p ?o .
+
+  ?orgaanInTime <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
+ } => {
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
+    ?p ?o .
+
+  ?orgaanInTime <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003> .
+ } => {
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    ?p ?o .
+}.
+
+# Mandatarissen should be linked to a gemeente, district, provincie or ocmw only (FOR NOW)
+
+{
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    <http://www.w3.org/ns/org#holds> ?mandate ;
+    ?p ?o .
+
+  ?orgaan <http://www.w3.org/ns/org#hasPost> ?mandate ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+ } => {
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     ?p ?o .
 }.
 
 {
   ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    <http://www.w3.org/ns/org#holds> ?mandate ;
     ?p ?o .
+
+  ?orgaan <http://www.w3.org/ns/org#hasPost> ?mandate ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+ } => {
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    <http://www.w3.org/ns/org#holds> ?mandate ;
+    ?p ?o .
+
+  ?orgaan <http://www.w3.org/ns/org#hasPost> ?mandate ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
+ } => {
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
+    <http://www.w3.org/ns/org#holds> ?mandate ;
+    ?p ?o .
+
+  ?orgaan <http://www.w3.org/ns/org#hasPost> ?mandate ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003> .
  } => {
   ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     ?p ?o .

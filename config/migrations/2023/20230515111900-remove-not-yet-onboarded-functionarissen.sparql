@@ -1,0 +1,21 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?functionaris ?pfunctionaris ?ofunctionaris .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?functionaris a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
+    ?pfunctionaris ?ofunctionaris .
+  }
+
+  ?orgaan <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie ;
+    <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt>/<http://data.vlaanderen.be/ns/besluit#classificatie> ?classification .
+
+  FILTER(?classification NOT IN (
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>
+  ))
+}
