@@ -228,7 +228,7 @@ services:
     restart: always
     logging: *default-logging
   reasoner:
-    image: eyereasoner/reasoning-service:1.0.2
+    image: eyereasoner/reasoning-service:increased-stack-limit
     volumes:
       - ./config/reasoner:/config
   ################################################################################
@@ -497,7 +497,7 @@ services:
   ldes-delta-pusher:
     image: redpencil/ldes-delta-pusher:latest
     environment:
-      LDES_ENDPOINT: 'http://ldes-backend/organizations'
+      LDES_ENDPOINT: "http://ldes-backend/organizations"
     volumes:
       - ./config/ldes-delta-pusher/:/config/
     links:
@@ -508,14 +508,14 @@ services:
     environment:
       FOLDER_DEPTH: 1
       PAGE_RESOURCES_COUNT: 50
-      LDES_STREAM_PREFIX: 'http://data.lblod.info/streams/op/'
-      TIME_TREE_RELATION_PATH: 'http://www.w3.org/ns/prov#generatedAtTime'
+      LDES_STREAM_PREFIX: "http://data.lblod.info/streams/op/"
+      TIME_TREE_RELATION_PATH: "http://www.w3.org/ns/prov#generatedAtTime"
       CACHE_SIZE: 10
-      DATA_FOLDER: '/data'
-      ENABLE_AUTH: 'false'
+      DATA_FOLDER: "/data"
+      ENABLE_AUTH: "false"
     restart: always
     volumes:
-      - './data/ldes-feed/:/data/'
+      - "./data/ldes-feed/:/data/"
 
   ################################################################################
   # MU SEARCH
