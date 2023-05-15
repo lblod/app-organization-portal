@@ -237,6 +237,7 @@ services:
     image: lblod/op-sync-with-sharepoint-service
     environment:
       SERVICE_NAME: 'organizations-sync-with-sharepoint'
+      SOURCE_GRAPHS: 'http://mu.semte.ch/graphs/administrative-unit,http://mu.semte.ch/graphs/shared,http://mu.semte.ch/graphs/worship-service'
     links:
       - db:database
     labels:
