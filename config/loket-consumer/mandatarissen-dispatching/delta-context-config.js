@@ -19,7 +19,8 @@ const contextConfig = {
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
-          ?mandataris org:holds ?mandate .
+          ?mandataris org:holds ?mandate ;
+            ?p ?o .
           ?orgaanInTime org:hasPost ?mandate ;
             mandaat:isTijdspecialisatieVan ?orgaan .
           ?orgaan besluit:bestuurt ?eenheid .
@@ -27,7 +28,8 @@ const contextConfig = {
         } WHERE {
           GRAPH <http://mu.semte.ch/graphs/landing-zone/mandatarissen> {
             VALUES ?mandataris { ${subject} }
-            ?mandataris org:holds ?mandate .
+            ?mandataris org:holds ?mandate ;
+              ?p ?o .
             ?orgaanInTime org:hasPost ?mandate ;
               mandaat:isTijdspecialisatieVan ?orgaan .
             ?orgaan besluit:bestuurt ?eenheid .
@@ -42,7 +44,8 @@ const contextConfig = {
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
-          ?mandataris org:holds ?mandate .
+          ?mandataris org:holds ?mandate ;
+            ?p ?o .
           ?orgaanInTime org:hasPost ?mandate ;
             mandaat:isTijdspecialisatieVan ?orgaan .
           ?orgaan besluit:bestuurt ?eenheid .
@@ -50,7 +53,8 @@ const contextConfig = {
         } WHERE {
           GRAPH <http://mu.semte.ch/graphs/landing-zone/mandatarissen> {
             VALUES ?mandataris { ${subject} }
-            ?mandataris org:holds ?mandate .
+            ?mandataris org:holds ?mandate ;
+              ?p ?o .
             ?orgaanInTime org:hasPost ?mandate ;
               mandaat:isTijdspecialisatieVan ?orgaan .
             ?orgaan besluit:bestuurt ?eenheid .

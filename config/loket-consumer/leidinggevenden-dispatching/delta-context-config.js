@@ -19,7 +19,8 @@ const contextConfig = {
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
-          ?functionaris org:holds ?bestuursfunctie .
+          ?functionaris org:holds ?bestuursfunctie ;
+            ?p ?o .
           ?orgaanInTime lblodlg:heeftBestuursfunctie ?bestuursfunctie ;
             mandaat:isTijdspecialisatieVan ?orgaan .
           ?orgaan besluit:bestuurt ?eenheid .
@@ -27,7 +28,8 @@ const contextConfig = {
         } WHERE {
           GRAPH <http://mu.semte.ch/graphs/landing-zone/leidinggevenden> {
             VALUES ?functionaris { ${subject} }
-            ?functionaris org:holds ?bestuursfunctie .
+            ?functionaris org:holds ?bestuursfunctie ;
+              ?p ?o .
             ?orgaanInTime lblodlg:heeftBestuursfunctie ?bestuursfunctie ;
               mandaat:isTijdspecialisatieVan ?orgaan .
             ?orgaan besluit:bestuurt ?eenheid .
@@ -42,7 +44,8 @@ const contextConfig = {
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
-          ?functionaris org:holds ?bestuursfunctie .
+          ?functionaris org:holds ?bestuursfunctie ;
+            ?p ?o .
           ?orgaanInTime lblodlg:heeftBestuursfunctie ?bestuursfunctie ;
             mandaat:isTijdspecialisatieVan ?orgaan .
           ?orgaan besluit:bestuurt ?eenheid .
@@ -50,7 +53,8 @@ const contextConfig = {
         } WHERE {
           GRAPH <http://mu.semte.ch/graphs/landing-zone/leidinggevenden> {
             VALUES ?functionaris { ${subject} }
-            ?functionaris org:holds ?bestuursfunctie .
+            ?functionaris org:holds ?bestuursfunctie ;
+              ?p ?o .
             ?orgaanInTime lblodlg:heeftBestuursfunctie ?bestuursfunctie ;
               mandaat:isTijdspecialisatieVan ?orgaan .
             ?orgaan besluit:bestuurt ?eenheid .
