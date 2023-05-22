@@ -496,6 +496,7 @@ services:
 
   ldes-delta-pusher:
     image: redpencil/ldes-delta-pusher:latest
+    profiles: ["dev"] # Disable ldes feed by default until ready for qa/prod
     environment:
       LDES_ENDPOINT: 'http://ldes-backend/organizations'
     volumes:
@@ -505,6 +506,7 @@ services:
 
   ldes-backend:
     image: redpencil/fragmentation-producer:0.3.2
+    profiles: ["dev"] # Disable ldes feed by default until ready for qa/prod
     environment:
       FOLDER_DEPTH: 1
       PAGE_RESOURCES_COUNT: 50
