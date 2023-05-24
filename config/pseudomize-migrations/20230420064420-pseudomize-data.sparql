@@ -1,0 +1,149 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX schema: <http://schema.org/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+    GRAPH ?g {
+      ?person foaf:familyName ?fn.
+      ?person foaf:givenName ?gn.
+      ?person persoon:gebruikteVoornaam ?gvn.
+    }
+} INSERT {
+    GRAPH ?g {
+      ?person foaf:givenName ?gn_s.
+      ?person foaf:familyName ?fn_s.
+      ?person persoon:gebruikteVoornaam ?gvn_s.
+    }
+} WHERE {
+  VALUES ?g { <http://mu.semte.ch/graphs/organisatieportaal> <http://redpencil.data.gift/id/deltas/producer/organizations>}
+  GRAPH ?g {
+    BIND("njbyevfeRTE8651B" AS ?salt).
+    ?person a person:Person.
+    OPTIONAL {
+      ?person foaf:givenName ?gn.
+      BIND(SHA1(CONCAT(?salt, ?gn)) AS ?gn_s).
+    }
+    OPTIONAL {
+      ?person foaf:familyName ?fn.
+      BIND(SHA1(CONCAT(?salt, ?fn)) AS ?fn_s).
+    }
+    OPTIONAL {
+      ?person persoon:gebruikteVoornaam ?gvn.
+      BIND(SHA1(CONCAT(?salt, ?gvn)) AS ?gvn_s).
+    }
+  }
+}
+
+;
+
+DELETE {
+    GRAPH ?h {
+      ?birth persoon:datum ?dob.
+      ?identificator generiek:lokaleIdentificator ?rrn .
+      ?person persoon:heeftNationaliteit ?nationality .
+      ?person persoon:geslacht ?gender .
+    }
+} INSERT {
+    GRAPH ?h {
+      ?birth persoon:datum "1977-01-01T00:00:00Z"^^xsd:dateTime .
+      ?identificator generiek:lokaleIdentificator "42012205181" .
+    }
+} WHERE {
+  VALUES ?g { <http://mu.semte.ch/graphs/organisatieportaal> <http://redpencil.data.gift/id/deltas/producer/organizations>}
+  VALUES ?h { <http://mu.semte.ch/graphs/privacy-centric-graph> }
+  GRAPH ?g {
+    ?person a person:Person.
+  }
+  GRAPH ?h {
+    OPTIONAL {
+      ?person persoon:heeftGeboorte ?birth .
+      ?birth persoon:datum ?dob.
+    }
+    OPTIONAL {
+      ?person persoon:registratie/generiek:gestructureerdeIdentificator ?identificator .
+      ?identificator generiek:lokaleIdentificator ?rrn .
+    }
+    OPTIONAL {
+      ?person persoon:geslacht ?gender .
+    }
+    OPTIONAL {
+      ?person persoon:heeftNationaliteit ?nationality .
+    }
+  }
+}
+
+;
+
+DELETE {
+    GRAPH ?g {
+      ?cp schema:telephone ?phone.
+      ?cp schema:email ?mail.
+      ?address locn:fullAddress ?fa.
+      ?address adres:Adresvoorstelling.huisnummer ?huisnr.
+      ?address adres:Adresvoorstelling.busnummer ?busnr.
+      ?address locn:thoroughfare ?street.
+      ?address locn:postCode ?postCode.
+      ?address adres:gemeentenaam ?gemeente.
+    }
+} INSERT {
+    GRAPH ?g {
+      ?cp schema:telephone ?phone_s.
+      ?cp schema:email ?mail_s.
+      ?address locn:fullAddress ?fa_s.
+      ?address adres:Adresvoorstelling.huisnummer ?huisnr_s.
+      ?address adres:Adresvoorstelling.busnummer ?busnr_s.
+      ?address locn:thoroughfare ?street_s.
+      ?address locn:postCode ?postCode_s.
+      ?address adres:gemeentenaam ?gemeente_s.
+    }
+} WHERE {
+  VALUES ?g { <http://mu.semte.ch/graphs/organisatieportaal> <http://redpencil.data.gift/id/deltas/producer/organizations>}
+  GRAPH ?g {
+    BIND("njbyevfeRTE8651B" AS ?salt).
+    ?cp a <http://schema.org/ContactPoint> .
+
+    OPTIONAL {
+      ?cp schema:telephone ?phone.
+      BIND(SHA1(CONCAT(?salt, ?phone)) AS ?phone_s).
+    }
+    OPTIONAL {
+      ?cp schema:email ?mail.
+      BIND(CONCAT(SHA1(CONCAT(?salt, ?mail)), "@email.com") AS ?mail_s).
+    }
+    OPTIONAL {
+      ?cp locn:address ?address.
+      OPTIONAL {
+        ?address locn:fullAddress ?fa.
+        BIND(SHA1(CONCAT(?salt, ?fa)) AS ?fa_s).
+      }
+      OPTIONAL {
+        ?address adres:Adresvoorstelling.huisnummer ?huisnr.
+        BIND(SHA1(CONCAT(?salt, ?huisnr)) AS ?huisnr_s).
+      }
+      OPTIONAL {
+        ?address adres:Adresvoorstelling.busnummer ?busnr.
+        BIND(SHA1(CONCAT(?salt, ?busnr)) AS ?busnr_s).
+      }
+      OPTIONAL {
+        ?address locn:thoroughfare ?street.
+        BIND(SHA1(CONCAT(?salt, ?street)) AS ?street_s).
+      }
+      OPTIONAL {
+        ?address locn:postCode ?postCode.
+        BIND(SHA1(CONCAT(?salt, ?postCode)) AS ?postCode_s).
+      }
+      OPTIONAL {
+        ?address adres:gemeentenaam ?gemeente.
+        BIND(SHA1(CONCAT(?salt, ?gemeente)) AS ?gemeente_s).
+      }
+    }
+  }
+}
