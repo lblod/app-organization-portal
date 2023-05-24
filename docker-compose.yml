@@ -219,7 +219,7 @@ services:
     volumes:
       - ./config/jobs-controller/:/config/
   construct-administrative-unit-relationships:
-    image: lblod/construct-administrative-unit-relationships-service:0.1.1
+    image: lblod/construct-administrative-unit-relationships-service:0.1.2
     environment:
       START_DATE_WORSHIP_GOVERNING_BODY: "2023-04-01T00:00:00"
       END_DATE_WORSHIP_GOVERNING_BODY: "2026-03-31T00:00:00"
