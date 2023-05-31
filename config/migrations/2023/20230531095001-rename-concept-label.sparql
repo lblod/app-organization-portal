@@ -1,0 +1,17 @@
+DELETE {
+ graph <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/concepts/dcc01338-842c-4fbd-ba68-3ca6f3af975c> <http://www.w3.org/2004/02/skos/core#prefLabel> "Correspondentieadres".
+ } 
+}
+INSERT {
+ graph <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/concepts/dcc01338-842c-4fbd-ba68-3ca6f3af975c> <http://www.w3.org/2004/02/skos/core#prefLabel> "Andere vestiging".
+ } 
+}
+WHERE {
+ graph <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/concepts/dcc01338-842c-4fbd-ba68-3ca6f3af975c> <http://www.w3.org/2004/02/skos/core#prefLabel> "Correspondentieadres".
+ } 
+} 
+
+
