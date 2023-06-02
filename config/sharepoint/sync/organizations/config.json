@@ -1,4 +1,8 @@
 {
+  "sourceGraphs": [
+    "http://mu.semte.ch/graphs/administrative-unit",
+    "http://mu.semte.ch/graphs/shared"
+  ],
   "objects": [
     {
       "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
@@ -16,17 +20,18 @@
           "sl": "Organisatiestatus"
         }
       ],
-      "pathToBestuurUuid": "?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://mu.semte.ch/vocabularies/core/uuid> ?bestuurUuid .\n FILTER NOT EXISTS { ?s a <http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid> }"
+      "pathToMatchingUuid": "?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ."
     },
     {
       "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
       "mappings": [
         {
           "op": ["https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
-          "sl": "KBOnr"
+          "sl": "KBOnr",
+          "isInitialMatchingMapping": "true"
         }
       ],
-      "pathToBestuurUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?bestuurUuid ;\n\t <http://www.w3.org/ns/adms#identifier> ?kboIdentifier .\n ?kboIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"KBO nummer\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?s .\n FILTER NOT EXISTS { ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid> }"
+      "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/adms#identifier> ?kboIdentifier .\n ?kboIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"KBO nummer\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?s ."
     },
     {
       "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
@@ -36,7 +41,7 @@
           "sl": "Unieke_x0020_Naam"
         }
       ],
-      "pathToBestuurUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?bestuurUuid ;\n\t <http://www.w3.org/ns/adms#identifier> ?sharepointIdentifier .\n ?sharepointIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?s .\n FILTER NOT EXISTS { ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid> }"
+      "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/adms#identifier> ?sharepointIdentifier .\n ?sharepointIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"SharePoint identificator\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?s ."
     },
     {
       "type": "http://www.w3.org/ns/locn#Address",
@@ -62,7 +67,7 @@
           "sl": "Provincie_x0020_van_x0020_de_x00"
         }
       ],
-      "pathToBestuurUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?bestuurUuid ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?s .\n FILTER NOT EXISTS { ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid> }"
+      "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?s ."
     },
     {
       "type": "http://schema.org/ContactPoint",
@@ -80,7 +85,7 @@
           "sl": "Algemeen_x0020_mailadres"
         }
       ],
-      "pathToBestuurUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?bestuurUuid ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<http://www.w3.org/ns/org#siteAddress> ?s .\n FILTER NOT EXISTS { ?bestuurseenheid a <http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid> }"
+      "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<http://www.w3.org/ns/org#siteAddress> ?s ."
     }
   ]
 }

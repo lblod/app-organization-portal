@@ -199,12 +199,7 @@ export default [
     }
   },
   {
-    match: {
-      graph: {
-        type: 'uri',
-        value: 'http://mu.semte.ch/graphs/administrative-unit'
-      }
-    },
+    match: {},
     callback: {
       url: 'http://organizations-sync-with-sharepoint/delta',
       method: 'POST'
@@ -215,23 +210,5 @@ export default [
       ignoreFromSelf: true,
       optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
     }
-  }/* ,
-  {
-    match: {
-      graph: {
-        type: 'uri',
-        value: 'http://redpencil.data.gift/id/deltas/producer/organizations'
-      }
-    },
-    callback: {
-      url: 'http://contacts-sync-with-sharepoint/delta',
-      method: 'POST'
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
-    }
-  } */
+  }
 ]

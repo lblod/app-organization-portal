@@ -217,13 +217,13 @@ services:
     volumes:
       - ./config/jobs-controller/:/config/
   organizations-sync-with-sharepoint-jobs-initiator:
-    image: lblod/delta-producer-background-jobs-initiator:0.4.2
+    image: lblod/delta-producer-background-jobs-initiator:0.4.3
     environment:
       JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
-      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/initialPublicationGraphSyncing/organizations"
+      INITIAL_PUBLICATION_GRAPH_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/initialSyncing/organizations"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/healingOperation/organizations"
-      INITIAL_PUBLICATION_GRAPH_SYNC_TASK_OPERATION: "http://redpencil.data.gift/id/jobs/concept/TaskOperation/sp-sync/initialPublicationGraphSyncing"
-      HEALING_TASK_OPERATION: "http://redpencil.data.gift/id/jobs/concept/TaskOperation/sp-sync/initialPublicationGraphSyncing"
+      INITIAL_PUBLICATION_GRAPH_SYNC_TASK_OPERATION: "http://redpencil.data.gift/id/jobs/concept/TaskOperation/sp-sync/initialSyncing"
+      HEALING_TASK_OPERATION: "http://redpencil.data.gift/id/jobs/concept/TaskOperation/sp-sync/healing"
       CRON_PATTERN_HEALING_JOB: "0 0 4 * * *" # everyday at 4 AM
       START_INITIAL_SYNC: "false" # prefer to disable it now. We want to have feeling with how the DB acts.
       ENABLE_DUMP_FILE_CREATION: "false"
@@ -236,8 +236,9 @@ services:
   organizations-sync-with-sharepoint:
     image: lblod/op-sync-with-sharepoint-service
     environment:
-      SERVICE_NAME: 'organizations-sync-with-sharepoint'
-      SOURCE_GRAPHS: 'http://mu.semte.ch/graphs/administrative-unit,http://mu.semte.ch/graphs/shared,http://mu.semte.ch/graphs/worship-service'
+      INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/initialSyncing/organizations"
+      HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/healingOperation/organizations"
+      USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true"
     links:
       - db:database
     labels:
@@ -246,18 +247,6 @@ services:
     logging: *default-logging
     volumes:
       - ./config/sharepoint/sync/organizations/:/config/
-  #contacts-sync-with-sharepoint:
-  #  image: lblod/op-sync-with-sharepoint-service
-  #  environment:
-  #    SERVICE_NAME: 'contacts-sync-with-sharepoint'
-  #  links:
-  #    - db:database
-  #  labels:
-  #    - "logging=true"
-  #  restart: always
-  #  logging: *default-logging
-  #  volumes:
-  #    - ./config/sharepoint/sync/contacts/:/config/
   construct-administrative-unit-relationships:
     image: lblod/construct-administrative-unit-relationships-service:0.1.1
     environment:
