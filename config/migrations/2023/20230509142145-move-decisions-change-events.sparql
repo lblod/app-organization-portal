@@ -1,0 +1,75 @@
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX concepts: <http://lblod.data.gift/concepts/>
+PREFIX bestuur: <http://data.lblod.info/id/besturenVanDeEredienst/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX contacthub: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ce:  <http://data.lblod.info/id/veranderingsgebeurtenissen/>
+PREFIX cer:  <http://data.lblod.info/id/veranderingsgebeurtenis-resultaten/>
+PREFIX m8g: <http://data.europa.eu/m8g/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+
+DELETE {
+  graph <http://mu.semte.ch/graphs/administrative-unit> {
+    ?decision ?decisionP ?decisionO.
+  }
+}
+INSERT {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    ?decision ?decisionP ?decisionO.
+  }
+}
+WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    ?changeEvent a <http://www.w3.org/ns/org#ChangeEvent>;
+              <http://data.europa.eu/m8g/hasFormalFramework> ?decision.
+    }
+  graph <http://mu.semte.ch/graphs/administrative-unit> {
+      ?decision ?decisionP ?decisionO.
+
+  }
+
+
+}
+;
+
+
+DELETE {
+  graph <http://mu.semte.ch/graphs/administrative-unit> {
+    ?decisionActivity ?p ?o.
+  }
+}
+INSERT {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    ?decisionActivity ?p ?o.
+  }
+}
+WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    ?decision a <http://data.vlaanderen.be/ns/besluit#Besluit>.
+  }
+  graph <http://mu.semte.ch/graphs/administrative-unit> {
+      ?decisionActivity a <https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit>; 
+      <http://www.w3.org/ns/prov#generated> ?decision;
+      ?p ?o.
+  }
+
+
+}
+
+
+
+
+

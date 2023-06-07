@@ -1,0 +1,11 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s ?p ?o .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://data.vlaanderen.be/ns/mandaat#Fractie> ;
+      ?p ?o .
+  }
+}

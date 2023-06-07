@@ -1,0 +1,19 @@
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://www.w3.org/ns/org#Post> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://data.vlaanderen.be/ns/mandaat#Mandaat> .
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a <http://www.w3.org/ns/org#Post> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a <http://data.vlaanderen.be/ns/mandaat#Mandaat> .
+  }
+}

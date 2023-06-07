@@ -2,7 +2,14 @@ const {
   transformStatements,
   deleteFromTargetGraph,
   insertIntoTargetGraph,
+  deleteFromPrivateGraph,
+  insertIntoPrivateGraph
 } = require('./util');
+
+const {
+  MAIN_INFO_MAPPING,
+  PRIVATE_INFO_MAPPING
+} = require('./config');
 
 /**
 * Dispatch the fetched information to a target graph.
@@ -53,28 +60,50 @@ async function dispatch(lib, data) {
     }
 
     if (originalDeletes.length) {
-      // Map deletes from DL to OP model
-      const transformedDeletes = await transformStatements(fetch, deletesWithContext);
+      // Map main deletes from DL to OP model
+      const transformedMainDeletes = await transformStatements(fetch, deletesWithContext, MAIN_INFO_MAPPING);
 
-      if (!transformedDeletes.length) {
-        console.log(`Warn: Delete statements mapped to empty result.`);
+      if (!transformedMainDeletes.length) {
+        console.log(`Warn: Delete main statements mapped to empty result.`);
         console.log(`Input: ${deletesWithContext}`);
-        console.log(`Output: ${transformedDeletes}`);
+        console.log(`Output: ${transformedMainDeletes}`);
       } else {
-        await deleteFromTargetGraph(lib, transformedDeletes);
+        await deleteFromTargetGraph(lib, transformedMainDeletes);
+      }
+
+      // Map private deletes from DL to OP model
+      const transformedPrivateDeletes = await transformStatements(fetch, deletesWithContext, PRIVATE_INFO_MAPPING);
+
+      if (!transformedPrivateDeletes.length) {
+        console.log(`Warn: Delete private statements mapped to empty result.`);
+        console.log(`Input: ${deletesWithContext}`);
+        console.log(`Output: ${transformedPrivateDeletes}`);
+      } else {
+        await deleteFromPrivateGraph(lib, transformedDeletes);
       }
     }
 
     if (originalInserts.length) {
-      // Map inserts from DL to OP model
-      const transformedInserts = await transformStatements(fetch, insertsWithContext);
+      // Map main inserts from DL to OP model
+      const transformedMainInserts = await transformStatements(fetch, insertsWithContext, MAIN_INFO_MAPPING);
 
-      if (!transformedInserts.length) {
+      if (!transformedMainInserts.length) {
         console.log(`Warn: Insert statements mapped to empty result.`);
         console.log(`Input: ${insertsWithContext}`);
-        console.log(`Output: ${transformedInserts}`);
+        console.log(`Output: ${transformedMainInserts}`);
       } else {
-        await insertIntoTargetGraph(lib, transformedInserts);
+        await insertIntoTargetGraph(lib, transformedMainInserts);
+      }
+
+      // Map private inserts from DL to OP model
+      const transformedPrivateInserts = await transformStatements(fetch, insertsWithContext, PRIVATE_INFO_MAPPING);
+
+      if (!transformedPrivateInserts.length) {
+        console.log(`Warn: Insert statements mapped to empty result.`);
+        console.log(`Input: ${insertsWithContext}`);
+        console.log(`Output: ${transformedPrivateInserts}`);
+      } else {
+        await insertIntoPrivateGraph(lib, transformedPrivateInserts);
       }
     }
   }

@@ -9,6 +9,7 @@
 (defparameter *cache-model-properties* t)
 (defparameter *cache-count-queries* t)
 (defparameter *supply-cache-headers-p* t)
+(defparameter sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 
 (read-domain-file "domain.json")
 (read-domain-file "auth.json")

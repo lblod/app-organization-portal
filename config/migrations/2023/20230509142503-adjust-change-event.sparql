@@ -1,0 +1,16 @@
+delete {
+  graph ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/620E674C5747C883CA1D2EE4> <http://data.lblod.info/vocabularies/contacthub/typeWijziging> <http://lblod.data.gift/concepts/9f19f14910245f9b14737f1f1a2067f2>.
+  }
+}
+insert {
+  graph ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/620E674C5747C883CA1D2EE4> <http://data.lblod.info/vocabularies/contacthub/typeWijziging> <http://lblod.data.gift/concepts/4297bc56c1a874240e4566e2c5b8816f>.
+
+  }
+}
+where {
+  graph ?g {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/620E674C5747C883CA1D2EE4> <http://data.lblod.info/vocabularies/contacthub/typeWijziging> <http://lblod.data.gift/concepts/9f19f14910245f9b14737f1f1a2067f2>.
+  }
+}

@@ -5,8 +5,9 @@ const {
   SLEEP_BETWEEN_BATCHES,
   SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
   TARGET_GRAPH,
+  PRIVACY_SENSITIVE_GRAPH,
   LANDING_ZONE_GRAPH,
-  BATCH_SIZE,
+  BATCH_SIZE
 } = require('./config');
 
 async function batchedDbUpdate(
@@ -131,6 +132,22 @@ async function deleteFromTargetGraph(lib, statements) {
     'DELETE');
 }
 
+async function deleteFromPrivateGraph(lib, statements) {
+  console.log(`Deleting ${statements.length} statements from target graph`);
+  console.log(`Statements:  ${JSON.stringify(statements)}`)
+  await batchedDbUpdate(
+    lib.muAuthSudo.updateSudo,
+    PRIVACY_SENSITIVE_GRAPH,
+    statements,
+    {},
+    process.env.MU_SPARQL_ENDPOINT,
+    BATCH_SIZE,
+    MAX_DB_RETRY_ATTEMPTS,
+    SLEEP_BETWEEN_BATCHES,
+    SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
+    'DELETE');
+}
+
 async function insertIntoTargetGraph(lib, statements) {
   console.log(`Inserting ${statements.length} statements into target graph`);
   console.log(`Statements:  ${JSON.stringify(statements)}`)
@@ -138,6 +155,23 @@ async function insertIntoTargetGraph(lib, statements) {
   await batchedDbUpdate(
     lib.muAuthSudo.updateSudo,
     TARGET_GRAPH,
+    statements,
+    {},
+    process.env.MU_SPARQL_ENDPOINT,
+    BATCH_SIZE,
+    MAX_DB_RETRY_ATTEMPTS,
+    SLEEP_BETWEEN_BATCHES,
+    SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
+    'INSERT');
+}
+
+async function insertIntoPrivateGraph(lib, statements) {
+  console.log(`Inserting ${statements.length} statements into target graph`);
+  console.log(`Statements:  ${JSON.stringify(statements)}`)
+
+  await batchedDbUpdate(
+    lib.muAuthSudo.updateSudo,
+    PRIVACY_SENSITIVE_GRAPH,
     statements,
     {},
     process.env.MU_SPARQL_ENDPOINT,
@@ -164,5 +198,7 @@ module.exports = {
   transformStatements,
   transformLandingZoneGraph,
   deleteFromTargetGraph,
-  insertIntoTargetGraph
+  insertIntoTargetGraph,
+  deleteFromPrivateGraph,
+  insertIntoPrivateGraph
 };
