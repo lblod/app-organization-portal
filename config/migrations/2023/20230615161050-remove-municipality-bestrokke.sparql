@@ -1,0 +1,22 @@
+
+delete where {
+ graph ?g {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/f8979469220360bbfecaf66afe1b94ae> ?p ?o.
+ }
+}
+;
+delete {
+ graph ?g {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/1de71abc7b02a6702960b403bf724ff8> <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+ }
+}
+insert {
+ graph ?g {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/1de71abc7b02a6702960b403bf724ff8> <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> 100.
+ }
+}
+where {
+ graph ?g {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/1de71abc7b02a6702960b403bf724ff8> <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+ }
+}
