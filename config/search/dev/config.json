@@ -832,6 +832,114 @@
           }
         }
       }
+    },
+    {
+      "type": "registered-org",
+      "on_path": "registered-orgs",
+      "rdf_type": [
+        "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan"
+      ],
+      "properties": {
+        "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "classification_id": [
+          "http://www.w3.org/ns/org#classification",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "classification_name": [
+          "http://www.w3.org/ns/org#classification",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "status": [
+          "http://www.w3.org/ns/regorg#orgStatus",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "status_id": [
+          "http://www.w3.org/ns/regorg#orgStatus",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "recognized_worship_type_id": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "recognized_worship_type_name": [
+          "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
+        ],
+        "province": [
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "http://www.w3.org/ns/locn#adminUnitL2"
+        ],
+        "municipality": [
+          "http://www.w3.org/ns/org#hasPrimarySite",
+          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ]
+      },
+      "mappings": {
+        "properties": {
+          "classification_id": {
+            "type": "text"
+          },
+          "recognized_worship_type_id": {
+            "type": "text"
+          },
+          "name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "classification_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "status": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "recognized_worship_type_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "municipality": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          }
+        }
+      }
     }
   ]
 }
