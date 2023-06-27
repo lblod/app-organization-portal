@@ -1,0 +1,31 @@
+prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix skos:	<http://www.w3.org/2004/02/skos/core#> 
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+
+insert data {
+  graph <http://mu.semte.ch/graphs/public> {
+
+<http://data.vlaanderen.be/id/concept/GeregisteerdeOrganisatieClassificatieCode/32591b8b-916f-4320-a4d4-d998e837ad9c>
+	rdf:type	<http://mu.semte.ch/vocabularies/ext/RepresentatieveOrgaanClassificatieCode> , skos:Concept ;
+	<http://mu.semte.ch/vocabularies/core/uuid>	"32591b8b-916f-4320-a4d4-d998e837ad9c" ;
+	skos:topConceptOf	<https://data.vlaanderen.be/id/conceptscheme/GeregisteerdeOrganisatieClassificatieCode> ;
+	skos:prefLabel	"PEVA Gemeente" ;
+	skos:inScheme	<https://data.vlaanderen.be/id/conceptscheme/GeregisteerdeOrganisatieClassificatieCode> ;
+	<http://schema.org/publication>	<http://lblod.data.gift/concepts/83f7b480-fcaf-4795-b603-7f3bce489325> .
+
+
+
+<http://data.vlaanderen.be/id/concept/GeregisteerdeOrganisatieClassificatieCode/770e2d5c-69b2-4d18-b4b5-a37d28a609d6>
+	rdf:type	<http://mu.semte.ch/vocabularies/ext/RepresentatieveOrgaanClassificatieCode> , skos:Concept ;
+	<http://mu.semte.ch/vocabularies/core/uuid>	"770e2d5c-69b2-4d18-b4b5-a37d28a609d6" ;
+	skos:topConceptOf	<https://data.vlaanderen.be/id/conceptscheme/GeregisteerdeOrganisatieClassificatieCode> ;
+	skos:prefLabel	"PEVA Provincie" ;
+	skos:inScheme	<https://data.vlaanderen.be/id/conceptscheme/GeregisteerdeOrganisatieClassificatieCode> ;
+	<http://schema.org/publication>	<http://lblod.data.gift/concepts/83f7b480-fcaf-4795-b603-7f3bce489325> .
+  }
+}
+
+
+
+
