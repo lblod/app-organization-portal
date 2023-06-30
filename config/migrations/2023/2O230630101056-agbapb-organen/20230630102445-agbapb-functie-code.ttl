@@ -1,0 +1,13 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:	<http://www.w3.org/2004/02/skos/core#> .
+@prefix ns2:	<http://mu.semte.ch/vocabularies/ext/> .
+@prefix ns3:	<http://mu.semte.ch/vocabularies/core/> .
+@prefix ns4:	<http://data.vlaanderen.be/id/conceptscheme/> .
+@prefix ns5:	<http://data.lblod.info/id/conceptscheme/> .
+
+<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/855489b9-b584-4f34-90b2-39aea808cd9f>
+	rdf:type	skos:Concept , ns2:BestuursfunctieCode ;
+	ns3:uuid	"855489b9-b584-4f34-90b2-39aea808cd9f" ;
+	skos:prefLabel	"Leidend ambtenaar" ;
+	skos:topConceptOf	ns4:BestuursfunctieCode , ns5:LocalOfficerMandateRole ;
+	skos:inScheme	ns5:LocalOfficerMandateRole .
