@@ -26,7 +26,7 @@
     ?p ?o .
 }.
 
-# Functionarissen should be linked to a gemeente, district, provincie or ocmw only (FOR NOW)
+# Functionarissen should be linked to a agb, apb, gemeente, district, provincie or ocmw only (FOR NOW)
 
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
@@ -83,6 +83,34 @@
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     ?p ?o .
 }.
+{
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
+    ?p ?o .
+
+  ?orgaanInTime <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>  .
+ } => {
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    ?p ?o .
+}.
+
+{
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
+    ?p ?o .
+
+  ?orgaanInTime <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d> .
+ } => {
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    ?p ?o .
+}.
+
 
 # Mandatarissen should be linked to a gemeente, district, provincie or ocmw only (FOR NOW)
 
@@ -141,6 +169,8 @@
   ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     ?p ?o .
 }.
+
+
 
 {
   ?s a <http://www.w3.org/ns/org#Membership> ;
