@@ -18,6 +18,8 @@
     "mandaat": "http://data.vlaanderen.be/ns/mandaat#",
     "besluit": "http://data.vlaanderen.be/ns/besluit#",
     "lblodlg": "http://data.lblod.info/vocabularies/leidinggevenden/",
+    "lblodorg": "https://data.lblod.info/vocabularies/organisatie/",
+    "lblodgeneriek": "https://data.lblod.info/vocabularies/generiek/",
     "dc_terms": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "skos": "http://www.w3.org/2004/02/skos/core#",
@@ -26,7 +28,8 @@
     "ch": "http://data.lblod.info/vocabularies/contacthub/",
     "code": "http://lblod.data.gift/vocabularies/organisatie/",
     "ext": "http://mu.semte.ch/vocabularies/ext/",
-    "geo": "http://www.opengis.net/ont/geosparql#"
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "nacebel": "http://data.gift/vocabularies/nace-bel/"
   },
   "resources": {
     "people": {
@@ -374,6 +377,14 @@
         "alternative-name": {
           "type": "string",
           "predicate": "skos:altLabel"
+        },
+        "expected-end-date": {
+          "type": "date",
+          "predicate": "lblodgeneriek:geplandeEindDatum"
+        },
+        "pupose": {
+          "type": "string",
+          "predicate": "org:purpose"
         }
       },
       "relationships": {
@@ -451,6 +462,27 @@
           "predicate": "ext:isFounderOfOrganization",
           "target": "organizations",
           "cardinality": "one",
+          "inverse": true
+        },
+        "sector": {
+          "predicate": "dc_terms:isPartOf",
+          "target": "sectors",
+          "cardinality": "many"
+        },
+        "activities": {
+          "predicate": "regorg:orgActivity",
+          "target": "nace-bel-codes",
+          "cardinality": "many"
+        },
+        "participates-in": {
+          "predicate": "org:memberOf",
+          "target": "organizations",
+          "cardinality": "many"
+        },
+        "has-participants": {
+          "predicate": "org:memberOf",
+          "target": "organizations",
+          "cardinality": "many",
           "inverse": true
         }
       },
@@ -1003,6 +1035,30 @@
         }
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "sectors": {
+      "class": "code:Sector",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "nace-bel-codes": {
+      "class": "nacebel:NaceBelCode",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "code": {
+          "type": "string",
+          "predicate": "skos:notation"
+        }
+      },
+      "new-resource-base": "http://data.relance.lblod.info/id/nace-bel/"
     }
   }
 }
