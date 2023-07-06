@@ -75,10 +75,12 @@ services:
     restart: "no"
   delta-producer-pub-graph-maintainer-public:
     restart: "no"
+  mandatarissen-consumer:
+    restart: "no"
   leidinggevenden-consumer:
-    environment:
-      DCR_SYNC_BASE_URL: "http://dev.loket.lblod.info"
-      DCR_DISABLE_INITIAL_SYNC: "false"
+    restart: "no"
+  worship-services-sensitive-consumer:
+    restart: "no"
   # use this to test acmidm
   # tlsproxy:
   #   image: caddy:2
