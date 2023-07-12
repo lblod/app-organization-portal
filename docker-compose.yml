@@ -505,7 +505,7 @@ services:
       - db:database
 
   ldes-backend:
-    image: redpencil/fragmentation-producer:0.3.2
+    image: redpencil/fragmentation-producer:0.3.3
     profiles: ["dev"] # Disable ldes feed by default until ready for qa/prod
     environment:
       FOLDER_DEPTH: 1
