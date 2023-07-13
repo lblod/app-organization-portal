@@ -107,24 +107,6 @@ export default [
   },
   {
     match: {
-      graph: {
-        type: 'uri',
-        value: 'http://redpencil.data.gift/id/deltas/producer/organizations'
-      }
-    },
-    callback: {
-      url: 'http://delta-producer-json-diff-publisher-organizations/delta',
-      method: 'POST'
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
-    }
-  },
-  {
-    match: {
     },
     callback: {
       url: 'http://delta-producer-pub-graph-maintainer-public/delta',
@@ -138,24 +120,6 @@ export default [
         "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
         "http://redpencil.data.gift/id/concept/muScope/deltas/publicationGraphMaintenance"
       ]
-    }
-  },
-  {
-    match: {
-      graph: {
-        type: 'uri',
-        value: 'http://redpencil.data.gift/id/deltas/producer/public'
-      }
-    },
-    callback: {
-      url: 'http://delta-producer-json-diff-publisher-public/delta',
-      method: 'POST'
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
     }
   },
   {
@@ -196,6 +160,54 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
+    }
+  },
+  {
+    match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/shared',
+      }
+    },
+    callback: {
+      url: 'http://ldes-delta-pusher/publish',
+      method: 'POST',
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
+    }
+  },
+  {
+    match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/worship-service',
+      }
+    },
+    callback: {
+      url: 'http://ldes-delta-pusher/publish',
+      method: 'POST',
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
+    }
+  },
+  {
+    match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/administrative-unit',
+      }
+    },
+    callback: {
+      url: 'http://ldes-delta-pusher/publish',
+      method: 'POST',
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
     }
   }
 ]

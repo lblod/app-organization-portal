@@ -263,7 +263,7 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-pub-graph-maintainer-organizations:
-    image: lblod/delta-producer-publication-graph-maintainer:0.7.0
+    image: lblod/delta-producer-publication-graph-maintainer:0.15.4
     environment:
       MAX_BODY_SIZE: "50mb"
       JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
@@ -275,30 +275,17 @@ services:
       USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true" # some queries are just too expensive
       SKIP_MU_AUTH_INITIAL_SYNC: "true"
       HEALING_PATCH_GRAPH_BATCH_SIZE: 500
+      SERVE_DELTA_FILES: "true"
+      PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/organizations"
+      DELTA_INTERVAL_MS: 10000
+      PRETTY_PRINT_DIFF_JSON: "true"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/jobs"
     volumes:
       - ./config/delta-producer/organizations:/config
       - ./data/files/:/share
     links:
       - db:database
       - triplestore:virtuoso
-    restart: always
-    logging: *default-logging
-  delta-producer-json-diff-publisher-organizations:
-    image: lblod/delta-producer-json-diff-file-publisher:0.2.3
-    environment:
-      MAX_BODY_SIZE: "50mb"
-      ERROR_GRAPH: "http://mu.semte.ch/graphs/jobs"
-      RELATIVE_FILE_PATH: "deltas/organizations"
-      PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/organizations"
-      PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/organizations"
-      DELTA_INTERVAL_MS: 10000
-      PRETTY_PRINT_DIFF_JSON: "true"
-    volumes:
-      - ./data/files:/share
-    labels:
-      - "logging=true"
-    links:
-      - db:database
     restart: always
     logging: *default-logging
   ################################################################################
@@ -337,30 +324,17 @@ services:
       USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true" # some queries are just too expensive
       SKIP_MU_AUTH_INITIAL_SYNC: "true"
       HEALING_PATCH_GRAPH_BATCH_SIZE: 500
+      SERVE_DELTA_FILES: "true"
+      PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/public"
+      DELTA_INTERVAL_MS: 10000
+      PRETTY_PRINT_DIFF_JSON: "true"
+      ERROR_GRAPH: "http://mu.semte.ch/graphs/jobs"
     volumes:
       - ./config/delta-producer/public:/config
       - ./data/files/:/share
     links:
       - db:database
       - triplestore:virtuoso
-    restart: always
-    logging: *default-logging
-  delta-producer-json-diff-publisher-public:
-    image: lblod/delta-producer-json-diff-file-publisher:0.2.3
-    environment:
-      MAX_BODY_SIZE: "50mb"
-      ERROR_GRAPH: "http://mu.semte.ch/graphs/jobs"
-      RELATIVE_FILE_PATH: "deltas/public"
-      PUBLISHER_URI: "http://data.lblod.info/services/delta-production-json-diff-file-manager/public"
-      PUBLICATION_GRAPH: "http://redpencil.data.gift/id/deltas/producer/public"
-      DELTA_INTERVAL_MS: 10000
-      PRETTY_PRINT_DIFF_JSON: "true"
-    volumes:
-      - ./data/files:/share
-    labels:
-      - "logging=true"
-    links:
-      - db:database
     restart: always
     logging: *default-logging
   ################################################################################
@@ -515,6 +489,33 @@ services:
   ################################################################################
   # DELTA CONSUMERS: END
   ################################################################################
+
+  ################################################################################
+  # LDES PRODUCERS
+  ################################################################################
+
+  ldes-delta-pusher:
+    image: redpencil/ldes-delta-pusher:latest
+    environment:
+      LDES_ENDPOINT: 'http://ldes-backend/organizations'
+    volumes:
+      - ./config/ldes-delta-pusher/:/config/
+    links:
+      - db:database
+
+  ldes-backend:
+    image: redpencil/fragmentation-producer:0.3.2
+    environment:
+      FOLDER_DEPTH: 1
+      PAGE_RESOURCES_COUNT: 50
+      LDES_STREAM_PREFIX: 'http://data.lblod.info/streams/op/'
+      TIME_TREE_RELATION_PATH: 'http://www.w3.org/ns/prov#generatedAtTime'
+      CACHE_SIZE: 10
+      DATA_FOLDER: '/data'
+      ENABLE_AUTH: 'false'
+    restart: always
+    volumes:
+      - './data/ldes-feed/:/data/'
 
   ################################################################################
   # MU SEARCH

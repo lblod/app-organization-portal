@@ -305,6 +305,10 @@ defmodule Dispatcher do
     forward conn, path, "http://construct-administrative-unit-relationships/create-relationships/"
   end
 
+  get "/ldes/*path", %{ layer: :api_services } do
+    forward conn, path, "http://ldes-backend/"
+  end
+
   #################################################################
   # ERROR REPORT
   #################################################################
@@ -337,21 +341,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/distributions/"
   end
 
-
-  #################################################################
-  #  DELTA: administrative-units
-  #################################################################
-
-  get "/sync/administrative-units/files/*path" do
-    Proxy.forward conn, path, "http://delta-producer-json-diff-file-publisher-administrative-units/files/"
-  end
-
   #################################################################
   #  DELTA: organizations
   #################################################################
 
   get "/sync/organizations/files/*path" do
-    Proxy.forward conn, path, "http://delta-producer-json-diff-file-publisher-organizations/files/"
+    Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-organizations/files/"
   end
 
   #################################################################
@@ -359,7 +354,7 @@ defmodule Dispatcher do
   #################################################################
 
   get "/sync/public/files/*path" do
-    Proxy.forward conn, path, "http://delta-producer-json-diff-publisher-public/files/"
+    Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-public/files/"
   end
 
   #################################################################

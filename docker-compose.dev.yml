@@ -55,8 +55,6 @@ services:
     restart: "no"
   delta-producer-pub-graph-maintainer-organizations:
     restart: "no"
-  delta-producer-json-diff-publisher-organizations:
-    restart: "no"
   search:
     restart: "no"
     volumes:
@@ -72,6 +70,10 @@ services:
   delta-producer-bg-jobs-initiator-worship-posts:
     restart: "no"
   delta-producer-pub-graph-maintainer-worship-posts:
+    restart: "no"
+  delta-producer-bg-jobs-initiator-public:
+    restart: "no"
+  delta-producer-pub-graph-maintainer-public:
     restart: "no"
   # use this to test acmidm
   # tlsproxy:
