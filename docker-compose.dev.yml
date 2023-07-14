@@ -81,6 +81,9 @@ services:
     restart: "no"
   worship-services-sensitive-consumer:
     restart: "no"
+  ldes-backend:
+    environment:
+      BASE_URL: "http://localhost/ldes/"
   # use this to test acmidm
   # tlsproxy:
   #   image: caddy:2
