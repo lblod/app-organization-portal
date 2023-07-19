@@ -1,0 +1,51 @@
+@prefix org: <http://www.w3.org/ns/org#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix persoon: <https://data.vlaanderen.be/ns/persoon#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+@prefix person: <http://www.w3.org/ns/person#>.
+@prefix session: <http://mu.semte.ch/vocabularies/session/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+@prefix ere: <http://data.lblod.info/vocabularies/erediensten/>.
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix generiek: <https://data.vlaanderen.be/ns/generiek#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+
+      <http://data.lblod.info/id/identificatoren/2aa74846-a99d-423b-8c9e-b2a344b39f2a> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "2aa74846-a99d-423b-8c9e-b2a344b39f2a";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/0edd4e8e-44b6-4e86-8717-cda144f91ebb>.
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/0edd4e8e-44b6-4e86-8717-cda144f91ebb> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                             mu:uuid "0edd4e8e-44b6-4e86-8717-cda144f91ebb";
+                                                             <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "666".
+
+ 
+<http://data.lblod.info/id/vestigingen/29faec77-652a-4d8e-afbb-635b141b13f0> a <http://www.w3.org/ns/org#Site>;
+       mu:uuid "29faec77-652a-4d8e-afbb-635b141b13f0";
+       <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd>;
+       <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/2d6c327a-cf81-43a6-8536-17602781fb2f>;
+       org:siteAddress <http://data.lblod.info/id/contact-punten/bc66afca-f8cf-4e4d-b038-500906e9ffa9>,
+                       <http://data.lblod.info/id/contact-punten/1d1da2b5-8f38-41b6-a81d-5bfa72e7d7db>.
+
+            
+<http://data.lblod.info/id/contact-punten/bc66afca-f8cf-4e4d-b038-500906e9ffa9> a <http://schema.org/ContactPoint>;
+       mu:uuid "bc66afca-f8cf-4e4d-b038-500906e9ffa9";
+       <http://schema.org/contactType> "Primary".
+<http://data.lblod.info/id/contact-punten/1d1da2b5-8f38-41b6-a81d-5bfa72e7d7db> a <http://schema.org/ContactPoint>;
+       mu:uuid "1d1da2b5-8f38-41b6-a81d-5bfa72e7d7db";
+       <http://schema.org/contactType> "Secondary".
+
+<http://data.lblod.info/id/adressen/2d6c327a-cf81-43a6-8536-17602781fb2f> a <http://www.w3.org/ns/locn#Address>;
+        mu:uuid "2d6c327a-cf81-43a6-8536-17602781fb2f".
+
+
+<http://data.lblod.info/id/bestuurseenheden/0a0f52e2ece73e8f0bdfa4268ba47bea3e0d523fce943e1fb8927032563e065f> a besluit:Bestuurseenheid, org:Organization;
+        mu:uuid "0a0f52e2ece73e8f0bdfa4268ba47bea3e0d523fce943e1fb8927032563e065f";
+        org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>;
+        skos:prefLabel  "AGB BRUGGE";
+        skos:altLabel "";
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/2aa74846-a99d-423b-8c9e-b2a344b39f2a>;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/29faec77-652a-4d8e-afbb-635b141b13f0> .
