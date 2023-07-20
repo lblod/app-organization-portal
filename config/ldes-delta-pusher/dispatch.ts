@@ -11,12 +11,16 @@ export default async function dispatch(changesets: Changeset[]) {
         PREFIX code: <http://telegraphis.net/ontology/measurement/code#>
         PREFIX org: <http://www.w3.org/ns/org#>
         PREFIX adms: <http://www.w3.org/ns/adms#>
+        PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
   
         CONSTRUCT {
           ?organization a org:Organization;
                         skos:prefLabel ?prefLabel;
                         adms:identifier ?identifier;
                         org:hasPrimarySite ?site.
+          ?identifier skos:notation ?identifierLabel;
+                      generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
+          ?gestructureerdeIdentificator generiek:lokaleIdentificator ?lokaleIdentificator.
           ?site org:siteAddress ?siteAddress.
           ?siteAddress ?p ?o.
         } WHERE {
@@ -26,6 +30,9 @@ export default async function dispatch(changesets: Changeset[]) {
                           skos:prefLabel ?prefLabel;
                           adms:identifier ?identifier;
                           org:hasPrimarySite ?site.
+            ?identifier skos:notation ?identifierLabel;
+                        generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
+            ?gestructureerdeIdentificator generiek:lokaleIdentificator ?lokaleIdentificator.
             ?site org:siteAddress ?siteAddress.
             ?siteAddress ?p ?o.
           } UNION {
@@ -34,6 +41,9 @@ export default async function dispatch(changesets: Changeset[]) {
                           skos:prefLabel ?prefLabel;
                           adms:identifier ?identifier;
                           org:hasPrimarySite ?site.
+            ?identifier skos:notation ?identifierLabel;
+                        generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
+            ?gestructureerdeIdentificator generiek:lokaleIdentificator ?lokaleIdentificator.
             ?site org:siteAddress ?siteAddress.
             ?siteAddress ?p ?o.
           } UNION {
@@ -42,12 +52,16 @@ export default async function dispatch(changesets: Changeset[]) {
                           skos:prefLabel ?prefLabel;
                           adms:identifier ?identifier;
                           org:hasPrimarySite ?site.
+            ?identifier skos:notation ?identifierLabel;
+                        generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
+            ?gestructureerdeIdentificator generiek:lokaleIdentificator ?lokaleIdentificator.
             ?site org:siteAddress ?siteAddress.
             ?siteAddress ?p ?o.
           } 
         }
 			`);
       if(bindings.length){
+        console.log('SUCCESS')
         await moveTriples([
           {
             inserts: bindings.map(({ s, p, o}) => { return { subject: s, predicate: p, object: o} }),
