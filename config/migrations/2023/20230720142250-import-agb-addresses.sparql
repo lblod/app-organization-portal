@@ -15,9 +15,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGSA - Stadsontwikkeling Aalst".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -38,9 +38,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "SportAG".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -61,9 +61,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Aalter".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -84,9 +84,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Aarschot".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -107,9 +107,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Het Gasthuis Aarschot".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -130,9 +130,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Mobiliteit en Parkeren Antwerpen AG".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -153,9 +153,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB VESPA - Vastgoedbeheer en Stadsprojecten Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -176,9 +176,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AG Kinderopvang Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -199,9 +199,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stedelijk Onderwijs Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -222,9 +222,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Energiebesparingsfonds Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -245,9 +245,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Ardooie".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -268,9 +268,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Arendonk".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -291,9 +291,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Asse".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -314,9 +314,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Assenede".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -337,9 +337,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Beerse".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -360,9 +360,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Beersel".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -383,9 +383,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Bierbeek".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -406,9 +406,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stadsontwikkeling Bilzen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -429,9 +429,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Blankenberge".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -452,9 +452,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Bocholt".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -475,9 +475,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Boechout".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -498,9 +498,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Patrimonium Bonheiden".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -521,9 +521,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Boom Plus".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -544,9 +544,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Boortmeerbeek".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -567,9 +567,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Borgloon".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -590,9 +590,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Bornem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -613,9 +613,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Brasschaat".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -636,9 +636,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Bredene".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -659,9 +659,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Bree".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -682,9 +682,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB BRUGGE".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -705,9 +705,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB De Panne".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -728,9 +728,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stad Deinze".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -751,9 +751,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Dendermonde".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -774,9 +774,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Diepenbeek".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -797,9 +797,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stadsontwikkelingsbedrijf Diest".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -820,9 +820,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Cultuurcentrum Diest".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -843,9 +843,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Duffel".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -866,9 +866,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Beheer Patrimonium Gemeente Edegem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -889,9 +889,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Essen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -912,9 +912,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Evergem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -935,9 +935,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sport Geel".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -958,9 +958,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Cultuur Geel".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -981,9 +981,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Genk".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1004,9 +1004,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Stadsontwikkeling Gent".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1027,9 +1027,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Erfgoed Gent".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1050,9 +1050,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Kunsten en Design Gent".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1073,9 +1073,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Geraardsbergen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1096,9 +1096,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Glabbeek".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1119,9 +1119,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Gooik".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1142,9 +1142,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Grimbergen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1165,9 +1165,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Haacht".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1188,9 +1188,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Halen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1211,9 +1211,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Hamse Investeringsmaatschappij".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1234,9 +1234,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stadsontwikkeling Hamont-Achel".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1257,9 +1257,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stadsontwikkeling Hasselt".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1280,9 +1280,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Heist-op-den-Berg".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1303,9 +1303,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Hemiksem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1326,9 +1326,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB De Kouter".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1349,9 +1349,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Herentals".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1372,9 +1372,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sport en Recreatie Herentals".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1395,9 +1395,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Herk-de-Stad".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1418,9 +1418,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Herne".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1441,9 +1441,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Herselt".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1464,9 +1464,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Herzele".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1487,9 +1487,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Holar".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1510,9 +1510,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sport Houthalen-Helchteren".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1533,9 +1533,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Masterplan".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1556,9 +1556,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sport en Ontspanning Hove".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1579,9 +1579,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sport Hulshout".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1602,9 +1602,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB SPIE".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1625,9 +1625,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Vauban".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1648,9 +1648,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Elektriciteitsnet Izegem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1671,9 +1671,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Kalmthout".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1694,9 +1694,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Kapellen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1717,9 +1717,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Kaprijke".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1740,9 +1740,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Keerbergen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1763,9 +1763,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Kinrooi".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1786,9 +1786,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGSO Knokke-Heist".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1809,9 +1809,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Vrijetijdsbedrijf Knokke-Heist AG".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1832,9 +1832,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Koksijde".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1855,9 +1855,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Kontich".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1878,9 +1878,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Kortenaken".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1901,9 +1901,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Parko AGB".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1924,9 +1924,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Stadsontwikkelingsbedrijf Kortrijk ".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1947,9 +1947,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Buda".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1970,9 +1970,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sport, Cultuur en Recreatie Kruibeke".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -1993,9 +1993,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "GOM Laakdal".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2016,9 +2016,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Lanaken".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2039,9 +2039,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Landen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2062,9 +2062,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Lebbeke".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2085,9 +2085,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Lendelede (AGL)".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2108,9 +2108,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stadsontwikkeling Leuven".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2131,9 +2131,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Museum Leuven".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2154,9 +2154,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB LEUVEN (Parkeerbedrijf)".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2177,9 +2177,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Stedelijk Ontwikkelingsbedrijf Lier".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2200,9 +2200,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Lille".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2223,9 +2223,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Lommel Patrimonium".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2246,9 +2246,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Sport en Recreatie Lommel".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2269,9 +2269,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Infrastructuur Maaseik".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2292,9 +2292,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Maaseik".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2315,9 +2315,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Maasmechelen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2338,9 +2338,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Maldegem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2361,9 +2361,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sport Actief Mechelen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2384,9 +2384,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Energiepunt Mechelen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2407,9 +2407,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Mechelen Actief in Cultuur".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2430,9 +2430,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Meeuwen-Gruitrode".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2453,9 +2453,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Woonbedrijf Menen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2476,9 +2476,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Merchtem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2499,9 +2499,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Merelbeke".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2522,9 +2522,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sportcentrum 't Hofeind".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2545,9 +2545,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Middelkerke".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2568,9 +2568,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Mortsel Patrimonium en Vrije Tijd".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2591,9 +2591,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Nazareth".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2614,9 +2614,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Niel \"Argilla\"".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2637,9 +2637,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Nieuwpoort Vrije Tijd".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2660,9 +2660,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stadsontwikkeling Nieuwpoort".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2683,9 +2683,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Nijlen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2706,9 +2706,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Ninove".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2729,9 +2729,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Olen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2752,9 +2752,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Grond- en Bouwbeleid Oostende".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2775,9 +2775,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Stadsvernieuwing Oostende".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2798,9 +2798,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "EOS".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2821,9 +2821,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB De Kluize".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2844,9 +2844,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Oostkamp".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2867,9 +2867,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Oudsbergen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2890,9 +2890,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Oud-Turnhout".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2913,9 +2913,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Pelt ".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2936,9 +2936,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Stadsontwikkeling Peer".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2959,9 +2959,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Pepingen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -2982,9 +2982,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB De Kouter".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3005,9 +3005,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Publiek Domein Putte".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3028,9 +3028,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Privé Domein Putte".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3051,9 +3051,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Puurs-Sint-Amands".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3074,9 +3074,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Ronse".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3097,9 +3097,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Stadsontwikkelingsbedrijf Ronse".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3120,9 +3120,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Roosdaal".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3143,9 +3143,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Rotselaar".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3166,9 +3166,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Rumst".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3189,9 +3189,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Fluctus Schelle".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3212,9 +3212,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Patrimonium Scherpenheuvel-Zichem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3235,9 +3235,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Schoten".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3258,9 +3258,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sint-Katelijne-Waver".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3281,9 +3281,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB 't Bau-huis".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3304,9 +3304,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Sint-Pieters-Leeuw".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3327,9 +3327,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGOST".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3350,9 +3350,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB PATRI".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3373,9 +3373,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Steenokkerzeel".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3396,9 +3396,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB STEKENE".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3419,9 +3419,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Patrimonium Temse".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3442,9 +3442,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Ternat".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3465,9 +3465,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Bexit".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3488,9 +3488,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Tessenderlo".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3511,9 +3511,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Tielt".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3534,9 +3534,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Tienen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3557,9 +3557,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Tongeren".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3580,9 +3580,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Tremelo".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3603,9 +3603,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB  voor infrastructuur- en patrimoniumbeheer Turnhout".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3626,9 +3626,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Veurne".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3649,9 +3649,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Vilvoorde".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3672,9 +3672,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Vosselaar".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3695,9 +3695,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "WAGSO".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3718,9 +3718,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Westerlo".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3741,9 +3741,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Wetteren".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3764,9 +3764,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Wingene".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3787,9 +3787,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Zandhoven".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3810,9 +3810,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Zaventem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3833,9 +3833,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Zele".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3856,9 +3856,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB@Zemst".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3879,9 +3879,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Memorial Museum Passchendaele 1917".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3902,9 +3902,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Zottegem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3925,9 +3925,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Zwevegem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3948,9 +3948,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Beringen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3971,9 +3971,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stadsontwikkeling Diksmuide".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -3994,9 +3994,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Halle".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4017,9 +4017,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB MECHELEN (Exploitatie)".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4040,9 +4040,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB MECHELEN (Patrimonium)".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4063,9 +4063,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Elektriciteitsnet Merksplas (AGEM)".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4086,9 +4086,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Neerpelt".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4109,9 +4109,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Dienstenbedrijf Ninove".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4132,9 +4132,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Vismijn Oostende".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4155,9 +4155,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Heusden-Zolder".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4178,9 +4178,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Inovant".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4201,9 +4201,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Limgrond.be".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4224,9 +4224,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciaal Domein De Gavers".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4247,9 +4247,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciaal Zorgcentrum Lemberge".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4270,9 +4270,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "VERA".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4293,9 +4293,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Vlabinvest".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4316,9 +4316,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Monumentenwacht West-Vlaanderen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4339,9 +4339,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Westtoer".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4362,9 +4362,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Plantijn Hogeschool - APB Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4385,9 +4385,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciale Hogeschool - APB Limburg".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4408,9 +4408,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "APB Cultuurhuis de Warande".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4431,9 +4431,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "APB Antwerpen Sport".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4454,9 +4454,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "APB Campus Vesta".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4477,9 +4477,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Museum voor Edelsmeedkunst, Juwelen en Diamant".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4500,9 +4500,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciaal Recreatiedomein De Schorre".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4523,9 +4523,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciaal Vormingscentrum Malle".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4546,9 +4546,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciaal Recreatiedomein Zilvermeer".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4569,9 +4569,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciaal Onderwijs Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4592,9 +4592,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "APB Hooibeekhoeve".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4615,9 +4615,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Arenbergschouwburg Provincie Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4638,9 +4638,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Fotomuseum".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4661,9 +4661,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciaal Secretariaat Europese Structuurfondsen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4684,9 +4684,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "APB Kamp C".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4707,9 +4707,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Modemuseum".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4730,9 +4730,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciaal Instituut voor Hygiëne".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4753,9 +4753,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "APB Havencentrum".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4776,9 +4776,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Provinciaal Documentatiecentrum Atlas".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4799,9 +4799,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "APB Toerisme Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4822,9 +4822,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "VONK".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4845,9 +4845,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Willebroek".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4868,9 +4868,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Wielsbeke".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4891,9 +4891,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Izegem".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4914,9 +4914,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Schilde".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4937,9 +4937,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "APB Gouverneur Kinsbergencentrum".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4960,9 +4960,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Zoersel".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -4983,9 +4983,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Begijnendijk ".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5006,9 +5006,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AG Mobil-O".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5029,9 +5029,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Haven Oostende AGB".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5052,9 +5052,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Gemeentelijk Havenbedrijf Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5075,9 +5075,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AG Culturele Instellingen en Erfgoed Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5098,9 +5098,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AG Culturele Instellingen en Kunsten Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5121,9 +5121,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Trupark".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5144,9 +5144,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "District09".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5167,9 +5167,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AG Digipolis Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5190,9 +5190,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Musea Ieper".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5213,9 +5213,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Beleko ".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5236,9 +5236,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Renov'O".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5259,9 +5259,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Mercator AGB Kapellen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5282,9 +5282,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AG2B".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5305,9 +5305,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Waterbedrijf Knokke-Heist".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5328,9 +5328,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Stedelijk Parkeerbedrijf van de stad Gent ".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5351,9 +5351,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Stedelijke Rijschool van Halle".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5374,9 +5374,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "Electric Bedrijf Baarle-Hertog".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5397,9 +5397,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "APB Patrimonium Vlaams-Brabant".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5420,9 +5420,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Stadsplanning Antwerpen".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
@@ -5443,9 +5443,9 @@
       WHERE {
         GRAPH ?g {
           ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Opwijk".
-          ?adminUnit <http://www.w3.org/ns/org#hasSite> ?site.
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUri.
-
+          ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+          BIND( ?addressUriREAL AS ?addressUri)
         }
       }
     
