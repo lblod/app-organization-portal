@@ -79,7 +79,7 @@ async function dispatch(lib, data) {
         console.log(`Input: ${deletesWithContext}`);
         console.log(`Output: ${transformedPrivateDeletes}`);
       } else {
-        await deleteFromPrivateGraph(lib, transformedDeletes);
+        await deleteFromPrivateGraph(lib, transformedPrivateDeletes);
       }
     }
 
