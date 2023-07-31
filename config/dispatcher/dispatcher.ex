@@ -369,10 +369,6 @@ defmodule Dispatcher do
   # frontend layer
   ###############################################################
 
-  match "/authorization/callback/*_path", %{ accept: [:html], layer: :api } do
-      Proxy.forward conn, [], "http://frontend/torii/redirect.html"
-  end
-
   match "/assets/*path", %{ layer: :api } do
     Proxy.forward conn, path, "http://frontend/assets/"
   end

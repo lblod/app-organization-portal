@@ -162,6 +162,8 @@ export default [
       optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
     }
   },
+/*
+  Commenting ldes rules until ready to go to qa/prod. In the meantime, we override the configuration on dev.
   {
     match: {
       graph: {
@@ -210,4 +212,5 @@ export default [
       gracePeriod: 1000,
     }
   }
+*/
 ]

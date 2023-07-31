@@ -441,6 +441,17 @@
           "target": "organizations",
           "cardinality": "one",
           "inverse": true
+        },
+        "founded-organizations": {
+          "predicate": "ext:isFounderOfOrganization",
+          "target": "organizations",
+          "cardinality": "many"
+        },
+        "was-founded-by-organization": {
+          "predicate": "ext:isFounderOfOrganization",
+          "target": "organizations",
+          "cardinality": "one",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/organisaties/"

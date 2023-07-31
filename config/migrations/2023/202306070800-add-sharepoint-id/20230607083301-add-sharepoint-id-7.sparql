@@ -1,0 +1,1813 @@
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix mu: <http://mu.semte.ch/vocabularies/core/> 
+prefix persoon: <https://data.vlaanderen.be/ns/persoon#> 
+prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+prefix person: <http://www.w3.org/ns/person#>
+prefix session: <http://mu.semte.ch/vocabularies/session/>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+prefix ere: <http://data.lblod.info/vocabularies/erediensten/>
+prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+prefix org: <http://www.w3.org/ns/org#>
+prefix dcterms: <http://purl.org/dc/terms/>
+prefix generiek: <https://data.vlaanderen.be/ns/generiek#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/bdae6050-1cb7-435c-a4eb-59cfbb55e7f4> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "bdae6050-1cb7-435c-a4eb-59cfbb55e7f4";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/43abe0de-86c4-41a9-a911-355826b67d8e>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/43abe0de-86c4-41a9-a911-355826b67d8e> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "43abe0de-86c4-41a9-a911-355826b67d8e";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "366".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/bdae6050-1cb7-435c-a4eb-59cfbb55e7f4>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212243522".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/ffe31bf1-e5d6-4566-82b0-03210e159cdc> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "ffe31bf1-e5d6-4566-82b0-03210e159cdc";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/7b616a55-882c-474d-8c8d-06f65456a609>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/7b616a55-882c-474d-8c8d-06f65456a609> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "7b616a55-882c-474d-8c8d-06f65456a609";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "367".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/ffe31bf1-e5d6-4566-82b0-03210e159cdc>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212243621".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/f49f8a65-dbd7-4d39-b3e7-e74bc2cc0d6f> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "f49f8a65-dbd7-4d39-b3e7-e74bc2cc0d6f";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/2079d40d-4556-41f2-b545-81bd94e56bd1>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/2079d40d-4556-41f2-b545-81bd94e56bd1> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "2079d40d-4556-41f2-b545-81bd94e56bd1";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "368".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/f49f8a65-dbd7-4d39-b3e7-e74bc2cc0d6f>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212243720".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/9677a019-14c4-46e2-a709-720656f5a03d> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "9677a019-14c4-46e2-a709-720656f5a03d";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/c202852b-e9b6-4c23-8b04-7cf84ca5a621>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/c202852b-e9b6-4c23-8b04-7cf84ca5a621> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "c202852b-e9b6-4c23-8b04-7cf84ca5a621";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "369".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9677a019-14c4-46e2-a709-720656f5a03d>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0207832792".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/1d014ef7-f7d0-41a6-ba0d-0ae522d43512> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "1d014ef7-f7d0-41a6-ba0d-0ae522d43512";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/4b43f7b4-76fc-444e-97a6-6bc2588868f6>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/4b43f7b4-76fc-444e-97a6-6bc2588868f6> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "4b43f7b4-76fc-444e-97a6-6bc2588868f6";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "370".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/1d014ef7-f7d0-41a6-ba0d-0ae522d43512>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212244215".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/1ad44b05-e0e6-4417-97ca-aaf2549f4f2c> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "1ad44b05-e0e6-4417-97ca-aaf2549f4f2c";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/6362b1a9-4a05-4352-b3a6-1f3ff7617220>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/6362b1a9-4a05-4352-b3a6-1f3ff7617220> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "6362b1a9-4a05-4352-b3a6-1f3ff7617220";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "371".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/1ad44b05-e0e6-4417-97ca-aaf2549f4f2c>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212244809".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/83490890-4a09-4db0-8413-0f6cdc63a2ac> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "83490890-4a09-4db0-8413-0f6cdc63a2ac";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/c758c8d6-e679-4c00-acd5-3dccc8353037>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/c758c8d6-e679-4c00-acd5-3dccc8353037> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "c758c8d6-e679-4c00-acd5-3dccc8353037";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "372".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/83490890-4a09-4db0-8413-0f6cdc63a2ac>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0216770947".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/10f67241-0072-454f-8ae6-ef96a4c425ca> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "10f67241-0072-454f-8ae6-ef96a4c425ca";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/6ad283cc-047e-403c-a8a3-541b66ce7a81>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/6ad283cc-047e-403c-a8a3-541b66ce7a81> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "6ad283cc-047e-403c-a8a3-541b66ce7a81";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "373".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/10f67241-0072-454f-8ae6-ef96a4c425ca>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212245007".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/8efc418b-8a21-46d5-b61d-d101478215f0> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "8efc418b-8a21-46d5-b61d-d101478215f0";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/12f3e675-f454-4999-8026-4458959bcf06>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/12f3e675-f454-4999-8026-4458959bcf06> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "12f3e675-f454-4999-8026-4458959bcf06";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "374".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/8efc418b-8a21-46d5-b61d-d101478215f0>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212245106".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/5f4c5918-c890-4f6d-8348-676515640fbe> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "5f4c5918-c890-4f6d-8348-676515640fbe";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/40a7e574-1b10-4f8a-b0ed-dc93c1927446>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/40a7e574-1b10-4f8a-b0ed-dc93c1927446> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "40a7e574-1b10-4f8a-b0ed-dc93c1927446";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "375".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/5f4c5918-c890-4f6d-8348-676515640fbe>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212245205".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/e83b8b6b-d900-4892-b5bb-fc787aecdfd9> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "e83b8b6b-d900-4892-b5bb-fc787aecdfd9";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/b542c3ea-1be6-4140-88f3-c3a868607a31>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/b542c3ea-1be6-4140-88f3-c3a868607a31> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "b542c3ea-1be6-4140-88f3-c3a868607a31";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "376".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e83b8b6b-d900-4892-b5bb-fc787aecdfd9>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212245403".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/6c8ec1e4-bfd8-4d39-8628-e02847e4a0bc> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "6c8ec1e4-bfd8-4d39-8628-e02847e4a0bc";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e63307f6-77c4-409f-a407-c50f7acf79d3>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/e63307f6-77c4-409f-a407-c50f7acf79d3> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "e63307f6-77c4-409f-a407-c50f7acf79d3";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "377".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/6c8ec1e4-bfd8-4d39-8628-e02847e4a0bc>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212245797".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/79572d6c-58fe-4345-a690-5c027174690b> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "79572d6c-58fe-4345-a690-5c027174690b";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/56bc9f8b-f9b3-497e-992f-bdd5703daf97>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/56bc9f8b-f9b3-497e-992f-bdd5703daf97> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "56bc9f8b-f9b3-497e-992f-bdd5703daf97";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "378".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/79572d6c-58fe-4345-a690-5c027174690b>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212391891".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/5f337e36-dce6-4278-8282-4396ea82039c> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "5f337e36-dce6-4278-8282-4396ea82039c";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/d1468477-350a-42c8-8c18-0e23c944a400>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/d1468477-350a-42c8-8c18-0e23c944a400> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "d1468477-350a-42c8-8c18-0e23c944a400";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "379".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/5f337e36-dce6-4278-8282-4396ea82039c>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212245995".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/c0434e1d-e618-46e6-b7fd-6d2bdf88f057> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "c0434e1d-e618-46e6-b7fd-6d2bdf88f057";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/f534d921-9a7c-4d7a-b0f5-4014c8a91de4>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/f534d921-9a7c-4d7a-b0f5-4014c8a91de4> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "f534d921-9a7c-4d7a-b0f5-4014c8a91de4";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "380".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/c0434e1d-e618-46e6-b7fd-6d2bdf88f057>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212246094".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/6c2b26cd-65b7-4415-a607-31dacf3a4c53> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "6c2b26cd-65b7-4415-a607-31dacf3a4c53";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/42929c95-8140-437e-82a8-30291ab01ae5>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/42929c95-8140-437e-82a8-30291ab01ae5> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "42929c95-8140-437e-82a8-30291ab01ae5";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "381".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/6c2b26cd-65b7-4415-a607-31dacf3a4c53>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212246292".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/345bf340-a135-42d4-a6d2-07c6a4be112e> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "345bf340-a135-42d4-a6d2-07c6a4be112e";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/54d9fcb3-e216-4a74-907c-1ea51c72c282>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/54d9fcb3-e216-4a74-907c-1ea51c72c282> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "54d9fcb3-e216-4a74-907c-1ea51c72c282";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "382".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/345bf340-a135-42d4-a6d2-07c6a4be112e>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212246787".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/1858fcfa-a469-4585-b94c-fe97469e47fb> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "1858fcfa-a469-4585-b94c-fe97469e47fb";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/92ae057e-4139-4606-a8ff-1f9a9cb4bdab>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/92ae057e-4139-4606-a8ff-1f9a9cb4bdab> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "92ae057e-4139-4606-a8ff-1f9a9cb4bdab";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "383".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/1858fcfa-a469-4585-b94c-fe97469e47fb>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212246886".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/960695da-6c6f-4906-8983-58dc632c5212> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "960695da-6c6f-4906-8983-58dc632c5212";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/fc20bbbd-3029-45f0-b828-17856a42b1ed>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/fc20bbbd-3029-45f0-b828-17856a42b1ed> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "fc20bbbd-3029-45f0-b828-17856a42b1ed";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "384".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/960695da-6c6f-4906-8983-58dc632c5212>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212247183".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/5e6a8b4d-8a18-4c73-9ad5-4a4b41241126> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "5e6a8b4d-8a18-4c73-9ad5-4a4b41241126";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/ad1d7c01-eabf-4fa4-aab9-eaae67cfe581>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/ad1d7c01-eabf-4fa4-aab9-eaae67cfe581> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "ad1d7c01-eabf-4fa4-aab9-eaae67cfe581";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "385".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/5e6a8b4d-8a18-4c73-9ad5-4a4b41241126>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212247282".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/decfb795-1b9a-4265-b1d3-0234e48529d8> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "decfb795-1b9a-4265-b1d3-0234e48529d8";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/08b64a70-66d9-4c75-96b6-4515682b8d61>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/08b64a70-66d9-4c75-96b6-4515682b8d61> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "08b64a70-66d9-4c75-96b6-4515682b8d61";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "386".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/decfb795-1b9a-4265-b1d3-0234e48529d8>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212247381".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/9c7c20ae-88eb-406e-971d-493bbe8f5af8> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "9c7c20ae-88eb-406e-971d-493bbe8f5af8";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/ce146d7e-f5e5-4e56-b9cc-84deda30c5a8>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/ce146d7e-f5e5-4e56-b9cc-84deda30c5a8> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "ce146d7e-f5e5-4e56-b9cc-84deda30c5a8";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "387".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9c7c20ae-88eb-406e-971d-493bbe8f5af8>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212247579".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/28aff8b8-ec5c-412b-8916-605d60c19e49> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "28aff8b8-ec5c-412b-8916-605d60c19e49";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/5e7b728e-a517-4e62-8b23-9c594c17ba2c>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/5e7b728e-a517-4e62-8b23-9c594c17ba2c> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "5e7b728e-a517-4e62-8b23-9c594c17ba2c";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "388".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/28aff8b8-ec5c-412b-8916-605d60c19e49>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212247777".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/e266d112-5f16-4bc6-9b4b-f1917271d853> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "e266d112-5f16-4bc6-9b4b-f1917271d853";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/2e7ddf6e-1cda-4302-bbf9-d928777251fc>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/2e7ddf6e-1cda-4302-bbf9-d928777251fc> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "2e7ddf6e-1cda-4302-bbf9-d928777251fc";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "389".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e266d112-5f16-4bc6-9b4b-f1917271d853>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212248074".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/aaed1b78-35b7-4f5c-a659-9b1fbca599f2> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "aaed1b78-35b7-4f5c-a659-9b1fbca599f2";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/650296a1-6451-4bbe-b022-269b9ce69fe9>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/650296a1-6451-4bbe-b022-269b9ce69fe9> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "650296a1-6451-4bbe-b022-269b9ce69fe9";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "390".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/aaed1b78-35b7-4f5c-a659-9b1fbca599f2>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212248173".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/048a9800-f591-4514-b19a-b81b23f2750a> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "048a9800-f591-4514-b19a-b81b23f2750a";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e8697312-6c2c-44f5-b250-abd900237e2f>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/e8697312-6c2c-44f5-b250-abd900237e2f> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "e8697312-6c2c-44f5-b250-abd900237e2f";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "391".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/048a9800-f591-4514-b19a-b81b23f2750a>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0216771343".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/19dadce3-e37e-4133-96db-ceb1215d3222> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "19dadce3-e37e-4133-96db-ceb1215d3222";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/69ded4ee-a1ca-4756-92e8-f090184ee71b>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/69ded4ee-a1ca-4756-92e8-f090184ee71b> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "69ded4ee-a1ca-4756-92e8-f090184ee71b";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "392".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/19dadce3-e37e-4133-96db-ceb1215d3222>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212212640".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/9ecb35c7-81e4-4b9c-a3e5-7486a6da3059> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "9ecb35c7-81e4-4b9c-a3e5-7486a6da3059";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/fa19bc8c-defa-4d00-8333-9da08d3f17a9>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/fa19bc8c-defa-4d00-8333-9da08d3f17a9> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "fa19bc8c-defa-4d00-8333-9da08d3f17a9";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "393".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9ecb35c7-81e4-4b9c-a3e5-7486a6da3059>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212212244".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/602d805b-7dd0-4f69-b82d-d64f6fd9eee3> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "602d805b-7dd0-4f69-b82d-d64f6fd9eee3";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/5c18f90d-68b3-49e5-9969-cf977d1bee78>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/5c18f90d-68b3-49e5-9969-cf977d1bee78> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "5c18f90d-68b3-49e5-9969-cf977d1bee78";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "394".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/602d805b-7dd0-4f69-b82d-d64f6fd9eee3>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212212343".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/5e03addc-61ce-4e7c-b432-99d03741618c> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "5e03addc-61ce-4e7c-b432-99d03741618c";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/7bd89ca6-7224-4ac7-86cb-00f87d777f69>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/7bd89ca6-7224-4ac7-86cb-00f87d777f69> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "7bd89ca6-7224-4ac7-86cb-00f87d777f69";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "395".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/5e03addc-61ce-4e7c-b432-99d03741618c>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212212442".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/0f7ca555-50e9-4780-ae10-9d7fca3f8938> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "0f7ca555-50e9-4780-ae10-9d7fca3f8938";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/8d8181f7-3b39-460d-b1d7-12c123ed0a16>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/8d8181f7-3b39-460d-b1d7-12c123ed0a16> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "8d8181f7-3b39-460d-b1d7-12c123ed0a16";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "396".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/0f7ca555-50e9-4780-ae10-9d7fca3f8938>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212212541".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/ce8c225c-48b3-4880-a3c5-94b38b2a1d79> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "ce8c225c-48b3-4880-a3c5-94b38b2a1d79";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/eb63f573-a470-4f7c-b1d9-864550b8fb91>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/eb63f573-a470-4f7c-b1d9-864550b8fb91> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "eb63f573-a470-4f7c-b1d9-864550b8fb91";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "397".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/ce8c225c-48b3-4880-a3c5-94b38b2a1d79>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212212937".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/baac3571-ca53-498b-a607-d63f282e3d55> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "baac3571-ca53-498b-a607-d63f282e3d55";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/93ded1ac-8558-4011-8527-befd30d9b33e>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/93ded1ac-8558-4011-8527-befd30d9b33e> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "93ded1ac-8558-4011-8527-befd30d9b33e";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "398".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/baac3571-ca53-498b-a607-d63f282e3d55>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0207148052".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/2276c441-b230-46ee-a45a-18f0cc89a5d7> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "2276c441-b230-46ee-a45a-18f0cc89a5d7";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/bd1074d4-074b-4b21-836c-e134726ffd06>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/bd1074d4-074b-4b21-836c-e134726ffd06> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "bd1074d4-074b-4b21-836c-e134726ffd06";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "399".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/2276c441-b230-46ee-a45a-18f0cc89a5d7>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212214125".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/481a0720-7663-4ff1-b532-2a36bd3d58f5> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "481a0720-7663-4ff1-b532-2a36bd3d58f5";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e684baa9-45e0-4e03-85f9-b0bca9eb910e>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/e684baa9-45e0-4e03-85f9-b0bca9eb910e> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "e684baa9-45e0-4e03-85f9-b0bca9eb910e";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "400".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/481a0720-7663-4ff1-b532-2a36bd3d58f5>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212213333".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/c6d66b3d-1d1b-464f-93de-aa4b4befaf48> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "c6d66b3d-1d1b-464f-93de-aa4b4befaf48";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/79c2608b-e2cc-45ba-9df7-dfc2fe278304>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/79c2608b-e2cc-45ba-9df7-dfc2fe278304> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "79c2608b-e2cc-45ba-9df7-dfc2fe278304";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "401".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/c6d66b3d-1d1b-464f-93de-aa4b4befaf48>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212213630".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/49056670-d1df-42df-a61c-6560f056bb20> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "49056670-d1df-42df-a61c-6560f056bb20";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/9e576f2b-b052-4bf9-a736-c473bed02527>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/9e576f2b-b052-4bf9-a736-c473bed02527> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "9e576f2b-b052-4bf9-a736-c473bed02527";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "402".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/49056670-d1df-42df-a61c-6560f056bb20>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212213729".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/8bd614f7-e4b1-4fb7-9e4c-b119444ee3a8> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "8bd614f7-e4b1-4fb7-9e4c-b119444ee3a8";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/7ac4e527-6d1a-401b-8842-9799080bc299>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/7ac4e527-6d1a-401b-8842-9799080bc299> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "7ac4e527-6d1a-401b-8842-9799080bc299";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "403".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/8bd614f7-e4b1-4fb7-9e4c-b119444ee3a8>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212214521".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/6c29c842-dde6-42bb-9610-b9b34e1d25f7> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "6c29c842-dde6-42bb-9610-b9b34e1d25f7";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/3db44a22-562f-4a9b-89b1-3ec97a27d001>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/3db44a22-562f-4a9b-89b1-3ec97a27d001> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "3db44a22-562f-4a9b-89b1-3ec97a27d001";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "404".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/6c29c842-dde6-42bb-9610-b9b34e1d25f7>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212214026".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/a8af1e63-b778-4f92-9faa-52e6afde27dd> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "a8af1e63-b778-4f92-9faa-52e6afde27dd";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/69a37dc9-c68b-4657-966b-5f9404ce30ab>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/69a37dc9-c68b-4657-966b-5f9404ce30ab> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "69a37dc9-c68b-4657-966b-5f9404ce30ab";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "405".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/a8af1e63-b778-4f92-9faa-52e6afde27dd>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212214224".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/05fc97a1-6be4-40ed-b5e6-2f945c548514> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "05fc97a1-6be4-40ed-b5e6-2f945c548514";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/3f55d4aa-ac20-4049-9c50-a57c65bae8cd>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/3f55d4aa-ac20-4049-9c50-a57c65bae8cd> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "3f55d4aa-ac20-4049-9c50-a57c65bae8cd";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "406".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/05fc97a1-6be4-40ed-b5e6-2f945c548514>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212214620".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/2fe9573b-67f5-4895-841f-d060a917e729> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "2fe9573b-67f5-4895-841f-d060a917e729";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/3b29472a-cef4-4738-a6f4-555d0cfc096f>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/3b29472a-cef4-4738-a6f4-555d0cfc096f> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "3b29472a-cef4-4738-a6f4-555d0cfc096f";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "407".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/2fe9573b-67f5-4895-841f-d060a917e729>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212214917".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/e734a3f7-4945-44c9-af55-872ce7a5c52d> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "e734a3f7-4945-44c9-af55-872ce7a5c52d";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/0a996e71-e415-4ea4-b600-61a559c07fad>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/0a996e71-e415-4ea4-b600-61a559c07fad> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "0a996e71-e415-4ea4-b600-61a559c07fad";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "408".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e734a3f7-4945-44c9-af55-872ce7a5c52d>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212215214".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/a793e590-3f1e-4225-98b7-b5d2c3e19625> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "a793e590-3f1e-4225-98b7-b5d2c3e19625";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/9ea6d1c1-1d1d-45fd-ba62-61910a314d29>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/9ea6d1c1-1d1d-45fd-ba62-61910a314d29> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "9ea6d1c1-1d1d-45fd-ba62-61910a314d29";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "409".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/a793e590-3f1e-4225-98b7-b5d2c3e19625>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212215610".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/6e9c7fe5-e742-46da-b236-c3756d15c351> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "6e9c7fe5-e742-46da-b236-c3756d15c351";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/1f524c6e-5663-4022-a630-3283232e0ca2>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/1f524c6e-5663-4022-a630-3283232e0ca2> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "1f524c6e-5663-4022-a630-3283232e0ca2";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "410".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/6e9c7fe5-e742-46da-b236-c3756d15c351>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212215511".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/d98decdf-7f7a-4891-acb2-32ad174b2e49> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "d98decdf-7f7a-4891-acb2-32ad174b2e49";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/35797798-f17c-4b47-ab7c-67a59720c06d>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/35797798-f17c-4b47-ab7c-67a59720c06d> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "35797798-f17c-4b47-ab7c-67a59720c06d";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "411".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/d98decdf-7f7a-4891-acb2-32ad174b2e49>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0216772333".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/c5e3a6a6-3a1d-45f1-8a41-05d752dacaeb> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "c5e3a6a6-3a1d-45f1-8a41-05d752dacaeb";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/78d7531a-7fc7-4028-818f-e38991beed07>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/78d7531a-7fc7-4028-818f-e38991beed07> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "78d7531a-7fc7-4028-818f-e38991beed07";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "412".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/c5e3a6a6-3a1d-45f1-8a41-05d752dacaeb>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212215907".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/ff49b6be-09c9-41f2-b6fd-5ea5d2422332> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "ff49b6be-09c9-41f2-b6fd-5ea5d2422332";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/47df7fb7-2bd6-4729-a54e-7b04d0f9e58e>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/47df7fb7-2bd6-4729-a54e-7b04d0f9e58e> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "47df7fb7-2bd6-4729-a54e-7b04d0f9e58e";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "413".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/ff49b6be-09c9-41f2-b6fd-5ea5d2422332>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0216772729".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/baaf71c5-eb95-4fb3-abdd-b2b7919e273a> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "baaf71c5-eb95-4fb3-abdd-b2b7919e273a";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/7dbb957d-7f4b-4b81-9ad6-68ffdd14bb3a>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/7dbb957d-7f4b-4b81-9ad6-68ffdd14bb3a> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "7dbb957d-7f4b-4b81-9ad6-68ffdd14bb3a";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "414".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/baaf71c5-eb95-4fb3-abdd-b2b7919e273a>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212218479".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
+;
+
+                DELETE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                        ?oldSharepointId ?oP ?oO.
+                        ?oldGsSpId ?sP ?sO.
+                    }
+                }
+                INSERT {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        <http://data.lblod.info/id/identificatoren/b419df86-323d-4db7-86b7-17b18501fa17> a <http://www.w3.org/ns/adms#Identifier>;
+                                                                                 mu:uuid "b419df86-323d-4db7-86b7-17b18501fa17";
+                                                                                 skos:notation "SharePoint identificator";
+                                                                                 generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/15f5187d-4dc0-489f-bcc2-5c790db89e4e>.
+                        <http://data.lblod.info/id/gestructureerdeIdentificatoren/15f5187d-4dc0-489f-bcc2-5c790db89e4e> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+                                                                                 mu:uuid "15f5187d-4dc0-489f-bcc2-5c790db89e4e";
+                                                                                 <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "415".
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b419df86-323d-4db7-86b7-17b18501fa17>.
+                    }
+                }
+                WHERE {
+                    graph <http://mu.semte.ch/graphs/administrative-unit> {
+                        ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?kboIdentifier.
+                        ?kboIdentifier generiek:gestructureerdeIdentificator ?kboGsId.
+                        ?kboGsId  <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212216402".
+                        optional {
+                           ?bestuurUri <http://www.w3.org/ns/adms#identifier> ?oldSharepointId.
+                           ?oldSharepointId skos:notation "SharePoint identificator";
+                                            generiek:gestructureerdeIdentificator  ?oldGsSpId.
+                           ?oldSharepointId ?oP ?oO.
+                           ?oldGsSpId ?sP ?sO.
+                        }
+                    }
+                }
+                
