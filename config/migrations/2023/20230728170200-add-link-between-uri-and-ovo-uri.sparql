@@ -1,0 +1,25 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+
+INSERT {
+  GRAPH ?g {
+    ?s owl:sameAs ?ovoUriToInsert .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+  GRAPH ?g {
+    ?s <http://www.w3.org/ns/adms#identifier> ?id .
+    
+    ?id <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>/<https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?ovo .
+  }
+
+  ?s <http://www.w3.org/ns/org#classification>/skos:prefLabel ?classif .
+
+  FILTER(strlen(str(?ovo)) > 0)
+  FILTER NOT EXISTS { ?s owl:sameAs ?ovoUri . }
+
+  BIND(URI(CONCAT("http://data.vlaanderen.be/id/organisatie/", ?ovo)) as ?ovoUriToInsert)
+}
