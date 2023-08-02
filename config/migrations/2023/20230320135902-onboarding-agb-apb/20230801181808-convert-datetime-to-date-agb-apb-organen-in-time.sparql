@@ -1,0 +1,24 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?orgaanInTime <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?start .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?orgaanInTime <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?startDateTime .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    VALUES ?classificationBestuurseenheid {
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+    }
+
+    ?orgaanInTime <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid ;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?start .
+
+    ?bestuurseenheid <http://www.w3.org/ns/org#classification> ?classificationBestuurseenheid .
+
+    # The hour is arbitrary, but there is a bug in virtuoso when if the time is `T00:00:00` it doesn't apply the type change at all
+    BIND(IF(strlen(str(?start)) = 10, strdt(concat(str(?start), 'T02:00:00'), xsd:dateTime), ?start) as ?startDateTime)
+  }
+}
