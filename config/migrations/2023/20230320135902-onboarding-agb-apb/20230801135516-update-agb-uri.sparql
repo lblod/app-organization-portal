@@ -1,0 +1,27 @@
+# AGB AG2B has been added in Loket in the meantime. I'm adapting to Loket's URI
+
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/bestuurseenheden/a7aaef2f-6e8f-4351-9303-bdc4288bc6f0> ?p ?o .
+  }
+} INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/bestuurseenheden/e0920e46-85b9-4736-a906-b254cc7f1855> ?p ?o .
+  }
+} WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/bestuurseenheden/a7aaef2f-6e8f-4351-9303-bdc4288bc6f0> ?p ?o .
+  }
+}
+;
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/e0920e46-85b9-4736-a906-b254cc7f1855> <http://mu.semte.ch/vocabularies/core/uuid> "a7aaef2f-6e8f-4351-9303-bdc4288bc6f0" .
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/e0920e46-85b9-4736-a906-b254cc7f1855> <http://mu.semte.ch/vocabularies/core/uuid> "e0920e46-85b9-4736-a906-b254cc7f1855" .
+  }
+}
