@@ -1,0 +1,327 @@
+
+  # Classification Directiecomité
+
+  INSERT {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?orgaanInTime a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaanInTime ;
+      <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan ;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00"^^xsd:dateTime .
+  
+    ?orgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaan ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> ?orgaanLabel ;
+      <http://www.w3.org/ns/org#classification> ?classificationOrgaan ;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid .
+    }
+  } WHERE {
+    VALUES ?classificationBestuurseenheid {
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+    }
+  
+    VALUES ?classificationOrgaan {
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8>
+    }
+  
+    VALUES ?bestuurseenheid {
+      <http://data.lblod.info/id/bestuurseenheden/e3fabfc5-27dc-4fc7-9227-5899135c390b>
+<http://data.lblod.info/id/bestuurseenheden/065f84ad-9427-4280-8cc1-d6da5dc85479>
+<http://data.lblod.info/id/bestuurseenheden/1883396f-fe01-473a-8f16-3bb81d9c6dd3>
+<http://data.lblod.info/id/bestuurseenheden/196316ec-55d9-4bbc-8a0f-75d02a59374c>
+<http://data.lblod.info/id/bestuurseenheden/0bb417c8-c2a0-4552-9097-3f2313a7d9b3>
+<http://data.lblod.info/id/bestuurseenheden/9750b4db-8e4f-41b8-b6cf-b6c83a09c76b>
+<http://data.lblod.info/id/bestuurseenheden/e64bc015-177a-496d-aff2-2535318c335a>
+<http://data.lblod.info/id/bestuurseenheden/6d045d86-41fd-489b-9e84-2644f0820998>
+<http://data.lblod.info/id/bestuurseenheden/d968cc1e-b9dd-4aec-b4de-47196090b099>
+<http://data.lblod.info/id/bestuurseenheden/af4cda43-423e-424f-a806-41203d7c01a1>
+<http://data.lblod.info/id/bestuurseenheden/4774ef51-2367-40d1-b04e-9ef157664e4a>
+<http://data.lblod.info/id/bestuurseenheden/4e793610-2ffa-40ee-9aa0-341ee1a3fc71>
+<http://data.lblod.info/id/bestuurseenheden/284ade0d-fda8-45ab-8329-5006f9bce598>
+<http://data.lblod.info/id/bestuurseenheden/87cc74a6-af07-4661-981b-12e10d871765>
+<http://data.lblod.info/id/bestuurseenheden/2e1b9812-62fe-4a80-a538-69c8093411bd>
+<http://data.lblod.info/id/bestuurseenheden/95f24dbe-c4c1-4735-8d76-ec296e603295>
+<http://data.lblod.info/id/bestuurseenheden/87699d66-4af5-44ae-a39a-946cbf0140a7>
+<http://data.lblod.info/id/bestuurseenheden/60cc79ef-a59c-4642-8296-d017229421bc>
+<http://data.lblod.info/id/bestuurseenheden/e934b5a8-1844-4a68-995e-09836ee2e7f2>
+<http://data.lblod.info/id/bestuurseenheden/9ff057eb-dfb2-4748-a6f2-e4b161d22bff>
+    }
+  
+    ?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      skos:prefLabel ?bestuurseenheidLabel .
+  
+    ?classificationOrgaan skos:prefLabel ?classificationOrgaanLabel .
+  
+    BIND(CONCAT(?bestuurseenheidLabel, " Leidend ambtenaar") as ?functieLabel)
+    BIND(CONCAT(?classificationOrgaanLabel, " ", ?bestuurseenheidLabel) as ?orgaanLabel)
+  
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaanInTime")) as ?uuidOrgaanInTime)
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaan")) as ?uuidOrgaan)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaan)) AS ?orgaan)
+  }
+  
+  ;
+  
+  # Classification Raad van bestuur
+
+  INSERT {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?orgaanInTime a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaanInTime ;
+      <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan ;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00"^^xsd:dateTime .
+  
+    ?orgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaan ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> ?orgaanLabel ;
+      <http://www.w3.org/ns/org#classification> ?classificationOrgaan ;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid .
+    }
+  } WHERE {
+    VALUES ?classificationBestuurseenheid {
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+    }
+  
+    VALUES ?classificationOrgaan {
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943>
+    }
+  
+    VALUES ?bestuurseenheid {
+      <http://data.lblod.info/id/bestuurseenheden/e3fabfc5-27dc-4fc7-9227-5899135c390b>
+<http://data.lblod.info/id/bestuurseenheden/065f84ad-9427-4280-8cc1-d6da5dc85479>
+<http://data.lblod.info/id/bestuurseenheden/1883396f-fe01-473a-8f16-3bb81d9c6dd3>
+<http://data.lblod.info/id/bestuurseenheden/196316ec-55d9-4bbc-8a0f-75d02a59374c>
+<http://data.lblod.info/id/bestuurseenheden/0bb417c8-c2a0-4552-9097-3f2313a7d9b3>
+<http://data.lblod.info/id/bestuurseenheden/9750b4db-8e4f-41b8-b6cf-b6c83a09c76b>
+<http://data.lblod.info/id/bestuurseenheden/e64bc015-177a-496d-aff2-2535318c335a>
+<http://data.lblod.info/id/bestuurseenheden/6d045d86-41fd-489b-9e84-2644f0820998>
+<http://data.lblod.info/id/bestuurseenheden/d968cc1e-b9dd-4aec-b4de-47196090b099>
+<http://data.lblod.info/id/bestuurseenheden/af4cda43-423e-424f-a806-41203d7c01a1>
+<http://data.lblod.info/id/bestuurseenheden/4774ef51-2367-40d1-b04e-9ef157664e4a>
+<http://data.lblod.info/id/bestuurseenheden/4e793610-2ffa-40ee-9aa0-341ee1a3fc71>
+<http://data.lblod.info/id/bestuurseenheden/284ade0d-fda8-45ab-8329-5006f9bce598>
+<http://data.lblod.info/id/bestuurseenheden/87cc74a6-af07-4661-981b-12e10d871765>
+<http://data.lblod.info/id/bestuurseenheden/2e1b9812-62fe-4a80-a538-69c8093411bd>
+<http://data.lblod.info/id/bestuurseenheden/95f24dbe-c4c1-4735-8d76-ec296e603295>
+<http://data.lblod.info/id/bestuurseenheden/87699d66-4af5-44ae-a39a-946cbf0140a7>
+<http://data.lblod.info/id/bestuurseenheden/60cc79ef-a59c-4642-8296-d017229421bc>
+<http://data.lblod.info/id/bestuurseenheden/e934b5a8-1844-4a68-995e-09836ee2e7f2>
+<http://data.lblod.info/id/bestuurseenheden/9ff057eb-dfb2-4748-a6f2-e4b161d22bff>
+    }
+  
+    ?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      skos:prefLabel ?bestuurseenheidLabel .
+  
+    ?classificationOrgaan skos:prefLabel ?classificationOrgaanLabel .
+  
+    BIND(CONCAT(?bestuurseenheidLabel, " Leidend ambtenaar") as ?functieLabel)
+    BIND(CONCAT(?classificationOrgaanLabel, " ", ?bestuurseenheidLabel) as ?orgaanLabel)
+  
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaanInTime")) as ?uuidOrgaanInTime)
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaan")) as ?uuidOrgaan)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaan)) AS ?orgaan)
+  }
+  
+  ;
+  
+  # Classification Bevoegd beslissingsorgaan
+  
+  INSERT {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?orgaanInTime a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaanInTime ;
+      <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan ;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00"^^xsd:dateTime .
+  
+    ?orgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaan ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> ?orgaanLabel ;
+      <http://www.w3.org/ns/org#classification> ?classificationOrgaan ;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid .
+    }
+  } WHERE {
+    VALUES ?classificationBestuurseenheid {
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+    }
+  
+    VALUES ?classificationOrgaan {
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382>
+    }
+  
+    VALUES ?bestuurseenheid {
+      <http://data.lblod.info/id/bestuurseenheden/e3fabfc5-27dc-4fc7-9227-5899135c390b>
+<http://data.lblod.info/id/bestuurseenheden/065f84ad-9427-4280-8cc1-d6da5dc85479>
+<http://data.lblod.info/id/bestuurseenheden/1883396f-fe01-473a-8f16-3bb81d9c6dd3>
+<http://data.lblod.info/id/bestuurseenheden/196316ec-55d9-4bbc-8a0f-75d02a59374c>
+<http://data.lblod.info/id/bestuurseenheden/0bb417c8-c2a0-4552-9097-3f2313a7d9b3>
+<http://data.lblod.info/id/bestuurseenheden/9750b4db-8e4f-41b8-b6cf-b6c83a09c76b>
+<http://data.lblod.info/id/bestuurseenheden/e64bc015-177a-496d-aff2-2535318c335a>
+<http://data.lblod.info/id/bestuurseenheden/6d045d86-41fd-489b-9e84-2644f0820998>
+<http://data.lblod.info/id/bestuurseenheden/d968cc1e-b9dd-4aec-b4de-47196090b099>
+<http://data.lblod.info/id/bestuurseenheden/af4cda43-423e-424f-a806-41203d7c01a1>
+<http://data.lblod.info/id/bestuurseenheden/4774ef51-2367-40d1-b04e-9ef157664e4a>
+<http://data.lblod.info/id/bestuurseenheden/4e793610-2ffa-40ee-9aa0-341ee1a3fc71>
+<http://data.lblod.info/id/bestuurseenheden/284ade0d-fda8-45ab-8329-5006f9bce598>
+<http://data.lblod.info/id/bestuurseenheden/87cc74a6-af07-4661-981b-12e10d871765>
+<http://data.lblod.info/id/bestuurseenheden/2e1b9812-62fe-4a80-a538-69c8093411bd>
+<http://data.lblod.info/id/bestuurseenheden/95f24dbe-c4c1-4735-8d76-ec296e603295>
+<http://data.lblod.info/id/bestuurseenheden/87699d66-4af5-44ae-a39a-946cbf0140a7>
+<http://data.lblod.info/id/bestuurseenheden/60cc79ef-a59c-4642-8296-d017229421bc>
+<http://data.lblod.info/id/bestuurseenheden/e934b5a8-1844-4a68-995e-09836ee2e7f2>
+<http://data.lblod.info/id/bestuurseenheden/9ff057eb-dfb2-4748-a6f2-e4b161d22bff>
+    }
+  
+    ?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      skos:prefLabel ?bestuurseenheidLabel .
+  
+    ?classificationOrgaan skos:prefLabel ?classificationOrgaanLabel .
+  
+    BIND(CONCAT(?bestuurseenheidLabel, " Leidend ambtenaar") as ?functieLabel)
+    BIND(CONCAT(?classificationOrgaanLabel, " ", ?bestuurseenheidLabel) as ?orgaanLabel)
+  
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaanInTime")) as ?uuidOrgaanInTime)
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaan")) as ?uuidOrgaan)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaan)) AS ?orgaan)
+  }
+  
+  ;
+  
+  # Classification Algemene vergadering
+  
+  INSERT {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?orgaanInTime a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaanInTime ;
+      <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan ;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00"^^xsd:dateTime .
+  
+    ?orgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaan ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> ?orgaanLabel ;
+      <http://www.w3.org/ns/org#classification> ?classificationOrgaan ;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid .
+    }
+  } WHERE {
+    VALUES ?classificationBestuurseenheid {
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+    }
+  
+    VALUES ?classificationOrgaan {
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528>
+    }
+  
+    VALUES ?bestuurseenheid {
+      <http://data.lblod.info/id/bestuurseenheden/e3fabfc5-27dc-4fc7-9227-5899135c390b>
+<http://data.lblod.info/id/bestuurseenheden/065f84ad-9427-4280-8cc1-d6da5dc85479>
+<http://data.lblod.info/id/bestuurseenheden/1883396f-fe01-473a-8f16-3bb81d9c6dd3>
+<http://data.lblod.info/id/bestuurseenheden/196316ec-55d9-4bbc-8a0f-75d02a59374c>
+<http://data.lblod.info/id/bestuurseenheden/0bb417c8-c2a0-4552-9097-3f2313a7d9b3>
+<http://data.lblod.info/id/bestuurseenheden/9750b4db-8e4f-41b8-b6cf-b6c83a09c76b>
+<http://data.lblod.info/id/bestuurseenheden/e64bc015-177a-496d-aff2-2535318c335a>
+<http://data.lblod.info/id/bestuurseenheden/6d045d86-41fd-489b-9e84-2644f0820998>
+<http://data.lblod.info/id/bestuurseenheden/d968cc1e-b9dd-4aec-b4de-47196090b099>
+<http://data.lblod.info/id/bestuurseenheden/af4cda43-423e-424f-a806-41203d7c01a1>
+<http://data.lblod.info/id/bestuurseenheden/4774ef51-2367-40d1-b04e-9ef157664e4a>
+<http://data.lblod.info/id/bestuurseenheden/4e793610-2ffa-40ee-9aa0-341ee1a3fc71>
+<http://data.lblod.info/id/bestuurseenheden/284ade0d-fda8-45ab-8329-5006f9bce598>
+<http://data.lblod.info/id/bestuurseenheden/87cc74a6-af07-4661-981b-12e10d871765>
+<http://data.lblod.info/id/bestuurseenheden/2e1b9812-62fe-4a80-a538-69c8093411bd>
+<http://data.lblod.info/id/bestuurseenheden/95f24dbe-c4c1-4735-8d76-ec296e603295>
+<http://data.lblod.info/id/bestuurseenheden/87699d66-4af5-44ae-a39a-946cbf0140a7>
+<http://data.lblod.info/id/bestuurseenheden/60cc79ef-a59c-4642-8296-d017229421bc>
+<http://data.lblod.info/id/bestuurseenheden/e934b5a8-1844-4a68-995e-09836ee2e7f2>
+<http://data.lblod.info/id/bestuurseenheden/9ff057eb-dfb2-4748-a6f2-e4b161d22bff>
+    }
+  
+    ?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      skos:prefLabel ?bestuurseenheidLabel .
+  
+    ?classificationOrgaan skos:prefLabel ?classificationOrgaanLabel .
+  
+    BIND(CONCAT(?bestuurseenheidLabel, " Leidend ambtenaar") as ?functieLabel)
+    BIND(CONCAT(?classificationOrgaanLabel, " ", ?bestuurseenheidLabel) as ?orgaanLabel)
+  
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaanInTime")) as ?uuidOrgaanInTime)
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaan")) as ?uuidOrgaan)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaan)) AS ?orgaan)
+  }
+  
+  ;
+  
+  # Classification Leidend Ambtenaar
+  
+  INSERT {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?orgaanInTime a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaanInTime ;
+      <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan ;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00"^^xsd:dateTime ;
+      <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?functie .
+  
+    ?orgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaan ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> ?orgaanLabel ;
+      <http://www.w3.org/ns/org#classification> ?classificationOrgaan ;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid .
+
+    ?functie a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?uuidFunctie ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> ?functieLabel ;
+      <http://www.w3.org/ns/org#role> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/855489b9-b584-4f34-90b2-39aea808cd9f> .
+    }
+  } WHERE {
+    VALUES ?classificationBestuurseenheid {
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+    }
+  
+    VALUES ?classificationOrgaan {
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4>
+    }
+  
+    VALUES ?bestuurseenheid {
+      <http://data.lblod.info/id/bestuurseenheden/e3fabfc5-27dc-4fc7-9227-5899135c390b>
+<http://data.lblod.info/id/bestuurseenheden/065f84ad-9427-4280-8cc1-d6da5dc85479>
+<http://data.lblod.info/id/bestuurseenheden/1883396f-fe01-473a-8f16-3bb81d9c6dd3>
+<http://data.lblod.info/id/bestuurseenheden/196316ec-55d9-4bbc-8a0f-75d02a59374c>
+<http://data.lblod.info/id/bestuurseenheden/0bb417c8-c2a0-4552-9097-3f2313a7d9b3>
+<http://data.lblod.info/id/bestuurseenheden/9750b4db-8e4f-41b8-b6cf-b6c83a09c76b>
+<http://data.lblod.info/id/bestuurseenheden/e64bc015-177a-496d-aff2-2535318c335a>
+<http://data.lblod.info/id/bestuurseenheden/6d045d86-41fd-489b-9e84-2644f0820998>
+<http://data.lblod.info/id/bestuurseenheden/d968cc1e-b9dd-4aec-b4de-47196090b099>
+<http://data.lblod.info/id/bestuurseenheden/af4cda43-423e-424f-a806-41203d7c01a1>
+<http://data.lblod.info/id/bestuurseenheden/4774ef51-2367-40d1-b04e-9ef157664e4a>
+<http://data.lblod.info/id/bestuurseenheden/4e793610-2ffa-40ee-9aa0-341ee1a3fc71>
+<http://data.lblod.info/id/bestuurseenheden/284ade0d-fda8-45ab-8329-5006f9bce598>
+<http://data.lblod.info/id/bestuurseenheden/87cc74a6-af07-4661-981b-12e10d871765>
+<http://data.lblod.info/id/bestuurseenheden/2e1b9812-62fe-4a80-a538-69c8093411bd>
+<http://data.lblod.info/id/bestuurseenheden/95f24dbe-c4c1-4735-8d76-ec296e603295>
+<http://data.lblod.info/id/bestuurseenheden/87699d66-4af5-44ae-a39a-946cbf0140a7>
+<http://data.lblod.info/id/bestuurseenheden/60cc79ef-a59c-4642-8296-d017229421bc>
+<http://data.lblod.info/id/bestuurseenheden/e934b5a8-1844-4a68-995e-09836ee2e7f2>
+<http://data.lblod.info/id/bestuurseenheden/9ff057eb-dfb2-4748-a6f2-e4b161d22bff>
+    }
+  
+    ?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      skos:prefLabel ?bestuurseenheidLabel .
+  
+    ?classificationOrgaan skos:prefLabel ?classificationOrgaanLabel .
+  
+    BIND(CONCAT(?bestuurseenheidLabel, " Leidend ambtenaar") as ?functieLabel)
+    BIND(CONCAT(?classificationOrgaanLabel, " ", ?bestuurseenheidLabel) as ?orgaanLabel)
+  
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaanInTime")) as ?uuidOrgaanInTime)
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaan")) as ?uuidOrgaan)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaan)) AS ?orgaan)
+    BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "functieLabel")) as ?uuidFunctie)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursfuncties/", ?uuidFunctie)) AS ?functie)
+  }
+  
