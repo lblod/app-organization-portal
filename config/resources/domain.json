@@ -29,7 +29,8 @@
     "code": "http://lblod.data.gift/vocabularies/organisatie/",
     "ext": "http://mu.semte.ch/vocabularies/ext/",
     "geo": "http://www.opengis.net/ont/geosparql#",
-    "nacebel": "http://data.gift/vocabularies/nace-bel/"
+    "nacebel": "http://data.gift/vocabularies/nace-bel/",
+    "time": "http://www.w3.org/2006/time#"
   },
   "resources": {
     "people": {
@@ -602,11 +603,11 @@
     "governing-bodies": {
       "class": "besluit:Bestuursorgaan",
       "attributes": {
-        "start-date": {
+        "start": {
           "type": "datetime",
           "predicate": "mandaat:bindingStart"
         },
-        "end-date": {
+        "end": {
           "type": "datetime",
           "predicate": "mandaat:bindingEinde"
         }
@@ -807,7 +808,7 @@
           "cardinality": "one"
         },
         "during": {
-          "predicate": "m8g:memberDuring",
+          "predicate": "euro:memberDuring",
           "target": "period-of-time",
           "cardinality": "one"
         }
@@ -817,15 +818,16 @@
     "period-of-time": {
       "class": "time:ProperInterval",
       "attributes": {
-        "start": {
-          "type": "dateTime",
-          "predicate": "time:hasBeginning"
+        "start-date": {
+          "predicate": "time:hasBeginning",
+          "type": "datetime"
         },
-        "end": {
-          "type": "dateTime",
-          "predicate": "time:hasEnd"
+        "end-date": {
+          "predicate": "time:hasEnd",
+          "type": "datetime"
         }
-      }
+      },
+      "new-resource-base": "http://data.lblod.info/id/periode/"
     },
     "concepts": {
       "class": "skos:Concept",
