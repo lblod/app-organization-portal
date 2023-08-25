@@ -125,9 +125,7 @@
     },
     "mandatories": {
       "class": "mandaat:Mandataris",
-      "super": [
-        "agents-in-position"
-      ],
+      "super": ["agents-in-position"],
       "attributes": {
         "start-date": {
           "type": "date",
@@ -170,16 +168,12 @@
           "predicate": "skos:prefLabel"
         }
       },
-      "features": [
-        "include-uri"
-      ],
+      "features": ["include-uri"],
       "new-resource-base": "http://data.vlaanderen.be/id/concept/MandatarisStatusCode/"
     },
     "worship-mandatories": {
       "class": "ere:EredienstMandataris",
-      "super": [
-        "mandatories"
-      ],
+      "super": ["mandatories"],
       "attributes": {
         "expected-end-date": {
           "type": "date",
@@ -244,9 +238,7 @@
     },
     "mandates": {
       "class": "mandaat:Mandaat",
-      "super": [
-        "posts"
-      ],
+      "super": ["posts"],
       "relationships": {
         "role-board": {
           "predicate": "org:role",
@@ -270,9 +262,7 @@
     },
     "agents": {
       "class": "lblodlg:Functionaris",
-      "super": [
-        "agents-in-position"
-      ],
+      "super": ["agents-in-position"],
       "attributes": {
         "start-date": {
           "type": "datetime",
@@ -310,16 +300,12 @@
           "predicate": "skos:prefLabel"
         }
       },
-      "features": [
-        "include-uri"
-      ],
+      "features": ["include-uri"],
       "new-resource-base": "http://data.vlaanderen.be/id/concept/functionarisStatusCode/"
     },
     "board-positions": {
       "class": "lblodlg:Bestuursfunctie",
-      "super": [
-        "posts"
-      ],
+      "super": ["posts"],
       "relationships": {
         "role-board": {
           "predicate": "org:role",
@@ -453,16 +439,22 @@
           "cardinality": "one",
           "inverse": true
         },
-        "founded-organizations": {
-          "predicate": "ext:isFounderOfOrganization",
-          "target": "organizations",
-          "cardinality": "many"
+        "memberships-of-organizations": {
+          "predicate": "org:member",
+          "target": "memberships",
+          "cardinality": "many",
+          "inverse": true
         },
-        "was-founded-by-organization": {
-          "predicate": "ext:isFounderOfOrganization",
-          "target": "organizations",
+        "memberships": {
+          "predicate": "org:organization",
+          "target": "memberships",
           "cardinality": "one",
           "inverse": true
+        },
+        "is-member-of": {
+          "predicate": "org:memberOf",
+          "target": "organizations",
+          "cardinality": "many"
         },
         "sector": {
           "predicate": "dc_terms:isPartOf",
@@ -490,9 +482,7 @@
     },
     "administrative-units": {
       "class": "besluit:Bestuurseenheid",
-      "super": [
-        "organizations"
-      ],
+      "super": ["organizations"],
       "relationships": {
         "classification": {
           "predicate": "org:classification",
@@ -540,9 +530,7 @@
     },
     "worship-administrative-units": {
       "class": "ere:EredienstBestuurseenheid",
-      "super": [
-        "administrative-units"
-      ],
+      "super": ["administrative-units"],
       "relationships": {
         "recognized-worship-type": {
           "predicate": "ere:typeEredienst",
@@ -565,9 +553,7 @@
     },
     "worship-services": {
       "class": "ere:BestuurVanDeEredienst",
-      "super": [
-        "worship-administrative-units"
-      ],
+      "super": ["worship-administrative-units"],
       "attributes": {
         "denomination": {
           "type": "string",
@@ -592,16 +578,12 @@
     },
     "central-worship-services": {
       "class": "ere:CentraalBestuurVanDeEredienst",
-      "super": [
-        "worship-administrative-units"
-      ],
+      "super": ["worship-administrative-units"],
       "new-resource-base": "http://data.lblod.info/id/centraleBesturenVanDeEredienst/"
     },
     "representative-bodies": {
       "class": "ere:RepresentatiefOrgaan",
-      "super": [
-        "organizations"
-      ],
+      "super": ["organizations"],
       "relationships": {
         "recognized-worship-type": {
           "predicate": "ere:typeEredienst",
@@ -806,6 +788,45 @@
       },
       "new-resource-base": "http://data.lblod.info/id/vestigingen/"
     },
+    "memberships": {
+      "class": "org:Membership",
+      "relationships": {
+        "member": {
+          "predicate": "org:member",
+          "target": "organizations",
+          "cardinality": "one"
+        },
+        "organization": {
+          "predicate": "org:organization",
+          "target": "organizations",
+          "cardinality": "one"
+        },
+        "role": {
+          "predicate": "org:role",
+          "target": "membership-roles",
+          "cardinality": "one"
+        },
+        "during": {
+          "predicate": "m8g:memberDuring",
+          "target": "period-of-time",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/lidmaatschap/"
+    },
+    "period-of-time": {
+      "class": "time:ProperInterval",
+      "attributes": {
+        "start": {
+          "type": "dateTime",
+          "predicate": "time:hasBeginning"
+        },
+        "end": {
+          "type": "dateTime",
+          "predicate": "time:hasEnd"
+        }
+      }
+    },
     "concepts": {
       "class": "skos:Concept",
       "attributes": {
@@ -832,9 +853,7 @@
           "predicate": "skos:prefLabel"
         }
       },
-      "features": [
-        "include-uri"
-      ],
+      "features": ["include-uri"],
       "new-resource-base": "http://lblod.data.gift/concepts/"
     },
     "locations": {
@@ -887,9 +906,7 @@
     },
     "ministers": {
       "class": "ere:RolBedienaar",
-      "super": [
-        "agents-in-position"
-      ],
+      "super": ["agents-in-position"],
       "relationships": {
         "minister-position": {
           "predicate": "org:holds",
@@ -957,9 +974,7 @@
     },
     "minister-positions": {
       "class": "ere:PositieBedienaar",
-      "super": [
-        "posts"
-      ],
+      "super": ["posts"],
       "relationships": {
         "function": {
           "predicate": "ere:functie",
