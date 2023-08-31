@@ -1,0 +1,24 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g {
+    ?organization <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?subOrganization.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?organization org:hasMembership ?membership.
+
+    ?membership
+      org:organization ?subOrganization;
+      org:member ?organization;
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8>.
+  }
+}
+WHERE {
+    GRAPH ?g {
+      ?organization org:hasSubOrganization ?subOrganization.
+    }
+  BIND(URI(CONCAT("http://data.lblod.info/id/lidmaatschap/", SHA1(CONCAT(STR(?organization), STR(?subOrganization))))) AS ?membership)
+}
