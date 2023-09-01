@@ -429,7 +429,7 @@
           "cardinality": "one",
           "inverse": true
         },
-        "memberships-of-organizations": {
+        "memberships-of-organization": {
           "predicate": "org:member",
           "target": "memberships",
           "cardinality": "many",
@@ -440,6 +440,11 @@
           "target": "memberships",
           "cardinality": "one",
           "inverse": true
+        },
+        "is-member-of": {
+          "predicate": "org:memberOf",
+          "target": "organizations",
+          "cardinality": "many"
         },
         "sector": {
           "predicate": "dc_terms:isPartOf",
@@ -787,6 +792,28 @@
         }
       },
       "new-resource-base": "http://data.lblod.info/id/lidmaatschap/"
+    },
+    "membership-roles": {
+      "class": "org:Role",
+      "attributes": {
+        "label": {
+          "predicate": "skos:prefLabel",
+          "type": "string"
+        }
+      },
+      "relationships": {
+        "top-concept-of": {
+          "predicate": "skos:topConceptOf",
+          "target": "concepts",
+          "cardinality": "one"
+        },
+        "has-broader-role": {
+          "predicate": "skos:broader",
+          "target": "membership-roles",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/rollen/"
     },
     "period-of-time": {
       "class": "time:ProperInterval",
