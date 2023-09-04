@@ -3,14 +3,16 @@ PREFIX org: <http://www.w3.org/ns/org#>
 
 DELETE {
   GRAPH ?g {
-    ?organization <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?subOrganization.
+    ?organization org:hasSubOrganization ?subOrganization.
   }
 }
 INSERT {
   GRAPH ?g {
+    ?subOrganization org:memberOf ?organization.
+
     ?membership
-      org:organization ?subOrganization;
-      org:member ?organization;
+      org:organization ?organization;
+      org:member ?subOrganization;
       org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8>.
   }
 }

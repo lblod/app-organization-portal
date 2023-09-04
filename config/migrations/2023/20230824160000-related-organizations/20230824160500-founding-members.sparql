@@ -8,6 +8,8 @@ DELETE {
 }
 INSERT {
   GRAPH ?g {
+    ?foundingOrg org:memberOf ?foundedOrg.
+
     ?membership
       org:organization ?foundedOrg;
       org:member ?foundingOrg;
