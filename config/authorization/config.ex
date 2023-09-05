@@ -75,7 +75,9 @@ defmodule Acl.UserGroups.Config do
                         "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
                         "http://www.w3.org/ns/org#Post",
                         "http://www.w3.org/ns/org#ChangeEvent",
-                        "http://data.lblod.info/vocabularies/contacthub/AgentInPositie"
+                        "http://data.lblod.info/vocabularies/contacthub/AgentInPositie",
+                        "http://www.w3.org/ns/org#Membership",
+                        "http://www.w3.org/2006/time#ProperInterval"
   ]
 
   @shared_protected_type [
