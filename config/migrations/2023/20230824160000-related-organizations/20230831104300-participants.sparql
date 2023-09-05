@@ -1,17 +1,27 @@
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 INSERT {
   GRAPH ?g {
     ?membership
+      a org:Membership;
+      mu:uuid ?uuid;
       org:organization ?organization;
       org:member ?memberOrganization;
       org:role <http://data.lblod.info/id/rollen/2152eb830b1143bfb97a7dd9596d6c63>.
   }
 }
 WHERE {
+    VALUES ?g {
+      <http://mu.semte.ch/graphs/worship-service>
+      <http://mu.semte.ch/graphs/administrative-unit>
+    }
+
     GRAPH ?g {
       ?memberOrganization org:memberOf ?organization.
     }
-  BIND(URI(CONCAT("http://data.lblod.info/id/lidmaatschap/", SHA1(CONCAT(STR(?memberOrganization), STR(?organization))))) AS ?membership)
+
+  BIND(SHA1(CONCAT(STR(?memberOrganization), STR(?organization))) as ?uuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/lidmaatschap/", ?uuid)) AS ?membership)
 }

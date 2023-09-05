@@ -1,5 +1,6 @@
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 DELETE {
   GRAPH ?g {
@@ -11,14 +12,23 @@ INSERT {
     ?foundingOrg org:memberOf ?foundedOrg.
 
     ?membership
+      a org:Membership;
+      mu:uuid ?uuid;
       org:organization ?foundedOrg;
       org:member ?foundingOrg;
       org:role <http://data.lblod.info/id/rollen/73d5e1cf250d42fab15926771f07505a>.
   }
 }
 WHERE {
+    VALUES ?g {
+      <http://mu.semte.ch/graphs/worship-service>
+      <http://mu.semte.ch/graphs/administrative-unit>
+    }
+
     GRAPH ?g {
       ?foundingOrg <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?foundedOrg.
     }
-  BIND(URI(CONCAT("http://data.lblod.info/id/lidmaatschap/", SHA1(CONCAT(STR(?foundingOrg), STR(?foundedOrg))))) AS ?membership)
+
+  BIND(SHA1(CONCAT(STR(?foundingOrg), STR(?foundedOrg))) as ?uuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/lidmaatschap/", ?uuid)) AS ?membership)
 }
