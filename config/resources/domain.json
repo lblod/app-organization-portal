@@ -423,24 +423,13 @@
           "target": "organizations",
           "cardinality": "many"
         },
-        "sub-organizations": {
-          "predicate": "org:hasSubOrganization",
-          "target": "organizations",
-          "cardinality": "many"
-        },
         "is-associated-with": {
           "predicate": "org:linkedTo",
           "target": "organizations",
           "cardinality": "one",
           "inverse": true
         },
-        "is-sub-organization-of": {
-          "predicate": "org:hasSubOrganization",
-          "target": "organizations",
-          "cardinality": "one",
-          "inverse": true
-        },
-        "memberships-of-organizations": {
+        "memberships-of-organization": {
           "predicate": "org:member",
           "target": "memberships",
           "cardinality": "many",
@@ -449,7 +438,7 @@
         "memberships": {
           "predicate": "org:organization",
           "target": "memberships",
-          "cardinality": "one",
+          "cardinality": "many",
           "inverse": true
         },
         "is-member-of": {
@@ -466,17 +455,6 @@
           "predicate": "regorg:orgActivity",
           "target": "nace-bel-codes",
           "cardinality": "many"
-        },
-        "participates-in": {
-          "predicate": "org:memberOf",
-          "target": "organizations",
-          "cardinality": "many"
-        },
-        "has-participants": {
-          "predicate": "org:memberOf",
-          "target": "organizations",
-          "cardinality": "many",
-          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/organisaties/"
@@ -603,11 +581,11 @@
     "governing-bodies": {
       "class": "besluit:Bestuursorgaan",
       "attributes": {
-        "start": {
+        "start-date": {
           "type": "datetime",
           "predicate": "mandaat:bindingStart"
         },
-        "end": {
+        "end-date": {
           "type": "datetime",
           "predicate": "mandaat:bindingEinde"
         }
@@ -814,6 +792,28 @@
         }
       },
       "new-resource-base": "http://data.lblod.info/id/lidmaatschap/"
+    },
+    "membership-roles": {
+      "class": "org:Role",
+      "attributes": {
+        "label": {
+          "predicate": "skos:prefLabel",
+          "type": "string"
+        }
+      },
+      "relationships": {
+        "top-concept-of": {
+          "predicate": "skos:topConceptOf",
+          "target": "concepts",
+          "cardinality": "one"
+        },
+        "has-broader-role": {
+          "predicate": "skos:broader",
+          "target": "membership-roles",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/rollen/"
     },
     "period-of-time": {
       "class": "time:ProperInterval",
