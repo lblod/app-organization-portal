@@ -23,12 +23,13 @@ WHERE {
     VALUES ?g {
       <http://mu.semte.ch/graphs/worship-service>
       <http://mu.semte.ch/graphs/administrative-unit>
+      <http://mu.semte.ch/graphs/shared>
     }
 
     GRAPH ?g {
       ?foundingOrg <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?foundedOrg.
     }
 
-  BIND(SHA1(CONCAT(STR(?foundingOrg), STR(?foundedOrg))) as ?uuid)
+  BIND(SHA1(CONCAT(STR(?foundingOrg), STR(?foundedOrg), "founded by")) as ?uuid)
   BIND(IRI(CONCAT("http://data.lblod.info/id/lidmaatschap/", ?uuid)) AS ?membership)
 }
