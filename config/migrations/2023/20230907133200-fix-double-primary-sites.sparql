@@ -1,0 +1,16 @@
+DELETE {
+  GRAPH ?g {
+    ?bestuur <http://www.w3.org/ns/org#hasSite> ?site .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+  GRAPH ?g {
+    ?site a <http://www.w3.org/ns/org#Site> .
+
+    ?bestuur <http://www.w3.org/ns/org#hasPrimarySite> ?site ;
+      <http://www.w3.org/ns/org#hasSite> ?site .
+  }
+}
