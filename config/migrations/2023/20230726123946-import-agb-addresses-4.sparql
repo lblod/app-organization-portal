@@ -1,0 +1,1616 @@
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "3910";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Limburg";
+            <http://www.w3.org/ns/locn#thoroughfare> "Kerkplein";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Pelt";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Kerkplein 1, 3910 Pelt, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0878843556".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "10";
+            
+            <http://www.w3.org/ns/locn#postCode> "9400";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Oost-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Paul De Montplein";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Ninove";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Paul De Montplein 10, 9400 Ninove, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0898420433".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "3";
+            
+            <http://www.w3.org/ns/locn#postCode> "8400";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Kantinestraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Oostende";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Kantinestraat 3, 8400 Oostende, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0267388814".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "3550";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Limburg";
+            <http://www.w3.org/ns/locn#thoroughfare> "Heldenplein";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Heusden-Zolder";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Heldenplein 1, 3550 Heusden-Zolder, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0876985314".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "22";
+            
+            <http://www.w3.org/ns/locn#postCode> "2018";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Koningin Elisabethlei";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Koningin Elisabethlei 22, 2018 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0810012257".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "3500";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Limburg";
+            <http://www.w3.org/ns/locn#thoroughfare> "Universiteitslaan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Hasselt";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Universiteitslaan 1, 3500 Hasselt, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0849650219".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "280";
+            
+            <http://www.w3.org/ns/locn#postCode> "9500";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Oost-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Onkerzelestraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Geraardsbergen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Onkerzelestraat 280, 9500 Geraardsbergen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0862963369".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "100";
+            
+            <http://www.w3.org/ns/locn#postCode> "9820";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Oost-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Salisburylaan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Merelbeke";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Salisburylaan 100, 9820 Merelbeke, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0882748696".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "3018";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Vlaams-Brabant";
+            <http://www.w3.org/ns/locn#thoroughfare> "Vaartdijk";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Leuven";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Vaartdijk 1, 3018 Leuven, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0267390891".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "40";
+            
+            <http://www.w3.org/ns/locn#postCode> "3010";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Vlaams-Brabant";
+            <http://www.w3.org/ns/locn#thoroughfare> "Provincieplein";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Leuven";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Provincieplein 40, 3010 Leuven, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0549968521".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "41";
+            
+            <http://www.w3.org/ns/locn#postCode> "8200";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Koning Leopold III-laan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Brugge";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Koning Leopold III-laan 41, 8200 Brugge, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0553692529".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "120";
+            
+            <http://www.w3.org/ns/locn#postCode> "8200";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Koning Albert I-laan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Brugge";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Koning Albert I-laan 120, 8200 Brugge, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0267388418".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "5";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Meistraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Meistraat 5, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0267308046".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "24";
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> "gebouw A";
+            <http://www.w3.org/ns/locn#postCode> "3500";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Limburg";
+            <http://www.w3.org/ns/locn#thoroughfare> "Elfde-Liniestraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Hasselt";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Elfde-Liniestraat 24 - gebouw A, 3500 Hasselt, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0267308838".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "42";
+            
+            <http://www.w3.org/ns/locn#postCode> "2300";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Warandestraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Turnhout";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Warandestraat 42, 2300 Turnhout, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0812230092".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "22";
+            
+            <http://www.w3.org/ns/locn#postCode> "2600";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Boomgaardstraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Boomgaardstraat 22, 2600 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0820377203".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "75";
+            
+            <http://www.w3.org/ns/locn#postCode> "2520";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Oostmalsesteenweg";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Ranst";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Oostmalsesteenweg 75, 2520 Ranst, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0822442511".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "160";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Gildekamersstraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Gildekamersstraat 160, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541571289".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2850";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Schommelei";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Boom";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Schommelei 1, 2850 Boom, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541414111".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "61";
+            
+            <http://www.w3.org/ns/locn#postCode> "2390";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Smekenstraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Malle";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Smekenstraat 61, 2390 Malle, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541412824".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "2";
+            
+            <http://www.w3.org/ns/locn#postCode> "2400";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Zilvermeerlaan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Mol";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Zilvermeerlaan 2, 2400 Mol, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541413814".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "22";
+            
+            <http://www.w3.org/ns/locn#postCode> "2018";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Koningin Elisabethlei";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Koningin Elisabethlei 22, 2018 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541414804".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2440";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Hooibeeksedijk";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Geel";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Hooibeeksedijk 1, 2440 Geel, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541414606".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "28";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Arenbergstraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Arenbergstraat 28, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541636122".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "47";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Waalsekaai";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Waalsekaai 47, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541415693".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "22";
+            
+            <http://www.w3.org/ns/locn#postCode> "2018";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Koningin Elisabethlei";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Koningin Elisabethlei 22, 2018 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541413220".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "20";
+            
+            <http://www.w3.org/ns/locn#postCode> "2260";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Britselaan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Westerlo";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Britselaan 20, 2260 Westerlo, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541415101".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "28";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Nationalestraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Nationalestraat 28, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541635726".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "45";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Kronenburgstraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Kronenburgstraat 45, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0541414408".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "444";
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer> "Haven 621";
+            <http://www.w3.org/ns/locn#postCode> "2040";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Scheldelaan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Scheldelaan 444 - Haven 621, 2040 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0443423820".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "22";
+            
+            <http://www.w3.org/ns/locn#postCode> "2018";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Koningin Elisabethlei";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Koningin Elisabethlei 22, 2018 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0445736477".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "22";
+            
+            <http://www.w3.org/ns/locn#postCode> "2018";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Koningin Elisabethlei";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Koningin Elisabethlei 22, 2018 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0408543313".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "41";
+            
+            <http://www.w3.org/ns/locn#postCode> "8200";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Koning Leopold III-laan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Brugge";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Koning Leopold III-laan 41, 8200 Brugge, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0666654175".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2830";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Pastorijstraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Willebroek";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Pastorijstraat 1, 2830 Willebroek, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0679456888".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "314";
+            
+            <http://www.w3.org/ns/locn#postCode> "8710";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Rijksweg";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Wielsbeke";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Rijksweg 314, 8710 Wielsbeke, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0692792608".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "10";
+            
+            <http://www.w3.org/ns/locn#postCode> "8870";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Korenmarkt";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Izegem";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Korenmarkt 10, 8870 Izegem, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0692535557".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "30";
+            
+            <http://www.w3.org/ns/locn#postCode> "2970";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Brasschaatsebaan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Schilde";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Brasschaatsebaan 30, 2970 Schilde, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0693894844".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "22";
+            
+            <http://www.w3.org/ns/locn#postCode> "2610";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Doornstraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Doornstraat 22, 2610 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0684472976".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "167";
+            
+            <http://www.w3.org/ns/locn#postCode> "2980";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Handelslei";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Zoersel";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Handelslei 167, 2980 Zoersel, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0687958543".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "5";
+            
+            <http://www.w3.org/ns/locn#postCode> "3130";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Vlaams-Brabant";
+            <http://www.w3.org/ns/locn#thoroughfare> "Kerkplein";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Begijnendijk";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Kerkplein 5, 3130 Begijnendijk, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0692794883".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "8400";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Vindictivelaan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Oostende";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Vindictivelaan 1, 8400 Oostende, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0733741256".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "2";
+            
+            <http://www.w3.org/ns/locn#postCode> "8400";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Slijkensesteenweg";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Oostende";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Slijkensesteenweg 2, 8400 Oostende, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0259978212".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Entrepotkaai";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Entrepotkaai 1, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0869604307".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Grote Markt";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Grote Markt 1, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0738733786".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Grote Markt";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Grote Markt 1, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0738734281".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "13";
+            
+            <http://www.w3.org/ns/locn#postCode> "3800";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Limburg";
+            <http://www.w3.org/ns/locn#thoroughfare> "Kazernestraat";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Sint-Truiden";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Kazernestraat 13, 3800 Sint-Truiden, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0761818697".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "9000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Oost-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Botermarkt";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Gent";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Botermarkt 1, 9000 Gent, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0749998654".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2020";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Generaal Armstrongweg";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Generaal Armstrongweg 1, 2020 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0751541350".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "34";
+            
+            <http://www.w3.org/ns/locn#postCode> "8900";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Grote Markt";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Ieper";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Grote Markt 34, 8900 Ieper, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0759387858".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "178";
+            
+            <http://www.w3.org/ns/locn#postCode> "3060";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Tervuursesteenweg";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Bertem";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Tervuursesteenweg 178, 3060 Bertem, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0771621241".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "8400";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Vindictivelaan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Oostende";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Vindictivelaan 1, 8400 Oostende, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?adminUnit <http://www.w3.org/2004/02/skos/core#prefLabel> "AGB Renov'O".
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2950";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Bruggeske";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Kapellen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Bruggeske 1, 2950 Kapellen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0784526003".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2590";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Markt";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Berlaar";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Markt 1, 2590 Berlaar, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0801578801".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "23";
+            
+            <http://www.w3.org/ns/locn#postCode> "8300";
+            <http://www.w3.org/ns/locn#adminUnitL2> "West-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Helmweg";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Knokke-Heist";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Helmweg 23, 8300 Knokke-Heist, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0326480521".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "9000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Oost-Vlaanderen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Botermarkt";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Gent";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Botermarkt 1, 9000 Gent, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0367300101".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            
+            
+            <http://www.w3.org/ns/locn#postCode> "1500";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Vlaams-Brabant";
+            <http://www.w3.org/ns/locn#thoroughfare> "Grote Markt";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Halle";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Grote Markt , 1500 Halle, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0869604505".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            
+            
+            <http://www.w3.org/ns/locn#postCode> "2387";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Inschrijving zonder adres";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Baarle-Hertog";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Inschrijving zonder adres , 2387 Baarle-Hertog, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0869608067".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "3010";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Vlaams-Brabant";
+            <http://www.w3.org/ns/locn#thoroughfare> "Provincieplein";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Leuven";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Provincieplein 1, 3010 Leuven, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0871000018".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1";
+            
+            <http://www.w3.org/ns/locn#postCode> "2000";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen";
+            <http://www.w3.org/ns/locn#thoroughfare> "Grote Markt";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Grote Markt 1, 2000 Antwerpen, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0882527873".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }
+    
+
+      INSERT {
+        GRAPH ?g {
+          ?addressUri 
+            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "20";
+            
+            <http://www.w3.org/ns/locn#postCode> "1745";
+            <http://www.w3.org/ns/locn#adminUnitL2> "Vlaams-Brabant";
+            <http://www.w3.org/ns/locn#thoroughfare> "Ringlaan";
+            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Opwijk";
+            <https://data.vlaanderen.be/ns/adres#land> "België";
+            <http://www.w3.org/ns/locn#fullAddress> "Ringlaan 20, 1745 Opwijk, België".
+        }
+      }
+      WHERE {
+        GRAPH ?g {
+          
+        ?structuredId <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0888319169".
+        ?identificator <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structuredId.
+        ?adminUnit <http://www.w3.org/ns/adms#identifier> ?identificator.
+        ?adminUnit <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+        ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?addressUriREAL.
+        BIND( ?addressUriREAL AS ?addressUri)
+      
+        }
+      }

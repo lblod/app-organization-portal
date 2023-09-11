@@ -175,13 +175,13 @@ services:
     links:
       - db:database
   adressenregister:
-    image: lblod/adressenregister-fuzzy-search-service:0.6.3
+    image: lblod/adressenregister-fuzzy-search-service:0.7.0
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-organization-portal:1.17.1
+    image: lblod/frontend-organization-portal:1.18.1
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
@@ -250,7 +250,7 @@ services:
     volumes:
       - ./config/sharepoint/sync/organizations/:/config/
   construct-administrative-unit-relationships:
-    image: lblod/construct-administrative-unit-relationships-service:0.1.2
+    image: lblod/construct-administrative-unit-relationships-service:0.1.4
     environment:
       START_DATE_WORSHIP_GOVERNING_BODY: "2023-04-01T00:00:00"
       END_DATE_WORSHIP_GOVERNING_BODY: "2026-03-31T00:00:00"
@@ -459,7 +459,7 @@ services:
   # LOKET LEIDINGGEVENDEN CONSUMERS
   ################################################################################
   leidinggevenden-consumer:
-    image: lblod/delta-consumer:0.0.17-rc.7
+    image: lblod/delta-consumer:0.0.18
     environment:
       DCR_SERVICE_NAME: "leidinggevenden-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
@@ -536,7 +536,7 @@ services:
       - db:database
 
   ldes-backend:
-    image: redpencil/fragmentation-producer:0.3.2
+    image: redpencil/fragmentation-producer:0.4.0
     profiles: ["dev"] # Disable ldes feed by default until ready for qa/prod
     environment:
       FOLDER_DEPTH: 1
