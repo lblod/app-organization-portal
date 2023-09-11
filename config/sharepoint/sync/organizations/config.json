@@ -19,6 +19,10 @@
         {
           "op": ["http://www.w3.org/ns/regorg#orgStatus", "http://www.w3.org/2004/02/skos/core#prefLabel"],
           "sl": "OP_x0020_Status"
+        },
+        {
+          "op": ["http://mu.semte.ch/vocabularies/core/uuid", "^http://mu.semte.ch/vocabularies/core/uuid"],
+          "sl": "ABB_x0020_ID"
         }
       ],
       "pathToMatchingUuid": "?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ."
@@ -43,7 +47,11 @@
         },
         {
           "op": ["https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer"],
-          "sl": "Huisnr"
+          "sl": "Huisnr_x0020_zonder_x0020_bus"
+        },
+        {
+          "op": ["https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer"],
+          "sl": "Bus"
         },
         {
           "op": ["http://www.w3.org/ns/locn#postCode"],
