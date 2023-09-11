@@ -1,0 +1,117 @@
+# Every value that is in the admin unit graph but NOT in the landing graph means that it has not been
+# ingested via the consumer, and has to be cleared out
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?contactPoint ?predicate ?value .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+      <http://www.w3.org/ns/org#holds>/<http://schema.org/contactPoint> ?contactPoint.
+    ?contactPoint ?predicate ?value .
+  }
+
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/landing-zone/leidinggevenden> {
+      ?contactPoint ?predicate ?value .
+    }
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuursfunctie ?predicate ?value .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+      <http://www.w3.org/ns/org#holds> ?bestuursfunctie.
+    ?bestuursfunctie ?predicate ?value .
+  }
+
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/landing-zone/leidinggevenden> {
+      ?bestuursfunctie ?predicate ?value .
+    }
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s ?predicate ?value .
+  }
+} WHERE {
+  VALUES ?predicate {
+    <http://www.w3.org/ns/org#holds>
+    <http://data.vlaanderen.be/ns/mandaat#status>
+    <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan>
+    <http://data.vlaanderen.be/ns/mandaat#beleidsdomein>
+    <http://data.vlaanderen.be/ns/mandaat#rangorde>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+      ?predicate ?value .
+  }
+
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/landing-zone/leidinggevenden> {
+      ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+        ?predicate ?value .
+    }
+  }
+}
+
+;
+
+# Now, handling dates is more complex as dates in OP are datetimes in Loket
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s ?predicate ?date .
+  }
+} WHERE {
+  VALUES ?predicate {
+    <http://data.vlaanderen.be/ns/mandaat#start>
+    <http://data.vlaanderen.be/ns/mandaat#einde>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+      ?predicate ?date .
+  }
+
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/landing-zone/leidinggevenden> {
+      ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+        ?predicate ?datetime .
+    }
+
+    BIND(?datetime + xsd:duration('PT2H')  as ?dateInOurTimezone)
+
+    # convert to strings
+    BIND(STR(year(?dateInOurTimezone)) AS ?year)
+    BIND(STR(month(?dateInOurTimezone)) AS ?month)
+    BIND(STR(day(?dateInOurTimezone)) AS ?day)
+
+    # pad with zeros
+    BIND(CONCAT("00", ?year) AS ?paddedYear)
+    BIND(CONCAT("0000", ?month) AS ?paddedMonth)
+    BIND(CONCAT("00", ?day) AS ?paddedDay)
+
+    # extract the right number of digits from the padded strings
+    BIND(SUBSTR(?paddedYear, STRLEN(?paddedYear)-3) AS ?fourDigitYear)
+    BIND(SUBSTR(?paddedDay, STRLEN(?paddedDay)-1) AS ?twoDigitDay)
+    BIND(SUBSTR(?paddedMonth, STRLEN(?paddedMonth)-1) AS ?twoDigitMonth)
+
+    # put it all back together
+    BIND(xsd:date(CONCAT(?fourDigitYear, "-", ?twoDigitMonth, "-", ?twoDigitDay)) as ?datetimeToDate)
+
+    FILTER (?datetimeToDate = ?date)
+  }
+}
