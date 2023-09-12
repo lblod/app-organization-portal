@@ -218,6 +218,10 @@ services:
       - db:database
     volumes:
       - ./config/jobs-controller/:/config/
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   construct-administrative-unit-relationships:
     image: lblod/construct-administrative-unit-relationships-service:0.1.4
     environment:
@@ -231,6 +235,10 @@ services:
     image: eyereasoner/reasoning-service:increased-stack-limit
     volumes:
       - ./config/reasoner:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   ################################################################################
   # DELTA GENERAL
   ################################################################################
@@ -503,6 +511,7 @@ services:
       - ./config/ldes-delta-pusher/:/config/
     links:
       - db:database
+    restart: always
 
   ldes-backend:
     image: redpencil/fragmentation-producer:0.4.0
@@ -541,6 +550,10 @@ services:
     image: lblod/error-report-service:0.1.0
     links:
       - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
 
   roles:
     image: lblod/select-role-service:0.1.0
