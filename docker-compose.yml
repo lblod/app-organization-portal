@@ -239,6 +239,17 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  report-generation:
+    image: lblod/loket-report-generation-service:0.6.4
+    links:
+      - db:database
+    volumes:
+      - ./data/files/reports:/share
+      - ./config/reports:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   ################################################################################
   # DELTA GENERAL
   ################################################################################
