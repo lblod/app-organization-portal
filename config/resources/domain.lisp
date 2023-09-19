@@ -11,6 +11,9 @@
 (defparameter *supply-cache-headers-p* t)
 (defparameter sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 
+; use xsd:boolean instead of custom datatype
+(defparameter *use-custom-boolean-type-p* nil)
+
 (read-domain-file "domain.json")
 (read-domain-file "auth.json")
 (read-domain-file "change-events.json")
