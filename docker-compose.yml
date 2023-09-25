@@ -8,7 +8,7 @@ x-logging: &default-logging
 
 services:
   identifier:
-    image: semtech/mu-identifier:1.9.1
+    image: semtech/mu-identifier:1.10.1
     environment:
       DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: '[{"variables":[],"name":"public"}]'
       SESSION_COOKIE_SECURE: "on"
