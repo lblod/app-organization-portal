@@ -17,7 +17,9 @@
 
 This service maintains OP's OVO numbers in sync together with [Wegwijs](https://wegwijs.vlaanderen.be/#/organisations), which is the official source of OVO numbers.
 
-It gets triggered when a KBO is updated in OP as well as on a regular basis via a cron job to ensure our dataset is in sync with theirs.
+It gets triggered when a KBO is added or updated in OP, as well as on a regular basis via a cron job to ensure our dataset is in sync with theirs.
+
+*Note: Wegwijs currently (03/10/2023) don't have all the KBOs added in their database. For this reason, the behaviour we follow when we can't find a match on a KBO between OP and them is to leave the OVO number of OP untouched if it exists.*
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -35,17 +37,12 @@ It gets triggered when a KBO is updated in OP as well as on a regular basis via 
     logging: *default-logging
 ```
 
-### 🗒️ Config
-
-// TODO probably no delta config if we go for the endpoint option right ?
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔑 Environment variables
 
 | ENV  | description | default | required |
 |---|---|---|---|
-| xxx | xxx | | X |
-
+| CRON_PATTERN | Cron pattern describing when the healing runs | '0 0 0 * * *' | |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

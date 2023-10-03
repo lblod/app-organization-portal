@@ -9,8 +9,6 @@ import {
 } from "./lib/queries";
 import { CRON_PATTERN } from './config';
 
-// TODO update readme with env variables etc at the end
-
 app.post('/sync-from-kbo/:kboStructuredIdUuid', async function(req, res) {
   try {
     const kboStructuredIdUuid = req.params.kboStructuredIdUuid;
