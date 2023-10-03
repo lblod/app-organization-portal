@@ -162,50 +162,6 @@ export default [
       optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
     }
   },
-  {
-    match: {
-      predicate: {
-        type: 'uri',
-        value: 'https://data.vlaanderen.be/ns/generiek#lokaleIdentificator'
-      },
-      graph: {
-        type: 'uri',
-        value: 'http://mu.semte.ch/graphs/administrative-unit',
-      }
-    },
-    callback: {
-      url: 'http://sync-ovo-numbers/delta',
-      method: 'POST'
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
-    }
-  },
-  {
-    match: {
-      predicate: {
-        type: 'uri',
-        value: 'https://data.vlaanderen.be/ns/generiek#lokaleIdentificator'
-      },
-      graph: {
-        type: 'uri',
-        value: 'http://mu.semte.ch/graphs/worship-service',
-      }
-    },
-    callback: {
-      url: 'http://sync-ovo-numbers/delta',
-      method: 'POST'
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: ["http://redpencil.data.gift/id/concept/muScope/deltas/initialSync"]
-    }
-  },
 /*
   Commenting ldes rules until ready to go to qa/prod. In the meantime, we override the configuration on dev.
   {
