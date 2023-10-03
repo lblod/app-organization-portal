@@ -84,6 +84,8 @@ services:
   ldes-backend:
     environment:
       BASE_URL: "http://localhost/ldes/"
+  sync-ovo-numbers:
+    restart: "no"
   # use this to test acmidm
   # tlsproxy:
   #   image: caddy:2
