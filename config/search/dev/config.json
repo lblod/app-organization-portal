@@ -38,11 +38,7 @@
         "custom_sort_normalizer": {
           "type": "custom",
           "char_filter": [],
-          "filter": [
-            "lowercase",
-            "trim",
-            "asciifolding"
-          ]
+          "filter": ["lowercase", "trim", "asciifolding"]
         }
       }
     }
@@ -532,11 +528,7 @@
     },
     {
       "type": "person",
-      "composite_types": [
-        "minister",
-        "agent",
-        "mandatory"
-      ],
+      "composite_types": ["minister", "agent", "mandatory"],
       "on_path": "people",
       "properties": [
         {
@@ -766,6 +758,11 @@
           "http://www.w3.org/ns/org#hasPrimarySite",
           "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
           "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ],
+        "identifier": [
+          "http://www.w3.org/ns/adms#identifier",
+          "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator",
+          "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
         ]
       },
       "mappings": {
@@ -822,6 +819,15 @@
             }
           },
           "municipality": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "identifier": {
             "type": "text",
             "fields": {
               "field": {
