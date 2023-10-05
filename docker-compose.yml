@@ -151,7 +151,7 @@ services:
     restart: always
     logging: *default-logging
   privacy-worship:
-    image: lblod/privacy-centric-service:0.6.0
+    image: lblod/privacy-centric-service:0.6.1
     labels:
       - "logging=true"
     environment:
@@ -163,7 +163,7 @@ services:
     links:
       - db:database
   privacy-unit:
-    image: lblod/privacy-centric-service:0.6.0
+    image: lblod/privacy-centric-service:0.6.1
     labels:
       - "logging=true"
     environment:
