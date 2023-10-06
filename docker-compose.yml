@@ -239,6 +239,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  sync-ovo-numbers:
+    image: lblod/sync-ovo-numbers-service:0.1.0
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   ################################################################################
   # DELTA GENERAL
   ################################################################################
