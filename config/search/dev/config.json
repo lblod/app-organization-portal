@@ -39,6 +39,18 @@
           "type": "custom",
           "char_filter": [],
           "filter": ["lowercase", "trim", "asciifolding"]
+        },
+        "identifier_normalizer": {
+          "type": "custom",
+          "char_filter": ["identifier_alphanumeric_filter"],
+          "filter": ["lowercase", "trim", "asciifolding"]
+        }
+      },
+      "char_filter": {
+        "identifier_alphanumeric_filter": {
+          "type": "pattern_replace",
+          "pattern": "[^a-zA-Z0-9]",
+          "replacement": ""
         }
       }
     }
@@ -830,9 +842,9 @@
           "identifier": {
             "type": "text",
             "fields": {
-              "field": {
+              "index": {
                 "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
+                "normalizer": "identifier_normalizer"
               }
             }
           }
