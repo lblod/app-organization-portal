@@ -215,6 +215,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/decision-activities/"
   end
 
+  match "/memberships/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/memberships/"
+  end
+
+  match "/membership-roles/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/membership-roles/"
+  end
+
   ###############
   # LOGIN
   ###############
