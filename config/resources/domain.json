@@ -603,6 +603,11 @@
         "organizations"
       ],
       "relationships": {
+        "classification": {
+          "predicate": "org:classification",
+          "target": "representatief-orgaan-classification-codes",
+          "cardinality": "one"
+        },
         "recognized-worship-type": {
           "predicate": "ere:typeEredienst",
           "target": "recognized-worship-types",
@@ -616,6 +621,16 @@
         }
       },
       "new-resource-base": "http://data.lblod.info/id/representatieveOrganen/"
+    },
+    "representatief-orgaan-classification-codes": {
+      "class": "code:RepresentatiefOrgaanClassificatieCode",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "new-resource-base": "http://data.vlaanderen.be/id/concept/RepresentatiefOrgaanClassificatieCode/"
     },
     "governing-bodies": {
       "class": "besluit:Bestuursorgaan",
