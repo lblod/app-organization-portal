@@ -8,4 +8,4 @@ SPARQL DELETE WHERE {   GRAPH <http://mu.semte.ch/authorization> {     ?s ?p ?o.
 exec('checkpoint');
 exit;
 EOF
-#docker-compose up -d --remove-orphan
+docker-compose up -d --remove-orphan
