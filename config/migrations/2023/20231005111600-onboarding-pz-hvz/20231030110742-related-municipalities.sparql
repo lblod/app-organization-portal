@@ -1,0 +1,23 @@
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality <http://www.w3.org/ns/org#hasSubOrganization> ?bestuur .
+  }
+} WHERE {
+  VALUES ?classificationIgs {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc>
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/ea446861-2c51-45fa-afd3-4e4a37b71562>
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuur a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      <http://www.w3.org/ns/org#classification> ?classificationIgs ;
+      <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address .
+
+    ?address <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?municipalityLabel .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      skos:prefLabel ?municipalityLabel ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  }
+}
