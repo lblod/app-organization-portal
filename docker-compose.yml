@@ -151,7 +151,7 @@ services:
     restart: always
     logging: *default-logging
   privacy-worship:
-    image: lblod/privacy-centric-service:0.6.0
+    image: lblod/privacy-centric-service:0.6.1
     labels:
       - "logging=true"
     environment:
@@ -163,7 +163,7 @@ services:
     links:
       - db:database
   privacy-unit:
-    image: lblod/privacy-centric-service:0.6.0
+    image: lblod/privacy-centric-service:0.6.1
     labels:
       - "logging=true"
     environment:
@@ -223,7 +223,7 @@ services:
     restart: always
     logging: *default-logging
   construct-administrative-unit-relationships:
-    image: lblod/construct-administrative-unit-relationships-service:0.1.4
+    image: lblod/construct-administrative-unit-relationships-service:0.1.5
     environment:
       START_DATE_WORSHIP_GOVERNING_BODY: "2023-04-01T00:00:00"
       END_DATE_WORSHIP_GOVERNING_BODY: "2026-03-31T00:00:00"
@@ -235,6 +235,14 @@ services:
     image: eyereasoner/reasoning-service:increased-stack-limit
     volumes:
       - ./config/reasoner:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  sync-ovo-numbers:
+    image: lblod/sync-ovo-numbers-service:0.1.0
+    links:
+      - db:database
     labels:
       - "logging=true"
     restart: always
@@ -532,7 +540,7 @@ services:
   # MU SEARCH
   ################################################################################
   search:
-    image: semtech/mu-search:0.9.0-beta.7
+    image: semtech/mu-search:0.9.1
     links:
       - db:database
     restart: always
