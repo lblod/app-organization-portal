@@ -1,0 +1,31 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008>
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> ;
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://data.vlaanderen.be/id/conceptscheme/BestuursorgaanClassificatieCode> ;
+      <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://data.vlaanderen.be/id/conceptscheme/BestuursorgaanClassificatieCode> ;
+      <http://mu.semte.ch/vocabularies/ext/appliesWithin> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/55ab0e9b8a3b2ca7c5e000008> .
+  }
+}
+;
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s ?p <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/55ab0e9b8a3b2ca7c5e000008> .
+  }
+}
+;
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/55ab0e9b8a3b2ca7c5e000008> ?p ?o .
+  }
+}
