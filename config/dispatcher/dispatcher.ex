@@ -84,6 +84,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/administrative-unit-classification-codes/"
   end
 
+  match "/organization-classification-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/organization-classification-codes/"
+  end
+
   match "/worship-administrative-units/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://resource/worship-administrative-units/"
   end
@@ -303,6 +307,10 @@ defmodule Dispatcher do
 
   post "/create-administrative-unit-relationships/*path", %{ layer: :api_services, accept: %{ json: true } } do
     forward conn, path, "http://construct-administrative-unit-relationships/create-relationships/"
+  end
+
+  post "/sync-ovo-number/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://sync-ovo-numbers/sync-from-kbo/"
   end
 
   get "/ldes/*path", %{ layer: :api_services } do

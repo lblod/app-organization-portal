@@ -1,0 +1,48 @@
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?bestuur .
+    ?municipality <http://www.w3.org/ns/org#hasSubOrganization> ?bestuur .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuur a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721> ; # AGB
+      <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address .
+
+    ?address <https://data.vlaanderen.be/ns/adres#gemeentenaam> ?municipalityLabel .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      skos:prefLabel ?municipalityLabel ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  }
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?province <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?bestuur .
+    ?province <http://www.w3.org/ns/org#hasSubOrganization> ?bestuur .
+    ?municipality <http://www.w3.org/ns/org#linkedTo> ?bestuur .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuur a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d> ; # APB
+      <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address .
+
+    ?address <http://www.w3.org/ns/locn#adminUnitL2> ?provinceLabel .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      skos:prefLabel ?municipalityLabel ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+
+    ?province a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      skos:prefLabel ?provinceLabel ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+  }
+}
