@@ -10,19 +10,19 @@
       "mappings": [
         {
           "op": ["http://www.w3.org/2004/02/skos/core#prefLabel"],
-          "sl": "Title"
+          "sl": "OP_Naam"
         },
         {
           "op": ["http://www.w3.org/ns/org#classification", "http://www.w3.org/2004/02/skos/core#prefLabel"],
-          "sl": "Type_x0020_Entiteit"
+          "sl": "OP_Type"
         },
         {
           "op": ["http://www.w3.org/ns/regorg#orgStatus", "http://www.w3.org/2004/02/skos/core#prefLabel"],
-          "sl": "OP_x0020_Status"
+          "sl": "OP_Status"
         },
         {
           "op": ["http://mu.semte.ch/vocabularies/core/uuid", "^http://mu.semte.ch/vocabularies/core/uuid"],
-          "sl": "ABB_x0020_ID"
+          "sl": "OP_Uri"
         }
       ],
       "pathToMatchingUuid": "?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ."
@@ -32,38 +32,49 @@
       "mappings": [
         {
           "op": ["https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
-          "sl": "KBOnr",
+          "sl": "OP_Kbo",
           "isInitialMatchingMapping": "true"
         }
       ],
       "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/adms#identifier> ?kboIdentifier .\n ?kboIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"KBO nummer\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?s ."
     },
     {
+      "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "mappings": [
+        {
+          "op": ["https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
+          "sl": "OP_NIScode",
+          "isInitialMatchingMapping": "true"
+        }
+      ],
+      "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/adms#identifier> ?kboIdentifier .\n ?kboIdentifier <http://www.w3.org/2004/02/skos/core#notation> \"NIS code\" ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?s ."
+    },
+    {
       "type": "http://www.w3.org/ns/locn#Address",
       "mappings": [
         {
           "op": ["http://www.w3.org/ns/locn#thoroughfare"],
-          "sl": "Straat"
+          "sl": "OP_Street"
         },
         {
           "op": ["https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer"],
-          "sl": "Huisnr_x0020_zonder_x0020_bus"
+          "sl": "OP_House_Number"
         },
         {
           "op": ["https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer"],
-          "sl": "Bus"
+          "sl": "OP_Bus_Number"
         },
         {
           "op": ["http://www.w3.org/ns/locn#postCode"],
-          "sl": "Postcode_x0020_van_x0020_de_x002"
+          "sl": "OP_Postcode"
         },
         {
           "op": ["https://data.vlaanderen.be/ns/adres#gemeentenaam"],
-          "sl": "Gemeente_x0020_van_x0020_de_x002"
+          "sl": "OP_Municipality"
         },
         {
           "op": ["http://www.w3.org/ns/locn#adminUnitL2"],
-          "sl": "Provincie_x0020_van_x0020_de_x00"
+          "sl": "OP_Province"
         }
       ],
       "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?s ."
@@ -73,18 +84,28 @@
       "mappings": [
         {
           "op": ["http://schema.org/telephone"],
-          "sl": "Algemeen_x0020_telefoonnr"
+          "sl": "OP_Primary_Phone_Number"
         },
         {
           "op": ["http://xmlns.com/foaf/0.1/page"],
-          "sl": "Website"
+          "sl": "OP_Website"
         },
         {
           "op": ["http://schema.org/email"],
-          "sl": "Algemeen_x0020_mailadres"
+          "sl": "OP_Email"
         }
       ],
-      "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<http://www.w3.org/ns/org#siteAddress> ?s ."
+      "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<http://www.w3.org/ns/org#siteAddress> ?s . ?s <http://schema.org/contactType> \"Primary\""
+    },
+    {
+      "type": "http://schema.org/ContactPoint",
+      "mappings": [
+        {
+          "op": ["http://schema.org/telephone"],
+          "sl": "OP_Secondary_Phone_Number"
+        }
+      ],
+      "pathToMatchingUuid": "?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t  <http://mu.semte.ch/vocabularies/core/uuid> ?matchingUuid ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<http://www.w3.org/ns/org#siteAddress> ?s . ?s <http://schema.org/contactType> \"Secondary\""
     }
   ]
 }
