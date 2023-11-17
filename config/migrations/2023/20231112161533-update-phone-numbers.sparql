@@ -1,0 +1,38 @@
+DELETE {
+  ?s <http://schema.org/telephone> ?o .
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+   ?s <http://schema.org/telephone> ?newPhoneNumber .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  
+  FILTER (SUBSTR(?o, 1, 1) != "+" AND STRLEN(STR(?o)) > 4)
+  BIND(REPLACE(STR(?o),"[. - /]","") AS ?removedSpaces) .
+  BIND (CONCAT('tel:+32', SUBSTR(?removedSpaces, 2)) as ?newPhoneNumber)
+}
+
+DELETE {
+  ?s <http://schema.org/telephone> ?o .
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+   ?s <http://schema.org/telephone> ?newPhoneNumber .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  
+  FILTER (SUBSTR(?o, 1, 1) = "+")
+  BIND(REPLACE(STR(?o),"[. - /]","") AS ?removedSpaces) .
+  BIND (CONCAT('tel:', ?removedSpaces, 2) as ?newPhoneNumber)
+}
+
+
+
