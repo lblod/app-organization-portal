@@ -72,6 +72,12 @@
           "cardinality": "many",
           "inverse": true
         },
+        "agents-in-position": {
+          "predicate": "org:heldBy",
+          "target": "agents-in-position",
+          "cardinality": "many",
+          "inverse": true
+        },
         "functionaries": {
           "predicate": "mandaat:isBestuurlijkeAliasVan",
           "target": "functionaries",
