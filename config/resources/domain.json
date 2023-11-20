@@ -32,8 +32,25 @@
     "nacebel": "http://data.gift/vocabularies/nace-bel/"
   },
   "resources": {
+    "agents": {
+      "class": "dc_terms:Agent",
+      "relationships": {
+        "position": {
+          "predicate": "org:holds",
+          "target": "posts",
+          "cardinality": "many"
+        },
+        "contacts": {
+          "predicate": "schema:contactPoint",
+          "target": "contact-points",
+          "cardinality": "many"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/agenten/"
+    },
     "people": {
       "class": "person:Person",
+      "super": ["agents"],
       "attributes": {
         "given-name": {
           "type": "string",
@@ -55,12 +72,6 @@
           "cardinality": "many",
           "inverse": true
         },
-        "agents-in-position": {
-          "predicate": "org:heldBy",
-          "target": "agents-in-position",
-          "cardinality": "many",
-          "inverse": true
-        },
         "functionaries": {
           "predicate": "mandaat:isBestuurlijkeAliasVan",
           "target": "functionaries",
@@ -72,6 +83,7 @@
     },
     "agents-in-position": {
       "class": "ch:AgentInPositie",
+      "super": ["agents"],
       "attributes": {
         "agent-start-date": {
           "type": "date",
@@ -83,11 +95,6 @@
         }
       },
       "relationships": {
-        "position": {
-          "predicate": "org:holds",
-          "target": "posts",
-          "cardinality": "one"
-        },
         "person": {
           "predicate": "org:heldBy",
           "target": "people",
@@ -114,11 +121,10 @@
           "target": "organizations",
           "cardinality": "one"
         },
-        "agents-in-position": {
-          "predicate": "org:holds",
-          "target": "agents-in-position",
-          "cardinality": "many",
-          "inverse": true
+        "agent": {
+          "predicate": "org:heldBy",
+          "target": "agents",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/posities/"
@@ -355,6 +361,7 @@
     },
     "organizations": {
       "class": "org:Organization",
+      "super": ["agents"],
       "attributes": {
         "name": {
           "type": "string",
