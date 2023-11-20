@@ -1,0 +1,33 @@
+
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?person a dc_terms:Agent .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?person a person:Person .
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?person a dc_terms:Agent .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?person a person:Person .
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?person a dc_terms:Agent .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?person a person:Person .
+  }
+}
