@@ -35,9 +35,9 @@ WHERE {
     ?s <http://schema.org/telephone> ?o .
   }
   
-  FILTER (SUBSTR(?o, 1, 1) = "+" and !regex(?o, ".*[a-zA-Z].*", "i"))
+  FILTER (STRSTARTS(?o, "+") and !regex(?o, ".*[a-zA-Z].*", "i"))
   BIND(REPLACE(STR(?o),"[. -/()]","") AS ?removedSpaces) .
-  BIND (CONCAT('tel:', ?removedSpaces) as ?newPhoneNumber)
+  BIND (CONCAT('tel:+', ?removedSpaces) as ?newPhoneNumber)
 }
 
 ;
@@ -79,8 +79,8 @@ WHERE {
     ?s <http://schema.org/telephone> ?o .
   }
   
-  FILTER (SUBSTR(?o, 1, 1) = "+" and !regex(?o, ".*[a-zA-Z].*", "i"))
+  FILTER (STRSTARTS(?o, "+") and !regex(?o, ".*[a-zA-Z].*", "i"))
   BIND(REPLACE(STR(?o),"[. -/()]","") AS ?removedSpaces) .
-  BIND (CONCAT('tel:', ?removedSpaces) as ?newPhoneNumber)
+  BIND (CONCAT('tel:+', ?removedSpaces) as ?newPhoneNumber)
 }
 
