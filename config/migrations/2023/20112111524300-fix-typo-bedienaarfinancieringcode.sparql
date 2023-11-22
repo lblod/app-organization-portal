@@ -1,0 +1,17 @@
+DELETE {
+  graph ?g {
+    ?instance rdf:type ?oldClass
+  }
+}
+INSERT {
+  graph ?g{
+    ?instance rdf:type ?newClass
+  }
+}
+where { 
+  graph ?g{
+    BIND (<http://lblod.data.gift/vocabularies/organisatie/BedienaarFinanceringCode> as ?oldClass)
+    BIND (<http://lblod.data.gift/vocabularies/organisatie/BedienaarFinancieringCode> as  ?newClass)
+   ?instance rdf:type ?oldClass . 
+  }
+}

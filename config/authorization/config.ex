@@ -43,7 +43,7 @@ defmodule Acl.UserGroups.Config do
                         "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
                         "http://lblod.data.gift/vocabularies/organisatie/TypeEredienst",
                         "http://www.w3.org/2004/02/skos/core#ConceptScheme",
-                        "http://lblod.data.gift/vocabularies/organisatie/BedienaarFinanceringCode",
+                        "http://lblod.data.gift/vocabularies/organisatie/BedienaarFinancieringCode",
                         "http://www.w3.org/2004/02/skos/core#Concept",
                         "http://publications.europa.eu/ontology/euvoc#Country",
                         "http://lblod.data.gift/vocabularies/organisatie/TypeVestiging",
