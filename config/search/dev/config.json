@@ -38,11 +38,19 @@
         "custom_sort_normalizer": {
           "type": "custom",
           "char_filter": [],
-          "filter": [
-            "lowercase",
-            "trim",
-            "asciifolding"
-          ]
+          "filter": ["lowercase", "trim", "asciifolding"]
+        },
+        "identifier_normalizer": {
+          "type": "custom",
+          "char_filter": ["identifier_alphanumeric_filter"],
+          "filter": ["lowercase", "trim", "asciifolding"]
+        }
+      },
+      "char_filter": {
+        "identifier_alphanumeric_filter": {
+          "type": "pattern_replace",
+          "pattern": "[^a-zA-Z0-9]",
+          "replacement": ""
         }
       }
     }
@@ -532,11 +540,7 @@
     },
     {
       "type": "person",
-      "composite_types": [
-        "minister",
-        "agent",
-        "mandatory"
-      ],
+      "composite_types": ["minister", "agent", "mandatory"],
       "on_path": "people",
       "properties": [
         {
@@ -729,7 +733,8 @@
         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
         "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
         "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
-        "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst"
+        "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+        "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan"
       ],
       "properties": {
         "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
@@ -766,6 +771,11 @@
           "http://www.w3.org/ns/org#hasPrimarySite",
           "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
           "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ],
+        "identifier": [
+          "http://www.w3.org/ns/adms#identifier",
+          "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator",
+          "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
         ]
       },
       "mappings": {
@@ -827,6 +837,15 @@
               "field": {
                 "type": "keyword",
                 "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "identifier": {
+            "type": "text",
+            "fields": {
+              "index": {
+                "type": "keyword",
+                "normalizer": "identifier_normalizer"
               }
             }
           }

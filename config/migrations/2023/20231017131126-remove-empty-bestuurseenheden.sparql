@@ -1,0 +1,16 @@
+DELETE {
+  GRAPH ?h {
+    ?s ?p ?o .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      ?p ?o .
+
+    FILTER NOT EXISTS {
+      ?s ?np ?no .
+      FILTER (?np NOT IN (<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://mu.semte.ch/vocabularies/core/uuid>) )
+    }
+  }
+  BIND(?g as ?h)
+}
