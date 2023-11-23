@@ -1,0 +1,39 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?mandatory a dc_terms:Agent .
+    ?mandatory a ch:AgentInPositie .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?mandatory a mandaat:Mandataris
+    FILTER NOT EXISTS { ?mandatory a ch:AgentInPositie }
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?mandatory a dc_terms:Agent .
+    ?mandatory a ch:AgentInPositie .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?mandatory a mandaat:Mandataris
+    FILTER NOT EXISTS { ?mandatory a ch:AgentInPositie }
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?mandatory a dc_terms:Agent .
+    ?mandatory a ch:AgentInPositie .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?mandatory a mandaat:Mandataris
+    FILTER NOT EXISTS { ?mandatory a ch:AgentInPositie }
+  }
+}
