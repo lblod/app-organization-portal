@@ -1,15 +1,15 @@
 DELETE {
-  graph ?g {
+  graph <http://mu.semte.ch/graphs/public> {
     ?instance rdf:type ?oldClass
   }
 }
 INSERT {
-  graph ?g{
+  graph <http://mu.semte.ch/graphs/public>{
     ?instance rdf:type ?newClass
   }
 }
 where { 
-  graph ?g{
+  graph <http://mu.semte.ch/graphs/public>{
     BIND (<http://lblod.data.gift/vocabularies/organisatie/BedienaarFinanceringCode> as ?oldClass)
     BIND (<http://lblod.data.gift/vocabularies/organisatie/BedienaarFinancieringCode> as  ?newClass)
    ?instance rdf:type ?oldClass . 
