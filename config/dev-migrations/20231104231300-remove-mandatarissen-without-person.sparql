@@ -1,0 +1,20 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH ?g {
+    ?mandaat ?pmandaat ?omandaat .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
+
+  GRAPH ?g {
+    ?mandaat a ?type ;
+      mandaat:isBestuurlijkeAliasVan ?person ;
+      ?pmandaat ?omandaat .
+  }
+
+  FILTER NOT EXISTS { ?person ?pperson ?operson . }
+}
