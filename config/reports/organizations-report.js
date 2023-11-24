@@ -7,9 +7,9 @@ export default {
   name: 'organizations',
   execute: async () => {
     const reportData = {
-      title: 'Organizations',
+      title: 'organizations',
       description: 'List of the Organizations',
-      filePrefix: 'organizations'
+      filePrefix: 'exports/organizations'
     };
 
     console.log('Generating organizations report');

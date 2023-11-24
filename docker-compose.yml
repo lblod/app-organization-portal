@@ -241,10 +241,12 @@ services:
     logging: *default-logging
   report-generation:
     image: lblod/loket-report-generation-service:0.6.4
+    environment:
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/shared"
     links:
       - db:database
     volumes:
-      - ./data/files/reports:/share
+      - ./data/files:/share
       - ./config/reports:/config
     labels:
       - "logging=true"
