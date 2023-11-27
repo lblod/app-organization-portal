@@ -192,6 +192,14 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
     dc_terms:Agent .
 } .
 
+# In OP mandataris inherits from agents-in-position, which inherits from Agent
+{
+  ?s a mandaat:Mandataris .
+} => {
+  ?s a ch:AgentInPositie ,
+       dc_terms:Agent .
+} .
+
 # In OP Person inherits from Agent
 {
   ?s a person:Person .
