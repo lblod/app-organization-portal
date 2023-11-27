@@ -177,13 +177,6 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
   ?s generiek:isTijdspecialisatieVan ?o.
 } .
 
-# In OP AgentInPositie inherits from Agent
-{
-  ?s a ch:AgentInPositie .
-} => {
-  ?s a dc_terms:Agent .
-} .
-
 # In OP functionaris inherits from agents-in-position, which inherits from Agent
 {
   ?s a lblodlg:Functionaris .
@@ -198,6 +191,13 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 } => {
   ?s a ch:AgentInPositie ,
        dc_terms:Agent .
+} .
+
+# In OP AgentInPositie inherits from Agent
+{
+  ?s a ch:AgentInPositie .
+} => {
+  ?s a dc_terms:Agent .
 } .
 
 # In OP Person inherits from Agent
