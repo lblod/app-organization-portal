@@ -1,0 +1,38 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g {
+    ?mandaat ?pmandaat ?omandaat .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
+
+  GRAPH ?g {
+    ?mandaat mandaat:isBestuurlijkeAliasVan ?person ;
+      ?pmandaat ?omandaat .
+  }
+
+  FILTER NOT EXISTS { ?person ?pperson ?operson . }
+}
+;
+DELETE {
+  GRAPH ?g {
+    ?mandaat ?pmandaat ?omandaat .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
+
+  GRAPH ?g {
+    ?mandaat mandaat:start ?start ;
+      ?pmandaat ?omandaat .
+  }
+
+  FILTER NOT EXISTS { ?mandaat a ?type . }
+}
