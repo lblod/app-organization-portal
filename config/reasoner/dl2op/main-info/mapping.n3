@@ -17,7 +17,10 @@ PREFIX persoon_loket: <http://data.vlaanderen.be/ns/persoon#>
 PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
 PREFIX string: <http://www.w3.org/2000/10/swap/string#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 
 # DL and OP both use persoon:gebruikteVoornaam but with different semantics (!)
 # Hence the mapping is in two steps.
@@ -148,3 +151,34 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 } => {
   ?s generiek:isTijdspecialisatieVan ?o.
 }.
+
+# In OP functionaris inherits from agents-in-position, which inherits from Agent
+{
+  ?s a lblodlg:Functionaris .
+} => {
+  ?s a ch:AgentInPositie ,
+    dc_terms:Agent .
+} .
+
+# In OP mandataris inherits from agents-in-position, which inherits from Agent
+{
+  ?s a mandaat:Mandataris .
+} => {
+  ?s a ch:AgentInPositie ,
+       dc_terms:Agent .
+} .
+
+# In OP minister inherits from agents-in-position, which inherits from Agent
+{
+  ?s a ere:RolBedienaar .
+} => {
+  ?s a ch:AgentInPositie ,
+       dc_terms:Agent .
+} .
+
+# In OP Person inherits from Agent
+{
+  ?s a person:Person .
+} => {
+  ?s a dc_terms:Agent .
+} .
