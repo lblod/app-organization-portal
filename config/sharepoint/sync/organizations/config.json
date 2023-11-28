@@ -1,0 +1,108 @@
+{
+  "sourceGraphs": [
+    "http://mu.semte.ch/graphs/administrative-unit",
+    "http://mu.semte.ch/graphs/shared",
+    "http://mu.semte.ch/graphs/public"
+  ],
+  "objects": [
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "mappings": [
+        {
+          "op": ["http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "Title"
+        },
+        {
+          "op": ["http://www.w3.org/ns/org#classification", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "OP_Type"
+        },
+        {
+          "op": ["http://www.w3.org/ns/regorg#orgStatus", "http://www.w3.org/2004/02/skos/core#prefLabel"],
+          "sl": "OP_Status"
+        },
+        {
+          "op": ["http://mu.semte.ch/vocabularies/core/uuid"],
+          "sl": "OP_Uuid"
+        },
+        {
+          "op": ["http://mu.semte.ch/vocabularies/core/uuid", "^http://mu.semte.ch/vocabularies/core/uuid"],
+          "sl": "OP_Uri",
+          "isMatchingField": "true"
+        },
+        {
+          "op": ["http://data.vlaanderen.be/ns/besluit#werkingsgebied", "http://www.w3.org/2004/02/skos/core#exactMatch", "http://www.w3.org/2004/02/skos/core#notation"],
+          "sl": "OP_NIScode"
+        }
+      ],
+      "pathToMatchingUri": "?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> . BIND (?s as ?matchingUri)"
+    },
+    {
+      "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
+      "mappings": [
+        {
+          "op": ["https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"],
+          "sl": "OP_KBO"
+        }
+      ],
+      "pathToMatchingUri": "?matchingUri a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/adms#identifier> ?kboIdentifier .\n ?kboIdentifier <http://www.w3.org/2004/02/skos/core#notation> ?kboLabel ;\n\t <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?s . FILTER (?kboLabel IN (\"KBO nummer\"@nl, \"KBO nummer\"))"
+    },
+    {
+      "type": "http://www.w3.org/ns/locn#Address",
+      "mappings": [
+        {
+          "op": ["http://www.w3.org/ns/locn#thoroughfare"],
+          "sl": "OP_Straat"
+        },
+        {
+          "op": ["https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer"],
+          "sl": "OP_Huisnummer"
+        },
+        {
+          "op": ["https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer"],
+          "sl": "OP_Busnummer"
+        },
+        {
+          "op": ["http://www.w3.org/ns/locn#postCode"],
+          "sl": "OP_Postcode"
+        },
+        {
+          "op": ["https://data.vlaanderen.be/ns/adres#gemeentenaam"],
+          "sl": "OP_Gemeente"
+        },
+        {
+          "op": ["http://www.w3.org/ns/locn#adminUnitL2"],
+          "sl": "OP_Provincie"
+        }
+      ],
+      "pathToMatchingUri": "?matchingUri a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?s ."
+    },
+    {
+      "type": "http://schema.org/ContactPoint",
+      "mappings": [
+        {
+          "op": ["http://schema.org/telephone"],
+          "sl": "OP_Primair_Telefoonnummer"
+        },
+        {
+          "op": ["http://xmlns.com/foaf/0.1/page"],
+          "sl": "OP_Website"
+        },
+        {
+          "op": ["http://schema.org/email"],
+          "sl": "OP_Email"
+        }
+      ],
+      "pathToMatchingUri": "?matchingUri a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<http://www.w3.org/ns/org#siteAddress> ?s . ?s <http://schema.org/contactType> \"Primary\""
+    },
+    {
+      "type": "http://schema.org/ContactPoint",
+      "mappings": [
+        {
+          "op": ["http://schema.org/telephone"],
+          "sl": "OP_Secundair_Telefoonnummer"
+        }
+      ],
+      "pathToMatchingUri": "?matchingUri a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;\n\t <http://www.w3.org/ns/org#hasPrimarySite>/<http://www.w3.org/ns/org#siteAddress> ?s . ?s <http://schema.org/contactType> \"Secondary\""
+    }
+  ]
+}

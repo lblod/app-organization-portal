@@ -32,8 +32,25 @@
     "nacebel": "http://data.gift/vocabularies/nace-bel/"
   },
   "resources": {
+    "agents": {
+      "class": "dc_terms:Agent",
+      "relationships": {
+        "position": {
+          "predicate": "org:holds",
+          "target": "posts",
+          "cardinality": "many"
+        },
+        "contacts": {
+          "predicate": "schema:contactPoint",
+          "target": "contact-points",
+          "cardinality": "many"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/agenten/"
+    },
     "people": {
       "class": "person:Person",
+      "super": ["agents"],
       "attributes": {
         "given-name": {
           "type": "string",
@@ -61,9 +78,9 @@
           "cardinality": "many",
           "inverse": true
         },
-        "agents": {
+        "functionaries": {
           "predicate": "mandaat:isBestuurlijkeAliasVan",
-          "target": "agents",
+          "target": "functionaries",
           "cardinality": "many",
           "inverse": true
         }
@@ -72,6 +89,7 @@
     },
     "agents-in-position": {
       "class": "ch:AgentInPositie",
+      "super": ["agents"],
       "attributes": {
         "agent-start-date": {
           "type": "date",
@@ -83,11 +101,6 @@
         }
       },
       "relationships": {
-        "position": {
-          "predicate": "org:holds",
-          "target": "posts",
-          "cardinality": "one"
-        },
         "person": {
           "predicate": "org:heldBy",
           "target": "people",
@@ -114,20 +127,17 @@
           "target": "organizations",
           "cardinality": "one"
         },
-        "agents-in-position": {
-          "predicate": "org:holds",
-          "target": "agents-in-position",
-          "cardinality": "many",
-          "inverse": true
+        "agent": {
+          "predicate": "org:heldBy",
+          "target": "agents",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/posities/"
     },
     "mandatories": {
       "class": "mandaat:Mandataris",
-      "super": [
-        "agents-in-position"
-      ],
+      "super": ["agents-in-position"],
       "attributes": {
         "start-date": {
           "type": "date",
@@ -170,16 +180,12 @@
           "predicate": "skos:prefLabel"
         }
       },
-      "features": [
-        "include-uri"
-      ],
+      "features": ["include-uri"],
       "new-resource-base": "http://data.vlaanderen.be/id/concept/MandatarisStatusCode/"
     },
     "worship-mandatories": {
       "class": "ere:EredienstMandataris",
-      "super": [
-        "mandatories"
-      ],
+      "super": ["mandatories"],
       "attributes": {
         "expected-end-date": {
           "type": "date",
@@ -244,9 +250,7 @@
     },
     "mandates": {
       "class": "mandaat:Mandaat",
-      "super": [
-        "posts"
-      ],
+      "super": ["posts"],
       "relationships": {
         "role-board": {
           "predicate": "org:role",
@@ -268,11 +272,9 @@
       },
       "new-resource-base": "http://data.lblod.info/id/mandaten/"
     },
-    "agents": {
+    "functionaries": {
       "class": "lblodlg:Functionaris",
-      "super": [
-        "agents-in-position"
-      ],
+      "super": ["agents-in-position"],
       "attributes": {
         "start-date": {
           "type": "datetime",
@@ -310,16 +312,12 @@
           "predicate": "skos:prefLabel"
         }
       },
-      "features": [
-        "include-uri"
-      ],
+      "features": ["include-uri"],
       "new-resource-base": "http://data.vlaanderen.be/id/concept/functionarisStatusCode/"
     },
     "board-positions": {
       "class": "lblodlg:Bestuursfunctie",
-      "super": [
-        "posts"
-      ],
+      "super": ["posts"],
       "relationships": {
         "role-board": {
           "predicate": "org:role",
@@ -369,6 +367,7 @@
     },
     "organizations": {
       "class": "org:Organization",
+      "super": ["agents"],
       "attributes": {
         "name": {
           "type": "string",
@@ -490,9 +489,7 @@
     },
     "administrative-units": {
       "class": "besluit:Bestuurseenheid",
-      "super": [
-        "organizations"
-      ],
+      "super": ["organizations"],
       "relationships": {
         "classification": {
           "predicate": "org:classification",
@@ -540,16 +537,12 @@
     },
     "administrative-unit-classification-codes": {
       "class": "code:BestuurseenheidClassificatieCode",
-      "super": [
-        "organization-classification-codes"
-      ],
+      "super": ["organization-classification-codes"],
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/"
     },
     "worship-administrative-units": {
       "class": "ere:EredienstBestuurseenheid",
-      "super": [
-        "administrative-units"
-      ],
+      "super": ["administrative-units"],
       "relationships": {
         "recognized-worship-type": {
           "predicate": "ere:typeEredienst",
@@ -572,9 +565,7 @@
     },
     "worship-services": {
       "class": "ere:BestuurVanDeEredienst",
-      "super": [
-        "worship-administrative-units"
-      ],
+      "super": ["worship-administrative-units"],
       "attributes": {
         "denomination": {
           "type": "string",
@@ -599,16 +590,12 @@
     },
     "central-worship-services": {
       "class": "ere:CentraalBestuurVanDeEredienst",
-      "super": [
-        "worship-administrative-units"
-      ],
+      "super": ["worship-administrative-units"],
       "new-resource-base": "http://data.lblod.info/id/centraleBesturenVanDeEredienst/"
     },
     "representative-bodies": {
       "class": "ere:RepresentatiefOrgaan",
-      "super": [
-        "organizations"
-      ],
+      "super": ["organizations"],
       "relationships": {
         "classification": {
           "predicate": "org:classification",
@@ -631,9 +618,7 @@
     },
     "representative-body-classification-codes": {
       "class": "ext:RepresentatiefOrgaanClassificatieCode",
-      "super": [
-        "organization-classification-codes"
-      ],
+      "super": ["organization-classification-codes"],
       "new-resource-base": "http://data.vlaanderen.be/id/concept/RepresentatiefOrgaanClassificatieCode/"
     },
     "governing-bodies": {
@@ -851,9 +836,7 @@
           "predicate": "skos:prefLabel"
         }
       },
-      "features": [
-        "include-uri"
-      ],
+      "features": ["include-uri"],
       "new-resource-base": "http://lblod.data.gift/concepts/"
     },
     "locations": {
@@ -906,9 +889,7 @@
     },
     "ministers": {
       "class": "ere:RolBedienaar",
-      "super": [
-        "agents-in-position"
-      ],
+      "super": ["agents-in-position"],
       "relationships": {
         "minister-position": {
           "predicate": "org:holds",
@@ -976,9 +957,7 @@
     },
     "minister-positions": {
       "class": "ere:PositieBedienaar",
-      "super": [
-        "posts"
-      ],
+      "super": ["posts"],
       "relationships": {
         "function": {
           "predicate": "ere:functie",

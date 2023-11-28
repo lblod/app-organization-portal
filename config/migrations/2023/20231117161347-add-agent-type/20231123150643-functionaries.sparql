@@ -1,0 +1,36 @@
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?functionary a dc_terms:Agent .
+    ?functionary a ch:AgentInPositie .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?functionary a lblodlg:Functionaris
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?functionary a dc_terms:Agent .
+    ?functionary a ch:AgentInPositie .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?functionary a lblodlg:Functionaris
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?functionary a dc_terms:Agent .
+    ?functionary a ch:AgentInPositie .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?functionary a lblodlg:Functionaris
+  }
+}

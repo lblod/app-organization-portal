@@ -1,0 +1,32 @@
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?agentInPosition a dc_terms:Agent .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?agentInPosition a ch:AgentInPositie .
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?agentInPosition a dc_terms:Agent .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?agentInPosition a ch:AgentInPositie .
+  }
+}
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?agentInPosition a dc_terms:Agent .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?agentInPosition a ch:AgentInPositie .
+  }
+}
