@@ -240,7 +240,7 @@ services:
     restart: always
     logging: *default-logging
   organizations-sync-with-sharepoint:
-    image: lblod/op-sync-with-sharepoint-service:0.1.0
+    image: lblod/op-sync-with-sharepoint-service:0.1.2
     environment:
       INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/initialSyncing/organizations"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/healingOperation/organizations"
