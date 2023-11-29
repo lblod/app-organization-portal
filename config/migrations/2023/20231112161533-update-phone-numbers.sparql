@@ -12,9 +12,8 @@ WHERE {
   GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     ?s <http://schema.org/telephone> ?o .
   }
-  
-  FILTER (SUBSTR(?o, 1, 1) != "+" AND STRLEN(STR(?o)) > 4 and !regex(?o, ".*[a-zA-Z].*", "i"))
   BIND(REPLACE(STR(?o),"[. -/()]","") AS ?removedSpaces) .
+  FILTER (SUBSTR(?removedSpaces, 1, 1) != "+" AND STRLEN(STR(?removedSpaces)) > 8 AND STRLEN(STR(?removedSpaces)) < 11 and !regex(?o, ".*[a-zA-Z].*", "i"))
   BIND (CONCAT('tel:+32', SUBSTR(?removedSpaces, 2)) as ?newPhoneNumber)
 }
 
@@ -34,9 +33,8 @@ WHERE {
   GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     ?s <http://schema.org/telephone> ?o .
   }
-  
-  FILTER (STRSTARTS(?o, "+") and !regex(?o, ".*[a-zA-Z].*", "i"))
   BIND(REPLACE(STR(?o),"[. -/()]","") AS ?removedSpaces) .
+  FILTER (STRSTARTS(?o, "+") and !regex(?o, ".*[a-zA-Z].*", "i"))
   BIND (CONCAT('tel:+', ?removedSpaces) as ?newPhoneNumber)
 }
 

@@ -1,0 +1,46 @@
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX schema: <http://schema.org/>
+#:s :p
+#  "+32488888888",
+#    "0477777777",
+#    "0477.77.77.00",
+#    "0",
+#    " +32 445 55 99 91",
+#    "tel:+3144887755",
+#    "0032 4 58 44 66 87",
+#    "00 32 0 498 77 7744".
+{
+
+
+  ?s schema:telephone ?number.
+
+  # number not matches regex
+
+  ?number string:notMatches """[a-zA-Z]""".
+
+  # Remove all non digits
+  ( ?number """[^+\\d]""" "" ) string:replace ?scrape_result.
+
+  # Replace leading 00 with +
+  ( ?scrape_result """^00""" "+") string:replace ?replaced_zero_zero.
+
+  ( ?replaced_zero_zero """^0""" "+32") string:replace ?default_be.
+
+  ( ?default_be """\\+320""" "+32" ) string:replace ?result.
+
+  #  ?result string:matches """^+((32\\d{8})|(324\\d{8})|((?!32)\\d+))$""".
+  ?result string:matches """^\\+((32\\d{8})|(324\\d{8})|((?!32)\\d+))$""".
+
+  # concat with tel:
+  ("tel:" ?result) string:concatenation ?parsedNumber .
+ 
+  {
+    ?s schema:telephone ?number.
+  } e:becomes {
+    ?s schema:telephone ?parsedNumber.
+  }.
+
+} => {
+  ?s schema:telephone ?parsedNumber.
+}.
