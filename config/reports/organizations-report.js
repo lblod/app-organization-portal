@@ -1,5 +1,4 @@
 import { generateReportFromData, batchedQuery } from '../helpers.js';
-import { querySudo as query } from '@lblod/mu-auth-sudo';
 import { PREFIXES } from './utils'
 
 export default {
