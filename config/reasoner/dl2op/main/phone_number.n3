@@ -1,7 +1,8 @@
 PREFIX string: <http://www.w3.org/2000/10/swap/string#>
 PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX schema: <http://schema.org/>
 {
-  :s schema:telephone ?number.
+  ?s schema:telephone ?number.
 
   # number not matches regex
 
