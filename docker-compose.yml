@@ -271,9 +271,10 @@ services:
     restart: always
     logging: *default-logging
   report-generation:
-    image: lblod/loket-report-generation-service:0.6.4
+    image: lblod/loket-report-generation-service:0.7.0
     environment:
       DEFAULT_GRAPH: "http://mu.semte.ch/graphs/shared"
+      ONLY_KEEP_LATEST_REPORT: "true"
     links:
       - db:database
     volumes:
