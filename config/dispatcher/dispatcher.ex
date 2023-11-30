@@ -373,6 +373,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-worship-posts/files/"
   end
 
+  #################################################################
+  #  Exports
+  #################################################################
+
+  get "/download-exports/*path" do
+    Proxy.forward conn, path, "http://download-exports/"
+  end
+
   ###############################################################
   # frontend layer
   ###############################################################

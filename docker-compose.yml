@@ -270,6 +270,30 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  report-generation:
+    image: lblod/loket-report-generation-service:0.7.0
+    environment:
+      DEFAULT_GRAPH: "http://mu.semte.ch/graphs/shared"
+      ONLY_KEEP_LATEST_REPORT: "true"
+    links:
+      - db:database
+    volumes:
+      - ./data/files:/share
+      - ./config/reports:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  download-exports:
+    image: lblod/download-exports-service:0.1.0
+    links:
+      - db:database
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   sync-ovo-numbers:
     image: lblod/sync-ovo-numbers-service:0.1.0
     links:
