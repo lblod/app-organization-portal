@@ -24,11 +24,11 @@ PREFIX schema: <http://schema.org/>
   ( "tel:" ?result ) string:concatenation ?parsed_result .
  
   {
-    :s schema:telephone ?number.
+    ?s schema:telephone ?number.
   } e:becomes {
-    :s schema:telephone ?parsed_result .
+    ?s schema:telephone ?parsed_result .
   }.
 
 } => {
-  :s schema:telephone ?parsed_result .
+  ?s schema:telephone ?parsed_result .
 }.
