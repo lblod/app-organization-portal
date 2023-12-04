@@ -60,8 +60,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/board-position-codes/"
   end
 
-  match "/agents/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/agents/"
+  match "/functionaries/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/functionaries/"
   end
 
   match "/agent-status-codes/*path", %{ accept: [:json], layer: :api} do
@@ -82,6 +82,10 @@ defmodule Dispatcher do
 
   match "/administrative-unit-classification-codes/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/administrative-unit-classification-codes/"
+  end
+
+  match "/organization-classification-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/organization-classification-codes/"
   end
 
   match "/worship-administrative-units/*path", %{ accept: [:json], layer: :api} do
@@ -305,6 +309,10 @@ defmodule Dispatcher do
     forward conn, path, "http://construct-administrative-unit-relationships/create-relationships/"
   end
 
+  post "/sync-ovo-number/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://sync-ovo-numbers/sync-from-kbo/"
+  end
+
   get "/ldes/*path", %{ layer: :api_services } do
     forward conn, path, "http://ldes-backend/"
   end
@@ -363,6 +371,14 @@ defmodule Dispatcher do
 
   get "/sync/worship-posts/files/*path" do
     Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-worship-posts/files/"
+  end
+
+  #################################################################
+  #  Exports
+  #################################################################
+
+  get "/download-exports/*path" do
+    Proxy.forward conn, path, "http://download-exports/"
   end
 
   ###############################################################

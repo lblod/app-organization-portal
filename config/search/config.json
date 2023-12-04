@@ -66,11 +66,19 @@
         "custom_sort_normalizer": {
           "type": "custom",
           "char_filter": [],
-          "filter": [
-            "lowercase",
-            "trim",
-            "asciifolding"
-          ]
+          "filter": ["lowercase", "trim", "asciifolding"]
+        },
+        "identifier_normalizer": {
+          "type": "custom",
+          "char_filter": ["identifier_alphanumeric_filter"],
+          "filter": ["lowercase", "trim", "asciifolding"]
+        }
+      },
+      "char_filter": {
+        "identifier_alphanumeric_filter": {
+          "type": "pattern_replace",
+          "pattern": "[^a-zA-Z0-9]",
+          "replacement": ""
         }
       }
     }
@@ -242,8 +250,8 @@
       }
     },
     {
-      "type": "agent",
-      "on_path": "agents",
+      "type": "functionary",
+      "on_path": "functionaries",
       "rdf_type": "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
       "properties": {
         "given_name": [
@@ -560,18 +568,14 @@
     },
     {
       "type": "person",
-      "composite_types": [
-        "minister",
-        "agent",
-        "mandatory"
-      ],
+      "composite_types": ["minister", "functionary", "mandatory"],
       "on_path": "people",
       "properties": [
         {
           "name": "given_name",
           "mappings": {
             "minister": "given_name",
-            "agent": "given_name",
+            "functionary": "given_name",
             "mandatory": "given_name"
           }
         },
@@ -579,7 +583,7 @@
           "name": "person_id",
           "mappings": {
             "minister": "person_id",
-            "agent": "person_id",
+            "functionary": "person_id",
             "mandatory": "person_id"
           }
         },
@@ -587,7 +591,7 @@
           "name": "family_name",
           "mappings": {
             "minister": "family_name",
-            "agent": "family_name",
+            "functionary": "family_name",
             "mandatory": "family_name"
           }
         },
@@ -595,7 +599,7 @@
           "name": "first_name_used",
           "mappings": {
             "minister": "first_name_used",
-            "agent": "first_name_used",
+            "functionary": "first_name_used",
             "mandatory": "first_name_used"
           }
         },
@@ -603,7 +607,7 @@
           "name": "end_date",
           "mappings": {
             "minister": "end_date",
-            "agent": "end_date",
+            "functionary": "end_date",
             "mandatory": "end_date"
           }
         },
@@ -611,7 +615,7 @@
           "name": "organization_id",
           "mappings": {
             "minister": "organization_id",
-            "agent": "organization_id",
+            "functionary": "organization_id",
             "mandatory": "organization_id"
           }
         },
@@ -619,7 +623,7 @@
           "name": "organization_classification",
           "mappings": {
             "minister": "organization_classification",
-            "agent": "organization_classification",
+            "functionary": "organization_classification",
             "mandatory": "organization_classification"
           }
         },
@@ -627,7 +631,7 @@
           "name": "organization_name",
           "mappings": {
             "minister": "organization_name",
-            "agent": "organization_name",
+            "functionary": "organization_name",
             "mandatory": "organization_name"
           }
         },
@@ -635,7 +639,7 @@
           "name": "organization_municipality",
           "mappings": {
             "minister": "organization_municipality",
-            "agent": "organization_municipality",
+            "functionary": "organization_municipality",
             "mandatory": "organization_municipality"
           }
         },
@@ -643,7 +647,7 @@
           "name": "organization_province",
           "mappings": {
             "minister": "organization_province",
-            "agent": "organization_province",
+            "functionary": "organization_province",
             "mandatory": "organization_province"
           }
         },
@@ -651,7 +655,7 @@
           "name": "position_id",
           "mappings": {
             "minister": "position_id",
-            "agent": "position_id",
+            "functionary": "position_id",
             "mandatory": "position_id"
           }
         },
@@ -659,7 +663,7 @@
           "name": "position_name",
           "mappings": {
             "minister": "position_name",
-            "agent": "position_name",
+            "functionary": "position_name",
             "mandatory": "position_name"
           }
         }
@@ -756,7 +760,8 @@
         "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
         "http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid",
         "http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst",
-        "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst"
+        "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
+        "http://data.lblod.info/vocabularies/erediensten/RepresentatiefOrgaan"
       ],
       "properties": {
         "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
@@ -793,6 +798,11 @@
           "http://www.w3.org/ns/org#hasPrimarySite",
           "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
           "https://data.vlaanderen.be/ns/adres#gemeentenaam"
+        ],
+        "identifier": [
+          "http://www.w3.org/ns/adms#identifier",
+          "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator",
+          "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
         ]
       },
       "mappings": {
@@ -854,6 +864,15 @@
               "field": {
                 "type": "keyword",
                 "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "identifier": {
+            "type": "text",
+            "fields": {
+              "index": {
+                "type": "keyword",
+                "normalizer": "identifier_normalizer"
               }
             }
           }

@@ -1,0 +1,26 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?secondarySiteContact <http://schema.org/telephone> ?phone .
+    ?secondarySiteContact <http://xmlns.com/foaf/0.1/page> ?website .
+    ?secondarySiteContact <http://schema.org/email> ?email .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?adminUnit org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite ;
+      <http://www.w3.org/ns/org#hasSite> ?secondarySite .
+
+
+    ?primarySite <http://www.w3.org/ns/org#siteAddress> ?primarySiteContact .
+    ?primarySiteContact <http://schema.org/contactType> "Primary" .
+
+    ?secondarySite <http://www.w3.org/ns/org#siteAddress> ?secondarySiteContact .
+    ?secondarySiteContact <http://schema.org/contactType> "Primary" .
+
+    OPTIONAL { ?primarySiteContact <http://schema.org/telephone> ?phone . }
+    OPTIONAL { ?primarySiteContact <http://xmlns.com/foaf/0.1/page> ?website . }
+    OPTIONAL { ?primarySiteContact <http://schema.org/email> ?email . }
+  }
+}
