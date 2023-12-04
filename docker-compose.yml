@@ -232,7 +232,7 @@ services:
     restart: always
     logging: *default-logging
   reasoner:
-    image: eyereasoner/reasoning-service:1.0.3
+    image: eyereasoner/reasoning-service:1.0.4
     volumes:
       - ./config/reasoner:/config
     labels:
