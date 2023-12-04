@@ -1,0 +1,53 @@
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX schema: <http://schema.org/>
+PREFIX : <#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX crypto: <http://www.w3.org/2000/10/swap/crypto#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX ex: <http://example.org/test#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX persoon_loket: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX skos:<http://www.w3.org/2004/02/skos/core#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+{
+  ?s schema:telephone ?number.
+
+  # number not matches regex
+
+  ?number string:notMatches """[a-zA-Z]""".
+
+  # Remove all non digits
+  ( ?number """[^+\\d]""" "" ) string:replace ?scrape_result.
+
+  # Replace leading 00 with +
+  ( ?scrape_result """^00""" "+") string:replace ?replaced_zero_zero.
+
+  ( ?replaced_zero_zero """^0""" "+32") string:replace ?default_be.
+
+  ( ?default_be """\\+320""" "+32" ) string:replace ?result.
+
+  #  ?result string:matches """^+((32\\d{8})|(324\\d{8})|((?!32)\\d+))$""".
+  ?result string:matches """^\\+((32\\d{8})|(324\\d{8})|((?!32)\\d+))$""".
+
+  ( "tel:" ?result ) string:concatenation ?parsed_result .
+ 
+  {
+    ?s schema:telephone ?number.
+  } e:becomes {
+    ?s schema:telephone ?parsed_result .
+  }.
+
+} => {
+  ?s schema:telephone ?parsed_result .
+}.

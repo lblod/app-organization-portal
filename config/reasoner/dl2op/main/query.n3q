@@ -26,6 +26,16 @@
     ?p ?o .
 }.
 
+# For functionarissen, the contact point is on the bestuursfunctie and not on the agent in position
+
+{
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie> ;
+    <http://schema.org/contactPoint> ?o .
+ } => {
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie> ;
+    <http://schema.org/contactPoint> ?o .
+}.
+
 # Functionarissen should be linked to an igs, agb, apb, gemeente, district, provincie or ocmw only (FOR NOW)
 
 {
@@ -224,8 +234,6 @@
   ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     ?p ?o .
 }.
-
-
 
 {
   ?s a <http://www.w3.org/ns/org#Membership> ;
