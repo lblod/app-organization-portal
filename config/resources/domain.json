@@ -92,11 +92,11 @@
       "super": ["agents"],
       "attributes": {
         "agent-start-date": {
-          "type": "date",
+          "type": "datetime",
           "predicate": "ch:startdatum"
         },
         "agent-end-date": {
-          "type": "date",
+          "type": "datetime",
           "predicate": "ch:eindedatum"
         }
       },
@@ -140,11 +140,11 @@
       "super": ["agents-in-position"],
       "attributes": {
         "start-date": {
-          "type": "date",
+          "type": "datetime",
           "predicate": "mandaat:start"
         },
         "end-date": {
-          "type": "date",
+          "type": "datetime",
           "predicate": "mandaat:einde"
         }
       },
@@ -188,7 +188,7 @@
       "super": ["mandatories"],
       "attributes": {
         "expected-end-date": {
-          "type": "date",
+          "type": "datetime",
           "predicate": "ere:geplandeEinddatumAanstelling"
         },
         "reason-stopped": {
