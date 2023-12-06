@@ -3,15 +3,15 @@ PREFIX core: <http://mu.semte.ch/vocabularies/core/>
 PREFIX scheme: <http://data.vlaanderen.be/id/conceptscheme/>
 PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-PREFIX concept: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+PREFIX concept: <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/>
 
 INSERT DATA {
   GRAPH <http://mu.semte.ch/graphs/public> {
-    concept:35833ba2-7371-400b-8df2-2912f66fb153 a code:BestuurseenheidClassificatieCode ;
+    concept:35833ba2-7371-400b-8df2-2912f66fb153 a ext:GeregistreerdeOrganisatieClassificatieCode ;
       a ext:OrganizationClassificationCode ;
       core:uuid "35833ba2-7371-400b-8df2-2912f66fb153" ;
       skos:prefLabel "Vereniging of vennootschap voor sociale dienstverlening" ;
-      skos:inScheme scheme:BestuurseenheidClassificatieCode ;
-      skos:topConceptOf scheme:BestuurseenheidClassificatieCode .
+      skos:inScheme scheme:GeregistreerdeOrganisatieClassificatieCode ;
+      skos:topConceptOf scheme:GeregistreerdeOrganisatieClassificatieCode .
   }
 }
