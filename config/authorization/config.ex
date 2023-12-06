@@ -58,6 +58,7 @@ defmodule Acl.UserGroups.Config do
   @org_type [
     "http://purl.org/dc/terms/Agent",
     "http://www.w3.org/ns/org#Organization",
+    "http://www.w3.org/ns/regorg#RegisteredOrganization",
     "http://data.vlaanderen.be/ns/besluit#Besluit",
     "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
     "http://www.w3.org/ns/org#Site",
