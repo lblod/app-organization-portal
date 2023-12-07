@@ -3,13 +3,7 @@ PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 PREFIX schema: <http://schema.org/>
 PREFIX : <#>
 {
-
-
   ?s schema:telephone ?number.
-
-  # number not matches regex
-  ?number string:notMatches """[a-zA-Z]""".
-
 
   # Remove all non digits
   ( ?number ("""[^+\\d]""") ("") ) string:replaceAll ?scrape_result.
