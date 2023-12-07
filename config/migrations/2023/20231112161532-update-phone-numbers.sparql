@@ -1,0 +1,202 @@
+#fix nrs starting with 0032 in Administrative-unit
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  ?s <http://schema.org/telephone> ?o .
+  }
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+   ?s <http://schema.org/telephone> ?fixedTel .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  FILTER(!regex(?o, ".*[a-zA-Z].*", "i")) .
+  BIND(REPLACE(STR(?o),"[. -/();:=+]","") AS ?removedSpaces) .  
+  FILTER(STRSTARTS(?removedSpaces, "0032")) .
+  BIND(CONCAT("32", SUBSTR(?removedSpaces, 5)) as ?newTel ) .
+  FILTER(STRLEN(?newTel) > 9 and STRLEN(?newTel) < 12) .
+  BIND(CONCAT("+", ?newTel) AS ?fixedTel) .
+}
+;
+
+#fix nrs starting with 0032 in worship-service
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+  ?s <http://schema.org/telephone> ?o .
+  }
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   ?s <http://schema.org/telephone> ?fixedTel .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  
+  FILTER(!regex(?o, ".*[a-zA-Z].*", "i")) .
+  BIND(REPLACE(STR(?o),"[. -/();:=+]","") AS ?removedSpaces) .
+  FILTER(STRSTARTS(?removedSpaces, "0032")) .
+  BIND(CONCAT("32", SUBSTR(?removedSpaces, 5)) as ?newTel ) .
+  FILTER(STRLEN(?newTel) > 9 and STRLEN(?newTel) < 12) .
+  BIND(CONCAT("+", ?newTel) AS ?fixedTel) .
+}
+;
+
+
+#fix nrs starting with 320 in administrative-unit
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  ?s <http://schema.org/telephone> ?o .
+  }
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+   ?s <http://schema.org/telephone> ?fixedTel .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  FILTER(!regex(?o, ".*[a-zA-Z].*", "i")) .
+  BIND(REPLACE(STR(?o),"[. -/();:=+]","") AS ?removedSpaces) .
+  FILTER(STRSTARTS(?removedSpaces, "320")) .
+  BIND(CONCAT("32", SUBSTR(?removedSpaces, 4)) as ?newTel ) .
+  FILTER(STRLEN(?newTel) > 9 and STRLEN(?newTel) < 12) .
+  BIND(CONCAT("+", ?newTel) AS ?fixedTel) .
+}
+;
+#fix nrs starting with 320 in worship-service
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   ?s <http://schema.org/telephone> ?fixedTel .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  
+  FILTER(!regex(?o, ".*[a-zA-Z].*", "i")) .
+  BIND(REPLACE(STR(?o),"[. -/();:=+]","") AS ?removedSpaces) .
+  FILTER(STRSTARTS(?removedSpaces, "0032")) .
+  BIND(CONCAT("+32", SUBSTR(?removedSpaces, 5)) as ?newTel ) .
+  FILTER(STRLEN(?newTel) > 9 and STRLEN(?newTel) < 12) .
+  BIND(CONCAT("+", ?newTel) AS ?fixedTel) .
+}
+;
+
+#fix nrs starting with 0 in administrative-unit
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  ?s <http://schema.org/telephone> ?o .
+  }
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+   ?s <http://schema.org/telephone> ?fixedTel .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  FILTER(!regex(?o, ".*[a-zA-Z].*", "i")) .
+  BIND(REPLACE(STR(?o),"[. -/();:=+]","") AS ?removedSpaces) .
+  FILTER(STRSTARTS(?removedSpaces, "0")) .
+  BIND(CONCAT("32", SUBSTR(?removedSpaces, 2)) as ?newTel ) .
+  FILTER(STRLEN(?newTel) > 9 and STRLEN(?newTel) < 12) .
+  BIND(CONCAT("+", ?newTel) AS ?fixedTel) .
+}
+;
+
+
+#fix nrs starting with 03/04 in worship-service
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   ?s <http://schema.org/telephone> ?fixedTel .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  
+  FILTER(!regex(?o, ".*[a-zA-Z].*", "i")) .
+  BIND(REPLACE(STR(?o),"[. -/();:=+]","") AS ?removedSpaces) .
+  FILTER(STRSTARTS(?removedSpaces, "0")) .
+  BIND(CONCAT("32", SUBSTR(?removedSpaces, 2)) as ?newTel ) .
+  FILTER(STRLEN(?newTel) > 9 and STRLEN(?newTel) < 12) .
+  BIND(CONCAT("+", ?newTel) AS ?fixedTel) .
+
+}
+;
+
+#convert all nrs starting with 32 in administrative-unit
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  ?s <http://schema.org/telephone> ?o .
+  }
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+   ?s <http://schema.org/telephone> ?convertedTel .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  FILTER(!regex(?o, ".*[a-zA-Z].*", "i")) .
+  BIND(REPLACE(STR(?o),"[. -/();:=+]","") AS ?removedSpaces) .
+  FILTER(STRSTARTS(?removedSpaces, "32") AND STRLEN(?removedSpaces) > 9 and STRLEN(?removedSpaces) < 12) .
+  BIND(CONCAT("tel:+", ?removedSpaces) as ?convertedTel) .
+}
+;
+
+
+#convert all nrs starting with 32 in worship-service
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+}
+INSERT {
+ GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   ?s <http://schema.org/telephone> ?convertedTel .
+ }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s <http://schema.org/telephone> ?o .
+  }
+  
+  FILTER(!regex(?o, ".*[a-zA-Z].*", "i")) .
+  BIND(REPLACE(STR(?o),"[. -/();:=+]","") AS ?removedSpaces) .
+  FILTER(STRSTARTS(?removedSpaces, "32") AND STRLEN(?removedSpaces) > 9 and STRLEN(?removedSpaces) < 12) .
+  BIND(CONCAT("tel:+", ?removedSpaces) as ?convertedTel) .
+}
+;

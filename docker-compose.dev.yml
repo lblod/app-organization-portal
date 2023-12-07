@@ -63,7 +63,15 @@ services:
     restart: "no"
   file:
     restart: "no"
+  publication-triplestore:
+    restart: "no"
+    ports:
+      - "8891:8890"
   delta-producer-dump-file-publisher:
+    restart: "no"
+  organizations-sync-with-sharepoint-jobs-initiator:
+    restart: "no"
+  organizations-sync-with-sharepoint:
     restart: "no"
   construct-administrative-unit-relationships:
     restart: "no"
