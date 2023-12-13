@@ -36,8 +36,10 @@
     <http://schema.org/contactPoint> ?o .
 }.
 
-# Functionarissen should be linked to an igs, agb, apb, gemeente, district, provincie or ocmw only (FOR NOW)
+# Functionarissen should only be linked to an IGS, AGB, APB, gemeente, district,
+# provincie, OCMW, or OCMW association (FOR NOW)
 
+## Province
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -52,6 +54,7 @@
     ?p ?o .
 }.
 
+## Municipality
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -66,6 +69,7 @@
     ?p ?o .
 }.
 
+## OCMW
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -80,6 +84,7 @@
     ?p ?o .
 }.
 
+## district
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -93,6 +98,8 @@
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     ?p ?o .
 }.
+
+## AGB
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -107,6 +114,7 @@
     ?p ?o .
 }.
 
+## APB
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -121,6 +129,7 @@
     ?p ?o .
 }.
 
+## projectvereniging (IGS)
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -134,7 +143,7 @@
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     ?p ?o .
 }.
-
+## dienstverlenend vereniging (IGS)
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -149,6 +158,7 @@
     ?p ?o .
 }.
 
+## opdrachthoudende vereniging (IGS)
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -163,6 +173,7 @@
     ?p ?o .
 }.
 
+## opdrachthoudende vereniging met private deelname (IGS)
 {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
     <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
@@ -177,8 +188,10 @@
     ?p ?o .
 }.
 
-# Mandatarissen should be linked to a gemeente, district, provincie or ocmw only (FOR NOW)
+# Mandatarissen should only be linked to a gemeente, district, provincie or OCMW
+# (FOR NOW)
 
+## province
 {
   ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     <http://www.w3.org/ns/org#holds> ?mandate ;
@@ -193,6 +206,7 @@
     ?p ?o .
 }.
 
+## municipality
 {
   ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     <http://www.w3.org/ns/org#holds> ?mandate ;
@@ -207,6 +221,7 @@
     ?p ?o .
 }.
 
+## OCMW
 {
   ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     <http://www.w3.org/ns/org#holds> ?mandate ;
@@ -221,6 +236,7 @@
     ?p ?o .
 }.
 
+## district
 {
   ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris> ;
     <http://www.w3.org/ns/org#holds> ?mandate ;
