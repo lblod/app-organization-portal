@@ -188,6 +188,23 @@
     ?p ?o .
 }.
 
+## OCMW associations
+# Note: Loket uses only the general classification code for OCMW associations,
+# while OP uses its 5 more specific subtypes
+{
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    <http://www.w3.org/ns/org#holds> ?bestuursfunctie ;
+    ?p ?o .
+
+  ?orgaanInTime <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/cc4e2d67-603b-4784-9b61-e50bac1ec089> .
+ } => {
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris> ;
+    ?p ?o .
+}.
+
 # Mandatarissen should only be linked to a gemeente, district, provincie or OCMW
 # (FOR NOW)
 
