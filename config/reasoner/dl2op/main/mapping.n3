@@ -67,59 +67,6 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 }.
 
 # Test
-# ex:s <http://data.vlaanderen.be/ns/mandaat#start> "2019-01-01T19:32:52+00:00"^^xsd:dateTime.
-{
-  ?s mandaat:start ?startDateTime.
-  # use backward arrow rule defined below
-  ?startDateTime :dateFromDateTime ?startDate.
-  {
-    ?s mandaat:start ?startDateTime
-  } e:becomes {
-    ?s mandaat:start ?startDate
-  }.
-} => {
-  ?s mandaat:start ?startDate
-}.
-
-# ex:s <http://data.vlaanderen.be/ns/mandaat#einde> "2019-02-01T10:32:52+00:00"^^xsd:dateTime.
-{
-  ?s mandaat:einde ?eindeDateTime.
-  # use backward arrow rule defined below
-  ?eindeDateTime :dateFromDateTime ?eindeDate.
-  {
-    ?s mandaat:einde ?eindeDateTime
-  } e:becomes {
-    ?s mandaat:einde ?eindeDate
-  }.
-} => {
-  ?s mandaat:einde ?eindeDate
-}.
-
-{
-  ?s mandaat:bindingStart ?bindingStartDateTime.
-  # use backward arrow rule defined below
-  ?bindingStartDateTime :dateFromDateTime ?bindingStartDate.
-  {
-    ?s mandaat:bindingStart ?bindingStartDateTime
-  } e:becomes {
-    ?s mandaat:bindingStart ?bindingStartDate
-  }.
-} => {
-  ?s mandaat:bindingStart ?bindingStartDate
-}.
-
-{
-  ?s mandaat:bindingEinde ?bindingEindeDateTime.
-  # use backward arrow rule defined below
-  ?bindingEindeDateTime :dateFromDateTime ?bindingEindeDate.
-  {
-    ?s mandaat:bindingEinde ?bindingEindeDateTime
-  } e:becomes {
-    ?s mandaat:bindingEinde ?bindingEindeDate
-  }.
-} => {
-  ?s mandaat:bindingEinde ?bindingEindeDate
-}.
 
 # Backward arrow rule is like a function call.
 # Removes time info in the returned date
