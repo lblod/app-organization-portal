@@ -80,16 +80,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/administrative-units/"
   end
 
-  match "/registered-organizations/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/registered-organizations/"
-  end
-
   match "/administrative-unit-classification-codes/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/administrative-unit-classification-codes/"
-  end
-
-  match "/registered-organization-classification-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/registered-organization-classification-codes/"
   end
 
   match "/organization-classification-codes/*path", %{ accept: [:json], layer: :api} do

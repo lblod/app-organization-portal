@@ -487,19 +487,6 @@
       },
       "new-resource-base": "http://data.lblod.info/id/organisaties/"
     },
-    "registered-organizations": {
-      "class": "regorg:RegisteredOrganization",
-      "super": ["organizations"],
-      "attributes": {},
-      "relationships": {
-        "classification": {
-          "predicate": "org:classification",
-          "target": "registered-organization-classification-codes",
-          "cardinality": "one"
-        }
-      },
-      "new-resource-base": "http://data.lblod.info/id/geregistreerde-organisaties/"
-    },
     "administrative-units": {
       "class": "besluit:Bestuurseenheid",
       "super": ["organizations"],
@@ -547,11 +534,6 @@
         }
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/OrganizationClassificationCode/"
-    },
-    "registered-organization-classification-codes": {
-      "class": "ext:GeregistreerdeOrganisatieClassificatieCode",
-      "super": ["organization-classification-codes"],
-      "new-resource-base": "http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/"
     },
     "administrative-unit-classification-codes": {
       "class": "code:BestuurseenheidClassificatieCode",
