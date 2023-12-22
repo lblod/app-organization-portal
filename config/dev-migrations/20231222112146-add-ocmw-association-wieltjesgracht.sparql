@@ -93,6 +93,16 @@ INSERT DATA {
     <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23923> generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/65856287B12D00C739F23922> .
     <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> adms:identifier <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23923> .
 
+    # OVO number
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> adms:identifier <http://data.lblod.info/id/identificatoren/d5713a51-40d4-4b79-bf72-0d917f78c37b> .
+    <http://data.lblod.info/id/identificatoren/d5713a51-40d4-4b79-bf72-0d917f78c37b> a adms:Identifier ;
+      core:uuid """d5713a51-40d4-4b79-bf72-0d917f78c37b""" ;
+      skos:notation "OVO-nummer" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/438b542b-6841-4137-b8da-287b394328ee> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/438b542b-6841-4137-b8da-287b394328ee> a generiek:GestructureerdeIdentificator ;
+      core:uuid """438b542b-6841-4137-b8da-287b394328ee""" ;
+      generiek:lokaleIdentificator "OVO009999" .
+
     <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> besluit:werkingsgebied <http://data.lblod.info/id/werkingsgebieden/a8040e566e7a22dfc6a83a7176d105abc68ab1bf1a89e94a1333c8f049131837>.
 
     <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>.
