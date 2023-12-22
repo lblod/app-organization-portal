@@ -67,6 +67,85 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 }.
 
 # Test
+# ex:s <http://data.vlaanderen.be/ns/mandaat#einde> "2019-02-01T10:32:52+00:00"^^xsd:dateTime.
+{
+  ?s mandaat:einde ?eindeDateTime.
+  # use backward arrow rule defined below
+  ?eindeDateTime :dateFromDateTime ?eindeDate.
+  {
+    ?s mandaat:einde ?eindeDateTime
+  } e:becomes {
+    ?s mandaat:einde ?eindeDate
+  }.
+} => {
+  ?s mandaat:einde ?eindeDate
+}.
+
+{
+  ?s mandaat:bindingStart ?bindingStartDateTime.
+  # use backward arrow rule defined below
+  ?bindingStartDateTime :dateFromDateTime ?bindingStartDate.
+  {
+    ?s mandaat:bindingStart ?bindingStartDateTime
+  } e:becomes {
+    ?s mandaat:bindingStart ?bindingStartDate
+  }.
+} => {
+  ?s mandaat:bindingStart ?bindingStartDate
+}.
+
+{
+  ?s mandaat:bindingEinde ?bindingEindeDateTime.
+  # use backward arrow rule defined below
+  ?bindingEindeDateTime :dateFromDateTime ?bindingEindeDate.
+  {
+    ?s mandaat:bindingEinde ?bindingEindeDateTime
+  } e:becomes {
+    ?s mandaat:bindingEinde ?bindingEindeDate
+  }.
+} => {
+  ?s mandaat:bindingEinde ?bindingEindeDate
+}.
+
+{
+  ?s ch:startdatum ?startDate.
+  # use backward arrow rule defined below
+  ?startDate :dateFromDateTime ?startDateTime.
+  {
+    ?s ch:startdatum ?startDate
+  } e:becomes {
+    ?s ch:startdatum ?startDateTime
+  }.
+} => {
+  ?s ch:startdatum ?startDateTime
+}.
+
+{
+  ?s ch:eindedatum ?startDDate.
+  # use backward arrow rule defined below
+  ?startDate :dateFromDateTime ?startDateTime.
+  {
+    ?s ch:eindedatum ?startDate
+  } e:becomes {
+    ?s ch:eindedatum ?startDateTime
+  }.
+} => {
+  ?s ch:eindedatum ?startDateTime
+}.
+
+{
+  ?s ere:geplandeEinddatumAanstelling ?startDDate.
+  # use backward arrow rule defined below
+  ?startDate :dateFromDateTime ?startDateTime.
+  {
+    ?s ere:geplandeEinddatumAanstelling ?startDate
+  } e:becomes {
+    ?s ere:geplandeEinddatumAanstelling ?startDateTime
+  }.
+} => {
+  ?s ere:geplandeEinddatumAanstelling ?startDateTime
+}.
+
 
 # Backward arrow rule is like a function call.
 # Removes time info in the returned date
@@ -86,6 +165,15 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
   (?localDateTimeLiteral xsd:dateTime) log:dtlit ?localDateTime.
   (?localDateTimeLiteral 0 11) func:substring ?dateLiteral.
   (?dateLiteral xsd:date) log:dtlit ?date.
+}.
+
+#backwards arrow rule for converting date to datetime
+{
+   ?date :dateTimeFromDate ?dateTime
+} <= {
+    ?date string:notMatches """^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).*""" .
+    (?date "T00:00:00") string:concatenation ?datePlusTime.
+    (?datePlusTime xsd:dateTime) log:dtlit ?dateTime
 }.
 
 
