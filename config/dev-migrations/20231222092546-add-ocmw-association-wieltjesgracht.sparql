@@ -1,0 +1,182 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX schema: <http://schema.org/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX lblodorg: <https://data.lblod.info/vocabularies/organisatie/>
+PREFIX lblodgeneriek: <https://data.lblod.info/vocabularies/generiek/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX nacebel: <http://data.gift/vocabularies/nace-bel/>
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+
+# Core data
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> core:uuid """7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca""".
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> a besluit:Bestuurseenheid.
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> a org:Organization.
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> a dc_terms:Agent.
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> skos:prefLabel """VERENIGING OCMW-WIELTJESGRACHT""".
+
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/e8294b73-87c9-4fa2-9441-1937350763c9>.
+
+    # Site
+    <http://data.lblod.info/id/contact-punten/6585490A8CEC3153DEA3A208> core:uuid """6585490A8CEC3153DEA3A208""" .
+    <http://data.lblod.info/id/contact-punten/6585490A8CEC3153DEA3A208> a schema:ContactPoint .
+    <http://data.lblod.info/id/contact-punten/6585490A8CEC3153DEA3A208> schema:email """mail@adres.com""" .
+    <http://data.lblod.info/id/contact-punten/6585490A8CEC3153DEA3A208> schema:telephone """tel:+3211211430""" .
+    <http://data.lblod.info/id/contact-punten/6585490A8CEC3153DEA3A208> foaf:page """https://www.vlaanderen.be""" .
+    <http://data.lblod.info/id/contact-punten/6585490A8CEC3153DEA3A208> schema:contactType """Primary""" .
+
+    <http://data.lblod.info/id/contact-punten/6585490B8CEC3153DEA3A209> core:uuid """6585490B8CEC3153DEA3A209""" .
+    <http://data.lblod.info/id/contact-punten/6585490B8CEC3153DEA3A209> a schema:ContactPoint .
+    <http://data.lblod.info/id/contact-punten/6585490B8CEC3153DEA3A209> schema:telephone """tel:+3211211431""" .
+    <http://data.lblod.info/id/contact-punten/6585490B8CEC3153DEA3A209> schema:contactType """Secondary""" .
+
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> core:uuid """6585490B8CEC3153DEA3A20A""" .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> a locn:Address .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> adres:Adresvoorstelling.huisnummer """1""" .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> locn:thoroughfare """Oude Markt""" .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> locn:postCode """3000""" .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> adres:gemeentenaam """Leuven""" .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> locn:adminUnitL2 """Vlaams-Brabant""" .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> adres:land """België""" .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> locn:fullAddress """Oude Markt 1, 3000 Leuven, België""" .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> adres:verwijstNaar <https://data.vlaanderen.be/id/adres/294733> .
+    <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> dc_terms:source <http://lblod.data.gift/concepts/e59c97a9-4e95-4d65-9696-756de47fbc1f> .
+
+    <http://data.lblod.info/id/vestigingen/6585490B8CEC3153DEA3A20B> core:uuid """6585490B8CEC3153DEA3A20B""" .
+    <http://data.lblod.info/id/vestigingen/6585490B8CEC3153DEA3A20B> a org:Site .
+    <http://data.lblod.info/id/vestigingen/6585490B8CEC3153DEA3A20B> organisatie:bestaatUit <http://data.lblod.info/id/adressen/6585490B8CEC3153DEA3A20A> .
+    <http://data.lblod.info/id/vestigingen/6585490B8CEC3153DEA3A20B> org:siteAddress <http://data.lblod.info/id/contact-punten/6585490A8CEC3153DEA3A208> .
+    <http://data.lblod.info/id/vestigingen/6585490B8CEC3153DEA3A20B> org:siteAddress <http://data.lblod.info/id/contact-punten/6585490B8CEC3153DEA3A209> .
+    <http://data.lblod.info/id/vestigingen/6585490B8CEC3153DEA3A20B> ere:vestigingstype <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> .
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> org:hasPrimarySite <http://data.lblod.info/id/vestigingen/6585490B8CEC3153DEA3A20B> .
+
+    # KBO number
+    <http://data.lblod.info/id/gestructureerdeIdentificator/3f5df30463ee3ac32f74a95cbee0f75c> generiek:lokaleIdentificator """0262925527""" .
+    <http://data.lblod.info/id/identificatoren/41a1abe0d8ccf502f6c3edb493dd936c> skos:notation """KBO nummer""" .
+    <http://data.lblod.info/id/identificatoren/41a1abe0d8ccf502f6c3edb493dd936c> generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificator/3f5df30463ee3ac32f74a95cbee0f75c>.
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> adms:identifier <http://data.lblod.info/id/identificatoren/41a1abe0d8ccf502f6c3edb493dd936c>.
+
+    # Sharepoint identifier
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/4d1e8984-e003-4573-a567-4e29dccbf1c1> generiek:lokaleIdentificator """sp_test""" .
+    <http://data.lblod.info/id/identificatoren/c93851bb-c8c2-4f94-bc5f-23164ec4e117> skos:notation """SharePoint identificator""" .
+    <http://data.lblod.info/id/identificatoren/c93851bb-c8c2-4f94-bc5f-23164ec4e117> generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/4d1e8984-e003-4573-a567-4e29dccbf1c1> .
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> adms:identifier <http://data.lblod.info/id/identificatoren/c93851bb-c8c2-4f94-bc5f-23164ec4e117> .
+
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> besluit:werkingsgebied <http://data.lblod.info/id/werkingsgebieden/a8040e566e7a22dfc6a83a7176d105abc68ab1bf1a89e94a1333c8f049131837>.
+
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>.
+
+    <http://data.lblod.info/id/bestuurseenheden/8a162fa437a54cb657b57514e4e0135ec106fce3206c29cd2f90b1859ed90dab> org:hasSubOrganization <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca>.
+
+    <http://data.lblod.info/id/bestuurseenheden/8a162fa437a54cb657b57514e4e0135ec106fce3206c29cd2f90b1859ed90dab> ext:isFounderOfOrganization <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca>.
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuursorganen/16875d1ad2294295c576de9837756a4c6796d3ee7e0b7ebd6e8d3e8f65930353> a besluit:Bestuursorgaan ;
+    core:uuid """16875d1ad2294295c576de9837756a4c6796d3ee7e0b7ebd6e8d3e8f65930353""" ;
+    skos:prefLabel ?governingBodyLabel ;
+    besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> ;
+    org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?administrativeUnit core:uuid """7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca""" ;
+    skos:prefLabel ?administrativeUnitLabel .
+    BIND(CONCAT("""Raad van bestuur""", " ", ?administrativeUnitLabel) as ?governingBodyLabel)
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuursorganen/47e52223b3e27ad63c7233f93df0331f6d45bfb743f81d1110cbca4b3ac933ee> a besluit:Bestuursorgaan ;
+    core:uuid """47e52223b3e27ad63c7233f93df0331f6d45bfb743f81d1110cbca4b3ac933ee""" ;
+    generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/16875d1ad2294295c576de9837756a4c6796d3ee7e0b7ebd6e8d3e8f65930353> ;
+    mandaat:bindingStart "1971-11-03T00:00:00.000Z"^^xsd:dateTime .
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuursorganen/e891dc823e0d924a94cd067d0b291c169c95695cdd73a3c259e79c39e91d0034> a besluit:Bestuursorgaan ;
+    core:uuid """e891dc823e0d924a94cd067d0b291c169c95695cdd73a3c259e79c39e91d0034""" ;
+    skos:prefLabel ?governingBodyLabel ;
+    besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> ;
+    org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?administrativeUnit core:uuid """7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca""" ;
+    skos:prefLabel ?administrativeUnitLabel .
+    BIND(CONCAT("""Algemene vergadering""", " ", ?administrativeUnitLabel) as ?governingBodyLabel)
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuursorganen/be22b1988874583b0773677665596200c9586f758207cdf335278a9380180d86> a besluit:Bestuursorgaan ;
+    core:uuid """be22b1988874583b0773677665596200c9586f758207cdf335278a9380180d86""" ;
+    generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/e891dc823e0d924a94cd067d0b291c169c95695cdd73a3c259e79c39e91d0034> ;
+    mandaat:bindingStart "1971-11-03T00:00:00.000Z"^^xsd:dateTime .
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuursorganen/0f87572fb2968c17383dc7574320031dffa339f17a974e3b194588d685c1fc5d> a besluit:Bestuursorgaan ;
+    core:uuid """0f87572fb2968c17383dc7574320031dffa339f17a974e3b194588d685c1fc5d""" ;
+    skos:prefLabel ?governingBodyLabel ;
+    besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> ;
+    org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?administrativeUnit core:uuid """7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca""" ;
+    skos:prefLabel ?administrativeUnitLabel .
+    BIND(CONCAT("""Leidend Ambtenaar""", " ", ?administrativeUnitLabel) as ?governingBodyLabel)
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuursorganen/a48a21167ca609b76d621be5d5714e28f48711f1eb49d704985d1476565fdd66> a besluit:Bestuursorgaan ;
+    core:uuid """a48a21167ca609b76d621be5d5714e28f48711f1eb49d704985d1476565fdd66""" ;
+    generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/0f87572fb2968c17383dc7574320031dffa339f17a974e3b194588d685c1fc5d> ;
+    mandaat:bindingStart "2019-01-01T00:00:00.000Z"^^xsd:dateTime .
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuursorganen/a48a21167ca609b76d621be5d5714e28f48711f1eb49d704985d1476565fdd66> lblodlg:heeftBestuursfunctie <http://data.lblod.info/id/bestuursfuncties/73e7ef49c748e7f475feb952355f4a6bee2db1d85cd30b17b722a6291739b490> .
+
+    <http://data.lblod.info/id/bestuursfuncties/73e7ef49c748e7f475feb952355f4a6bee2db1d85cd30b17b722a6291739b490> a lblodlg:Bestuursfunctie ;
+    core:uuid """73e7ef49c748e7f475feb952355f4a6bee2db1d85cd30b17b722a6291739b490""" ;
+    org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/855489b9-b584-4f34-90b2-39aea808cd9f> ;
+    skos:prefLabel """VERENIGING OCMW-WIELTJESGRACHT Leidend ambtenaar""" .
+  }
+}
