@@ -74,16 +74,24 @@ INSERT DATA {
     <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> org:hasPrimarySite <http://data.lblod.info/id/vestigingen/6585490B8CEC3153DEA3A20B> .
 
     # KBO number
-    <http://data.lblod.info/id/gestructureerdeIdentificator/3f5df30463ee3ac32f74a95cbee0f75c> generiek:lokaleIdentificator """0262925527""" .
-    <http://data.lblod.info/id/identificatoren/41a1abe0d8ccf502f6c3edb493dd936c> skos:notation """KBO nummer""" .
-    <http://data.lblod.info/id/identificatoren/41a1abe0d8ccf502f6c3edb493dd936c> generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificator/3f5df30463ee3ac32f74a95cbee0f75c>.
-    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> adms:identifier <http://data.lblod.info/id/identificatoren/41a1abe0d8ccf502f6c3edb493dd936c>.
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/65856287B12D00C739F23920> core:uuid """65856287B12D00C739F23920""".
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/65856287B12D00C739F23920> a generiek:GestructureerdeIdentificator.
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/65856287B12D00C739F23920> generiek:lokaleIdentificator """0262925527""".
+    <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23921> core:uuid """65856287B12D00C739F23921""".
+    <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23921> a adms:Identifier.
+    <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23921> skos:notation """KBO nummer""".
+    <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23921> generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/65856287B12D00C739F23920>.
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> adms:identifier <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23921>.
 
     # Sharepoint identifier
-    <http://data.lblod.info/id/gestructureerdeIdentificatoren/4d1e8984-e003-4573-a567-4e29dccbf1c1> generiek:lokaleIdentificator """sp_test""" .
-    <http://data.lblod.info/id/identificatoren/c93851bb-c8c2-4f94-bc5f-23164ec4e117> skos:notation """SharePoint identificator""" .
-    <http://data.lblod.info/id/identificatoren/c93851bb-c8c2-4f94-bc5f-23164ec4e117> generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/4d1e8984-e003-4573-a567-4e29dccbf1c1> .
-    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> adms:identifier <http://data.lblod.info/id/identificatoren/c93851bb-c8c2-4f94-bc5f-23164ec4e117> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/65856287B12D00C739F23922> core:uuid """65856287B12D00C739F23922""".
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/65856287B12D00C739F23922> a generiek:GestructureerdeIdentificator.
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/65856287B12D00C739F23922> generiek:lokaleIdentificator """sp-id-test""" .
+    <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23923> core:uuid """65856287B12D00C739F23923""".
+    <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23923> a adms:Identifier.
+    <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23923> skos:notation """SharePoint identificator""".
+    <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23923> generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/65856287B12D00C739F23922> .
+    <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> adms:identifier <http://data.lblod.info/id/identificatoren/65856287B12D00C739F23923> .
 
     <http://data.lblod.info/id/bestuurseenheden/7d1254994765887e47ee3c9a2551f6a790a02a1747809285f52e7e690c12f2ca> besluit:werkingsgebied <http://data.lblod.info/id/werkingsgebieden/a8040e566e7a22dfc6a83a7176d105abc68ab1bf1a89e94a1333c8f049131837>.
 
