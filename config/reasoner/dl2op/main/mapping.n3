@@ -71,7 +71,7 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 {
   ?s mandaat:einde ?eindeDateTime.
   # use backward arrow rule defined below
-  ?eindeDateTime :dateFromDateTime ?eindeDate.
+  ?eindeDateTime :dateTimeFromDate ?eindeDate.
   {
     ?s mandaat:einde ?eindeDateTime
   } e:becomes {
@@ -110,7 +110,7 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 {
   ?s ch:startdatum ?startDate.
   # use backward arrow rule defined below
-  ?startDate :dateFromDateTime ?startDateTime.
+  ?startDate :dateTimeFromDate ?startDateTime.
   {
     ?s ch:startdatum ?startDate
   } e:becomes {
@@ -121,9 +121,9 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 }.
 
 {
-  ?s ch:eindedatum ?startDDate.
+  ?s ch:eindedatum ?startDate.
   # use backward arrow rule defined below
-  ?startDate :dateFromDateTime ?startDateTime.
+  ?startDate :dateTimeFromDate ?startDateTime.
   {
     ?s ch:eindedatum ?startDate
   } e:becomes {
@@ -131,19 +131,6 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
   }.
 } => {
   ?s ch:eindedatum ?startDateTime
-}.
-
-{
-  ?s ere:geplandeEinddatumAanstelling ?startDDate.
-  # use backward arrow rule defined below
-  ?startDate :dateFromDateTime ?startDateTime.
-  {
-    ?s ere:geplandeEinddatumAanstelling ?startDate
-  } e:becomes {
-    ?s ere:geplandeEinddatumAanstelling ?startDateTime
-  }.
-} => {
-  ?s ere:geplandeEinddatumAanstelling ?startDateTime
 }.
 
 
