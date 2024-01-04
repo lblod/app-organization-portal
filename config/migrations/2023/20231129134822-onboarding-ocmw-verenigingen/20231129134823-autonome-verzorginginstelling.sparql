@@ -1,0 +1,17 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+PREFIX scheme: <http://data.vlaanderen.be/id/conceptscheme/>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX concept: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    concept:34b5af85-dc9f-468f-9e03-ef89b174c267 a code:BestuurseenheidClassificatieCode ;
+      a ext:OrganizationClassificationCode ;
+      core:uuid "34b5af85-dc9f-468f-9e03-ef89b174c267" ;
+      skos:prefLabel "Autonome verzorgingsinstelling" ;
+      skos:inScheme scheme:BestuurseenheidClassificatieCode ;
+      skos:topConceptOf scheme:BestuurseenheidClassificatieCode .
+  }
+}
