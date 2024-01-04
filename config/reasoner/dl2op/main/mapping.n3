@@ -69,19 +69,6 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 # Test
 # ex:s <http://data.vlaanderen.be/ns/mandaat#einde> "2019-02-01T10:32:52+00:00"^^xsd:dateTime.
 {
-  ?s mandaat:einde ?eindeDateTime.
-  # use backward arrow rule defined below
-  ?eindeDateTime :dateTimeFromDate ?eindeDate.
-  {
-    ?s mandaat:einde ?eindeDateTime
-  } e:becomes {
-    ?s mandaat:einde ?eindeDate
-  }.
-} => {
-  ?s mandaat:einde ?eindeDate
-}.
-
-{
   ?s mandaat:bindingStart ?bindingStartDateTime.
   # use backward arrow rule defined below
   ?bindingStartDateTime :dateFromDateTime ?bindingStartDate.
