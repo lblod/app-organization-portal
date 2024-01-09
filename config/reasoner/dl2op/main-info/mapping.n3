@@ -98,7 +98,7 @@ PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 {
   ?s ch:startdatum ?startDate.
   # use backward arrow rule defined below
-  ?startDate :dateFromDateTime ?startDateTime.
+  ?startDate :dateTimeFromDate ?startDateTime.
   {
     ?s ch:startdatum ?startDate
   } e:becomes {
@@ -109,29 +109,29 @@ PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 }.
 
 {
-  ?s ch:eindedatum ?startDate.
+  ?s ch:eindedatum ?endDate.
   # use backward arrow rule defined below
-  ?startDate :dateFromDateTime ?startDateTime.
+  ?endDate :dateTimeFromDate ?endDateTime.
   {
-    ?s ch:eindedatum ?startDate
+    ?s ch:eindedatum ?endDate
   } e:becomes {
-    ?s ch:eindedatum ?startDateTime
+    ?s ch:eindedatum ?endDateTime
   }.
 } => {
-  ?s ch:eindedatum ?startDateTime
+  ?s ch:eindedatum ?endDateTime
 }.
 
 {
-  ?s ere:geplandeEinddatumAanstelling ?startDate.
+  ?s ere:geplandeEinddatumAanstelling ?endDate.
   # use backward arrow rule defined below
-  ?startDate :dateFromDateTime ?startDateTime.
+  ?endDate :dateTimeFromDate ?endDateTime.
   {
-    ?s ere:geplandeEinddatumAanstelling ?startDate
+    ?s ere:geplandeEinddatumAanstelling ?endDate
   } e:becomes {
-    ?s ere:geplandeEinddatumAanstelling ?startDateTime
+    ?s ere:geplandeEinddatumAanstelling ?endDateTime
   }.
 } => {
-  ?s ere:geplandeEinddatumAanstelling ?startDateTime
+  ?s ere:geplandeEinddatumAanstelling ?endDateTime
 }.
 
 # Backward arrow rule is like a function call.

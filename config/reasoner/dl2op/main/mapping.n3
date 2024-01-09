@@ -108,16 +108,16 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 }.
 
 {
-  ?s ch:eindedatum ?startDate.
+  ?s ch:eindedatum ?endDate.
   # use backward arrow rule defined below
-  ?startDate :dateTimeFromDate ?startDateTime.
+  ?endDate :dateTimeFromDate ?endDateTime.
   {
-    ?s ch:eindedatum ?startDate
+    ?s ch:eindedatum ?endDate
   } e:becomes {
-    ?s ch:eindedatum ?startDateTime
+    ?s ch:eindedatum ?endDateTime
   }.
 } => {
-  ?s ch:eindedatum ?startDateTime
+  ?s ch:eindedatum ?endDateTime
 }.
 
 
