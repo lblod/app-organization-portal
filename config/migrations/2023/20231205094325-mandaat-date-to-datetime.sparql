@@ -43,7 +43,48 @@ DELETE {
    }
    BIND(xsd:dateTime(?o) AS ?converteddate).
   }
-
+;
+DELETE {
+    GRAPH ?g {
+    ?s mandaat:bindingStart ?o .
+    }
+  }
+  INSERT {
+   GRAPH ?g {
+     ?s mandaat:bindingStart ?converteddate .
+   }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?s mandaat:bindingStart ?o .
+    }
+    VALUES ?g {
+      <http://mu.semte.ch/graphs/worship-service>
+      <http://mu.semte.ch/graphs/administrative-unit>
+   }
+   BIND(xsd:dateTime(?o) AS ?converteddate).
+  }
+;
+DELETE {
+    GRAPH ?g {
+    ?s mandaat:bindingEinde ?o .
+    }
+  }
+  INSERT {
+   GRAPH ?g {
+     ?s mandaat:bindingEinde ?converteddate .
+   }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?s mandaat:bindingEinde ?o .
+    }
+    VALUES ?g {
+      <http://mu.semte.ch/graphs/worship-service>
+      <http://mu.semte.ch/graphs/administrative-unit>
+   }
+   BIND(xsd:dateTime(?o) AS ?converteddate).
+  }
 ;
 DELETE {
   GRAPH ?g {
