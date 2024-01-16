@@ -457,10 +457,10 @@
           "target": "organizations",
           "cardinality": "many"
         },
-        "was-founded-by-organization": {
+        "was-founded-by-organizations": {
           "predicate": "ext:isFounderOfOrganization",
           "target": "organizations",
-          "cardinality": "one",
+          "cardinality": "many",
           "inverse": true
         },
         "sector": {
