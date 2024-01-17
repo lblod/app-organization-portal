@@ -1,0 +1,15 @@
+DELETE {
+  GRAPH ?g {
+    ?a ?b <http://lblod.data.gift/concepts/fbec5e94aba343b0a7361aca8a0c7d79>.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?a ?b <http://lblod.data.gift/concepts/dcc01338-842c-4fbd-ba68-3ca6f3af975c>.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?a ?b <http://lblod.data.gift/concepts/fbec5e94aba343b0a7361aca8a0c7d79>.
+  }
+}
