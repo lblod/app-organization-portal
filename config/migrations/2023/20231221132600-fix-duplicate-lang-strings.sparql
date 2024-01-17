@@ -7,7 +7,7 @@ DELETE
 WHERE {
   GRAPH ?g {
     ?s ?p ?oLang.
-    ?a ?b ?o .
+    ?a ?p ?o .
   }
 
   BIND(LANG(?oLang) as ?lang)
