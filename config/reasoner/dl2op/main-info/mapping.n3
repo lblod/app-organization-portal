@@ -67,6 +67,35 @@ PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
   ?s persoon:gebruikteVoornaam ?o
 }.
 
+
+# Test
+# ex:s <http://data.vlaanderen.be/ns/mandaat#einde> "2019-02-01T10:32:52+00:00"^^xsd:dateTime.
+{
+  ?s mandaat:bindingeinde ?eindeDate.
+  # use backward arrow rule defined below
+  ?eindeDate :dateTimeFromDate ?eindeDateTime.
+  {
+    ?s mandaat:bindingeinde ?eindeDate
+  } e:becomes {
+    ?s mandaat:bindingeinde ?eindeDateTime
+  }.
+} => {
+  ?s mandaat:bindingeinde ?eindeDateTime
+}.
+
+
+{
+  ?s mandaat:bindingstart ?startDate.
+  # use backward arrow rule defined below
+  ?startDate :dateTimeFromDate ?startDateTime.
+  {
+    ?s mandaat:bindingstart ?startDate
+  } e:becomes {
+    ?s mandaat:bindingstart ?startDateTime
+  }.
+} => {
+  ?s mandaat:bindingstart ?startDateTime
+}.
 {
   ?s ch:startdatum ?startDate.
   # use backward arrow rule defined below
@@ -119,17 +148,7 @@ PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 {
    ?dateTime :dateFromDateTime ?date
 } <= {
-  (?dateTimeLiteral xsd:dateTime) log:dtlit ?dateTime.
-  (?dateTime "PT2H"^^xsd:dayTimeDuration) func:add-dayTimeDuration-to-dateTime ?localDateTime.
-  (?localDateTimeLiteral xsd:dateTime) log:dtlit ?localDateTime.
-  (?dateLiteral xsd:date) log:dtlit ?date.
-}.
-
-#backwards arrow rule for converting date to datetime
-{
-   ?date :dateTimeFromDate ?dateTime
-} <= {
-    ?date string:notMatches """^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).*""" .
+  ?date string:notMatches """^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).*""" .
     (?date "T00:00:00") string:concatenation ?datePlusTime.
     (?datePlusTime xsd:dateTime) log:dtlit ?dateTime
 }.
