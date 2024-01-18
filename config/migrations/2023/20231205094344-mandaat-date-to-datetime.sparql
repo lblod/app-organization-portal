@@ -20,7 +20,7 @@ WHERE {
     <http://mu.semte.ch/graphs/worship-service>
     <http://mu.semte.ch/graphs/administrative-unit>
  }
- BIND(xsd:dateTime(?o) AS ?converteddate).
+ BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
 }
 ;
 DELETE {
@@ -41,7 +41,7 @@ DELETE {
       <http://mu.semte.ch/graphs/worship-service>
       <http://mu.semte.ch/graphs/administrative-unit>
    }
-   BIND(xsd:dateTime(?o) AS ?converteddate).
+     BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
   }
 ;
 DELETE {
@@ -62,7 +62,7 @@ DELETE {
       <http://mu.semte.ch/graphs/worship-service>
       <http://mu.semte.ch/graphs/administrative-unit>
    }
-   BIND(xsd:dateTime(?o) AS ?converteddate).
+   BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
   }
 ;
 DELETE {
@@ -83,7 +83,7 @@ DELETE {
       <http://mu.semte.ch/graphs/worship-service>
       <http://mu.semte.ch/graphs/administrative-unit>
    }
-   BIND(xsd:dateTime(?o) AS ?converteddate).
+   BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
   }
 ;
 DELETE {
@@ -104,7 +104,7 @@ WHERE {
     <http://mu.semte.ch/graphs/worship-service>
     <http://mu.semte.ch/graphs/administrative-unit>
  }
- BIND(xsd:dateTime(?o) AS ?converteddate).
+ BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
 }
 ;
 DELETE {
@@ -125,7 +125,7 @@ DELETE {
       <http://mu.semte.ch/graphs/worship-service>
       <http://mu.semte.ch/graphs/administrative-unit>
    }
-   BIND(xsd:dateTime(?o) AS ?converteddate).
+   BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
   }
 ;
   DELETE {
@@ -146,6 +146,6 @@ DELETE {
       <http://mu.semte.ch/graphs/worship-service>
       <http://mu.semte.ch/graphs/administrative-unit>
    }
-   BIND(xsd:dateTime(?o) AS ?converteddate).
+   BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
   }
   ;
