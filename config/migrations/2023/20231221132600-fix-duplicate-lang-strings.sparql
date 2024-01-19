@@ -1,0 +1,16 @@
+DELETE
+{
+  GRAPH ?g {
+    ?s ?p ?oLang.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ?p ?oLang.
+    ?s ?p ?o .
+  }
+
+  BIND(LANG(?oLang) as ?lang)
+  FILTER(STRLEN(STR(?lang)) > 0)
+  FILTER(STR(?oLang) = ?o)
+}
