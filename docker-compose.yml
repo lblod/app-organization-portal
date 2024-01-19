@@ -72,7 +72,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.22.2
+    image: semtech/mu-cl-resources:feature-optional-native-booleans
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     links:
