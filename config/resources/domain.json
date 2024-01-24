@@ -791,6 +791,12 @@
     },
     "sites": {
       "class": "org:Site",
+      "attributes": {
+        "site-type-name": {
+          "type": "string",
+          "predicate": "dc_terms:description"
+        }
+      },
       "relationships": {
         "contacts": {
           "predicate": "org:siteAddress",
