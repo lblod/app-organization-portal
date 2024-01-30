@@ -1,0 +1,24 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+
+
+
+INSERT  {
+   graph ?g {
+     ?concept skos:inScheme <http://lblod.data.gift/concept-schemes/0d101f02-609d-4cde-bb07-639d874470c4>.
+     ?ce  org:originalOrganization  ?extResultingOrg
+   }
+}
+WHERE {
+   graph ?g {
+    ?ce rdf:type org:ChangeEvent ;
+    code:veranderingsgebeurtenisResultaat ?resultaat.
+    ?resultaat <http://lblod.data.gift/vocabularies/organisatie/resulterendeStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>.
+    ?resultaat ext:resultingOrganization ?extResultingOrg.
+    filter not exists {?ce  org:resultingOrganization  ?result }
+   }
+}
