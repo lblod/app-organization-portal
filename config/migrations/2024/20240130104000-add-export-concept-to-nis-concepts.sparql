@@ -4,14 +4,11 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 
 INSERT  {
-   graph ?g {
+   GRAPH <http://mu.semte.ch/graphs/public> {
      ?concept skos:inScheme <http://lblod.data.gift/concept-schemes/0d101f02-609d-4cde-bb07-639d874470c4>.
    }
 }
 WHERE {
     ?adminUnit besluit:werkingsgebied ?location.
     ?location skos:exactMatch ?concept.
-    GRAPH ?g {
-        ?concept a skos:Concept.
-    }
 }
