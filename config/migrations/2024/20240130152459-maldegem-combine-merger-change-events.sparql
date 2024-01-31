@@ -1,0 +1,87 @@
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lblodorg: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX eredienst: <http://data.lblod.info/id/besturenVanDeEredienst/>
+PREFIX changeEventResult: <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/>
+PREFIX changeEvent: <http://data.lblod.info/id/veranderingsgebeurtenissen/>
+
+# Delete unnecessary merger change events
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?event a org:ChangeEvent ;
+      core:uuid "657AC8316DEE214B7207D455";
+      lblodorg:veranderingsgebeurtenisResultaat ?result ;
+      euro:hasFormalFramework ?decision ;
+      ?ep ?eo .
+
+    ?result a lblodorg:VeranderingsgebeurtenisResultaat ;
+      ?rp ?ro .
+
+    ?decision a besluit:Besluit ;
+      ?de ?do .
+  }
+}
+;
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?event a org:ChangeEvent ;
+      core:uuid "657AC9676DEE214B7207D45F" ;
+      lblodorg:veranderingsgebeurtenisResultaat ?result ;
+      euro:hasFormalFramework ?decision ;
+      ?ep ?eo .
+
+    ?result a lblodorg:VeranderingsgebeurtenisResultaat ;
+      ?rp ?ro .
+
+    ?decision a besluit:Besluit ;
+      ?de ?do .
+  }
+}
+;
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?event a org:ChangeEvent ;
+      core:uuid "657AC7246DEE214B7207D450" ;
+      lblodorg:veranderingsgebeurtenisResultaat ?result ;
+      euro:hasFormalFramework ?decision ;
+      ?ep ?eo .
+
+    ?result a lblodorg:VeranderingsgebeurtenisResultaat ;
+      ?rp ?ro .
+
+    ?decision a besluit:Besluit ;
+      ?de ?do .
+  }
+}
+;
+# Update correct merger change event
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    # Add additional original organisations
+    changeEvent:657AC8BF6DEE214B7207D45A org:originalOrganization eredienst:441c4d0f38df06ce1319c64bdd89999c ,
+      eredienst:eff52265e7a466ab9920499d7fb2c5d5 ,
+      eredienst:e2767a25df8f412df71b785164828874 .
+
+    # Add additional change event results
+    changeEvent:657AC8BF6DEE214B7207D45A lblodorg:veranderingsgebeurtenisResultaat changeEventResult:65BA04DCBB8AD42C21C8B2EE .
+    changeEventResult:65BA04DCBB8AD42C21C8B2EE a lblodorg:VeranderingsgebeurtenisResultaat ;
+      core:uuid "65BA04DCBB8AD42C21C8B2EE" ;
+      lblodorg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+      ext:resultingOrganization eredienst:441c4d0f38df06ce1319c64bdd89999c .
+
+    changeEvent:657AC8BF6DEE214B7207D45A lblodorg:veranderingsgebeurtenisResultaat changeEventResult:65BA04DCBB8AD42C21C8B2ED .
+    changeEventResult:65BA04DCBB8AD42C21C8B2ED a lblodorg:VeranderingsgebeurtenisResultaat ;
+      core:uuid "65BA04DCBB8AD42C21C8B2ED" ;
+      lblodorg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+      ext:resultingOrganization eredienst:eff52265e7a466ab9920499d7fb2c5d5 .
+
+    changeEvent:657AC8BF6DEE214B7207D45A lblodorg:veranderingsgebeurtenisResultaat changeEventResult:65BA04DCBB8AD42C21C8B2EC .
+    changeEventResult:65BA04DCBB8AD42C21C8B2EC a lblodorg:VeranderingsgebeurtenisResultaat ;
+      core:uuid "65BA04DCBB8AD42C21C8B2EC" ;
+      lblodorg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+      ext:resultingOrganization eredienst:e2767a25df8f412df71b785164828874 .
+  }
+}
