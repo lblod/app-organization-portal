@@ -14,4 +14,10 @@ DELETE {
     FILTER (datatype(?o) = <http://mu.semte.ch/vocabularies/typed-literals/boolean>)
     BIND (STRDT(STR(?o), xsd:boolean) AS ?newLiteral)
   }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/public>
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
 }
