@@ -1,0 +1,21 @@
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?oLang.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s ?p ?oLang.
+
+    BIND(LANG(?oLang) as ?lang)
+    FILTER(STRLEN(STR(?lang)) > 0)
+
+    ?s ?p ?o .
+    FILTER(STR(?oLang) = ?o)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/public>
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
+}
