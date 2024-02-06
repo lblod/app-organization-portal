@@ -219,6 +219,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/decision-activities/"
   end
 
+  match "/kbo-administrative-units/*path", %{ accept: [:any], layer: :api} do
+    Proxy.forward conn, path, "http://resource/kbo-administrative-units/"
+  end
+
   ###############
   # LOGIN
   ###############
@@ -311,6 +315,10 @@ defmodule Dispatcher do
 
   post "/sync-ovo-number/*path", %{ layer: :api_services, accept: %{ json: true } } do
     forward conn, path, "http://sync-ovo-numbers/sync-from-kbo/"
+  end
+
+  post "/kbo-data-sync/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://kbo-data-sync/sync-kbo-data/"
   end
 
   get "/ldes/*path", %{ layer: :api_services } do

@@ -306,6 +306,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  kbo-data-sync:
+    image: kbo-data-sync-service:0.0.1
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
 
   ################################################################################
   # DELTA GENERAL

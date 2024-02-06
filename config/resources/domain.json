@@ -521,8 +521,15 @@
           "predicate": "skos:exactMatch",
           "target": "concepts",
           "cardinality": "one"
+        },
+        "kbo-administrative-unit": {
+          "predicate": "owl:sameAs",
+          "target": "kbo-administrative-units",
+          "cardinality": "one",
+          "inverse": true
         }
       },
+
       "new-resource-base": "http://data.lblod.info/id/bestuurseenheden/"
     },
     "organization-classification-codes": {
@@ -593,6 +600,21 @@
       "super": ["worship-administrative-units"],
       "new-resource-base": "http://data.lblod.info/id/centraleBesturenVanDeEredienst/"
     },
+
+    "kbo-administrative-units": {
+      "class": "ext:KboEenheid",
+      "super": ["organizations"],
+      "relationships": {
+        "administrative-unit": {
+          "predicate": "owl:sameAs",
+          "target": "administrative-units",
+          "cardinality": "one" 
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/kboBestuurseenheden/"
+    },
+
+
     "representative-bodies": {
       "class": "ere:RepresentatiefOrgaan",
       "super": ["organizations"],
@@ -813,6 +835,7 @@
           "target": "site-types",
           "cardinality": "one"
         }
+        
       },
       "new-resource-base": "http://data.lblod.info/id/vestigingen/"
     },
