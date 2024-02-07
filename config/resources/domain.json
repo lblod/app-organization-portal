@@ -608,13 +608,17 @@
         "rechtsvorm": {
           "type": "string",
           "predicate": "ext:rechtsvorm"
-        }
-      },
+        },
       "relationships": {
         "administrative-unit": {
           "predicate": "owl:sameAs",
           "target": "administrative-units",
           "cardinality": "one" 
+        },
+        "contacts": {
+          "predicate": "schema:contactPoint",
+          "target": "contact-points",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/kboBestuurseenheden/"
