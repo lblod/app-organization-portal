@@ -22,6 +22,7 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
     const response = await fetch(wegwijsUrl);
     const data = await response.json();
 
+
     let wegwijsOvo = null;
     if (data.length) {
       // We got a match on the KBO, getting the associated OVO back
@@ -62,7 +63,7 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
 });
 
 function getKboFields(data) {
-  console.log(data);
+  console.log(data.organisationClassifications);
 
   let changeTime = data.changeTime;
   let organisationName = data.name;
@@ -87,12 +88,15 @@ function getKboFields(data) {
 
   let rechtsvorm = data.organisationClassifications
     ?.filter((fields) => {
+      console.log(fields);
       return (
-        fields.organisationClassificationId ===
-        "3c809ffd-f864-456f-8704-28c16528daa2"
+        fields.organisationClassificationTypeId === "9bae7539-64fd-5759-743c-ad9dfa4143d4" ||
+        fields.organisationClassificationTypeId === "1131205e-9212-435d-b4cd-b0d955d08bcf" 
       );
     })
     .pop()?.organisationClassificationName;
+
+    console.log(rechtsvorm)
 
   let phone = data.contacts
     ?.filter((fields) => {
