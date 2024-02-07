@@ -604,6 +604,12 @@
     "kbo-administrative-units": {
       "class": "ext:KboEenheid",
       "super": ["organizations"],
+      "attributes": {
+        "rechtsvorm": {
+          "type": "string",
+          "predicate": "ext:rechtsvorm"
+        }
+      },
       "relationships": {
         "administrative-unit": {
           "predicate": "owl:sameAs",
