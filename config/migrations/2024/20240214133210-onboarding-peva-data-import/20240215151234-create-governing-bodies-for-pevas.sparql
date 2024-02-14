@@ -1,0 +1,86 @@
+
+    INSERT {
+      GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+      ?orgaanInTime a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaanInTime ;
+        <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan ;
+        <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00"^^xsd:dateTime .
+
+      ?orgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaan ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> ?orgaanLabel ;
+        <http://www.w3.org/ns/org#classification> ?classificationOrgaan ;
+        <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid .
+      }
+    } WHERE {
+      VALUES ?classificationOrgaan {
+        "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943"
+        "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528"
+        "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4"
+      }
+
+      VALUES ?bestuurseenheid {
+        <http://data.lblod.info/id/bestuurseenheden/45d2a75a-aaa7-4607-8dad-58de4e2a392e>
+<http://data.lblod.info/id/bestuurseenheden/165b8b9a-0977-46d9-aa1b-a476e4b7449d>
+<http://data.lblod.info/id/bestuurseenheden/e0196970-0144-409c-8f18-a44a6fc97763>
+<http://data.lblod.info/id/bestuurseenheden/8432525e-3eac-4c6e-9682-1caf37e19227>
+<http://data.lblod.info/id/bestuurseenheden/1bcd27f6-8a8b-4666-9ef9-55c139cb4bb4>
+<http://data.lblod.info/id/bestuurseenheden/9445e442-8be1-439e-9484-a442cad97198>
+<http://data.lblod.info/id/bestuurseenheden/1606f5d9-b418-4bf3-913c-d452b6adba00>
+<http://data.lblod.info/id/bestuurseenheden/d4558f27-6ecc-407d-bb4b-f68a1e318dfe>
+<http://data.lblod.info/id/bestuurseenheden/fae6d983-6464-4be5-8e9a-cbbea01d1c48>
+<http://data.lblod.info/id/bestuurseenheden/8cc49211-f650-4ea2-a6a8-3c52fde303b9>
+<http://data.lblod.info/id/bestuurseenheden/e2884b3d-d22b-44c9-8856-1817c8c7dc1c>
+<http://data.lblod.info/id/bestuurseenheden/9be5983e-1bbb-4531-8be2-76732d05bcf8>
+<http://data.lblod.info/id/bestuurseenheden/3229b915-2ca5-4994-a4ed-abcd02565589>
+<http://data.lblod.info/id/bestuurseenheden/23125c32-d4a6-4ef7-8a23-056ed3e9bcec>
+<http://data.lblod.info/id/bestuurseenheden/4686f542-0fc1-431b-ab4f-f8e8731ac705>
+<http://data.lblod.info/id/bestuurseenheden/8f743a1d-b868-42ae-9a30-ca3e167a12a2>
+<http://data.lblod.info/id/bestuurseenheden/1b4073da-5551-4237-b25f-f535e1d28a2e>
+<http://data.lblod.info/id/bestuurseenheden/f6c826d6-45e9-490d-b27f-291accdfd85a>
+<http://data.lblod.info/id/bestuurseenheden/ccefbec4-7cd6-45a1-8d03-25fbe7aa3873>
+<http://data.lblod.info/id/bestuurseenheden/6dadef0e-d369-4fb9-944a-5c818c96356e>
+<http://data.lblod.info/id/bestuurseenheden/714ca33d-beac-4601-9076-c9dbac387455>
+<http://data.lblod.info/id/bestuurseenheden/a99cf0c9-dc4f-45d4-bd79-191b33a4a350>
+<http://data.lblod.info/id/bestuurseenheden/e2c5194f-29f6-4095-a4c7-2aa1a1931061>
+<http://data.lblod.info/id/bestuurseenheden/a25e2801-113b-4ab4-90b8-0dfdf644dbd4>
+<http://data.lblod.info/id/bestuurseenheden/8b19b2c5-7a60-43c2-9be1-c6ce83de50ba>
+<http://data.lblod.info/id/bestuurseenheden/d08f6869-938b-429d-972f-0a8527f5781f>
+<http://data.lblod.info/id/bestuurseenheden/663489ce-ad84-4e24-a5e3-ae5ae1bc4440>
+<http://data.lblod.info/id/bestuurseenheden/d04389f7-73ff-477b-966e-192eadc7492b>
+<http://data.lblod.info/id/bestuurseenheden/39b18134-b417-49b5-8d92-efc5a6c14241>
+<http://data.lblod.info/id/bestuurseenheden/1556d59e-1dee-4135-a48b-516d1d0bdd2e>
+<http://data.lblod.info/id/bestuurseenheden/c67f216e-dd6b-44e8-a2ac-aafcf100282c>
+<http://data.lblod.info/id/bestuurseenheden/3fa44a3d-6699-41d4-8f98-af7604ede116>
+<http://data.lblod.info/id/bestuurseenheden/8dc7a849-a781-4b9c-844f-406b8914c0e2>
+<http://data.lblod.info/id/bestuurseenheden/6c48862d-60d7-45c8-8d84-33c1810503b9>
+<http://data.lblod.info/id/bestuurseenheden/c820dcb5-a653-4817-bc1e-70035b8111e7>
+<http://data.lblod.info/id/bestuurseenheden/f28a2625-6f2b-49f0-9fad-421230b9eba4>
+<http://data.lblod.info/id/bestuurseenheden/6dd51077-14ca-453e-9c6c-a79af0d6c583>
+<http://data.lblod.info/id/bestuurseenheden/9d18cfe2-fbb1-42fe-aaec-ad01a7f369a2>
+<http://data.lblod.info/id/bestuurseenheden/cb1cdcd2-c440-4e56-a6ef-76b1106b0c44>
+<http://data.lblod.info/id/bestuurseenheden/2dd33c78-9cd8-4cad-94a3-18bc3e5daf06>
+<http://data.lblod.info/id/bestuurseenheden/17d5a7a2-0acc-4e7e-9b1e-22dad779784e>
+<http://data.lblod.info/id/bestuurseenheden/88fab90c-ee91-46cc-a989-a9e9b554706c>
+<http://data.lblod.info/id/bestuurseenheden/d632323a-41b5-4267-9d10-14fe9c2c51fd>
+<http://data.lblod.info/id/bestuurseenheden/b849b960-7072-4c19-b83a-9ed471b39ddc>
+<http://data.lblod.info/id/bestuurseenheden/1a652a2f-6f09-4084-b53b-7e0ebaf7a09c>
+<http://data.lblod.info/id/bestuurseenheden/faf9a840-0241-4db1-99a8-a21704d6a414>
+<http://data.lblod.info/id/bestuurseenheden/cb0ff1c2-1c8f-41ed-9ca5-4c61ad5fb4f8>
+<http://data.lblod.info/id/bestuurseenheden/1275c3ba-7276-4808-97b2-e2fef32f06e0>
+      }
+
+      ?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+        skos:prefLabel ?bestuurseenheidLabel .
+
+      ?classificationOrgaan skos:prefLabel ?classificationOrgaanLabel .
+
+      BIND(CONCAT(?classificationOrgaanLabel, " ", ?bestuurseenheidLabel) as ?orgaanLabel)
+
+      BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaanInTime")) as ?uuidOrgaanInTime)
+      BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaan")) as ?uuidOrgaan)
+      BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
+      BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaan)) AS ?orgaan)
+    }
+    ;
+    
