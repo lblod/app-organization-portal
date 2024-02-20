@@ -1,4 +1,4 @@
-import { app, errorHandler } from "mu";
+import { app, errorHandler, uuid } from "mu";
 import fetch from "node-fetch";
 import { CronJob } from "cron";
 import {
@@ -9,74 +9,96 @@ import {
   createKboOrganisation,
   createNewKboOrg,
   linkAbbOrgToKboOrg,
+  getKboIdentifiers,
 } from "./lib/queries";
-import { CRON_PATTERN } from "./config";
+import { CRON_PATTERN, ORGANIZATION_STATUS } from "./config";
 
-app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
-  try {
-    const kboStructuredIdUuid = req.params.kboStructuredIdUuid;
-    const identifiers = await getIdentifiers(kboStructuredIdUuid);
+app.post(
+  "/sync-kbo-data/:kboStructuredIdUuid/:ovoOrKbo",
+  async function (req, res) {
+    try {
+      const kboStructuredIdUuid = req.params.kboStructuredIdUuid;
+      const createKbo = req.params.ovoOrKbo === "kbo" ? true : false;
+      const identifiers = await getIdentifiers(kboStructuredIdUuid);
+      console.log("create kbo? " + createKbo);
 
-    const wegwijsUrl = `https://api.wegwijs.vlaanderen.be/v1/search/organisations?q=kboNumber:${identifiers.kbo}&fields=changeTime,name,ovoNumber,kboNumber,labels,contacts,organisationClassifications,locations,parents)`;
+      const wegwijsUrl = `https://api.wegwijs.vlaanderen.be/v1/search/organisations?q=kboNumber:${identifiers.kbo}&fields=changeTime,name,shortName,ovoNumber,kboNumber,labels,contacts,organisationClassifications,locations,parents`;
+      console.log("url: " + wegwijsUrl);
+      const response = await fetch(wegwijsUrl);
+      const data = await response.json();
 
-    const response = await fetch(wegwijsUrl);
-    const data = await response.json();
-
-
-    let wegwijsOvo = null;
-    if (data.length) {
-      // We got a match on the KBO, getting the associated OVO back
-      const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
-      let kboObject = getKboFields(wegwijsInfo);
-      if (kboObject.ovoNumber) {
-        wegwijsOvo = kboObject.ovoNumber;
+      let wegwijsOvo = null;
+      let kboObject = null;
+      if (data.length) {
+        // We got a match on the KBO, getting the associated OVO back
+        const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
+        kboObject = getKboFields(wegwijsInfo);
+        if (kboObject.ovoNumber) {
+          wegwijsOvo = kboObject.ovoNumber;
+        }
       }
 
-      let kboOrg = "";
-      //console.log(kboObject);
-      if (!identifiers.kboOrg) {
-        kboOrg = await createNewKboOrg(kboObject, "null");
+      if (createKbo && kboObject) {
+        //create kbo organisation
+        let kboOrg = null;   
+        const kboIdentifiers = await getKboIdentifiers(identifiers.adminUnit);
+        let update = false;
+
+        if (kboIdentifiers) {
+          update = new Date(kboObject.changeTime).getTime() < new Date(kboIdentifiers.changeTime).getTime() ? true : false;
+        }           
+        if(!kboIdentifiers || update){
+          kboOrg = await createNewKboOrg(kboObject, identifiers.kboId);
+          await linkAbbOrgToKboOrg(identifiers.adminUnit, kboOrg);
+        }
+        return res.status(200).send();
+      }
+      //Update Ovo Number
+      if (wegwijsOvo && wegwijsOvo != identifiers.ovo) {
+        console.log(identifiers.ovo);
+
+        let ovoStructuredIdUri = identifiers.ovoStructuredId;
+
+        if (!ovoStructuredIdUri) {
+          ovoStructuredIdUri = await constructOvoStructure(
+            identifiers.kboStructuredId
+          );
+        }
+        await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
       }
 
-      await linkAbbOrgToKboOrg(identifiers.adminUnit, kboOrg, identifiers.kbo);
+      return res.status(200).send(); // since we await, it should be 200
+    } catch (e) {
+      console.log("Something went wrong while calling /sync-from-kbo", e);
+      return res.status(500).send();
     }
-
-    //Update Ovo Number
-    if (wegwijsOvo && wegwijsOvo != identifiers.ovo) {
-      console.log(identifiers.ovo);
-
-      let ovoStructuredIdUri = identifiers.ovoStructuredId;
-
-      if (!ovoStructuredIdUri) {
-        ovoStructuredIdUri = await constructOvoStructure(
-          identifiers.kboStructuredId
-        );
-      }
-      await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
-    }
-
-    return res.status(200).send(); // since we await, it should be 200
-  } catch (e) {
-    console.log("Something went wrong while calling /sync-from-kbo", e);
-    return res.status(500).send();
   }
-});
+);
 
 function getKboFields(data) {
-  console.log(data.organisationClassifications);
-
   let changeTime = data.changeTime;
+  //wegwijs naam
   let organisationName = data.name;
+  let shortName = data.shortName;
   let ovoNumber = data.ovoNumber;
   let kboNumber = data.kboNumber;
 
   //no lables = undefined
+  //formal naam according to KBO
   let formalName = data.labels
     ?.filter((fields) => {
       return fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66";
     })
     .pop()?.value;
-
+  let startDate = data.labels
+    ?.filter((fields) => {
+      return fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66";
+    })
+    .pop()?.validity?.start;
+  let activeState = (data.labels
+    ?.filter((fields) => {
+      return fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66" && !fields.validity.hasOwnProperty("end");
+    }) ? ORGANIZATION_STATUS.ACTIVE : ORGANIZATION_STATUS.INACTIVE)
   let email = data.contacts
     ?.filter((fields) => {
       return (
@@ -85,19 +107,16 @@ function getKboFields(data) {
       );
     })
     .pop()?.value;
-
   let rechtsvorm = data.organisationClassifications
     ?.filter((fields) => {
-      console.log(fields);
       return (
-        fields.organisationClassificationTypeId === "9bae7539-64fd-5759-743c-ad9dfa4143d4" ||
-        fields.organisationClassificationTypeId === "1131205e-9212-435d-b4cd-b0d955d08bcf" 
+        fields.organisationClassificationTypeId ===
+          "9bae7539-64fd-5759-743c-ad9dfa4143d4" ||
+        fields.organisationClassificationTypeId ===
+          "1131205e-9212-435d-b4cd-b0d955d08bcf"
       );
     })
     .pop()?.organisationClassificationName;
-
-    console.log(rechtsvorm)
-
   let phone = data.contacts
     ?.filter((fields) => {
       return (
@@ -106,7 +125,6 @@ function getKboFields(data) {
       );
     })
     .pop()?.value;
-
   let website = data.contacts
     ?.filter((fields) => {
       return (
@@ -115,9 +133,7 @@ function getKboFields(data) {
       );
     })
     .pop()?.value;
-
   let province = data.parents?.parentOrganisationName;
-
   let formattedAddress = data.locations
     ?.filter((fields) => {
       return (
@@ -127,29 +143,32 @@ function getKboFields(data) {
     })
     .pop()?.formattedAddress;
 
+  //main location according to KBO
   let adressComponent = data.locations
     ?.filter((fields) => {
       return (
-        fields.isMainLocation === true &&
+        fields.locationTypeId === '537c0b5b-8ab8-fc3d-0b37-f8249cbdd3ba' &&
         !fields.validity?.hasOwnProperty("end")
       );
     })
     .pop()?.components;
-   
 
   return {
-    changeTime: (typeof changeTime != 'undefined' ? changeTime : ""),
-    organisationName: (typeof organisationName != 'undefined' ? organisationName : ""),
-    ovoNumber: (typeof ovoNumber != 'undefined' ? ovoNumber : ""),
-    kboNumber: (typeof kboNumber != 'undefined' ? kboNumber : ""),
-    formalName: (typeof formalName != 'undefined' ? formalName : ""),
-    rechtsvorm: (typeof rechtsvorm != 'undefined' ? rechtsvorm : ""),
-    email: (typeof email != 'undefined' ? email : ""),
-    phone: (typeof phone != 'undefined' ? phone : ""),
-    website: (typeof website != 'undefined' ? website : ""),
-    province: (typeof province != 'undefined' ? province : ""),
-    formattedAddress: (typeof formattedAddress != 'undefined' ? formattedAddress : ""),
-    adressComponent: (typeof adressComponent != 'undefined' ? adressComponent : ""),
+    changeTime: (changeTime ? changeTime : " "),
+    organisationName: (organisationName ? organisationName : " "),
+    shortName: (shortName ? shortName : organisationName),
+    ovoNumber: (ovoNumber ? ovoNumber : " "),
+    kboNumber: (kboNumber ? kboNumber : " "),
+    formalName: (formalName ? formalName : " "),
+    startDate: (startDate ? startDate : " "),
+    activeState: activeState,
+    rechtsvorm: (rechtsvorm ? rechtsvorm : " "),
+    email: (email ? email : " "),
+    phone: (phone ? phone : " "),
+    website: (website ? website : " "),
+    province: (province ? province : " "),
+    formattedAddress: (formattedAddress ? formattedAddress : " "),
+    adressComponent: (adressComponent ? adressComponent : " "),
   };
 }
 
