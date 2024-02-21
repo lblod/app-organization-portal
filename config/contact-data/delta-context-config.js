@@ -36,25 +36,25 @@ const contextConfig = {
         } WHERE {
           OPTIONAL {
             GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-              ?adminUnitOne org:hasPrimarySite ${subject};
+              ?adminUnitOne org:hasPrimarySite ${subject}.
             }
             BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphOne)
           }
           OPTIONAL {
             GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-              ?adminUnitTwo org:hasSite ${subject};
+              ?adminUnitTwo org:hasSite ${subject}.
             }
             BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphTwo)
           }
           OPTIONAL {
             GRAPH <http://mu.semte.ch/graphs/worship-service> {
-              ?adminUnitThree org:hasPrimarySite ${subject};
+              ?adminUnitThree org:hasPrimarySite ${subject}.
             }
             BIND(<http://mu.semte.ch/graphs/worship-service> AS ?graphThree)
           }
           OPTIONAL {
             GRAPH <http://mu.semte.ch/graphs/worship-service> {
-              ?adminUnitFour org:hasSite ${subject};
+              ?adminUnitFour org:hasSite ${subject}.
             }
             BIND(<http://mu.semte.ch/graphs/worship-service> AS ?graphFour)
           }
