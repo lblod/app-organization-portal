@@ -39,6 +39,7 @@ async function dispatch(lib, data) {
 
   console.log(`Received ${zippedChangeSets.length} change sets`)
 
+
   for (let { original, withContext } of zippedChangeSets) {
     const insertsOnPublic = [];
     const insertsOnGraphs = {};
