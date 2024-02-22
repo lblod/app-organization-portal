@@ -655,7 +655,7 @@ services:
       DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/clb-contact-data"
     volumes:
       - ./config/clb-consumer/contact-data:/config/triples-dispatching/custom-dispatching
-      - ./data/files/consumer-files/contact-data:/consumer-files/
+      - ./data/files/consumer-files/clb-contact-data:/consumer-files/
     restart: always
     labels:
       - "logging=true"
