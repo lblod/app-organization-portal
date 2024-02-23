@@ -65,10 +65,6 @@ app.post(
         return res.status(200).send();
       }
 
-      console.log("testing healing of kbo organizations");
-      await healKboUnits();
-      console.log("end of test");
-
       //Update Ovo Number
       if (wegwijsOvo && wegwijsOvo != identifiers.ovo) {
         console.log(identifiers.ovo);
@@ -259,11 +255,8 @@ async function healKboUnits() {
 
       if (wegwijsKboOrg) {
         if (!kboIdentifierOP.kboOrg) {
-          console.log("creating new kbo unit");
 
           let newKboOrgUri = await createNewKboOrg(wegwijsKboOrg, kboIdentifierOP.kboId);
-
-          console.log("linking kbo to abb unit");
           await linkAbbOrgToKboOrg(kboIdentifierOP.abbOrg, newKboOrgUri);
         }
 
