@@ -72,7 +72,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.22.2
+    image: semtech/mu-cl-resources:feature-optional-native-booleans
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     links:
@@ -245,6 +245,10 @@ services:
       INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/initialSyncing/organizations"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/healingOperation/organizations"
       USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true"
+      USERNAME: 'username-to-override'
+      PASSWORD: 'password-to-override'
+      SITE: 'site-to-override'
+      LIST: 'list-to-override'
     links:
       - db:database
     volumes:
@@ -254,7 +258,7 @@ services:
     restart: always
     logging: *default-logging
   construct-administrative-unit-relationships:
-    image: lblod/construct-administrative-unit-relationships-service:0.1.6
+    image: lblod/construct-administrative-unit-relationships-service:0.1.7
     environment:
       START_DATE_WORSHIP_GOVERNING_BODY: "2023-04-01T00:00:00"
       END_DATE_WORSHIP_GOVERNING_BODY: "2026-03-31T00:00:00"

@@ -457,10 +457,10 @@
           "target": "organizations",
           "cardinality": "many"
         },
-        "was-founded-by-organization": {
+        "was-founded-by-organizations": {
           "predicate": "ext:isFounderOfOrganization",
           "target": "organizations",
-          "cardinality": "one",
+          "cardinality": "many",
           "inverse": true
         },
         "sector": {
@@ -791,6 +791,12 @@
     },
     "sites": {
       "class": "org:Site",
+      "attributes": {
+        "site-type-name": {
+          "type": "string",
+          "predicate": "dc_terms:description"
+        }
+      },
       "relationships": {
         "contacts": {
           "predicate": "org:siteAddress",

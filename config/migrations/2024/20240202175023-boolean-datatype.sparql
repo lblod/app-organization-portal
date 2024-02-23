@@ -1,0 +1,23 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+} INSERT {
+  GRAPH ?g {
+    ?s ?p ?newLiteral .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s ?p ?o .
+    FILTER (datatype(?o) = <http://mu.semte.ch/vocabularies/typed-literals/boolean>)
+    BIND (STRDT(STR(?o), xsd:boolean) AS ?newLiteral)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/public>
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
+}
