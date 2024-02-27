@@ -14,6 +14,16 @@ INSERT {
 }
 ;
 INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?org regorg:legalName ?name .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?org a org:Organization ;
+      skos:prefLabel ?name .
+  }
+}
+;INSERT {
   GRAPH <http://mu.semte.ch/graphs/worship-service> {
     ?org regorg:legalName ?name .
   }
