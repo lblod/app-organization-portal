@@ -128,6 +128,12 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type
             }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/shared",
+            constraint: %ResourceConstraint{
+              resource_types: @org_type
+            }
           }
         ]
       },
