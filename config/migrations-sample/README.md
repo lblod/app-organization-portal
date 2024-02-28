@@ -11,3 +11,4 @@ In addition, these files can function as templates or provide inspiration for fu
 ## Template files
 
 - `pseudonimyze-data.sparql-template` - the file that contains the sparql for pseudonymizing data in the triplestore. It should run every time the db is "refreshed" with a copy from PROD.
+- `remove-type-in-producer-graph.sparql-template` - the migration to handle the occasional sync issue between OP and Loket. 
