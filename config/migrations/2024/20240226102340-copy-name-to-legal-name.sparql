@@ -3,34 +3,18 @@ PREFIX regorg: <http://www.w3.org/ns/regorg#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 INSERT {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-    ?org regorg:legalName ?name .
+  GRAPH ?g {
+    ?org regorg:legalName ?legalName .
   }
 } WHERE {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  GRAPH ?g {
     ?org a org:Organization ;
       skos:prefLabel ?name .
   }
-}
-;
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
-    ?org regorg:legalName ?name .
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+    <http://mu.semte.ch/graphs/worship-service>
   }
-} WHERE {
-  GRAPH <http://mu.semte.ch/graphs/shared> {
-    ?org a org:Organization ;
-      skos:prefLabel ?name .
-  }
-}
-;
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/worship-service> {
-    ?org regorg:legalName ?name .
-  }
-} WHERE {
-  GRAPH <http://mu.semte.ch/graphs/worship-service> {
-    ?org a org:Organization ;
-      skos:prefLabel ?name .
-  }
+  BIND(?name AS ?legalName)
 }
