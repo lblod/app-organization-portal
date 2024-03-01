@@ -5,109 +5,113 @@ import {
   getIdentifiers,
   constructOvoStructure,
   updateOvoNumberAndUri,
-  getAllOvoAndKboCouples,
   createNewKboOrg,
   linkAbbOrgToKboOrg,
   getKboIdentifiers,
   updateKboOrg,
   getAllAbbKboOrganizations,
 } from "./lib/queries";
-import { CRON_PATTERN, ORGANIZATION_STATUS } from "./config";
+import {
+  CRON_PATTERN,
+  ORGANIZATION_STATUS,
+  WEGWIJSAPI,
+  WEGWIJSAPIFIELDS,
+} from "./config";
 
-app.post(
-  "/sync-kbo-data/:kboStructuredIdUuid/:ovoOrKbo",
-  async function (req, res) {
-    try {
-      const kboStructuredIdUuid = req.params.kboStructuredIdUuid;
-      const createKbo = req.params.ovoOrKbo === "kbo" ? true : false;
-      const identifiers = await getIdentifiers(kboStructuredIdUuid);
-      console.log("create kbo? " + createKbo);
-
-      const wegwijsUrl = `https://api.wegwijs.vlaanderen.be/v1/search/organisations?q=kboNumber:${identifiers.kbo}&fields=changeTime,name,shortName,ovoNumber,kboNumber,labels,contacts,organisationClassifications,locations,parents`;
-      console.log("url: " + wegwijsUrl);
-      const response = await fetch(wegwijsUrl);
-      const data = await response.json();
-
-      let wegwijsOvo = null;
-      let kboObject = null;
-      if (data.length) {
-        // We got a match on the KBO, getting the associated OVO back
-        const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
-        kboObject = getKboFields(wegwijsInfo);
-        if (kboObject.ovoNumber) {
-          wegwijsOvo = kboObject.ovoNumber;
-        }
-      }
-
-      if (createKbo && kboObject) {
-        //create kbo organisation
-        let kboOrg = null;
-        const kboIdentifiers = await getKboIdentifiers(identifiers.adminUnit);
-        let update = false;
-
-        if (kboIdentifiers) {
-          update =
-            new Date(kboObject.changeTime).getTime() >
-            new Date(kboIdentifiers.changeTime).getTime()
-              ? true
-              : false;
-        }
-
-        if (!kboIdentifiers) {
-          kboOrg = await createNewKboOrg(kboObject, identifiers.kboId);
-          await linkAbbOrgToKboOrg(identifiers.adminUnit, kboOrg);
-        }
-
-        if (update) {
-          updateKboOrg(kboObject, kboIdentifiers);
-        }
-
-        return res.status(200).send();
-      }
-
-      //Update Ovo Number
-      if (wegwijsOvo && wegwijsOvo != identifiers.ovo) {
-        console.log(identifiers.ovo);
-
-        let ovoStructuredIdUri = identifiers.ovoStructuredId;
-
-        if (!ovoStructuredIdUri) {
-          ovoStructuredIdUri = await constructOvoStructure(
-            identifiers.kboStructuredId
-          );
-        }
-        await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
-      }
-
-      return res.status(200).send(); // since we await, it should be 200
-    } catch (e) {
-      console.log("Something went wrong while calling /sync-from-kbo", e);
-      return res.status(500).send();
+app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
+  try {
+    const kboStructuredIdUuid = req.params.kboStructuredIdUuid;
+    const identifiers = await getIdentifiers(kboStructuredIdUuid);
+    console.log("create kbo? " + createKbo);
+    if (!identifiers?.kbo) {
+      return throwServer500Error(
+        res,
+        "no kbo number was found: " + identifiers
+      );
     }
+    const wegwijsUrl = `${WEGWIJSAPI}?q=kboNumber:${identifiers.kbo}&fields=${WEGWIJSAPIFIELDS}`;
+    console.log("url: " + wegwijsUrl);
+    const response = await fetch(wegwijsUrl);
+    const data = await response.json();
+
+    let wegwijsOvo = null;
+    let kboObject = null;
+    if (!data.length) {
+      return throwServer500Error(
+        res,
+        "no data has been found, check if KBO number is correct"
+      );
+    }
+    // We got a match on the KBO, getting the associated OVO back
+    const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
+    kboObject = getKboFields(wegwijsInfo);
+    if (kboObject.ovoNumber) {
+      wegwijsOvo = kboObject.ovoNumber;
+    }
+
+    if (kboObject) {
+      const kboIdentifiers = await getKboIdentifiers(identifiers.adminUnit);
+
+      if (!kboIdentifiers) {
+        await createKbo(kboObject, identifiers.kboId, identifiers.adminUnit);
+      }
+
+      if (isUpdate(kboObject, kboIdentifiers)) {
+        updateKboOrg(kboObject, kboIdentifiers);
+      }
+    }
+
+    //Update Ovo Number
+    if (wegwijsOvo && wegwijsOvo != identifiers.ovo) {
+      console.log(identifiers.ovo);
+
+      let ovoStructuredIdUri = identifiers.ovoStructuredId;
+
+      if (!ovoStructuredIdUri) {
+        ovoStructuredIdUri = await constructOvoStructure(
+          identifiers.kboStructuredId
+        );
+      }
+      await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
+    }
+
+    healAbbWithWegWijsData();
+
+    return res.status(200).send(); // since we await, it should be 200
+  } catch (e) {
+    return throwServer500Error(res, e);
   }
-);
+});
 
 function getKboFields(data) {
-  let changeTime = data.changeTime;
-  //wegwijs naam
-  let organisationName = data.name;
-  let shortName = data.shortName;
-  let ovoNumber = data.ovoNumber;
-  let kboNumber = data.kboNumber;
+  const {
+    changeTime,
+    name: organisationName,
+    shortName,
+    ovoNumber,
+    kboNumber,
+    labels = [],
+    contacts = [],
+    organisationClassifications = [],
+    locations = [],
+  } = data;
 
   //no lables = undefined
   //formal naam according to KBO
-  let formalName = data.labels
+
+  let formalName = labels
     ?.filter((fields) => {
       return fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66";
     })
     .pop()?.value;
-  let startDate = data.labels
+
+  let startDate = labels
     ?.filter((fields) => {
       return fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66";
     })
     .pop()?.validity?.start;
-  let activeState = data.labels?.filter((fields) => {
+
+  let activeState = labels?.filter((fields) => {
     return (
       fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66" &&
       !fields.validity.hasOwnProperty("end")
@@ -115,6 +119,7 @@ function getKboFields(data) {
   })
     ? ORGANIZATION_STATUS.ACTIVE
     : ORGANIZATION_STATUS.INACTIVE;
+
   let email = data.contacts
     ?.filter((fields) => {
       return (
@@ -123,7 +128,8 @@ function getKboFields(data) {
       );
     })
     .pop()?.value;
-  let rechtsvorm = data.organisationClassifications
+
+  let rechtsvorm = organisationClassifications
     ?.filter((fields) => {
       return (
         fields.organisationClassificationTypeId ===
@@ -133,7 +139,8 @@ function getKboFields(data) {
       );
     })
     .pop()?.organisationClassificationName;
-  let phone = data.contacts
+
+  let phone = contacts
     ?.filter((fields) => {
       return (
         fields.contactTypeId === "d792d4ff-8c34-4336-8434-56ecb40f2fa4" &&
@@ -141,7 +148,8 @@ function getKboFields(data) {
       );
     })
     .pop()?.value;
-  let website = data.contacts
+
+  let website = contacts
     ?.filter((fields) => {
       return (
         fields.contactTypeId === "6763f372-02c5-478c-b7d7-802dc60a64b9" &&
@@ -149,8 +157,8 @@ function getKboFields(data) {
       );
     })
     .pop()?.value;
-  let province = data.parents?.parentOrganisationName;
-  let formattedAddress = data.locations
+
+  let formattedAddress = locations
     ?.filter((fields) => {
       return (
         fields.isMainLocation === true &&
@@ -160,7 +168,7 @@ function getKboFields(data) {
     .pop()?.formattedAddress;
 
   //main location according to KBO
-  let adressComponent = data.locations
+  let adressComponent = locations
     ?.filter((fields) => {
       return (
         fields.locationTypeId === "537c0b5b-8ab8-fc3d-0b37-f8249cbdd3ba" &&
@@ -170,27 +178,20 @@ function getKboFields(data) {
     .pop()?.components;
 
   return {
-    changeTime: changeTime ? changeTime : " ",
-    organisationName: organisationName
-      ? organisationName
-      : "Geen gegevens opgenomen in KBO",
-    shortName: shortName ? shortName : organisationName,
-    ovoNumber: ovoNumber ? ovoNumber : "Geen gegevens opgenomen in KBO",
-    kboNumber: kboNumber ? kboNumber : "Geen gegevens opgenomen in KBO",
-    formalName: formalName ? formalName : "Geen gegevens opgenomen in KBO",
-    startDate: startDate ? startDate : "Geen gegevens opgenomen in KBO",
+    changeTime: changeTime ?? "",
+    organisationName: organisationName ?? "",
+    shortName: shortName ?? organisationName,
+    ovoNumber: ovoNumber ?? "",
+    kboNumber: kboNumber ?? "",
+    formalName: formalName ?? "",
+    startDate: startDate ?? "",
     activeState: activeState,
-    rechtsvorm: rechtsvorm ? rechtsvorm : "Geen gegevens opgenomen in KBO",
-    email: email ? email : "Geen gegevens opgenomen in KBO",
-    phone: phone ? phone : "Geen gegevens opgenomen in KBO",
-    website: website ? website : "Geen gegevens opgenomen in KBO",
-    province: province ? province : "Geen gegevens opgenomen in KBO",
-    formattedAddress: formattedAddress
-      ? formattedAddress
-      : "Geen gegevens opgenomen in KBO",
-    adressComponent: adressComponent
-      ? adressComponent
-      : "Geen gegevens opgenomen in KBO",
+    rechtsvorm: rechtsvorm ?? "",
+    email: email ?? "",
+    phone: phone ?? "",
+    website: website ?? "",
+    formattedAddress: formattedAddress ?? "",
+    adressComponent: adressComponent ?? "",
   };
 }
 
@@ -200,8 +201,7 @@ new CronJob(
     const now = new Date().toISOString();
     console.log(`OVO numbers healing triggered by cron job at ${now}`);
     try {
-      await healOvoNumbers();
-      await healKboUnits();
+      await healAbbWithWegWijsData();
     } catch (err) {
       console.log(
         `An error occurred during OVO numbers healing at ${now}: ${err}`
@@ -212,59 +212,41 @@ new CronJob(
   true
 );
 
-async function healOvoNumbers() {
+async function healAbbWithWegWijsData() {
   try {
-    console.log("Healing ovo starting...");
-    const identifiersCouplesOP = await getAllOvoAndKboCouples();
-    const identifiersCouplesWegwijs = await getAllOvoAndKboCouplesWegwijs(
-      false
-    );
-
-    for (const identifiersCoupleOP of identifiersCouplesOP) {
-      const wegwijsOvo = identifiersCouplesWegwijs[identifiersCoupleOP.kbo];
-      // If a KBO can't be found in wegwijs but we already have an OVO for it in OP, we keep that OVO.
-      // It happens especially a lot for worship services that sometimes lack data in Wegwijs
-      if (wegwijsOvo && identifiersCoupleOP.ovo != wegwijsOvo) {
-        // We have a mismatch, let's update the OVO number
-        let ovoStructuredIdUri = identifiersCoupleOP.ovoStructuredId;
-        if (!ovoStructuredIdUri) {
-          ovoStructuredIdUri = await constructOvoStructure(
-            identifiersCoupleOP.kboStructuredId
-          );
-        }
-
-        await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
-      }
-    }
-    console.log("Healing complete!");
-  } catch (err) {
-    console.log(`An error occurred during OVO numbers healing: ${err}`);
-  }
-}
-
-async function healKboUnits() {
-  try {
-    console.log("Healing kbo starting...");
+    console.log("Healing wegwijs info starting...");
     const kboIdentifiersOP = await getAllAbbKboOrganizations();
-    const kboIdentifiersWegwijs = await getAllOvoAndKboCouplesWegwijs(true);
-
-    let update = false;
+    const kboIdentifiersWegwijs = await getAllOvoAndKboCouplesWegwijs();
 
     for (const kboIdentifierOP of kboIdentifiersOP) {
       const wegwijsKboOrg = kboIdentifiersWegwijs[kboIdentifierOP.kbo];
-
       if (wegwijsKboOrg) {
-        if (!kboIdentifierOP.kboOrg) {
+        const wegwijsOvo = wegwijsKboOrg.ovoNumber;
+        // If a KBO can't be found in wegwijs but we already have an OVO for it in OP, we keep that OVO.
+        // It happens especially a lot for worship services that sometimes lack data in Wegwijs
+        if (wegwijsOvo && kboIdentifiersOP.ovo != wegwijsOvo) {
+          // We have a mismatch, let's update the OVO number
+          let ovoStructuredIdUri = kboIdentifiersOP.ovoStructuredId;
+          if (!ovoStructuredIdUri) {
+            ovoStructuredIdUri = await constructOvoStructure(
+              kboIdentifierOP.kboStructuredId
+            );
+          }
 
-          let newKboOrgUri = await createNewKboOrg(wegwijsKboOrg, kboIdentifierOP.kboId);
-          await linkAbbOrgToKboOrg(kboIdentifierOP.abbOrg, newKboOrgUri);
+          await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
         }
 
-        if (kboIdentifierOP.changeTime) {
-          update = new Date(kboObject.changeTime).getTime() > new Date(kboIdentifiers.changeTime).getTime() ? true : false;
+        console.log(kboIdentifierOP);
+        if (!kboIdentifierOP?.kboOrg) {
+          console.log("creating new kboUnit");
+          await createKbo(
+            wegwijsKboOrg,
+            kboIdentifierOP.kboId,
+            kboIdentifierOP.abbOrg
+          );
         }
 
-        if (update) {
+        if (isUpdate(wegwijsKboOrg, kboIdentifierOP)) {
           const kboIdentifiers = await getKboIdentifiers(identifiers.adminUnit);
           updateKboOrg(wegwijsKboOrg, kboIdentifiers);
         }
@@ -272,15 +254,15 @@ async function healKboUnits() {
     }
     console.log("Healing complete!");
   } catch (err) {
-    console.log(`An error occurred during KBO organization healing: ${err}`);
+    console.log(`An error occurred during wegwijs info healing: ${err}`);
   }
 }
 
-async function getAllOvoAndKboCouplesWegwijs(healKboUnit) {
+async function getAllOvoAndKboCouplesWegwijs() {
   let couples = {};
 
   const response = await fetch(
-    `https://api.wegwijs.vlaanderen.be/v1/search/organisations?q=kboNumber:/.*[0-9].*/&changeTime,name,shortName,ovoNumber,kboNumber,labels,contacts,organisationClassifications,locations,parents&scroll=true`
+    `${WEGWIJSAPI}?q=kboNumber:/.*[0-9].*/&fields=${WEGWIJSAPIFIELDS},parents&scroll=true`
   );
   const scrollId = JSON.parse(
     response.headers.get("x-search-metadata")
@@ -290,20 +272,34 @@ async function getAllOvoAndKboCouplesWegwijs(healKboUnit) {
   do {
     data.forEach((unit) => {
       const wegwijsUnit = getKboFields(unit);
-      if (healKboUnit) {
-        couples[wegwijsUnit.kboNumber] = wegwijsUnit;
-      } else {
-        couples[wegwijsUnit.kboNumber] = wegwijsUnit.ovoNumber;
-      }
+      couples[wegwijsUnit.kboNumber] = wegwijsUnit;
     });
 
-    const response = await fetch(
-      `https://api.wegwijs.vlaanderen.be/v1/search/organisations/scroll?id=${scrollId}`
-    );
+    const response = await fetch(`${WEGWIJSAPI}/scroll?id=${scrollId}`);
     data = await response.json();
   } while (data.length);
 
   return couples;
+}
+
+function isUpdate(kboWegwijs, kboAbb) {
+  let update = false;
+  if (kboWegwijs?.changeTime && kboAbb?.changeTime) {
+    update =
+      new Date(kboWegwijs.changeTime).getTime() >
+      new Date(kboAbb.changeTime).getTime();
+  }
+  return update;
+}
+
+async function createKbo(wegwijsKboOrg, kboId, abbOrg) {
+  let newKboOrgUri = await createNewKboOrg(wegwijsKboOrg, kboId);
+  await linkAbbOrgToKboOrg(abbOrg, newKboOrgUri);
+}
+
+function throwServer500Error(res, message) {
+  console.log("Something went wrong while calling /sync-from-kbo", message);
+  return res.status(500).send();
 }
 
 app.use(errorHandler);
