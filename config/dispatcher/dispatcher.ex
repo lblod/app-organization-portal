@@ -313,10 +313,6 @@ defmodule Dispatcher do
     forward conn, path, "http://construct-administrative-unit-relationships/create-relationships/"
   end
 
-  post "/sync-ovo-number/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://sync-ovo-numbers/sync-from-kbo/"
-  end
-
   post "/kbo-data-sync/*path", %{ layer: :api_services, accept: %{ json: true } } do
     forward conn, path, "http://kbo-data-sync/sync-kbo-data/"
   end
