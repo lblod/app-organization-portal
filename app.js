@@ -17,6 +17,7 @@ import {
   WEGWIJSAPI,
   WEGWIJSAPIFIELDS,
 } from "./config";
+import { APIERRORCODES } from "./apiErrorHandler";
 
 app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
   try {
@@ -24,9 +25,9 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
     const identifiers = await getIdentifiers(kboStructuredIdUuid);
     console.log("create kbo? " + createKbo);
     if (!identifiers?.kbo) {
-      return throwServer500Error(
-        res,
-        "no kbo number was found: " + identifiers
+      return throwServerError(
+        APIERRORCODES.STATUS403,
+        res
       );
     }
     const wegwijsUrl = `${WEGWIJSAPI}?q=kboNumber:${identifiers.kbo}&fields=${WEGWIJSAPIFIELDS}`;
@@ -37,10 +38,7 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
     let wegwijsOvo = null;
     let kboObject = null;
     if (!data.length) {
-      return throwServer500Error(
-        res,
-        "no data has been found, check if KBO number is correct"
-      );
+      return throwServerError(APIERRORCODES.STATUS402, res);
     }
     // We got a match on the KBO, getting the associated OVO back
     const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
@@ -75,9 +73,9 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
       await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
     }
 
-    return res.status(200).send(); // since we await, it should be 200
+    return throwServerError(APIERRORCODES.STATUS200, res); // since we await, it should be 200
   } catch (e) {
-    return throwServer500Error(res, e);
+    return throwServerError(APIERRORCODES.STATUS500, res, e);
   }
 });
 
@@ -277,9 +275,11 @@ async function createKbo(wegwijsKboOrg, kboId, abbOrg) {
   await linkAbbOrgToKboOrg(abbOrg, newKboOrgUri);
 }
 
-function throwServer500Error(res, message) {
-  console.log("Something went wrong while calling /sync-from-kbo", message);
-  return res.status(500).send();
+function throwServerError(statusCode, res, message) {
+  if(statusCode.CODE === 500){
+    console.log("Something went wrong while calling /sync-from-kbo", message);
+  }
+  return res.status(statusCode.CODE).send(statusCode.STATUS);
 }
 
 app.use(errorHandler);
