@@ -3,7 +3,7 @@ steps:
     image: woodpeckerci/plugin-docker-buildx
     settings:
       repo: ${CI_REPO}
-      tags: "feature-${CI_COMMIT_BRANCH##feature/}"
+      tags: "improvement-${CI_COMMIT_BRANCH##improvement/}"
     secrets: [ docker_username, docker_password ]
 when:
   branch: improvement/api-expansion*
