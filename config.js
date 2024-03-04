@@ -6,5 +6,5 @@ export const ORGANIZATION_STATUS = {
 }
 
 export const WEGWIJSAPI = "https://api.wegwijs.vlaanderen.be/v1/search/organisations";
-export const WEGWIJSAPIFIELDS = "changeTime,name,shortName,ovoNumber,kboNumber,labels,contacts,organisationClassifications,locations.parents"
+export const WEGWIJSAPIFIELDS = "changeTime,name,shortName,ovoNumber,kboNumber,labels,contacts,organisationClassifications,locations"
 

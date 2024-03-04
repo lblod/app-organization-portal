@@ -75,8 +75,6 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
       await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
     }
 
-    healAbbWithWegWijsData();
-
     return res.status(200).send(); // since we await, it should be 200
   } catch (e) {
     return throwServer500Error(res, e);
@@ -99,83 +97,65 @@ function getKboFields(data) {
   //no lables = undefined
   //formal naam according to KBO
 
-  let formalName = labels
-    ?.filter((fields) => {
+  let formalName = labels?.findLast((fields) => {
       return fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66";
-    })
-    .pop()?.value;
+    })?.value;
 
-  let startDate = labels
-    ?.filter((fields) => {
+  let startDate = labels?.findLast((fields) => {
       return fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66";
-    })
-    .pop()?.validity?.start;
+    })?.validity?.start;
 
-  let activeState = labels?.filter((fields) => {
+  let activeState = labels?.findLast((fields) => {
     return (
       fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66" &&
       !fields.validity.hasOwnProperty("end")
     );
-  })
-    ? ORGANIZATION_STATUS.ACTIVE
-    : ORGANIZATION_STATUS.INACTIVE;
+  }) ? ORGANIZATION_STATUS.ACTIVE : ORGANIZATION_STATUS.INACTIVE;
 
-  let email = data.contacts
-    ?.filter((fields) => {
+  let email = data.contacts?.findLast((fields) => {
       return (
         fields.contactTypeId === "f611e91d-a811-4519-afa6-08f0e9dcdd9b" &&
         !fields.validity.hasOwnProperty("end")
       );
-    })
-    .pop()?.value;
+    })?.value;
 
-  let rechtsvorm = organisationClassifications
-    ?.filter((fields) => {
+  let rechtsvorm = organisationClassifications?.findLast((fields) => {
       return (
         fields.organisationClassificationTypeId ===
           "9bae7539-64fd-5759-743c-ad9dfa4143d4" ||
         fields.organisationClassificationTypeId ===
           "1131205e-9212-435d-b4cd-b0d955d08bcf"
       );
-    })
-    .pop()?.organisationClassificationName;
+    })?.organisationClassificationName;
 
-  let phone = contacts
-    ?.filter((fields) => {
+  let phone = contacts?.findLast((fields) => {
       return (
         fields.contactTypeId === "d792d4ff-8c34-4336-8434-56ecb40f2fa4" &&
         !fields.validity.hasOwnProperty("end")
       );
-    })
-    .pop()?.value;
+    })?.value;
 
-  let website = contacts
-    ?.filter((fields) => {
+  let website = contacts?.findLast((fields) => {
       return (
         fields.contactTypeId === "6763f372-02c5-478c-b7d7-802dc60a64b9" &&
         !fields.validity.hasOwnProperty("end")
       );
-    })
-    .pop()?.value;
+    })?.value;
 
-  let formattedAddress = locations
-    ?.filter((fields) => {
-      return (
-        fields.isMainLocation === true &&
-        !fields.validity?.hasOwnProperty("end")
-      );
-    })
-    .pop()?.formattedAddress;
-
-  //main location according to KBO
-  let adressComponent = locations
-    ?.filter((fields) => {
+  let formattedAddress = locations?.findLast((fields) => {
       return (
         fields.locationTypeId === "537c0b5b-8ab8-fc3d-0b37-f8249cbdd3ba" &&
         !fields.validity?.hasOwnProperty("end")
       );
-    })
-    .pop()?.components;
+    })?.formattedAddress;
+
+  //main location according to KBO
+  let adressComponent = locations?.findLast((fields) => {
+      return (
+        fields.locationTypeId === "537c0b5b-8ab8-fc3d-0b37-f8249cbdd3ba" &&
+        !fields.validity?.hasOwnProperty("end")
+      );
+    })?.components;
 
   return {
     changeTime: changeTime ?? "",
