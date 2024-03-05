@@ -9,7 +9,6 @@ const SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION = parseInt(process.env.SLEEP_T
 const SLEEP_TIME_AFTER_FAILED_DB_OPERATION = parseInt(process.env.SLEEP_TIME_AFTER_FAILED_DB_OPERATION || 60000);
 
 // Graphs
-const TARGET_GRAPH = process.env.TARGET_GRAPH || `http://mu.semte.ch/graphs/organizations`;
 const LANDING_ZONE_GRAPH = process.env.DCR_LANDING_ZONE_GRAPH || `http://mu.semte.ch/graphs/landing-zone/op`;
 
 // ENDPOINTS
@@ -27,6 +26,5 @@ module.exports = {
   SLEEP_TIME_AFTER_FAILED_DB_OPERATION,
   SLEEP_TIME_AFTER_FAILED_REASONING_OPERATION,
   LANDING_ZONE_GRAPH,
-  TARGET_GRAPH,
   LANDING_ZONE_DATABASE_ENDPOINT
 };
