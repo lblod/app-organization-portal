@@ -153,7 +153,6 @@ const contextConfig = {
             ?site organisatie:bestaatUit ?address.
             ?address ?pAddress ?oAddress.
           }        
-          BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?uuid)) AS ?graph)
         }`
     },
     {
@@ -200,7 +199,6 @@ const contextConfig = {
             ?site organisatie:bestaatUit ?address.
             ?address ?pAddress ?oAddress.
           }        
-          BIND(IRI(CONCAT("http://mu.semte.ch/graphs/organizations/", ?uuid)) AS ?graph)
         }`
     },
     {
