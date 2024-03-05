@@ -8,6 +8,11 @@ const {
 const {
   LANDING_ZONE_GRAPH
 } = require('./config')
+
+const publicTypes = [
+  '<http://lblod.data.gift/vocabularies/organisatie/TypeVestiging>'
+]
+
 /**
 * Dispatch the fetched information to a target graph.
 * Note: <share://file/data> will be ADDED to it's own graph.
@@ -23,10 +28,6 @@ const {
 *         ]
 * @return {void} Nothing
 */
-
-const publicTypes = [
-  '<http://lblod.data.gift/vocabularies/organisatie/TypeVestiging>'
-]
 async function dispatch(lib, data) {
   const { mu, fetch } = lib;
   let { termObjectChangeSets, termObjectChangeSetsWithContext } = data;
