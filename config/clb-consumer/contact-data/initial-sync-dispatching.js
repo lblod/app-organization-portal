@@ -30,7 +30,7 @@ async function dispatch(lib, data) {
   const { termObjects } = data;
 
   // Steps:
-  // 1. Write the triples to the landing zone graph - withouth any mapping or filtering
+  // 1. Write the triples to the landing zone graph - without any mapping or filtering
   // 2. One-time reasoning run with the full landing zone graph and write the results to the target graph (on-finish)
 
   if (BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES) {
