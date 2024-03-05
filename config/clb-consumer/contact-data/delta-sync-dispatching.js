@@ -39,76 +39,10 @@ async function dispatch(lib, data) {
 
   console.log(`Received ${zippedChangeSets.length} change sets`)
 
-
   for (let { original, withContext } of zippedChangeSets) {
-    const insertsOnPublic = [];
-    const insertsOnGraphs = {};
-    for(let insert of original.inserts) {
-      const subject = insert.subject;
-      const contextTriples = withContext.inserts.filter((context) => context.subject === subject);
-      const graphTriple = contextTriples.find((context) => context.predicate === '<http://mu.semte.ch/vocabularies/ext/goesInGraph>' && context.object !== `<${LANDING_ZONE_GRAPH}>`)
-      const otherContextTriples = withContext.inserts.filter((context) => context.predicate !== '<http://mu.semte.ch/vocabularies/ext/goesInGraph>' && context.predicate !== '<http://mu.semte.ch/vocabularies/ext/contextDataGoesInGraph>' && !(context.subject === subject && context.predicate === '<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>'));
-      if(graphTriple) {
-        const graph = graphTriple.object.slice(1,-1); // We have to slice it to remove the "<" and ">"
-        if(!insertsOnGraphs[graph]) {
-          insertsOnGraphs[graph] = [`${insert.subject} ${insert.predicate} ${insert.object}.`]
-        } else {
-          insertsOnGraphs[graph].push(`${insert.subject} ${insert.predicate} ${insert.object}.`)
-        }
-        for(let triple of otherContextTriples) {
-          insertsOnGraphs[graph].push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
-        }
-      }
-      const typeTriple = contextTriples.find((context) => context.subject === subject && context.predicate === '<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>');
-      if(typeTriple) {
-        const type = typeTriple.object;
-        if(publicTypes.includes(type)) {
-          insertsOnPublic.push(`${insert.subject} ${insert.predicate} ${insert.object}.`)
-          //For the case where the subject is an admin unit but everything else must go in private graph
-          const contextGraphTriple = contextTriples.find((context) => context.predicate === '<http://mu.semte.ch/vocabularies/ext/contextDataGoesInGraph>' && context.object !== `<${LANDING_ZONE_GRAPH}>`)
-          for(let triple of otherContextTriples) {
-            if(contextGraphTriple) {
-              const graph = contextGraphTriple.object.slice(1,-1);
-              if(!insertsOnGraphs[graph]) {
-                insertsOnGraphs[graph] = [`${triple.subject} ${triple.predicate} ${triple.object}.`]
-              } else {
-                insertsOnGraphs[graph].push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
-              }
-            } else {
-              insertsOnPublic.push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
-            }
-          }
-        }
-      }
-    }
-    const deletesOnPublic = [];
-    const deletesOnGraphs = {};
-    for(let deletion of original.deletes) {
-      const subject = deletion.subject;
-      const contextTriples = withContext.deletes.filter((context) => context.subject === subject);
-      const graphTriple = contextTriples.find((context) => context.predicate === '<http://mu.semte.ch/vocabularies/ext/goesInGraph>' && context.object !== `<${LANDING_ZONE_GRAPH}>`)
-      const otherContextTriples = withContext.deletes.filter((context) => context.predicate !== '<http://mu.semte.ch/vocabularies/ext/goesInGraph>' && context.predicate !== '<http://mu.semte.ch/vocabularies/ext/contextDataGoesInGraph>' && !(context.subject === subject && context.predicate === '<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>'));
-      if(graphTriple) {
-        const graph = graphTriple.object.slice(1,-1); // We have to slice it to remove the "<" and ">"
-        if(!deletesOnGraphs[graph]) {
-          deletesOnGraphs[graph] = [`${deletion.subject} ${deletion.predicate} ${deletion.object}.`]
-        } else {
-          deletesOnGraphs[graph].push(`${deletion.subject} ${deletion.predicate} ${deletion.object}.`)
-        }
-        for(let triple of otherContextTriples) {
-          deletesOnGraphs[graph].push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
-        }
-      }
-      const typeTriple = contextTriples.find((context) => context.subject === subject && context.predicate === '<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>');
-      if(!typeTriple) continue;
-      const type = typeTriple.object;
-      if(publicTypes.includes(type)) {
-        deletesOnPublic.push(`${deletion.subject} ${deletion.predicate} ${deletion.object}.`)
-        for(let triple of otherContextTriples) {
-          deletesOnPublic.push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
-        }
-      }
-    }
+    
+    const {public: insertsOnPublic, target: insertsOnGraphs} = separateBetweenTargetAndPublic(original.inserts, withContext.inserts)
+    const {public: deletesOnPublic, target: deletesOnGraphs} = separateBetweenTargetAndPublic(original.deletes, withContext.deletes)
 
     await deleteFromPublicGraph(lib, deletesOnPublic);
     await deleteFromSpecificGraphs(lib, deletesOnGraphs);
@@ -116,6 +50,48 @@ async function dispatch(lib, data) {
     await insertIntoSpecificGraphs(lib, insertsOnGraphs);
 
   }
+}
+
+function separateBetweenTargetAndPublic(changes, context) {
+  const changesOnPublic = [];
+  const changesOnGraphs = {};
+  for(let change of changes) {
+    const subject = change.subject;
+    const contextTriples = context.filter((context) => context.subject === subject);
+    const graphTriple = contextTriples.find(
+      (context) => context.predicate === '<http://mu.semte.ch/vocabularies/ext/goesInGraph>' 
+        && context.object !== `<${LANDING_ZONE_GRAPH}>`
+    )
+    const otherContextTriples = context.filter(
+      (context) => context.predicate !== '<http://mu.semte.ch/vocabularies/ext/goesInGraph>' 
+        && context.predicate !== '<http://mu.semte.ch/vocabularies/ext/contextDataGoesInGraph>' 
+        && !(context.subject === subject && context.predicate === '<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>')
+    );
+    if(graphTriple) {
+      const graph = graphTriple.object.slice(1,-1); // We have to slice it to remove the "<" and ">"
+      if(!changesOnGraphs[graph]) {
+        changesOnGraphs[graph] = [`${change.subject} ${change.predicate} ${change.object}.`]
+      } else {
+        changesOnGraphs[graph].push(`${change.subject} ${change.predicate} ${change.object}.`)
+      }
+      for(let triple of otherContextTriples) {
+        changesOnGraphs[graph].push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
+      }
+    }
+    const typeTriple = contextTriples.find(
+      (context) => context.subject === subject 
+        && context.predicate === '<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>'
+    );
+    if(!typeTriple) continue;
+    const type = typeTriple.object;
+    if(publicTypes.includes(type)) {
+      changesOnPublic.push(`${change.subject} ${change.predicate} ${change.object}.`)
+      for(let triple of otherContextTriples) {
+        changesOnPublic.push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
+      }
+    }
+  }
+  return {public: changesOnPublic, target: changesOnGraphs}
 }
 
 module.exports = {
