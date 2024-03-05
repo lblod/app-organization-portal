@@ -17,48 +17,41 @@ import {
   WEGWIJSAPI,
   WEGWIJSAPIFIELDS,
 } from "./config";
-import { APIERRORCODES } from "./apiErrorHandler";
+import { API_STATUS_CODES } from "./apiErrorHandler";
+import { WEGWIJS_DATA_OBJECT_IDS } from "./wegwijObjectDataIds";
 
 app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
   try {
     const kboStructuredIdUuid = req.params.kboStructuredIdUuid;
     const identifiers = await getIdentifiers(kboStructuredIdUuid);
-    console.log("create kbo? " + createKbo);
+
     if (!identifiers?.kbo) {
-      return throwServerError(
-        APIERRORCODES.STATUS403,
-        res
-      );
+      return throwServerError(API_STATUS_CODES.STATUS_403, res);
     }
     const wegwijsUrl = `${WEGWIJSAPI}?q=kboNumber:${identifiers.kbo}&fields=${WEGWIJSAPIFIELDS}`;
     console.log("url: " + wegwijsUrl);
+
     const response = await fetch(wegwijsUrl);
     const data = await response.json();
 
-    let wegwijsOvo = null;
     let kboObject = null;
     if (!data.length) {
-      return throwServerError(APIERRORCODES.STATUS402, res);
+      return throwServerError(API_STATUS_CODES.STATUS_402, res);
     }
     // We got a match on the KBO, getting the associated OVO back
     const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
     kboObject = getKboFields(wegwijsInfo);
-    if (kboObject.ovoNumber) {
-      wegwijsOvo = kboObject.ovoNumber;
+    const kboIdentifiers = await getKboIdentifiers(identifiers.adminUnit);
+
+    if (!kboIdentifiers && kboObject) {
+      await createKbo(kboObject, identifiers.kboId, identifiers.adminUnit);
     }
 
-    if (kboObject) {
-      const kboIdentifiers = await getKboIdentifiers(identifiers.adminUnit);
-
-      if (!kboIdentifiers) {
-        await createKbo(kboObject, identifiers.kboId, identifiers.adminUnit);
-      }
-
-      if (isUpdate(kboObject, kboIdentifiers)) {
-        updateKboOrg(kboObject, kboIdentifiers);
-      }
+    if (isUpdate(kboObject, kboIdentifiers)) {
+      updateKboOrg(kboObject, kboIdentifiers);
     }
 
+    let wegwijsOvo = kboObject.ovoNumber ?? null;
     //Update Ovo Number
     if (wegwijsOvo && wegwijsOvo != identifiers.ovo) {
       console.log(identifiers.ovo);
@@ -73,9 +66,9 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
       await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
     }
 
-    return throwServerError(APIERRORCODES.STATUS200, res); // since we await, it should be 200
+    return throwServerError(API_STATUS_CODES.STATUS_200, res); // since we await, it should be 200
   } catch (e) {
-    return throwServerError(APIERRORCODES.STATUS500, res, e);
+    return throwServerError(API_STATUS_CODES.STATUS_500, res, e);
   }
 });
 
@@ -92,68 +85,44 @@ function getKboFields(data) {
     locations = [],
   } = data;
 
-  //no lables = undefined
-  //formal naam according to KBO
+  //no labels = undefined
+  //formal name according to KBO
+  let formalName = extractObjectData(labels, WEGWIJS_DATA_OBJECT_IDS.LABELS)?.value;
+  let email = extractObjectData(contacts, WEGWIJS_DATA_OBJECT_IDS.CONTACTS.EMAIL)?.value;
+  let phone = extractObjectData(contacts, WEGWIJS_DATA_OBJECT_IDS.CONTACTS.PHONE)?.value;
+  let website = extractObjectData(contacts, WEGWIJS_DATA_OBJECT_IDS.CONTACTS.WEBSITE)?.value;
 
-  let formalName = labels?.findLast((fields) => {
-      return fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66";
-    })?.value;
+  //main location according to KBO
+  let formattedAddress = extractObjectData(locations, WEGWIJS_DATA_OBJECT_IDS.ADDRESS)?.formattedAddress;
+  let adressComponent = extractObjectData(locations, WEGWIJS_DATA_OBJECT_IDS.ADDRESS)?.components;
+
+  let rechtsvorm = organisationClassifications?.findLast((fields) => {
+    return (
+      fields[WEGWIJS_DATA_OBJECT_IDS.RECHTSVORM.NAME] ===
+        WEGWIJS_DATA_OBJECT_IDS.RECHTSVORM.ID_1 ||
+      fields.organisationClassificationTypeId ===
+        WEGWIJS_DATA_OBJECT_IDS.RECHTSVORM.ID_2
+    );
+  })?.organisationClassificationName;
 
   let startDate = labels?.findLast((fields) => {
-      return fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66";
-    })?.validity?.start;
+    return (
+      fields[WEGWIJS_DATA_OBJECT_IDS.LABELS.NAME] ===
+      WEGWIJS_DATA_OBJECT_IDS.LABELS.ID
+    );
+  })?.validity?.start;
 
   let activeState = labels?.findLast((fields) => {
     return (
-      fields.labelTypeId === "83c1c22a-6776-0ad6-68d2-819e1c6eec66" &&
+      fields[WEGWIJS_DATA_OBJECT_IDS.LABELS.NAME] ===
+        WEGWIJS_DATA_OBJECT_IDS.LABELS.ID &&
       !fields.validity.hasOwnProperty("end")
     );
   }) ? ORGANIZATION_STATUS.ACTIVE : ORGANIZATION_STATUS.INACTIVE;
 
-  let email = data.contacts?.findLast((fields) => {
-      return (
-        fields.contactTypeId === "f611e91d-a811-4519-afa6-08f0e9dcdd9b" &&
-        !fields.validity.hasOwnProperty("end")
-      );
-    })?.value;
-
-  let rechtsvorm = organisationClassifications?.findLast((fields) => {
-      return (
-        fields.organisationClassificationTypeId ===
-          "9bae7539-64fd-5759-743c-ad9dfa4143d4" ||
-        fields.organisationClassificationTypeId ===
-          "1131205e-9212-435d-b4cd-b0d955d08bcf"
-      );
-    })?.organisationClassificationName;
-
-  let phone = contacts?.findLast((fields) => {
-      return (
-        fields.contactTypeId === "d792d4ff-8c34-4336-8434-56ecb40f2fa4" &&
-        !fields.validity.hasOwnProperty("end")
-      );
-    })?.value;
-
-  let website = contacts?.findLast((fields) => {
-      return (
-        fields.contactTypeId === "6763f372-02c5-478c-b7d7-802dc60a64b9" &&
-        !fields.validity.hasOwnProperty("end")
-      );
-    })?.value;
-
-  let formattedAddress = locations?.findLast((fields) => {
-      return (
-        fields.locationTypeId === "537c0b5b-8ab8-fc3d-0b37-f8249cbdd3ba" &&
-        !fields.validity?.hasOwnProperty("end")
-      );
-    })?.formattedAddress;
-
-  //main location according to KBO
-  let adressComponent = locations?.findLast((fields) => {
-      return (
-        fields.locationTypeId === "537c0b5b-8ab8-fc3d-0b37-f8249cbdd3ba" &&
-        !fields.validity?.hasOwnProperty("end")
-      );
-    })?.components;
+  console.log(formattedAddress);
+  console.log(startDate);
+  console.log(activeState);
 
   return {
     changeTime: changeTime ?? "",
@@ -177,12 +146,12 @@ new CronJob(
   CRON_PATTERN,
   async function () {
     const now = new Date().toISOString();
-    console.log(`OVO numbers healing triggered by cron job at ${now}`);
+    console.log(`Wegwijs data healing triggered by cron job at ${now}`);
     try {
       await healAbbWithWegWijsData();
     } catch (err) {
       console.log(
-        `An error occurred during OVO numbers healing at ${now}: ${err}`
+        `An error occurred during wegwijs data healing at ${now}: ${err}`
       );
     }
   },
@@ -214,7 +183,6 @@ async function healAbbWithWegWijsData() {
           await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
         }
 
-        console.log(kboIdentifierOP);
         if (!kboIdentifierOP?.kboOrg) {
           console.log("creating new kboUnit");
           await createKbo(
@@ -225,7 +193,7 @@ async function healAbbWithWegWijsData() {
         }
 
         if (isUpdate(wegwijsKboOrg, kboIdentifierOP)) {
-          const kboIdentifiers = await getKboIdentifiers(identifiers.adminUnit);
+          const kboIdentifiers = await getKboIdentifiers(kboIdentifierOP.abbOrg);
           updateKboOrg(wegwijsKboOrg, kboIdentifiers);
         }
       }
@@ -276,10 +244,20 @@ async function createKbo(wegwijsKboOrg, kboId, abbOrg) {
 }
 
 function throwServerError(statusCode, res, message) {
-  if(statusCode.CODE === 500){
+  if (statusCode.CODE === 500) {
     console.log("Something went wrong while calling /sync-from-kbo", message);
   }
   return res.status(statusCode.CODE).send(statusCode.STATUS);
+}
+
+function extractObjectData(object, field) {
+  let test = object?.findLast((fields) => {
+    return fields[field.NAME] === field.ID;
+  });
+
+
+  console.log(test);
+  return test;
 }
 
 app.use(errorHandler);
