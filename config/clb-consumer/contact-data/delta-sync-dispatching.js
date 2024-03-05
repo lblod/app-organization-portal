@@ -29,7 +29,6 @@ const publicTypes = [
 * @return {void} Nothing
 */
 async function dispatch(lib, data) {
-  const { mu, fetch } = lib;
   let { termObjectChangeSets, termObjectChangeSetsWithContext } = data;
 
   // Both arrays are the same length, so we can zip them together for easier processing
