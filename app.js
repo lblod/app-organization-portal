@@ -2,12 +2,12 @@ import { app, errorHandler, uuid } from "mu";
 import fetch from "node-fetch";
 import { CronJob } from "cron";
 import {
-  getIdentifiers,
+  getAbbOrganizationInfo,
   constructOvoStructure,
   updateOvoNumberAndUri,
   createNewKboOrg,
   linkAbbOrgToKboOrg,
-  getKboIdentifiers,
+  getKboOrgnizationInfo,
   updateKboOrg,
   getAllAbbKboOrganizations,
 } from "./lib/queries";
@@ -23,7 +23,7 @@ import { WEGWIJS_DATA_OBJECT_IDS } from "./wegwijObjectDataIds";
 app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
   try {
     const kboStructuredIdUuid = req.params.kboStructuredIdUuid;
-    const identifiers = await getIdentifiers(kboStructuredIdUuid);
+    const identifiers = await getAbbOrganizationInfo(kboStructuredIdUuid);
 
     if (!identifiers?.kbo) {
       return throwServerError(API_STATUS_CODES.STATUS_403, res);
@@ -41,7 +41,7 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
     // We got a match on the KBO, getting the associated OVO back
     const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
     kboObject = getKboFields(wegwijsInfo);
-    const kboIdentifiers = await getKboIdentifiers(identifiers.adminUnit);
+    const kboIdentifiers = await getKboOrgnizationInfo(identifiers.adminUnit);
 
     if (!kboIdentifiers && kboObject) {
       await createKbo(kboObject, identifiers.kboId, identifiers.adminUnit);
@@ -193,7 +193,7 @@ async function healAbbWithWegWijsData() {
         }
 
         if (isUpdate(wegwijsKboOrg, kboIdentifierOP)) {
-          const kboIdentifiers = await getKboIdentifiers(kboIdentifierOP.abbOrg);
+          const kboIdentifiers = await getKboOrgnizationInfo(kboIdentifierOP.abbOrg);
           updateKboOrg(wegwijsKboOrg, kboIdentifiers);
         }
       }
