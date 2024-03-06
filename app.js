@@ -63,9 +63,8 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
           identifiers.kboStructuredId
         );
       }
+      await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
     }
-
-    await healAbbWithWegWijsData();
 
     return throwServerError(API_STATUS_CODES.STATUS_200, res); // since we await, it should be 200
   } catch (e) {
@@ -181,7 +180,6 @@ async function healAbbWithWegWijsData() {
         }
 
         if (!kboIdentifierOP?.kboOrg) {
-          console.log("creating new kboUnit");
           await createKbo(
             wegwijsKboOrg,
             kboIdentifierOP.kboId,
@@ -251,6 +249,8 @@ function extractObjectData(object, field) {
   return object?.findLast((fields) => {
     return fields[field.NAME] === field.ID;
   });
+
+
 }
 
 app.use(errorHandler);
