@@ -63,8 +63,9 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
           identifiers.kboStructuredId
         );
       }
-      await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
     }
+
+    await healAbbWithWegWijsData();
 
     return throwServerError(API_STATUS_CODES.STATUS_200, res); // since we await, it should be 200
   } catch (e) {
@@ -119,10 +120,6 @@ function getKboFields(data) {
       !fields.validity.hasOwnProperty("end")
     );
   }) ? ORGANIZATION_STATUS.ACTIVE : ORGANIZATION_STATUS.INACTIVE;
-
-  console.log(formattedAddress);
-  console.log(startDate);
-  console.log(activeState);
 
   return {
     changeTime: changeTime ?? "",
@@ -251,13 +248,9 @@ function throwServerError(statusCode, res, message) {
 }
 
 function extractObjectData(object, field) {
-  let test = object?.findLast((fields) => {
+  return object?.findLast((fields) => {
     return fields[field.NAME] === field.ID;
   });
-
-
-  console.log(test);
-  return test;
 }
 
 app.use(errorHandler);
