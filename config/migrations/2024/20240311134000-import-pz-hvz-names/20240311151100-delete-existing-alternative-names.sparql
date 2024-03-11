@@ -1,0 +1,17 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s skos:altLabel ?name .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s org:classification ?class ;
+      skos:altLabel ?name .
+  }
+  VALUES ?class {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/ea446861-2c51-45fa-afd3-4e4a37b71562> # HVZ
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc> # PZ
+  }
+}
