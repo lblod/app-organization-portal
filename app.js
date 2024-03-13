@@ -1,4 +1,4 @@
-import { app, errorHandler, uuid } from "mu";
+import { app, errorHandler } from "mu";
 import fetch from "node-fetch";
 import { CronJob } from "cron";
 import {
@@ -14,53 +14,54 @@ import {
 import {
   CRON_PATTERN,
   ORGANIZATION_STATUS,
-  WEGWIJSAPI,
-  WEGWIJSAPIFIELDS,
+  WEGWIJS_API,
+  WEGWIJS_API_FIELDS,
 } from "./config";
-import { API_STATUS_CODES } from "./apiErrorHandler";
-import { WEGWIJS_DATA_OBJECT_IDS } from "./wegwijObjectDataIds";
+import { API_STATUS_CODES } from "./api-error-handler";
+import { WEGWIJS_DATA_OBJECT_IDS } from "./wegwijs-object-data-ids";
 
 app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
   try {
     const kboStructuredIdUuid = req.params.kboStructuredIdUuid;
-    const identifiers = await getAbbOrganizationInfo(kboStructuredIdUuid);
+    const AbbOrganizationInfo = await getAbbOrganizationInfo(kboStructuredIdUuid);
 
-    if (!identifiers?.kbo) {
+    if (!AbbOrganizationInfo?.kbo) {
       return throwServerError(API_STATUS_CODES.STATUS_403, res);
     }
-    const wegwijsUrl = `${WEGWIJSAPI}?q=kboNumber:${identifiers.kbo}&fields=${WEGWIJSAPIFIELDS}`;
+    const wegwijsUrl = `${WEGWIJS_API}?q=kboNumber:${AbbOrganizationInfo.kbo}&fields=${WEGWIJS_API_FIELDS}`;
     console.log("url: " + wegwijsUrl);
 
     const response = await fetch(wegwijsUrl);
     const data = await response.json();
 
-    let kboObject = null;
     if (!data.length) {
       return throwServerError(API_STATUS_CODES.STATUS_402, res);
     }
     // We got a match on the KBO, getting the associated OVO back
     const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
-    kboObject = getKboFields(wegwijsInfo);
-    const kboIdentifiers = await getKboOrgnizationInfo(identifiers.adminUnit);
+    const kboObject = getKboFields(wegwijsInfo);
+    const kboIdentifiers = await getKboOrgnizationInfo(AbbOrganizationInfo.adminUnit);
 
     if (!kboIdentifiers && kboObject) {
-      await createKbo(kboObject, identifiers.kboId, identifiers.adminUnit);
+      await createKbo(kboObject, AbbOrganizationInfo.kboId, AbbOrganizationInfo.adminUnit);
     }
 
     if (isUpdate(kboObject, kboIdentifiers)) {
       updateKboOrg(kboObject, kboIdentifiers);
     }
 
-    let wegwijsOvo = kboObject.ovoNumber ?? null;
-    //Update Ovo Number
-    if (wegwijsOvo && wegwijsOvo != identifiers.ovo) {
-      console.log(identifiers.ovo);
+    await healAbbWithWegWijsData();
 
-      let ovoStructuredIdUri = identifiers.ovoStructuredId;
+    let wegwijsOvo = kboObject.ovoNumber ?? null;
+
+    //Update Ovo Number
+    if (wegwijsOvo && wegwijsOvo != AbbOrganizationInfo.ovo) {
+
+      let ovoStructuredIdUri = AbbOrganizationInfo.ovoStructuredId;
 
       if (!ovoStructuredIdUri) {
         ovoStructuredIdUri = await constructOvoStructure(
-          identifiers.kboStructuredId
+          AbbOrganizationInfo.kboStructuredId
         );
       }
       await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
@@ -167,9 +168,13 @@ async function healAbbWithWegWijsData() {
         const wegwijsOvo = wegwijsKboOrg.ovoNumber;
         // If a KBO can't be found in wegwijs but we already have an OVO for it in OP, we keep that OVO.
         // It happens especially a lot for worship services that sometimes lack data in Wegwijs
-        if (wegwijsOvo && kboIdentifiersOP.ovo != wegwijsOvo) {
+
+        if (wegwijsOvo && kboIdentifierOP.ovo != wegwijsOvo) {
           // We have a mismatch, let's update the OVO number
-          let ovoStructuredIdUri = kboIdentifiersOP.ovoStructuredId;
+          let ovoStructuredIdUri = kboIdentifierOP.ovoStructuredId;
+
+          console.log(ovoStructuredIdUri);
+
           if (!ovoStructuredIdUri) {
             ovoStructuredIdUri = await constructOvoStructure(
               kboIdentifierOP.kboStructuredId
@@ -203,7 +208,7 @@ async function getAllOvoAndKboCouplesWegwijs() {
   let couples = {};
 
   const response = await fetch(
-    `${WEGWIJSAPI}?q=kboNumber:/.*[0-9].*/&fields=${WEGWIJSAPIFIELDS},parents&scroll=true`
+    `${WEGWIJS_API}?q=kboNumber:/.*[0-9].*/&fields=${WEGWIJS_API_FIELDS},parents&scroll=true`
   );
   const scrollId = JSON.parse(
     response.headers.get("x-search-metadata")
@@ -216,7 +221,7 @@ async function getAllOvoAndKboCouplesWegwijs() {
       couples[wegwijsUnit.kboNumber] = wegwijsUnit;
     });
 
-    const response = await fetch(`${WEGWIJSAPI}/scroll?id=${scrollId}`);
+    const response = await fetch(`${WEGWIJS_API}/scroll?id=${scrollId}`);
     data = await response.json();
   } while (data.length);
 

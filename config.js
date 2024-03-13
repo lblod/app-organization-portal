@@ -5,6 +5,6 @@ export const ORGANIZATION_STATUS = {
     INACTIVE: "http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311"
 }
 
-export const WEGWIJSAPI = "https://api.wegwijs.vlaanderen.be/v1/search/organisations";
-export const WEGWIJSAPIFIELDS = "changeTime,name,shortName,ovoNumber,kboNumber,labels,contacts,organisationClassifications,locations"
+export const WEGWIJS_API = "https://api.wegwijs.vlaanderen.be/v1/search/organisations";
+export const WEGWIJS_API_FIELDS = "changeTime,name,shortName,ovoNumber,kboNumber,labels,contacts,organisationClassifications,locations"
 
