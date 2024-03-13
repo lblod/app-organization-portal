@@ -72,7 +72,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.22.2
+    image: semtech/mu-cl-resources:1.23.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     links:
@@ -181,7 +181,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-organization-portal:1.21.0
+    image: lblod/frontend-organization-portal:1.22.0-1
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
