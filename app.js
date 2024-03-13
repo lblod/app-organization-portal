@@ -50,8 +50,6 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
       updateKboOrg(kboObject, kboIdentifiers);
     }
 
-    await healAbbWithWegWijsData();
-
     let wegwijsOvo = kboObject.ovoNumber ?? null;
 
     //Update Ovo Number
@@ -121,9 +119,10 @@ function getKboFields(data) {
     );
   }) ? ORGANIZATION_STATUS.ACTIVE : ORGANIZATION_STATUS.INACTIVE;
 
+  //currently no commercial name available
   return {
     changeTime: changeTime ?? "",
-    organisationName: organisationName ?? "",
+    commercialName: "",
     shortName: shortName ?? organisationName,
     ovoNumber: ovoNumber ?? "",
     kboNumber: kboNumber ?? "",
