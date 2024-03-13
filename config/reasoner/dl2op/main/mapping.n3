@@ -131,13 +131,15 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 # and 1 December
 # "2022-11-30T23:00:00Z"^^xsd:dateTime
 # So, the following rule adds 2 hours to the datetime, and then takes the date part of the UTC date time
-# to come to the date that the DL user selected (in CE(S)T)
+# To make sure the date have the same convention we now save them as datetime without the  timezone indicator
 {
-   ?dateTime :dateTimeFromDate ?date
-} <= {
-    ?date string:notMatches """^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2}):(\\d{2}).*""" .
-    (?date "T00:00:00") string:concatenation ?datePlusTime.
-    (?datePlusTime xsd:dateTime) log:dtlit ?dateTime
+   ?date :dateTimeFromDate ?dateTime
+} 
+<= 
+{
+  ( ?date 1 10 ) string:substring ?dateSolo .
+  (?dateSolo "T00:00:00") string:concatenation ?datePlusTime.
+  (?datePlusTime xsd:dateTime) log:dtlit ?dateTime .
 }.
 
 # ex:orgA besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>.
