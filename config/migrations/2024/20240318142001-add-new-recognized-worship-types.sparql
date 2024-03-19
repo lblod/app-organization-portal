@@ -1,0 +1,27 @@
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/concepts/cbd4c767ea184b41bf51b65d406754d4> a code:TypeEredienst ;
+      core:uuid "cbd4c767ea184b41bf51b65d406754d4" ;
+      skos:prefLabel "Niet-confessioneel" ;
+      skos:inScheme <http://lblod.data.gift/concept-schemes/5be1fce008d73105d9bc6de9e488b0b9> ;
+      skos:inScheme <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> ;
+      skos:topConceptOf <http://lblod.data.gift/concept-schemes/5be1fce008d73105d9bc6de9e488b0b9> .
+  }
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/concepts/f076c85e72814278814776b038ac33f7> a code:TypeEredienst ;
+      core:uuid "f076c85e72814278814776b038ac33f7" ;
+      skos:prefLabel "Boeddhistisch" ;
+      skos:inScheme <http://lblod.data.gift/concept-schemes/5be1fce008d73105d9bc6de9e488b0b9> ;
+      skos:inScheme <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> ;
+      skos:topConceptOf <http://lblod.data.gift/concept-schemes/5be1fce008d73105d9bc6de9e488b0b9> .
+  }
+}
