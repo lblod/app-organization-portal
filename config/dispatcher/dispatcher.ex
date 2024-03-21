@@ -316,6 +316,10 @@ defmodule Dispatcher do
     forward conn, path, "http://kbo-data-sync/sync-kbo-data/"
   end
 
+  post "/sync-ovo-number/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://sync-ovo-numbers/sync-from-kbo/"
+  end
+
   get "/ldes/*path", %{ layer: :api_services } do
     forward conn, path, "http://ldes-backend/"
   end
