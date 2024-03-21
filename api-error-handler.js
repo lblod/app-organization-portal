@@ -1,17 +1,17 @@
 export const API_STATUS_CODES = {
-    STATUS_200:{
+    OK:{
         STATUS: "OK",
         CODE: 200
     },
-    STATUS_402:{
+    ERROR_NO_DATA_WEGWIJS:{
         STATUS: "no data has been found, check if kbo numer is correct or organisation has OVO number. Organisation without OVO number are not in wegwijs",
-        CODE: 402
+        CODE: 500
     },
-    STATUS_403:{
+    STATUS_NO_DATA_OP:{
         STATUS: "no kbo number found in OP",
-        CODE: 403
+        CODE: 500,
     }, 
-    STATUS_500:{
+    CUSTOM_SERVER_ERROR:{
         STATUS: '',
         CODE: 500
     } 

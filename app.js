@@ -26,7 +26,7 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
     const AbbOrganizationInfo = await getAbbOrganizationInfo(kboStructuredIdUuid);
 
     if (!AbbOrganizationInfo?.kbo) {
-      return throwServerError(API_STATUS_CODES.STATUS_403, res);
+      return throwServerError(API_STATUS_CODES.STATUS_NO_DATA_OP, res);
     }
     const wegwijsUrl = `${WEGWIJS_API}?q=kboNumber:${AbbOrganizationInfo.kbo}&fields=${WEGWIJS_API_FIELDS}`;
     console.log("url: " + wegwijsUrl);
@@ -35,7 +35,7 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
     const data = await response.json();
 
     if (!data.length) {
-      return throwServerError(API_STATUS_CODES.STATUS_402, res);
+      return throwServerError(API_STATUS_CODES.ERROR_NO_DATA_WEGWIJS, res);
     }
     // We got a match on the KBO, getting the associated OVO back
     const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
@@ -65,9 +65,9 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
       await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
     }
 
-    return throwServerError(API_STATUS_CODES.STATUS_200, res); // since we await, it should be 200
+    return throwServerError(API_STATUS_CODES.OK, res); // since we await, it should be 200
   } catch (e) {
-    return throwServerError(API_STATUS_CODES.STATUS_500, res, e);
+    return throwServerError(API_STATUS_CODES.CUSTOM_SERVER_ERROR, res, e);
   }
 });
 
@@ -121,20 +121,19 @@ function getKboFields(data) {
 
   //currently no commercial name available
   return {
-    changeTime: changeTime ?? "",
-    commercialName: "",
-    shortName: shortName ?? organisationName,
-    ovoNumber: ovoNumber ?? "",
-    kboNumber: kboNumber ?? "",
-    formalName: formalName ?? "",
-    startDate: startDate ?? "",
+    changeTime: changeTime,
+    shortName: shortName,
+    ovoNumber: ovoNumber,
+    kboNumber: kboNumber,
+    formalName: formalName,
+    startDate: startDate,
     activeState: activeState,
-    rechtsvorm: rechtsvorm ?? "",
-    email: email ?? "",
-    phone: phone ?? "",
-    website: website ?? "",
-    formattedAddress: formattedAddress ?? "",
-    adressComponent: adressComponent ?? "",
+    rechtsvorm: rechtsvorm,
+    email: email,
+    phone: phone,
+    website: website,
+    formattedAddress: formattedAddress,
+    adressComponent: adressComponent,
   };
 }
 
