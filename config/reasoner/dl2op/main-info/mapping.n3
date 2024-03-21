@@ -189,7 +189,7 @@ PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 <= 
 {
   ( ?date 1 10 ) string:substring ?dateSolo .
-  (?dateSolo "T00:00:00") string:concatenation ?datePlusTime.
+  (?dateSolo "T02:00:00") string:concatenation ?datePlusTime.
   (?datePlusTime xsd:dateTime) log:dtlit ?dateTime .
 }.
 
