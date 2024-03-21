@@ -66,32 +66,82 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 # Test
 # ex:s <http://data.vlaanderen.be/ns/mandaat#start> "2019-01-01T19:32:52+00:00"^^xsd:dateTime.
 {
-  ?s mandaat:start ?startDateTime.
+  ?s mandaat:bindingeinde ?eindeDate.
   # use backward arrow rule defined below
-  ?startDateTime :dateFromDateTime ?startDate.
+  ?eindeDate :dateTimeFromDate ?eindeDateTime.
   {
-    ?s mandaat:start ?startDateTime
+    ?s mandaat:bindingEinde ?eindeDate
   } e:becomes {
-    ?s mandaat:start ?startDate
+    ?s mandaat:bindingEinde ?eindeDateTime
   }.
 } => {
-  ?s mandaat:start ?startDate
+  ?s mandaat:bindingEinde ?eindeDateTime
 }.
 
-# ex:s <http://data.vlaanderen.be/ns/mandaat#einde> "2019-02-01T10:32:52+00:00"^^xsd:dateTime.
 {
-  ?s mandaat:einde ?eindeDateTime.
+  ?s mandaat:start ?eindeDate.
   # use backward arrow rule defined below
-  ?eindeDateTime :dateFromDateTime ?eindeDate.
+  ?eindeDate :dateTimeFromDate ?eindeDateTime.
   {
-    ?s mandaat:einde ?eindeDateTime
+    ?s mandaat:start ?eindeDate
   } e:becomes {
-    ?s mandaat:einde ?eindeDate
+    ?s mandaat:start ?eindeDateTime
   }.
 } => {
-  ?s mandaat:einde ?eindeDate
+  ?s mandaat:start ?eindeDateTime
 }.
 
+{
+  ?s mandaat:einde ?eindeDate.
+  # use backward arrow rule defined below
+  ?eindeDate :dateTimeFromDate ?eindeDateTime.
+  {
+    ?s mandaat:einde ?eindeDate
+  } e:becomes {
+    ?s mandaat:einde ?eindeDateTime
+  }.
+} => {
+  ?s mandaat:einde ?eindeDateTime
+}.
+
+{
+  ?s mandaat:bindingstart ?startDate.
+  # use backward arrow rule defined below
+  ?startDate :dateTimeFromDate ?startDateTime.
+  {
+    ?s mandaat:bindingStart ?startDate
+  } e:becomes {
+    ?s mandaat:bindingStart ?startDateTime
+  }.
+} => {
+  ?s mandaat:bindingStart ?startDateTime
+}.
+
+{
+  ?s ch:startdatum ?startDate.
+  # use backward arrow rule defined below
+  ?startDate :dateTimeFromDate ?startDateTime.
+  {
+    ?s ch:startdatum ?startDate
+  } e:becomes {
+    ?s ch:startdatum ?startDateTime
+  }.
+} => {
+  ?s ch:startdatum ?startDateTime
+}.
+
+{
+  ?s ch:eindedatum ?endDate.
+  # use backward arrow rule defined below
+  ?endDate :dateTimeFromDate ?endDateTime.
+  {
+    ?s ch:eindedatum ?endDate
+  } e:becomes {
+    ?s ch:eindedatum ?endDateTime
+  }.
+} => {
+  ?s ch:eindedatum ?endDateTime
+}.
 
 # Backward arrow rule is like a function call.
 # Removes time info in the returned date
@@ -104,15 +154,14 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 # So, the following rule adds 2 hours to the datetime, and then takes the date part of the UTC date time
 # to come to the date that the DL user selected (in CE(S)T)
 {
-   ?dateTime :dateFromDateTime ?date
-} <= {
-  (?dateTimeLiteral xsd:dateTime) log:dtlit ?dateTime.
-  (?dateTime "PT2H"^^xsd:dayTimeDuration) func:add-dayTimeDuration-to-dateTime ?localDateTime.
-  (?localDateTimeLiteral xsd:dateTime) log:dtlit ?localDateTime.
-  (?localDateTimeLiteral 0 11) func:substring ?dateLiteral.
-  (?dateLiteral xsd:date) log:dtlit ?date.
+   ?date :dateTimeFromDate ?dateTime
+} 
+<= 
+{
+  ( ?date 1 10 ) string:substring ?dateSolo .
+  (?dateSolo "T00:00:00") string:concatenation ?datePlusTime.
+  (?datePlusTime xsd:dateTime) log:dtlit ?dateTime .
 }.
-
 
 # ex:orgA besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>.
 {

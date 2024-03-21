@@ -71,30 +71,41 @@ PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 # Test
 # ex:s <http://data.vlaanderen.be/ns/mandaat#einde> "2019-02-01T10:32:52+00:00"^^xsd:dateTime.
 {
-  ?s mandaat:bindingeinde ?eindeDate.
+  ?s mandaat:bindingEinde ?eindeDate.
   # use backward arrow rule defined below
   ?eindeDate :dateTimeFromDate ?eindeDateTime.
   {
-    ?s mandaat:bindingeinde ?eindeDate
+    ?s mandaat:bindingEinde ?eindeDate
   } e:becomes {
-    ?s mandaat:bindingeinde ?eindeDateTime
+    ?s mandaat:bindingEinde ?eindeDateTime
   }.
 } => {
-  ?s mandaat:bindingeinde ?eindeDateTime
+  ?s mandaat:bindingEinde ?eindeDateTime
+}.
+{
+  ?s mandaat:bindingEinde ?eindeDate.
+  # use backward arrow rule defined below
+  ?eindeDate :dateTimeFromDate ?eindeDateTime.
+  {
+    ?s mandaat:bindingEinde ?eindeDate
+  } e:becomes {
+    ?s mandaat:bindingEinde ?eindeDateTime
+  }.
+} => {
+  ?s mandaat:bindingEinde ?eindeDateTime
 }.
 
-
 {
-  ?s mandaat:bindingstart ?startDate.
+  ?s mandaat:bindingStart ?startDate.
   # use backward arrow rule defined below
   ?startDate :dateTimeFromDate ?startDateTime.
   {
-    ?s mandaat:bindingstart ?startDate
+    ?s mandaat:bindingStart ?startDate
   } e:becomes {
-    ?s mandaat:bindingstart ?startDateTime
+    ?s mandaat:bindingStart ?startDateTime
   }.
 } => {
-  ?s mandaat:bindingstart ?startDateTime
+  ?s mandaat:bindingStart ?startDateTime
 }.
 {
   ?s ch:startdatum ?startDate.
@@ -107,6 +118,32 @@ PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
   }.
 } => {
   ?s ch:startdatum ?startDateTime
+}.
+
+{
+  ?s mandaat:start ?eindeDate.
+  # use backward arrow rule defined below
+  ?eindeDate :dateTimeFromDate ?eindeDateTime.
+  {
+    ?s mandaat:start ?eindeDate
+  } e:becomes {
+    ?s mandaat:start ?eindeDateTime
+  }.
+} => {
+  ?s mandaat:start ?eindeDateTime
+}.
+
+{
+  ?s mandaat:einde ?eindeDate.
+  # use backward arrow rule defined below
+  ?eindeDate :dateTimeFromDate ?eindeDateTime.
+  {
+    ?s mandaat:einde ?eindeDate
+  } e:becomes {
+    ?s mandaat:einde ?eindeDateTime
+  }.
+} => {
+  ?s mandaat:einde ?eindeDateTime
 }.
 
 {
