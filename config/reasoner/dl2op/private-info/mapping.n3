@@ -66,7 +66,20 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 # Test
 # ex:s <http://data.vlaanderen.be/ns/mandaat#start> "2019-01-01T19:32:52+00:00"^^xsd:dateTime.
 {
-  ?s mandaat:bindingeinde ?eindeDate.
+  ?s mandaat:bindingStart ?startDate.
+  # use backward arrow rule defined below
+  ?startDate :dateTimeFromDate ?startDateTime.
+  {
+    ?s mandaat:bindingStart ?startDate
+  } e:becomes {
+    ?s mandaat:bindingStart ?startDateTime
+  }.
+} => {
+  ?s mandaat:bindingStart ?startDateTime
+}.
+
+{
+  ?s mandaat:bindingEinde ?eindeDate.
   # use backward arrow rule defined below
   ?eindeDate :dateTimeFromDate ?eindeDateTime.
   {
@@ -79,16 +92,16 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 }.
 
 {
-  ?s mandaat:start ?eindeDate.
+  ?s mandaat:start ?startDate.
   # use backward arrow rule defined below
-  ?eindeDate :dateTimeFromDate ?eindeDateTime.
+  ?startDate :dateTimeFromDate ?startDateTime.
   {
-    ?s mandaat:start ?eindeDate
+    ?s mandaat:start ?startDate
   } e:becomes {
-    ?s mandaat:start ?eindeDateTime
+    ?s mandaat:start ?startDateTime
   }.
 } => {
-  ?s mandaat:start ?eindeDateTime
+  ?s mandaat:start ?startDateTime
 }.
 
 {
@@ -102,19 +115,6 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
   }.
 } => {
   ?s mandaat:einde ?eindeDateTime
-}.
-
-{
-  ?s mandaat:bindingstart ?startDate.
-  # use backward arrow rule defined below
-  ?startDate :dateTimeFromDate ?startDateTime.
-  {
-    ?s mandaat:bindingStart ?startDate
-  } e:becomes {
-    ?s mandaat:bindingStart ?startDateTime
-  }.
-} => {
-  ?s mandaat:bindingStart ?startDateTime
 }.
 
 {
@@ -155,8 +155,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 # to come to the date that the DL user selected (in CE(S)T)
 {
    ?date :dateTimeFromDate ?dateTime
-} 
-<= 
+}
+<=
 {
   ( ?date 1 10 ) string:substring ?dateSolo .
   (?dateSolo "T02:00:00") string:concatenation ?datePlusTime.

@@ -82,18 +82,6 @@ PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 } => {
   ?s mandaat:bindingEinde ?eindeDateTime
 }.
-{
-  ?s mandaat:bindingEinde ?eindeDate.
-  # use backward arrow rule defined below
-  ?eindeDate :dateTimeFromDate ?eindeDateTime.
-  {
-    ?s mandaat:bindingEinde ?eindeDate
-  } e:becomes {
-    ?s mandaat:bindingEinde ?eindeDateTime
-  }.
-} => {
-  ?s mandaat:bindingEinde ?eindeDateTime
-}.
 
 {
   ?s mandaat:bindingStart ?startDate.
@@ -121,16 +109,16 @@ PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
 }.
 
 {
-  ?s mandaat:start ?eindeDate.
+  ?s mandaat:start ?startDate.
   # use backward arrow rule defined below
-  ?eindeDate :dateTimeFromDate ?eindeDateTime.
+  ?startDate :dateTimeFromDate ?startDateTime.
   {
-    ?s mandaat:start ?eindeDate
+    ?s mandaat:start ?startDate
   } e:becomes {
-    ?s mandaat:start ?eindeDateTime
+    ?s mandaat:start ?startDateTime
   }.
 } => {
-  ?s mandaat:start ?eindeDateTime
+  ?s mandaat:start ?startDateTime
 }.
 
 {
