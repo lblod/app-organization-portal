@@ -1,5 +1,7 @@
 {
+  "conceptScheme": "http://lblod.data.gift/concept-schemes/0d101f02-609d-4cde-bb07-639d874470c4",
   "export": [
+
     {
       "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
       "strictTypeExport": "true",
@@ -13,8 +15,6 @@
         "http://www.w3.org/2004/02/skos/core#altLabel",
         "http://www.w3.org/ns/adms#identifier",
         "http://www.w3.org/ns/regorg#orgStatus",
-        "http://www.w3.org/ns/org#hasPrimarySite",
-        "http://www.w3.org/ns/org#hasSite",
         "http://www.w3.org/ns/org#changedBy",
         "http://www.w3.org/ns/org#resultedFrom",
         "http://www.w3.org/ns/org#hasPost",
@@ -40,8 +40,6 @@
         "http://www.w3.org/2004/02/skos/core#altLabel",
         "http://www.w3.org/ns/adms#identifier",
         "http://www.w3.org/ns/regorg#orgStatus",
-        "http://www.w3.org/ns/org#hasPrimarySite",
-        "http://www.w3.org/ns/org#hasSite",
         "http://www.w3.org/ns/org#changedBy",
         "http://www.w3.org/ns/org#resultedFrom",
         "http://www.w3.org/ns/org#hasPost",
@@ -75,8 +73,6 @@
         "http://www.w3.org/ns/org#changedBy",
         "http://www.w3.org/ns/org#classification",
         "http://www.w3.org/ns/org#hasPost",
-        "http://www.w3.org/ns/org#hasPrimarySite",
-        "http://www.w3.org/ns/org#hasSite",
         "http://www.w3.org/ns/org#hasSubOrganization",
         "http://www.w3.org/ns/org#linkedTo",
         "http://www.w3.org/ns/org#resultedFrom",
@@ -122,59 +118,6 @@
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/ns/org#role",
         "http://data.lblod.info/vocabularies/erediensten/functie"
-      ]
-    },
-    {
-      "type": "http://www.w3.org/ns/org#Site",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/shared",
-        "http://mu.semte.ch/graphs/worship-service",
-        "http://mu.semte.ch/graphs/administrative-unit"
-      ],
-      "properties": [
-        "http://mu.semte.ch/vocabularies/core/uuid",
-        "http://www.w3.org/ns/org#siteAddress",
-        "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-        "http://data.lblod.info/vocabularies/erediensten/vestigingstype"
-      ]
-    },
-    {
-      "type": "http://www.w3.org/ns/locn#Address",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/shared",
-        "http://mu.semte.ch/graphs/worship-service",
-        "http://mu.semte.ch/graphs/administrative-unit"
-      ],
-      "properties": [
-        "http://mu.semte.ch/vocabularies/core/uuid",
-        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
-        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer",
-        "http://www.w3.org/ns/locn#thoroughfare",
-        "http://www.w3.org/ns/locn#postCode",
-        "https://data.vlaanderen.be/ns/adres#gemeentenaam",
-        "http://www.w3.org/ns/locn#adminUnitL2",
-        "https://data.vlaanderen.be/ns/adres#land",
-        "http://www.w3.org/ns/locn#fullAddress",
-        "https://data.vlaanderen.be/ns/adres#verwijstNaar",
-        "http://purl.org/dc/terms/source"
-      ]
-    },
-    {
-      "type": "http://schema.org/ContactPoint",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/shared",
-        "http://mu.semte.ch/graphs/worship-service",
-        "http://mu.semte.ch/graphs/administrative-unit"
-      ],
-      "properties": [
-        "http://mu.semte.ch/vocabularies/core/uuid",
-        "http://www.w3.org/ns/locn#address",
-        "http://xmlns.com/foaf/0.1/page",
-        "http://schema.org/faxNumber",
-        "http://schema.org/contactType",
-        "http://xmlns.com/foaf/0.1/page",
-        "http://schema.org/email",
-        "http://schema.org/telephone"
       ]
     },
     {
@@ -345,6 +288,27 @@
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/ns/org#role",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/2004/02/skos/core#Concept",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#role",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#notation",
+        "https://schema.org/startDate",
+        "https://schema.org/endDate",
+        "http://www.w3.org/2004/02/skos/core#broader",
+        "http://www.w3.org/2004/02/skos/core#exactMatch",
+        "http://www.w3.org/2004/02/skos/core#narrower",
+        "http://www.w3.org/2004/02/skos/core#narrowMatch"
       ]
     }
   ]
