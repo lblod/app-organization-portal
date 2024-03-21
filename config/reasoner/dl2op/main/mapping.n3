@@ -67,80 +67,101 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 }.
 
 # Test
-# ex:s <http://data.vlaanderen.be/ns/mandaat#start> "2019-01-01T19:32:52+00:00"^^xsd:dateTime.
-{
-  ?s mandaat:start ?startDateTime.
-  # use backward arrow rule defined below
-  ?startDateTime :dateFromDateTime ?startDate.
-  {
-    ?s mandaat:start ?startDateTime
-  } e:becomes {
-    ?s mandaat:start ?startDate
-  }.
-} => {
-  ?s mandaat:start ?startDate
-}.
-
 # ex:s <http://data.vlaanderen.be/ns/mandaat#einde> "2019-02-01T10:32:52+00:00"^^xsd:dateTime.
 {
-  ?s mandaat:einde ?eindeDateTime.
+  ?s mandaat:bindingEinde ?eindeDate.
   # use backward arrow rule defined below
-  ?eindeDateTime :dateFromDateTime ?eindeDate.
+  ?eindeDate :dateTimeFromDate ?eindeDateTime.
   {
-    ?s mandaat:einde ?eindeDateTime
+    ?s mandaat:bindingEinde ?eindeDate
   } e:becomes {
+    ?s mandaat:bindingEinde ?eindeDateTime
+  }.
+} => {
+  ?s mandaat:bindingEinde ?eindeDateTime
+}.
+
+{
+  ?s mandaat:start ?startDate.
+  # use backward arrow rule defined below
+  ?startDate :dateTimeFromDate ?startDateTime.
+  {
+    ?s mandaat:start ?startDate
+  } e:becomes {
+    ?s mandaat:start ?startDateTime
+  }.
+} => {
+  ?s mandaat:start ?startDateTime
+}.
+
+{
+  ?s mandaat:einde ?eindeDate.
+  # use backward arrow rule defined below
+  ?eindeDate :dateTimeFromDate ?eindeDateTime.
+  {
     ?s mandaat:einde ?eindeDate
+  } e:becomes {
+    ?s mandaat:einde ?eindeDateTime
   }.
 } => {
-  ?s mandaat:einde ?eindeDate
+  ?s mandaat:einde ?eindeDateTime
 }.
 
 {
-  ?s mandaat:bindingStart ?bindingStartDateTime.
+  ?s mandaat:bindingStart ?startDate.
   # use backward arrow rule defined below
-  ?bindingStartDateTime :dateFromDateTime ?bindingStartDate.
+  ?startDate :dateTimeFromDate ?startDateTime.
   {
-    ?s mandaat:bindingStart ?bindingStartDateTime
+    ?s mandaat:bindingStart ?startDate
   } e:becomes {
-    ?s mandaat:bindingStart ?bindingStartDate
+    ?s mandaat:bindingStart ?startDateTime
   }.
 } => {
-  ?s mandaat:bindingStart ?bindingStartDate
+  ?s mandaat:bindingStart ?startDateTime
 }.
 
 {
-  ?s mandaat:bindingEinde ?bindingEindeDateTime.
+  ?s ch:startdatum ?startDate.
   # use backward arrow rule defined below
-  ?bindingEindeDateTime :dateFromDateTime ?bindingEindeDate.
+  ?startDate :dateTimeFromDate ?startDateTime.
   {
-    ?s mandaat:bindingEinde ?bindingEindeDateTime
+    ?s ch:startdatum ?startDate
   } e:becomes {
-    ?s mandaat:bindingEinde ?bindingEindeDate
+    ?s ch:startdatum ?startDateTime
   }.
 } => {
-  ?s mandaat:bindingEinde ?bindingEindeDate
+  ?s ch:startdatum ?startDateTime
 }.
+
+{
+  ?s ch:eindedatum ?endDate.
+  # use backward arrow rule defined below
+  ?endDate :dateTimeFromDate ?endDateTime.
+  {
+    ?s ch:eindedatum ?endDate
+  } e:becomes {
+    ?s ch:eindedatum ?endDateTime
+  }.
+} => {
+  ?s ch:eindedatum ?endDateTime
+}.
+
 
 # Backward arrow rule is like a function call.
-# Removes time info in the returned date
-# The user in DL selects a date via the UI.
-# These dates are persisted as midnight dateTimes in UTC.
-# Meaning that 1st of July is stored as
-# "2022-06-30T22:00:00Z"^^xsd:dateTime
-# and 1 December
-# "2022-11-30T23:00:00Z"^^xsd:dateTime
-# So, the following rule adds 2 hours to the datetime, and then takes the date part of the UTC date time
-# to come to the date that the DL user selected (in CE(S)T)
+# Removes the timezone indicator "Z" from incoming datetimes
+# To make sure all datetimes have the same convention we now save them as
+# datetime without the timezone indicator
+# We use "T02:00:00" as time indicator to work around a virtuoso bug that
+# results in datetimes being converted to a date when using "T00:00:00"
 {
-   ?dateTime :dateFromDateTime ?date
-} <= {
-  (?dateTimeLiteral xsd:dateTime) log:dtlit ?dateTime.
-  (?dateTime "PT2H"^^xsd:dayTimeDuration) func:add-dayTimeDuration-to-dateTime ?localDateTime.
-  (?localDateTimeLiteral xsd:dateTime) log:dtlit ?localDateTime.
-  (?localDateTimeLiteral 0 11) func:substring ?dateLiteral.
-  (?dateLiteral xsd:date) log:dtlit ?date.
+   ?date :dateTimeFromDate ?dateTime
+} 
+<= 
+{
+  ( ?date 1 10 ) string:substring ?dateSolo .
+  (?dateSolo "T02:00:00") string:concatenation ?datePlusTime.
+  (?datePlusTime xsd:dateTime) log:dtlit ?dateTime .
 }.
-
 
 # ex:orgA besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>.
 {
