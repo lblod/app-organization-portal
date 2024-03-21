@@ -9,7 +9,7 @@ export const API_STATUS_CODES = {
     },
     STATUS_NO_DATA_OP:{
         STATUS: "no kbo number found in OP",
-        CODE: 500,
+        CODE: 400,
     }, 
     CUSTOM_SERVER_ERROR:{
         STATUS: '',
