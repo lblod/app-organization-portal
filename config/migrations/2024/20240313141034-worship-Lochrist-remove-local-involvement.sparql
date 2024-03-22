@@ -1,0 +1,18 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?localInvolvement ?p1 ?o .
+    ?s ?p2 ?localInvolvement .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?service core:uuid "d36c339e23c9d4382b882d00e2ad9235" .
+    ?localInvolvement org:organization ?service ;
+      core:uuid "b76a291065c633ada0391f5e99661210" .
+
+    ?localInvolvement ?p1 ?o .
+    ?s ?p2 ?localInvolvement .
+  }
+}
