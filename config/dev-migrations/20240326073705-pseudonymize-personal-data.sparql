@@ -1,0 +1,32 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+DELETE {
+  GRAPH ?g {
+    ?person foaf:familyName ?fn .
+    ?person foaf:givenName ?gn .
+  }
+} INSERT {
+  GRAPH ?g {
+    ?person foaf:givenName ?gn_s .
+    ?person foaf:familyName ?fn_s .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://redpencil.data.gift/id/deltas/producer/organizations>
+  }
+
+  GRAPH ?g {
+    BIND("REPLACE_ME_WITH_A_RANDOM_STRING" AS ?salt) .
+    ?person a person:Person .
+    OPTIONAL {
+      ?person foaf:givenName ?gn .
+      BIND(SHA256(CONCAT(?salt, ?gn)) AS ?gn_s) .
+    }
+    OPTIONAL {
+      ?person foaf:familyName ?fn .
+      BIND(SHA256(CONCAT(?salt, ?fn)) AS ?fn_s) .
+    }
+  }
+}
