@@ -54,7 +54,7 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
       );
 
     }
-    await healAbbWithWegWijsData();
+    
     if (isUpdateNeeded(kboObject, kboIdentifiers)) {
       await updateKboOrg(kboObject, kboIdentifiers);
     }
