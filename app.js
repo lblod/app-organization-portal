@@ -7,7 +7,7 @@ import {
   updateOvoNumberAndUri,
   createNewKboOrg,
   linkAbbOrgToKboOrg,
-  getKboOrgnizationInfo,
+  getKboOrganizationInfo,
   updateKboOrg,
   getAllAbbKboOrganizations,
 } from "./lib/queries";
@@ -42,7 +42,7 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
     // We got a match on the KBO, getting the associated OVO back
     const wegwijsInfo = data[0]; // Wegwijs should only have only one entry per KBO
     const kboObject = getKboFields(wegwijsInfo);
-    const kboIdentifiers = await getKboOrgnizationInfo(
+    const kboIdentifiers = await getKboOrganizationInfo(
       abbOrganizationInfo.adminUnit
     );
 
@@ -52,8 +52,9 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
         abbOrganizationInfo.kboId,
         abbOrganizationInfo.adminUnit
       );
-    }
 
+    }
+    await healAbbWithWegWijsData();
     if (isUpdateNeeded(kboObject, kboIdentifiers)) {
       await updateKboOrg(kboObject, kboIdentifiers);
     }
@@ -71,7 +72,7 @@ app.post("/sync-kbo-data/:kboStructuredIdUuid", async function (req, res) {
       }
       await updateOvoNumberAndUri(ovoStructuredIdUri, wegwijsOvo);
     }
-
+     
     return setServerStatus(API_STATUS_CODES.OK, res); // since we await, it should be 200
   } catch (e) {
     return setServerStatus(API_STATUS_CODES.CUSTOM_SERVER_ERROR, res, e);
@@ -217,7 +218,7 @@ async function healAbbWithWegWijsData() {
         }
 
         if (isUpdateNeeded(wegwijsKboOrg, kboIdentifierOP)) {
-          const kboIdentifiers = await getKboOrgnizationInfo(
+          const kboIdentifiers = await getKboOrganizationInfo(
             kboIdentifierOP.abbOrg
           );
           await updateKboOrg(wegwijsKboOrg, kboIdentifiers);
