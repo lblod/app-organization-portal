@@ -77,7 +77,7 @@ defmodule Acl.UserGroups.Config do
     "http://www.w3.org/ns/org#Post",
     "http://www.w3.org/ns/org#ChangeEvent",
     "http://data.lblod.info/vocabularies/contacthub/AgentInPositie",
-    "http://mu.semte.ch/vocabularies/ext/KboEenheid",
+    "http://mu.semte.ch/vocabularies/ext/KboOrganisatie",
   ]
 
   @shared_protected_type [

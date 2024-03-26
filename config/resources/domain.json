@@ -507,6 +507,12 @@
           "target": "organizations",
           "cardinality": "many",
           "inverse": true
+        },
+        "kbo-organization": {
+          "predicate": "owl:sameAs",
+          "target": "kbo-organizations",
+          "cardinality": "one",
+          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/organisaties/"
@@ -547,12 +553,6 @@
           "predicate": "skos:exactMatch",
           "target": "concepts",
           "cardinality": "one"
-        },
-        "kbo-administrative-unit": {
-          "predicate": "owl:sameAs",
-          "target": "kbo-administrative-units",
-          "cardinality": "one",
-          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/bestuurseenheden/"
@@ -595,12 +595,6 @@
           "target": "local-involvements",
           "cardinality": "many",
           "inverse": true
-        },
-        "kbo-administrative-unit": {
-          "predicate": "owl:sameAs",
-          "target": "kbo-administrative-units",
-          "cardinality": "one",
-          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/eredienstBestuurseenheden/"
@@ -639,8 +633,8 @@
       ],
       "new-resource-base": "http://data.lblod.info/id/centraleBesturenVanDeEredienst/"
     },
-    "kbo-administrative-units": {
-      "class": "ext:KboEenheid",
+    "kbo-organizations": {
+      "class": "ext:KboOrganisatie",
       "super": [
         "organizations"
       ],
@@ -655,13 +649,13 @@
         }
       },
       "relationships": {
-          "administrative-unit": {
+          "organization": {
             "predicate": "owl:sameAs",
-            "target": "administrative-units",
+            "target": "organizations",
             "cardinality": "one"
           }
         },
-        "new-resource-base": "http://data.lblod.info/id/kboBestuurseenheden/"
+        "new-resource-base": "http://data.lblod.info/id/kboOrganisaties/"
     },
     "representative-bodies": {
       "class": "ere:RepresentatiefOrgaan",
@@ -683,12 +677,6 @@
           "predicate": "ere:behoort",
           "target": "minister-positions",
           "cardinality": "many",
-          "inverse": true
-        },
-        "kbo-administrative-unit": {
-          "predicate": "owl:sameAs",
-          "target": "kbo-administrative-units",
-          "cardinality": "one",
           "inverse": true
         }
       },

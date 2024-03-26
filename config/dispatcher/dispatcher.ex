@@ -219,8 +219,8 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/decision-activities/"
   end
 
-  match "/kbo-administrative-units/*path", %{ accept: [:any], layer: :api} do
-    Proxy.forward conn, path, "http://resource/kbo-administrative-units/"
+  match "/kbo-organizations/*path", %{ accept: [:any], layer: :api} do
+    Proxy.forward conn, path, "http://resource/kbo-organizations/"
   end
 
   ###############
