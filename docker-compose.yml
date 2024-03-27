@@ -299,7 +299,7 @@ services:
     restart: always
     logging: *default-logging
   kbo-data-sync:
-    image: lblod/sync-ovo-numbers-service:1.0.1
+    image: lblod/sync-ovo-numbers-service:1.0.2
     links:
       - db:database
     labels:
