@@ -116,8 +116,8 @@ const contextConfig = {
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
-          ${subject} ext:contextDataGoesInGraph ?graphOne.
-          ${subject} ext:contextDataGoesInGraph ?graphTwo.
+          ${subject} ext:goesInGraph ?graphOne.
+          ${subject} ext:goesInGraph ?graphTwo.
           ?site ?pSite ?oSite.
           ?contact ?pContact ?oContact.
           ?address ?pAddress ?oAddress.
@@ -162,8 +162,8 @@ const contextConfig = {
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
-          ${subject} ext:contextDataGoesInGraph ?graphOne.
-          ${subject} ext:contextDataGoesInGraph ?graphTwo.
+          ${subject} ext:goesInGraph ?graphOne.
+          ${subject} ext:goesInGraph ?graphTwo.
           ?site ?pSite ?oSite.
           ?contact ?pContact ?oContact.
           ?address ?pAddress ?oAddress.
