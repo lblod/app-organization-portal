@@ -298,6 +298,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  kbo-data-sync:
+    image: lblod/sync-ovo-numbers-service:1.0.2
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   sync-ovo-numbers:
     image: lblod/sync-ovo-numbers-service:0.1.0
     links:
@@ -305,7 +313,7 @@ services:
     labels:
       - "logging=true"
     restart: always
-    logging: *default-logging
+    logging: *default-logging  
 
   ################################################################################
   # DELTA GENERAL
