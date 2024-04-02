@@ -597,7 +597,7 @@ services:
   # LOKET WORSHIP SENSITIVE CONSUMERS
   ################################################################################
   worship-services-sensitive-consumer:
-    image: lblod/delta-consumer:0.0.17-rc.7
+    image: lblod/delta-consumer:0.0.24
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "worship-services-sensitive-consumer"
@@ -608,7 +608,8 @@ services:
       DCR_DISABLE_INITIAL_SYNC: "true"
       BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
       DCR_SYNC_FILES_PATH: "/sync/worship-services-sensitive/files"
-      BATCH_SIZE: 1000
+      BATCH_SIZE: 50
+      SLEEP_BETWEEN_BATCHES: 10
       DCR_KEEP_DELTA_FILES: "true"
       DCR_ENABLE_DELTA_CONTEXT: "true"
       DCR_LANDING_ZONE_DATABASE: "triplestore"
