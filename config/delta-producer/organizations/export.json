@@ -65,6 +65,7 @@
         "http://schema.org/email",
         "http://schema.org/faxNumber",
         "http://schema.org/telephone",
+        "http://xmlns.com/foaf/0.1/page",
         "http://www.w3.org/ns/locn#address"
       ]
     },
@@ -168,6 +169,40 @@
         "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
         "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
         "http://data.lblod.info/vocabularies/erediensten/typeEredienst"
+      ]
+    },
+    {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/administrative-unit"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur",
+        "http://data.lblod.info/vocabularies/erediensten/denominatie",
+        "http://data.lblod.info/vocabularies/erediensten/grensoverschrijdend",
+        "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+        "http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
+        "http://data.vlaanderen.be/ns/besluit#werkingsgebied",
+        "http://www.opengis.net/ont/geosparql#sfWithin",
+        "http://www.w3.org/2002/07/owl#sameAs",
+        "http://www.w3.org/2004/02/skos/core#altLabel",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/ns/adms#identifier",
+        "http://www.w3.org/ns/org#changedBy",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/ns/org#hasPost",
+        "http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#hasSubOrganization",
+        "http://www.w3.org/ns/org#linkedTo",
+        "http://www.w3.org/ns/org#resultedFrom",
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "https://data.lblod.info/vocabularies/generiek/geplandeEindDatum",
+        "http://www.w3.org/ns/org#purpose"
       ]
     },
     {
@@ -315,6 +350,18 @@
       ],
       "properties": [
         "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/prov#Location",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared"
+      ],
+      "properties": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://www.opengis.net/ont/geosparql#sfWithin",
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
+        "http://www.w3.org/2004/02/skos/core#exactMatch"
       ]
     },
     {
