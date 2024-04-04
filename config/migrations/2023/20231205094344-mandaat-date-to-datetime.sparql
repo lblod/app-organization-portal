@@ -1,0 +1,151 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#> 
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+DELETE {
+  GRAPH ?g {
+  ?s mandaat:start ?o .
+  }
+}
+INSERT {
+ GRAPH ?g {
+   ?s mandaat:start ?converteddate .
+ }
+}
+WHERE {
+  GRAPH ?g {
+    ?s mandaat:start ?o .
+  }
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+ }
+ BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
+}
+;
+DELETE {
+    GRAPH ?g {
+    ?s mandaat:einde ?o .
+    }
+  }
+  INSERT {
+   GRAPH ?g {
+     ?s mandaat:einde ?converteddate .
+   }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?s mandaat:einde ?o .
+    }
+    VALUES ?g {
+      <http://mu.semte.ch/graphs/worship-service>
+      <http://mu.semte.ch/graphs/administrative-unit>
+   }
+     BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
+  }
+;
+DELETE {
+    GRAPH ?g {
+    ?s mandaat:bindingStart ?o .
+    }
+  }
+  INSERT {
+   GRAPH ?g {
+     ?s mandaat:bindingStart ?converteddate .
+   }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?s mandaat:bindingStart ?o .
+    }
+    VALUES ?g {
+      <http://mu.semte.ch/graphs/worship-service>
+      <http://mu.semte.ch/graphs/administrative-unit>
+   }
+   BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
+  }
+;
+DELETE {
+    GRAPH ?g {
+    ?s mandaat:bindingEinde ?o .
+    }
+  }
+  INSERT {
+   GRAPH ?g {
+     ?s mandaat:bindingEinde ?converteddate .
+   }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?s mandaat:bindingEinde ?o .
+    }
+    VALUES ?g {
+      <http://mu.semte.ch/graphs/worship-service>
+      <http://mu.semte.ch/graphs/administrative-unit>
+   }
+   BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
+  }
+;
+DELETE {
+  GRAPH ?g {
+  ?s ch:startdatum ?o .
+  }
+}
+INSERT {
+ GRAPH ?g {
+   ?s ch:startdatum ?converteddate .
+ }
+}
+WHERE {
+  GRAPH ?g {
+    ?s ch:startdatum ?o .
+  }
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+ }
+ BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
+}
+;
+DELETE {
+    GRAPH ?g {
+    ?s ch:eindedatum ?o .
+    }
+  }
+  INSERT {
+   GRAPH ?g {
+     ?s ch:eindedatum ?converteddate .
+   }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?s ch:eindedatum ?o .
+    }
+    VALUES ?g {
+      <http://mu.semte.ch/graphs/worship-service>
+      <http://mu.semte.ch/graphs/administrative-unit>
+   }
+   BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
+  }
+;
+  DELETE {
+    GRAPH ?g {
+    ?s ere:geplandeEinddatumAanstelling ?o .
+    }
+  }
+  INSERT {
+   GRAPH ?g {
+     ?s ere:geplandeEinddatumAanstelling ?converteddate .
+   }
+  }
+  WHERE {
+    GRAPH ?g {
+      ?s ere:geplandeEinddatumAanstelling ?o .
+    }
+    VALUES ?g {
+      <http://mu.semte.ch/graphs/worship-service>
+      <http://mu.semte.ch/graphs/administrative-unit>
+   }
+   BIND(IF(strlen(str(?o)) = 10, strdt(concat(str(?o), 'T02:00:00'), xsd:dateTime), ?o) as ?converteddate).
+  }
+  ;

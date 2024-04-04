@@ -738,6 +738,8 @@
       ],
       "properties": {
         "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "legal_name": "http://www.w3.org/ns/regorg#legalName",
+        "alternative_name": "http://www.w3.org/2004/02/skos/core#altLabel",
         "classification_id": [
           "http://www.w3.org/ns/org#classification",
           "http://mu.semte.ch/vocabularies/core/uuid"
@@ -787,6 +789,24 @@
             "type": "text"
           },
           "name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "legal_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "alternative_name": {
             "type": "text",
             "fields": {
               "field": {

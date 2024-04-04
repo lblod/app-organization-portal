@@ -1,0 +1,26 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+
+
+DELETE{
+   GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s skos:prefLabel ?name ;
+       regorg:legalName ?legalName .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+   ?s skos:prefLabel "Boeddhistische Unie van België" ;
+       regorg:legalName "Boeddhistische Unie van België" .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a ere:RepresentatiefOrgaan ;
+        core:uuid "5871503aa86b44cd470f97228a2ce413" ;
+        skos:prefLabel ?name ;
+        regorg:legalName ?legalName .
+  }
+}
