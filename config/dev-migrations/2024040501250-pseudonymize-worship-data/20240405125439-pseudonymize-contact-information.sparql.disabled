@@ -1,0 +1,75 @@
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX schema: <http://schema.org/>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+DELETE {
+  GRAPH ?g {
+    ?cp schema:telephone ?phone.
+    ?cp schema:email ?mail.
+    ?address locn:fullAddress ?fa.
+    ?address adres:Adresvoorstelling.huisnummer ?huisnr.
+    ?address adres:Adresvoorstelling.busnummer ?busnr.
+    ?address locn:thoroughfare ?street.
+    ?address locn:postCode ?postCode.
+    ?address adres:gemeentenaam ?gemeente.
+  }
+} INSERT {
+  GRAPH ?g {
+    ?cp schema:telephone ?phone_s.
+    ?cp schema:email ?mail_s.
+    ?address locn:fullAddress ?fa_s.
+    ?address adres:Adresvoorstelling.huisnummer ?huisnr_s.
+    ?address adres:Adresvoorstelling.busnummer ?busnr_s.
+    ?address locn:thoroughfare ?street_s.
+    ?address locn:postCode ?postCode_s.
+    ?address adres:gemeentenaam ?gemeente_s.
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://redpencil.data.gift/id/deltas/producer/organizations>
+  }
+  GRAPH ?g {
+    BIND("36992688283619046033584918772233907389129310168255795778408747660169055441702" AS ?pepper) .
+    ?person a person:Person .
+    BIND(SHA256(CONCAT(?pepper, ?person)) AS ?salt) .
+
+    ?cp a <http://schema.org/ContactPoint> .
+    OPTIONAL {
+      ?cp schema:telephone ?phone.
+      BIND(SHA256(CONCAT(?salt, ?phone)) AS ?phone_s).
+    }
+    OPTIONAL {
+      ?cp schema:email ?mail.
+      BIND(CONCAT(SHA256(CONCAT(?salt, ?mail)), "@email.com") AS ?mail_s).
+    }
+    OPTIONAL {
+      ?cp locn:address ?address.
+      OPTIONAL {
+        ?address locn:fullAddress ?fa.
+        BIND(SHA256(CONCAT(?salt, ?fa)) AS ?fa_s).
+      }
+      OPTIONAL {
+        ?address adres:Adresvoorstelling.huisnummer ?huisnr.
+        BIND(SHA256(CONCAT(?salt, ?huisnr)) AS ?huisnr_s).
+      }
+      OPTIONAL {
+        ?address adres:Adresvoorstelling.busnummer ?busnr.
+        BIND(SHA256(CONCAT(?salt, ?busnr)) AS ?busnr_s).
+      }
+      OPTIONAL {
+        ?address locn:thoroughfare ?street.
+        BIND(SHA256(CONCAT(?salt, ?street)) AS ?street_s).
+      }
+      OPTIONAL {
+        ?address locn:postCode ?postCode.
+        BIND(SHA256(CONCAT(?salt, ?postCode)) AS ?postCode_s).
+      }
+      OPTIONAL {
+        ?address adres:gemeentenaam ?gemeente.
+        BIND(SHA256(CONCAT(?salt, ?gemeente)) AS ?gemeente_s).
+      }
+    }
+  }
+}
