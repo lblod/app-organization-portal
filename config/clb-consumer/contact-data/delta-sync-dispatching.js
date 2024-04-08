@@ -69,12 +69,15 @@ function separateBetweenTargetAndPublic(changes, context) {
     );
     if(graphTriple) {
       const graph = graphTriple.object.slice(1,-1); // We have to slice it to remove the "<" and ">"
-      if(!changesOnGraphs[graph]) {
-        changesOnGraphs[graph] = [`${change.subject} ${change.predicate} ${change.object}.`]
-      } else {
-        changesOnGraphs[graph].push(`${change.subject} ${change.predicate} ${change.object}.`)
-      }
+      if(!change.object === '') {
+        if(!changesOnGraphs[graph]) {
+          changesOnGraphs[graph] = [`${change.subject} ${change.predicate} ${change.object}.`]                                         
+        } else {
+          changesOnGraphs[graph].push(`${change.subject} ${change.predicate} ${change.object}.`)
+        }   
+      }                    
       for(let triple of otherContextTriples) {
+        if(triple.object === '') continue;                                     
         changesOnGraphs[graph].push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
       }
     }
