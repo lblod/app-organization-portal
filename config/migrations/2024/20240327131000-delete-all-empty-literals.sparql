@@ -1,0 +1,20 @@
+DELETE {
+  GRAPH ?g { 
+    ?s ?p ?o .
+  }
+}
+WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/public>
+    <http://mu.semte.ch/graphs/privacy-centric-graph>
+    <http://mu.semte.ch/graphs/worship-privacy-centric-graph>
+  }
+  graph ?g {
+    ?s ?p ?o
+
+    Filter(?o = " " || ?o = "")
+
+  }
+}
