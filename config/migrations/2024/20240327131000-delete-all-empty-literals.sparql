@@ -14,7 +14,7 @@ WHERE {
   graph ?g {
     ?s ?p ?o
 
-    Filter(?o = " " || ?o = "")
-
+    FILTER (isLiteral(?o))
+    FILTER regex(str(?o), "^\\s*$")
   }
 }
