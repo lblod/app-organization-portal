@@ -15,7 +15,8 @@ WHERE {
   GRAPH ?g {
     ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?type  ;
       <http://mu.semte.ch/vocabularies/core/uuid> ?uuid .
-
+      
+    FILTER (?type != <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>)
     FILTER NOT EXISTS {
       FILTER (?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>)
       FILTER (?p != <http://mu.semte.ch/vocabularies/core/uuid>)
