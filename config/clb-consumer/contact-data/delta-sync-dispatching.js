@@ -69,7 +69,7 @@ function separateBetweenTargetAndPublic(changes, context) {
     );
     if(graphTriple) {
       const graph = graphTriple.object.slice(1,-1); // We have to slice it to remove the "<" and ">"
-      if(!change.object === '') {
+      if(change.object !== '') {
         if(!changesOnGraphs[graph]) {
           changesOnGraphs[graph] = [`${change.subject} ${change.predicate} ${change.object}.`]                                         
         } else {
@@ -77,8 +77,12 @@ function separateBetweenTargetAndPublic(changes, context) {
         }   
       }                    
       for(let triple of otherContextTriples) {
-        if(triple.object === '') continue;                                     
-        changesOnGraphs[graph].push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
+        if(triple.object === '') continue;
+        if(!changesOnGraphs[graph]) {
+          changesOnGraphs[graph] = [`${triple.subject} ${triple.predicate} ${triple.object}.`]                                      
+        } else {
+          changesOnGraphs[graph].push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
+        }                                        
       }
     }
     const typeTriple = contextTriples.find(
