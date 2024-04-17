@@ -194,6 +194,11 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  dashboard:
+    image: lblod/frontend-dashboard:1.6.0
+    links:
+      - identifier:backend
+    restart: always
   uri-info:
     image: redpencil/mu-uri-info-service:0.2.1
     links:
