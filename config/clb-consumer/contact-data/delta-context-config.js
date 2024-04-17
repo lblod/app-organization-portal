@@ -130,6 +130,12 @@ const contextConfig = {
             BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphOne)
           }
           OPTIONAL {
+            GRAPH <http://mu.semte.ch/graphs/shared> {
+              ${subject} a ?type.
+            }
+            BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphOne)
+          }
+          OPTIONAL {
             GRAPH <http://mu.semte.ch/graphs/worship-service> {
               ${subject} a ?type.
             }
@@ -171,6 +177,12 @@ const contextConfig = {
         } WHERE {
           OPTIONAL {
             GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+              ${subject} a ?type.
+            }
+            BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphOne)
+          }
+          OPTIONAL {
+            GRAPH <http://mu.semte.ch/graphs/shared> {
               ${subject} a ?type.
             }
             BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphOne)
