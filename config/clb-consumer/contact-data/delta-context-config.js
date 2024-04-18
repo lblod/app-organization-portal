@@ -113,6 +113,7 @@ const contextConfig = {
       trigger: { // subjectType or predicateValue
         predicateValue: "org:hasSite"
       },
+      //We assume that only administrative units are in the shared graph of OP due to the need of sharing the prefLabel with worships services
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
@@ -165,6 +166,7 @@ const contextConfig = {
       trigger: { // subjectType or predicateValue
         predicateValue: "org:hasPrimarySite"
       },
+      //We assume that only administrative units are in the shared graph of OP due to the need of sharing the prefLabel with worships services
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
