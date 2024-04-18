@@ -113,6 +113,7 @@ const contextConfig = {
       trigger: { // subjectType or predicateValue
         predicateValue: "org:hasSite"
       },
+      //We assume that only administrative units are in the shared graph of OP due to the need of sharing the prefLabel with worships services
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
@@ -125,6 +126,12 @@ const contextConfig = {
         } WHERE {
           OPTIONAL {
             GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+              ${subject} a ?type.
+            }
+            BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphOne)
+          }
+          OPTIONAL {
+            GRAPH <http://mu.semte.ch/graphs/shared> {
               ${subject} a ?type.
             }
             BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphOne)
@@ -159,6 +166,7 @@ const contextConfig = {
       trigger: { // subjectType or predicateValue
         predicateValue: "org:hasPrimarySite"
       },
+      //We assume that only administrative units are in the shared graph of OP due to the need of sharing the prefLabel with worships services
       queryTemplate: (subject) => `
         ${PREFIXES}
         CONSTRUCT {
@@ -171,6 +179,12 @@ const contextConfig = {
         } WHERE {
           OPTIONAL {
             GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+              ${subject} a ?type.
+            }
+            BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphOne)
+          }
+          OPTIONAL {
+            GRAPH <http://mu.semte.ch/graphs/shared> {
               ${subject} a ?type.
             }
             BIND(<http://mu.semte.ch/graphs/administrative-unit> AS ?graphOne)
