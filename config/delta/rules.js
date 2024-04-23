@@ -92,7 +92,7 @@ export default [
     match: {
     },
     callback: {
-      url: 'http://delta-producer-pub-graph-maintainer-organizations/delta',
+      url: 'http://delta-producer-publication-graph-maintainer/organizations/delta',
       method: 'POST'
     },
     options: {
