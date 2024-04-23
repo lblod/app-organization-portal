@@ -91,7 +91,7 @@ async function insertIntoPublicGraph(lib, statements) {
   await batchedDbUpdate(
     lib.muAuthSudo.updateSudo,
     'http://mu.semte.ch/graphs/public',
-    statements,
+    Array.from(statements),
     {},
     process.env.MU_SPARQL_ENDPOINT,
     BATCH_SIZE,
@@ -108,7 +108,7 @@ async function insertIntoSpecificGraphs(lib, statementsWithGraphs) {
     await batchedDbUpdate(
       lib.muAuthSudo.updateSudo,
       graph,
-      statementsWithGraphs[graph],
+      Array.from(statementsWithGraphs[graph]),
       {},
       process.env.MU_SPARQL_ENDPOINT,
       BATCH_SIZE,
@@ -126,7 +126,7 @@ async function deleteFromPublicGraph(lib, statements) {
   await batchedDbUpdate(
     lib.muAuthSudo.updateSudo,
     'http://mu.semte.ch/graphs/public',
-    statements,
+    Array.from(statements),
     {},
     process.env.MU_SPARQL_ENDPOINT,
     BATCH_SIZE,
@@ -144,7 +144,7 @@ async function deleteFromSpecificGraphs(lib, statementsWithGraphs) {
     await batchedDbUpdate(
       lib.muAuthSudo.updateSudo,
       graph,
-      statementsWithGraphs[graph],
+      Array.from(statementsWithGraphs[graph]),
       {},
       process.env.MU_SPARQL_ENDPOINT,
       BATCH_SIZE,

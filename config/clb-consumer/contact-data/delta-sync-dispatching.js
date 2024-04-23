@@ -53,7 +53,7 @@ async function dispatch(lib, data) {
 }
 
 function separateBetweenTargetAndPublic(changes, context) {
-  const changesOnPublic = [];
+  const changesOnPublic = new Set();
   const changesOnGraphs = {};
   for(let change of changes) {
     const subject = change.subject;
@@ -71,18 +71,16 @@ function separateBetweenTargetAndPublic(changes, context) {
       const graph = graphTriple.object.slice(1,-1); // We have to slice it to remove the "<" and ">"
       if(change.object !== '') {
         if(!changesOnGraphs[graph]) {
-          changesOnGraphs[graph] = [`${change.subject} ${change.predicate} ${change.object}.`]                                         
-        } else {
-          changesOnGraphs[graph].push(`${change.subject} ${change.predicate} ${change.object}.`)
-        }   
+          changesOnGraphs[graph] = new Set();
+        }  
+        changesOnGraphs[graph].add(`${change.subject} ${change.predicate} ${change.object}.`)
       }                    
       for(let triple of otherContextTriples) {
         if(triple.object === '') continue;
         if(!changesOnGraphs[graph]) {
-          changesOnGraphs[graph] = [`${triple.subject} ${triple.predicate} ${triple.object}.`]                                      
-        } else {
-          changesOnGraphs[graph].push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
-        }                                        
+          changesOnGraphs[graph] = new Set();
+        }  
+        changesOnGraphs[graph].add(`${triple.subject} ${triple.predicate} ${triple.object}.`)                                       
       }
     }
     const typeTriple = contextTriples.find(
@@ -92,9 +90,9 @@ function separateBetweenTargetAndPublic(changes, context) {
     if(!typeTriple) continue;
     const type = typeTriple.object;
     if(publicTypes.includes(type)) {
-      changesOnPublic.push(`${change.subject} ${change.predicate} ${change.object}.`)
+      changesOnPublic.add(`${change.subject} ${change.predicate} ${change.object}.`)
       for(let triple of otherContextTriples) {
-        changesOnPublic.push(`${triple.subject} ${triple.predicate} ${triple.object}.`)
+        changesOnPublic.add(`${triple.subject} ${triple.predicate} ${triple.object}.`)
       }
     }
   }
