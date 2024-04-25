@@ -28,12 +28,6 @@ services:
       SPRING_SECURITY_CONFIG: "/config/security-dev.yml"
     restart: "no"
   deltanotifier:
-    environment:
-      DEBUG_DELTA_SEND: "true"
-      DEBUG_DELTA_NOT_SENDING_EMPTY: "true"
-      DEBUG_DELTA_MATCH: "true"
-      DEBUG_TRIPLE_MATCHES_SPEC: "true"
-      DEBUG_DELTA_FOLD: "true"
     restart: "no"
   mocklogin:
     image: lblod/mock-login-service:latest
@@ -58,16 +52,8 @@ services:
   uri-info:
     restart: "no"
   delta-producer-background-jobs-initiator:
-  # delta-producer-bg-jobs-initiator-organizations:
-    ports:
-      - 9999:80
     restart: "no"
   delta-producer-publication-graph-maintainer:
-    build: ../delta-producer-publication-graph-maintainer
-    environment:
-      NODE_ENV: "development"
-    ports:
-      - 9229:9229
     restart: "no"
   search:
     restart: "no"
@@ -84,30 +70,26 @@ services:
   delta-producer-dump-file-publisher:
     restart: "no"
   organizations-sync-with-sharepoint-jobs-initiator:
-    # entrypoint: ["echo", "service disabled"]
     restart: "no"
   organizations-sync-with-sharepoint:
-    # entrypoint: ["echo", "service disabled"]
     restart: "no"
   construct-administrative-unit-relationships:
     restart: "no"
-  # delta-producer-pub-graph-maintainer-worship-posts:
-  #   entrypoint: ["echo", "service disabled"]
-  #   restart: "no"
-  # delta-producer-pub-graph-maintainer-public:
-  #   entrypoint: ["echo", "service disabled"]
-  #   restart: "no"
+  delta-producer-bg-jobs-initiator-worship-posts:
+    restart: "no"
+  delta-producer-pub-graph-maintainer-worship-posts:
+    restart: "no"
+  delta-producer-bg-jobs-initiator-public:
+    restart: "no"
+  delta-producer-pub-graph-maintainer-public:
+    restart: "no"
   mandatarissen-consumer:
-    entrypoint: ["echo", "service disabled"]
     restart: "no"
   leidinggevenden-consumer:
-    entrypoint: ["echo", "service disabled"]
     restart: "no"
   worship-services-sensitive-consumer:
-    entrypoint: ["echo", "service disabled"]
     restart: "no"
   ldes-backend:
-    entrypoint: ["echo", "service disabled"]
     environment:
       BASE_URL: "http://localhost/ldes/"
   kbo-data-sync:
