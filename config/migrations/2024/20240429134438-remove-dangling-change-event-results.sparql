@@ -1,0 +1,35 @@
+# The change events related to organisation <http://data.lblod.info/id/besturenVanDeEredienst/a8d9f1a45c11c6761306bdf680349593>
+# contains some data errors:
+# - There is a change event result without any corresponding change event. This
+#   causes an error when visiting the change events page for this organisation.
+# - There are two identical change event results for the same change event. This
+#   causes the change event to be shown twice in the table. (Only on PROD)
+#
+# Note: may require restarting the cache before the changes are noticeable.
+
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+
+# Remove the dangling change event result
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/6346C0C38DE5818A7C9F40D8> ?p ?o .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/6346C0C38DE5818A7C9F40D8> ?p ?o .
+  }
+}
+
+# Remove one of the duplicate change event results for the change event
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/63C512F34E1F899807CFFB75> code:veranderingsgebeurtenisResultaat <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/63C512F74E1F899807CFFB77> .
+    <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/63C512F74E1F899807CFFB77> ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/63C512F34E1F899807CFFB75> code:veranderingsgebeurtenisResultaat <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/63C512F74E1F899807CFFB77> .
+    <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/63C512F74E1F899807CFFB77> ?p ?o .
+  }
+}
