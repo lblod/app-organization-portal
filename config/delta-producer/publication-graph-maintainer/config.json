@@ -1,0 +1,25 @@
+{
+    "organizations": {
+        "deltaInterval": 10000,
+        "deltaPath": "/organizations/delta",
+        "errorCreatorUri": "http://lblod.data.gift/services/delta-producer-publication-graph-maintainer-organizations",
+        "exportConfigPath": "/config/organizations/export.json",
+        "filesPath": "/organizations/files",
+        "healingJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations",
+        "initialPublicationGraphSyncJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations",
+        "jobsGraph": "http://mu.semte.ch/graphs/jobs",
+        "publicationGraph": "http://redpencil.data.gift/id/deltas/producer/organizations",
+        "publisherUri": "http://data.lblod.info/services/delta-production-json-diff-file-manager/organizations",
+        "queuePollInterval": 3000,
+        "relativeFilePath": "/deltas/organizations",
+        "serveDeltaFiles": true,
+        "skipMuAuthInitialSync": true,
+        "skipMuAuthHealing": true,
+        "useFileDiff": true,
+        "healingInitialBatchSizeInsert": 1000,
+        "useVirtuosoForExpensiveSelects": true,
+        "errorGraph": "http://mu.semte.ch/graphs/jobs",
+        "loginPath": "/organizations/login",
+        "logOutgoingDelta": true
+    }
+}

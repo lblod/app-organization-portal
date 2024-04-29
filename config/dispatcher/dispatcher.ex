@@ -361,7 +361,7 @@ defmodule Dispatcher do
   #################################################################
 
   get "/sync/organizations/files/*path" do
-    Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-organizations/files/"
+    Proxy.forward conn, path, "http://delta-producer-publication-graph-maintainer/files/"
   end
 
   #################################################################
