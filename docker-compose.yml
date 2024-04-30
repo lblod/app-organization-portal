@@ -140,6 +140,14 @@ services:
     logging: *default-logging
     links:
       - db:database
+  dashboard-login:
+    image: semtech/mu-login-service:3.0.0
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging    
   accountdetail:
     image: lblod/account-detail-service:0.1.0
     labels:
@@ -193,20 +201,14 @@ services:
     labels:
       - "logging=true"
     restart: always
-    logging: *default-logging
-  dashboard:
+  frontend-dashboard:
     image: lblod/frontend-dashboard:1.6.0
     links:
       - identifier:backend
     restart: always
-  uri-info:
-    image: redpencil/mu-uri-info-service:0.2.1
-    links:
-      - db:database
+    logging: *default-logging
     labels:
       - "logging=true"
-    restart: always
-    logging: *default-logging
   file:
     image: semtech/mu-file-service:3.2.0
     volumes:

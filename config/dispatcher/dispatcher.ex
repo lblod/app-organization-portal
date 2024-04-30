@@ -432,5 +432,31 @@ defmodule Dispatcher do
     send_resp( conn, 404, "{\"error\": {\"code\": 404}")
   end
 
+  #################################################################
+  # jobs
+  #################################################################
+  match "/jobs/*path", @json do
+    forward conn, path, "http://cache/jobs/"
+  end
+
+  match "/tasks/*path", @json do
+    forward conn, path, "http://cache/tasks/"
+  end
+
+  match "/data-containers/*path", @json do
+    forward conn, path, "http://cache/data-containers/"
+  end
+
+  match "/job-errors/*path", @json  do
+    forward conn, path, "http://cache/job-errors/"
+  end
+
+  #################################################################
+  # Reports
+  #################################################################
+  match "/reports/*path", @json do
+    forward conn, path, "http://resource/reports/"
+  end
+
 
 end

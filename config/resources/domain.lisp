@@ -20,3 +20,7 @@
 (read-domain-file "files-domain.lisp")
 (read-domain-file "dcat.json")
 (read-domain-file "privacy-centric-service.json")
+(read-domain-file "master-search-query.lisp")
+(read-domain-file "master-search-query.lisp")
+(read-domain-file "master-job-domain.lisp")
+(read-domain-file "master-reports-domain.lisp")

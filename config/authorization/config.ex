@@ -104,6 +104,19 @@ defmodule Acl.UserGroups.Config do
     }"
   end
 
+  defp can_access_dashboard() do
+    %AccessByQuery{
+      vars: [],
+      query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+        PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+        SELECT DISTINCT ?account WHERE {
+          <SESSION_ID> <http://mu.semte.ch/vocabularies/session/account> ?account.
+          ?account <http://mu.semte.ch/vocabularies/ext/sessionRole> ?session_role.
+          FILTER( ?session_role = \"DatabankErediensten-dashboard-user\" )
+        }"
+      }
+  end
+
   def user_groups do
     [
       %GroupSpec{
