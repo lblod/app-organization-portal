@@ -301,21 +301,13 @@ services:
     restart: always
     logging: *default-logging
   kbo-data-sync:
-    image: lblod/sync-wegwijs-organization-service:2.0.0
+    image: lblod/sync-wegwijs-organization-service:2.0.2
     links:
       - db:database
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
-  sync-ovo-numbers:
-    image: lblod/sync-ovo-numbers-service:0.1.0
-    links:
-      - db:database
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging  
 
   ################################################################################
   # DELTA GENERAL
