@@ -535,6 +535,11 @@
       },
       "new-resource-base": "http://data.lblod.info/id/bestuurseenheden/"
     },
+    "registered-organizations": {
+      "class": "regorg:RegisteredOrganization",
+      "super": ["organizations"],
+      "new-resource-base": "http://data.lblod.info/id/geregistreerdeOrganisaties/"
+    },
     "organization-classification-codes": {
       "class": "ext:OrganizationClassificationCode",
       "attributes": {
@@ -549,6 +554,11 @@
       "class": "code:BestuurseenheidClassificatieCode",
       "super": ["organization-classification-codes"],
       "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/"
+    },
+    "registered-organization-classification-codes": {
+      "class": "ext:GeregistreerdeOrganisatieClassificatieCode",
+      "super": ["organization-classification-codes"],
+      "new-resource-base": "http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/"
     },
     "worship-administrative-units": {
       "class": "ere:EredienstBestuurseenheid",
