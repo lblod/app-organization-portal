@@ -1,0 +1,169 @@
+
+    INSERT {
+      GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+      ?orgaanInTime a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaanInTime ;
+        <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan ;
+        <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00"^^xsd:dateTime .
+
+      ?orgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> ?uuidOrgaan ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> ?orgaanLabel ;
+        <http://www.w3.org/ns/org#classification> ?classificationOrgaan ;
+        <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuurseenheid .
+      }
+    } WHERE {
+      VALUES ?classificationOrgaan {
+        "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943"
+        "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528"
+        "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4"
+      }
+
+      VALUES ?bestuurseenheid {
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/e3343492-9960-4dd3-b862-e440eefc305b>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/ff0b817b-1155-4fbd-bdb9-9c9dd01657d3>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/81f1473f-9312-4c1d-8fa2-ca0fae3a3a63>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/b222a22b-e0df-465a-a4cc-9aa295ab16c0>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/f91c2d02-1aee-4cc2-86bc-a259f2c5f538>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/e522cf84-9c67-4355-9710-1f4e680670ca>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/95d99e57-2ee3-4bd6-acef-2dd7187f1fe7>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/a1b090ce-ad45-49cd-b6a6-5483af327e1a>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/9e9392bb-4d4b-4c4e-9465-9cf0c9b701d0>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/8a623816-309b-4e61-8463-312b446e5196>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/1de2d733-ef26-44a7-a713-db50fc0b68a3>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/78e7874a-f147-4c99-b6b1-4fdbe076c7b4>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/cdc17e8e-4fca-4472-8287-9e8fc2d16754>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/18221696-2f63-4cd1-ae22-e7f4cccbad02>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/e9f33f85-f209-4eb8-85e0-498a0f6262a4>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/230191b8-fc6d-44b5-8dd5-cc1559f3ef87>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/d1b5029b-cc97-404b-9343-ce690ec61737>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/04138978-6255-4556-9ead-d780e13260f8>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/51d266bb-ed87-4ec3-b270-5e6324f5c7b8>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/2d2644c4-5364-4b91-bb02-400ff0a81b33>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/d167f09f-5fa3-42a2-9f31-3e9805d3643e>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/a360d661-fa97-45f0-9177-1b787f949b40>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/d3d396b1-eef5-43e0-bca4-1d050676b667>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/c87ebc39-e75e-4c51-b881-a10ae9b9283f>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/caa7deeb-4fc3-43dc-94c3-f9364d61d6b5>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/020b6324-1c66-4695-9824-3147f2155982>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/cb1c7564-b85c-48c3-947b-f3ad3acf11e1>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/7931cca5-cfe8-40a6-b8c7-b75f764b4ecd>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/94631cd3-2d39-4e59-a1bf-cdd3e1b5a65b>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/1a61595b-86f4-4273-8a98-7e83c6db6a3f>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/5556dd43-4bf1-4353-a9a2-fa80a5837167>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/2c3e39f6-d918-46d9-b5e9-54d5638b5c70>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/4f156fff-9336-4db9-9673-bb66754227a0>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/48e726e6-2172-4039-9956-402993f4b0c3>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/ad757c9c-c6a6-48dc-bbf4-1edb35747c90>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/5cc1a29b-0e5a-4697-8273-d57dd2affcb0>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/638fb1dd-a775-4894-b5ac-ec2fb975842e>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/0f9a2ebb-ec76-4d33-90d3-e5d5ff943bb6>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/ec01680c-f5b2-45f1-83a5-d69f2f9e99ba>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/2d27b3de-40ce-4916-bd25-fa55cac95e28>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/b5a89e11-62c9-4711-bf2f-72bb708e1ea0>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/5690341e-4403-4147-93d5-404610a3b74b>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/8fe066bb-1fbe-411e-a0b9-c3c9310ef9b4>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/76b9c075-bdad-4eba-9400-3c82f319afa2>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/5b07638d-c577-4594-be40-eea2c2d0e680>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/2cbea71f-c0f0-4e12-bc1b-ff92f1d0e9e5>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/af9b1777-e024-4073-a554-367c7a46b3c5>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/58b924aa-7a30-45c8-bd8d-969874fb7594>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/c7a77151-6ccd-44ae-94bc-f672afe6c955>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/e9b7e65a-e8b7-4e0d-974d-d0ce6b3680e8>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/864cf263-bb92-46d7-8b2b-67915c7dbb15>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/90198cd7-efa7-44ac-86f9-2b76780104d4>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/0f0cc871-995d-4bb8-9233-881306d16e39>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/b9836a4f-da03-4cd3-8357-beb96f4f914d>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/db78dac7-7f5e-4142-97ed-8b7a2551642c>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/4835fd43-8e5c-4d6f-aa15-19802a8a62f6>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/0345303a-d263-4968-ac0d-87afb25705f1>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/3a97d38a-caad-4103-a9b2-03c8b20a1a24>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/d553356e-6fea-4cce-8672-8911ed6f3f69>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/7342b333-0b43-4b6e-8fa1-23dd621c12d2>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/f2e9e201-c56e-411a-8b0a-51559c4ae4ec>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/420403f8-ac95-4735-8ebc-f89d8f5aebad>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/55cbe84f-9b1a-4b38-ad6f-11f14308bf82>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/ea0df93d-5c08-4632-a19c-7dd041c907b5>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/e4a09b76-1240-46f8-b62b-f0749d4f9863>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/948effa4-02be-41a7-a03c-cebf2090dfef>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/e75f70ef-59b0-4477-9214-6468bd55680a>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/d406c84e-1e51-4c84-91ff-64b1ff5d033c>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/ca4273ad-7c01-4f0a-868e-aa88b6100613>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/f51c6111-e595-43a7-9052-6cf9cebf8fa6>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/4af2a02c-a967-4f6a-b27e-de5ee1620855>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/1be7bd51-51cd-4bb3-87fb-751968f9f2d4>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/811968a7-0934-4bbd-b6cb-59e344735d73>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/89436bea-d90a-4e2f-8559-b0a591858fcb>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/0f52cd08-faac-4e31-bd78-d1f961c35808>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/7a2ed4b5-e47f-4ee3-8c69-8a7219c6192a>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/d7d3061a-35f3-43f7-83a6-42b98c16e676>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/4c07f1be-7e00-48ea-ac70-7d9186273fe3>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/c48ce652-7d32-4a24-b072-b0e15db57e78>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/cd5b169d-28bc-48cf-aeef-a5113692b2ae>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/52cda968-eba4-4ae7-b5d8-63099d9ae809>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/187b463a-1e2b-4df6-9475-9abd7b8e5483>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/e9b771a5-4956-45e8-b151-762d56db70b4>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/79df50cd-320a-434d-a1e2-a7386165f31b>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/8fd8c217-6484-48c0-a64d-916ba7eb0dbe>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/81377f0c-b234-47d8-ba00-7b04454559e4>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/8305b1d1-a3f5-40fc-948b-ab8414957033>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/9da77bee-26ab-40b7-a755-eb4b67d5ff88>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/cbdec98b-778d-42f3-adeb-d205a3ae95f7>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/dbb3145c-199f-4dd1-b246-1327b39dafc7>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/de5638d3-8b5c-4301-8ae1-0a2b60063681>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/d24aefec-7341-4575-9f40-e90289065609>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/f833e6f0-b80c-4d5d-a16d-e915c7ac7c5f>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/f046264d-b893-47d2-9769-137567f417d1>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/e12812a2-7c7c-41b2-935b-477df9df404a>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/65c07cc9-8697-47b8-ac9c-981eeedcec09>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/a60e73d2-2b6e-4cf0-a0f6-1969cf6d2ff1>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/7f027136-6e25-4227-aaab-a6e26029aab0>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/88e78916-959a-4f89-b899-2243b19afc87>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/74753c7c-e56a-4f86-bb1f-5c0c266743e2>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/78298b3b-1dea-4ff5-beb8-36a67cd2b796>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/2efb2fd5-7e41-4f61-a340-5960513333d9>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/4be9881b-95e0-403a-bb1f-407a5ebd301e>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/5f14a83e-2b98-44f0-8f40-8fc618cc98ab>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/d42c8aed-4561-49f3-8d35-dbe0fde2553c>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/26253779-837e-4d62-bb36-0632a8410b99>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/03baec8b-0a59-4777-9026-082d20e8afd1>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/272ab4f1-a97a-4de6-b9b5-01d4684c5dc5>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/58c2b34f-93b8-469f-8403-6d97d17c1fb6>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/8a298ce1-6d90-46e5-8f53-6a5dc7d07d5b>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/15220ec1-0b3c-4e03-adbc-24275b080090>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/ef414b37-e738-4824-8148-36fa8026b884>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/62032c60-45a9-4cb9-b73c-57588a14504f>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/be94b266-7a49-4743-ac86-094ac480048b>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/a228b316-43a5-4f46-a329-b08c80872994>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/182e4511-617a-4538-af9f-b066d98031f6>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/3112f575-5f0d-4cee-86e7-ce389ce2d4d0>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/23f5dbc2-c225-4022-9544-1cae61df43fe>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/b1d15b1f-2e0e-45ec-b593-4bd3f71ed322>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/fd2dbeb4-2f86-493f-97b8-b1915f5be0d1>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/511438e3-205d-477c-9591-1f5b9def2561>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/c76fa344-e6de-4eb9-be4d-c15f67d59d63>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/5cf725ad-e71d-4938-b220-935f8cc31b70>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/381835b5-34c9-4ea2-ae7b-ea1f27b57ed0>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/39748b34-378f-4af5-84eb-8056eac606ba>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/15bc6194-c9a7-473c-a416-586523c5e940>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/ccee18af-7d0f-448c-8895-c050df95257f>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/b37c7cc4-8517-4c72-a4c8-9844508bad09>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/79f9c3e3-bea6-40d1-b155-f3ccb04ec0f9>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/56e67791-e5e9-4bf2-97a6-651e3247c77a>
+<http://data.lblod.info/id/geregistreerdeOrganisaties/8b2e8749-98a9-450f-b2f1-7a93115ef513>
+      }
+
+      ?bestuurseenheid a <http://www.w3.org/ns/regorg#RegisteredOrganization> ;
+        skos:prefLabel ?bestuurseenheidLabel .
+
+      ?classificationOrgaan skos:prefLabel ?classificationOrgaanLabel .
+
+      BIND(CONCAT(?classificationOrgaanLabel, " ", ?bestuurseenheidLabel) as ?orgaanLabel)
+
+      BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaanInTime")) as ?uuidOrgaanInTime)
+      BIND(MD5(CONCAT(?bestuurseenheid, ?classificationOrgaan, "orgaan")) as ?uuidOrgaan)
+      BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaanInTime)) AS ?orgaanInTime)
+      BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", ?uuidOrgaan)) AS ?orgaan)
+    }
+    ;
+    
