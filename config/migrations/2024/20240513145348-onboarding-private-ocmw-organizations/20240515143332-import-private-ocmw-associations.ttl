@@ -1,0 +1,2181 @@
+
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+    @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+    @prefix persoon: <https://data.vlaanderen.be/ns/persoon#> .
+    @prefix ext: <http://mu.semte.ch/vocabularies/ext/>.
+    @prefix person: <http://www.w3.org/ns/person#>.
+    @prefix session: <http://mu.semte.ch/vocabularies/session/>.
+    @prefix foaf: <http://xmlns.com/foaf/0.1/>.
+    @prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+    @prefix ere: <http://data.lblod.info/vocabularies/erediensten/>.
+    @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
+    @prefix org: <http://www.w3.org/ns/org#>.
+    @prefix dcterms: <http://purl.org/dc/terms/>.
+    @prefix generiek: <https://data.vlaanderen.be/ns/generiek#>.
+    @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+    @prefix dc_terms: <http://purl.org/dc/terms/>.
+    @prefix regorg: <http://www.w3.org/ns/regorg#>.
+    
+      <http://data.lblod.info/id/identificatoren/cd6b1860-0ea8-4dd0-ae81-f48a4144bab8> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "cd6b1860-0ea8-4dd0-ae81-f48a4144bab8" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/adba90dd-959e-418c-9367-7ea053c28263> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/adba90dd-959e-418c-9367-7ea053c28263> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "adba90dd-959e-418c-9367-7ea053c28263" .
+
+
+      <http://data.lblod.info/id/identificatoren/71adc27f-c001-4c9f-af8c-a625449d3014> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "71adc27f-c001-4c9f-af8c-a625449d3014" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/686eba92-02b8-493a-bf17-6173cd7c3dd4> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/686eba92-02b8-493a-bf17-6173cd7c3dd4> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "686eba92-02b8-493a-bf17-6173cd7c3dd4" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0696665975" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/81f1473f-9312-4c1d-8fa2-ca0fae3a3a63> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/71adc27f-c001-4c9f-af8c-a625449d3014> .
+
+      <http://data.lblod.info/id/vestigingen/786a962c-b92b-4609-801a-c27a04c21694> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "786a962c-b92b-4609-801a-c27a04c21694" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/2f372b9d-2bf8-4fcb-8dd0-2b7d871e876a> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/bc208b05-ccc3-4107-b39c-48cbeb431a0c> ,
+                        <http://data.lblod.info/id/contact-punten/28cfc32f-4fb0-48ea-b709-791674f7a5f0> .
+
+      <http://data.lblod.info/id/contact-punten/bc208b05-ccc3-4107-b39c-48cbeb431a0c> a <http://schema.org/ContactPoint> ;
+        mu:uuid "bc208b05-ccc3-4107-b39c-48cbeb431a0c" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/28cfc32f-4fb0-48ea-b709-791674f7a5f0> a <http://schema.org/ContactPoint> ;
+        mu:uuid "28cfc32f-4fb0-48ea-b709-791674f7a5f0" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/2f372b9d-2bf8-4fcb-8dd0-2b7d871e876a> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "2f372b9d-2bf8-4fcb-8dd0-2b7d871e876a" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/81f1473f-9312-4c1d-8fa2-ca0fae3a3a63> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "81f1473f-9312-4c1d-8fa2-ca0fae3a3a63" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "WoonZorgGroep Arendonk" ;
+        regorg:legalName "WoonZorgGroep Arendonk" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/cd6b1860-0ea8-4dd0-ae81-f48a4144bab8> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/786a962c-b92b-4609-801a-c27a04c21694> .
+
+      <http://data.lblod.info/id/identificatoren/2784fcf0-4faa-40d9-a56b-4addb39afecd> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "2784fcf0-4faa-40d9-a56b-4addb39afecd" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/03adfc65-ce15-4115-94f9-7d66926deacd> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/03adfc65-ce15-4115-94f9-7d66926deacd> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "03adfc65-ce15-4115-94f9-7d66926deacd" .
+
+
+      <http://data.lblod.info/id/identificatoren/a4b6d446-2431-46a7-a5fd-38658756fde8> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "a4b6d446-2431-46a7-a5fd-38658756fde8" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/b8bcf208-6378-4c7f-850c-032fbb8f66bf> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/b8bcf208-6378-4c7f-850c-032fbb8f66bf> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "b8bcf208-6378-4c7f-850c-032fbb8f66bf" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0696899963" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/a1b090ce-ad45-49cd-b6a6-5483af327e1a> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/a4b6d446-2431-46a7-a5fd-38658756fde8> .
+
+      <http://data.lblod.info/id/vestigingen/007b9e4c-245e-482e-8b1f-b751863bb444> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "007b9e4c-245e-482e-8b1f-b751863bb444" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/7e283833-f67c-49f2-aec8-8ba05794c318> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/33ffe071-e647-4dbf-aa7d-eef55c648954> ,
+                        <http://data.lblod.info/id/contact-punten/71b61496-15ce-4cb1-b602-f2d8c143577b> .
+
+      <http://data.lblod.info/id/contact-punten/33ffe071-e647-4dbf-aa7d-eef55c648954> a <http://schema.org/ContactPoint> ;
+        mu:uuid "33ffe071-e647-4dbf-aa7d-eef55c648954" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/71b61496-15ce-4cb1-b602-f2d8c143577b> a <http://schema.org/ContactPoint> ;
+        mu:uuid "71b61496-15ce-4cb1-b602-f2d8c143577b" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/7e283833-f67c-49f2-aec8-8ba05794c318> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "7e283833-f67c-49f2-aec8-8ba05794c318" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/a1b090ce-ad45-49cd-b6a6-5483af327e1a> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "a1b090ce-ad45-49cd-b6a6-5483af327e1a" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "vzw WoonZORG Wuustwezel" ;
+        regorg:legalName "vzw WoonZORG Wuustwezel" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/2784fcf0-4faa-40d9-a56b-4addb39afecd> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/007b9e4c-245e-482e-8b1f-b751863bb444> .
+
+      <http://data.lblod.info/id/identificatoren/68c727e8-a45f-4cc5-9ef9-4162be7252d6> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "68c727e8-a45f-4cc5-9ef9-4162be7252d6" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/ca7fb912-df7d-40d5-80a9-38d9fbd66795> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/ca7fb912-df7d-40d5-80a9-38d9fbd66795> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "ca7fb912-df7d-40d5-80a9-38d9fbd66795" .
+
+
+      <http://data.lblod.info/id/identificatoren/252f3875-1470-4ea7-a64c-116ccc3e770c> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "252f3875-1470-4ea7-a64c-116ccc3e770c" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/78a3ac34-ff23-4a9d-89ec-7d5684f25f1f> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/78a3ac34-ff23-4a9d-89ec-7d5684f25f1f> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "78a3ac34-ff23-4a9d-89ec-7d5684f25f1f" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0212165922" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/78e7874a-f147-4c99-b6b1-4fdbe076c7b4> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/252f3875-1470-4ea7-a64c-116ccc3e770c> .
+
+      <http://data.lblod.info/id/vestigingen/460181de-4176-49f4-84ae-168d496bd03d> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "460181de-4176-49f4-84ae-168d496bd03d" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/ee5019f1-cb8a-4535-8a21-4972659f2727> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/5497e2f4-b449-4901-a50f-7efd4fa3d774> ,
+                        <http://data.lblod.info/id/contact-punten/25c7c473-6921-46e4-a01a-8225e911be0f> .
+
+      <http://data.lblod.info/id/contact-punten/5497e2f4-b449-4901-a50f-7efd4fa3d774> a <http://schema.org/ContactPoint> ;
+        mu:uuid "5497e2f4-b449-4901-a50f-7efd4fa3d774" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/25c7c473-6921-46e4-a01a-8225e911be0f> a <http://schema.org/ContactPoint> ;
+        mu:uuid "25c7c473-6921-46e4-a01a-8225e911be0f" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/ee5019f1-cb8a-4535-8a21-4972659f2727> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "ee5019f1-cb8a-4535-8a21-4972659f2727" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/78e7874a-f147-4c99-b6b1-4fdbe076c7b4> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "78e7874a-f147-4c99-b6b1-4fdbe076c7b4" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "vzw De Linde" ;
+        regorg:legalName "vzw De Linde" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/68c727e8-a45f-4cc5-9ef9-4162be7252d6> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/460181de-4176-49f4-84ae-168d496bd03d> .
+
+      <http://data.lblod.info/id/identificatoren/b2928ba7-f0f3-4f6e-b53c-5455ca79b3c7> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "b2928ba7-f0f3-4f6e-b53c-5455ca79b3c7" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/c60496b5-b991-4f44-984b-7eec4f508433> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/c60496b5-b991-4f44-984b-7eec4f508433> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "c60496b5-b991-4f44-984b-7eec4f508433" .
+
+
+      <http://data.lblod.info/id/identificatoren/6c08aa2f-3237-4239-ab97-90d26a008e2a> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "6c08aa2f-3237-4239-ab97-90d26a008e2a" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/0ff92caf-8f47-4c77-ae5a-93702ed68043> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/0ff92caf-8f47-4c77-ae5a-93702ed68043> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "0ff92caf-8f47-4c77-ae5a-93702ed68043" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0698838775" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/cdc17e8e-4fca-4472-8287-9e8fc2d16754> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/6c08aa2f-3237-4239-ab97-90d26a008e2a> .
+
+      <http://data.lblod.info/id/vestigingen/5a833275-124b-48e4-8826-9559bb5669d5> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "5a833275-124b-48e4-8826-9559bb5669d5" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/959f4587-0582-4220-9e36-180d8c35989e> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/adb9bf7e-d141-4bf2-9df3-fd1088cff381> ,
+                        <http://data.lblod.info/id/contact-punten/32489e70-a68e-4faf-9788-53cb74eff7e3> .
+
+      <http://data.lblod.info/id/contact-punten/adb9bf7e-d141-4bf2-9df3-fd1088cff381> a <http://schema.org/ContactPoint> ;
+        mu:uuid "adb9bf7e-d141-4bf2-9df3-fd1088cff381" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/32489e70-a68e-4faf-9788-53cb74eff7e3> a <http://schema.org/ContactPoint> ;
+        mu:uuid "32489e70-a68e-4faf-9788-53cb74eff7e3" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/959f4587-0582-4220-9e36-180d8c35989e> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "959f4587-0582-4220-9e36-180d8c35989e" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/cdc17e8e-4fca-4472-8287-9e8fc2d16754> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "cdc17e8e-4fca-4472-8287-9e8fc2d16754" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "'t Heuverveld vzw" ;
+        regorg:legalName "'t Heuverveld vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b2928ba7-f0f3-4f6e-b53c-5455ca79b3c7> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/5a833275-124b-48e4-8826-9559bb5669d5> .
+
+      <http://data.lblod.info/id/identificatoren/0cd6a0e0-36f4-4c41-937a-9028325e26c0> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "0cd6a0e0-36f4-4c41-937a-9028325e26c0" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/07106ed6-6785-4a71-a66d-71d917f439e2> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/07106ed6-6785-4a71-a66d-71d917f439e2> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "07106ed6-6785-4a71-a66d-71d917f439e2" .
+
+
+      <http://data.lblod.info/id/identificatoren/f3c8a05f-5cfb-4a36-a2b5-d48c27dd77a9> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "f3c8a05f-5cfb-4a36-a2b5-d48c27dd77a9" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/57ae0e4a-ed30-4d3c-b6b7-9650387eab08> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/57ae0e4a-ed30-4d3c-b6b7-9650387eab08> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "57ae0e4a-ed30-4d3c-b6b7-9650387eab08" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0712777279" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/e9f33f85-f209-4eb8-85e0-498a0f6262a4> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/f3c8a05f-5cfb-4a36-a2b5-d48c27dd77a9> .
+
+      <http://data.lblod.info/id/vestigingen/dc2a9aff-e933-468f-ae86-ab53ccb38920> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "dc2a9aff-e933-468f-ae86-ab53ccb38920" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/2e168195-8317-4907-942f-3a08f15564a1> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/db40b027-4fef-43f2-a437-d438cb64f615> ,
+                        <http://data.lblod.info/id/contact-punten/cc809d3e-93f9-4175-ae03-cad40cdc480e> .
+
+      <http://data.lblod.info/id/contact-punten/db40b027-4fef-43f2-a437-d438cb64f615> a <http://schema.org/ContactPoint> ;
+        mu:uuid "db40b027-4fef-43f2-a437-d438cb64f615" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/cc809d3e-93f9-4175-ae03-cad40cdc480e> a <http://schema.org/ContactPoint> ;
+        mu:uuid "cc809d3e-93f9-4175-ae03-cad40cdc480e" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/2e168195-8317-4907-942f-3a08f15564a1> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "2e168195-8317-4907-942f-3a08f15564a1" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/e9f33f85-f209-4eb8-85e0-498a0f6262a4> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "e9f33f85-f209-4eb8-85e0-498a0f6262a4" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Buurtrestaurant 't Vondel vzw" ;
+        regorg:legalName "Buurtrestaurant 't Vondel vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/0cd6a0e0-36f4-4c41-937a-9028325e26c0> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/dc2a9aff-e933-468f-ae86-ab53ccb38920> .
+
+      <http://data.lblod.info/id/identificatoren/d00dd979-fb22-44ca-aca2-5ea49ac042b6> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "d00dd979-fb22-44ca-aca2-5ea49ac042b6" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/5b472cde-5d35-4a50-9511-787d7fd13bd7> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/5b472cde-5d35-4a50-9511-787d7fd13bd7> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "5b472cde-5d35-4a50-9511-787d7fd13bd7" .
+
+
+      <http://data.lblod.info/id/identificatoren/b972257a-d170-4f3e-aac2-eaaa18a5cfa6> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "b972257a-d170-4f3e-aac2-eaaa18a5cfa6" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/fe7b5f3b-c801-413d-b31f-93b8053e9b0b> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/fe7b5f3b-c801-413d-b31f-93b8053e9b0b> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "fe7b5f3b-c801-413d-b31f-93b8053e9b0b" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0735627214" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/04138978-6255-4556-9ead-d780e13260f8> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b972257a-d170-4f3e-aac2-eaaa18a5cfa6> .
+
+      <http://data.lblod.info/id/vestigingen/1ac31c61-c777-4308-bc5d-4c829ff45bc6> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "1ac31c61-c777-4308-bc5d-4c829ff45bc6" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/5203acd0-f52a-4fbf-9212-7c01e7d836f0> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/7e126326-fcce-4f4b-8f50-0645d0b346a6> ,
+                        <http://data.lblod.info/id/contact-punten/7afe7497-8188-481b-96af-bcc68694957c> .
+
+      <http://data.lblod.info/id/contact-punten/7e126326-fcce-4f4b-8f50-0645d0b346a6> a <http://schema.org/ContactPoint> ;
+        mu:uuid "7e126326-fcce-4f4b-8f50-0645d0b346a6" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/7afe7497-8188-481b-96af-bcc68694957c> a <http://schema.org/ContactPoint> ;
+        mu:uuid "7afe7497-8188-481b-96af-bcc68694957c" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/5203acd0-f52a-4fbf-9212-7c01e7d836f0> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "5203acd0-f52a-4fbf-9212-7c01e7d836f0" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/04138978-6255-4556-9ead-d780e13260f8> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "04138978-6255-4556-9ead-d780e13260f8" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "De Zonnewende" ;
+        regorg:legalName "De Zonnewende" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/d00dd979-fb22-44ca-aca2-5ea49ac042b6> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/1ac31c61-c777-4308-bc5d-4c829ff45bc6> .
+
+      <http://data.lblod.info/id/identificatoren/cf04176e-22a9-4e7e-b460-e7b7fc236dbd> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "cf04176e-22a9-4e7e-b460-e7b7fc236dbd" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/2a6bc54f-375b-4421-92e7-0d9fccf0aaf2> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/2a6bc54f-375b-4421-92e7-0d9fccf0aaf2> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "2a6bc54f-375b-4421-92e7-0d9fccf0aaf2" .
+
+
+      <http://data.lblod.info/id/identificatoren/c4ee8946-2593-4468-a50d-c9f2c6dc303b> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "c4ee8946-2593-4468-a50d-c9f2c6dc303b" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/f7cb694e-18ed-4c06-81a2-99bf7323f87c> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/f7cb694e-18ed-4c06-81a2-99bf7323f87c> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "f7cb694e-18ed-4c06-81a2-99bf7323f87c" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0462239939" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/caa7deeb-4fc3-43dc-94c3-f9364d61d6b5> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/c4ee8946-2593-4468-a50d-c9f2c6dc303b> .
+
+      <http://data.lblod.info/id/vestigingen/06a8c4f3-96f9-46e2-b1a5-465001c8df8d> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "06a8c4f3-96f9-46e2-b1a5-465001c8df8d" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/86515289-3e18-4a3c-af76-3202ec4674eb> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/553428c2-3ad2-44ce-a0b4-832d213aa337> ,
+                        <http://data.lblod.info/id/contact-punten/21640bb6-5125-4b64-bf28-bfce51f1559a> .
+
+      <http://data.lblod.info/id/contact-punten/553428c2-3ad2-44ce-a0b4-832d213aa337> a <http://schema.org/ContactPoint> ;
+        mu:uuid "553428c2-3ad2-44ce-a0b4-832d213aa337" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/21640bb6-5125-4b64-bf28-bfce51f1559a> a <http://schema.org/ContactPoint> ;
+        mu:uuid "21640bb6-5125-4b64-bf28-bfce51f1559a" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/86515289-3e18-4a3c-af76-3202ec4674eb> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "86515289-3e18-4a3c-af76-3202ec4674eb" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/caa7deeb-4fc3-43dc-94c3-f9364d61d6b5> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "caa7deeb-4fc3-43dc-94c3-f9364d61d6b5" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Dienstencheque-onderneming Duffel" ;
+        regorg:legalName "Dienstencheque-onderneming Duffel" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/cf04176e-22a9-4e7e-b460-e7b7fc236dbd> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/06a8c4f3-96f9-46e2-b1a5-465001c8df8d> .
+
+      <http://data.lblod.info/id/identificatoren/1d371a2f-08ed-4d25-b713-a8163fb0c673> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "1d371a2f-08ed-4d25-b713-a8163fb0c673" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/2e3547a1-00f7-46da-838d-c6d972870f9b> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/2e3547a1-00f7-46da-838d-c6d972870f9b> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "2e3547a1-00f7-46da-838d-c6d972870f9b" .
+
+
+      <http://data.lblod.info/id/identificatoren/b3b17961-e88f-4a22-92db-fba7c8bc3ca0> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "b3b17961-e88f-4a22-92db-fba7c8bc3ca0" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/67e1da0b-a502-478c-90c6-314882b87668> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/67e1da0b-a502-478c-90c6-314882b87668> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "67e1da0b-a502-478c-90c6-314882b87668" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0881291322" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/cb1c7564-b85c-48c3-947b-f3ad3acf11e1> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b3b17961-e88f-4a22-92db-fba7c8bc3ca0> .
+
+      <http://data.lblod.info/id/vestigingen/0e016a72-bd07-4019-80b2-bc9a5962010f> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "0e016a72-bd07-4019-80b2-bc9a5962010f" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/995a41e0-9378-4b70-b4fb-585e6ee16572> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/6bcfaddc-b5d2-45c3-b3fb-dfc5b232764f> ,
+                        <http://data.lblod.info/id/contact-punten/af65fb62-f5c9-49ce-b65a-9f5726166b94> .
+
+      <http://data.lblod.info/id/contact-punten/6bcfaddc-b5d2-45c3-b3fb-dfc5b232764f> a <http://schema.org/ContactPoint> ;
+        mu:uuid "6bcfaddc-b5d2-45c3-b3fb-dfc5b232764f" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/af65fb62-f5c9-49ce-b65a-9f5726166b94> a <http://schema.org/ContactPoint> ;
+        mu:uuid "af65fb62-f5c9-49ce-b65a-9f5726166b94" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/995a41e0-9378-4b70-b4fb-585e6ee16572> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "995a41e0-9378-4b70-b4fb-585e6ee16572" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/cb1c7564-b85c-48c3-947b-f3ad3acf11e1> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "cb1c7564-b85c-48c3-947b-f3ad3acf11e1" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "Verenigde Ziekenhuizen van Waas en Durme vzw (voorheen A.Z. Nikolaas vzw)" ;
+        regorg:legalName "Verenigde Ziekenhuizen van Waas en Durme vzw (voorheen A.Z. Nikolaas vzw)" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/1d371a2f-08ed-4d25-b713-a8163fb0c673> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/0e016a72-bd07-4019-80b2-bc9a5962010f> .
+
+      <http://data.lblod.info/id/identificatoren/b6e84229-39e3-4621-b6b0-6882e96905e3> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "b6e84229-39e3-4621-b6b0-6882e96905e3" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/87964273-0aa9-45e3-b323-1da1ea1ee674> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/87964273-0aa9-45e3-b323-1da1ea1ee674> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "87964273-0aa9-45e3-b323-1da1ea1ee674" .
+<http://data.lblod.info/id/gestructureerdeIdentificatoren/87964273-0aa9-45e3-b323-1da1ea1ee674>
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "851" .
+
+      <http://data.lblod.info/id/identificatoren/50695d8d-41f4-44ab-b399-938f7197c886> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "50695d8d-41f4-44ab-b399-938f7197c886" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/0c8130ae-bac0-4717-a8b2-d542a7a77365> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/0c8130ae-bac0-4717-a8b2-d542a7a77365> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "0c8130ae-bac0-4717-a8b2-d542a7a77365" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0262925527" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/5556dd43-4bf1-4353-a9a2-fa80a5837167> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/50695d8d-41f4-44ab-b399-938f7197c886> .
+
+      <http://data.lblod.info/id/vestigingen/82a6cd5e-1368-4b82-891a-7cc893fbc2ed> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "82a6cd5e-1368-4b82-891a-7cc893fbc2ed" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/e0a799c3-0105-4e59-92dd-31b34e8ecb24> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/8b7d2f8b-4433-4804-a371-8164a5441b55> ,
+                        <http://data.lblod.info/id/contact-punten/30eea8dc-e365-41f4-bd96-db91777bad67> .
+
+      <http://data.lblod.info/id/contact-punten/8b7d2f8b-4433-4804-a371-8164a5441b55> a <http://schema.org/ContactPoint> ;
+        mu:uuid "8b7d2f8b-4433-4804-a371-8164a5441b55" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/30eea8dc-e365-41f4-bd96-db91777bad67> a <http://schema.org/ContactPoint> ;
+        mu:uuid "30eea8dc-e365-41f4-bd96-db91777bad67" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/e0a799c3-0105-4e59-92dd-31b34e8ecb24> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "e0a799c3-0105-4e59-92dd-31b34e8ecb24" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/5556dd43-4bf1-4353-a9a2-fa80a5837167> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "5556dd43-4bf1-4353-a9a2-fa80a5837167" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "Wieltjesgracht" ;
+        regorg:legalName "Wieltjesgracht" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b6e84229-39e3-4621-b6b0-6882e96905e3> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/82a6cd5e-1368-4b82-891a-7cc893fbc2ed> .
+
+      <http://data.lblod.info/id/identificatoren/0d31631a-4fa8-4636-b799-12203f3b201d> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "0d31631a-4fa8-4636-b799-12203f3b201d" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/ef3944b4-9a36-4c26-b8b9-f6e1835066a7> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/ef3944b4-9a36-4c26-b8b9-f6e1835066a7> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "ef3944b4-9a36-4c26-b8b9-f6e1835066a7" .
+
+
+      <http://data.lblod.info/id/identificatoren/ab051274-e65f-4f3d-aebc-4f611c30540c> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "ab051274-e65f-4f3d-aebc-4f611c30540c" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/0613f4d1-fdf8-408a-bea9-af4d6c27a1a9> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/0613f4d1-fdf8-408a-bea9-af4d6c27a1a9> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "0613f4d1-fdf8-408a-bea9-af4d6c27a1a9" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0505931808" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/2c3e39f6-d918-46d9-b5e9-54d5638b5c70> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/ab051274-e65f-4f3d-aebc-4f611c30540c> .
+
+      <http://data.lblod.info/id/vestigingen/f730171d-b490-4cee-b5e1-e175e6a852dd> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "f730171d-b490-4cee-b5e1-e175e6a852dd" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/09be07b8-bdab-47af-bd91-65312ec8bf03> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/8513878d-d270-4379-ba61-36d0f5e3afb4> ,
+                        <http://data.lblod.info/id/contact-punten/40b92994-c338-47db-a075-8f9ca652b0d0> .
+
+      <http://data.lblod.info/id/contact-punten/8513878d-d270-4379-ba61-36d0f5e3afb4> a <http://schema.org/ContactPoint> ;
+        mu:uuid "8513878d-d270-4379-ba61-36d0f5e3afb4" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/40b92994-c338-47db-a075-8f9ca652b0d0> a <http://schema.org/ContactPoint> ;
+        mu:uuid "40b92994-c338-47db-a075-8f9ca652b0d0" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/09be07b8-bdab-47af-bd91-65312ec8bf03> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "09be07b8-bdab-47af-bd91-65312ec8bf03" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/2c3e39f6-d918-46d9-b5e9-54d5638b5c70> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "2c3e39f6-d918-46d9-b5e9-54d5638b5c70" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "AZ Delta" ;
+        regorg:legalName "AZ Delta" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/0d31631a-4fa8-4636-b799-12203f3b201d> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/f730171d-b490-4cee-b5e1-e175e6a852dd> .
+
+      <http://data.lblod.info/id/identificatoren/f3c2b05a-7fc0-465d-882d-6948717b708d> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "f3c2b05a-7fc0-465d-882d-6948717b708d" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/ec2c3254-ee54-4b10-8fb5-895d073b085d> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/ec2c3254-ee54-4b10-8fb5-895d073b085d> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "ec2c3254-ee54-4b10-8fb5-895d073b085d" .
+
+
+      <http://data.lblod.info/id/identificatoren/650165f6-ade4-4e42-a273-b39f29167cb0> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "650165f6-ade4-4e42-a273-b39f29167cb0" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e3d4251c-51e6-43c6-a28d-39903846c54c> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/e3d4251c-51e6-43c6-a28d-39903846c54c> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "e3d4251c-51e6-43c6-a28d-39903846c54c" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0862382656" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/48e726e6-2172-4039-9956-402993f4b0c3> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/650165f6-ade4-4e42-a273-b39f29167cb0> .
+
+      <http://data.lblod.info/id/vestigingen/880ea7f4-d080-4bf0-bb95-b856c23ddcfe> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "880ea7f4-d080-4bf0-bb95-b856c23ddcfe" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/9dd6a731-abda-43d8-8da3-72afc74d0f46> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/54b98180-7115-46c4-8970-8ccd3e18858b> ,
+                        <http://data.lblod.info/id/contact-punten/b51755a9-da5a-4800-917d-1f92aad1b7b3> .
+
+      <http://data.lblod.info/id/contact-punten/54b98180-7115-46c4-8970-8ccd3e18858b> a <http://schema.org/ContactPoint> ;
+        mu:uuid "54b98180-7115-46c4-8970-8ccd3e18858b" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/b51755a9-da5a-4800-917d-1f92aad1b7b3> a <http://schema.org/ContactPoint> ;
+        mu:uuid "b51755a9-da5a-4800-917d-1f92aad1b7b3" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/9dd6a731-abda-43d8-8da3-72afc74d0f46> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "9dd6a731-abda-43d8-8da3-72afc74d0f46" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/48e726e6-2172-4039-9956-402993f4b0c3> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "48e726e6-2172-4039-9956-402993f4b0c3" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "Het Ziekenhuisnetwerk Antwerpen (ZNA) vzw" ;
+        regorg:legalName "Het Ziekenhuisnetwerk Antwerpen (ZNA) vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/f3c2b05a-7fc0-465d-882d-6948717b708d> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/880ea7f4-d080-4bf0-bb95-b856c23ddcfe> .
+
+      <http://data.lblod.info/id/identificatoren/58b1232a-9b0d-49a6-9fc5-50b0322b1a8a> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "58b1232a-9b0d-49a6-9fc5-50b0322b1a8a" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e1d18141-8032-4fa5-bc9e-75dcff752005> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/e1d18141-8032-4fa5-bc9e-75dcff752005> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "e1d18141-8032-4fa5-bc9e-75dcff752005" .
+
+
+      <http://data.lblod.info/id/identificatoren/46f9e05a-6bb8-4035-b427-5c2b647c46b0> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "46f9e05a-6bb8-4035-b427-5c2b647c46b0" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/aafde790-b7a8-4668-872a-9a027241410d> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/aafde790-b7a8-4668-872a-9a027241410d> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "aafde790-b7a8-4668-872a-9a027241410d" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0738896510" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/b9836a4f-da03-4cd3-8357-beb96f4f914d> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/46f9e05a-6bb8-4035-b427-5c2b647c46b0> .
+
+      <http://data.lblod.info/id/vestigingen/92825f1f-c77b-40a1-8dc9-7e54f9d2c4d3> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "92825f1f-c77b-40a1-8dc9-7e54f9d2c4d3" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/280078c9-a0aa-4b0b-9edb-e564d27ff98c> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/edf961c6-695c-49f4-81e3-fac3b8144916> ,
+                        <http://data.lblod.info/id/contact-punten/96b51c71-8ef1-42fe-8191-c593c92c2722> .
+
+      <http://data.lblod.info/id/contact-punten/edf961c6-695c-49f4-81e3-fac3b8144916> a <http://schema.org/ContactPoint> ;
+        mu:uuid "edf961c6-695c-49f4-81e3-fac3b8144916" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/96b51c71-8ef1-42fe-8191-c593c92c2722> a <http://schema.org/ContactPoint> ;
+        mu:uuid "96b51c71-8ef1-42fe-8191-c593c92c2722" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/280078c9-a0aa-4b0b-9edb-e564d27ff98c> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "280078c9-a0aa-4b0b-9edb-e564d27ff98c" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/b9836a4f-da03-4cd3-8357-beb96f4f914d> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "b9836a4f-da03-4cd3-8357-beb96f4f914d" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "Ter Luchte" ;
+        regorg:legalName "Ter Luchte" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/58b1232a-9b0d-49a6-9fc5-50b0322b1a8a> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/92825f1f-c77b-40a1-8dc9-7e54f9d2c4d3> .
+
+      <http://data.lblod.info/id/identificatoren/5e97b027-a856-4bf3-a457-f57d332ed7f0> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "5e97b027-a856-4bf3-a457-f57d332ed7f0" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/3c34e27e-57ee-4854-9666-92b4e5253c8b> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/3c34e27e-57ee-4854-9666-92b4e5253c8b> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "3c34e27e-57ee-4854-9666-92b4e5253c8b" .
+
+
+      <http://data.lblod.info/id/identificatoren/c227e28f-7838-4196-9105-4f4db0a963ab> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "c227e28f-7838-4196-9105-4f4db0a963ab" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/0ef2543c-0d02-4296-a7a0-909320623b3a> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/0ef2543c-0d02-4296-a7a0-909320623b3a> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "0ef2543c-0d02-4296-a7a0-909320623b3a" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0821142117" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/4835fd43-8e5c-4d6f-aa15-19802a8a62f6> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/c227e28f-7838-4196-9105-4f4db0a963ab> .
+
+      <http://data.lblod.info/id/vestigingen/6b7d4ba0-e395-46f4-87e6-c7fef122b849> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "6b7d4ba0-e395-46f4-87e6-c7fef122b849" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/7e57b7c0-556b-4141-900a-8930e925a130> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/0e621889-6130-4b41-a121-04a97d4c7847> ,
+                        <http://data.lblod.info/id/contact-punten/c4d2875a-ad7a-4a2a-b474-a0493f21e978> .
+
+      <http://data.lblod.info/id/contact-punten/0e621889-6130-4b41-a121-04a97d4c7847> a <http://schema.org/ContactPoint> ;
+        mu:uuid "0e621889-6130-4b41-a121-04a97d4c7847" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/c4d2875a-ad7a-4a2a-b474-a0493f21e978> a <http://schema.org/ContactPoint> ;
+        mu:uuid "c4d2875a-ad7a-4a2a-b474-a0493f21e978" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/7e57b7c0-556b-4141-900a-8930e925a130> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "7e57b7c0-556b-4141-900a-8930e925a130" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/4835fd43-8e5c-4d6f-aa15-19802a8a62f6> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "4835fd43-8e5c-4d6f-aa15-19802a8a62f6" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "VZW Jessa Ziekenhuis" ;
+        regorg:legalName "VZW Jessa Ziekenhuis" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/5e97b027-a856-4bf3-a457-f57d332ed7f0> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/6b7d4ba0-e395-46f4-87e6-c7fef122b849> .
+
+      <http://data.lblod.info/id/identificatoren/9e01fc38-bc5a-4211-b994-901d606c5c81> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "9e01fc38-bc5a-4211-b994-901d606c5c81" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/33168f80-21ea-4803-9110-cc8398809ac4> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/33168f80-21ea-4803-9110-cc8398809ac4> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "33168f80-21ea-4803-9110-cc8398809ac4" .
+
+
+      <http://data.lblod.info/id/identificatoren/785ea95e-7c25-4718-ac1d-aeb09cb0729f> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "785ea95e-7c25-4718-ac1d-aeb09cb0729f" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/f7b0590e-2007-4b9c-be45-f8fe2634d469> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/f7b0590e-2007-4b9c-be45-f8fe2634d469> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "f7b0590e-2007-4b9c-be45-f8fe2634d469" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0897191602" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/81377f0c-b234-47d8-ba00-7b04454559e4> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/785ea95e-7c25-4718-ac1d-aeb09cb0729f> .
+
+      <http://data.lblod.info/id/vestigingen/f0f73501-fbb7-43cd-aae4-821b392c3113> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "f0f73501-fbb7-43cd-aae4-821b392c3113" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/c1138003-be5d-4278-b5e7-4371699fa154> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/c6adf48b-d3a5-40a7-a853-28357dd4d79c> ,
+                        <http://data.lblod.info/id/contact-punten/299be4f6-abb5-4644-833b-d2fffdcbe13b> .
+
+      <http://data.lblod.info/id/contact-punten/c6adf48b-d3a5-40a7-a853-28357dd4d79c> a <http://schema.org/ContactPoint> ;
+        mu:uuid "c6adf48b-d3a5-40a7-a853-28357dd4d79c" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/299be4f6-abb5-4644-833b-d2fffdcbe13b> a <http://schema.org/ContactPoint> ;
+        mu:uuid "299be4f6-abb5-4644-833b-d2fffdcbe13b" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/c1138003-be5d-4278-b5e7-4371699fa154> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "c1138003-be5d-4278-b5e7-4371699fa154" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/81377f0c-b234-47d8-ba00-7b04454559e4> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "81377f0c-b234-47d8-ba00-7b04454559e4" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "AZ Turnhout vzw" ;
+        regorg:legalName "AZ Turnhout vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9e01fc38-bc5a-4211-b994-901d606c5c81> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/f0f73501-fbb7-43cd-aae4-821b392c3113> .
+
+      <http://data.lblod.info/id/identificatoren/9e8ac200-9b87-451d-a8ef-de7b2dbdc8b6> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "9e8ac200-9b87-451d-a8ef-de7b2dbdc8b6" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/8400c6c5-e067-4bf2-8b7d-e10c2a2b9c0a> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/8400c6c5-e067-4bf2-8b7d-e10c2a2b9c0a> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "8400c6c5-e067-4bf2-8b7d-e10c2a2b9c0a" .
+
+
+      <http://data.lblod.info/id/identificatoren/05e7c740-6c91-4d6d-9bc9-07bce6314ea9> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "05e7c740-6c91-4d6d-9bc9-07bce6314ea9" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/f31e3ec8-5599-40b4-a557-b4541faf2a82> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/f31e3ec8-5599-40b4-a557-b4541faf2a82> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "f31e3ec8-5599-40b4-a557-b4541faf2a82" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0821734213" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/8305b1d1-a3f5-40fc-948b-ab8414957033> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/05e7c740-6c91-4d6d-9bc9-07bce6314ea9> .
+
+      <http://data.lblod.info/id/vestigingen/4ede76a6-8295-472f-b111-41e562eae297> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "4ede76a6-8295-472f-b111-41e562eae297" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/a6ddec32-7084-4d12-ac24-baf0ff706907> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/de01bcea-cc3d-479b-bf09-9101a6a5ee9e> ,
+                        <http://data.lblod.info/id/contact-punten/3c39405f-5baa-4a44-a11c-b9a7750ee079> .
+
+      <http://data.lblod.info/id/contact-punten/de01bcea-cc3d-479b-bf09-9101a6a5ee9e> a <http://schema.org/ContactPoint> ;
+        mu:uuid "de01bcea-cc3d-479b-bf09-9101a6a5ee9e" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/3c39405f-5baa-4a44-a11c-b9a7750ee079> a <http://schema.org/ContactPoint> ;
+        mu:uuid "3c39405f-5baa-4a44-a11c-b9a7750ee079" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/a6ddec32-7084-4d12-ac24-baf0ff706907> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "a6ddec32-7084-4d12-ac24-baf0ff706907" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/8305b1d1-a3f5-40fc-948b-ab8414957033> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "8305b1d1-a3f5-40fc-948b-ab8414957033" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "AZ Sint-Elisabeth Herentals" ;
+        regorg:legalName "AZ Sint-Elisabeth Herentals" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9e8ac200-9b87-451d-a8ef-de7b2dbdc8b6> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/4ede76a6-8295-472f-b111-41e562eae297> .
+
+      <http://data.lblod.info/id/identificatoren/f5b515cc-3033-4ecb-aa41-320c1159a761> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "f5b515cc-3033-4ecb-aa41-320c1159a761" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/68961b02-a2bb-4fe6-9d29-7f8116474244> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/68961b02-a2bb-4fe6-9d29-7f8116474244> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "68961b02-a2bb-4fe6-9d29-7f8116474244" .
+
+
+      <http://data.lblod.info/id/identificatoren/09c1b496-8f1f-4d1d-9c44-21721bf2a89f> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "09c1b496-8f1f-4d1d-9c44-21721bf2a89f" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/07c37a1c-ca0f-4177-9013-efa93aa7dec0> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/07c37a1c-ca0f-4177-9013-efa93aa7dec0> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "07c37a1c-ca0f-4177-9013-efa93aa7dec0" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0870757023" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/9da77bee-26ab-40b7-a755-eb4b67d5ff88> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/09c1b496-8f1f-4d1d-9c44-21721bf2a89f> .
+
+      <http://data.lblod.info/id/vestigingen/8682e201-c8f9-4a56-807c-bd9fd55bf6fd> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "8682e201-c8f9-4a56-807c-bd9fd55bf6fd" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/0a557a92-5d12-46a7-81df-e1b1ac8d8855> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/53d2b993-8e1e-4844-8db2-1143807b1aa8> ,
+                        <http://data.lblod.info/id/contact-punten/e45d93f7-5668-477e-a633-1905223914a2> .
+
+      <http://data.lblod.info/id/contact-punten/53d2b993-8e1e-4844-8db2-1143807b1aa8> a <http://schema.org/ContactPoint> ;
+        mu:uuid "53d2b993-8e1e-4844-8db2-1143807b1aa8" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/e45d93f7-5668-477e-a633-1905223914a2> a <http://schema.org/ContactPoint> ;
+        mu:uuid "e45d93f7-5668-477e-a633-1905223914a2" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/0a557a92-5d12-46a7-81df-e1b1ac8d8855> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "0a557a92-5d12-46a7-81df-e1b1ac8d8855" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/9da77bee-26ab-40b7-a755-eb4b67d5ff88> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "9da77bee-26ab-40b7-a755-eb4b67d5ff88" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "AZ Oudenaarde vzw" ;
+        regorg:legalName "AZ Oudenaarde vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/f5b515cc-3033-4ecb-aa41-320c1159a761> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/8682e201-c8f9-4a56-807c-bd9fd55bf6fd> .
+
+      <http://data.lblod.info/id/identificatoren/d4185f86-fd84-4dae-af96-3b0724cf39c3> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "d4185f86-fd84-4dae-af96-3b0724cf39c3" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/7bca1d62-3e93-435f-bc59-446baca63303> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/7bca1d62-3e93-435f-bc59-446baca63303> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "7bca1d62-3e93-435f-bc59-446baca63303" .
+
+
+      <http://data.lblod.info/id/identificatoren/cc8756f7-f7e1-4820-a5a0-90e7dbaf4e80> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "cc8756f7-f7e1-4820-a5a0-90e7dbaf4e80" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/f83aad10-aa2a-4991-b0c6-c2dc4b7893c1> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/f83aad10-aa2a-4991-b0c6-c2dc4b7893c1> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "f83aad10-aa2a-4991-b0c6-c2dc4b7893c1" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0475777476" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/cbdec98b-778d-42f3-adeb-d205a3ae95f7> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/cc8756f7-f7e1-4820-a5a0-90e7dbaf4e80> .
+
+      <http://data.lblod.info/id/vestigingen/329e610a-b087-47cf-8287-e8b36b697ac2> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "329e610a-b087-47cf-8287-e8b36b697ac2" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/6dbdf675-c59b-4300-99a9-cd5627859a09> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/4620d91e-7837-4f78-915e-96074b79d94d> ,
+                        <http://data.lblod.info/id/contact-punten/2a10abec-7343-4ca0-9a94-865c12ea34bb> .
+
+      <http://data.lblod.info/id/contact-punten/4620d91e-7837-4f78-915e-96074b79d94d> a <http://schema.org/ContactPoint> ;
+        mu:uuid "4620d91e-7837-4f78-915e-96074b79d94d" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/2a10abec-7343-4ca0-9a94-865c12ea34bb> a <http://schema.org/ContactPoint> ;
+        mu:uuid "2a10abec-7343-4ca0-9a94-865c12ea34bb" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/6dbdf675-c59b-4300-99a9-cd5627859a09> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "6dbdf675-c59b-4300-99a9-cd5627859a09" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/cbdec98b-778d-42f3-adeb-d205a3ae95f7> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "cbdec98b-778d-42f3-adeb-d205a3ae95f7" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "vzw Ziekenhuis Maas en Kempen" ;
+        regorg:legalName "vzw Ziekenhuis Maas en Kempen" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/d4185f86-fd84-4dae-af96-3b0724cf39c3> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/329e610a-b087-47cf-8287-e8b36b697ac2> .
+
+      <http://data.lblod.info/id/identificatoren/e4df98c9-2221-4bea-8660-34357a973d1b> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "e4df98c9-2221-4bea-8660-34357a973d1b" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/90d7f175-c930-4047-8951-d4e2e418e286> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/90d7f175-c930-4047-8951-d4e2e418e286> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "90d7f175-c930-4047-8951-d4e2e418e286" .
+<http://data.lblod.info/id/gestructureerdeIdentificatoren/90d7f175-c930-4047-8951-d4e2e418e286>
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "1376" .
+
+      <http://data.lblod.info/id/identificatoren/e38d6b3c-8c1f-4be4-b546-08d9d76fda0e> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "e38d6b3c-8c1f-4be4-b546-08d9d76fda0e" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/7a2567ce-3df0-4fb0-ae01-dff1cb1f16b4> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/7a2567ce-3df0-4fb0-ae01-dff1cb1f16b4> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "7a2567ce-3df0-4fb0-ae01-dff1cb1f16b4" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0267386438" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/dbb3145c-199f-4dd1-b246-1327b39dafc7> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e38d6b3c-8c1f-4be4-b546-08d9d76fda0e> .
+
+      <http://data.lblod.info/id/vestigingen/39888728-999b-46f2-a620-a5207d973084> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "39888728-999b-46f2-a620-a5207d973084" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/735d7c33-6dfc-40af-ad09-0191ef1fd6c4> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/f47b16f9-8a5a-40c1-bbe0-c60643c3bd36> ,
+                        <http://data.lblod.info/id/contact-punten/cf972018-2049-409e-a148-dc04bd85983e> .
+
+      <http://data.lblod.info/id/contact-punten/f47b16f9-8a5a-40c1-bbe0-c60643c3bd36> a <http://schema.org/ContactPoint> ;
+        mu:uuid "f47b16f9-8a5a-40c1-bbe0-c60643c3bd36" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/cf972018-2049-409e-a148-dc04bd85983e> a <http://schema.org/ContactPoint> ;
+        mu:uuid "cf972018-2049-409e-a148-dc04bd85983e" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/735d7c33-6dfc-40af-ad09-0191ef1fd6c4> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "735d7c33-6dfc-40af-ad09-0191ef1fd6c4" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/dbb3145c-199f-4dd1-b246-1327b39dafc7> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "dbb3145c-199f-4dd1-b246-1327b39dafc7" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "AZ Jan Portaels" ;
+        regorg:legalName "AZ Jan Portaels" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e4df98c9-2221-4bea-8660-34357a973d1b> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/39888728-999b-46f2-a620-a5207d973084> .
+
+      <http://data.lblod.info/id/identificatoren/62e00f77-d95d-4ac2-9859-d4a554bc6920> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "62e00f77-d95d-4ac2-9859-d4a554bc6920" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/bab4a216-0f84-4846-b340-8bb9ce1e610f> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/bab4a216-0f84-4846-b340-8bb9ce1e610f> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "bab4a216-0f84-4846-b340-8bb9ce1e610f" .
+
+
+      <http://data.lblod.info/id/identificatoren/3a84b9b6-bd4d-4106-8bdb-f73413cc7668> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "3a84b9b6-bd4d-4106-8bdb-f73413cc7668" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/d736d464-20b9-4a9d-9c53-18b14040316f> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/d736d464-20b9-4a9d-9c53-18b14040316f> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "d736d464-20b9-4a9d-9c53-18b14040316f" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0472222625" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/de5638d3-8b5c-4301-8ae1-0a2b60063681> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/3a84b9b6-bd4d-4106-8bdb-f73413cc7668> .
+
+      <http://data.lblod.info/id/vestigingen/58b7f511-3271-4172-8db8-cabb840bbfeb> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "58b7f511-3271-4172-8db8-cabb840bbfeb" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/a8ba800d-c6e5-438c-8198-7359985b51c6> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/45294b16-15b0-4c0b-94fa-f75bfc4ffe15> ,
+                        <http://data.lblod.info/id/contact-punten/f19a1f07-b4d1-4d9a-b9cf-50bb2e282c8a> .
+
+      <http://data.lblod.info/id/contact-punten/45294b16-15b0-4c0b-94fa-f75bfc4ffe15> a <http://schema.org/ContactPoint> ;
+        mu:uuid "45294b16-15b0-4c0b-94fa-f75bfc4ffe15" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/f19a1f07-b4d1-4d9a-b9cf-50bb2e282c8a> a <http://schema.org/ContactPoint> ;
+        mu:uuid "f19a1f07-b4d1-4d9a-b9cf-50bb2e282c8a" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/a8ba800d-c6e5-438c-8198-7359985b51c6> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "a8ba800d-c6e5-438c-8198-7359985b51c6" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/de5638d3-8b5c-4301-8ae1-0a2b60063681> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "de5638d3-8b5c-4301-8ae1-0a2b60063681" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "AZ Groeninge" ;
+        regorg:legalName "AZ Groeninge" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/62e00f77-d95d-4ac2-9859-d4a554bc6920> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/58b7f511-3271-4172-8db8-cabb840bbfeb> .
+
+      <http://data.lblod.info/id/identificatoren/67f925f9-0d45-483b-a3ab-28f460792ab6> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "67f925f9-0d45-483b-a3ab-28f460792ab6" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/4b6f5f6f-a949-45c7-9dec-29cb14ef0c00> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/4b6f5f6f-a949-45c7-9dec-29cb14ef0c00> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "4b6f5f6f-a949-45c7-9dec-29cb14ef0c00" .
+
+
+      <http://data.lblod.info/id/identificatoren/70f48fd0-4f22-406c-b6f0-c086045d3f88> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "70f48fd0-4f22-406c-b6f0-c086045d3f88" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/94a0a7c4-d384-4cce-b72b-f5a621142223> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/94a0a7c4-d384-4cce-b72b-f5a621142223> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "94a0a7c4-d384-4cce-b72b-f5a621142223" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0883325451" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/d24aefec-7341-4575-9f40-e90289065609> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/70f48fd0-4f22-406c-b6f0-c086045d3f88> .
+
+      <http://data.lblod.info/id/vestigingen/1761cfc0-e6d9-45e5-ad8b-d64b0df7cc1b> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "1761cfc0-e6d9-45e5-ad8b-d64b0df7cc1b" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/45dfc0ac-4467-493e-857d-2a6594243b6e> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/b0e3acd4-1c61-41b6-8d00-e2304282c245> ,
+                        <http://data.lblod.info/id/contact-punten/b17283a3-b6f1-4340-aae5-0b4d05813c0f> .
+
+      <http://data.lblod.info/id/contact-punten/b0e3acd4-1c61-41b6-8d00-e2304282c245> a <http://schema.org/ContactPoint> ;
+        mu:uuid "b0e3acd4-1c61-41b6-8d00-e2304282c245" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/b17283a3-b6f1-4340-aae5-0b4d05813c0f> a <http://schema.org/ContactPoint> ;
+        mu:uuid "b17283a3-b6f1-4340-aae5-0b4d05813c0f" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/45dfc0ac-4467-493e-857d-2a6594243b6e> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "45dfc0ac-4467-493e-857d-2a6594243b6e" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/d24aefec-7341-4575-9f40-e90289065609> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "d24aefec-7341-4575-9f40-e90289065609" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Het Pareltje" ;
+        regorg:legalName "Het Pareltje" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/67f925f9-0d45-483b-a3ab-28f460792ab6> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/1761cfc0-e6d9-45e5-ad8b-d64b0df7cc1b> .
+
+      <http://data.lblod.info/id/identificatoren/28503871-4783-4ec2-8285-7d1e06e0549b> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "28503871-4783-4ec2-8285-7d1e06e0549b" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/6e995ec7-4124-4128-8075-97cd7ad50bee> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/6e995ec7-4124-4128-8075-97cd7ad50bee> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "6e995ec7-4124-4128-8075-97cd7ad50bee" .
+
+
+      <http://data.lblod.info/id/identificatoren/5d156d55-6952-4167-afa5-41959012927f> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "5d156d55-6952-4167-afa5-41959012927f" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/4b8c88bb-0865-4c7a-9c9c-43adf856b05b> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/4b8c88bb-0865-4c7a-9c9c-43adf856b05b> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "4b8c88bb-0865-4c7a-9c9c-43adf856b05b" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0865013039" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/f833e6f0-b80c-4d5d-a16d-e915c7ac7c5f> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/5d156d55-6952-4167-afa5-41959012927f> .
+
+      <http://data.lblod.info/id/vestigingen/77778a7a-fe1b-4b30-bb92-dd3f1de4322d> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "77778a7a-fe1b-4b30-bb92-dd3f1de4322d" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/9617e5e3-797b-4558-ba96-7c04d285ae0c> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/2e0caa12-af77-4442-8796-85583719813f> ,
+                        <http://data.lblod.info/id/contact-punten/d37d6394-e6fa-4312-86b4-f31d7c30fe61> .
+
+      <http://data.lblod.info/id/contact-punten/2e0caa12-af77-4442-8796-85583719813f> a <http://schema.org/ContactPoint> ;
+        mu:uuid "2e0caa12-af77-4442-8796-85583719813f" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/d37d6394-e6fa-4312-86b4-f31d7c30fe61> a <http://schema.org/ContactPoint> ;
+        mu:uuid "d37d6394-e6fa-4312-86b4-f31d7c30fe61" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/9617e5e3-797b-4558-ba96-7c04d285ae0c> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "9617e5e3-797b-4558-ba96-7c04d285ae0c" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/f833e6f0-b80c-4d5d-a16d-e915c7ac7c5f> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "f833e6f0-b80c-4d5d-a16d-e915c7ac7c5f" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Sociaal Verhuurkantoor 'De Woonkans vzw'" ;
+        regorg:legalName "Sociaal Verhuurkantoor 'De Woonkans vzw'" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/28503871-4783-4ec2-8285-7d1e06e0549b> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/77778a7a-fe1b-4b30-bb92-dd3f1de4322d> .
+
+      <http://data.lblod.info/id/identificatoren/45f8642e-a227-45f8-8403-5a81522ac555> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "45f8642e-a227-45f8-8403-5a81522ac555" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/06709b53-6381-4599-b1dd-072f5d89d12b> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/06709b53-6381-4599-b1dd-072f5d89d12b> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "06709b53-6381-4599-b1dd-072f5d89d12b" .
+
+
+      <http://data.lblod.info/id/identificatoren/eb002715-2f99-44f5-b461-da758d341884> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "eb002715-2f99-44f5-b461-da758d341884" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/fdf3eabf-770d-4472-bfb3-01f6e31aa320> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/fdf3eabf-770d-4472-bfb3-01f6e31aa320> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "fdf3eabf-770d-4472-bfb3-01f6e31aa320" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0865010069" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/f046264d-b893-47d2-9769-137567f417d1> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/eb002715-2f99-44f5-b461-da758d341884> .
+
+      <http://data.lblod.info/id/vestigingen/a05b4e54-67e7-4b96-81e8-9cfb2e261e20> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "a05b4e54-67e7-4b96-81e8-9cfb2e261e20" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/2c96d103-70d9-4dd7-9537-a4834df26d29> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/ba3eeab4-0346-4c9a-8b84-74cf82f34ca4> ,
+                        <http://data.lblod.info/id/contact-punten/635b97d5-76c2-4b5b-b107-e57e255134e7> .
+
+      <http://data.lblod.info/id/contact-punten/ba3eeab4-0346-4c9a-8b84-74cf82f34ca4> a <http://schema.org/ContactPoint> ;
+        mu:uuid "ba3eeab4-0346-4c9a-8b84-74cf82f34ca4" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/635b97d5-76c2-4b5b-b107-e57e255134e7> a <http://schema.org/ContactPoint> ;
+        mu:uuid "635b97d5-76c2-4b5b-b107-e57e255134e7" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/2c96d103-70d9-4dd7-9537-a4834df26d29> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "2c96d103-70d9-4dd7-9537-a4834df26d29" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/f046264d-b893-47d2-9769-137567f417d1> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "f046264d-b893-47d2-9769-137567f417d1" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "SVK Mechelen" ;
+        regorg:legalName "SVK Mechelen" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/45f8642e-a227-45f8-8403-5a81522ac555> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/a05b4e54-67e7-4b96-81e8-9cfb2e261e20> .
+
+      <http://data.lblod.info/id/identificatoren/57a9bd25-eeab-40f0-98bd-cf031f9b066e> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "57a9bd25-eeab-40f0-98bd-cf031f9b066e" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/6fdcab2a-0ea6-44fe-9cb3-2828bad6c3dc> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/6fdcab2a-0ea6-44fe-9cb3-2828bad6c3dc> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "6fdcab2a-0ea6-44fe-9cb3-2828bad6c3dc" .
+
+
+      <http://data.lblod.info/id/identificatoren/55884b57-ef6a-4c95-b08a-1a3540ebcb56> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "55884b57-ef6a-4c95-b08a-1a3540ebcb56" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/73270aaf-42c1-4e2a-ac8a-c9d9977f4f1b> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/73270aaf-42c1-4e2a-ac8a-c9d9977f4f1b> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "73270aaf-42c1-4e2a-ac8a-c9d9977f4f1b" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0473360790" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/e12812a2-7c7c-41b2-935b-477df9df404a> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/55884b57-ef6a-4c95-b08a-1a3540ebcb56> .
+
+      <http://data.lblod.info/id/vestigingen/748b8761-bca2-4037-81f3-4028ba1b9444> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "748b8761-bca2-4037-81f3-4028ba1b9444" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/b1f64213-7848-4266-a65c-63ad5f758190> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/a5bc8636-21de-417a-b87a-233a3a78cecb> ,
+                        <http://data.lblod.info/id/contact-punten/020d51a2-a623-4b40-8809-5cbf480afe47> .
+
+      <http://data.lblod.info/id/contact-punten/a5bc8636-21de-417a-b87a-233a3a78cecb> a <http://schema.org/ContactPoint> ;
+        mu:uuid "a5bc8636-21de-417a-b87a-233a3a78cecb" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/020d51a2-a623-4b40-8809-5cbf480afe47> a <http://schema.org/ContactPoint> ;
+        mu:uuid "020d51a2-a623-4b40-8809-5cbf480afe47" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/b1f64213-7848-4266-a65c-63ad5f758190> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "b1f64213-7848-4266-a65c-63ad5f758190" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/e12812a2-7c7c-41b2-935b-477df9df404a> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "e12812a2-7c7c-41b2-935b-477df9df404a" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Sociaal verhuurkantoor Onderdak" ;
+        regorg:legalName "Sociaal verhuurkantoor Onderdak" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/57a9bd25-eeab-40f0-98bd-cf031f9b066e> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/748b8761-bca2-4037-81f3-4028ba1b9444> .
+
+      <http://data.lblod.info/id/identificatoren/9b892f36-26e6-4015-877b-964e0859d5b4> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "9b892f36-26e6-4015-877b-964e0859d5b4" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/89e7d2f6-499c-42ba-a81c-aeba7c43fa35> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/89e7d2f6-499c-42ba-a81c-aeba7c43fa35> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "89e7d2f6-499c-42ba-a81c-aeba7c43fa35" .
+
+
+      <http://data.lblod.info/id/identificatoren/7cad8c84-bc9c-45c8-9867-84aff06d95ee> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "7cad8c84-bc9c-45c8-9867-84aff06d95ee" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/35501251-ec9e-4530-a567-a6c1b32a7b8a> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/35501251-ec9e-4530-a567-a6c1b32a7b8a> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "35501251-ec9e-4530-a567-a6c1b32a7b8a" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0871619135" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/65c07cc9-8697-47b8-ac9c-981eeedcec09> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/7cad8c84-bc9c-45c8-9867-84aff06d95ee> .
+
+      <http://data.lblod.info/id/vestigingen/c24becb9-fd96-422d-87fd-4c17eec82229> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "c24becb9-fd96-422d-87fd-4c17eec82229" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/32376652-9c13-4c29-9eb8-6f9973cbf995> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/d5e5de97-b375-4c05-88b1-0de06ffa9d86> ,
+                        <http://data.lblod.info/id/contact-punten/a4fe6fa1-bf50-4665-a424-d2277c8bab42> .
+
+      <http://data.lblod.info/id/contact-punten/d5e5de97-b375-4c05-88b1-0de06ffa9d86> a <http://schema.org/ContactPoint> ;
+        mu:uuid "d5e5de97-b375-4c05-88b1-0de06ffa9d86" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/a4fe6fa1-bf50-4665-a424-d2277c8bab42> a <http://schema.org/ContactPoint> ;
+        mu:uuid "a4fe6fa1-bf50-4665-a424-d2277c8bab42" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/32376652-9c13-4c29-9eb8-6f9973cbf995> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "32376652-9c13-4c29-9eb8-6f9973cbf995" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/65c07cc9-8697-47b8-ac9c-981eeedcec09> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "65c07cc9-8697-47b8-ac9c-981eeedcec09" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "vzw Woon- en Zorgcentrum Ter Kempen" ;
+        regorg:legalName "vzw Woon- en Zorgcentrum Ter Kempen" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9b892f36-26e6-4015-877b-964e0859d5b4> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/c24becb9-fd96-422d-87fd-4c17eec82229> .
+
+      <http://data.lblod.info/id/identificatoren/857af5e9-989e-4723-904f-bb46a68d7bc5> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "857af5e9-989e-4723-904f-bb46a68d7bc5" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/eaa3ecd2-21fa-4db5-b6e6-f8d80e8ba25b> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/eaa3ecd2-21fa-4db5-b6e6-f8d80e8ba25b> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "eaa3ecd2-21fa-4db5-b6e6-f8d80e8ba25b" .
+
+
+      <http://data.lblod.info/id/identificatoren/ba45ae99-a38d-458a-84a1-984f44f12cdc> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "ba45ae99-a38d-458a-84a1-984f44f12cdc" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e7d85bce-fcc1-45ec-a452-010785754a50> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/e7d85bce-fcc1-45ec-a452-010785754a50> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "e7d85bce-fcc1-45ec-a452-010785754a50" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0870855409" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/a60e73d2-2b6e-4cf0-a0f6-1969cf6d2ff1> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/ba45ae99-a38d-458a-84a1-984f44f12cdc> .
+
+      <http://data.lblod.info/id/vestigingen/b1d18f87-3d80-429a-be0f-8a9b936b41f7> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "b1d18f87-3d80-429a-be0f-8a9b936b41f7" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/10a0e80f-4224-45f0-b25c-17fa850377dc> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/1a9316f5-456f-4b67-b337-6431e69dad1a> ,
+                        <http://data.lblod.info/id/contact-punten/0bce0214-0667-4770-a683-455f2ea26a1a> .
+
+      <http://data.lblod.info/id/contact-punten/1a9316f5-456f-4b67-b337-6431e69dad1a> a <http://schema.org/ContactPoint> ;
+        mu:uuid "1a9316f5-456f-4b67-b337-6431e69dad1a" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/0bce0214-0667-4770-a683-455f2ea26a1a> a <http://schema.org/ContactPoint> ;
+        mu:uuid "0bce0214-0667-4770-a683-455f2ea26a1a" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/10a0e80f-4224-45f0-b25c-17fa850377dc> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "10a0e80f-4224-45f0-b25c-17fa850377dc" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/a60e73d2-2b6e-4cf0-a0f6-1969cf6d2ff1> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "a60e73d2-2b6e-4cf0-a0f6-1969cf6d2ff1" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "vzw Woon- en Zorgcentrum Zoersel" ;
+        regorg:legalName "vzw Woon- en Zorgcentrum Zoersel" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/857af5e9-989e-4723-904f-bb46a68d7bc5> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/b1d18f87-3d80-429a-be0f-8a9b936b41f7> .
+
+      <http://data.lblod.info/id/identificatoren/1858a6f8-17f0-45bb-b63b-3145ce3cd9e6> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "1858a6f8-17f0-45bb-b63b-3145ce3cd9e6" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/8fddf845-7ffb-4811-acf6-15772bcb70ae> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/8fddf845-7ffb-4811-acf6-15772bcb70ae> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "8fddf845-7ffb-4811-acf6-15772bcb70ae" .
+
+
+      <http://data.lblod.info/id/identificatoren/99cab017-8ae9-4519-8513-36377012e130> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "99cab017-8ae9-4519-8513-36377012e130" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/c33a8b4a-0151-4ef8-9c15-393876348c99> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/c33a8b4a-0151-4ef8-9c15-393876348c99> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "c33a8b4a-0151-4ef8-9c15-393876348c99" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0632607670" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/7f027136-6e25-4227-aaab-a6e26029aab0> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/99cab017-8ae9-4519-8513-36377012e130> .
+
+      <http://data.lblod.info/id/vestigingen/87f0df81-6d6b-4dca-810c-ea9e26931c18> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "87f0df81-6d6b-4dca-810c-ea9e26931c18" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/710907d6-c0d4-44c8-a63c-93873f023566> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/e58a706b-f8fd-428a-ba90-372aae6ad82c> ,
+                        <http://data.lblod.info/id/contact-punten/6b761f33-c771-43db-8193-8e07789f5a6d> .
+
+      <http://data.lblod.info/id/contact-punten/e58a706b-f8fd-428a-ba90-372aae6ad82c> a <http://schema.org/ContactPoint> ;
+        mu:uuid "e58a706b-f8fd-428a-ba90-372aae6ad82c" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/6b761f33-c771-43db-8193-8e07789f5a6d> a <http://schema.org/ContactPoint> ;
+        mu:uuid "6b761f33-c771-43db-8193-8e07789f5a6d" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/710907d6-c0d4-44c8-a63c-93873f023566> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "710907d6-c0d4-44c8-a63c-93873f023566" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/7f027136-6e25-4227-aaab-a6e26029aab0> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "7f027136-6e25-4227-aaab-a6e26029aab0" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Sense Mortsel VZW" ;
+        regorg:legalName "Sense Mortsel VZW" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/1858a6f8-17f0-45bb-b63b-3145ce3cd9e6> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/87f0df81-6d6b-4dca-810c-ea9e26931c18> .
+
+      <http://data.lblod.info/id/identificatoren/b10e1308-ad20-4b1b-8123-e6bba9f0607e> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "b10e1308-ad20-4b1b-8123-e6bba9f0607e" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e8be9e3c-e70f-46d8-bde1-d49fd11ded54> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/e8be9e3c-e70f-46d8-bde1-d49fd11ded54> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "e8be9e3c-e70f-46d8-bde1-d49fd11ded54" .
+
+
+      <http://data.lblod.info/id/identificatoren/025de8a5-bef8-4753-acdf-1d7e5b46f93e> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "025de8a5-bef8-4753-acdf-1d7e5b46f93e" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/4ec1eb59-c54c-479d-8e29-2f467e569a97> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/4ec1eb59-c54c-479d-8e29-2f467e569a97> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "4ec1eb59-c54c-479d-8e29-2f467e569a97" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0887953044" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/88e78916-959a-4f89-b899-2243b19afc87> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/025de8a5-bef8-4753-acdf-1d7e5b46f93e> .
+
+      <http://data.lblod.info/id/vestigingen/85e1a532-71bf-4084-8257-d91a99b8095e> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "85e1a532-71bf-4084-8257-d91a99b8095e" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/d6c89930-596e-4b1e-b8f2-735823b7cc9f> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/6870bb6e-27b1-49f2-a18a-617c1b1c44f5> ,
+                        <http://data.lblod.info/id/contact-punten/1f86607f-b0ce-444f-8034-21f7ebfb5d48> .
+
+      <http://data.lblod.info/id/contact-punten/6870bb6e-27b1-49f2-a18a-617c1b1c44f5> a <http://schema.org/ContactPoint> ;
+        mu:uuid "6870bb6e-27b1-49f2-a18a-617c1b1c44f5" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/1f86607f-b0ce-444f-8034-21f7ebfb5d48> a <http://schema.org/ContactPoint> ;
+        mu:uuid "1f86607f-b0ce-444f-8034-21f7ebfb5d48" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/d6c89930-596e-4b1e-b8f2-735823b7cc9f> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "d6c89930-596e-4b1e-b8f2-735823b7cc9f" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/88e78916-959a-4f89-b899-2243b19afc87> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "88e78916-959a-4f89-b899-2243b19afc87" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "OPPORTUNITAS dienstenbedrijf Noord-Limburg" ;
+        regorg:legalName "OPPORTUNITAS dienstenbedrijf Noord-Limburg" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b10e1308-ad20-4b1b-8123-e6bba9f0607e> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/85e1a532-71bf-4084-8257-d91a99b8095e> .
+
+      <http://data.lblod.info/id/identificatoren/bc4bdeb0-47aa-4e72-86ad-8dd021c83834> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "bc4bdeb0-47aa-4e72-86ad-8dd021c83834" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/36878fb9-6898-41e3-8b22-74c7b777c2d5> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/36878fb9-6898-41e3-8b22-74c7b777c2d5> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "36878fb9-6898-41e3-8b22-74c7b777c2d5" .
+
+
+      <http://data.lblod.info/id/identificatoren/f73fde90-ccac-4767-80bf-66db1a6c17f5> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "f73fde90-ccac-4767-80bf-66db1a6c17f5" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/7eaf39a9-179c-40fb-a2f5-10e07ba2ea48> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/7eaf39a9-179c-40fb-a2f5-10e07ba2ea48> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "7eaf39a9-179c-40fb-a2f5-10e07ba2ea48" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0838654674" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/74753c7c-e56a-4f86-bb1f-5c0c266743e2> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/f73fde90-ccac-4767-80bf-66db1a6c17f5> .
+
+      <http://data.lblod.info/id/vestigingen/9dca3f46-60df-49d3-8c34-feede7c90de8> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "9dca3f46-60df-49d3-8c34-feede7c90de8" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/9ecdbc8e-d26d-4f7b-a885-91e21399ece5> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/deb8d602-91cb-4f1e-8122-b71211282215> ,
+                        <http://data.lblod.info/id/contact-punten/24c1584f-2e66-4212-b8ed-20c70a737e25> .
+
+      <http://data.lblod.info/id/contact-punten/deb8d602-91cb-4f1e-8122-b71211282215> a <http://schema.org/ContactPoint> ;
+        mu:uuid "deb8d602-91cb-4f1e-8122-b71211282215" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/24c1584f-2e66-4212-b8ed-20c70a737e25> a <http://schema.org/ContactPoint> ;
+        mu:uuid "24c1584f-2e66-4212-b8ed-20c70a737e25" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/9ecdbc8e-d26d-4f7b-a885-91e21399ece5> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "9ecdbc8e-d26d-4f7b-a885-91e21399ece5" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/74753c7c-e56a-4f86-bb1f-5c0c266743e2> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "74753c7c-e56a-4f86-bb1f-5c0c266743e2" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "vzw Woonzorg Lanaken" ;
+        regorg:legalName "vzw Woonzorg Lanaken" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/bc4bdeb0-47aa-4e72-86ad-8dd021c83834> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/9dca3f46-60df-49d3-8c34-feede7c90de8> .
+
+      <http://data.lblod.info/id/identificatoren/b392233f-4aae-4ae0-b12b-6eb469927511> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "b392233f-4aae-4ae0-b12b-6eb469927511" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/fb803a9c-0c6f-4bf3-b470-32cfb084c99d> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/fb803a9c-0c6f-4bf3-b470-32cfb084c99d> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "fb803a9c-0c6f-4bf3-b470-32cfb084c99d" .
+
+
+      <http://data.lblod.info/id/identificatoren/27184062-8c3d-447e-b3fd-4e6a850f611d> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "27184062-8c3d-447e-b3fd-4e6a850f611d" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/2978e00e-e05e-4e2e-80b8-6f23f6be5100> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/2978e00e-e05e-4e2e-80b8-6f23f6be5100> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "2978e00e-e05e-4e2e-80b8-6f23f6be5100" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0471364174" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/78298b3b-1dea-4ff5-beb8-36a67cd2b796> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/27184062-8c3d-447e-b3fd-4e6a850f611d> .
+
+      <http://data.lblod.info/id/vestigingen/21a0bc9d-1fdd-4667-916c-4b1b83e43362> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "21a0bc9d-1fdd-4667-916c-4b1b83e43362" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/76e01603-e2cb-447b-8ec6-c6cebe74f68b> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/b41826bc-4594-4a4e-9a53-f89c71db6bd0> ,
+                        <http://data.lblod.info/id/contact-punten/a5283354-ee12-48be-89d4-dc78fd667a05> .
+
+      <http://data.lblod.info/id/contact-punten/b41826bc-4594-4a4e-9a53-f89c71db6bd0> a <http://schema.org/ContactPoint> ;
+        mu:uuid "b41826bc-4594-4a4e-9a53-f89c71db6bd0" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/a5283354-ee12-48be-89d4-dc78fd667a05> a <http://schema.org/ContactPoint> ;
+        mu:uuid "a5283354-ee12-48be-89d4-dc78fd667a05" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/76e01603-e2cb-447b-8ec6-c6cebe74f68b> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "76e01603-e2cb-447b-8ec6-c6cebe74f68b" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/78298b3b-1dea-4ff5-beb8-36a67cd2b796> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "78298b3b-1dea-4ff5-beb8-36a67cd2b796" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Ahasverus" ;
+        regorg:legalName "Ahasverus" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b392233f-4aae-4ae0-b12b-6eb469927511> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/21a0bc9d-1fdd-4667-916c-4b1b83e43362> .
+
+      <http://data.lblod.info/id/identificatoren/bf0d1b7d-3cb2-4897-9ad2-2d772186ab59> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "bf0d1b7d-3cb2-4897-9ad2-2d772186ab59" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/37753318-afa4-4258-9b6a-a4ba9d121e49> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/37753318-afa4-4258-9b6a-a4ba9d121e49> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "37753318-afa4-4258-9b6a-a4ba9d121e49" .
+
+
+      <http://data.lblod.info/id/identificatoren/3abc3b50-a9cf-45e4-9a60-0dd43648aca5> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "3abc3b50-a9cf-45e4-9a60-0dd43648aca5" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/dc9d4e93-8325-484f-8533-3ced9460e2bc> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/dc9d4e93-8325-484f-8533-3ced9460e2bc> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "dc9d4e93-8325-484f-8533-3ced9460e2bc" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0861157387" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/2efb2fd5-7e41-4f61-a340-5960513333d9> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/3abc3b50-a9cf-45e4-9a60-0dd43648aca5> .
+
+      <http://data.lblod.info/id/vestigingen/22e91b63-ad50-434d-9ddf-5b9d60da52ea> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "22e91b63-ad50-434d-9ddf-5b9d60da52ea" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/5679194a-633a-406a-825f-1aab4c011800> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/c5b354b9-5d88-4f94-8eed-f3c81247c571> ,
+                        <http://data.lblod.info/id/contact-punten/0adef2da-e582-4a2c-b9e5-a79d2b1588ec> .
+
+      <http://data.lblod.info/id/contact-punten/c5b354b9-5d88-4f94-8eed-f3c81247c571> a <http://schema.org/ContactPoint> ;
+        mu:uuid "c5b354b9-5d88-4f94-8eed-f3c81247c571" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/0adef2da-e582-4a2c-b9e5-a79d2b1588ec> a <http://schema.org/ContactPoint> ;
+        mu:uuid "0adef2da-e582-4a2c-b9e5-a79d2b1588ec" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/5679194a-633a-406a-825f-1aab4c011800> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "5679194a-633a-406a-825f-1aab4c011800" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/2efb2fd5-7e41-4f61-a340-5960513333d9> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "2efb2fd5-7e41-4f61-a340-5960513333d9" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Woonzorgcentrum d'Eycken Brug" ;
+        regorg:legalName "Woonzorgcentrum d'Eycken Brug" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/bf0d1b7d-3cb2-4897-9ad2-2d772186ab59> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/22e91b63-ad50-434d-9ddf-5b9d60da52ea> .
+
+      <http://data.lblod.info/id/identificatoren/a9c72709-9aa4-4311-a95f-d9b41022cd53> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "a9c72709-9aa4-4311-a95f-d9b41022cd53" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/2c41e3a8-b549-47a1-87ad-c637449c7da4> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/2c41e3a8-b549-47a1-87ad-c637449c7da4> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "2c41e3a8-b549-47a1-87ad-c637449c7da4" .
+
+
+      <http://data.lblod.info/id/identificatoren/c7453b36-0d5b-4d13-bf51-d4da89485345> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "c7453b36-0d5b-4d13-bf51-d4da89485345" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/0bf4a6a4-33bc-4c0c-9827-1fca30898f16> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/0bf4a6a4-33bc-4c0c-9827-1fca30898f16> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "0bf4a6a4-33bc-4c0c-9827-1fca30898f16" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0476803795" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/4be9881b-95e0-403a-bb1f-407a5ebd301e> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/c7453b36-0d5b-4d13-bf51-d4da89485345> .
+
+      <http://data.lblod.info/id/vestigingen/57a36a64-5841-45e2-b3c6-30cfb51cb895> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "57a36a64-5841-45e2-b3c6-30cfb51cb895" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/9ab2e456-dafc-4a5b-96ef-0b7defdeec8a> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/7f9d12fa-1ada-4ac2-ba44-8c1582a4fe2d> ,
+                        <http://data.lblod.info/id/contact-punten/815410ed-6374-472e-b076-69114a5a0beb> .
+
+      <http://data.lblod.info/id/contact-punten/7f9d12fa-1ada-4ac2-ba44-8c1582a4fe2d> a <http://schema.org/ContactPoint> ;
+        mu:uuid "7f9d12fa-1ada-4ac2-ba44-8c1582a4fe2d" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/815410ed-6374-472e-b076-69114a5a0beb> a <http://schema.org/ContactPoint> ;
+        mu:uuid "815410ed-6374-472e-b076-69114a5a0beb" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/9ab2e456-dafc-4a5b-96ef-0b7defdeec8a> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "9ab2e456-dafc-4a5b-96ef-0b7defdeec8a" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/4be9881b-95e0-403a-bb1f-407a5ebd301e> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "4be9881b-95e0-403a-bb1f-407a5ebd301e" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "vzw Buurtbedrijf Drietakt" ;
+        regorg:legalName "vzw Buurtbedrijf Drietakt" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/a9c72709-9aa4-4311-a95f-d9b41022cd53> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/57a36a64-5841-45e2-b3c6-30cfb51cb895> .
+
+      <http://data.lblod.info/id/identificatoren/c8d40632-552a-442c-a47c-5d91c17a8af6> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "c8d40632-552a-442c-a47c-5d91c17a8af6" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/379bb4b1-9764-400c-bcda-8c5fb9592258> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/379bb4b1-9764-400c-bcda-8c5fb9592258> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "379bb4b1-9764-400c-bcda-8c5fb9592258" .
+
+
+      <http://data.lblod.info/id/identificatoren/475af391-c4c4-4bcd-8086-321349fe5a09> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "475af391-c4c4-4bcd-8086-321349fe5a09" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/5a9fed57-6f2d-4759-9e3f-8cc0b948c925> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/5a9fed57-6f2d-4759-9e3f-8cc0b948c925> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "5a9fed57-6f2d-4759-9e3f-8cc0b948c925" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0884212804" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/5f14a83e-2b98-44f0-8f40-8fc618cc98ab> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/475af391-c4c4-4bcd-8086-321349fe5a09> .
+
+      <http://data.lblod.info/id/vestigingen/9d7d8558-1fc1-4fd8-8993-c7a22bdcf886> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "9d7d8558-1fc1-4fd8-8993-c7a22bdcf886" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/943913b8-4fea-48ae-a824-3c044cb82f6a> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/f21fdddb-465f-477e-81a4-cc7069f65392> ,
+                        <http://data.lblod.info/id/contact-punten/ed752c7a-6821-490a-9ec8-2aeb82b98458> .
+
+      <http://data.lblod.info/id/contact-punten/f21fdddb-465f-477e-81a4-cc7069f65392> a <http://schema.org/ContactPoint> ;
+        mu:uuid "f21fdddb-465f-477e-81a4-cc7069f65392" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/ed752c7a-6821-490a-9ec8-2aeb82b98458> a <http://schema.org/ContactPoint> ;
+        mu:uuid "ed752c7a-6821-490a-9ec8-2aeb82b98458" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/943913b8-4fea-48ae-a824-3c044cb82f6a> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "943913b8-4fea-48ae-a824-3c044cb82f6a" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/5f14a83e-2b98-44f0-8f40-8fc618cc98ab> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "5f14a83e-2b98-44f0-8f40-8fc618cc98ab" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "SVK Hageland vzw" ;
+        regorg:legalName "SVK Hageland vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/c8d40632-552a-442c-a47c-5d91c17a8af6> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/9d7d8558-1fc1-4fd8-8993-c7a22bdcf886> .
+
+      <http://data.lblod.info/id/identificatoren/27d092df-88a0-4fbc-aae3-e175aa372202> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "27d092df-88a0-4fbc-aae3-e175aa372202" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/91267c9b-22bb-4e1d-900b-13ea110bfe2d> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/91267c9b-22bb-4e1d-900b-13ea110bfe2d> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "91267c9b-22bb-4e1d-900b-13ea110bfe2d" .
+
+
+      <http://data.lblod.info/id/identificatoren/29c200bf-a56b-4eda-8abc-d7a8bc03af0b> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "29c200bf-a56b-4eda-8abc-d7a8bc03af0b" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/9d240518-83cd-4f3a-8538-45be2f007607> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/9d240518-83cd-4f3a-8538-45be2f007607> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "9d240518-83cd-4f3a-8538-45be2f007607" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0848738221" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/d42c8aed-4561-49f3-8d35-dbe0fde2553c> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/29c200bf-a56b-4eda-8abc-d7a8bc03af0b> .
+
+      <http://data.lblod.info/id/vestigingen/c9841bcd-ac39-46ff-89d3-4128cc905638> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "c9841bcd-ac39-46ff-89d3-4128cc905638" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/929f1bf4-62e6-4c56-b8d1-6b7ada7624c0> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/47e42bfd-9f9b-4815-8f6d-f9a29c6543de> ,
+                        <http://data.lblod.info/id/contact-punten/426a05aa-86ba-4e6a-a6bf-d12d3265f910> .
+
+      <http://data.lblod.info/id/contact-punten/47e42bfd-9f9b-4815-8f6d-f9a29c6543de> a <http://schema.org/ContactPoint> ;
+        mu:uuid "47e42bfd-9f9b-4815-8f6d-f9a29c6543de" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/426a05aa-86ba-4e6a-a6bf-d12d3265f910> a <http://schema.org/ContactPoint> ;
+        mu:uuid "426a05aa-86ba-4e6a-a6bf-d12d3265f910" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/929f1bf4-62e6-4c56-b8d1-6b7ada7624c0> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "929f1bf4-62e6-4c56-b8d1-6b7ada7624c0" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/d42c8aed-4561-49f3-8d35-dbe0fde2553c> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "d42c8aed-4561-49f3-8d35-dbe0fde2553c" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Woonzorgzone De Kouter vzw" ;
+        regorg:legalName "Woonzorgzone De Kouter vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/27d092df-88a0-4fbc-aae3-e175aa372202> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/c9841bcd-ac39-46ff-89d3-4128cc905638> .
+
+      <http://data.lblod.info/id/identificatoren/128f20d2-e397-4ace-b748-6b06f1113077> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "128f20d2-e397-4ace-b748-6b06f1113077" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/5f2eb42c-f6dd-4dfe-8036-ccd1b2601b03> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/5f2eb42c-f6dd-4dfe-8036-ccd1b2601b03> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "5f2eb42c-f6dd-4dfe-8036-ccd1b2601b03" .
+
+
+      <http://data.lblod.info/id/identificatoren/94e50dbd-ecc4-4243-b476-744573f2680a> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "94e50dbd-ecc4-4243-b476-744573f2680a" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/fa27649c-3ef9-4c3a-bdb7-f8c22e5e7474> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/fa27649c-3ef9-4c3a-bdb7-f8c22e5e7474> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "fa27649c-3ef9-4c3a-bdb7-f8c22e5e7474" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0833161902" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/26253779-837e-4d62-bb36-0632a8410b99> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/94e50dbd-ecc4-4243-b476-744573f2680a> .
+
+      <http://data.lblod.info/id/vestigingen/56064866-663d-4dc9-862c-72982e391a6c> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "56064866-663d-4dc9-862c-72982e391a6c" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/265fe9f2-63e5-4b0a-9045-2d10dbe1f915> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/bd8da9b1-aeec-4eba-9773-53202c684ec3> ,
+                        <http://data.lblod.info/id/contact-punten/1fe73b82-4bd6-466d-a396-2a790ed5ca6a> .
+
+      <http://data.lblod.info/id/contact-punten/bd8da9b1-aeec-4eba-9773-53202c684ec3> a <http://schema.org/ContactPoint> ;
+        mu:uuid "bd8da9b1-aeec-4eba-9773-53202c684ec3" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/1fe73b82-4bd6-466d-a396-2a790ed5ca6a> a <http://schema.org/ContactPoint> ;
+        mu:uuid "1fe73b82-4bd6-466d-a396-2a790ed5ca6a" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/265fe9f2-63e5-4b0a-9045-2d10dbe1f915> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "265fe9f2-63e5-4b0a-9045-2d10dbe1f915" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/26253779-837e-4d62-bb36-0632a8410b99> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "26253779-837e-4d62-bb36-0632a8410b99" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Amphora" ;
+        regorg:legalName "Amphora" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/128f20d2-e397-4ace-b748-6b06f1113077> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/56064866-663d-4dc9-862c-72982e391a6c> .
+
+      <http://data.lblod.info/id/identificatoren/776d7707-c5be-4baa-a36d-f661070fdeb8> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "776d7707-c5be-4baa-a36d-f661070fdeb8" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/dc950592-6aac-47e4-8607-71ac7f361edb> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/dc950592-6aac-47e4-8607-71ac7f361edb> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "dc950592-6aac-47e4-8607-71ac7f361edb" .
+
+
+      <http://data.lblod.info/id/identificatoren/9484faeb-c478-4f16-90e5-073ecc8ae923> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "9484faeb-c478-4f16-90e5-073ecc8ae923" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/9873907a-bfcd-4109-b364-20c59fbf122e> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/9873907a-bfcd-4109-b364-20c59fbf122e> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "9873907a-bfcd-4109-b364-20c59fbf122e" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0472751175" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/03baec8b-0a59-4777-9026-082d20e8afd1> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9484faeb-c478-4f16-90e5-073ecc8ae923> .
+
+      <http://data.lblod.info/id/vestigingen/076409a5-5871-403a-a545-b2a5ec03cfe8> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "076409a5-5871-403a-a545-b2a5ec03cfe8" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/02143502-7dec-40e1-a5dc-fe2faf951608> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/473019df-7114-4cff-9027-72c399d631a9> ,
+                        <http://data.lblod.info/id/contact-punten/55dd98d1-0ae3-4a81-86c3-1df1f0d580d5> .
+
+      <http://data.lblod.info/id/contact-punten/473019df-7114-4cff-9027-72c399d631a9> a <http://schema.org/ContactPoint> ;
+        mu:uuid "473019df-7114-4cff-9027-72c399d631a9" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/55dd98d1-0ae3-4a81-86c3-1df1f0d580d5> a <http://schema.org/ContactPoint> ;
+        mu:uuid "55dd98d1-0ae3-4a81-86c3-1df1f0d580d5" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/02143502-7dec-40e1-a5dc-fe2faf951608> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "02143502-7dec-40e1-a5dc-fe2faf951608" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/03baec8b-0a59-4777-9026-082d20e8afd1> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "03baec8b-0a59-4777-9026-082d20e8afd1" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "vzw Mentor" ;
+        regorg:legalName "vzw Mentor" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/776d7707-c5be-4baa-a36d-f661070fdeb8> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/076409a5-5871-403a-a545-b2a5ec03cfe8> .
+
+      <http://data.lblod.info/id/identificatoren/117bcdff-7233-4268-b873-403319b72e40> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "117bcdff-7233-4268-b873-403319b72e40" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/adcd83e0-e55e-4f67-9085-820965c1e3f5> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/adcd83e0-e55e-4f67-9085-820965c1e3f5> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "adcd83e0-e55e-4f67-9085-820965c1e3f5" .
+
+
+      <http://data.lblod.info/id/identificatoren/dc145c91-cc0c-444d-8d80-4be9e4574a49> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "dc145c91-cc0c-444d-8d80-4be9e4574a49" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/caf3821e-7f7f-4102-91ab-ae31253c7d80> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/caf3821e-7f7f-4102-91ab-ae31253c7d80> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "caf3821e-7f7f-4102-91ab-ae31253c7d80" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0832024923" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/272ab4f1-a97a-4de6-b9b5-01d4684c5dc5> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/dc145c91-cc0c-444d-8d80-4be9e4574a49> .
+
+      <http://data.lblod.info/id/vestigingen/2786d9c6-04ea-4962-ba0b-92b9ca236350> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "2786d9c6-04ea-4962-ba0b-92b9ca236350" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/0835d19d-9528-40d4-9b58-c703f47d6c7c> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/f4c4a204-9e88-44d1-a46f-80393d598578> ,
+                        <http://data.lblod.info/id/contact-punten/ddb10860-a793-4cfe-801b-158d1921bb19> .
+
+      <http://data.lblod.info/id/contact-punten/f4c4a204-9e88-44d1-a46f-80393d598578> a <http://schema.org/ContactPoint> ;
+        mu:uuid "f4c4a204-9e88-44d1-a46f-80393d598578" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/ddb10860-a793-4cfe-801b-158d1921bb19> a <http://schema.org/ContactPoint> ;
+        mu:uuid "ddb10860-a793-4cfe-801b-158d1921bb19" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/0835d19d-9528-40d4-9b58-c703f47d6c7c> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "0835d19d-9528-40d4-9b58-c703f47d6c7c" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/272ab4f1-a97a-4de6-b9b5-01d4684c5dc5> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "272ab4f1-a97a-4de6-b9b5-01d4684c5dc5" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Zorg en Welzijn Zedelgem" ;
+        regorg:legalName "Zorg en Welzijn Zedelgem" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/117bcdff-7233-4268-b873-403319b72e40> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/2786d9c6-04ea-4962-ba0b-92b9ca236350> .
+
+      <http://data.lblod.info/id/identificatoren/0b934429-536c-4db5-84ca-7acd240353de> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "0b934429-536c-4db5-84ca-7acd240353de" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/88deb7de-636e-404b-9bdc-625e4325f7df> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/88deb7de-636e-404b-9bdc-625e4325f7df> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "88deb7de-636e-404b-9bdc-625e4325f7df" .
+
+
+      <http://data.lblod.info/id/identificatoren/3e8d3599-1120-4f8c-9583-628ef0afddeb> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "3e8d3599-1120-4f8c-9583-628ef0afddeb" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/f20dc6c4-21f1-44cc-af8e-db7b7afac97a> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/f20dc6c4-21f1-44cc-af8e-db7b7afac97a> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "f20dc6c4-21f1-44cc-af8e-db7b7afac97a" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0644984078" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/58c2b34f-93b8-469f-8403-6d97d17c1fb6> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/3e8d3599-1120-4f8c-9583-628ef0afddeb> .
+
+      <http://data.lblod.info/id/vestigingen/30f0573b-b8ec-4ecf-afb6-6bcd78dbff57> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "30f0573b-b8ec-4ecf-afb6-6bcd78dbff57" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/72d61335-cce6-413d-8db8-91796a3aaa84> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/22970b11-921e-4056-9747-75ecf0cc3da7> ,
+                        <http://data.lblod.info/id/contact-punten/0fd53707-85fa-4b0f-ad42-119b598cab80> .
+
+      <http://data.lblod.info/id/contact-punten/22970b11-921e-4056-9747-75ecf0cc3da7> a <http://schema.org/ContactPoint> ;
+        mu:uuid "22970b11-921e-4056-9747-75ecf0cc3da7" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/0fd53707-85fa-4b0f-ad42-119b598cab80> a <http://schema.org/ContactPoint> ;
+        mu:uuid "0fd53707-85fa-4b0f-ad42-119b598cab80" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/72d61335-cce6-413d-8db8-91796a3aaa84> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "72d61335-cce6-413d-8db8-91796a3aaa84" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/58c2b34f-93b8-469f-8403-6d97d17c1fb6> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "58c2b34f-93b8-469f-8403-6d97d17c1fb6" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "Woonzorgcentrum Zilverbos" ;
+        regorg:legalName "Woonzorgcentrum Zilverbos" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/0b934429-536c-4db5-84ca-7acd240353de> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/30f0573b-b8ec-4ecf-afb6-6bcd78dbff57> .
+
+      <http://data.lblod.info/id/identificatoren/ed45ef10-a4ce-4e2d-a799-a26a1c51001e> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "ed45ef10-a4ce-4e2d-a799-a26a1c51001e" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/4349d0cc-558f-42ed-95bd-b4ad0d429f29> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/4349d0cc-558f-42ed-95bd-b4ad0d429f29> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "4349d0cc-558f-42ed-95bd-b4ad0d429f29" .
+
+
+      <http://data.lblod.info/id/identificatoren/7e9660f2-91c1-411b-b09d-49f52793ea3c> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "7e9660f2-91c1-411b-b09d-49f52793ea3c" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e84127ee-f34b-4f1d-b105-c5a8871b2b45> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/e84127ee-f34b-4f1d-b105-c5a8871b2b45> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "e84127ee-f34b-4f1d-b105-c5a8871b2b45" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0633854022" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/8a298ce1-6d90-46e5-8f53-6a5dc7d07d5b> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/7e9660f2-91c1-411b-b09d-49f52793ea3c> .
+
+      <http://data.lblod.info/id/vestigingen/1486b3ad-cb2f-45d8-a845-b1f61941fdd1> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "1486b3ad-cb2f-45d8-a845-b1f61941fdd1" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/86e46ef0-3230-44ec-9a39-31fdcdd8682b> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/4fbb3a0a-2861-4da7-a14c-3706df043ef0> ,
+                        <http://data.lblod.info/id/contact-punten/b76cdecd-6639-48a9-ad79-9fd2369abc19> .
+
+      <http://data.lblod.info/id/contact-punten/4fbb3a0a-2861-4da7-a14c-3706df043ef0> a <http://schema.org/ContactPoint> ;
+        mu:uuid "4fbb3a0a-2861-4da7-a14c-3706df043ef0" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/b76cdecd-6639-48a9-ad79-9fd2369abc19> a <http://schema.org/ContactPoint> ;
+        mu:uuid "b76cdecd-6639-48a9-ad79-9fd2369abc19" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/86e46ef0-3230-44ec-9a39-31fdcdd8682b> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "86e46ef0-3230-44ec-9a39-31fdcdd8682b" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/8a298ce1-6d90-46e5-8f53-6a5dc7d07d5b> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "8a298ce1-6d90-46e5-8f53-6a5dc7d07d5b" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "Woonzorgcentrum Van Lierde vzw" ;
+        regorg:legalName "Woonzorgcentrum Van Lierde vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/ed45ef10-a4ce-4e2d-a799-a26a1c51001e> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/1486b3ad-cb2f-45d8-a845-b1f61941fdd1> .
+
+      <http://data.lblod.info/id/identificatoren/9ee0469e-079b-43fb-a8a4-a8a836efb0ce> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "9ee0469e-079b-43fb-a8a4-a8a836efb0ce" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/018ffe85-f37b-4437-9b62-b8ea8f26198e> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/018ffe85-f37b-4437-9b62-b8ea8f26198e> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "018ffe85-f37b-4437-9b62-b8ea8f26198e" .
+
+
+      <http://data.lblod.info/id/identificatoren/d99b0c89-3d16-458a-8d21-88f452567104> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "d99b0c89-3d16-458a-8d21-88f452567104" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/15eb4485-4798-4237-8427-23409e1f5385> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/15eb4485-4798-4237-8427-23409e1f5385> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "15eb4485-4798-4237-8427-23409e1f5385" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0566983014" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/15220ec1-0b3c-4e03-adbc-24275b080090> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/d99b0c89-3d16-458a-8d21-88f452567104> .
+
+      <http://data.lblod.info/id/vestigingen/fbcea643-9f81-4fe2-8f34-973f947a3dbc> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "fbcea643-9f81-4fe2-8f34-973f947a3dbc" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/808af901-5c71-4d50-ba54-c46c42282c48> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/52b62a15-cd0f-4304-80b9-ee4f472593f2> ,
+                        <http://data.lblod.info/id/contact-punten/e06a98cd-dacd-4138-a00b-6d6d798816c5> .
+
+      <http://data.lblod.info/id/contact-punten/52b62a15-cd0f-4304-80b9-ee4f472593f2> a <http://schema.org/ContactPoint> ;
+        mu:uuid "52b62a15-cd0f-4304-80b9-ee4f472593f2" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/e06a98cd-dacd-4138-a00b-6d6d798816c5> a <http://schema.org/ContactPoint> ;
+        mu:uuid "e06a98cd-dacd-4138-a00b-6d6d798816c5" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/808af901-5c71-4d50-ba54-c46c42282c48> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "808af901-5c71-4d50-ba54-c46c42282c48" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/15220ec1-0b3c-4e03-adbc-24275b080090> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "15220ec1-0b3c-4e03-adbc-24275b080090" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "Blijvelde woon- en zorgcentrum vzw" ;
+        regorg:legalName "Blijvelde woon- en zorgcentrum vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9ee0469e-079b-43fb-a8a4-a8a836efb0ce> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/fbcea643-9f81-4fe2-8f34-973f947a3dbc> .
+
+      <http://data.lblod.info/id/identificatoren/88bcb3ab-48c1-4908-848d-446687ab9b65> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "88bcb3ab-48c1-4908-848d-446687ab9b65" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/4ff5d188-2588-4b02-9ba0-7b36157cd082> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/4ff5d188-2588-4b02-9ba0-7b36157cd082> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "4ff5d188-2588-4b02-9ba0-7b36157cd082" .
+
+
+      <http://data.lblod.info/id/identificatoren/5244031a-fff2-4434-b30b-154e8c35ea72> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "5244031a-fff2-4434-b30b-154e8c35ea72" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/34147a5d-b490-48d2-8c68-7352655e7a40> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/34147a5d-b490-48d2-8c68-7352655e7a40> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "34147a5d-b490-48d2-8c68-7352655e7a40" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0881602118" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/ef414b37-e738-4824-8148-36fa8026b884> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/5244031a-fff2-4434-b30b-154e8c35ea72> .
+
+      <http://data.lblod.info/id/vestigingen/e7927cf9-5ea8-4849-932b-4903ba6f12f5> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "e7927cf9-5ea8-4849-932b-4903ba6f12f5" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/1891afe2-d254-4695-995e-9a9118239468> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/7d6b4943-32c6-42f0-acd4-dcc4b631a3c0> ,
+                        <http://data.lblod.info/id/contact-punten/cbd3070e-3e89-401f-bb77-0f4db32ade3f> .
+
+      <http://data.lblod.info/id/contact-punten/7d6b4943-32c6-42f0-acd4-dcc4b631a3c0> a <http://schema.org/ContactPoint> ;
+        mu:uuid "7d6b4943-32c6-42f0-acd4-dcc4b631a3c0" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/cbd3070e-3e89-401f-bb77-0f4db32ade3f> a <http://schema.org/ContactPoint> ;
+        mu:uuid "cbd3070e-3e89-401f-bb77-0f4db32ade3f" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/1891afe2-d254-4695-995e-9a9118239468> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "1891afe2-d254-4695-995e-9a9118239468" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/ef414b37-e738-4824-8148-36fa8026b884> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "ef414b37-e738-4824-8148-36fa8026b884" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Sociaal Verhuur Kantoor (SVK) Het Scharnier" ;
+        regorg:legalName "Sociaal Verhuur Kantoor (SVK) Het Scharnier" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/88bcb3ab-48c1-4908-848d-446687ab9b65> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/e7927cf9-5ea8-4849-932b-4903ba6f12f5> .
+
+      <http://data.lblod.info/id/identificatoren/8f0ccbdb-bf13-4fc4-ab00-787b5d4a0fbf> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "8f0ccbdb-bf13-4fc4-ab00-787b5d4a0fbf" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/8a87d040-ae91-435d-b42f-714353076d06> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/8a87d040-ae91-435d-b42f-714353076d06> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "8a87d040-ae91-435d-b42f-714353076d06" .
+
+
+      <http://data.lblod.info/id/identificatoren/e3efccfa-89dc-48f7-b7df-5975fa131e16> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "e3efccfa-89dc-48f7-b7df-5975fa131e16" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/382ceabb-84cc-42cd-a882-ff254feae53b> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/382ceabb-84cc-42cd-a882-ff254feae53b> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "382ceabb-84cc-42cd-a882-ff254feae53b" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0799574166" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/23f5dbc2-c225-4022-9544-1cae61df43fe> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e3efccfa-89dc-48f7-b7df-5975fa131e16> .
+
+      <http://data.lblod.info/id/vestigingen/21830561-90e5-4c21-87e9-9b2ab84ad68e> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "21830561-90e5-4c21-87e9-9b2ab84ad68e" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/402acd4b-4eda-410c-a9da-2c9b51df8921> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/23232a40-3f5d-4178-870c-87559f1728f6> ,
+                        <http://data.lblod.info/id/contact-punten/49d2a30e-20bd-47fa-9b0b-adaf349626bc> .
+
+      <http://data.lblod.info/id/contact-punten/23232a40-3f5d-4178-870c-87559f1728f6> a <http://schema.org/ContactPoint> ;
+        mu:uuid "23232a40-3f5d-4178-870c-87559f1728f6" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/49d2a30e-20bd-47fa-9b0b-adaf349626bc> a <http://schema.org/ContactPoint> ;
+        mu:uuid "49d2a30e-20bd-47fa-9b0b-adaf349626bc" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/402acd4b-4eda-410c-a9da-2c9b51df8921> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "402acd4b-4eda-410c-a9da-2c9b51df8921" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/23f5dbc2-c225-4022-9544-1cae61df43fe> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "23f5dbc2-c225-4022-9544-1cae61df43fe" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Trefpunt Zorg" ;
+        regorg:legalName "Trefpunt Zorg" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/8f0ccbdb-bf13-4fc4-ab00-787b5d4a0fbf> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/21830561-90e5-4c21-87e9-9b2ab84ad68e> .
+
+      <http://data.lblod.info/id/identificatoren/4176da9f-cbba-4742-a2b1-4cb4f78da8b0> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "4176da9f-cbba-4742-a2b1-4cb4f78da8b0" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/2e9fe1c1-b2dc-4559-9c9b-49fc0ab01852> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/2e9fe1c1-b2dc-4559-9c9b-49fc0ab01852> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "2e9fe1c1-b2dc-4559-9c9b-49fc0ab01852" .
+
+
+      <http://data.lblod.info/id/identificatoren/984989a9-656b-481a-bda1-4d1adf6fad07> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "984989a9-656b-481a-bda1-4d1adf6fad07" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/562b260c-4156-43c5-9c3f-fd642941edd4> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/562b260c-4156-43c5-9c3f-fd642941edd4> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "562b260c-4156-43c5-9c3f-fd642941edd4" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0800023336" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/b1d15b1f-2e0e-45ec-b593-4bd3f71ed322> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/984989a9-656b-481a-bda1-4d1adf6fad07> .
+
+      <http://data.lblod.info/id/vestigingen/e7bf0ce9-ee7b-47f6-b1ca-3b7a3dfd0123> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "e7bf0ce9-ee7b-47f6-b1ca-3b7a3dfd0123" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/38c4bbd7-413d-4be0-86a6-8ca580d7a1d9> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/34b531cd-fe3d-42d8-850b-be4bab329084> ,
+                        <http://data.lblod.info/id/contact-punten/96a125e2-9538-464c-888e-524fb68641c1> .
+
+      <http://data.lblod.info/id/contact-punten/34b531cd-fe3d-42d8-850b-be4bab329084> a <http://schema.org/ContactPoint> ;
+        mu:uuid "34b531cd-fe3d-42d8-850b-be4bab329084" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/96a125e2-9538-464c-888e-524fb68641c1> a <http://schema.org/ContactPoint> ;
+        mu:uuid "96a125e2-9538-464c-888e-524fb68641c1" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/38c4bbd7-413d-4be0-86a6-8ca580d7a1d9> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "38c4bbd7-413d-4be0-86a6-8ca580d7a1d9" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/b1d15b1f-2e0e-45ec-b593-4bd3f71ed322> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "b1d15b1f-2e0e-45ec-b593-4bd3f71ed322" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "AZ Oostende" ;
+        regorg:legalName "AZ Oostende" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/4176da9f-cbba-4742-a2b1-4cb4f78da8b0> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/e7bf0ce9-ee7b-47f6-b1ca-3b7a3dfd0123> .
+
+      <http://data.lblod.info/id/identificatoren/e36ba4d9-6884-486e-a4b5-91edf06f770c> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "e36ba4d9-6884-486e-a4b5-91edf06f770c" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/7a7d6171-cb80-4a15-a633-34a307edf8f3> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/7a7d6171-cb80-4a15-a633-34a307edf8f3> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "7a7d6171-cb80-4a15-a633-34a307edf8f3" .
+
+
+      <http://data.lblod.info/id/identificatoren/1e043a9f-29a8-4dba-9f97-0984c6a2d212> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "1e043a9f-29a8-4dba-9f97-0984c6a2d212" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/80488477-f390-4c7b-89cc-5df2af3f4654> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/80488477-f390-4c7b-89cc-5df2af3f4654> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "80488477-f390-4c7b-89cc-5df2af3f4654" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "1005154085" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/511438e3-205d-477c-9591-1f5b9def2561> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/1e043a9f-29a8-4dba-9f97-0984c6a2d212> .
+
+      <http://data.lblod.info/id/vestigingen/b624f5f0-7c62-411b-af62-086194849346> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "b624f5f0-7c62-411b-af62-086194849346" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/2107ed13-8fad-4d60-8356-83d29bc2b222> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/12aa7266-0b57-4ff4-9fc6-24ab3e17f62b> ,
+                        <http://data.lblod.info/id/contact-punten/ef115d58-595e-4ce3-aec0-94efcde19ea5> .
+
+      <http://data.lblod.info/id/contact-punten/12aa7266-0b57-4ff4-9fc6-24ab3e17f62b> a <http://schema.org/ContactPoint> ;
+        mu:uuid "12aa7266-0b57-4ff4-9fc6-24ab3e17f62b" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/ef115d58-595e-4ce3-aec0-94efcde19ea5> a <http://schema.org/ContactPoint> ;
+        mu:uuid "ef115d58-595e-4ce3-aec0-94efcde19ea5" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/2107ed13-8fad-4d60-8356-83d29bc2b222> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "2107ed13-8fad-4d60-8356-83d29bc2b222" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/511438e3-205d-477c-9591-1f5b9def2561> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "511438e3-205d-477c-9591-1f5b9def2561" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce> ;
+        skos:prefLabel "Fusieziekenhuis OLV-A.S.Z." ;
+        regorg:legalName "Fusieziekenhuis OLV-A.S.Z." ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e36ba4d9-6884-486e-a4b5-91edf06f770c> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/b624f5f0-7c62-411b-af62-086194849346> .
+
+      <http://data.lblod.info/id/identificatoren/75813487-77b3-4b69-894b-595fff5769ca> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "75813487-77b3-4b69-894b-595fff5769ca" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/9bdb79b7-99e6-421b-8cc9-b60584402efa> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/9bdb79b7-99e6-421b-8cc9-b60584402efa> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "9bdb79b7-99e6-421b-8cc9-b60584402efa" .
+
+
+      <http://data.lblod.info/id/identificatoren/70db8e48-ad23-47ee-ba68-b73c3348c117> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "70db8e48-ad23-47ee-ba68-b73c3348c117" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/8bb46e67-82ac-4259-b3d0-3b9a82e4ab94> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/8bb46e67-82ac-4259-b3d0-3b9a82e4ab94> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "8bb46e67-82ac-4259-b3d0-3b9a82e4ab94" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0867804659" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/c76fa344-e6de-4eb9-be4d-c15f67d59d63> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/70db8e48-ad23-47ee-ba68-b73c3348c117> .
+
+      <http://data.lblod.info/id/vestigingen/73f72542-01fe-46c6-aea7-af76d17b79b6> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "73f72542-01fe-46c6-aea7-af76d17b79b6" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/1dfdfe65-a9f0-435b-86bb-45f64a1f59ab> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/120383c3-134a-4d7a-843b-5872e801d78d> ,
+                        <http://data.lblod.info/id/contact-punten/c66bc5d8-bae1-4967-8d2d-ea67fd1de854> .
+
+      <http://data.lblod.info/id/contact-punten/120383c3-134a-4d7a-843b-5872e801d78d> a <http://schema.org/ContactPoint> ;
+        mu:uuid "120383c3-134a-4d7a-843b-5872e801d78d" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/c66bc5d8-bae1-4967-8d2d-ea67fd1de854> a <http://schema.org/ContactPoint> ;
+        mu:uuid "c66bc5d8-bae1-4967-8d2d-ea67fd1de854" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/1dfdfe65-a9f0-435b-86bb-45f64a1f59ab> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "1dfdfe65-a9f0-435b-86bb-45f64a1f59ab" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/c76fa344-e6de-4eb9-be4d-c15f67d59d63> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "c76fa344-e6de-4eb9-be4d-c15f67d59d63" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10> ;
+        skos:prefLabel "Welzijnscampus Gerkenberg vzw" ;
+        regorg:legalName "Welzijnscampus Gerkenberg vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/75813487-77b3-4b69-894b-595fff5769ca> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/73f72542-01fe-46c6-aea7-af76d17b79b6> .
+
+      <http://data.lblod.info/id/identificatoren/bd2f8ee2-587c-4d51-a78c-8fe2d169009c> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "bd2f8ee2-587c-4d51-a78c-8fe2d169009c" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e10120c7-d886-4bfc-ad78-01096447ea1c> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/e10120c7-d886-4bfc-ad78-01096447ea1c> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "e10120c7-d886-4bfc-ad78-01096447ea1c" .
+
+
+      <http://data.lblod.info/id/identificatoren/b499bcea-5beb-49bd-ac3b-0938bd376aa2> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "b499bcea-5beb-49bd-ac3b-0938bd376aa2" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/e5352949-f2ba-47e6-8ed6-5fc75dc14c8c> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/e5352949-f2ba-47e6-8ed6-5fc75dc14c8c> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "e5352949-f2ba-47e6-8ed6-5fc75dc14c8c" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0459644990" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/56e67791-e5e9-4bf2-97a6-651e3247c77a> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b499bcea-5beb-49bd-ac3b-0938bd376aa2> .
+
+      <http://data.lblod.info/id/vestigingen/278572f8-87bc-4b98-b5ab-1c51e59ceb1d> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "278572f8-87bc-4b98-b5ab-1c51e59ceb1d" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/5e7c9367-7748-45de-bbd6-8b1fa7322b03> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/37e205a3-e7fd-43ae-bab2-33c39d449a16> ,
+                        <http://data.lblod.info/id/contact-punten/cb0271c9-5b8c-4425-b94e-e49d7b67f99c> .
+
+      <http://data.lblod.info/id/contact-punten/37e205a3-e7fd-43ae-bab2-33c39d449a16> a <http://schema.org/ContactPoint> ;
+        mu:uuid "37e205a3-e7fd-43ae-bab2-33c39d449a16" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/cb0271c9-5b8c-4425-b94e-e49d7b67f99c> a <http://schema.org/ContactPoint> ;
+        mu:uuid "cb0271c9-5b8c-4425-b94e-e49d7b67f99c" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/5e7c9367-7748-45de-bbd6-8b1fa7322b03> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "5e7c9367-7748-45de-bbd6-8b1fa7322b03" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/56e67791-e5e9-4bf2-97a6-651e3247c77a> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "56e67791-e5e9-4bf2-97a6-651e3247c77a" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "De kringwinkel Zuiderkempen" ;
+        regorg:legalName "De kringwinkel Zuiderkempen" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/bd2f8ee2-587c-4d51-a78c-8fe2d169009c> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/278572f8-87bc-4b98-b5ab-1c51e59ceb1d> .
+
+      <http://data.lblod.info/id/identificatoren/b38e62c4-fe2a-4e60-b529-9b8e03ad4bbb> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "b38e62c4-fe2a-4e60-b529-9b8e03ad4bbb" ;
+        skos:notation "SharePoint identificator" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/09beedbd-a0ce-4a57-89b3-02ca342eab1e> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/09beedbd-a0ce-4a57-89b3-02ca342eab1e> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "09beedbd-a0ce-4a57-89b3-02ca342eab1e" .
+
+
+      <http://data.lblod.info/id/identificatoren/0448d239-e8b2-4c31-99bc-511393400140> a <http://www.w3.org/ns/adms#Identifier> ;
+        mu:uuid "0448d239-e8b2-4c31-99bc-511393400140" ;
+        skos:notation "KBO nummer" ;
+        generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/505db021-8b7b-48f3-ae96-3c0b5be9c881> .
+
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/505db021-8b7b-48f3-ae96-3c0b5be9c881> a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+        mu:uuid "505db021-8b7b-48f3-ae96-3c0b5be9c881" ;
+        <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0823319370" .
+
+      <http://data.lblod.info/id/geregistreerdeOrganisaties/8b2e8749-98a9-450f-b2f1-7a93115ef513> <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/0448d239-e8b2-4c31-99bc-511393400140> .
+
+      <http://data.lblod.info/id/vestigingen/49e8cfba-c3d1-4b31-91e8-18fdf2c53e77> a <http://www.w3.org/ns/org#Site> ;
+        mu:uuid "49e8cfba-c3d1-4b31-91e8-18fdf2c53e77" ;
+        <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+        <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/e07256ea-de88-4ae9-bfcd-c14d03d868bc> ;
+        org:siteAddress <http://data.lblod.info/id/contact-punten/ae42def4-9e8f-42fb-8dc5-79dce62ff882> ,
+                        <http://data.lblod.info/id/contact-punten/9d41b8ff-572a-46ca-b7cb-01531d6b9cd4> .
+
+      <http://data.lblod.info/id/contact-punten/ae42def4-9e8f-42fb-8dc5-79dce62ff882> a <http://schema.org/ContactPoint> ;
+        mu:uuid "ae42def4-9e8f-42fb-8dc5-79dce62ff882" ;
+        <http://schema.org/contactType> "Primary" .
+
+      <http://data.lblod.info/id/contact-punten/9d41b8ff-572a-46ca-b7cb-01531d6b9cd4> a <http://schema.org/ContactPoint> ;
+        mu:uuid "9d41b8ff-572a-46ca-b7cb-01531d6b9cd4" ;
+        <http://schema.org/contactType> "Secondary" .
+
+      <http://data.lblod.info/id/adressen/e07256ea-de88-4ae9-bfcd-c14d03d868bc> a <http://www.w3.org/ns/locn#Address> ;
+        mu:uuid "e07256ea-de88-4ae9-bfcd-c14d03d868bc" .
+
+        <http://data.lblod.info/id/geregistreerdeOrganisaties/8b2e8749-98a9-450f-b2f1-7a93115ef513> a regorg:RegisteredOrganization, org:Organization, dc_terms:Agent ;
+        mu:uuid "8b2e8749-98a9-450f-b2f1-7a93115ef513" ;
+        org:classification <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153> ;
+        skos:prefLabel "Voetbal in de Stad vzw" ;
+        regorg:legalName "Voetbal in de Stad vzw" ;
+        <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b38e62c4-fe2a-4e60-b529-9b8e03ad4bbb> ;
+        <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/49e8cfba-c3d1-4b31-91e8-18fdf2c53e77> .
