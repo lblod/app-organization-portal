@@ -1,0 +1,26 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator ?kboNumber .
+
+    ?association mu:uuid "384b48dc-6860-49b4-a9ef-efa557299950" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+
+    VALUES ?kboNumber {
+      "0212183243"
+      "0537951706"
+    }
+  }
+}
