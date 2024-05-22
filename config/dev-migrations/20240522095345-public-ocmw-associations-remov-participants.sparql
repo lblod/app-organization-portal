@@ -1,0 +1,16 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+    ?association org:classification ?class
+  }
+  VALUES ?class {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/e8294b73-87c9-4fa2-9441-1937350763c9> # Welzijnsvereniging
+        <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/34b5af85-dc9f-468f-9e03-ef89b174c267> # Autonome verzorgingsinstelling
+  }
+}
