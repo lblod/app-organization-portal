@@ -3,6 +3,7 @@ PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 INSERT {
   GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
@@ -11,6 +12,7 @@ INSERT {
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     ?participant adms:identifier ?idParticipant .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
     ?idParticipant skos:notation ?kboLabel ;
       generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator ?kboNumber .
 
