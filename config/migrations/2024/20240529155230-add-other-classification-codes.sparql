@@ -1,0 +1,22 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX concept: <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    concept:3e5c8e30-95a7-47b0-b0a4-210d5bd440a7 a ext:GeregistreerdeOrganisatieClassificatieCode ;
+      a ext:OrganizationClassificationCode ;
+      mu:uuid "3e5c8e30-95a7-47b0-b0a4-210d5bd440a7" ;
+      skos:prefLabel "Vereniging" .
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    concept:b9ed22af-3661-4c3e-b07f-b641d80ebf61 a ext:GeregistreerdeOrganisatieClassificatieCode ;
+      a ext:OrganizationClassificationCode ;
+      mu:uuid "b9ed22af-3661-4c3e-b07f-b641d80ebf61" ;
+      skos:prefLabel "Vennootschap" .
+  }
+}
