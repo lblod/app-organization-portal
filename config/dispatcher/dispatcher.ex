@@ -316,8 +316,8 @@ defmodule Dispatcher do
     forward conn, path, "http://uri-info/"
   end
 
-  post "/create-administrative-unit-relationships/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://construct-administrative-unit-relationships/create-relationships/"
+  post "/construct-organization-relationships/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://construct-organization-relationships/create-relationships/"
   end
 
   post "/kbo-data-sync/*path", %{ layer: :api_services, accept: %{ json: true } } do
