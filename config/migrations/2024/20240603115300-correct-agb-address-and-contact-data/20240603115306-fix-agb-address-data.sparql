@@ -1,0 +1,35 @@
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+
+# Remove incorrect address triples
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?address adres:Adresvoorstelling.huisnummer "15" ;
+      locn:postCode "8710" ;
+      locn:adminUnitL2 "West-Vlaanderen" ;
+      locn:thoroughfare "Hernieuwenstraat" ;
+      locn:fullAddress "Hernieuwenstraat 15, 8710 Wielsbeke, België" ;
+      adres:gemeentenaam "Wielsbeke" .
+  }
+} WHERE {
+  VALUES ?address {
+    <http://data.lblod.info/id/adressen/5ab4e6f7-d793-4262-81b6-b84f867c18ae> # AGB LEUVEN (Parkeerbedrijf)
+    <http://data.lblod.info/id/adressen/76a69cd2-f447-4372-8dd5-79c917d0040d> # AGB MECHELEN (Exploitatie)
+    <http://data.lblod.info/id/adressen/af5d342d-0b4c-46fb-bee3-ce46dee74d1f> # AGB MECHELEN (Patrimonium)
+    <http://data.lblod.info/id/adressen/63c85a14-4ee4-4299-b0c1-b3a907ff1ebf> # AGB Renov'O
+    <http://data.lblod.info/id/adressen/df102cb4-8abb-4588-a199-1ce22c211812> # AGB STEKENE
+    <http://data.lblod.info/id/adressen/6cff33b8-6aff-436c-aa34-e9d32d446934> # Vrijetijdsbedrijf Knokke-Heist AG
+  }
+}
+
+# Insert the correct the provinces
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/adressen/5ab4e6f7-d793-4262-81b6-b84f867c18ae> locn:adminUnitL2 "Vlaams-Brabant" . # AGB LEUVEN (Parkeerbedrijf)
+    <http://data.lblod.info/id/adressen/76a69cd2-f447-4372-8dd5-79c917d0040d> locn:adminUnitL2 "Antwerpen" . # AGB MECHELEN (Exploitatie)
+    <http://data.lblod.info/id/adressen/af5d342d-0b4c-46fb-bee3-ce46dee74d1f> locn:adminUnitL2 "Antwerpen" . # AGB MECHELEN (Patrimonium)
+    <http://data.lblod.info/id/adressen/63c85a14-4ee4-4299-b0c1-b3a907ff1ebf> locn:adminUnitL2 "West-Vlaanderen" . # AGB Renov'O (located in Oostende)
+    <http://data.lblod.info/id/adressen/df102cb4-8abb-4588-a199-1ce22c211812> locn:adminUnitL2 "Oost-Vlaanderen" . # AGB STEKENE
+    <http://data.lblod.info/id/adressen/6cff33b8-6aff-436c-aa34-e9d32d446934> locn:adminUnitL2 "West-Vlaanderen" . # Vrijetijdsbedrijf Knokke-Heist AG
+  }
+}
