@@ -2130,34 +2130,6 @@
       INSERT {
         GRAPH ?g {
           ?addressUri 
-            <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "15";
-            
-            <http://www.w3.org/ns/locn#postCode> "8710";
-            <http://www.w3.org/ns/locn#adminUnitL2> "Wielsbeke";
-            <http://www.w3.org/ns/locn#thoroughfare> "Hernieuwenstraat";
-            <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Wielsbeke";
-            <https://data.vlaanderen.be/ns/adres#land> "België";
-            <http://www.w3.org/ns/locn#fullAddress> "Hernieuwenstraat 15, 8710 Wielsbeke, België".
-        }
-      }
-      WHERE {
-        GRAPH ?g {
-          ?adminUnit <http://www.w3.org/ns/adms#identifier> ?id ;
-            <http://www.w3.org/ns/org#hasPrimarySite> ?site .
-
-          ?id <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
-            <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>/<https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "" .
-
-          ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?boundAddress .
-
-          BIND( ?boundAddress AS ?addressUri )
-        }
-      }
-    
-
-      INSERT {
-        GRAPH ?g {
-          ?addressUri 
             <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "30";
             
             <http://www.w3.org/ns/locn#postCode> "1500";
