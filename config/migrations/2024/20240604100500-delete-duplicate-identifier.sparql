@@ -1,0 +1,33 @@
+DELETE {
+    GRAPH ?g {
+        ?org <http://www.w3.org/ns/adms#identifier> ?identifier .
+        ?identifier ?pi ?oi .
+        ?structured ?ps ?os .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        {
+            # Select one identifier by organization and local identifier
+            SELECT ?org ?li (MAX(?i) AS ?keepIdentifier) WHERE {
+                ?org <http://www.w3.org/ns/adms#identifier> ?i .
+                ?i <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>/<https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?li .
+            } GROUP BY ?org ?li
+        }
+        
+        ?org <http://www.w3.org/ns/adms#identifier> ?identifier .
+        ?identifier <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> ?structured .
+        ?structured <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> ?li .
+
+        FILTER(?identifier != ?keepIdentifier)
+        
+        # All properties of the duplicate identifier and structured identifier
+        ?identifier ?pi ?oi .
+        ?structured ?ps ?os .
+    }
+
+    VALUES ?g {
+        <http://mu.semte.ch/graphs/worship-service>
+        <http://mu.semte.ch/graphs/administrative-unit>
+    }
+}
