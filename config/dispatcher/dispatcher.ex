@@ -73,15 +73,15 @@ defmodule Dispatcher do
   end
 
   match "/organizations/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/organizations/"
+    Proxy.forward conn, path, "http://cache/organizations/"
   end
 
   match "/registered-organizations/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/registered-organizations/"
+    Proxy.forward conn, path, "http://cache/registered-organizations/"
   end
 
   match "/administrative-units/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/administrative-units/"
+    Proxy.forward conn, path, "http://cache/administrative-units/"
   end
 
   match "/administrative-unit-classification-codes/*path", %{ accept: [:json], layer: :api} do
@@ -97,11 +97,11 @@ defmodule Dispatcher do
   end
 
   match "/worship-administrative-units/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/worship-administrative-units/"
+    Proxy.forward conn, path, "http://cache/worship-administrative-units/"
   end
 
   match "/worship-services/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/worship-services/" # DISABLE CACHING FOR NOW (BUG OP-1404)
+    Proxy.forward conn, path, "http://cache/worship-services/"
   end
 
   match "/recognized-worship-types/*path", %{ accept: [:json], layer: :api} do
@@ -109,7 +109,7 @@ defmodule Dispatcher do
   end
 
   match "/central-worship-services/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/central-worship-services/"
+    Proxy.forward conn, path, "http://cache/central-worship-services/"
   end
 
   match "/representative-bodies/*path", %{ accept: [:json], layer: :api} do
@@ -125,7 +125,7 @@ defmodule Dispatcher do
   end
 
   match "/local-involvements/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/local-involvements/"
+    Proxy.forward conn, path, "http://cache/local-involvements/"
   end
 
   match "/identifiers/*path", %{ accept: [:json], layer: :api} do
@@ -228,7 +228,7 @@ defmodule Dispatcher do
   end
 
   match "/kbo-organizations/*path", %{ accept: [:any], layer: :api} do
-    Proxy.forward conn, path, "http://resource/kbo-organizations/"
+    Proxy.forward conn, path, "http://cache/kbo-organizations/"
   end
 
   ###############
