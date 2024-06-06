@@ -1554,31 +1554,3 @@
             ?contact <http://schema.org/contactType> "Primary" .
           }
         }
-      
-
-        INSERT {
-          GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-            ?contact <http://schema.org/telephone> "tel:+3256674504" .
-            ?contact <http://xmlns.com/foaf/0.1/page> "https://www.wielsbeke.be/producten/woonzorgcentrum-ter-lembeek" .
-            ?contact <http://schema.org/email> "ouderenhuisvesting@wielsbeke.be" .
-          }
-        }
-        WHERE {
-          GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-            ?adminUnit <http://www.w3.org/ns/adms#identifier> ?id ;
-              <http://www.w3.org/ns/org#hasPrimarySite> ?primarySite .
-            ?id <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
-              <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>/<https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "" .
-
-            ?primarySite <http://www.w3.org/ns/org#siteAddress> ?contact .
-
-            ?contact <http://schema.org/contactType> "Primary" .
-          }
-        }
-      
-
-
-
-
-
-
