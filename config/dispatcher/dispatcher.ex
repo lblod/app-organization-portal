@@ -227,8 +227,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/decision-activities/"
   end
 
+  # There is currently no logic to invalidate the kboOrganization cache when wegwijse updates the content
   match "/kbo-organizations/*path", %{ accept: [:any], layer: :api} do
-    Proxy.forward conn, path, "http://cache/kbo-organizations/"
+    Proxy.forward conn, path, "http://resource/kbo-organizations/"
   end
 
   ###############
