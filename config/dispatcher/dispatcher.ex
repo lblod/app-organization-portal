@@ -73,7 +73,11 @@ defmodule Dispatcher do
   end
 
   match "/organizations/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/organizations/"
+    Proxy.forward conn, path, "http://resource/organizations/"
+  end
+
+  match "/registered-organizations/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://resource/registered-organizations/"
   end
 
   match "/administrative-units/*path", %{ accept: [:json], layer: :api} do
@@ -86,6 +90,10 @@ defmodule Dispatcher do
 
   match "/organization-classification-codes/*path", %{ accept: [:json], layer: :api} do
     Proxy.forward conn, path, "http://cache/organization-classification-codes/"
+  end
+
+  match "/registered-organization-classification-codes/*path", %{ accept: [:json], layer: :api} do
+    Proxy.forward conn, path, "http://cache/registered-organization-classification-codes/"
   end
 
   match "/worship-administrative-units/*path", %{ accept: [:json], layer: :api} do
@@ -308,8 +316,8 @@ defmodule Dispatcher do
     forward conn, path, "http://uri-info/"
   end
 
-  post "/create-administrative-unit-relationships/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://construct-administrative-unit-relationships/create-relationships/"
+  post "/construct-organization-relationships/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://construct-organization-relationships/create-relationships/"
   end
 
   post "/kbo-data-sync/*path", %{ layer: :api_services, accept: %{ json: true } } do

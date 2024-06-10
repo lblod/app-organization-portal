@@ -40,6 +40,7 @@ defmodule Acl.UserGroups.Config do
     "http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode",
     "http://lblod.data.gift/vocabularies/organisatie/MandatarisStatusCode",
     "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
+    "http://mu.semte.ch/vocabularies/ext/GeregistreerdeOrganisatieClassificatieCode",
     "http://lblod.data.gift/vocabularies/organisatie/TypeEredienst",
     "http://www.w3.org/2004/02/skos/core#ConceptScheme",
     "http://lblod.data.gift/vocabularies/organisatie/BedienaarFinancieringCode",
