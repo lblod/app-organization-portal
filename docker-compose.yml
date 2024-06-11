@@ -258,7 +258,7 @@ services:
     restart: always
     logging: *default-logging
   construct-organization-relationships:
-    image: lblod/construct-organization-relationships-service:1.0.0
+    image: lblod/construct-organization-relationships-service:1.0.1
     environment:
       START_DATE_WORSHIP_GOVERNING_BODY: "2023-04-01T00:00:00"
       END_DATE_WORSHIP_GOVERNING_BODY: "2026-03-31T00:00:00"
