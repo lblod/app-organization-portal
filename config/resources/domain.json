@@ -462,17 +462,6 @@
           "cardinality": "one",
           "inverse": true
         },
-        "founded-organizations": {
-          "predicate": "ext:isFounderOfOrganization",
-          "target": "organizations",
-          "cardinality": "many"
-        },
-        "was-founded-by-organizations": {
-          "predicate": "ext:isFounderOfOrganization",
-          "target": "organizations",
-          "cardinality": "many",
-          "inverse": true
-        },
         "memberships-of-organizations": {
           "predicate": "org:member",
           "target": "memberships",
