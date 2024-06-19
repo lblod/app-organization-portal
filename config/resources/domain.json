@@ -29,7 +29,8 @@
     "code": "http://lblod.data.gift/vocabularies/organisatie/",
     "ext": "http://mu.semte.ch/vocabularies/ext/",
     "geo": "http://www.opengis.net/ont/geosparql#",
-    "nacebel": "http://data.gift/vocabularies/nace-bel/"
+    "nacebel": "http://data.gift/vocabularies/nace-bel/",
+    "time": "http://www.w3.org/2006/time#"
   },
   "resources": {
     "agents": {
@@ -472,6 +473,23 @@
           "cardinality": "many",
           "inverse": true
         },
+        "memberships-of-organizations": {
+          "predicate": "org:member",
+          "target": "memberships",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "memberships": {
+          "predicate": "org:organization",
+          "target": "memberships",
+          "cardinality": "many",
+          "inverse": true
+        },
+        "is-member-of": {
+          "predicate": "org:memberOf",
+          "target": "organizations",
+          "cardinality": "many"
+        },
         "sector": {
           "predicate": "dc_terms:isPartOf",
           "target": "sectors",
@@ -861,6 +879,68 @@
         }
       },
       "new-resource-base": "http://data.lblod.info/id/vestigingen/"
+    },
+    "memberships": {
+      "class": "org:Membership",
+      "relationships": {
+        "member": {
+          "predicate": "org:member",
+          "target": "organizations",
+          "cardinality": "one"
+        },
+        "organization": {
+          "predicate": "org:organization",
+          "target": "organizations",
+          "cardinality": "one"
+        },
+        "role": {
+          "predicate": "org:role",
+          "target": "membership-roles",
+          "cardinality": "one"
+        },
+        "during": {
+          "predicate": "euro:memberDuring",
+          "target": "period-of-time",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/lidmaatschap/"
+    },
+    "membership-roles": {
+      "class": "org:Role",
+      "attributes": {
+        "label": {
+          "predicate": "skos:prefLabel",
+          "type": "string"
+        }
+      },
+      "relationships": {
+        "top-concept-of": {
+          "predicate": "skos:topConceptOf",
+          "target": "concepts",
+          "cardinality": "one"
+        },
+        "has-broader-role": {
+          "predicate": "skos:broader",
+          "target": "membership-roles",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/rollen/"
+    },
+    "period-of-time": {
+      "class": "time:ProperInterval",
+      "attributes": {
+        "start-date": {
+          "predicate": "time:hasBeginning",
+          "type": "datetime"
+        },
+        "end-date": {
+          "predicate": "time:hasEnd",
+          "type": "datetime"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/id/periode/"
     },
     "concepts": {
       "class": "skos:Concept",
