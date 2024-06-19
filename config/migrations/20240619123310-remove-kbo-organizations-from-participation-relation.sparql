@@ -1,0 +1,13 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+    ?association a ext:KboOrganisatie .
+  }
+}
