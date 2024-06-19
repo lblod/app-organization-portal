@@ -445,19 +445,8 @@
           "target": "organizations",
           "cardinality": "many"
         },
-        "sub-organizations": {
-          "predicate": "org:hasSubOrganization",
-          "target": "organizations",
-          "cardinality": "many"
-        },
         "is-associated-with": {
           "predicate": "org:linkedTo",
-          "target": "organizations",
-          "cardinality": "one",
-          "inverse": true
-        },
-        "is-sub-organization-of": {
-          "predicate": "org:hasSubOrganization",
           "target": "organizations",
           "cardinality": "one",
           "inverse": true
@@ -473,11 +462,6 @@
           "target": "memberships",
           "cardinality": "many",
           "inverse": true
-        },
-        "is-member-of": {
-          "predicate": "org:memberOf",
-          "target": "organizations",
-          "cardinality": "many"
         },
         "sector": {
           "predicate": "dc_terms:isPartOf",
