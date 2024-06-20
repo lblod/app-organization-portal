@@ -1,0 +1,1847 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207505368" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207509427" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207537042" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207505764" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207536943" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207533874" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207501806" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207504675" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207502004" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207502103" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207502202" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207502497" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207502596" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0216769066" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207502794" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207502992" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207503190" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207503388" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207503784" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207503982" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207504378" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207504477" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207504576" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207533082" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207215160" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207534765" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207505566" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0222947570" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207501113" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0459993992" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207506952" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0459993992" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207489037" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0466193777" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207485473" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0466193777" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207487354" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0466193777" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207436676" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0466193777" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207437864" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0466193777" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207432520" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0537951706" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207521503" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0663810590" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207528035" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0682844465" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207489037" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0683771509" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207511803" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0684493762" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207492502" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0684891363" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207514474" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0697787118" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207437468" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0729523736" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207485374" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0729523736" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207447366" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0729523736" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207528035" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0807042275" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0206684927" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0807042275" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207437468" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0697608063" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207447861" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207528035" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207445584" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207531894" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207448158" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207451128" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207201797" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207466964" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207506160" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207519127" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207467162" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0216773026" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207535557" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207448356" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207494678" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207521206" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0697609152" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207463402" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207499430" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207453207" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207453405" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207436775" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207432520" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207460432" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207464093" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207448851" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207464192" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207525956" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207533082" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207514474" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207456076" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207447663" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207449346" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207432124" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0827396340" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207533874" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0844179716" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207691252" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0863329989" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207691252" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0865506155" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207463402" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0871206587" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207528035" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0871928743" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207431332" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0873440458" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207528629" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0873440458" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207491215" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0873440458" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207530609" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0873440458" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant org:memberOf ?association .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?participant adms:identifier ?idParticipant .
+    ?idParticipant skos:notation ?kboLabel ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0207491413" .
+    FILTER NOT EXISTS { ?participant a ext:KboOrganisatie . }
+
+    ?association adms:identifier ?idAssociation .
+    FILTER NOT EXISTS { ?association a ext:KboOrganisatie . }
+    ?idAssociation skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator/generiek:lokaleIdentificator "0873440458" .
+
+    FILTER (?kboLabel IN ("KBO nummer"@nl, "KBO nummer"))
+  }
+}
+;
