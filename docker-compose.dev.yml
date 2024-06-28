@@ -25,7 +25,7 @@ services:
     restart: "no"
   kalliope-api:
     environment:
-      SPRING_SECURITY_CONFIG: "/config/security-dev.yml"
+      SECURITY_CONFIG_PATH: "/config/security-dev.json"
     restart: "no"
   deltanotifier:
     restart: "no"
