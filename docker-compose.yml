@@ -92,18 +92,16 @@ services:
     restart: always
     logging: *default-logging
   kalliope-api:
-    image: lblod/jsonld-delta-service:0.5.6
+    image: lblod/jsonld-delta-service:2.0.0
+    environment:
+      LOG_SPARQL_ALL: "false"
+      SECURITY_CONFIG_PATH: "/config/security.json"
+      DUMP_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/OrganizationsCacheGraphDump"
     volumes:
       - ./config/kalliope:/config
       - ./data/files:/share
     links:
       - db:database
-    environment:
-      SERVER_PORT: "80"
-      LOGGING_LEVEL: "INFO"
-      SPARQL_ENDPOINT: "http://db:8890/sparql"
-      LIMIT_SIZE: "10000"
-      MU_AUTH_SUDO: "true"
     labels:
       - "logging=true"
     restart: always
