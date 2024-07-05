@@ -4,19 +4,18 @@ PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 DELETE {
   GRAPH ?g {
-    ?organization org:hasSubOrganization ?subOrganization.
+    ?organization org:hasSubOrganization ?subOrganization .
   }
 }
 INSERT {
   GRAPH ?g {
-    ?subOrganization org:memberOf ?organization.
+    ?subOrganization org:memberOf ?organization .
 
-    ?membership
-      a org:Membership;
-      mu:uuid ?uuid;
-      org:organization ?organization;
-      org:member ?subOrganization;
-      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8>.
+    ?membership a org:Membership ;
+      mu:uuid ?uuid ;
+      org:organization ?organization ;
+      org:member ?subOrganization ;
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> . # gerelateerd
   }
 }
 WHERE {
