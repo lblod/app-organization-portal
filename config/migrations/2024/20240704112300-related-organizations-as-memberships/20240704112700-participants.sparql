@@ -4,12 +4,11 @@ PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 INSERT {
   GRAPH ?g {
-    ?membership
-      a org:Membership;
-      mu:uuid ?uuid;
-      org:organization ?organization;
-      org:member ?memberOrganization;
-      org:role <http://data.lblod.info/id/rollen/2152eb830b1143bfb97a7dd9596d6c63>.
+    ?membership a org:Membership ;
+      mu:uuid ?uuid ;
+      org:organization ?organization ;
+      org:member ?memberOrganization ;
+      org:role <http://data.lblod.info/id/rollen/2152eb830b1143bfb97a7dd9596d6c63> . # participant
   }
 }
 WHERE {
@@ -20,7 +19,7 @@ WHERE {
     }
 
     GRAPH ?g {
-      ?memberOrganization org:memberOf ?organization.
+      ?memberOrganization org:memberOf ?organization .
     }
 
   BIND(SHA1(CONCAT(STR(?memberOrganization), STR(?organization), "member of")) as ?uuid)
