@@ -1,22 +1,22 @@
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 DELETE {
   GRAPH ?g {
-    ?foundingOrg <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?foundedOrg.
+    ?foundingOrg ext:isFounderOfOrganization ?foundedOrg .
   }
 }
 INSERT {
   GRAPH ?g {
-    ?foundingOrg org:memberOf ?foundedOrg.
+    ?foundingOrg org:memberOf ?foundedOrg .
 
-    ?membership
-      a org:Membership;
-      mu:uuid ?uuid;
-      org:organization ?foundedOrg;
-      org:member ?foundingOrg;
-      org:role <http://data.lblod.info/id/rollen/73d5e1cf250d42fab15926771f07505a>.
+    ?membership a org:Membership ;
+      mu:uuid ?uuid ;
+      org:organization ?foundedOrg ;
+      org:member ?foundingOrg ;
+      org:role <http://data.lblod.info/id/rollen/73d5e1cf250d42fab15926771f07505a> . # stichtend lid
   }
 }
 WHERE {
@@ -27,7 +27,7 @@ WHERE {
     }
 
     GRAPH ?g {
-      ?foundingOrg <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?foundedOrg.
+      ?foundingOrg ext:isFounderOfOrganization ?foundedOrg .
     }
 
   BIND(SHA1(CONCAT(STR(?foundingOrg), STR(?foundedOrg), "founded by")) as ?uuid)
