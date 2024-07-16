@@ -9,8 +9,6 @@ DELETE {
 }
 INSERT {
   GRAPH ?g {
-    ?subOrganization org:memberOf ?organization .
-
     ?membership a org:Membership ;
       mu:uuid ?uuid ;
       org:organization ?organization ;
