@@ -2,6 +2,11 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
+DELETE {
+  GRAPH ?g {
+    ?memberOrganization org:memberOf ?organization .
+  }
+}
 INSERT {
   GRAPH ?g {
     ?membership a org:Membership ;
