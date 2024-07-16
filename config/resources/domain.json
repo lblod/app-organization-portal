@@ -445,12 +445,6 @@
           "target": "organizations",
           "cardinality": "many"
         },
-        "is-associated-with": {
-          "predicate": "org:linkedTo",
-          "target": "organizations",
-          "cardinality": "one",
-          "inverse": true
-        },
         "memberships-of-organizations": {
           "predicate": "org:member",
           "target": "memberships",
