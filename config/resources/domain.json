@@ -440,11 +440,6 @@
           "target": "posts",
           "cardinality": "many"
         },
-        "associated-organizations": {
-          "predicate": "org:linkedTo",
-          "target": "organizations",
-          "cardinality": "many"
-        },
         "memberships-of-organizations": {
           "predicate": "org:member",
           "target": "memberships",
@@ -466,17 +461,6 @@
           "predicate": "regorg:orgActivity",
           "target": "nace-bel-codes",
           "cardinality": "many"
-        },
-        "participates-in": {
-          "predicate": "org:memberOf",
-          "target": "organizations",
-          "cardinality": "many"
-        },
-        "has-participants": {
-          "predicate": "org:memberOf",
-          "target": "organizations",
-          "cardinality": "many",
-          "inverse": true
         },
         "kbo-organization": {
           "predicate": "owl:sameAs",
