@@ -1,0 +1,36 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+# Add the necessary additional information to one of the merger change events
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?changeEvent org:originalOrganization <http://data.lblod.info/id/besturenVanDeEredienst/4b7bbaf182fe7eb6dd81a38aa575c1a4> ;
+      code:veranderingsgebeurtenisResultaat <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/667D078B77E30E85E60D0DAE> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?changeEvent a org:ChangeEvent ;
+      mu:uuid "667D083A77E30E85E60D0DB1" .
+  }
+}
+;
+# Delete the other merger change event
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?event a org:ChangeEvent ;
+      mu:uuid "667D078877E30E85E60D0DAC" ;
+      code:veranderingsgebeurtenisResultaat ?result ;
+      euro:hasFormalFramework ?decision ;
+      ?ep ?eo .
+
+    # Note: delete only this change event result as the other one was added to the change event above
+    <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/667D078B77E30E85E60D0DAD> a code:VeranderingsgebeurtenisResultaat ;
+      ?rp ?ro .
+
+    ?decision a besluit:Besluit ;
+      ?de ?do .
+  }
+}
