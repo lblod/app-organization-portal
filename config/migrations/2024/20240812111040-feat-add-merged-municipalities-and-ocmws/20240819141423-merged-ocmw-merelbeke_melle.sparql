@@ -1,0 +1,161 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+      <http://www.w3.org/ns/org#Organization> ,
+      <http://purl.org/dc/terms/Agent> .
+    <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> mu:uuid "80bb6363-c914-4e51-82ec-e547b21890f4" ;
+      skos:prefLabel """Merelbeke-Melle""" ;
+      regorg:legalName """Merelbeke-Melle""" ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
+
+    <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> regorg:orgStatus <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab> . # In oprichting
+
+    <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> owl:sameAs <http://data.vlaanderen.be/doc/organisatie/OVO053711> .
+
+    # KBO number
+    <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> adms:identifier <http://data.lblod.info/id/identificatoren/222cc648-4a5b-496a-8f4f-2abde996ec36> .
+    <http://data.lblod.info/id/identificatoren/222cc648-4a5b-496a-8f4f-2abde996ec36> a adms:Identifier ;
+      mu:uuid """222cc648-4a5b-496a-8f4f-2abde996ec36""" ;
+      skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/9c0e5534-0a79-4a0b-82d5-d9e1607e34d6> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/9c0e5534-0a79-4a0b-82d5-d9e1607e34d6> a generiek:GestructureerdeIdentificator ;
+      mu:uuid """9c0e5534-0a79-4a0b-82d5-d9e1607e34d6""" ;
+      generiek:lokaleIdentificator """1010776127""" .
+
+    # OVO number
+    <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> adms:identifier <http://data.lblod.info/id/identificatoren/d186d187-ab96-41dc-bd52-bdf9f7de2b47> .
+    <http://data.lblod.info/id/identificatoren/d186d187-ab96-41dc-bd52-bdf9f7de2b47> a adms:Identifier ;
+      mu:uuid """d186d187-ab96-41dc-bd52-bdf9f7de2b47""" ;
+      skos:notation "OVO-nummer" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/ba8f9e04-a9f2-440f-8b85-3b81a9033cf7> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/ba8f9e04-a9f2-440f-8b85-3b81a9033cf7> a generiek:GestructureerdeIdentificator ;
+      mu:uuid """ba8f9e04-a9f2-440f-8b85-3b81a9033cf7""" ;
+      generiek:lokaleIdentificator """OVO053711""" .
+
+    # Placeholder for SharePoint identifier
+    <http://data.lblod.info/id/identificatoren/447c5679-b4eb-4f37-aee7-c4a5ce8974cd> a adms:Identifier ;
+      mu:uuid "447c5679-b4eb-4f37-aee7-c4a5ce8974cd" ;
+      skos:notation "SharePoint identificator" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/29b43db7-ffe8-415d-8cba-3b8d29c01ee8> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/29b43db7-ffe8-415d-8cba-3b8d29c01ee8> a generiek:GestructureerdeIdentificator ;
+      mu:uuid "29b43db7-ffe8-415d-8cba-3b8d29c01ee8" .
+  }
+}
+#
+# Governing bodies
+#
+;
+## Voorzitter van het Bijzonder Comité voor de Sociale Dienst
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/c1177041-2755-48cf-a893-567a2ec85806> a besluit:Bestuursorgaan ;
+      mu:uuid """c1177041-2755-48cf-a893-567a2ec85806""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/bd58436e-7472-4862-8578-30eb0dd83330> a besluit:Bestuursorgaan ;
+      mu:uuid """bd58436e-7472-4862-8578-30eb0dd83330""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/c1177041-2755-48cf-a893-567a2ec85806> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Merelbeke-Melle") as ?governingBodyLabel)
+}
+;
+## Raad voor Maatschappelijk Welzijn
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/1f32130c-6127-4be2-96ee-8ed175836843> a besluit:Bestuursorgaan ;
+      mu:uuid """1f32130c-6127-4be2-96ee-8ed175836843""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/5474dfba-65d1-4516-b307-0ed1d112c9f0> a besluit:Bestuursorgaan ;
+      mu:uuid """5474dfba-65d1-4516-b307-0ed1d112c9f0""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/1f32130c-6127-4be2-96ee-8ed175836843> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Merelbeke-Melle") as ?governingBodyLabel)
+}
+;
+## Vast Bureau
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/839173f2-5ba1-4aef-b681-0608a18eec3d> a besluit:Bestuursorgaan ;
+      mu:uuid """839173f2-5ba1-4aef-b681-0608a18eec3d""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/80324764-8bfc-408c-9362-25caf85a2b41> a besluit:Bestuursorgaan ;
+      mu:uuid """80324764-8bfc-408c-9362-25caf85a2b41""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/839173f2-5ba1-4aef-b681-0608a18eec3d> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Merelbeke-Melle") as ?governingBodyLabel)
+}
+;
+## Bijzonder Comité voor de Sociale Dienst
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/acde5a73-f1f5-4a6a-9c86-13875905588c> a besluit:Bestuursorgaan ;
+      mu:uuid """acde5a73-f1f5-4a6a-9c86-13875905588c""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/acfe2eb5-7d17-480f-8308-5ba0b607acc2> a besluit:Bestuursorgaan ;
+      mu:uuid """acfe2eb5-7d17-480f-8308-5ba0b607acc2""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/acde5a73-f1f5-4a6a-9c86-13875905588c> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Merelbeke-Melle") as ?governingBodyLabel)
+}
+#
+# Related province
+#
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?province org:hasSubOrganization <http://data.lblod.info/id/bestuurseenheden/80bb6363-c914-4e51-82ec-e547b21890f4> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?province skos:prefLabel """Oost-Vlaanderen""" .
+  }
+}
