@@ -1,0 +1,129 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX schema: <http://schema.org/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?vgcUri a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+    <http://www.w3.org/ns/org#Organization> ,
+    <http://purl.org/dc/terms/Agent> .
+
+    ?vgcUri mu:uuid ?vgcUuid ;
+      skos:prefLabel """Vlaamse Gemeenschapscommissie""" ;
+      regorg:legalName """Vlaamse Gemeenschapscommissie""" ;
+      skos:altLabel """VGC""" ;
+      skos:altLabel """Commission communautaire flamande""" ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/d90c511e-f827-488c-84ba-432c8f69561c> . # Vlaamse gemeenschapscommissie
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?vgcUri regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> . # Actief
+
+    # KBO number
+    ?vgcUri adms:identifier ?kboIdUri .
+    ?kboIdUri a adms:Identifier ;
+      mu:uuid ?kboIdUuid ;
+      skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator ?kboStructUri .
+    ?kboStructUri a generiek:GestructureerdeIdentificator ;
+      mu:uuid ?kboStructUuid ;
+      generiek:lokaleIdentificator """0240682635""" .
+
+    # Placeholder OVO number
+    ?vgcUri adms:identifier ?ovoIdUri .
+    ?ovoIdUri a adms:Identifier ;
+      mu:uuid ?ovoIdUuid ;
+      skos:notation "OVO-nummer" ;
+      generiek:gestructureerdeIdentificator ?ovoStructUri .
+    ?ovoStructUri a generiek:GestructureerdeIdentificator ;
+      mu:uuid ?ovoStructUuid .
+
+    # Placeholder for SharePoint identifier
+    ?vgcUri adms:identifier ?sharepointIdUri .
+    ?sharepointIdUri a adms:Identifier ;
+      mu:uuid ?sharepointIdUuid ;
+      skos:notation "SharePoint identificator" ;
+      generiek:gestructureerdeIdentificator ?sharepointStructUri .
+    ?sharepointStructUri a generiek:GestructureerdeIdentificator ;
+      mu:uuid ?sharepointStructUuid .
+
+    # Primary Site
+    ?vgcUri org:hasPrimarySite ?primarySiteUri .
+    ?primarySiteUri a org:Site ;
+      mu:uuid ?primarySiteUuid ;
+      organisatie:bestaatUit ?addressUri ;
+      org:siteAddress ?primaryContactPointUri ;
+      org:siteAddress ?secondaryContactPointUri ;
+      ere:vestigingstype <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> . # Maatschappelijke zetel
+
+    ## Address
+    ?addressUri a locn:Address ;
+      mu:uuid ?addressUuid ;
+      adres:Adresvoorstelling.huisnummer "135" ;
+      locn:thoroughfare "Emile Jacqmainlaan" ;
+      locn:postCode "1000" ;
+      adres:gemeentenaam "Brussel" ;
+      adres:land """België""" ;
+      locn:fullAddress """Emile Jacqmainlaan 135, 1000 Brussel, België""" .
+
+    ## Primary contact point
+    ?primaryContactPointUri a schema:ContactPoint ;
+      mu:uuid ?primaryContactPointUuid ;
+      schema:telephone "tel:+3225630300" ;
+      schema:email "info@vgc.be" ;
+      foaf:page "https://www.vgc.be" ;
+      schema:contactType "Primary" .
+
+    ## Secondary contact point
+    ?secondaryContactPointUri a schema:ContactPoint ;
+      mu:uuid ?secondaryContactPointUuid ;
+      schema:contactType "Secondary" .
+  }
+} WHERE {
+  BIND("9e6b6eb3-2f0b-4723-876b-178dfaecfddf" AS ?vgcUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/bestuurseenheden/", STR(?vgcUuid))) AS ?vgcUri)
+
+  # UUID and URI for KBO number
+  BIND(SHA256(CONCAT(STR(?vgcUuid), "KBO number identifier")) AS ?kboIdUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/identificatoren/", STR(?kboIdUuid))) AS ?kboIdUri)
+  BIND(SHA256(CONCAT(STR(?vgcUuid), STR(?kboUuid), "KBO number structured identifier")) AS ?kboStructUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/gestructureerdeIdentificatoren/", STR(?kboStructUuid))) AS ?kboStructUri)
+
+  # UUID and URI for OVO number
+  BIND(SHA256(CONCAT(STR(?vgcUuid), "OVO number identifier")) AS ?ovoIdUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/identificatoren/", STR(?ovoIdUuid))) AS ?ovoIdUri)
+  BIND(SHA256(CONCAT(STR(?vgcUuid), STR(?ovoUuid), "OVO number structured identifier")) AS ?ovoStructUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/gestructureerdeIdentificatoren/", STR(?ovoStructUuid))) AS ?ovoStructUri)
+
+  # UUID and URI for SharePoint number
+  BIND(SHA256(CONCAT(STR(?vgcUuid), "SharePoint number identifier")) AS ?sharepointIdUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/identificatoren/", STR(?sharepointIdUuid))) AS ?sharepointIdUri)
+  BIND(SHA256(CONCAT(STR(?vgcUuid), STR(?sharepointUuid), "SharePoint structured number identifier")) AS ?sharepointStructUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/gestructureerdeIdentificatoren/", STR(?sharepointStructUuid))) AS ?sharepointStructUri)
+
+  # Primary site
+  BIND(SHA256(CONCAT(STR(?vgcUuid), "VGC primary site")) AS ?primarySiteUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/vestigingen/", STR(?primarySiteUuid))) AS ?primarySiteUri)
+
+  ## Address
+  BIND(SHA256(CONCAT(STR(?vgcUuid), STR(?primarySiteUuid), "VGC primary site address")) AS ?addressUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/adressen/", STR(?addressUuid))) AS ?addressUri)
+
+  ## Primary contact point
+  BIND(SHA256(CONCAT(STR(?vgcUuid), STR(?primarySiteUuid), "VGC primary site primary contact point")) AS ?primaryContactPointUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/contact-punten/", STR(?primaryContactPointUuid))) AS ?primaryContactPointUri)
+
+  ## Secondary contact point
+  BIND(SHA256(CONCAT(STR(?vgcUuid), STR(?primarySiteUuid), "VGC primary site secondary contact point")) AS ?secondaryContactPointUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/contact-punten/", STR(?secondaryContactPointUuid))) AS ?secondaryContactPointUri)
+}
