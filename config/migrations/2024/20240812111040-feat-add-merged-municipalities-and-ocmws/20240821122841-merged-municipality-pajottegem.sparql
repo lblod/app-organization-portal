@@ -1,0 +1,251 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+      <http://www.w3.org/ns/org#Organization> ,
+      <http://purl.org/dc/terms/Agent> .
+    <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> mu:uuid "c050102e-285e-46b6-a8bb-6acef73051ba" ;
+      skos:prefLabel """Pajottegem""" ;
+      regorg:legalName """Pajottegem""" ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> regorg:orgStatus <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab> . # In oprichting
+
+    <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> owl:sameAs <http://data.vlaanderen.be/doc/organisatie/OVO053389> .
+
+    # KBO number
+    <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> adms:identifier <http://data.lblod.info/id/identificatoren/7c2bae25-0be4-4a4b-99bd-cee75fe2bdef> .
+    <http://data.lblod.info/id/identificatoren/7c2bae25-0be4-4a4b-99bd-cee75fe2bdef> a adms:Identifier ;
+      mu:uuid """7c2bae25-0be4-4a4b-99bd-cee75fe2bdef""" ;
+      skos:notation "KBO nummer" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/3c276af2-15c3-4207-8bef-058561dde8f6> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/3c276af2-15c3-4207-8bef-058561dde8f6> a generiek:GestructureerdeIdentificator ;
+      mu:uuid """3c276af2-15c3-4207-8bef-058561dde8f6""" ;
+      generiek:lokaleIdentificator """1010784540""" .
+
+    # OVO number
+    <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> adms:identifier <http://data.lblod.info/id/identificatoren/332e2b0c-f216-412d-9c03-52ffe640be2b> .
+    <http://data.lblod.info/id/identificatoren/332e2b0c-f216-412d-9c03-52ffe640be2b> a adms:Identifier ;
+      mu:uuid """332e2b0c-f216-412d-9c03-52ffe640be2b""" ;
+      skos:notation "OVO-nummer" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/5bd6e3bf-1fe5-4e61-a422-373b431d9f79> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/5bd6e3bf-1fe5-4e61-a422-373b431d9f79> a generiek:GestructureerdeIdentificator ;
+      mu:uuid """5bd6e3bf-1fe5-4e61-a422-373b431d9f79""" ;
+      generiek:lokaleIdentificator """OVO053389""" .
+
+    # Placeholder for SharePoint identifier
+    <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> adms:identifier <http://data.lblod.info/id/identificatoren/7521f92e-af33-4195-b3a4-3e700bc666ee> .
+    <http://data.lblod.info/id/identificatoren/7521f92e-af33-4195-b3a4-3e700bc666ee> a adms:Identifier ;
+      mu:uuid "7521f92e-af33-4195-b3a4-3e700bc666ee" ;
+      skos:notation "SharePoint identificator" ;
+      generiek:gestructureerdeIdentificator <http://data.lblod.info/id/gestructureerdeIdentificatoren/49069cbd-f8b2-42ae-ba1d-811433af5575> .
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/49069cbd-f8b2-42ae-ba1d-811433af5575> a generiek:GestructureerdeIdentificator ;
+      mu:uuid "49069cbd-f8b2-42ae-ba1d-811433af5575" .
+  }
+}
+;
+# scope
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> besluit:werkingsgebied <http://data.lblod.info/id/werkingsgebieden/d6797279-48de-4e6d-b28f-4691261e1afd> .
+    <http://data.lblod.info/id/werkingsgebieden/d6797279-48de-4e6d-b28f-4691261e1afd> a prov:Location ;
+      mu:uuid """d6797279-48de-4e6d-b28f-4691261e1afd""" ;
+      rdfs:label """Pajottegem""" ;
+      ext:werkingsgebiedNiveau "Gemeente" .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <http://data.lblod.info/id/werkingsgebieden/d6797279-48de-4e6d-b28f-4691261e1afd> geo:sfWithin ?locatedWithin .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?locatedWithin a <http://www.w3.org/ns/prov#Location> ;
+      rdfs:label ?label .
+    FILTER (STR(?label) = """Halle-Vilvoorde""")
+  }
+}
+#
+# Governing bodies
+#
+;
+## Burgemeester
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/6b7ad942-5905-40a5-9516-1433b22a4655> a besluit:Bestuursorgaan ;
+      mu:uuid """6b7ad942-5905-40a5-9516-1433b22a4655""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/bbad40c5-6571-4f04-974d-0f088bbfbf6f> a besluit:Bestuursorgaan ;
+      mu:uuid """bbad40c5-6571-4f04-974d-0f088bbfbf6f""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/6b7ad942-5905-40a5-9516-1433b22a4655> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
+}
+;
+## Gemeenteraad
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/3b88d7e5-00bb-43bd-a44d-594d861e7e2b> a besluit:Bestuursorgaan ;
+      mu:uuid """3b88d7e5-00bb-43bd-a44d-594d861e7e2b""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/008c4ba3-59da-4507-9ad4-5afbbbb80c9f> a besluit:Bestuursorgaan ;
+      mu:uuid """008c4ba3-59da-4507-9ad4-5afbbbb80c9f""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/3b88d7e5-00bb-43bd-a44d-594d861e7e2b> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
+}
+;
+## College van Burgemeester en Schepenen
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/147f3650-d6fa-4279-b716-98b9b1e5eca1> a besluit:Bestuursorgaan ;
+      mu:uuid """147f3650-d6fa-4279-b716-98b9b1e5eca1""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/9648624b-125e-4b1b-b6d0-5a475ad40a89> a besluit:Bestuursorgaan ;
+      mu:uuid """9648624b-125e-4b1b-b6d0-5a475ad40a89""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/147f3650-d6fa-4279-b716-98b9b1e5eca1> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
+}
+;
+## Algemeen directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/b1728a1b-510a-4e37-a523-ea7adead54ca> a besluit:Bestuursorgaan ;
+      mu:uuid """b1728a1b-510a-4e37-a523-ea7adead54ca""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/b00c8b47-602c-47c3-956c-005f8b7e58fb> a besluit:Bestuursorgaan ;
+      mu:uuid """b00c8b47-602c-47c3-956c-005f8b7e58fb""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/b1728a1b-510a-4e37-a523-ea7adead54ca> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
+}
+;
+## Adjunct-algemeen directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/afbbb6a3-c77b-417e-9744-e787de0bb26a> a besluit:Bestuursorgaan ;
+      mu:uuid """afbbb6a3-c77b-417e-9744-e787de0bb26a""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/42d2b817-d36f-4764-82e8-b22a84c571db> a besluit:Bestuursorgaan ;
+      mu:uuid """42d2b817-d36f-4764-82e8-b22a84c571db""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/afbbb6a3-c77b-417e-9744-e787de0bb26a> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
+}
+;
+## Financieel directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/074e7ad1-b8db-4786-a24b-e7961d1da885> a besluit:Bestuursorgaan ;
+      mu:uuid """074e7ad1-b8db-4786-a24b-e7961d1da885""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/78d94340-9880-4542-98d2-33c950c18aa2> a besluit:Bestuursorgaan ;
+      mu:uuid """78d94340-9880-4542-98d2-33c950c18aa2""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/074e7ad1-b8db-4786-a24b-e7961d1da885> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
+}
+;
+## Adjunct-financieel directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    <http://data.lblod.info/id/bestuursorganen/c0701011-f634-4d5e-a5ec-69f15c431db6> a besluit:Bestuursorgaan ;
+      mu:uuid """c0701011-f634-4d5e-a5ec-69f15c431db6""" ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> .
+
+    # Timed specialisation for governing body
+    <http://data.lblod.info/id/bestuursorganen/3f518fbd-aca0-451d-be5d-ad2294987789> a besluit:Bestuursorgaan ;
+      mu:uuid """3f518fbd-aca0-451d-be5d-ad2294987789""" ;
+      generiek:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/c0701011-f634-4d5e-a5ec-69f15c431db6> ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> skos:prefLabel ?classificationLabel .
+
+    BIND(CONCAT(?classificationLabel, " ", "Pajottegem") as ?governingBodyLabel)
+}
+#
+# Related province
+#
+;
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?province org:hasSubOrganization <http://data.lblod.info/id/bestuurseenheden/c050102e-285e-46b6-a8bb-6acef73051ba> .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?province skos:prefLabel """Vlaams-Brabant""" .
+  }
+}
