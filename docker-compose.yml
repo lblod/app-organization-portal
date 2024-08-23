@@ -383,7 +383,7 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-pub-graph-maintainer-organizations-public-info:
-    image: lblod/delta-producer-publication-graph-maintainer:0.15.4
+    image: lblod/delta-producer-publication-graph-maintainer:0.15.5
     environment:
       MAX_BODY_SIZE: "50mb"
       JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
@@ -436,7 +436,7 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-pub-graph-maintainer-public:
-    image: lblod/delta-producer-publication-graph-maintainer:0.15.4
+    image: lblod/delta-producer-publication-graph-maintainer:0.15.5
     environment:
       MAX_BODY_SIZE: "50mb"
       JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
@@ -487,7 +487,7 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-pub-graph-maintainer-worship-posts:
-    image: lblod/delta-producer-publication-graph-maintainer:0.15.4
+    image: lblod/delta-producer-publication-graph-maintainer:0.15.5
     environment:
       MAX_BODY_SIZE: "50mb"
       JOBS_GRAPH: "http://mu.semte.ch/graphs/jobs"
