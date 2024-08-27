@@ -94,6 +94,7 @@
         "http://www.w3.org/2004/02/skos/core#prefLabel",
         "http://www.w3.org/ns/org#linkedTo",
         "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
+        "http://www.w3.org/ns/org#classification",
         "http://www.w3.org/ns/adms#identifier",
         "http://www.w3.org/ns/regorg#legalName",
         "http://www.w3.org/2004/02/skos/core#altLabel",
@@ -104,9 +105,7 @@
     {
       "type": "http://www.w3.org/ns/regorg#RegisteredOrganization",
       "strictTypeExport": "true",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/administrative-unit"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/administrative-unit"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://data.vlaanderen.be/ns/besluit#werkingsgebied",
@@ -169,9 +168,7 @@
     },
     {
       "type": "http://www.w3.org/ns/adms#Identifier",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/worship-service"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/worship-service"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#notation",
@@ -193,9 +190,7 @@
     },
     {
       "type": "https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/worship-service"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/worship-service"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
@@ -204,9 +199,7 @@
     },
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/public"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/public"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -231,9 +224,7 @@
     },
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/TypeEredienst",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/public"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/public"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -241,9 +232,7 @@
     },
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/public"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/public"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -271,9 +260,7 @@
     },
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/public"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/public"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -281,9 +268,7 @@
     },
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/public"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/public"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -291,9 +276,7 @@
     },
     {
       "type": "http://lblod.data.gift/vocabularies/organisatie/TypeVestiging",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/public"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/public"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -326,12 +309,8 @@
     },
     {
       "type": "http://www.w3.org/2004/02/skos/core#Concept",
-      "graphsFilter": [
-        "http://mu.semte.ch/graphs/public"
-      ],
-      "pathToConceptScheme": [
-        "http://www.w3.org/2004/02/skos/core#inScheme"
-      ],
+      "graphsFilter": ["http://mu.semte.ch/graphs/public"],
+      "pathToConceptScheme": ["http://www.w3.org/2004/02/skos/core#inScheme"],
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/ns/org#role",
