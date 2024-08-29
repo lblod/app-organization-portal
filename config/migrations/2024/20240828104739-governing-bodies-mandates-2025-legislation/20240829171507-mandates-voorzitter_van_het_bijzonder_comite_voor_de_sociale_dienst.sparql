@@ -1,0 +1,31 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?governingBodyInTime org:hasPost ?mandate .
+
+    ?mandate a mandaat:Mandaat , org:Post ;
+      mu:uuid ?mandateUuid ;
+      org:role ?mandateRole .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?governingBodyInTime a besluit:Bestuursorgaan ;
+      generiek:isTijdspecialisatieVan ?governingBody ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+
+    ?governingBody org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9> . # Voorzitter van het Bijzonder Comité voor de Sociale Dienst
+  }
+
+  VALUES ?mandateRole {
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e00001a> # Voorzitter van het Bijzonder Comité voor de Sociale Dienst
+
+  }
+
+  BIND(SHA256(CONCAT(STR(?governingBody), STR(?governingBodyInTime), STR(?mandateRole), " 2025")) AS ?mandateUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/mandaten/", ?mandateUuid)) AS ?mandate)
+}
