@@ -1,0 +1,60 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedGoverningBody a besluit:Bestuursorgaan ;
+      mu:uuid ?timedGoverningBodyUuid ;
+      generiek:isTijdspecialisatieVan ?governingBody ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+  # Note: for municipalities and provinces the graphs differ, splitting this
+  # WHERE clause in two GRAPH clauses simplifies the generation of these
+  # migrations.
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?organization mu:uuid ?organizationUuid ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> . # Gemeente
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?governingBody besluit:bestuurt ?organization ;
+      org:classification ?governingBodyClassification .
+
+    # Only active organizations should get new timed governing bodies
+    ?organization regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> . # Actief (Eng. Active)
+  }
+
+  FILTER (
+          ?organization
+          NOT IN
+          (<http://data.lblod.info/id/bestuurseenheden/4f0eb4436c88cf831c35f84e7c34ce32f9ee4e99c5139aff62990e5e531aa1e7> # Beveren
+           , <http://data.lblod.info/id/bestuurseenheden/05441122597e0b20b61a8968ea1247c07f9014aad1f1f0709d0b1234e3dfbc2f> # Borgloon
+           , <http://data.lblod.info/id/bestuurseenheden/e41ffa04f94bb450a79793020e70d55b5fee5033a5280277998608a9d0913117> # Borsbeek
+           , <http://data.lblod.info/id/bestuurseenheden/e39bc997aa6dd9f240277735efd745b6a0422614d2b36cf01825c86b1b91a9ee> # De Pinte
+           , <http://data.lblod.info/id/bestuurseenheden/00eb231f51bd6b4f5dcc6536b2d09a174ea8583f5bf28b10bc4fc769a07e511d> # Galmaarden
+           , <http://data.lblod.info/id/bestuurseenheden/c69192b973a3ca11531b9657b3ee20aa6688fa33ea1ef1392310fec751980ab2> # Gooik
+           , <http://data.lblod.info/id/bestuurseenheden/3eb8c9fae32d02359dcd7b22e2a74e67a5b48388df31ad819c27c688fedd10b0> # Herne
+           , <http://data.lblod.info/id/bestuurseenheden/a3bd0845853278f478f90b14436d3efa99e73249a84d462f0ddc2e5b6e37a156> # Hoeselt
+           , <http://data.lblod.info/id/bestuurseenheden/f6b131de5e40a0dfd4fc93fedf3b95c9bf156ece718b87fe00469dea2564b3fb> # Kortessem
+           , <http://data.lblod.info/id/bestuurseenheden/6af55cecaea3621f53bb32417a36ed6e3d41b2aa5b9f6d62ab3d80cc8ec11539> # Kruibeke
+           , <http://data.lblod.info/id/bestuurseenheden/c0b6b5cf198cd939251dff8ed052177cfff245074c6b8d43394c8c97f7b6e945> # Melle
+           , <http://data.lblod.info/id/bestuurseenheden/8ef1e4a43efd913e6b09b0ddea344b7b5d723a344ad559389a55ae1ff0bebc8f> # Merelbeke
+           , <http://data.lblod.info/id/bestuurseenheden/5a4b2b4f1de1f3b91b0348a7eb6d6aa0ef9420b8ec31374970c9ffe933a79515> # Meulebeke
+           , <http://data.lblod.info/id/bestuurseenheden/c5dbb08e35e2d090a05d119fef4cc161b5ee1f322698cb8ea3c8c6643a521cf2> # Moerbeke
+           , <http://data.lblod.info/id/bestuurseenheden/0327a51548f73607f8a5ec11b36711a3c96703686ad93a3d632718c135c295db> # Nazareth
+           , <http://data.lblod.info/id/bestuurseenheden/2564e21e3650f91625189ccb7eb055e47754a0633c54c7582a899171fef60c52> # Ruiselede
+           , <http://data.lblod.info/id/bestuurseenheden/af8969752f6b28c66b6bc402d7987fa38774901ac72b95c5cb7976570487c3c9> # Tessenderlo
+           , <http://data.lblod.info/id/bestuurseenheden/1313d4a58f9ecf52cc7e274e3549a759b35e731973cc9f5e07562e5650f594dd> # Wachtebeke
+           , <http://data.lblod.info/id/bestuurseenheden/c362abc58ac4579ff417824ce620962ac57bc344b34fe8f51d21b35ef54da36d> # Zwijndrecht
+          )
+         )
+
+  BIND(SHA256(CONCAT(STR(?governingBodyClassification), " 2025 ", STR(?governingBody),  STR(?organizationUuid))) AS ?timedGoverningBodyUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?timedGoverningBodyUuid))) AS ?timedGoverningBody)
+}
