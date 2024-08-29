@@ -1,0 +1,32 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?governingBodyInTime lblodlg:heeftBestuursfunctie ?function .
+
+    ?function a lblodlg:Bestuursfunctie , org:Post ;
+      mu:uuid ?functionUuid ;
+      org:role ?functionRole .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?governingBodyInTime a besluit:Bestuursorgaan ;
+      generiek:isTijdspecialisatieVan ?governingBody ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+
+    ?governingBody org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab19107-82d2-4273-a986-3da86fda050d> . # Griffier
+  }
+
+  VALUES ?functionRole {
+    <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/63195ec6-02cb-4f86-ac8e-29c5183a11dc> # Griffier
+
+  }
+
+  BIND(SHA256(CONCAT(STR(?governingBody), STR(?governingBodyInTime), STR(?functionRole), " 2025")) AS ?functionUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursfuncties/", ?functionUuid)) AS ?function)
+}
