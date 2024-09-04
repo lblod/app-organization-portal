@@ -21,6 +21,26 @@ WHERE {
 
 ;
 
+# Remove associated properties for one of the bestuursorganen in tijd
+
+DELETE {
+  GRAPH ?g {
+    ?post ?p ?o .
+  }
+}
+WHERE {
+  VALUES ?bestuursorgaanInTijd {
+    <http://data.lblod.info/id/bestuursorganen/b2bea1a43457ea68652f2f7d9b3fa396e952b7fb80d782fcc8660fea42d0c5d5>
+  }
+
+  GRAPH ?g {
+    ?bestuursorgaanInTijd <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?post .
+    ?post ?p ?o .
+  }
+}
+
+;
+
 # Delete old bestuursorganen in tijd
 
 DELETE {
