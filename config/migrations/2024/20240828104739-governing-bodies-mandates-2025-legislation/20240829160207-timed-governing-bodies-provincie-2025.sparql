@@ -1,0 +1,35 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedGoverningBody a besluit:Bestuursorgaan ;
+      mu:uuid ?timedGoverningBodyUuid ;
+      generiek:isTijdspecialisatieVan ?governingBody ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+  # Note: for municipalities and provinces the graphs differ, splitting this
+  # WHERE clause in two GRAPH clauses simplifies the generation of these
+  # migrations.
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?organization mu:uuid ?organizationUuid ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> . # Provincie
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?governingBody besluit:bestuurt ?organization ;
+      org:classification ?governingBodyClassification .
+
+    # Only active organizations should get new timed governing bodies
+    ?organization regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> . # Actief (Eng. Active)
+  }
+
+  BIND(SHA256(CONCAT(STR(?governingBodyClassification), " 2025 ", STR(?governingBody),  STR(?organizationUuid))) AS ?timedGoverningBodyUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?timedGoverningBodyUuid))) AS ?timedGoverningBody)
+}

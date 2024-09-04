@@ -1,0 +1,113 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+# Algemeen directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    ?governingBody a besluit:Bestuursorgaan ;
+      mu:uuid ?governingBodyUuid ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> .
+
+    # Timed specialisation for governing body
+    ?timedGoverningBody a besluit:Bestuursorgaan ;
+      mu:uuid ?timedGoverningBodyUuid ;
+      generiek:isTijdspecialisatieVan ?governingBody ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> skos:prefLabel ?classificationLabel .
+    BIND(CONCAT(?classificationLabel, " pajottegem") AS ?governingBodyLabel)
+
+    BIND(SHA256(CONCAT("http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa", " 2025 ", STR(<http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf>))) AS ?governingBodyUuid)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?governingBodyUuid))) AS ?governingBody)
+
+    BIND(SHA256(CONCAT(STR(?governingBodyClassification), " 2025 ", STR(?governingBody),  STR(?organizationUuid))) AS ?timedGoverningBodyUuid)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?timedGoverningBodyUuid))) AS ?timedGoverningBody)
+}
+;
+# Adjunct-algemeen directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    ?governingBody a besluit:Bestuursorgaan ;
+      mu:uuid ?governingBodyUuid ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> .
+
+    # Timed specialisation for governing body
+    ?timedGoverningBody a besluit:Bestuursorgaan ;
+      mu:uuid ?timedGoverningBodyUuid ;
+      generiek:isTijdspecialisatieVan ?governingBody ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> skos:prefLabel ?classificationLabel .
+    BIND(CONCAT(?classificationLabel, " pajottegem") AS ?governingBodyLabel)
+
+    BIND(SHA256(CONCAT("http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc", " 2025 ", STR(<http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf>))) AS ?governingBodyUuid)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?governingBodyUuid))) AS ?governingBody)
+
+    BIND(SHA256(CONCAT(STR(?governingBodyClassification), " 2025 ", STR(?governingBody),  STR(?organizationUuid))) AS ?timedGoverningBodyUuid)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?timedGoverningBodyUuid))) AS ?timedGoverningBody)
+}
+;
+# Financieel directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    ?governingBody a besluit:Bestuursorgaan ;
+      mu:uuid ?governingBodyUuid ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> .
+
+    # Timed specialisation for governing body
+    ?timedGoverningBody a besluit:Bestuursorgaan ;
+      mu:uuid ?timedGoverningBodyUuid ;
+      generiek:isTijdspecialisatieVan ?governingBody ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> skos:prefLabel ?classificationLabel .
+    BIND(CONCAT(?classificationLabel, " pajottegem") AS ?governingBodyLabel)
+
+    BIND(SHA256(CONCAT("http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35", " 2025 ", STR(<http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf>))) AS ?governingBodyUuid)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?governingBodyUuid))) AS ?governingBody)
+
+    BIND(SHA256(CONCAT(STR(?governingBodyClassification), " 2025 ", STR(?governingBody),  STR(?organizationUuid))) AS ?timedGoverningBodyUuid)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?timedGoverningBodyUuid))) AS ?timedGoverningBody)
+}
+;
+# Adjunct-financieel directeur
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    # Abstract governing body
+    ?governingBody a besluit:Bestuursorgaan ;
+      mu:uuid ?governingBodyUuid ;
+      skos:prefLabel ?governingBodyLabel ;
+      besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf> ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> .
+
+    # Timed specialisation for governing body
+    ?timedGoverningBody a besluit:Bestuursorgaan ;
+      mu:uuid ?timedGoverningBodyUuid ;
+      generiek:isTijdspecialisatieVan ?governingBody ;
+      mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> skos:prefLabel ?classificationLabel .
+    BIND(CONCAT(?classificationLabel, " pajottegem") AS ?governingBodyLabel)
+
+    BIND(SHA256(CONCAT("http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0", " 2025 ", STR(<http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf>))) AS ?governingBodyUuid)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?governingBodyUuid))) AS ?governingBody)
+
+    BIND(SHA256(CONCAT(STR(?governingBodyClassification), " 2025 ", STR(?governingBody),  STR(?organizationUuid))) AS ?timedGoverningBodyUuid)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?timedGoverningBodyUuid))) AS ?timedGoverningBody)
+}
