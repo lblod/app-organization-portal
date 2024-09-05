@@ -1,0 +1,13 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>
+      skos:inScheme <https://data.vlaanderen.be/id/conceptscheme/BestuurseenheidClassificatieCode> ;
+      skos:topConceptOf <https://data.vlaanderen.be/id/conceptscheme/BestuurseenheidClassificatieCode> .
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+      skos:inScheme <https://data.vlaanderen.be/id/conceptscheme/BestuurseenheidClassificatieCode> ;
+      skos:topConceptOf <https://data.vlaanderen.be/id/conceptscheme/BestuurseenheidClassificatieCode> .
+  }
+}
+
