@@ -3,21 +3,15 @@ PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
-DELETE {
-  GRAPH ?g {
-    ?org org:linkedTo ?foundedOrg .
-  }
-}
 INSERT {
   GRAPH ?g {
     ?membership a org:Membership ;
       mu:uuid ?uuid ;
-      org:organization ?foundedOrg ;
+      org:organization ?linkedOrg ;
       org:member ?org ;
       org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> . # gerelateerd
   }
-}
-WHERE {
+} WHERE {
     VALUES ?g {
       <http://mu.semte.ch/graphs/worship-service>
       <http://mu.semte.ch/graphs/administrative-unit>
@@ -25,9 +19,9 @@ WHERE {
     }
 
     GRAPH ?g {
-      ?org org:linkedTo ?foundedOrg .
+      ?org org:linkedTo ?linkedOrg .
     }
 
-  BIND(SHA1(CONCAT(STR(?org), STR(?foundedOrg), "associated with")) as ?uuid)
+  BIND(SHA1(CONCAT(STR(?org), STR(?linkedOrg), "associated with")) as ?uuid)
   BIND(IRI(CONCAT("http://data.lblod.info/id/lidmaatschap/", ?uuid)) AS ?membership)
 }
