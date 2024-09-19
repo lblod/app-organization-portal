@@ -2,11 +2,6 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
-DELETE {
-  GRAPH ?g {
-    ?organization org:hasSubOrganization ?subOrganization .
-  }
-}
 INSERT {
   GRAPH ?g {
     ?membership a org:Membership ;
@@ -15,8 +10,7 @@ INSERT {
       org:member ?subOrganization ;
       org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> . # gerelateerd
   }
-}
-WHERE {
+} WHERE {
     VALUES ?g {
       <http://mu.semte.ch/graphs/worship-service>
       <http://mu.semte.ch/graphs/administrative-unit>
