@@ -61,6 +61,15 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  db-cleanup:
+    image: lblod/db-cleanup-service:0.5.1
+    environment:
+      MU_SPARQL_ENDPOINT: "http://db:8890/sparql"
+      CRON_PATTERN: "23 */6 * * *"
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   migrations-triggering-indexing:
     image: semtech/mu-migrations-service:0.8.0
     links:

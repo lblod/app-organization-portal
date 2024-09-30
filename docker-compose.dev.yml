@@ -23,6 +23,8 @@ services:
     restart: "no"
   cache:
     restart: "no"
+  db-cleanup:
+    restart: "no"
   kalliope-api:
     environment:
       SECURITY_CONFIG_PATH: "/config/security-dev.json"
