@@ -1,0 +1,28 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://data.lblod.info/id/cleanup-job/1352f2c5-0207-435b-9737-26d29769cde6> a cleanup:Job ;
+    mu:uuid "1352f2c5-0207-435b-9737-26d29769cde6" ;
+    dcterms:title "Insert missing `org:hasSubOrganization` triples for Central Worship Services and Worship Services." ;
+    cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+
+      INSERT {
+        GRAPH <http://mu.semte.ch/graphs/worship-service> {
+          ?organization org:hasSubOrganization ?member .
+        }
+      } WHERE {
+      GRAPH <http://mu.semte.ch/graphs/worship-service> {
+        ?membership a org:Membership ;
+          org:organization ?organization ;
+          org:member ?member ;
+          org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+
+        ?member org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86> .
+        ?organization org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054> .
+
+        FILTER NOT EXISTS { ?organization org:hasSubOrganization ?member . }
+      }
+    }
+    """ .
