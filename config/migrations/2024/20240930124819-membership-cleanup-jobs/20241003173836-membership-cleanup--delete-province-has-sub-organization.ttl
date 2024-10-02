@@ -1,0 +1,41 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://data.lblod.info/id/cleanup-job/7b2f66c8-1433-47f4-b730-62316f288631> a cleanup:Job ;
+    mu:uuid "7b2f66c8-1433-47f4-b730-62316f288631" ;
+    dcterms:title "Delete leftover `org:hasSubOrganization` triples for Provinces." ;
+    cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+
+      DELETE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?province org:hasSubOrganization ?member .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?province org:hasSubOrganization ?member .
+          FILTER NOT EXISTS {
+            ?membership a org:Membership ;
+              org:organization ?province ;
+              org:member ?member ;
+              org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+          }
+        }
+
+      ?member org:classification ?memberClass .
+      FILTER ( ?memberClass
+            IN (
+                <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ,
+                <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> ,
+                <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721> ,
+                <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d> ,
+                <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/2ad46df5-5c79-4d67-84d5-604c1377231e> ,
+                <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/088784b6-e188-48bf-b94f-94665f9e1f53>
+              )
+          )
+      GRAPH <http://mu.semte.ch/graphs/shared> {
+        ?province org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+      }
+    }
+    """ .
