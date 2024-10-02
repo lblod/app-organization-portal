@@ -1,0 +1,26 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://data.lblod.info/id/cleanup-job/14cfd05c-7047-43a1-97e4-42d3dd6b048d> a cleanup:Job ;
+    mu:uuid "14cfd05c-7047-43a1-97e4-42d3dd6b048d" ;
+    dcterms:title "Delete leftover `org:linkedTo` triples for Municipalities." ;
+    cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+
+      DELETE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?municipality org:linkedTo ?member .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?municipality org:linkedTo ?member .
+          FILTER NOT EXISTS {
+            ?membership a org:Membership ;
+              org:organization ?municipality ;
+              org:member ?member ;
+              org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+          }
+        }
+    }
+    """ .
