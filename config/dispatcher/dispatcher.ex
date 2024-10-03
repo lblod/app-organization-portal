@@ -366,15 +366,15 @@ defmodule Dispatcher do
   #################################################################
 
   get "/sync/organizations/files/*path" do
-    Proxy.forward conn, path, "http://delta-producer-publication-graph-maintainer/files/"
+    Proxy.forward conn, path, "http://delta-producer-publication-graph-maintainer/organizations/files/"
   end
 
   #################################################################
   #  DELTA: organizations-public-info
   #################################################################
 
-  get "/sync/organizations-public-info/files/*path" do
-    Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-organizations-public-info/files/"
+  get "/sync/public-info/files/*path" do
+    Proxy.forward(conn, path, "http://delta-producer-publication-graph-maintainer/public-info/files/")
   end
 
   #################################################################
@@ -382,7 +382,7 @@ defmodule Dispatcher do
   #################################################################
 
   get "/sync/public/files/*path" do
-    Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-public/files/"
+    Proxy.forward(conn, path, "http://delta-producer-publication-graph-maintainer/public/files/")
   end
 
   #################################################################
@@ -390,7 +390,7 @@ defmodule Dispatcher do
   #################################################################
 
   get "/sync/worship-posts/files/*path" do
-    Proxy.forward conn, path, "http://delta-producer-pub-graph-maintainer-worship-posts/files/"
+    Proxy.forward(conn, path, "http://delta-producer-publication-graph-maintainer/worship-posts/files/")
   end
 
   #################################################################
