@@ -2,6 +2,21 @@
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
+# Delete triples of the form
+# <Municipality> <http://www.w3.org/ns/org#hasSubOrganization> <subOrg>
+# for which no matching membership exists.
+
+# Municipality: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+#
+# AGB: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>
+# Projectvereniging: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/b156b67f-c5f4-4584-9b30-4c090be02fdc>
+# Dientsverlenende vereniging <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/d01bb1f6-2439-4e33-9c25-1fc295de2e71>
+# Opdrachthoudende vereniging: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/cd93f147-3ece-4308-acab-5c5ada3ec63d>
+# Opdrachthoudende vereniging met private deelname: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/4b8450cf-a326-4c66-9e63-b4ec10acc7f6>
+# HVZ: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/ea446861-2c51-45fa-afd3-4e4a37b71562>
+# PZ: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc>
+# PEVA municipality: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/2ad46df5-5c79-4d67-84d5-604c1377231e>
+
 <http://data.lblod.info/id/cleanup-job/141a5f1c-39d5-431a-99e2-9085252654a3> a cleanup:Job ;
     mu:uuid "141a5f1c-39d5-431a-99e2-9085252654a3" ;
     dcterms:title "Delete leftover `org:hasSubOrganization` triples for Municipalities." ;
