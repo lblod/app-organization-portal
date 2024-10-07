@@ -2,6 +2,14 @@
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
+# Insert triples of the form:
+# <Representative Body> <http://www.w3.org/ns/org#linkedTo> <Worship Service>
+# <Representative Body> <http://www.w3.org/ns/org#linkedTo> <Central Worship Service>
+# matching memberships for which no such triple exists.
+
+# Worship Service: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>
+# Central Worship Service: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>
+
 <http://data.lblod.info/id/cleanup-job/f0f7a304-34e9-4986-bf27-8434bb6f8111> a cleanup:Job ;
     mu:uuid "f0f7a304-34e9-4986-bf27-8434bb6f8111" ;
     dcterms:title "Insert missing `org:linkedTo` triples for Representative Bodies and [Central] Worship Services." ;
