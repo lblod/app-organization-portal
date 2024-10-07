@@ -1,0 +1,22 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership a org:Membership ;
+    mu:uuid ?uuid ;
+    org:organization ?antwerp ;
+    org:member ?borsbeek ;
+    org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> . # has a relation with
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?antwerp org:hasSubOrganization ?borsbeek .
+
+    FILTER (?antwerp = <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c>)
+    FILTER (?borsbeek = <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2>)
+  }
+
+  BIND (SHA256(CONCAT(STR(?antwerp), " has a relation with ", STR(?borsbeek))) AS ?uuid)
+  BIND (IRI(CONCAT("http://data.lblod.info/id/lidmaatschap/", ?uuid)) AS ?membership)
+}
