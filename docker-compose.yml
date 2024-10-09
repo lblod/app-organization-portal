@@ -625,37 +625,6 @@ services:
       - triplestore:virtuoso
     logging: *default-logging
 
-################################################################################
-  # CLB CONSUMERS
-  ################################################################################
-  clb-contact-data-consumer:
-    image: lblod/delta-consumer:0.0.18
-    environment:
-      DCR_SYNC_BASE_URL: "https://dev.contactgegevens-loket.lblod.info/"
-      DCR_SERVICE_NAME: "clb-contact-data-consumer"
-      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/ContactGegevensCacheGraphDump"
-      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/contactData"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/contactDataDeltaFileSyncing"
-      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/clb-contact-data-consumer"
-      DCR_DISABLE_INITIAL_SYNC: "false"
-      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
-      DCR_SYNC_FILES_PATH: "/sync/contact-data/files"
-      BATCH_SIZE: 1000
-      DCR_KEEP_DELTA_FILES: "true"
-      DCR_ENABLE_DELTA_CONTEXT: "true"
-      DCR_LANDING_ZONE_DATABASE: "triplestore"
-      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/clb-contact-data"
-    volumes:
-      - ./config/clb-consumer/contact-data:/config/triples-dispatching/custom-dispatching
-      - ./data/files/consumer-files/clb-contact-data:/consumer-files/
-    restart: always
-    labels:
-      - "logging=true"
-    links:
-      - db:database
-      - triplestore:virtuoso
-    logging: *default-logging
-
   ################################################################################
   # DELTA CONSUMERS: END
   ################################################################################
