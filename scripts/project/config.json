@@ -3,6 +3,22 @@
   "scripts": [
     {
       "documentation": {
+        "command": "create-export",
+        "description": "create export of administrative units and their bodies",
+        "arguments": []
+      },
+      "environment": {
+        "image": "nvdk/ruby-semantic-works-cli",
+        "interactive": true,
+        "script": "export/run.rb",
+        "join_networks": true
+      },
+      "mounts": {
+        "app": "/app/"
+      }
+    },
+    {
+      "documentation": {
         "command": "mu-search-delta",
         "description": "produce delta for mu-search",
         "arguments": []

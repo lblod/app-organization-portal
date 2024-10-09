@@ -1,0 +1,22 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix generiek: <https://data.vlaanderen.be/ns/generiek#> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#> .
+@prefix ere: <http://data.lblod.info/vocabularies/erediensten/> .
+
+<http://lblod.data.gift/mappings.owl> a owl:Ontology .
+
+# Equivalent Properties
+generiek:isTijdspecialisatieVan owl:equivalentProperty 
+    <http://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>,
+    mandaat:isTijdspecialisatieVan .
+org:classification owl:equivalentProperty besluit:classificatie .
+generiek:gestructureerdeIdentificator owl:equivalentProperty <http://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>.
+
+# Subclass mappings
+ere:BestuurVanDeEredienst rdfs:subClassOf besluit:Bestuurseenheid .
+ere:CentraalBestuurVanDeEredienst rdfs:subClassOf besluit:Bestuurseenheid .
+ere:RepresentatiefOrgaan rdfs:subClassOf besluit:Bestuurseenheid.
