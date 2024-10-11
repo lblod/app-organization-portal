@@ -1,0 +1,34 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4>
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc>
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35>
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0>
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab19107-82d2-4273-a986-3da86fda050d>
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/3e9f22c1-0d35-445b-8a37-494addedf2d8>
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa>
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+  }
+} 
+
+# # To find the relevant classifications:
+# SELECT DISTINCT ?classification WHERE {
+#   ?bestuursfunctie a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie> .
+# 
+#   ?orgaanInTime <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie ;
+#     <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?orgaan .
+# 
+#   ?orgaan <http://www.w3.org/ns/org#classification> ?classification .
+# }
