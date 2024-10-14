@@ -373,8 +373,8 @@ defmodule Dispatcher do
   #  DELTA: organizations-public-info
   #################################################################
 
-  get "/sync/public-info/files/*path" do
-    Proxy.forward(conn, path, "http://delta-producer-publication-graph-maintainer/public-info/files/")
+  get "/sync/organizations-public-info/files/*path" do
+    Proxy.forward(conn, path, "http://delta-producer-publication-graph-maintainer/organizations-public-info/files/")
   end
 
   #################################################################
