@@ -30,7 +30,7 @@ services:
   deltanotifier:
     restart: "no"
   mocklogin:
-    image: lblod/mock-login-service:latest
+    image: lblod/mock-login-service:0.7.0
     links:
       - db:database
     restart: "no"
