@@ -32,7 +32,7 @@ services:
   deltanotifier:
     restart: "no"
   mocklogin:
-    image: lblod/mock-login-service:latest
+    image: lblod/mock-login-service:0.7.0
     links:
       - db:database
     restart: "no"
@@ -48,8 +48,8 @@ services:
     restart: "no"
   adressenregister:
     restart: "no"
+   image: lblod/frontend-organization-portal:latest
   frontend:
-    image: lblod/frontend-organization-portal:latest
     restart: "no"
   uri-info:
     restart: "no"
@@ -76,14 +76,6 @@ services:
   organizations-sync-with-sharepoint:
     restart: "no"
   construct-organization-relationships:
-    restart: "no"
-  delta-producer-bg-jobs-initiator-worship-posts:
-    restart: "no"
-  delta-producer-pub-graph-maintainer-worship-posts:
-    restart: "no"
-  delta-producer-bg-jobs-initiator-public:
-    restart: "no"
-  delta-producer-pub-graph-maintainer-public:
     restart: "no"
   mandatarissen-consumer:
     restart: "no"

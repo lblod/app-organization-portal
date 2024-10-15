@@ -1,12 +1,42 @@
 [
-    {
-        "name": "organizations",
-        "jobsGraph": "http://mu.semte.ch/graphs/jobs",
-        "dumpFileCreationJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/organizations",
-        "initialPublicationGraphSyncJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations",
-        "healingJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations",
-        "cronPatternDumpJob": "42 * * * *",
-        "cronPatternHealingJob": "0 0 4 * * *",
-        "startInitialSync": true
-    }
+  {
+    "name": "organizations",
+    "jobsGraph": "http://mu.semte.ch/graphs/jobs",
+    "dumpFileCreationJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/organizations",
+    "initialPublicationGraphSyncJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations",
+    "healingJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations",
+    "cronPatternDumpJob": "42 * * * *",
+    "cronPatternHealingJob": "0 0 4 * * *",
+    "startInitialSync": true
+  },
+  {
+    "name": "public",
+    "jobsGraph": "http://mu.semte.ch/graphs/jobs",
+    "dumpFileCreationJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/public",
+    "initialPublicationGraphSyncJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/public",
+    "healingJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/public",
+    "cronPatternDumpJob": "11 */4 * * *",
+    "cronPatternHealingJob": "0 0 4 * * *",
+    "startInitialSync": true
+  },
+  {
+    "name": "organizations-public-info",
+    "jobsGraph": "http://mu.semte.ch/graphs/jobs",
+    "dumpFileCreationJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/organizations-public-info",
+    "initialPublicationGraphSyncJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/organizations-public-info",
+    "healingJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/organizations-public-info",
+    "cronPatternDumpJob": "27 */4 * * *",
+    "cronPatternHealingJob": "0 0 4 * * *",
+    "startInitialSync": true
+  },
+  {
+    "name": "worship-posts",
+    "jobsGraph": "http://mu.semte.ch/graphs/jobs",
+    "dumpFileCreationJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/deltaDumpFileCreation/worship-posts",
+    "initialPublicationGraphSyncJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/initialPublicationGraphSyncing/worship-posts",
+    "healingJobOperation": "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/healingOperation/worship-posts",
+    "cronPatternDumpJob": "17 */4 * * *",
+    "cronPatternHealingJob": "0 0 3 * * *",
+    "startInitialSync": true
+  }
 ]
