@@ -30,7 +30,7 @@ services:
   deltanotifier:
     restart: "no"
   mocklogin:
-    image: lblod/mock-login-service:latest
+    image: lblod/mock-login-service:0.7.0
     links:
       - db:database
     restart: "no"
@@ -48,7 +48,7 @@ services:
     restart: "no"
    image: lblod/frontend-organization-portal:latest
   frontend:
-   restart: "no"
+    restart: "no"
   uri-info:
     restart: "no"
   delta-producer-background-jobs-initiator:
