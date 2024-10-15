@@ -1,0 +1,4 @@
+# Note: the create statement is added because otherwise virtuoso throws an error
+# on the drop because the graph was not explicitly made
+CREATE SILENT GRAPH <http://mu.semte.ch/graphs/landing-zone/clb-contact-data>
+DROP GRAPH <http://mu.semte.ch/graphs/landing-zone/clb-contact-data>
