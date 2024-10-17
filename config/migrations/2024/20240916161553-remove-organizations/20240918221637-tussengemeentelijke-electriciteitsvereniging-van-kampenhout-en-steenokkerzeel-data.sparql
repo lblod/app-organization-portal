@@ -65,6 +65,23 @@ DELETE {
 }
 WHERE {
   VALUES ?s {
+    <http://data.lblod.info/id/bestuursfuncties/fbb286f45244f2cc64d40987bab1645acd78e3637f4a7a5f8c4dd33f9a7a3541>
+  }
+
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+}
+WHERE {
+  VALUES ?s {
     <http://data.lblod.info/id/gestructureerdeIdentificator/e6795bc0c5c2cf66591e7ff62e770bf5>
   }
 

@@ -72,3 +72,20 @@ WHERE {
     ?s ?p ?o .
   }
 }
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+}
+WHERE {
+  VALUES ?s {
+    <http://data.lblod.info/id/bestuursfuncties/d9efd2b03d6645c72a43f684f11a2b2e9c9f26bce0e549f7df397d1256e572aa>
+  }
+
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+}

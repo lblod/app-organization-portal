@@ -31,6 +31,23 @@ DELETE {
 }
 WHERE {
   VALUES ?s {
+    <http://data.lblod.info/id/bestuursfuncties/0fc5c952a6136b49721d9ce5794c6c262a38188a4b57cede9d9aea0f91f62d23>
+  }
+
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o .
+  }
+}
+WHERE {
+  VALUES ?s {
     <http://data.lblod.info/id/contact-punten/88dd9981-2398-11ef-bbd8-0fbcdf882161>
   }
 
