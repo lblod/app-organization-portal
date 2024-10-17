@@ -1,0 +1,26 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedGoverningBody mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedGoverningBody mandaat:bindingStart "2024-12-02T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?organization org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> . # Province
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?governingBody besluit:bestuurt ?organization .
+
+    ?timedGoverningBody a besluit:Bestuursorgaan ;
+    generiek:isTijdspecialisatieVan ?governingBody ;
+    mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+}

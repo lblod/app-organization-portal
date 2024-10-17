@@ -1,0 +1,23 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+# Set the start date for governing bodies for organisations that are the result
+# of a merger to 02 January 2025 which is the first working day of the year.
+# Note: this migration assumes that all other `2025-01-01` starting dates have
+# already been replaced by previous migrations. So order matters here!
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedGoverningBody mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedGoverningBody mandaat:bindingStart "2025-01-02T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedGoverningBody a besluit:Bestuursorgaan ;
+    mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+}
