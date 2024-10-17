@@ -1,0 +1,45 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedGoverningBody mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedGoverningBody mandaat:bindingStart "2024-12-02T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> . # OCMW
+
+    # Filter new OCMWs that will the result of a merger
+    FILTER (?organization NOT IN
+            (
+             # Merged OCMWs with new URIs
+             <http://data.lblod.info/id/bestuurseenheden/fd41f573-7d9a-4d9f-b7d0-d5b6114d1622> , # Beveren-Kruibeke-Zwijndrecht
+             <http://data.lblod.info/id/bestuurseenheden/5d94b2fd-60ee-4e56-a1f0-a586d596adf6> , # Merelbeke-Melle
+             <http://data.lblod.info/id/bestuurseenheden/7d53f659-3a3b-44b1-9e77-3ea067678c0e> , # Nazareth-De Pinte
+             <http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf> , # Pajottegem
+             # Merged OCMWs that keep URI
+             <http://data.lblod.info/id/bestuurseenheden/83c7a12a4a8ac8dd82895715095a866dc4794e60de61b967419bdfc1e207ad96> , # Antwerpen
+             <http://data.lblod.info/id/bestuurseenheden/9ae900a5447b7d727ca6496910220d4389aba7f1869923f1bbf9729bdeca28e2> , # Bilzen
+             <http://data.lblod.info/id/bestuurseenheden/42a43591e0db1dca9432f480f0f49f9bd4056c2b131e2fc997497130f5e099d0> , # Ham
+             <http://data.lblod.info/id/bestuurseenheden/026509cf3b4eeb7ad88fe57a270060574f60abd1c3524837d36700e40809d210> , # Hasselt
+             <http://data.lblod.info/id/bestuurseenheden/ee5d6d9da5fcf9e7bbd5c60931e37451f6bc816233c9c269565d79c2b2a37af5> , # Lochristi
+             <http://data.lblod.info/id/bestuurseenheden/323a24f2fe81ee0b6586ec78be36760e478092e07386b2785992ea8b61941833> , # Lokeren
+             <http://data.lblod.info/id/bestuurseenheden/f6ef0202c1dca780c66e269f2d21aa39a690f4c57ad05ece63f178b629bbb98e> , # Tielt
+             <http://data.lblod.info/id/bestuurseenheden/ab684633d605d93dbbe6b9ea40667e2bcf03a0856cafe1825e95b7829ed502a3> , # Tongeren
+             <http://data.lblod.info/id/bestuurseenheden/518c31a6e89f514c075e0927bce9fb2c91a552b6d65208c04a687d4bcb81148c> # Wingene
+             )
+            )
+
+    ?governingBody besluit:bestuurt ?organization .
+
+    ?timedGoverningBody a besluit:Bestuursorgaan ;
+    generiek:isTijdspecialisatieVan ?governingBody ;
+    mandaat:bindingStart "2025-01-01T00:00:00"^^xsd:dateTime .
+  }
+}
