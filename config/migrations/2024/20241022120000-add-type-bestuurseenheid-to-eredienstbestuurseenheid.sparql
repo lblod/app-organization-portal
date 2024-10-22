@@ -1,0 +1,16 @@
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+      a <http://data.lblod.info/vocabularies/erediensten/EredienstBestuurseenheid>.
+  }
+}
+WHERE {
+  VALUES ?type {
+    <http://data.lblod.info/vocabularies/erediensten/CentraalBestuurVanDeEredienst>
+    <http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a ?type.
+  }
+}
