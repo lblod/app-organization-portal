@@ -1,0 +1,13 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+
+DELETE WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?changeEvent a <http://www.w3.org/ns/org#ChangeEvent> ;
+    mu:uuid "66C494CB6ABCA6E6BF2DBB94" ;
+    code:veranderingsgebeurtenisResultaat ?changeEventResult ;
+    ?eventP ?eventO .
+
+    ?changeEventResult ?resultP ?resultO .
+  }
+}
