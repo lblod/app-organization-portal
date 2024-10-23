@@ -1,0 +1,59 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?oldVersion mandaat:bindingEinde ?newStartDate .
+  }
+}
+WHERE {
+
+  VALUES ?orgaanClass {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/180a2fba-6ca9-4766-9b94-82006bb9c709> #Gouverneur
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000c> # Provincieraad
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000d> # deputatie
+
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284> # Burgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> # gemeenteraad
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006> # college
+
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000007> # rmw
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008> # Vast Bureau
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9> # Voorzitter van het Bijzonder Comité voor de Sociale Dienst
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009> # Bijzonder Comité voor de Sociale Dienst
+
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065> #districtburgemeester
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000a> # Districtsraad
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b> # Districtscollege
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+
+    ?bestuursorgaan besluit:bestuurt ?bestuurseenheid;
+      skos:prefLabel ?orgaanLabel;
+      <http://www.w3.org/ns/org#classification>	 ?orgaanClass.
+
+      # Find the bestuursorgaan version without an end date
+      ?oldVersion a besluit:Bestuursorgaan ;
+      generiek:isTijdspecialisatieVan ?bestuursorgaan ;
+      mandaat:bindingStart ?oldStartDate .
+      FILTER NOT EXISTS { ?oldVersion mandaat:bindingEinde ?_ }
+
+      # Find newer bestuursorgaan version
+      ?newVersion a besluit:Bestuursorgaan ;
+      generiek:isTijdspecialisatieVan ?bestuursorgaan ;
+      mandaat:bindingStart ?newStartDate .
+      FILTER (?newStartDate > ?oldStartDate)
+
+      # Ensure there's no version with an earlier or same start date than the new one
+      FILTER NOT EXISTS {
+        ?otherVersion a besluit:Bestuursorgaan ;
+          generiek:isTijdspecialisatieVan ?bestuursorgaan ;
+          mandaat:bindingStart ?otherStartDate .
+        FILTER (?otherStartDate > ?oldStartDate && ?otherStartDate < ?newStartDate)
+      }
+   }
+}
