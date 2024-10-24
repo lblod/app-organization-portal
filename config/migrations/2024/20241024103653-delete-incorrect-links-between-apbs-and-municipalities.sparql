@@ -1,0 +1,36 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality org:linkedTo ?apb .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?apb a besluit:Bestuurseenheid;
+         org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>; # APB
+         org:hasPrimarySite/organisatie:bestaatUit/adres:gemeentenaam ?apbMunicipalityName .
+    ?municipality org:linkedTo ?apb .
+    # Filter APBs with more than 1 linked municipality, this avoids removing
+    # triples for APBs created by users.
+    {
+      SELECT DISTINCT ?apb
+      WHERE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?municipality org:linkedTo ?apb .
+        }
+      } GROUP BY ?apb HAVING (COUNT(?municipality) > 1)
+    }
+  }
+  # Filter municipalities that are different from the APB's primary site's
+  # municipality
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality a besluit:Bestuurseenheid;
+                  org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>; # municipality
+                  skos:prefLabel ?municipalityName .
+  }
+  FILTER (?apbMunicipalityName != ?municipalityName)
+}
