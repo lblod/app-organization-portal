@@ -329,7 +329,8 @@
         "http://data.vlaanderen.be/ns/mandaat#bindingEinde",
         "http://data.vlaanderen.be/ns/mandaat#bindingStart",
         "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-        "http://www.w3.org/ns/org#hasPost"
+        "http://www.w3.org/ns/org#hasPost",
+        "http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie"
       ],
       "additionalFilter": "?subject (<https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan>/<http://www.w3.org/ns/org#classification>/<http://www.w3.org/2004/02/skos/core#inScheme>)|(<http://www.w3.org/ns/org#classification>/<http://www.w3.org/2004/02/skos/core#inScheme>) <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> ."
     },
@@ -456,6 +457,19 @@
       "properties": [
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/ns/org#role",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    },
+    {
+      "type": "http://mu.semte.ch/vocabularies/ext/GeregistreerdeOrganisatieClassificatieCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
     }
