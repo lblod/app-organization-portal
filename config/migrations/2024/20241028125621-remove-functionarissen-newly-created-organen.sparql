@@ -1,0 +1,38 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?orgIntijdNew ?orgIntijdNewP  ?orgIntijdNewO.
+    ?bestuursfunctie ?bestuursfunctieP ?bestuursfunctieO.
+  }
+}
+WHERE {
+  VALUES ?class {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> # "Adjunct-algemeen directeur"
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> # "Algemeen directeur"
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4> # "Leidend Ambtenaar"
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35> # "Financieel directeu"
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0> # "Adjunct-financieel directeur"
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/3e9f22c1-0d35-445b-8a37-494addedf2d8> # "Financieel beheerder"
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab19107-82d2-4273-a986-3da86fda050d> # Griffier
+   }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      <http://www.w3.org/ns/org#classification> ?class.
+
+    ?orgIntijdOld generiek:isTijdspecialisatieVan ?s;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?old.
+
+    ?orgIntijdNew generiek:isTijdspecialisatieVan ?s;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?new.
+
+  FILTER(?new > ?old)
+
+    ?orgIntijdNew ?orgIntijdNewP ?orgIntijdNewO.
+    ?orgIntijdNew <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie.
+    ?bestuursfunctie ?bestuursfunctieP ?bestuursfunctieO.
+  }
+}
