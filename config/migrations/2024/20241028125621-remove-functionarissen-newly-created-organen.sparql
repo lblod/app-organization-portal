@@ -1,12 +1,12 @@
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
 DELETE {
-  GRAPH ?g {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     ?orgIntijdNew ?orgIntijdNewP  ?orgIntijdNewO.
     ?bestuursfunctie ?bestuursfunctieP ?bestuursfunctieO.
   }
 }
-
 WHERE {
   VALUES ?class {
     <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc> # "Adjunct-algemeen directeur"
@@ -18,18 +18,19 @@ WHERE {
     <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab19107-82d2-4273-a986-3da86fda050d> # Griffier
    }
 
-  ?s a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
-    <http://data.vlaanderen.be/ns/besluit#classificatie> ?class.
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
 
-  ?orgIntijdOld <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?s;
-    <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?old.
+    ?s a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      <http://www.w3.org/ns/org#classification> ?class.
 
-  ?orgIntijdNew <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?s;
-    <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?new.
+    ?orgIntijdOld generiek:isTijdspecialisatieVan ?s;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?old.
+
+    ?orgIntijdNew generiek:isTijdspecialisatieVan ?s;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> ?new.
 
   FILTER(?new > ?old)
 
-  GRAPH ?g {
     ?orgIntijdNew ?orgIntijdNewP ?orgIntijdNewO.
     ?orgIntijdNew <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?bestuursfunctie.
     ?bestuursfunctie ?bestuursfunctieP ?bestuursfunctieO.
