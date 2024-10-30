@@ -1,0 +1,25 @@
+# First we flush triples that might lead to 'double' entries, depending on the way they were generated from the original data.
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?subject ?predicateToDelete ?objectToDelete.
+  }
+}
+WHERE {
+
+  VALUES ?predicateToDelete {
+    <http://data.vlaanderen.be/ns/mandaat#bindingStart>
+    <http://www.w3.org/2004/02/skos/core#prefLabel>
+  }
+
+  {
+    SELECT DISTINCT ?subject WHERE {
+      GRAPH <http://mu.semte.ch/graphs/temp/c97a100a-d8d4-464d-a87d-83882738fdec> {
+         ?subject ?predicateToDelete ?o.
+      }
+    }
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?subject ?predicateToDelete ?objectToDelete.
+  }
+}
