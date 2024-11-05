@@ -100,6 +100,21 @@
       ]
     },
     {
+      "type": "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+      "strictTypeExport": "true",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "comment": "Bound to ABB only.",
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://purl.org/dc/terms/identifier",
+        "http://www.w3.org/ns/org#classification"
+      ],
+      "additionalFilter": "BIND(<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> as ?subject)"
+    },
+    {
       "type": "http://www.w3.org/ns/regorg#RegisteredOrganization",
       "strictTypeExport": "true",
       "graphsFilter": [
