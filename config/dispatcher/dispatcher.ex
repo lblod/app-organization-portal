@@ -285,6 +285,9 @@ defmodule Dispatcher do
     forward conn, path, "http://privacy-worship/person-information-updates"
   end
 
+  match "/access-with-audit-trail/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://access-with-audit-trail"
+  end
   match "/worship/person-information-requests/*path", %{ layer: :api_services, accept: %{ json: true } } do
     forward conn, path, "http://privacy-worship/person-information-requests"
   end

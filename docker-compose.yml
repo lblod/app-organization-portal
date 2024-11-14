@@ -8,7 +8,7 @@ x-logging: &default-logging
 
 services:
   identifier:
-    image: semtech/mu-identifier:1.10.1
+    image: semtech/mu-identifier:1.10.3
     environment:
       DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: '[{"variables":[],"name":"public"}]'
       SESSION_COOKIE_SECURE: "on"
@@ -17,7 +17,7 @@ services:
     restart: always
     logging: *default-logging
   dispatcher:
-    image: semtech/mu-dispatcher:2.1.0-beta.2
+    image: semtech/mu-dispatcher:latest
     volumes:
       - ./config/dispatcher:/config
     labels:
@@ -245,10 +245,10 @@ services:
       INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/initialSyncing/organizations"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/healingOperation/organizations"
       USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true"
-      USERNAME: 'username-to-override'
-      PASSWORD: 'password-to-override'
-      SITE: 'site-to-override'
-      LIST: 'list-to-override'
+      USERNAME: "username-to-override"
+      PASSWORD: "password-to-override"
+      SITE: "site-to-override"
+      LIST: "list-to-override"
     links:
       - db:database
     volumes:
@@ -353,7 +353,7 @@ services:
       PUBLICATION_VIRTUOSO_ENDPOINT: "http://publication-triplestore:8890/sparql"
       PUBLICATION_MU_AUTH_ENDPOINT: "http://publication-triplestore:8890/sparql"
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
-      CONFIG_SERVICES_JSON_PATH: '/config/publication-graph-maintainer/config.json'
+      CONFIG_SERVICES_JSON_PATH: "/config/publication-graph-maintainer/config.json"
     volumes:
       - ./config/delta-producer:/config
       - ./data/files/:/share
@@ -617,7 +617,7 @@ services:
       - triplestore:virtuoso
     logging: *default-logging
 
-################################################################################
+  ################################################################################
   # CLB CONSUMERS
   ################################################################################
   clb-contact-data-consumer:
@@ -660,7 +660,7 @@ services:
     image: redpencil/ldes-delta-pusher:latest
     profiles: ["dev"] # Disable ldes feed by default until ready for qa/prod
     environment:
-      LDES_ENDPOINT: 'http://ldes-backend/organizations'
+      LDES_ENDPOINT: "http://ldes-backend/organizations"
     volumes:
       - ./config/ldes-delta-pusher/:/config/
     links:
@@ -673,14 +673,14 @@ services:
     environment:
       FOLDER_DEPTH: 1
       PAGE_RESOURCES_COUNT: 50
-      LDES_STREAM_PREFIX: 'http://data.lblod.info/streams/op/'
-      TIME_TREE_RELATION_PATH: 'http://www.w3.org/ns/prov#generatedAtTime'
+      LDES_STREAM_PREFIX: "http://data.lblod.info/streams/op/"
+      TIME_TREE_RELATION_PATH: "http://www.w3.org/ns/prov#generatedAtTime"
       CACHE_SIZE: 10
-      DATA_FOLDER: '/data'
-      ENABLE_AUTH: 'false'
+      DATA_FOLDER: "/data"
+      ENABLE_AUTH: "false"
     restart: always
     volumes:
-      - './data/ldes-feed/:/data/'
+      - "./data/ldes-feed/:/data/"
 
   ################################################################################
   # MU SEARCH

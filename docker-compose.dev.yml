@@ -29,6 +29,16 @@ services:
     restart: "no"
   deltanotifier:
     restart: "no"
+  access-with-audit-trail:
+    image: lblod/access-with-audit-trail-service
+    volumes:
+      - ./config/access-with-audit-trail:/conf
+      - /devdisk/work/lblod/access-with-audit-trail-service:/app
+    environment:
+      APP_CONFILE_FILE: /conf/config.json
+      NODE_ENV: "development"
+    links:
+      - db:database
   mocklogin:
     image: lblod/mock-login-service:latest
     links:
