@@ -81,7 +81,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.25.0
+    image: semtech/mu-cl-resources:1.24.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     links:
