@@ -1,0 +1,118 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX lblodOrg: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# This migration adds merger change events for municipalities and OCMWs for
+# which the resulting active organisation is one of the original organisations.
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?changeEvent a org:ChangeEvent;
+                 mu:uuid ?uuidChangeEvent;
+                 org:resultingOrganization ?resultingOrg;
+                 dct:date "2025-01-01"^^xsd:dateTime;
+                 dct:description ?description;
+                 org:originalOrganization ?resultingOrg;
+                 org:originalOrganization ?notActiveOrganisation;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventNotActiveResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventActiveResult;
+                 ch:typeWijziging <http://lblod.data.gift/concepts/fa80032794c841ecac73ff874f856db1>. # Merger
+
+    ?changeEventNotActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                mu:uuid ?uuidChangeEventNotActiveResult;
+                                ext:resultingOrganization ?notActiveOrganisation;
+                                lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>. # not active
+
+    ?changeEventActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                             mu:uuid ?uuidChangeEventActiveResult;
+                             ext:resultingOrganization ?resultingOrg;
+                             lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>. # Active
+  }
+} WHERE {
+  VALUES (?notActiveOrganisation ?resultingOrg) {
+    # Hoeselt (municipality) + Bilzen (municipality) = Bilzen (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/a3bd0845853278f478f90b14436d3efa99e73249a84d462f0ddc2e5b6e37a156>
+     <http://data.lblod.info/id/bestuurseenheden/99da98a7a0087d3429b084ebfc4eb5d488c593790d4d5af7253982a2e21a6a5f>)
+    # Hoeselt (OCMW) + Bilzen (OCMW) = Bilzen (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/785e8d5516378c7382ad0e7e356d2301496d810c6cd46d72ccebb455d3ac525e>
+     <http://data.lblod.info/id/bestuurseenheden/9ae900a5447b7d727ca6496910220d4389aba7f1869923f1bbf9729bdeca28e2>)
+
+    # Borgloon (municipality) + Tongeren (municipality) = Tongeren (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/05441122597e0b20b61a8968ea1247c07f9014aad1f1f0709d0b1234e3dfbc2f>
+     <http://data.lblod.info/id/bestuurseenheden/104f32d7fb8d4b8b61b71717301656f136fe046eabaf126fb3325896b5c2d625>)
+    # Borgloon (OCMW) + Tongeren (OCMW) = Tongeren (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/3834647b5e95ea20f5ffe5a12a09fbd3d7fdf0d187fab385cb7b841422176ad6>
+     <http://data.lblod.info/id/bestuurseenheden/ab684633d605d93dbbe6b9ea40667e2bcf03a0856cafe1825e95b7829ed502a3>)
+
+    # Tessenderlo (municipality) + Ham (municipality) = Ham (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/af8969752f6b28c66b6bc402d7987fa38774901ac72b95c5cb7976570487c3c9>
+     <http://data.lblod.info/id/bestuurseenheden/05099fa1f6524b8b994d86f61549455d2c00b2a956d5308683ac2d1f810fc729>)
+    # Tessenderlo (OCMW) + Ham (OCMW) = Ham (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/fb1be873c4b31e391613dfae8e68edd694b1fdf126eeecb502b1e5cad6f2f682>
+     <http://data.lblod.info/id/bestuurseenheden/42a43591e0db1dca9432f480f0f49f9bd4056c2b131e2fc997497130f5e099d0>)
+
+    # Kortessem (municipality) + Hasselt (municipality) = Hasselt (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/f6b131de5e40a0dfd4fc93fedf3b95c9bf156ece718b87fe00469dea2564b3fb>
+     <http://data.lblod.info/id/bestuurseenheden/9db1b46874a57fe63c08fb5f16b117e6f61fdd98e7f64f745d0fceb9d3731169>)
+    # Kortessem (OCMW) + Hasselt (OCMW) = Hasselt (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/3e077115eeb70b649d44e2ebbb218f2cfcac5d84e130c88584f0ec23f7cebbf9>
+     <http://data.lblod.info/id/bestuurseenheden/026509cf3b4eeb7ad88fe57a270060574f60abd1c3524837d36700e40809d210>)
+
+    # Wachtebeke (municipality) + Lochristi (municipality) = Lochristi (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/1313d4a58f9ecf52cc7e274e3549a759b35e731973cc9f5e07562e5650f594dd>
+     <http://data.lblod.info/id/bestuurseenheden/2ac1bb2a7d7bbd98e2e7a24be2c67e42171788a71c2436a33060626593bb2f78>)
+    # Wachtebeke (OCMW) + Lochristi (OCMW) = Lochristi (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/7c6b38fa6fc65879cb674a654617de171adfcfacba086fb918da3749dbaa43b5>
+     <http://data.lblod.info/id/bestuurseenheden/ee5d6d9da5fcf9e7bbd5c60931e37451f6bc816233c9c269565d79c2b2a37af5>)
+
+    # Moerbeke (municipality) + Lokeren (municipality) = Lokeren (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/c5dbb08e35e2d090a05d119fef4cc161b5ee1f322698cb8ea3c8c6643a521cf2>
+     <http://data.lblod.info/id/bestuurseenheden/cb2a6e0a490ee881ddd0d9ded7f2b3d1dc2df7e57a19d014caac054bfa355f5a>)
+    # Moerbeke (OCMW) + Lokeren (OCMW) = Lokeren (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/f2a9a2392d5e4c0f992a84a0871d048a7b91b14681e9980a63aa6ba4b1f7eb8c>
+     <http://data.lblod.info/id/bestuurseenheden/323a24f2fe81ee0b6586ec78be36760e478092e07386b2785992ea8b61941833>)
+
+    # Meulebeke (municipality) + Tielt (municipality) = Tielt (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/5a4b2b4f1de1f3b91b0348a7eb6d6aa0ef9420b8ec31374970c9ffe933a79515>
+     <http://data.lblod.info/id/bestuurseenheden/b36da606fba6dd4dc99ae1ef5f4a52bba3268d33f4bc2cd1e65b87f01f35101a>)
+    # Meulebeke (OCMW) + Tielt (OCMW) = Tielt (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/3f57a17fbcdfc13def910c54948bec11d71d3f75946b0336fffc0587bf18d783>
+     <http://data.lblod.info/id/bestuurseenheden/f6ef0202c1dca780c66e269f2d21aa39a690f4c57ad05ece63f178b629bbb98e>)
+
+    # Ruiselede (municipality) + Wingene (municipality) = Wingene (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/2564e21e3650f91625189ccb7eb055e47754a0633c54c7582a899171fef60c52>
+     <http://data.lblod.info/id/bestuurseenheden/99ed6eee81a7aca47517cbffb46eaba38f3987eeb4ad32c020898644769eb615>)
+    # Ruiselede (OCMW) + Wingene (OCMW) = Wingene (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/60daf27c2cf12dd123447aa300dd7320890391dbd8dd6b4dd7ec02258f8281b3>
+     <http://data.lblod.info/id/bestuurseenheden/518c31a6e89f514c075e0927bce9fb2c91a552b6d65208c04a687d4bcb81148c>)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+  }
+
+  GRAPH ?g {
+    ?notActiveOrganisation skos:prefLabel ?labelNotActiveOrganisation.
+    ?resultingOrg skos:prefLabel ?labelResultingOrg;
+                  org:classification ?classification.
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?classification skos:prefLabel ?classificationResultingOrg.
+  }
+
+  BIND(CONCAT("Fusie tussen ", ?labelResultingOrg," en ", ?labelNotActiveOrganisation, " resulteert in ", ?classificationResultingOrg, " ", ?labelResultingOrg) as ?description)
+
+  BIND(SHA256(CONCAT(STR(?notActiveOrganisation), STR(?resultingOrg),"fusieChangeEvent")) AS ?uuidChangeEvent)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/veranderingsgebeurtenissen/", STR(?uuidChangeEvent))) AS ?changeEvent)
+
+  BIND(SHA256(CONCAT(STR(?notActiveOrganisation),"fusieChangeEventNotActiveResult")) AS ?uuidChangeEventNotActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventNotActiveResult))) AS ?changeEventNotActiveResult)
+
+
+  BIND(SHA256(CONCAT(STR(?notActiveOrganisation), STR(?resultingOrg),"fusieChangeEventActiveResult")) AS ?uuidChangeEventActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventActiveResult))) AS ?changeEventActiveResult)
+}
