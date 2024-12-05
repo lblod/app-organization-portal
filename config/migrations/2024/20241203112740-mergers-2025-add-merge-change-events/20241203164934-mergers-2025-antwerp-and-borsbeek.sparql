@@ -1,0 +1,137 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX lblodOrg: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# Add merger change event for Borsbeek (municipality) + Antwerpen (municipality) = Borsbeek (district) + Antwerpen (municipality)
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?changeEvent a org:ChangeEvent;
+                 mu:uuid ?uuidChangeEvent;
+                 ch:typeWijziging <http://lblod.data.gift/concepts/fa80032794c841ecac73ff874f856db1>; # Merger
+    dct:date "2025-01-01"^^xsd:dateTime;
+    dct:description ?description;
+    org:originalOrganization ?borsbeekMunicipality;
+    org:originalOrganization ?antwerpMunicipality;
+    org:resultingOrganization ?borsbeekDistrict;
+    org:resultingOrganization ?antwerpMunicipality;
+    lblodOrg:veranderingsgebeurtenisResultaat ?borsbeekMunicipalityResult;
+    lblodOrg:veranderingsgebeurtenisResultaat ?borsbeekDistrictResult;
+    lblodOrg:veranderingsgebeurtenisResultaat ?antwerpMunicipalityResult.
+
+    ?borsbeekMunicipalityResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                mu:uuid ?uuidBorsbeekMunicipalityResult;
+                                lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>; # not active
+    ext:resultingOrganization ?borsbeekMunicipality.
+
+    ?borsbeekDistrictResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                            mu:uuid ?uuidBorsbeekDistrictResult;
+                            lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>; # Active
+    ext:resultingOrganization ?borsbeekDistrict.
+
+    ?antwerpMunicipalityResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                               mu:uuid ?uuidAntwerpMunicipalityResult;
+                               lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>; # Active
+    ext:resultingOrganization ?antwerpMunicipality.
+  }
+} WHERE {
+  VALUES (?borsbeekMunicipality ?antwerpMunicipality ?borsbeekDistrict) {
+    (<http://data.lblod.info/id/bestuurseenheden/e41ffa04f94bb450a79793020e70d55b5fee5033a5280277998608a9d0913117> # Borsbeek (municipality)
+     <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c> # Antwerpen (municipality)
+     <http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2>) # Borsbeek (district)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+  }
+
+  GRAPH ?g {
+    ?antwerpMunicipality skos:prefLabel ?antwerpMunicipalityLabel;
+                         org:classification ?antwerpClassification.
+
+    ?borsbeekMunicipality skos:prefLabel ?borsbeekMunicipalityLabel.
+
+
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?borsbeekDistrict skos:prefLabel ?borsbeekDistrictLabel;
+                      org:classification ?borsbeekDistrictClassification.
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?antwerpClassification skos:prefLabel ?antwerpClassificationLabel.
+    ?borsbeekDistrictClassification skos:prefLabel ?borsbeekDistrictClassificationLabel.
+  }
+
+  BIND(CONCAT("Fusie tussen ", ?borsbeekMunicipalityLabel," en ", ?antwerpMunicipalityLabel, " resulteert in ", ?borsbeekDistrictClassificationLabel, " ", ?borsbeekDistrictLabel, " en ", ?antwerpClassificationLabel, " ", ?antwerpMunicipalityLabel) as ?description)
+
+  BIND(SHA256(CONCAT(STR(?borsbeekMunicipality), STR(?antwerpMunicipality), STR(?borsbeekDistrict),"fusieChangeEvent")) AS ?uuidChangeEvent)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/veranderingsgebeurtenissen/", STR(?uuidChangeEvent))) AS ?changeEvent)
+
+  BIND(SHA256(CONCAT(STR(?borsbeekMunicipality),"mergerBorsbeekMunicipalityChangeEventResult")) AS ?uuidBorsbeekMunicipalityResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidBorsbeekMunicipalityResult))) AS ?borsbeekMunicipalityResult)
+
+  BIND(SHA256(CONCAT(STR(?borsbeekDistrict),"mergerBorsbeekDistrictChangeEventResult")) AS ?uuidBorsbeekDistrictResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidBorsbeekDistrictResult))) AS ?borsbeekDistrictResult)
+
+  BIND(SHA256(CONCAT(STR(?antwerpMunicipality),"mergerAntwerpMunicipalityChangeEventResult")) AS ?uuidAntwerpMunicipalityResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidAntwerpMunicipalityResult))) AS ?antwerpMunicipalityResult)
+}
+;
+# Add merger change event for Borsbeek (OCMW) + Antwerp (OCMW) = Antwerp (OCMW)
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?changeEvent a org:ChangeEvent;
+                 mu:uuid ?uuidChangeEvent;
+                 org:resultingOrganization ?resultingOrg;
+                 dct:date "2025-01-01"^^xsd:dateTime;
+                 dct:description ?description;
+                 org:originalOrganization ?resultingOrg;
+                 org:originalOrganization ?notActiveOrganisation;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventNotActiveResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventActiveResult;
+                 ch:typeWijziging <http://lblod.data.gift/concepts/fa80032794c841ecac73ff874f856db1>. # Merger
+
+    ?changeEventNotActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                mu:uuid ?uuidChangeEventNotActiveResult;
+                                ext:resultingOrganization ?notActiveOrganisation;
+                                lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>. # not active
+
+    ?changeEventActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                             mu:uuid ?uuidChangeEventActiveResult;
+                             ext:resultingOrganization ?resultingOrg;
+                             lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>. # Active
+  }
+} WHERE {
+  VALUES (?notActiveOrganisation ?resultingOrg) {
+    # Borsbeek (OCMW) + Antwerp (OCMW) = Antwerp (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/7125fcbfb7a08f8c01efbed115cea602db249c04afe9b5a2cc298cc7949cd040>
+     <http://data.lblod.info/id/bestuurseenheden/83c7a12a4a8ac8dd82895715095a866dc4794e60de61b967419bdfc1e207ad96>)
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?notActiveOrganisation skos:prefLabel ?labelNotActiveOrganisation.
+    ?resultingOrg skos:prefLabel ?labelResultingOrg;
+                  org:classification ?classification.
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?classification skos:prefLabel ?classificationResultingOrg.
+  }
+
+  BIND(CONCAT("Fusie tussen ", ?labelResultingOrg," en ", ?labelNotActiveOrganisation, " resulteert in ", ?classificationResultingOrg, " ", ?labelResultingOrg) as ?description)
+
+  BIND(SHA256(CONCAT(STR(?notActiveOrganisation), STR(?resultingOrg),"fusieChangeEvent")) AS ?uuidChangeEvent)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/veranderingsgebeurtenissen/", STR(?uuidChangeEvent))) AS ?changeEvent)
+
+  BIND(SHA256(CONCAT(STR(?notActiveOrganisation),"fusieChangeEventNotActiveResult")) AS ?uuidChangeEventNotActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventNotActiveResult))) AS ?changeEventNotActiveResult)
+
+
+  BIND(SHA256(CONCAT(STR(?notActiveOrganisation), STR(?resultingOrg),"fusieChangeEventActiveResult")) AS ?uuidChangeEventActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventActiveResult))) AS ?changeEventActiveResult)
+}
