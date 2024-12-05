@@ -1,0 +1,31 @@
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFiX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH ?g {
+    ?betrokkenLokaleBesturen a ere:BetrokkenLokaleBesturen ;
+      mu:uuid ?uuidBetrokkeLokaleBesturen ;
+      ere:financieringspercentage ?percentage ;
+      org:organization ?worshipAdminUnit ;
+      ere:typebetrokkenheid ?betrokkenheidsType .
+
+    ?bestuurseenheid ere:betrokkenBestuur ?betrokkeLokaleBesturen .
+  }
+}
+WHERE {
+  VALUES ?worshipAdminUnit { <http://data.lblod.info/id/besturenVanDeEredienst/47cd23c6261e4b3e08c14c2f7c4bbc04> } #"Protestantse Kerk Opstandingskerk van Aalst"
+  VALUES ?bestuurseenheid { <http://data.lblod.info/id/bestuurseenheden/1f1e0b8819cb311774b62e85f5d701fcd0a50410894da331687b66b4ce3e96c5> } # Nieuwerkerken
+
+  GRAPH ?g {
+    ?betrokkenLokaleBesturen a ere:BetrokkenLokaleBesturen ;
+      mu:uuid ?uuidBetrokkeLokaleBesturen ;
+      ere:financieringspercentage ?percentage ;
+      org:organization ?worshipAdminUnit ;
+      ere:typebetrokkenheid ?betrokkenheidsType .
+
+    ?bestuurseenheid ere:betrokkenBestuur ?betrokkeLokaleBesturen .
+  }
+}
