@@ -1,0 +1,33 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH ?g {
+    ?organisation skos:prefLabel ?oldLabel;
+                  regorg:legalName ?oldName.
+  }
+} INSERT {
+  GRAPH ?g {
+    ?organisation skos:prefLabel ?newName;
+                  regorg:legalName ?newName.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?organisation a besluit:Bestuurseenheid;
+                  skos:prefLabel ?oldLabel;
+                  regorg:legalName ?oldName.
+  }
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+  }
+  VALUES (?organisation ?newName) {
+    (<http://data.lblod.info/id/bestuurseenheden/99da98a7a0087d3429b084ebfc4eb5d488c593790d4d5af7253982a2e21a6a5f> """Bilzen-Hoeselt""")
+    (<http://data.lblod.info/id/bestuurseenheden/9ae900a5447b7d727ca6496910220d4389aba7f1869923f1bbf9729bdeca28e2> """Bilzen-Hoeselt""")
+    (<http://data.lblod.info/id/bestuurseenheden/05099fa1f6524b8b994d86f61549455d2c00b2a956d5308683ac2d1f810fc729> """Tessenderlo-Ham""")
+    (<http://data.lblod.info/id/bestuurseenheden/42a43591e0db1dca9432f480f0f49f9bd4056c2b131e2fc997497130f5e099d0> """Tessenderlo-Ham""")
+    (<http://data.lblod.info/id/bestuurseenheden/104f32d7fb8d4b8b61b71717301656f136fe046eabaf126fb3325896b5c2d625> """Tongeren-Borgloon""")
+    (<http://data.lblod.info/id/bestuurseenheden/ab684633d605d93dbbe6b9ea40667e2bcf03a0856cafe1825e95b7829ed502a3> """Tongeren-Borgloon""")
+  }
+}
