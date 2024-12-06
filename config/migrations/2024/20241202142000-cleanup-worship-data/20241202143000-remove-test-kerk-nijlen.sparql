@@ -1,0 +1,155 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX schema: <http://schema.org/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX person: <http://www.w3.org/ns/person#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX dbpedia: <http://dbpedia.org/ontology/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX lblodlg: <https://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX euvoc: <http://publications.europa.eu/ontology/euvoc#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX code: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+
+DELETE {
+  GRAPH ?g {
+    ?testKerkNijlen a ?type;
+      ere:wordtBediendDoor ?positieBedienaar;
+      ere:typeEredienst ?typeEredienst;
+      adms:identifier ?identifier;
+      regorg:orgStatus ?orgStatus;
+      regorg:legalName ?legalName;
+      org:hasPrimarySite ?hasPrimarySite;
+      org:classification ?classification;
+      skos:prefLabel ?prefLabel;
+      mu:uuid ?uuid.
+
+    ?identifier ?pIdentifier ?oIdentifier.
+    ?identifier generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
+    ?gestructureerdeIdentificator ?pGestructureerdeIdentificator ?oGestructureerdeIdentificator.
+
+    ?positieBedienaar a ?positieBedienaarType;
+      mu:uuid ?positieBedienaarUUID;
+      ere:functie ?positieBedienaarFtie.
+
+    ?representatiefOrgaan org:linkedTo ?testKerkNijlen.
+    ?ckb org:hasSubOrganization ?testKerkNijlen.
+
+    ?kerkraad besluit:bestuurt ?testKerkNijlen;
+      a ?kerkraadType;
+      org:classification ?kerkraadClassificatie;
+      mu:uuid ?kerkraadUUID;
+      skos:prefLabel ?kerkraadLabel.
+
+    ?kerkraadInDeTijd
+      generiek:isTijdspecialisatieVan ?kerkraad;
+      org:hasPost ?kerkraadPost.
+
+    ?kerkraadPost a ?kerkraadPostType;
+      mu:uuid ?kerkraadPostUUID;
+      org:role ?kerkraadPostRole.
+
+    ?hasPrimarySite a ?siteType;
+      mu:uuid ?siteUUID;
+      organisatie:bestaatUit ?adres;
+      org:siteAddress ?contactPoint.
+
+    ?adres a ?adresType;
+      mu:uuid ?adresUUID;
+      adres:verwijstNaar ?adresURI;
+      locn:fullAddress ?fullAddress;
+      locn:thoroughfare ?thoroughfare;
+      adres:Adresvoorstelling.huisnummer ?huisnummer;
+      locn:postCode ?postCode;
+      adres:gemeentenaam ?gemeentenaam;
+      locn:adminUnitL2 ?province;
+      adres:land ?country.
+
+    ?adres adres:Adresvoorstelling.busnummer ?busnummer.
+
+
+    ?contactPoint a ?contactPointType;
+      mu:uuid ?contactPointUUID;
+      schema:contactType ?contactType.
+ }
+} WHERE  {
+  VALUES ?testKerkNijlen { <http://data.lblod.info/id/besturenVanDeEredienst/6745DA1D80B4579ABA1BF044> }
+  VALUES ?g { <http://mu.semte.ch/graphs/worship-service> }
+  GRAPH ?g {
+    ?testKerkNijlen a ?type;
+      ere:wordtBediendDoor ?positieBedienaar;
+      ere:typeEredienst ?typeEredienst;
+      adms:identifier ?identifier;
+      regorg:orgStatus ?orgStatus;
+      regorg:legalName ?legalName;
+      org:hasPrimarySite ?hasPrimarySite;
+      org:classification ?classification;
+      skos:prefLabel ?prefLabel;
+      mu:uuid ?uuid.
+
+    ?identifier ?pIdentifier ?oIdentifier.
+    ?identifier generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
+    ?gestructureerdeIdentificator ?pGestructureerdeIdentificator ?oGestructureerdeIdentificator.
+
+    ?positieBedienaar a ?positieBedienaarType;
+      mu:uuid ?positieBedienaarUUID;
+      ere:functie ?positieBedienaarFtie.
+
+    ?representatiefOrgaan org:linkedTo ?testKerkNijlen.
+    ?ckb org:hasSubOrganization ?testKerkNijlen.
+
+    ?kerkraad besluit:bestuurt ?testKerkNijlen;
+      a ?kerkraadType;
+      org:classification ?kerkraadClassificatie;
+      mu:uuid ?kerkraadUUID;
+      skos:prefLabel ?kerkraadLabel.
+
+    ?kerkraadInDeTijd
+      generiek:isTijdspecialisatieVan ?kerkraad;
+      org:hasPost ?kerkraadPost.
+
+    ?kerkraadPost a ?kerkraadPostType;
+      mu:uuid ?kerkraadPostUUID;
+      org:role ?kerkraadPostRole.
+
+    ?hasPrimarySite a ?siteType;
+      mu:uuid ?siteUUID;
+      organisatie:bestaatUit ?adres;
+      org:siteAddress ?contactPoint.
+
+    ?adres a ?adresType;
+      mu:uuid ?adresUUID;
+      adres:verwijstNaar ?adresURI;
+      locn:fullAddress ?fullAddress;
+      locn:thoroughfare ?thoroughfare;
+      adres:Adresvoorstelling.huisnummer ?huisnummer;
+      locn:postCode ?postCode;
+      adres:gemeentenaam ?gemeentenaam;
+      locn:adminUnitL2 ?province;
+      adres:land ?country.
+
+    OPTIONAL {
+      ?adres adres:Adresvoorstelling.busnummer ?busnummer.
+    }
+
+    ?contactPoint a ?contactPointType;
+      mu:uuid ?contactPointUUID;
+      schema:contactType ?contactType.
+  }
+}
