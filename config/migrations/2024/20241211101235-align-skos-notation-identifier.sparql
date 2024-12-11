@@ -1,0 +1,20 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s <http://www.w3.org/2004/02/skos/core#notation> ?notation.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s <http://www.w3.org/2004/02/skos/core#notation> ?plainNotation.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+   ?s a <http://www.w3.org/ns/adms#Identifier>;
+     <http://www.w3.org/2004/02/skos/core#notation> ?notation.
+   }
+
+   BIND(LANG(?notation) as ?lang)
+   BIND(STR(?notation) as ?plainNotation)
+   FILTER(?lang != "")
+}
