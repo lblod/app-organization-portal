@@ -1,0 +1,178 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX lblodOrg: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+
+# This migration add merger change events for municipalities and OCMWs for which
+# the resulting active organisation is a new, different resource.
+
+## Mergers involving two original organisations
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?changeEvent a org:ChangeEvent;
+                 mu:uuid ?uuidChangeEvent;
+                 org:resultingOrganization ?resultingOrg;
+                 dct:date "2025-01-01"^^xsd:dateTime;
+                 dct:description ?description;
+                 org:originalOrganization ?firstOrgToMerge;
+                 org:originalOrganization ?secondOrgToMerge;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventFirstNotActiveResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventSecondNotActiveResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventActiveResult;
+                 ch:typeWijziging <http://lblod.data.gift/concepts/fa80032794c841ecac73ff874f856db1>. # Merger
+
+    ?changeEventFirstNotActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                     mu:uuid ?uuidChangeEventFirstNotActiveResult;
+                                     ext:resultingOrganization ?firstOrgToMerge;
+                                     lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>. # not active
+
+    ?changeEventSecondNotActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                      mu:uuid ?uuidChangeEventSecondNotActiveResult;
+                                      ext:resultingOrganization ?secondOrgToMerge;
+                                      lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>. # not active
+
+    ?changeEventActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                             mu:uuid ?uuidChangeEventActiveResult;
+                             ext:resultingOrganization ?resultingOrg;
+                             lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>. # active
+  }
+} WHERE {
+  VALUES (?firstOrgToMerge ?secondOrgToMerge ?resultingOrg) {
+    # Nazareth (municipality) + De Pinte (municipality) = Nazareth-De Pinte (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/0327a51548f73607f8a5ec11b36711a3c96703686ad93a3d632718c135c295db>
+     <http://data.lblod.info/id/bestuurseenheden/e39bc997aa6dd9f240277735efd745b6a0422614d2b36cf01825c86b1b91a9ee>
+     <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af>)
+    # Nazareth (OCMW) + De Pinte (OCMW) = Nazareth-De Pinte (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/0a2d980559eb9f3e0820386541274a72692f495204cd6d951ea1907ecc65829b>
+     <http://data.lblod.info/id/bestuurseenheden/144c75e403c5084af57f5c0c86252b8759b56baf9694326abbcb5ea40ab69f1a>
+     <http://data.lblod.info/id/bestuurseenheden/7d53f659-3a3b-44b1-9e77-3ea067678c0e>)
+
+    # Melle (municipality) + Merelbeke (municipality) = Merelbeke-Melle (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/c0b6b5cf198cd939251dff8ed052177cfff245074c6b8d43394c8c97f7b6e945>
+     <http://data.lblod.info/id/bestuurseenheden/8ef1e4a43efd913e6b09b0ddea344b7b5d723a344ad559389a55ae1ff0bebc8f>
+     <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493>)
+    # Melle (OCMW) + Merelbeke (OCMW) = Merelbeke-Melle (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/04895013fe6301f32aa46deae98abfb833a717ece5a33b6c453674c6d0f4cc5e>
+     <http://data.lblod.info/id/bestuurseenheden/f56f068943a99059f5bfc3b905fe8848a25a47cfa30fb3ed3d294b47815b2255>
+     <http://data.lblod.info/id/bestuurseenheden/5d94b2fd-60ee-4e56-a1f0-a586d596adf6>)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+  }
+
+  GRAPH ?g {
+    ?firstOrgToMerge skos:prefLabel ?labelFirstOrg.
+    ?secondOrgToMerge skos:prefLabel ?labelSecondOrg.
+    ?resultingOrg skos:prefLabel ?labelResultingOrg;
+                  org:classification ?classification.
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?classification skos:prefLabel ?classificationResultingOrg.
+  }
+
+  BIND(CONCAT("Fusie tussen ", ?labelFirstOrg," en ", ?labelSecondOrg, " resulteert in ", ?classificationResultingOrg, " ", ?labelResultingOrg) as ?description)
+
+  BIND(SHA256(CONCAT(STR(?firstOrgToMerge), STR(?secondOrgToMerge), STR(?resultingOrg),"fusieChangeEvent")) AS ?uuidChangeEvent)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/veranderingsgebeurtenissen/", STR(?uuidChangeEvent))) AS ?changeEvent)
+
+  BIND(SHA256(CONCAT(STR(?firstOrgToMerge),"fusieChangeEventFirstNotActiveResult")) AS ?uuidChangeEventFirstNotActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventFirstNotActiveResult))) AS ?changeEventFirstNotActiveResult)
+
+  BIND(SHA256(CONCAT(STR(?secondOrgToMerge),"fusieChangeEventSecondNotActiveResult")) AS ?uuidChangeEventSecondNotActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventSecondNotActiveResult))) AS ?changeEventSecondNotActiveResult)
+
+
+  BIND(SHA256(CONCAT(STR(?firstOrgToMerge), STR(?secondOrgToMerge), STR(?resultingOrg),"fusieChangeEventActiveResult")) AS ?uuidChangeEventActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventActiveResult))) AS ?changeEventActiveResult)
+}
+;
+## Mergers involving three original organisations
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?changeEvent a org:ChangeEvent;
+                 mu:uuid ?uuidChangeEvent;
+                 org:resultingOrganization ?resultingOrg;
+                 dct:date "2025-01-01"^^xsd:dateTime;
+                 dct:description ?description;
+                 org:originalOrganization ?firstOrgToMerge;
+                 org:originalOrganization ?secondOrgToMerge;
+                 org:originalOrganization ?thirdOrgToMerge;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventFirstNotActiveResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventSecondNotActiveResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventThirdNotActiveResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?changeEventActiveResult;
+                 ch:typeWijziging <http://lblod.data.gift/concepts/fa80032794c841ecac73ff874f856db1>. # Merger
+
+  ?changeEventFirstNotActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                   mu:uuid ?uuidChangeEventFirstNotActiveResult;
+                                   ext:resultingOrganization ?firstOrgToMerge;
+                                   lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>. # not active
+
+  ?changeEventSecondNotActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                    mu:uuid ?uuidChangeEventSecondNotActiveResult;
+                                    ext:resultingOrganization ?secondOrgToMerge;
+                                    lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>. # not active
+
+  ?changeEventThirdNotActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                   mu:uuid ?uuidChangeEventThirdNotActiveResult;
+                                   ext:resultingOrganization ?thirdOrgToMerge;
+                                   lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311>. # not active
+
+  ?changeEventActiveResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                           mu:uuid ?uuidChangeEventActiveResult;
+                           ext:resultingOrganization ?resultingOrg;
+                           lblodOrg:resulterendeStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>. # active
+  }
+} WHERE {
+  VALUES (?firstOrgToMerge ?secondOrgToMerge ?thirdOrgToMerge ?resultingOrg) {
+    # Beveren (municipality) + Kruibeke (municipality) + Zwijndrecht (municipality) = Beveren-Kruibeke-Zwijndrecht (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/4f0eb4436c88cf831c35f84e7c34ce32f9ee4e99c5139aff62990e5e531aa1e7> <http://data.lblod.info/id/bestuurseenheden/6af55cecaea3621f53bb32417a36ed6e3d41b2aa5b9f6d62ab3d80cc8ec11539> <http://data.lblod.info/id/bestuurseenheden/c362abc58ac4579ff417824ce620962ac57bc344b34fe8f51d21b35ef54da36d> <http://data.lblod.info/id/bestuurseenheden/19483103-318e-435a-aa37-45e485406ee9>)
+    # Beveren (OCMW) + Kruibeke (OCMW) + Zwijndrecht (OCMW) = Beveren-Kruibeke-Zwijndrecht (OCMW)
+    (<http://data.lblod.info/id/bestuurseenheden/72bc672ceb6894d8dd31dc2dff2faad2fd93f4b9f5347d556d092516eaa30aa3> <http://data.lblod.info/id/bestuurseenheden/d3c76fd84794dad5e12c9eed6d6332dc5e5c99daf0e4ddd7ceebf13d5d6c0ccd> <http://data.lblod.info/id/bestuurseenheden/bbc23313f4c8585a0c51f15f920d77123356535cd1cad9af38f5707892c7088d> <http://data.lblod.info/id/bestuurseenheden/fd41f573-7d9a-4d9f-b7d0-d5b6114d1622>)
+
+    # Galmaarden (municipality) + Gooik (municipality) + Herne (municipality) = Pajottegem (municipality)
+    (<http://data.lblod.info/id/bestuurseenheden/00eb231f51bd6b4f5dcc6536b2d09a174ea8583f5bf28b10bc4fc769a07e511d> <http://data.lblod.info/id/bestuurseenheden/c69192b973a3ca11531b9657b3ee20aa6688fa33ea1ef1392310fec751980ab2> <http://data.lblod.info/id/bestuurseenheden/3eb8c9fae32d02359dcd7b22e2a74e67a5b48388df31ad819c27c688fedd10b0> <http://data.lblod.info/id/bestuurseenheden/add1e4eb-9ec7-4ea6-af82-335aa76b7d48>)
+    # Galmaarden (OCMW) + Gooik (OCMW) + Herne (OCMW) = Pajottegem (OCMW)
+  (<http://data.lblod.info/id/bestuurseenheden/ba8a253d98ea7d2ab1afc43e5e2cd145a12ccd86b68e71d023e3c13a83d7498f> <http://data.lblod.info/id/bestuurseenheden/76c45d60f05bf8afc8c71859342b69cac6a57ee2b320b900a60afd6ba9b8eb9d> <http://data.lblod.info/id/bestuurseenheden/5d21ccef2f5aa3ccbf3a74c6f25ebe9f0b1ef5a97b87f3d79c86ae9d6d857df8> <http://data.lblod.info/id/bestuurseenheden/650378e7-1bee-4737-91ff-5b20ac4623cf>)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+  }
+
+  GRAPH ?g {
+    ?firstOrgToMerge skos:prefLabel ?labelFirstOrg.
+    ?secondOrgToMerge skos:prefLabel ?labelSecondOrg.
+    ?thirdOrgToMerge skos:prefLabel ?labelThirdOrg.
+    ?resultingOrg skos:prefLabel ?labelResultingOrg;
+                  org:classification ?classification.
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?classification skos:prefLabel ?classificationResultingOrg.
+  }
+
+  BIND(CONCAT("Fusie tussen ", ?labelFirstOrg, ", ", ?labelSecondOrg," en ", ?labelThirdOrg, " resulteert in ", ?classificationResultingOrg, " ", ?labelResultingOrg) as ?description)
+
+  BIND(SHA256(CONCAT(STR(?firstOrgToMerge), STR(?secondOrgToMerge), STR(?thirdOrgToMerge), STR(?resultingOrg),"fusieChangeEvent")) AS ?uuidChangeEvent)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/veranderingsgebeurtenissen/", STR(?uuidChangeEvent))) AS ?changeEvent)
+
+  BIND(SHA256(CONCAT(STR(?firstOrgToMerge),"fusieChangeEventFirstNotActiveResult")) AS ?uuidChangeEventFirstNotActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventFirstNotActiveResult))) AS ?changeEventFirstNotActiveResult)
+
+  BIND(SHA256(CONCAT(STR(?secondOrgToMerge),"fusieChangeEventSecondNotActiveResult")) AS ?uuidChangeEventSecondNotActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventSecondNotActiveResult))) AS ?changeEventSecondNotActiveResult)
+
+  BIND(SHA256(CONCAT(STR(?thirdOrgToMerge),"fusieChangeEventThirdNotActiveResult")) AS ?uuidChangeEventThirdNotActiveResult) .
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventThirdNotActiveResult))) AS ?changeEventThirdNotActiveResult)
+
+  BIND(SHA256(CONCAT(STR(?resultingOrg),"fusieChangeEventActiveResult")) AS ?uuidChangeEventActiveResult)
+  BIND(IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidChangeEventActiveResult))) AS ?changeEventActiveResult)
+}
