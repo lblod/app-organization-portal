@@ -1,0 +1,27 @@
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g {
+    ?address locn:adminUnitL2 "Antwerpen".
+  }
+} INSERT {
+  GRAPH ?g {
+    ?address locn:adminUnitL2 "Oost-Vlaanderen".
+  }
+} WHERE {
+  GRAPH ?g {
+    ?address a locn:Address;
+             adres:gemeentenaam "Zwijndrecht";
+             locn:adminUnitL2 "Antwerpen"
+    FILTER (EXISTS { ?site organisatie:bestaatUit ?address. } ||
+            EXISTS { ?site org:siteAddress/locn:address ?address. })
+
+  }
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-service>
+    <http://mu.semte.ch/graphs/administrative-unit>
+  }
+}
