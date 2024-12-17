@@ -1,0 +1,51 @@
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g {
+    ?address adres:gemeentenaam ?oldMunicipality.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?address adres:gemeentenaam ?newMunicipality.
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?address a locn:Address;
+             adres:gemeentenaam ?oldMunicipality.
+    FILTER (EXISTS { ?site organisatie:bestaatUit ?address. } ||
+            EXISTS { ?site org:siteAddress/locn:address ?address. })
+  }
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+  VALUES (?oldMunicipality ?newMunicipality) {
+    ("Borsbeek" "Antwerpen")
+    ("Galmaarden" "Pajottegem")
+    ("Gooik" "Pajottegem")
+    ("Herne" "Pajottegem")
+    ("Ruiselede" "Wingene")
+    ("Meulebeke" "Tielt")
+    ("De Pinte" "Nazareth-De Pinte")
+    ("Nazareth" "Nazareth-De Pinte")
+    ("Wachtebeke" "Lochristi")
+    ("Moerbeke" "Lokeren")
+    ("Melle" "Merelbeke-Melle")
+    ("Merelbeke" "Merelbeke-Melle")
+    ("Beveren" "Beveren-Kruibeke-Zwijndrecht")
+    ("Kruibeke" "Beveren-Kruibeke-Zwijndrecht")
+    ("Zwijndrecht" "Beveren-Kruibeke-Zwijndrecht")
+    ("Bilzen" "Bilzen-Hoeselt")
+    ("Hoeselt" "Bilzen-Hoeselt")
+    ("Borgloon" "Tongeren-Borgloon")
+    ("Tongeren" "Tongeren-Borgloon")
+    ("Ham" "Tessenderlo-Ham")
+    ("Tessenderlo" "Tessenderlo-Ham")
+    ("Kortessem" "Hasselt")
+  }
+}
