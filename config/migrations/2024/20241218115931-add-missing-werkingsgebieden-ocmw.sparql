@@ -1,0 +1,24 @@
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s <http://data.vlaanderen.be/ns/besluit#werkingsgebied> ?gebied.
+  }
+}
+WHERE {
+  ?s a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ;
+      <http://www.w3.org/ns/org#classification>
+        <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>; # ocmw
+      skos:prefLabel ?label.
+
+  FILTER NOT EXISTS {
+    ?s <http://data.vlaanderen.be/ns/besluit#werkingsgebied> ?ocmwGebied.
+  }
+
+  ?gemeente <http://www.w3.org/ns/org#linkedTo> ?s.
+
+  ?gemeente <http://www.w3.org/ns/org#classification>
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>.
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?gemeente <http://data.vlaanderen.be/ns/besluit#werkingsgebied> ?gebied.
+  }
+}
