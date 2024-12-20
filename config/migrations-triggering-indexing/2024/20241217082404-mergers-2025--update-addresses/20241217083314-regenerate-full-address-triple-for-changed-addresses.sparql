@@ -1,0 +1,92 @@
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH ?g {
+    ?address locn:fullAddress ?fullAddress.
+  }
+} INSERT {
+  GRAPH ?g {
+    ?address locn:fullAddress ?newFullAddress.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?address locn:fullAddress ?fullAddress;
+             locn:thoroughfare ?street;
+             adres:Adresvoorstelling.huisnummer ?buildingNo;
+             locn:postCode ?postalCode;
+             adres:gemeentenaam ?municipality;
+             adres:land ?country.
+    FILTER NOT EXISTS { ?address adres:Adresvoorstelling.busnummer ?boxNo. }
+    FILTER (EXISTS { ?site organisatie:bestaatUit ?address. } ||
+            EXISTS { ?site org:siteAddress/locn:address ?address. })
+    FILTER (?municipality IN (
+                              "Antwerpen",
+                              "Pajottegem",
+                              "Wingene",
+                              "Tielt",
+                              "Nazareth-De Pinte",
+                              "Lochristi",
+                              "Lokeren",
+                              "Merelbeke-Melle",
+                              "Beveren-Kruibeke-Zwijndrecht",
+                              "Bilzen-Hoeselt",
+                              "Tongeren-Borgloon",
+                              "Tessenderlo-Ham",
+                              "Hasselt"
+                              ))
+    BIND (CONCAT(?street, " ", ?buildingNo, ", ", ?postalCode, " ", ?municipality, ", ", ?country) AS ?newFullAddress)
+    FILTER (?fullAddress != ?newFullAddress)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+}
+;
+DELETE {
+  GRAPH ?g {
+    ?address locn:fullAddress ?fullAddress.
+  }
+} INSERT {
+  GRAPH ?g {
+    ?address locn:fullAddress ?newFullAddress.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?address locn:fullAddress ?fullAddress;
+             locn:thoroughfare ?street;
+             adres:Adresvoorstelling.huisnummer ?buildingNo;
+             adres:Adresvoorstelling.busnummer ?boxNo;
+             locn:postCode ?postalCode;
+             adres:gemeentenaam ?municipality;
+             adres:land ?country.
+    FILTER (EXISTS { ?site organisatie:bestaatUit ?address. } ||
+            EXISTS { ?site org:siteAddress/locn:address ?address. })
+    FILTER (?municipality IN (
+                              "Antwerpen",
+                              "Pajottegem",
+                              "Wingene",
+                              "Tielt",
+                              "Nazareth-De Pinte",
+                              "Lochristi",
+                              "Lokeren",
+                              "Merelbeke-Melle",
+                              "Beveren-Kruibeke-Zwijndrecht",
+                              "Bilzen-Hoeselt",
+                              "Tongeren-Borgloon",
+                              "Tessenderlo-Ham",
+                              "Hasselt"
+                              ))
+    BIND (CONCAT(?street, " ", ?buildingNo, " ", ?boxNo, ", ", ?postalCode, " ", ?municipality, ", ", ?country) AS ?newFullAddress)
+    FILTER (?fullAddress != ?newFullAddress)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+}
