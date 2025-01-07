@@ -29,6 +29,14 @@
 
 (type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
 
+;;
+;; TODO:
+;; - resolve errors concerning sending deltas (cf. `docker compose logs db')
+;; - Edits seem to be written to incorrect graphs, e.g. contact details for an AGB were added to
+;;   `public' or `worship-service' instead of `administrative-unit'. Further testing needed.
+;; - remove unneeded resource types, if any
+;; - thoroughly test
+
 (defun query-for-role (role)
   (format nil "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
               PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
