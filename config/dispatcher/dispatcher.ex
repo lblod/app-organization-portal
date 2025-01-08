@@ -1,364 +1,387 @@
 defmodule Dispatcher do
   use Matcher
 
-  define_accept_types [
+  define_accept_types(
     html: ["text/html", "application/xhtml+html"],
     json: ["application/json", "application/vnd.api+json"],
     upload: ["multipart/form-data"],
     sparql_json: ["application/sparql-results+json"],
-    any: [ "*/*" ],
-  ]
+    any: ["*/*"]
+  )
 
-  define_layers [ :api_services, :api, :frontend, :not_found ]
-
+  define_layers([:api_services, :api, :frontend, :not_found])
 
   ###############################################################
   # domain.json
   ###############################################################
 
-  match "/people/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/people/"
+  match "/people/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/people/")
   end
 
-  match "/agents-in-position/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/agents-in-position/"
+  match "/agents-in-position/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/agents-in-position/")
   end
 
-  match "/posts/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/posts/"
+  match "/posts/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/posts/")
   end
 
-  match "/mandatories/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/mandatories/"
+  match "/mandatories/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/mandatories/")
   end
 
-  match "/mandatory-status-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/mandatory-status-codes/"
+  match "/mandatory-status-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/mandatory-status-codes/")
   end
 
-  match "/worship-mandatories/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/worship-mandatories/"
+  match "/worship-mandatories/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/worship-mandatories/")
   end
 
-  match "/half-elections/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/half-elections/"
+  match "/half-elections/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/half-elections/")
   end
 
-  match "/contact-points/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/contact-points/"
+  match "/contact-points/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/contact-points/")
   end
 
-  match "/mandates/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/mandates/"
+  match "/mandates/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/mandates/")
   end
 
-  match "/board-positions/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/board-positions/"
+  match "/board-positions/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/board-positions/")
   end
 
-  match "/board-position-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/board-position-codes/"
+  match "/board-position-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/board-position-codes/")
   end
 
-  match "/functionaries/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/functionaries/"
+  match "/functionaries/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/functionaries/")
   end
 
-  match "/agent-status-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/agent-status-codes/"
+  match "/agent-status-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/agent-status-codes/")
   end
 
-  match "/roles/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/roles/"
+  match "/roles/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/roles/")
   end
 
-  match "/organizations/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/organizations/"
+  match "/organizations/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/organizations/")
   end
 
-  match "/registered-organizations/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/registered-organizations/"
+  match "/registered-organizations/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/registered-organizations/")
   end
 
-  match "/administrative-units/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/administrative-units/"
+  match "/administrative-units/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/administrative-units/")
   end
 
-  match "/administrative-unit-classification-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/administrative-unit-classification-codes/"
+  match "/administrative-unit-classification-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/administrative-unit-classification-codes/")
   end
 
-  match "/organization-classification-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/organization-classification-codes/"
+  match "/organization-classification-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/organization-classification-codes/")
   end
 
-  match "/registered-organization-classification-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/registered-organization-classification-codes/"
+  match "/registered-organization-classification-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/registered-organization-classification-codes/")
   end
 
-  match "/worship-administrative-units/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/worship-administrative-units/"
+  match "/worship-administrative-units/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/worship-administrative-units/")
   end
 
-  match "/worship-services/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/worship-services/"
+  match "/worship-services/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/worship-services/")
   end
 
-  match "/recognized-worship-types/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/recognized-worship-types/"
+  match "/recognized-worship-types/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/recognized-worship-types/")
   end
 
-  match "/central-worship-services/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/central-worship-services/"
+  match "/central-worship-services/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/central-worship-services/")
   end
 
-  match "/representative-bodies/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/representative-bodies/"
+  match "/representative-bodies/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/representative-bodies/")
   end
 
-  match "/governing-bodies/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/governing-bodies/"
+  match "/governing-bodies/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/governing-bodies/")
   end
 
-  match "/governing-body-classification-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/governing-body-classification-codes/"
+  match "/governing-body-classification-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/governing-body-classification-codes/")
   end
 
-  match "/local-involvements/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/local-involvements/"
+  match "/local-involvements/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/local-involvements/")
   end
 
-  match "/identifiers/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/identifiers/"
+  match "/identifiers/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/identifiers/")
   end
 
-  match "/structured-identifiers/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/structured-identifiers/"
+  match "/structured-identifiers/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/structured-identifiers/")
   end
 
-  match "/addresses/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/addresses/"
+  match "/addresses/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/addresses/")
   end
 
-  match "/sites/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/sites/"
+  match "/sites/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/sites/")
   end
 
-  match "/change-events/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/change-events/"
+  match "/change-events/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/change-events/")
   end
 
-  match "/change-event-types/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/change-event-types/"
+  match "/change-event-types/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/change-event-types/")
   end
 
-  match "/change-event-results/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/change-event-results/"
+  match "/change-event-results/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/change-event-results/")
   end
 
-  match "/organization-status-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/organization-status-codes/"
+  match "/organization-status-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/organization-status-codes/")
   end
 
-  match "/locations/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/locations/"
+  match "/locations/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/locations/")
   end
 
-  match "/involvement-types/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/involvement-types/"
+  match "/involvement-types/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/involvement-types/")
   end
 
-  match "/ministers/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/ministers/"
+  match "/ministers/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/ministers/")
   end
 
-  match "/minister-conditions/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/minister-conditions/"
+  match "/minister-conditions/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/minister-conditions/")
   end
 
-  match "/dates-of-birth/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/dates-of-birth/"
+  match "/dates-of-birth/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/dates-of-birth/")
   end
 
-  match "/nationalities/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/nationalities/"
+  match "/nationalities/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/nationalities/")
   end
 
-  match "/gender-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/gender-codes/"
-  end
-  match "/concepts/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/concepts/"
+  match "/gender-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/gender-codes/")
   end
 
-  match "/minister-positions/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/minister-positions/"
+  match "/concepts/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/concepts/")
   end
 
-  match "/minister-position-functions/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/minister-position-functions/"
+  match "/minister-positions/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/minister-positions/")
   end
 
-  match "/financing-codes/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/financing-codes/"
+  match "/minister-position-functions/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/minister-position-functions/")
   end
 
-  match "/minister-condition-criterions/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/minister-condition-criterions/"
+  match "/financing-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/financing-codes/")
   end
 
-  match "/document-types-criterions/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/document-types-criterions/"
+  match "/minister-condition-criterions/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/minister-condition-criterions/")
   end
 
-  match "/site-types/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/site-types/"
+  match "/document-types-criterions/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/document-types-criterions/")
   end
 
-  match "/request-reasons/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/request-reasons/"
+  match "/site-types/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/site-types/")
   end
 
-  match "/decisions/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/decisions/"
+  match "/request-reasons/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/request-reasons/")
   end
 
-  match "/decision-activities/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://cache/decision-activities/"
+  match "/decisions/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/decisions/")
+  end
+
+  match "/decision-activities/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/decision-activities/")
+  end
+
+  match "/memberships/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/memberships/")
+  end
+
+  match "/membership-roles/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/membership-roles/")
   end
 
   # There is currently no logic to invalidate the kboOrganization cache when wegwijse updates the content
-  match "/kbo-organizations/*path", %{ accept: [:any], layer: :api} do
-    Proxy.forward conn, path, "http://resource/kbo-organizations/"
+  match "/kbo-organizations/*path", %{accept: [:any], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/kbo-organizations/")
   end
 
   ###############
   # LOGIN
   ###############
 
-  match "/accounts", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, [], "http://resource/accounts/"
-  end
-  match "/accounts/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://accountdetail/accounts/"
-  end
-  match "/active-role/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://roles/"
-  end
-  match "/groups/*path", %{ accept: [:json], layer: :api} do
-    Proxy.forward conn, path, "http://resource/groups/"
+  match "/accounts", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, [], "http://resource/accounts/")
   end
 
-  match "/mock/sessions/*path", %{ accept: [:any], layer: :api} do
-    Proxy.forward conn, path, "http://mocklogin/sessions/"
+  match "/accounts/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://accountdetail/accounts/")
   end
 
-  match "/sessions/*path", %{ accept: [:any], layer: :api} do
-    Proxy.forward conn, path, "http://login/sessions/"
+  match "/active-role/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://roles/")
+  end
+
+  match "/groups/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/groups/")
+  end
+
+  match "/mock/sessions/*path", %{accept: [:any], layer: :api} do
+    Proxy.forward(conn, path, "http://mocklogin/sessions/")
+  end
+
+  match "/sessions/*path", %{accept: [:any], layer: :api} do
+    Proxy.forward(conn, path, "http://login/sessions/")
   end
 
   ###############################################################
   # SEARCH
   ###############################################################
 
-  match "/search/*path", %{  accept: %{ json: true }, layer: :api_services} do
-    Proxy.forward conn, path, "http://search/"
+  match "/search/*path", %{accept: %{json: true}, layer: :api_services} do
+    Proxy.forward(conn, path, "http://search/")
   end
 
   ###############
   # API SERVICES
   ###############
 
-  match "/v3/api-docs/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://kalliope-api/v3/api-docs/"
+  match "/v3/api-docs/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://kalliope-api/v3/api-docs/")
   end
 
-  match "/consolidated/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://kalliope-api/consolidated/"
+  match "/consolidated/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://kalliope-api/consolidated/")
   end
 
-  match "/adresses-register/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://adressenregister/"
+  match "/adresses-register/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://adressenregister/")
   end
 
-  match "/worship/person-information-updates/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy-worship/person-information-updates"
+  match "/worship/person-information-updates/*path", %{
+    layer: :api_services,
+    accept: %{json: true}
+  } do
+    forward(conn, path, "http://privacy-worship/person-information-updates")
   end
 
-  match "/worship/person-information-requests/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy-worship/person-information-requests"
+  match "/worship/person-information-requests/*path", %{
+    layer: :api_services,
+    accept: %{json: true}
+  } do
+    forward(conn, path, "http://privacy-worship/person-information-requests")
   end
 
-  match "/worship/person-information-ask/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy-worship/person-information-ask/"
+  match "/worship/person-information-ask/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://privacy-worship/person-information-ask/")
   end
 
-  match "/worship/person-information-validate-ssn/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy-worship/person-information-validate-ssn/"
+  match "/worship/person-information-validate-ssn/*path", %{
+    layer: :api_services,
+    accept: %{json: true}
+  } do
+    forward(conn, path, "http://privacy-worship/person-information-validate-ssn/")
   end
 
-  match "/person-information-updates/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy-unit/person-information-updates"
+  match "/person-information-updates/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://privacy-unit/person-information-updates")
   end
 
-  match "/person-information-requests/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy-unit/person-information-requests"
+  match "/person-information-requests/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://privacy-unit/person-information-requests")
   end
 
-  match "/person-information-ask/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy-unit/person-information-ask/"
+  match "/person-information-ask/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://privacy-unit/person-information-ask/")
   end
 
-  match "/person-information-validate-ssn/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://privacy-unit/person-information-validate-ssn/"
+  match "/person-information-validate-ssn/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://privacy-unit/person-information-validate-ssn/")
   end
 
-  get "/uri-info/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://uri-info/"
+  get "/uri-info/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://uri-info/")
   end
 
-  post "/construct-organization-relationships/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://construct-organization-relationships/create-relationships/"
+  post "/construct-organization-relationships/*path", %{
+    layer: :api_services,
+    accept: %{json: true}
+  } do
+    forward(conn, path, "http://construct-organization-relationships/create-relationships/")
   end
 
-  post "/kbo-data-sync/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://kbo-data-sync/sync-kbo-data/"
+  post "/kbo-data-sync/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://kbo-data-sync/sync-kbo-data/")
   end
 
-  get "/ldes/*path", %{ layer: :api_services } do
-    forward conn, path, "http://ldes-backend/"
+  get "/ldes/*path", %{layer: :api_services} do
+    forward(conn, path, "http://ldes-backend/")
   end
 
   #################################################################
   # ERROR REPORT
   #################################################################
 
-  match "/error-reports/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    forward conn, path, "http://error-report-service/error-reports/"
+  match "/error-reports/*path", %{layer: :api_services, accept: %{json: true}} do
+    forward(conn, path, "http://error-report-service/error-reports/")
   end
 
   #################################################################
   # FILES
   #################################################################
 
-  get "/files/:id/download", %{ accept: [:any], } do
-    Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
+  get "/files/:id/download", %{accept: [:any]} do
+    Proxy.forward(conn, [], "http://file/files/" <> id <> "/download")
   end
 
-  get "/files/*path" , %{ layer: :api_services, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://resource/files/"
+  get "/files/*path", %{layer: :api_services, accept: %{json: true}} do
+    Proxy.forward(conn, path, "http://resource/files/")
   end
 
   #################################################################
   # DCAT
   #################################################################
 
-  get "/datasets/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://resource/datasets/"
+  get "/datasets/*path", %{layer: :api_services, accept: %{json: true}} do
+    Proxy.forward(conn, path, "http://resource/datasets/")
   end
 
-  get "/distributions/*path", %{ layer: :api_services, accept: %{ json: true } } do
-    Proxy.forward conn, path, "http://resource/distributions/"
+  get "/distributions/*path", %{layer: :api_services, accept: %{json: true}} do
+    Proxy.forward(conn, path, "http://resource/distributions/")
   end
 
   #################################################################
@@ -398,44 +421,42 @@ defmodule Dispatcher do
   #################################################################
 
   get "/download-exports/*path" do
-    Proxy.forward conn, path, "http://download-exports/"
+    Proxy.forward(conn, path, "http://download-exports/")
   end
 
   ###############################################################
   # frontend layer
   ###############################################################
 
-  match "/assets/*path", %{ layer: :api } do
-    Proxy.forward conn, path, "http://frontend/assets/"
+  match "/assets/*path", %{layer: :api} do
+    Proxy.forward(conn, path, "http://frontend/assets/")
   end
 
-  match "/@appuniversum/*path", %{ layer: :api } do
-    Proxy.forward conn, path, "http://frontend/@appuniversum/"
+  match "/@appuniversum/*path", %{layer: :api} do
+    Proxy.forward(conn, path, "http://frontend/@appuniversum/")
   end
 
-  match "/*path", %{ accept: [:html], layer: :api } do
-    Proxy.forward conn, [], "http://frontend/index.html"
+  match "/*path", %{accept: [:html], layer: :api} do
+    Proxy.forward(conn, [], "http://frontend/index.html")
   end
 
-  match "/*_path", %{ layer: :frontend } do
-    Proxy.forward conn, [], "http://frontend/index.html"
+  match "/*_path", %{layer: :frontend} do
+    Proxy.forward(conn, [], "http://frontend/index.html")
   end
 
   ###############################################################
   # sparql endpoint
   ###############################################################
 
-  post "/sparql/*path", %{ layer: :api_services, accept: %{ sparql_json: true } } do
-    forward conn, path, "http://db:8890/sparql/"
+  post "/sparql/*path", %{layer: :api_services, accept: %{sparql_json: true}} do
+    forward(conn, path, "http://db:8890/sparql/")
   end
 
   ###############################################################
   # errors
   ###############################################################
 
-  match "/*_path", %{ accept: [:any], layer: :not_found} do
-    send_resp( conn, 404, "{\"error\": {\"code\": 404}")
+  match "/*_path", %{accept: [:any], layer: :not_found} do
+    send_resp(conn, 404, "{\"error\": {\"code\": 404}")
   end
-
-
 end
