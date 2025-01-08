@@ -1,0 +1,72 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX lblodOrg: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# Add fusion change event
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?changeEvent a org:ChangeEvent;
+                 mu:uuid ?uuidChangeEvent;
+                 ch:typeWijziging ?mergerChangeEventType;
+                 org:resultingOrganization ?resultingOrganisation;
+                 dct:date "2025-01-01"^^xsd:date;
+                 dct:description "Fusie tussen PZ Zwijndrecht (= 5346 PZ Zwijndrecht) en PZ Kruibeke/Temse (= 5433 PZ Kruibeke/Temse) en PZ Beveren/Sint-Gillis-Waas/Stekene (= 5904 Waasland-Noord) resulteert in PZ Beveren-Kruibeke-Zwijndrecht/Sint-Gillis-Waas/Stekene/Temse (= 5964 PZ Scheldewaas)";
+                 org:originalOrganization ?firstNotActiveOriginal;
+                 org:originalOrganization ?secondNotActiveOriginal;
+                 org:originalOrganization ?thirdNotActiveOriginal;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?firstNotActiveChangeEventResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?secondNotActiveChangeEventResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?thirdNotActiveChangeEventResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?resultingOrganisationChangeEventResult.
+
+    ?firstNotActiveChangeEventResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                     mu:uuid ?uuidFirstNotActiveChangeEventResult;
+                                     lblodOrg:resulterendeStatus ?notActiveStatus;
+                                     ext:resultingOrganization ?firstNotActiveOriginal.
+
+    ?secondNotActiveChangeEventResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                      mu:uuid ?uuidSecondNotActiveChangeEventResult;
+                                      lblodOrg:resulterendeStatus ?notActiveStatus;
+                                      ext:resultingOrganization ?secondNotActiveOriginal.
+
+    ?thirdNotActiveChangeEventResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                     mu:uuid ?uuidThirdNotActiveChangeEventResult;
+                                     lblodOrg:resulterendeStatus ?notActiveStatus;
+                                     ext:resultingOrganization ?thirdNotActiveOriginal.
+
+    ?resultingOrganisationChangeEventResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                            mu:uuid ?uuidResultingOrganisationChangeEventResult;
+                                            lblodOrg:resulterendeStatus ?activeStatus;
+                                            ext:resultingOrganization ?resultingOrganisation.
+  }
+} WHERE {
+  VALUES (?firstNotActiveOriginal ?secondNotActiveOriginal ?thirdNotActiveOriginal ?resultingOrganisation) {
+    (<http://data.lblod.info/id/bestuurseenheden/330516b323c00851cf4b93e6d5d7a2ef4591f68ae6e71ad9c1f432ee70521bb2> # PZ Zwijndrecht
+     <http://data.lblod.info/id/bestuurseenheden/7dd1250996188607bb1e28df1ebea0b943e8db59c08ea01e3c57672531c43ec6> # PZ Kruibeke/Temse
+     <http://data.lblod.info/id/bestuurseenheden/541c1603eb8c01968f95d1f262854134499e00d135cd7c9147d307ccbd1e20fd> # PZ Beveren/Sint-Gillis-Waas/Stekene
+     <http://data.lblod.info/id/bestuurseenheden/677E959629299CC832892A24> # PZ Beveren-Kruibeke-Zwijndrecht/Sint-Gillis-Waas/Stekene/Temse
+     )
+  }
+
+  BIND (SHA256(CONCAT(STR(?firstNotActiveOriginal), STR(?secondNotActiveOriginal), STR(?resultingOrganization))) AS ?uuidChangeEvent) .
+  BIND (IRI(CONCAT("http://data.lblod.info/id/veranderingsgebeurtenissen/", STR(?uuidChangeEvent))) AS ?changeEvent) .
+
+  BIND (SHA256(CONCAT(STR(?firstNotActiveOriginal), "FirstNotActiveMergerChangeEventResult")) AS ?uuidFirstNotActiveChangeEventResult) .
+  BIND (IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidFirstNotActiveChangeEventResult))) AS ?firstNotActiveChangeEventResult) .
+
+  BIND (SHA256(CONCAT(STR(?secondNotActiveOriginal), "SecondNotActiveMergerChangeEventResult")) AS ?uuidSecondNotActiveChangeEventResult) .
+  BIND (IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidSecondNotActiveChangeEventResult))) AS ?secondNotActiveChangeEventResult) .
+
+  BIND (SHA256(CONCAT(STR(?thirdNotActiveOriginal), "ThirdNotActiveMergerChangeEventResult")) AS ?uuidThirdNotActiveChangeEventResult) .
+  BIND (IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidThirdNotActiveChangeEventResult))) AS ?thirdNotActiveChangeEventResult) .
+
+  BIND (SHA256(CONCAT(STR(?firstNotActiveOriginal), STR(?secondNotActiveOriginal), STR(?thirdNotActiveOriginal), STR(?resultingOrganization), "MergerChangeEventResultActiveResult")) AS ?uuidResultingOrganisationChangeEventResult) .
+  BIND (IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidResultingOrganisationChangeEventResult))) AS ?resultingOrganisationChangeEventResult) .
+
+  BIND (<http://lblod.data.gift/concepts/fa80032794c841ecac73ff874f856db1> AS ?mergerChangeEventType)
+  BIND (<http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> AS ?notActiveStatus)
+  BIND (<http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> AS ?activeStatus)
+}
