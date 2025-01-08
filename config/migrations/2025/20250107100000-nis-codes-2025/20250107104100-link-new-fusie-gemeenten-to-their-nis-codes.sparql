@@ -1,0 +1,30 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?werkingsgebied <http://www.w3.org/2004/02/skos/core#exactMatch> ?preMergerNIS .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?werkingsgebied <http://www.w3.org/2004/02/skos/core#exactMatch> ?postMergerNIS .
+  }
+} WHERE {
+  VALUES (?werkingsgebied ?postMergerNIS) {
+    (<http://data.lblod.info/id/werkingsgebieden/92398c49-30d5-46b2-af90-37f135c89e47> <http://vocab.belgif.be/auth/refnis2025/23106>) # Pajottegem
+    (<http://data.lblod.info/id/werkingsgebieden/21034a361da5b5c45424cbbef38a89029ca025e32aa1b132fcceca1d13149ee6> <http://vocab.belgif.be/auth/refnis2025/37021>) # Wingene
+    (<http://data.lblod.info/id/werkingsgebieden/1fb92312354f3d900670e2b9cfbd80148910f1227e321f2c377f92957b071cb1> <http://vocab.belgif.be/auth/refnis2025/37022>) # Tielt
+    (<http://data.lblod.info/id/werkingsgebieden/41362ab2-5130-4160-b76b-4bfa5d9a1f59> <http://vocab.belgif.be/auth/refnis2025/44086>) # Nazareth-De Pinte
+    (<http://data.lblod.info/id/werkingsgebieden/f1552be4471af0742d8ea03cd8596900c634a66f67e1fbc130d79f655de0240e> <http://vocab.belgif.be/auth/refnis2025/44087>) # Lochristi
+    (<http://data.lblod.info/id/werkingsgebieden/4afbdfef4de7314c2637a9f950b13bb9b0b4eaaf3413c0bd5d0600852a9d7cb3> <http://vocab.belgif.be/auth/refnis2025/46029>) # Lokeren
+    (<http://data.lblod.info/id/werkingsgebieden/62fef519-b1de-4a0f-911a-c63a5365c17b> <http://vocab.belgif.be/auth/refnis2025/44088>) # Merelbeke-Melle
+    (<http://data.lblod.info/id/werkingsgebieden/b97c1b58-6431-4509-ab94-3300d27759a8> <http://vocab.belgif.be/auth/refnis2025/46030>) # Beveren-Kruibeke-Zwijndrecht
+    (<http://data.lblod.info/id/werkingsgebieden/1f5dd7043ad54d07751da8689d5b47ad9ae0e52dccce8f00cc8debab35f8e2b2> <http://vocab.belgif.be/auth/refnis2025/73110>) # Bilzen-Hoeselt
+    (<http://data.lblod.info/id/werkingsgebieden/fabec9e745fc9efa32afadd8b7268938805b9679dcf3b032c9b9a9a3530d6b59> <http://vocab.belgif.be/auth/refnis2025/73111>) # Tongeren-Borgloon
+    (<http://data.lblod.info/id/werkingsgebieden/fc34bb0a1dbf157ac5e5f8e657dd774210f03d2efa21370dd3b9a6342906c7ab> <http://vocab.belgif.be/auth/refnis2025/71071>) # Tessenderlo-Ham
+    (<http://data.lblod.info/id/werkingsgebieden/e55336a3ecbae33f21e595458ba93eeeb0fa4390626622884d4d32523d0e0033> <http://vocab.belgif.be/auth/refnis2025/71072>) # Hasselt
+  }
+
+  ?werkingsgebied a <http://www.w3.org/ns/prov#Location> .
+
+  OPTIONAL {
+    ?werkingsgebied <http://www.w3.org/2004/02/skos/core#exactMatch> ?preMergerNIS .
+  }
+}

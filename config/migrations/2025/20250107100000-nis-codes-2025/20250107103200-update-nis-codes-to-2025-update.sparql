@@ -1,0 +1,18 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?werkingsgebied <http://www.w3.org/2004/02/skos/core#exactMatch> ?nis2019 .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?werkingsgebied <http://www.w3.org/2004/02/skos/core#exactMatch> ?nis2025 .
+  }
+} WHERE {
+  ?werkingsgebied a <http://www.w3.org/ns/prov#Location> ;
+    <http://www.w3.org/2004/02/skos/core#exactMatch> ?nis2019 .
+    
+  ?nis2019 skos:inScheme <http://vocab.belgif.be/auth/refnis2019> .
+
+  ?nis2025 a skos:Concept ;
+    skos:inScheme <http://vocab.belgif.be/auth/refnis2025> ;
+    skos:exactMatch ?nis2019 .
+}

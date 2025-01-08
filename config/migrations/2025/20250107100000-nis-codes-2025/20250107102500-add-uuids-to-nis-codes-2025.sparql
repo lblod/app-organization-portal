@@ -1,0 +1,12 @@
+INSERT {
+  GRAPH ?g {
+    ?nisCode <http://mu.semte.ch/vocabularies/core/uuid> ?uuid .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?nisCode a skos:Concept ;
+      skos:inScheme <http://vocab.belgif.be/auth/refnis2025> .
+
+    BIND(SHA256(CONCAT("NIS codes 2025", STR(?nisCode))) AS ?uuid) .
+  }
+}
