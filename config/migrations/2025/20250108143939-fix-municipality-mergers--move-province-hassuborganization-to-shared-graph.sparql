@@ -1,0 +1,23 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?province org:hasSubOrganization ?municipality.
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?province org:hasSubOrganization ?municipality.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?province org:hasSubOrganization ?municipality.
+  }
+  VALUES ?municipality {
+    <http://data.lblod.info/id/bestuurseenheden/19483103-318e-435a-aa37-45e485406ee9> # Beveren-Kruibeke-Zwijndrecht
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> # Nazareth-De Pinte
+    <http://data.lblod.info/id/bestuurseenheden/add1e4eb-9ec7-4ea6-af82-335aa76b7d48> # Pajottegem
+    <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> # Merelbeke-Melle
+  }
+}
