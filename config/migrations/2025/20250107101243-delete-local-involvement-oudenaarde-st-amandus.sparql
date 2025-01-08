@@ -1,0 +1,35 @@
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/0da11d9fdef2d45f90fd4ebd353ecd3c> ?p ?o.
+  }
+}
+
+;
+
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuurseenheden/d9f7c0ab4920fdecf3f9a60b92e921b5ca07248fcb0eac2113eb97392ddd6c6c> <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> <http://data.lblod.info/id/betrokkenLokaleBesturen/0da11d9fdef2d45f90fd4ebd353ecd3c>.
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+      ?localInvolvementWortegemPetegem <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?localInvolvementWortegemPetegem <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> 100.
+  }
+}
+WHERE {
+  BIND(<http://mu.semte.ch/graphs/worship-service> AS ?g)
+  GRAPH ?g {
+    ?localInvolvementWortegemPetegem <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+  VALUES ?localInvolvementWortegemPetegem {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/00b8f19ce0fafa090df049498337aad8>
+  }
+}
