@@ -1,0 +1,196 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuursorganen ?bestuursorganenP ?bestuursorganenO .
+  }
+}
+WHERE {
+  VALUES ?bestuursorganen {
+    <http://data.lblod.info/id/bestuursorganen/24d8e602a8ddbe0adf3dea8c40277706>
+    <http://data.lblod.info/id/bestuursorganen/dad1789d9b9f8f6cb3c81cc2ca88154f>
+    <http://data.lblod.info/id/bestuursorganen/b90d16f2c8043bc20b88da232c0389fc>
+    <http://data.lblod.info/id/bestuursorganen/2f27a688e1728c1906a4bbd8670d7810>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuursorganen ?bestuursorganenP ?bestuursorganenO .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuursorganenInTijd ?bestuursorganenInTijdP ?bestuursorganenInTijdO .
+  }
+}
+WHERE {
+  VALUES ?bestuursorganenInTijd {
+    <http://data.lblod.info/id/bestuursorganen/c5bb7bca7363109b94b58b1aef6ed59c>
+    <http://data.lblod.info/id/bestuursorganen/8d43a29c6ed4a8af0cd43d4aba2c7014>
+    <http://data.lblod.info/id/bestuursorganen/f54979f47464bae1cc001788aedb8b86>
+    <http://data.lblod.info/id/bestuursorganen/c9a7d9130e1dd8f26ddb8c96fdd94c64>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuursorganenInTijd ?bestuursorganenInTijdP ?bestuursorganenInTijdO .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?identifier ?identifierP ?identifierO .
+  }
+}
+WHERE {
+  VALUES ?identifier {
+    <http://data.lblod.info/id/identificatoren/99554be7-29d2-403a-a7d5-bda842b4bd86>
+    <http://data.lblod.info/id/identificatoren/19847e1b-a2bf-48a1-872e-baf8d4efaa12>
+    <http://data.lblod.info/id/identificatoren/b2123d27-b6bc-4e70-b594-27d35c696713>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?identifier ?identifierP ?identifierO .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?structuredIdentifier ?structuredIdentifierP ?structuredIdentifierO .
+  }
+}
+WHERE {
+  VALUES ?structuredIdentifier {
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/920f98a2-1785-4de1-81ed-5859c224dcb8>
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/5e1082d8-7751-4bed-a53f-457b347f7f28>
+    <http://data.lblod.info/id/gestructureerdeIdentificatoren/2e978403-d3ef-40ab-a9f9-3a4ae6a35609>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?structuredIdentifier ?structuredIdentifierP ?structuredIdentifierO .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?site ?siteP ?siteO .
+  }
+}
+WHERE {
+  VALUES ?site {
+    <http://data.lblod.info/id/vestigingen/daa79855-1de7-4479-8a2e-a8d89db55ee3>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?site ?siteP ?siteO .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?address ?addressP ?addressO .
+  }
+}
+WHERE {
+  VALUES ?address {
+    <http://data.lblod.info/id/adressen/df102cb4-8abb-4588-a199-1ce22c211812>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?address ?addressP ?addressO .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?contactPoint ?contactPointP ?contactPointO .
+  }
+}
+WHERE {
+  VALUES ?contactPoint {
+    <http://data.lblod.info/id/contact-punten/042e8816-2e9d-45a1-89f6-dcf805882af7>
+    <http://data.lblod.info/id/contact-punten/364d8e1a-cb18-4970-aeaf-5f6f307370ad>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?contactPoint ?contactPointP ?contactPointO .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?parentOrganization <http://www.w3.org/ns/org#hasSubOrganization> ?organization .
+  }
+}
+WHERE {
+  BIND(<http://data.lblod.info/id/bestuurseenheden/8d6609b4-1a20-46b8-97ed-150c6d53acd6> AS ?organization)
+  BIND(<http://data.lblod.info/id/bestuurseenheden/6025a5d1ca2262a784f002edd8ce9ca9073ae3d5ebc6b6b5531f05a29e9250af> AS ?parentOrganization)
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?parentOrganization <http://www.w3.org/ns/org#hasSubOrganization> ?organization .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?parentOrganization <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?organization .
+  }
+}
+WHERE {
+  BIND(<http://data.lblod.info/id/bestuurseenheden/8d6609b4-1a20-46b8-97ed-150c6d53acd6> AS ?organization)
+  BIND(<http://data.lblod.info/id/bestuurseenheden/6025a5d1ca2262a784f002edd8ce9ca9073ae3d5ebc6b6b5531f05a29e9250af> AS ?parentOrganization)
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?parentOrganization <http://mu.semte.ch/vocabularies/ext/isFounderOfOrganization> ?organization .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership ?p ?o.
+  }
+}
+WHERE {
+  BIND(<http://data.lblod.info/id/bestuurseenheden/8d6609b4-1a20-46b8-97ed-150c6d53acd6> AS ?organization)
+
+  VALUES ?membershipP {
+    <http://www.w3.org/ns/org#organization>
+    <http://www.w3.org/ns/org#member>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership a <http://www.w3.org/ns/org#Membership> ;
+      ?membershipP ?organization ;
+      ?p ?o .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization ?organizationP ?organizationO .
+  }
+}
+WHERE {
+  BIND(<http://data.lblod.info/id/bestuurseenheden/8d6609b4-1a20-46b8-97ed-150c6d53acd6> AS ?organization)
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization ?organizationP ?organizationO .
+  }
+}
