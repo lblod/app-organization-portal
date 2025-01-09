@@ -1,0 +1,13 @@
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/b38d5606b539da68af04891d9ca08605> ?p ?o.
+  }
+}
+
+;
+
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuurseenheden/e41ffa04f94bb450a79793020e70d55b5fee5033a5280277998608a9d0913117> <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> <http://data.lblod.info/id/betrokkenLokaleBesturen/b38d5606b539da68af04891d9ca08605>.
+  }
+}
