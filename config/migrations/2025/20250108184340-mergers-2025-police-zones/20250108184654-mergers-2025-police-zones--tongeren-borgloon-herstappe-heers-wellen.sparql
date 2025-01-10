@@ -1,0 +1,60 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX lblodOrg: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?changeEvent a org:ChangeEvent;
+                 mu:uuid ?uuidChangeEvent;
+                 ch:typeWijziging ?mergerChangeEventType;
+                 org:resultingOrganization ?resultingOrganisation;
+                 dct:date "2025-01-01"^^xsd:date;
+                 dct:description "Fusie tussen PZ Alken/Borgloon/Heers/Kortessem/Wellen (= 5379 PZ Kanton Borgloon) en PZ Tongeren/Herstappe (= 5380 PZ Tongeren/Herstappe) resulteert in PZ Tongeren-Borgloon/Herstappe/Heers/Wellen (= 5962 PZ Haspengouw)";
+                 org:originalOrganization ?firstNotActiveOriginal;
+                 org:originalOrganization ?secondNotActiveOriginal;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?firstNotActiveChangeEventResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?secondNotActivechangeEventResult;
+                 lblodOrg:veranderingsgebeurtenisResultaat ?resultingOrganisationChangeEventResult.
+
+    ?firstNotActiveChangeEventResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                     mu:uuid ?uuidFirstNotActiveChangeEventResult;
+                                     lblodOrg:resulterendeStatus ?notActiveStatus;
+                                     ext:resultingOrganization ?firstNotActiveOriginal.
+
+    ?secondNotActivechangeEventResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                      mu:uuid ?uuidSecondNotActiveChangeEventResult;
+                                      lblodOrg:resulterendeStatus ?notActiveStatus;
+                                      ext:resultingOrganization ?secondNotActiveOriginal.
+
+    ?resultingOrganisationChangeEventResult a lblodOrg:VeranderingsgebeurtenisResultaat;
+                                            mu:uuid ?uuidResultingOrganisationChangeEventResult;
+                                            lblodOrg:resulterendeStatus ?activeStatus;
+                                            ext:resultingOrganization ?resultingOrganisation.
+  }
+} WHERE {
+  VALUES (?firstNotActiveOriginal ?secondNotActiveOriginal ?resultingOrganisation) {
+    (<http://data.lblod.info/id/bestuurseenheden/150440a8bb763d6f53d24ca1c6f1460cb5817c8a261fd90e74aadac3292c3efe> # PZ Alken/Borgloon/Heers/Kortessem/Wellen
+     <http://data.lblod.info/id/bestuurseenheden/41d31a2eb697af977aadf64c73e0bcffb094e0f20e4017fe3b49c507079c0976> # PZ Tongeren/Herstappe
+     <http://data.lblod.info/id/bestuurseenheden/677E848329299CC832892A1B> # PZ Tongeren-Borgloon/Herstappe/Heers/Wellen
+     )
+  }
+
+  BIND (SHA256(CONCAT(STR(?firstNotActiveOriginal), STR(?secondNotActiveOriginal), STR(?resultingOrganization))) AS ?uuidChangeEvent) .
+  BIND (IRI(CONCAT("http://data.lblod.info/id/veranderingsgebeurtenissen/", STR(?uuidChangeEvent))) AS ?changeEvent) .
+
+  BIND (SHA256(CONCAT(STR(?firstNotActiveOriginal), "FirstNotActiveMergerChangeEventResult")) AS ?uuidFirstNotActiveChangeEventResult) .
+  BIND (IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidFirstNotActiveChangeEventResult))) AS ?firstNotActiveChangeEventResult) .
+
+  BIND (SHA256(CONCAT(STR(?secondNotActiveOriginal), "SecondNotActiveMergerChangeEventResult")) AS ?uuidSecondNotActiveChangeEventResult) .
+  BIND (IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidSecondNotActiveChangeEventResult))) AS ?secondNotActivechangeEventResult) .
+
+  BIND (SHA256(CONCAT(STR(?firstNotActiveOriginal), STR(?secondNotActiveOriginal), STR(?resultingOrganization), "fusieChangeEventActiveResult")) AS ?uuidResultingOrganisationChangeEventResult) .
+  BIND (IRI(CONCAT("http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/", STR(?uuidResultingOrganisationChangeEventResult))) AS ?resultingOrganisationChangeEventResult) .
+
+  BIND (<http://lblod.data.gift/concepts/fa80032794c841ecac73ff874f856db1> AS ?mergerChangeEventType)
+  BIND (<http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> AS ?notActiveStatus)
+  BIND (<http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> AS ?activeStatus)
+}
