@@ -4,7 +4,7 @@
  - Added "Opdrachthoudende vereniging met private deelname" in delta public (DL-6368)
 ### Deploy commands
 ```
-drc up -d migrations
+drc restart migrations
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs # or wait for the healing to kick in
 ```
 ## 1.28.1 (2025-01-11)
