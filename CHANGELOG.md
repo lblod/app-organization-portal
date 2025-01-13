@@ -1,7 +1,7 @@
 # Changelog
 ## 1.28.2 (2025-01-13)
 ### Backend
- - Added "Opdrachthoudende vereniging met private deelname" in delta public
+ - Added "Opdrachthoudende vereniging met private deelname" in delta public (DL-6368)
 ### Deploy commands
 ```
 drc up -d migrations
