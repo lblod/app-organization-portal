@@ -1,0 +1,23 @@
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?stAmandus regorg:orgStatus ?oldStatus.
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?stAmandus regorg:orgStatus ?notActiveStatus.
+
+    ?mergerChangeEvent org:originalOrganization ?stAmandus.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?stAmandus regorg:orgStatus ?oldStatus.
+  }
+  VALUES ?stAmandus {
+    <http://data.lblod.info/id/besturenVanDeEredienst/b18a5d3943087d509d76dcceeba102c3>
+  }
+  BIND (<http://data.lblod.info/id/veranderingsgebeurtenissen/677E445E29299CC832892A0F> AS ?mergerChangeEvent)
+  BIND (<http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> AS ?notActiveStatus)
+}
