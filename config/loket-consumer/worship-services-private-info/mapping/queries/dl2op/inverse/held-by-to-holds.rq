@@ -1,0 +1,8 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+CONSTRUCT {
+  ?o org:holds ?s.
+}
+WHERE {
+  ?s org:heldBy ?o.
+}

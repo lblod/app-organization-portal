@@ -1,0 +1,19 @@
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+CONSTRUCT {
+  ?s a dc_terms:Agent .
+} WHERE {
+  VALUES ?type {
+    lblodlg:Functionaris
+    mandaat:Mandataris
+    ere:RolBedienaar
+    person:Person
+  }
+
+  ?s a ?type .
+}

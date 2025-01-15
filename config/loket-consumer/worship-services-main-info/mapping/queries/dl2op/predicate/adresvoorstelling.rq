@@ -1,0 +1,8 @@
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+# Fix typo V -> v
+CONSTRUCT {
+  ?s adres:Adresvoorstelling.huisnummer ?o .
+} WHERE {
+  ?s adres:AdresVoorstelling.huisnummer ?o .
+}

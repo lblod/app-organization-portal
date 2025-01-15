@@ -1,0 +1,10 @@
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX persoon_loket: <http://data.vlaanderen.be/ns/persoon#>
+
+# Map from http persoon to https persoon namespace
+
+CONSTRUCT {
+  ?s persoon:heeftVerblijfplaats ?o .
+} WHERE {
+  ?s persoon_loket:heeftVerblijfplaats ?o .
+}

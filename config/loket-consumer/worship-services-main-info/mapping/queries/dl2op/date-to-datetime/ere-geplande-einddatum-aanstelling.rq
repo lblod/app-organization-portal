@@ -1,0 +1,10 @@
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+  ?s ere:geplandeEinddatumAanstelling ?dateTime .
+} WHERE {
+  ?s ere:geplandeEinddatumAanstelling ?date .
+
+  BIND(STRDT(CONCAT(STR(?date), 'T02:00:00'), xsd:dateTime) as ?dateTime)
+}

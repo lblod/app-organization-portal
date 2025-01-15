@@ -1,0 +1,19 @@
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+CONSTRUCT {
+  ?identifier
+    generiek:gestructureerdeIdentificator ?structuredIdentifier ;
+    skos:notation "Rijksregisternummer" .
+
+  ?structuredIdentifier a generiek:GestructureerdeIdentificator ;
+    mu:uuid ?uuid ;
+    generiek:lokaleIdentificator ?notation .
+}
+WHERE {
+    ?identifier skos:notation ?notation.
+
+    BIND(MD5(CONCAT(STR(?identifier),"STRUCTURED_IDENTIFIER")) as ?uuid)
+    BIND(IRI(CONCAT("http://data.lblod.info/id/gestructureerdeIdentificatoren/", ?uuid)) AS ?structuredIdentifier)
+}

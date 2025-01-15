@@ -1,0 +1,10 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+
+# identifier property in the export is only used for RRN.
+CONSTRUCT {
+  ?person persoon:registratie ?rrn .
+}
+WHERE {
+  ?person adms:identifier ?rrn .
+}

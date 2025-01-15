@@ -1,0 +1,29 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?contactPoint ?pcontactPoint ?ocontactPoint .
+    ?address ?paddress ?oaddress .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> { 
+    ?agent a <http://data.lblod.info/vocabularies/contacthub/AgentInPositie> .
+
+    # Ensure the agent comes from Loket initially and will be re-synced
+    FILTER EXISTS {
+      GRAPH <http://mu.semte.ch/graphs/landing-zone/worship-services-sensitive> {
+        ?agent a <http://data.lblod.info/vocabularies/contacthub/AgentInPositie> .
+      }
+    }
+
+    OPTIONAL {
+      ?agent <http://schema.org/contactPoint> ?contactPoint .
+
+      ?contactPoint ?pcontactPoint ?ocontactPoint .
+
+      OPTIONAL {
+        ?contactPoint <http://www.w3.org/ns/locn#address> ?address .
+
+        ?address ?paddress ?oaddress .
+      }
+    }
+  }
+}

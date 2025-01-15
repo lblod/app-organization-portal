@@ -1,0 +1,32 @@
+CONSTRUCT {
+  ?s ?p ?o .
+} WHERE {
+  ?s ?p ?o .
+  FILTER EXISTS {
+    ?s a ?type .
+    VALUES ?type {
+      <http://data.lblod.info/vocabularies/contacthub/AgentInPositie>
+      <http://data.lblod.info/vocabularies/erediensten/EredienstMandataris>
+      <http://data.lblod.info/vocabularies/erediensten/RolBedienaar>
+      <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>
+      <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>
+      <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>
+      <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>
+      <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>
+      <http://data.vlaanderen.be/ns/mandaat#Mandaat>
+      <http://data.vlaanderen.be/ns/mandaat#Mandataris>
+      <http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode>
+      <http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode>
+      <http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode>
+      <http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode>
+      <http://mu.semte.ch/vocabularies/ext/MandatarisStatusCode>
+      <http://schema.org/ContactPoint>
+      <http://www.w3.org/ns/locn#Address>
+      <http://www.w3.org/ns/org#Membership>
+      <http://www.w3.org/ns/person#Person>
+      <http://purl.org/dc/terms/Agent>
+      <http://data.lblod.info/vocabularies/contacthub/AgentInPositie>
+      <http://www.w3.org/ns/prov#Location>
+    }
+  }
+}

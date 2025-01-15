@@ -1,0 +1,23 @@
+PREFIX schema: <http://schema.org/>
+
+CONSTRUCT {
+  ?s schema:telephone ?cleanedPhoneNumber .
+} WHERE {
+  ?s schema:telephone ?phoneNumber .
+
+  # Remove all non digits
+  BIND(REPLACE(?phoneNumber, """[^+\\d]""", "") AS ?scrapeResult)
+
+  # Replace leading 00 with +
+  BIND(REPLACE(?scrapeResult, """^00""", "+") AS ?replacedZeroZero)
+
+  BIND(REPLACE(?replacedZeroZero, """^0""", "+32") AS ?defaultBe)
+
+  BIND(REPLACE(?defaultBe, """\\+320""", "+32") AS ?extendedDefaultBe)
+
+  BIND(REPLACE(?extendedDefaultBe, """^320""", "+32") AS ?finalResult)
+
+  FILTER(REGEX(?finalResult, """^\\+((32\\d{8})|(324\\d{8})|((?!32)\\d+))$"""))
+
+  BIND(CONCAT("tel:", ?finalResult) as ?cleanedPhoneNumber)
+}
