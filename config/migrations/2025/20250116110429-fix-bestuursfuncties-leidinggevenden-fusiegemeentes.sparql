@@ -1,0 +1,73 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+     ?ocmwBestuursorgaanT <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?ocmwFunctie.
+     ?ocmwFunctie a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>;
+       ?ocmwFunctieP ?ocmwFunctieO.
+    }
+} WHERE {
+
+?ocmwBestuur a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+  # OCMW
+  <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>;
+  <http://www.w3.org/ns/org#linkedTo> ?gemeenteBestuur.
+
+?gemeenteBestuur a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+  # GEMEENTE
+  <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>.
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+   ?ocmwBestuursorgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+       <http://data.vlaanderen.be/ns/besluit#bestuurt> ?ocmwBestuur.
+   ?ocmwBestuursorgaanT <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?ocmwBestuursorgaan;
+     <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?ocmwFunctie.
+
+   ?ocmwFunctie a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>;
+     ?ocmwFunctieP ?ocmwFunctieO.
+  }
+
+ FILTER NOT EXISTS {
+ ?gemeenteBestuursorgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+     <http://data.vlaanderen.be/ns/besluit#bestuurt> ?gemeenteBestuur.
+
+ ?gemeenteBestuursorgaanT <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?gemeenteBestuursorgaan;
+   <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?ocmwFunctie.
+ }
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+      ?ocmwBestuursorgaanT <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?gemeenteFunctie.
+  }
+}
+WHERE {
+
+  # OCMW
+  ?ocmwBestuur a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+    <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>;
+    <http://www.w3.org/ns/org#linkedTo> ?gemeenteBestuur.
+
+  ?ocmwBestuursorgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+    <http://data.vlaanderen.be/ns/besluit#bestuurt> ?ocmwBestuur;
+    <http://www.w3.org/ns/org#classification> ?orgaanClassification.
+
+  ?ocmwBestuursorgaanT <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?ocmwBestuursorgaan.
+
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+      ?ocmwBestuursorgaanT <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?ocmwFunctie.
+    }
+  }
+
+  ?gemeenteBestuur a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>;
+  # GEMEENTE
+  <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>.
+
+ ?gemeenteBestuursorgaan a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+     <http://data.vlaanderen.be/ns/besluit#bestuurt> ?gemeenteBestuur;
+     <http://www.w3.org/ns/org#classification> ?orgaanClassification.
+
+ ?gemeenteBestuursorgaanT <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ?gemeenteBestuursorgaan;
+   <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> ?gemeenteFunctie.
+}
