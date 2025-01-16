@@ -4,7 +4,7 @@ PREFIX persoon_loket: <http://data.vlaanderen.be/ns/persoon#>
 # Map from http persoon to https persoon namespace
 
 CONSTRUCT {
-  ?s a persoon:BurgerlijkeStaat
+  ?s persoon:gebruikteVoornaam ?o .
 } WHERE {
-  ?s a persoon_loket:BurgerlijkeStaat .
+  ?s persoon_loket:gebruikteVoornaam ?o .
 }
