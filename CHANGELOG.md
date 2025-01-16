@@ -2,7 +2,7 @@
 ## 1.28.3 (2025-01-16)
 ### Backend
 #### Data
-- Datafix. Fusiegemeentes had different bestuursfuncties attached to OCMW and Gemeente.
+- Datafix. Fusiegemeentes had different bestuursfuncties attached to OCMW and Gemeente. [DL-6377]
   However, business-rule-wise, these bestuursfuncties are shared.
 ### Deploy commands
 ```
