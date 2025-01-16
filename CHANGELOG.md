@@ -1,4 +1,13 @@
 # Changelog
+## 1.28.4 (2025-01-16)
+### Backend
+#### Data
+- Performance fix on 1.28.3 [DL-6377]
+### Deploy commands
+```
+drc restart migrations
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs # or wait for the healing to kick in
+```
 ## 1.28.3 (2025-01-16)
 ### Backend
 #### Data
@@ -6,7 +15,7 @@
   However, business-rule-wise, these bestuursfuncties are shared.
 ### Deploy commands
 ```
-drc up restart migrations
+drc restart migrations
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs # or wait for the healing to kick in
 ```
 ## 1.28.2 (2025-01-13)
