@@ -1,8 +1,13 @@
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+
 CONSTRUCT {
   ?s ?p ?o.
 } WHERE {
   ?s a <http://data.lblod.info/vocabularies/erediensten/EredienstMandataris>;
     ?p ?o.
+
+ FILTER (?p NOT IN (ch:startdatum, ch:eindedatum, ere:geplandeEinddatumAanstelling))
 
  FILTER NOT EXISTS {
    ?s ?p "" .
