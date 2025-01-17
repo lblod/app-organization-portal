@@ -1,4 +1,13 @@
 # Changelog
+## Unreleased
+### Backend
+- Completely remove AGB Stekene's data. [OP-3409]
+### Deploy Notes
+- Migration listed in [this comment](https://github.com/lblod/app-organization-portal/pull/491#issuecomment-2587185027) must run on the DEV environment.
+#### Docker Commands
+```
+drc restart migrations-triggering-indexing && drc logs -ft --tail=200 migrations-triggering-indexing
+```
 ## 1.28.4 (2025-01-16)
 ### Backend
 #### Data
