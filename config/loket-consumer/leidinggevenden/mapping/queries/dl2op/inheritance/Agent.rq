@@ -1,0 +1,14 @@
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+CONSTRUCT {
+  ?s a dc_terms:Agent .
+} WHERE {
+  VALUES ?type {
+    lblodlg:Functionaris
+    person:Person
+  }
+
+  ?s a ?type .
+}

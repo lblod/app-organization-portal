@@ -1,0 +1,12 @@
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
+
+CONSTRUCT {
+  ?s a ch:AgentInPositie .
+} WHERE {
+  VALUES ?type {
+    lblodlg:Functionaris
+  }
+
+  ?s a ?type .
+}
