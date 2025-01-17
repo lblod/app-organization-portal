@@ -3,4 +3,8 @@ CONSTRUCT {
 } WHERE {
   ?s a <http://www.w3.org/ns/locn#Address>;
     ?p ?o.
+
+  FILTER NOT EXISTS {
+    ?s ?p "" .
+  }
 }

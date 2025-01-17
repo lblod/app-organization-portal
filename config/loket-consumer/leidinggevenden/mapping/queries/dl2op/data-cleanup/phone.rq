@@ -20,4 +20,8 @@ CONSTRUCT {
   FILTER(REGEX(?finalResult, """^\\+((32\\d{8})|(324\\d{8})|((?!32)\\d+))$"""))
 
   BIND(CONCAT("tel:", ?finalResult) as ?cleanedPhoneNumber)
+
+  FILTER NOT EXISTS {
+    ?s schema:telephone "" .
+  }
 }
