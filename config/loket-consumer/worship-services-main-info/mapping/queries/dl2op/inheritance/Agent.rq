@@ -8,12 +8,13 @@ PREFIX person: <http://www.w3.org/ns/person#>
 CONSTRUCT {
   ?s a dc_terms:Agent .
 } WHERE {
+  ?s a ?type .
+
   VALUES ?type {
     lblodlg:Functionaris
     mandaat:Mandataris
+    ere:EredienstMandataris
     ere:RolBedienaar
     person:Person
   }
-
-  ?s a ?type .
 }

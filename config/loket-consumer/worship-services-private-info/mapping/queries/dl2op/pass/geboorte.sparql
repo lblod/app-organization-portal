@@ -1,0 +1,10 @@
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a <http://data.vlaanderen.be/ns/persoon#Geboorte>;
+    ?p ?o.
+
+ FILTER NOT EXISTS {
+   ?s ?p "" .
+ }
+}

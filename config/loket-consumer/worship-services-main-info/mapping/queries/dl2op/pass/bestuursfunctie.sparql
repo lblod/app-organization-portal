@@ -1,0 +1,7 @@
+CONSTRUCT {
+  ?s <http://schema.org/contactPoint> ?contactpoint.
+}
+WHERE {
+  ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>.
+  ?s <http://schema.org/contactPoint> ?contactpoint.
+}

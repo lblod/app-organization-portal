@@ -1,0 +1,10 @@
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a <http://data.lblod.info/vocabularies/erediensten/EredienstMandataris>;
+    ?p ?o.
+
+ FILTER NOT EXISTS {
+   ?s ?p "" .
+ }
+}
