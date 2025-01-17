@@ -11,13 +11,11 @@ PREFIX person: <http://www.w3.org/ns/person#>
 # We do both in one query with an OPTIONAL because they need to happen simultaneously
 # not to end up in a loop
 
+# Part 1
+
 CONSTRUCT {
-  ?s foaf:givenName ?gebruikteVoornaam .
   ?s persoon:gebruikteVoornaam ?name .
 } WHERE {
-  ?s a person:Person .
-
-  OPTIONAL { ?s persoon_loket:gebruikteVoornaam ?gebruikteVoornaam . }
-  OPTIONAL { ?s foaf:name ?name . }
-
+  ?s a person:Person;
+    foaf:name ?name .
 }
