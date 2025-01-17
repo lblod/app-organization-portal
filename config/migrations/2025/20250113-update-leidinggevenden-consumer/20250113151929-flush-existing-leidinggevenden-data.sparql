@@ -2,58 +2,6 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-    ?s a <http://www.w3.org/ns/person#Person>;
-      ?p ?o.
-  }
-} WHERE {
-
-  VALUES ?p {
-    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
-    <http://mu.semte.ch/vocabularies/core/uuid>
-    foaf:givenName
-    foaf:familyName
-    <http://data.vlaanderen.be/ns/persoon#gebruikteVoornaam>
-  }
-
-  ?functionaris a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>;
-    <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan> ?s.
-
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-    ?s a <http://www.w3.org/ns/person#Person>;
-      ?p ?o.
-  }
-}
-
-;
-
-DELETE {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-    ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>;
-      ?p ?o.
-  }
-
-} WHERE {
-
-  VALUES ?p {
-    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
-    <http://mu.semte.ch/vocabularies/core/uuid>
-    <http://www.w3.org/ns/org#holds>
-    <http://data.vlaanderen.be/ns/mandaat#status>
-    <http://data.vlaanderen.be/ns/mandaat#start>
-    <http://data.vlaanderen.be/ns/mandaat#einde>
-    <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan>
-  }
-
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-    ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>;
-      ?p ?o.
-  }
-}
-
-;
-
-DELETE {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     ?s a <http://www.w3.org/ns/locn#Address>;
       ?p ?o.
   }
@@ -85,48 +33,5 @@ DELETE {
   GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     ?s a <http://www.w3.org/ns/locn#Address>;
       ?p ?o.
-  }
-}
-
-;
-
-DELETE {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-    ?s a <http://schema.org/ContactPoint>;
-      ?p ?o.
-  }
-
-} WHERE {
-
-  VALUES ?p {
-    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
-    <http://mu.semte.ch/vocabularies/core/uuid>
-    <http://schema.org/telephone>
-    <http://schema.org/email>
-    <http://www.w3.org/ns/locn#address>
-    <http://schema.org/faxNumber>
-    <http://schema.org/url>
-  }
-
-  ?bestuursfunctie a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>;
-    <http://schema.org/contactPoint> ?contactpoint.
-
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-    ?s a <http://schema.org/ContactPoint>;
-      ?p ?o.
-  }
-}
-
-;
-
-DELETE {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-    ?bestuursfunctie <http://schema.org/contactPoint> ?contactpoint.
-  }
-
-} WHERE {
-  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
-    ?bestuursfunctie a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>;
-      <http://schema.org/contactPoint> ?contactpoint.
   }
 }
