@@ -1,4 +1,10 @@
 # Changelog
+## 1.28.5 (TODO)
+### Backend
+- Datafix: correct merger change events for worship organisations (OP-3534)
+### Deploy notes
+- `drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing`
+
 ## 1.28.4 (2025-01-16)
 ### Backend
 #### Data
