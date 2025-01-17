@@ -401,24 +401,26 @@ services:
   # LOKET LEIDINGGEVENDEN CONSUMERS
   ################################################################################
   leidinggevenden-consumer:
-    image: lblod/delta-consumer:0.0.24
+    image: lblod/delta-consumer:0.0.27
     environment:
       DCR_SERVICE_NAME: "leidinggevenden-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
+      DCR_SYNC_FILES_PATH: "/sync/leidinggevenden/files"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/LeidinggevendenCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/leidinggevenden"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/leidinggevenden"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/leidinggevenden-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
-      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
-      DCR_SYNC_FILES_PATH: "/sync/leidinggevenden/files"
       DCR_KEEP_DELTA_FILES: "true"
-      BATCH_SIZE: 1000
-      DCR_ENABLE_DELTA_CONTEXT: "true"
-      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_DELTA_JOBS_RETENTION_PERIOD: "30"
+      DCR_ENABLE_TRIPLE_REMAPPING: "true"
       DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/leidinggevenden"
+      DCR_REMAPPING_GRAPH: "http://mu.semte.ch/graphs/administrative-unit"
+      DCR_BATCH_SIZE: 1000
+      SUDO_QUERY_oRETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      SUDO_QUERY_RETRY: "true"
     volumes:
-      - ./config/loket-consumer/leidinggevenden-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./config/loket-consumer/leidinggevenden/mapping:/config/mapping
       - ./data/files/consumer-files/leidinggevenden:/consumer-files/
     restart: always
     labels:
