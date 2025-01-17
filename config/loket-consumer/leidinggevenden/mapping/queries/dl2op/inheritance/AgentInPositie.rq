@@ -4,9 +4,8 @@ PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 CONSTRUCT {
   ?s a ch:AgentInPositie .
 } WHERE {
+  ?s a ?type .
   VALUES ?type {
     lblodlg:Functionaris
   }
-
-  ?s a ?type .
 }

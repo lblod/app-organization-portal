@@ -5,10 +5,11 @@ PREFIX person: <http://www.w3.org/ns/person#>
 CONSTRUCT {
   ?s a dc_terms:Agent .
 } WHERE {
+  ?s a ?type .
+
   VALUES ?type {
     lblodlg:Functionaris
     person:Person
   }
 
-  ?s a ?type .
 }
