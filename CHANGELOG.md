@@ -1,4 +1,42 @@
 # Changelog
+## 1.29.0
+### Backend
+  - Upgraded `leidinggevenden-consumer` (OP-3533, OP-3511)
+
+### Deploy notes
+```
+drc down;
+```
+Update `docker-compose.override.yml` to:
+```
+  leidinggevenden-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
+      DCR_LANDING_ZONE_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+```
+Then:
+```
+drc up -d migrations
+drc up -d db leidinggevenden-consumer
+# Wait until success of the previous step
+```
+Then, update `docker-compose.override.yml` to:
+```
+  leidinggevenden-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # choose the correct endpoint
+      DCR_LANDING_ZONE_DATABASE: "database"
+      DCR_REMAPPING_DATABASE: "database"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+```
+```
+drc up -d
+```
+
 ## 1.28.2 (2025-01-13)
 ### Backend
  - Added "Opdrachthoudende vereniging met private deelname" in delta public (DL-6368)
