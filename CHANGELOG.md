@@ -1,4 +1,11 @@
 # Changelog
+## Unreleased
+### Backend
+- Completely remove AGB Stekene's data. [OP-3409]
+### Deploy Commands
+```
+drc restart migrations-triggering-indexing && drc logs -ft --tail=200 migrations-triggering-indexing
+```
 ## 1.28.4 (2025-01-16)
 ### Backend
 #### Data
