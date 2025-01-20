@@ -452,6 +452,8 @@ services:
       DCR_DELTA_JOBS_RETENTION_PERIOD: "30"
       DCR_ENABLE_TRIPLE_REMAPPING: "true"
       DCR_BATCH_SIZE: 1000
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      SUDO_QUERY_RETRY: "true"
     volumes:
       - ./config/loket-consumer/worship-services-main-info/mapping:/config/mapping
       - ./data/files/consumer-files/worship-services-main-info:/consumer-files/
@@ -484,6 +486,8 @@ services:
       DCR_DELTA_JOBS_RETENTION_PERIOD: "30"
       DCR_ENABLE_TRIPLE_REMAPPING: "true"
       DCR_BATCH_SIZE: 1000
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      SUDO_QUERY_RETRY: "true"
     volumes:
       - ./config/loket-consumer/worship-services-private-info/mapping:/config/mapping
       - ./data/files/consumer-files/worship-services-private-info:/consumer-files/
