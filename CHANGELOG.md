@@ -1,7 +1,7 @@
 # Changelog
 ## 1.28.5 (TODO)
 ### Frontend
-- Bump to [v1.28.1](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.1)
+- Bump to [v1.28.2](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.2)
 ### Backend
 - Datafix: correct merger change events for worship organisations (OP-3534)
 ### Deploy notes
