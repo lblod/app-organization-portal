@@ -6,7 +6,7 @@
     [
       {
         "variables": [],
-        "name": "acmidm-worship-editeerder"
+        "name": "acmidm-editeerder"
       },
       {
         "variables": [],
@@ -20,7 +20,7 @@
     [
       {
         "variables": [],
-        "name": "acmidm-editeerder"
+        "name": "acmidm-worship-editeerder"
       },
       {
         "variables": [],
@@ -64,21 +64,17 @@
         "http://data.lblod.info/vocabularies/erediensten/EredienstMandataris"
       ],
       "properties": {
-        "given_name": [
-          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/givenName"
-        ],
         "person_id": [
-          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://mu.semte.ch/vocabularies/core/uuid"
-        ],
-        "person_uuid": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "family_name": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/familyName"
+        ],
+        "given_name": [
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/givenName"
         ],
         "first_name_used": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -138,20 +134,20 @@
       },
       "mappings": {
         "properties": {
+          "person_id": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
           "family_name": {
             "type": "text",
             "fields": {
               "field": {
                 "type": "keyword",
                 "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "person_id": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
               }
             }
           },
@@ -164,10 +160,7 @@
               }
             }
           },
-          "organization_id": {
-            "type": "text"
-          },
-          "organization_classification": {
+          "first_name_used": {
             "type": "text",
             "fields": {
               "field": {
@@ -176,7 +169,13 @@
               }
             }
           },
-          "organization_province": {
+          "end_date": {
+            "type": "date"
+          },
+          "organization_id": {
+            "type": "text"
+          },
+          "organization_classification": {
             "type": "text",
             "fields": {
               "field": {
@@ -203,6 +202,15 @@
               }
             }
           },
+          "organization_province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
           "position_id": {
             "type": "text"
           },
@@ -214,9 +222,6 @@
                 "normalizer": "custom_sort_normalizer"
               }
             }
-          },
-          "end_date": {
-            "type": "date"
           }
         }
       }
@@ -226,21 +231,17 @@
       "on_path": "functionaries",
       "rdf_type": "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
       "properties": {
-        "given_name": [
-          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://xmlns.com/foaf/0.1/givenName"
-        ],
         "person_id": [
-          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
-          "http://mu.semte.ch/vocabularies/core/uuid"
-        ],
-        "person_uuid": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "family_name": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
           "http://xmlns.com/foaf/0.1/familyName"
+        ],
+        "given_name": [
+          "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
+          "http://xmlns.com/foaf/0.1/givenName"
         ],
         "first_name_used": [
           "http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan",
@@ -300,20 +301,20 @@
       },
       "mappings": {
         "properties": {
+          "person_id": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
           "family_name": {
             "type": "text",
             "fields": {
               "field": {
                 "type": "keyword",
                 "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "person_id": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
               }
             }
           },
@@ -326,10 +327,7 @@
               }
             }
           },
-          "organization_id": {
-            "type": "text"
-          },
-          "organization_classification": {
+          "first_name_used": {
             "type": "text",
             "fields": {
               "field": {
@@ -338,7 +336,13 @@
               }
             }
           },
-          "organization_province": {
+          "end_date": {
+            "type": "date"
+          },
+          "organization_id": {
+            "type": "text"
+          },
+          "organization_classification": {
             "type": "text",
             "fields": {
               "field": {
@@ -365,6 +369,15 @@
               }
             }
           },
+          "organization_province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
           "position_id": {
             "type": "text"
           },
@@ -376,9 +389,6 @@
                 "normalizer": "custom_sort_normalizer"
               }
             }
-          },
-          "end_date": {
-            "type": "date"
           }
         }
       }
@@ -391,21 +401,17 @@
         "http://data.lblod.info/vocabularies/contacthub/AgentInPositie"
       ],
       "properties": {
-        "given_name": [
-          "http://www.w3.org/ns/org#heldBy",
-          "http://xmlns.com/foaf/0.1/givenName"
-        ],
         "person_id": [
-          "http://www.w3.org/ns/org#heldBy",
-          "http://mu.semte.ch/vocabularies/core/uuid"
-        ],
-        "person_uuid": [
           "http://www.w3.org/ns/org#heldBy",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
         "family_name": [
           "http://www.w3.org/ns/org#heldBy",
           "http://xmlns.com/foaf/0.1/familyName"
+        ],
+        "given_name": [
+          "http://www.w3.org/ns/org#heldBy",
+          "http://xmlns.com/foaf/0.1/givenName"
         ],
         "first_name_used": [
           "http://www.w3.org/ns/org#heldBy",
@@ -455,20 +461,20 @@
       },
       "mappings": {
         "properties": {
+          "person_id": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword"
+              }
+            }
+          },
           "family_name": {
             "type": "text",
             "fields": {
               "field": {
                 "type": "keyword",
                 "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "person_id": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword"
               }
             }
           },
@@ -481,10 +487,7 @@
               }
             }
           },
-          "organization_id": {
-            "type": "text"
-          },
-          "organization_classification": {
+          "first_name_used": {
             "type": "text",
             "fields": {
               "field": {
@@ -493,7 +496,13 @@
               }
             }
           },
-          "organization_province": {
+          "end_date": {
+            "type": "date"
+          },
+          "organization_id": {
+            "type": "text"
+          },
+          "organization_classification": {
             "type": "text",
             "fields": {
               "field": {
@@ -520,6 +529,15 @@
               }
             }
           },
+          "organization_province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
           "position_id": {
             "type": "text"
           },
@@ -531,9 +549,6 @@
                 "normalizer": "custom_sort_normalizer"
               }
             }
-          },
-          "end_date": {
-            "type": "date"
           }
         }
       }
@@ -543,14 +558,6 @@
       "composite_types": ["minister", "functionary", "mandatory"],
       "on_path": "people",
       "properties": [
-        {
-          "name": "given_name",
-          "mappings": {
-            "minister": "given_name",
-            "functionary": "given_name",
-            "mandatory": "given_name"
-          }
-        },
         {
           "name": "person_id",
           "mappings": {
@@ -565,6 +572,14 @@
             "minister": "family_name",
             "functionary": "family_name",
             "mandatory": "family_name"
+          }
+        },
+        {
+          "name": "given_name",
+          "mappings": {
+            "minister": "given_name",
+            "functionary": "given_name",
+            "mandatory": "given_name"
           }
         },
         {
@@ -642,16 +657,15 @@
       ],
       "mappings": {
         "properties": {
-          "family_name": {
+          "person_id": {
             "type": "text",
             "fields": {
               "field": {
-                "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
+                "type": "keyword"
               }
             }
           },
-          "person_id": {
+          "family_name": {
             "type": "text",
             "fields": {
               "field": {
@@ -669,10 +683,7 @@
               }
             }
           },
-          "organization_id": {
-            "type": "text"
-          },
-          "organization_classification": {
+          "first_name_used": {
             "type": "text",
             "fields": {
               "field": {
@@ -681,7 +692,13 @@
               }
             }
           },
-          "organization_province": {
+          "end_date": {
+            "type": "date"
+          },
+          "organization_id": {
+            "type": "text"
+          },
+          "organization_classification": {
             "type": "text",
             "fields": {
               "field": {
@@ -708,6 +725,15 @@
               }
             }
           },
+          "organization_province": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
           "position_id": {
             "type": "text"
           },
@@ -719,9 +745,6 @@
                 "normalizer": "custom_sort_normalizer"
               }
             }
-          },
-          "end_date": {
-            "type": "date"
           }
         }
       }
@@ -783,12 +806,6 @@
       },
       "mappings": {
         "properties": {
-          "classification_id": {
-            "type": "text"
-          },
-          "recognized_worship_type_id": {
-            "type": "text"
-          },
           "name": {
             "type": "text",
             "fields": {
@@ -816,6 +833,9 @@
               }
             }
           },
+          "classification_id": {
+            "type": "text"
+          },
           "classification_name": {
             "type": "text",
             "fields": {
@@ -833,6 +853,12 @@
                 "normalizer": "custom_sort_normalizer"
               }
             }
+          },
+          "status_id": {
+            "type": "text"
+          },
+          "recognized_worship_type_id": {
+            "type": "text"
           },
           "recognized_worship_type_name": {
             "type": "text",
