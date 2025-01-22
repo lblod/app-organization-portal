@@ -4,9 +4,11 @@
 - Bump to [v1.28.2](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.2)
 ### Backend
 - Datafix: correct merger change events for worship organisations (OP-3534)
+- Avoid municipality filter to include partial matches (OP-3509)
 ### Deploy notes
 - `drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing`
 - `drc pull frontend; drc up -d frontend`
+- Perform a full re-index by executing `./scripts/reset-elastic.sh`
 
 ## 1.28.4 (2025-01-16)
 ### Backend
