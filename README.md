@@ -25,8 +25,8 @@ Update `docker-compose.override.yml` to:
   leidinggevenden-consumer:
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
-      DCR_LANDING_ZONE_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
-      DCR_REMAPPING_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
 ```
@@ -41,13 +41,14 @@ Then, update `docker-compose.override.yml` to:
   leidinggevenden-consumer:
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # choose the correct endpoint
-      DCR_LANDING_ZONE_DATABASE: "database"
-      DCR_REMAPPING_DATABASE: "database"
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
 ```
 ```
 drc up -d
+sh scripts/reset-elastic.sh
 ```
 
 ### Setting up the delta-producers related services
