@@ -13,38 +13,19 @@ PREFIX dbpedia: <http://dbpedia.org/resource/>
 
 DELETE {
   GRAPH ?g {
-    ?job ?jobP ?jobO.
     ?task ?taskP ?taskO.
-    ?container ?containerP ?containerO.
  }
-}
-WHERE {
+} WHERE {
   VALUES ?operation {
     <http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/leidinggevenden>
     <http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/leidinggevenden>
   }
 
   GRAPH ?g {
-    {
-      ?job a <http://vocab.deri.ie/cogs#Job>;
-        task:operation ?operation;
-        ?jobP ?jobO.
+    ?job a <http://vocab.deri.ie/cogs#Job>;
+      task:operation ?operation.
 
-      ?task dct:isPartOf ?job;
-      task:resultsContainer ?container;
+    ?task dct:isPartOf ?job;
       ?taskP ?taskO.
-
-      ?container a nfo:DataContainer;
-        ?containerP ?containerO.
-    }
-    UNION
-    {
-      ?job a <http://vocab.deri.ie/cogs#Job>;
-        task:operation ?operation;
-        ?jobP ?jobO.
-
-      ?task dct:isPartOf ?job;
-      ?taskP ?taskO.
-    }
   }
 }
