@@ -417,7 +417,7 @@ services:
       DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/leidinggevenden"
       DCR_REMAPPING_GRAPH: "http://mu.semte.ch/graphs/administrative-unit"
       DCR_BATCH_SIZE: 1000
-      SUDO_QUERY_oRETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
       SUDO_QUERY_RETRY: "true"
     volumes:
       - ./config/loket-consumer/leidinggevenden/mapping:/config/mapping
