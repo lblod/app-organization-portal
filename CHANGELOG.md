@@ -14,8 +14,8 @@ Update `docker-compose.override.yml` to remove the config of `worship-services-s
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
       DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
       DCR_SECRET_KEY: "key-of-the-producer"
-      DCR_LANDING_ZONE_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
-      DCR_REMAPPING_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
       DCR_DISABLE_INITIAL_SYNC: "false"
       DCR_DISABLE_DELTA_INGEST: "false"
   worship-services-private-info-consumer:
@@ -23,8 +23,8 @@ Update `docker-compose.override.yml` to remove the config of `worship-services-s
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
       DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
       DCR_SECRET_KEY: "key-of-the-producer"
-      DCR_LANDING_ZONE_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
-      DCR_REMAPPING_DATABASE: "virtuoso" # for the initial sync, we go directly to virtuoso
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
       DCR_DISABLE_INITIAL_SYNC: "false"
       DCR_DISABLE_DELTA_INGEST: "false"
 ```
@@ -41,8 +41,8 @@ Then, update `docker-compose.override.yml` to:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
       DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
       DCR_SECRET_KEY: "key-of-the-producer"
-      DCR_LANDING_ZONE_DATABASE: "database"
-      DCR_REMAPPING_DATABASE: "database"
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
   worship-services-private-info-consumer:

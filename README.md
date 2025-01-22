@@ -27,8 +27,8 @@ Update `docker-compose.override.yml` to:
       DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
       DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/worship-services-sensitive/login" # or another endpoint
       DCR_SECRET_KEY: "key-of-the-producer"
-      DCR_LANDING_ZONE_DATABASE: "virtuoso"
-      DCR_REMAPPING_DATABASE: "virtuoso"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_REMAPPING_DATABASE: "triplestore"
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
   worship-services-private-info-consumer:
@@ -36,8 +36,8 @@ Update `docker-compose.override.yml` to:
       DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
       DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/worship-services-sensitive/login" # or another endpoint
       DCR_SECRET_KEY: "key-of-the-producer"
-      DCR_LANDING_ZONE_DATABASE: "virtuoso"
-      DCR_REMAPPING_DATABASE: "virtuoso"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_REMAPPING_DATABASE: "triplestore"
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
 ```
@@ -54,8 +54,8 @@ Then, update `docker-compose.override.yml` to:
       DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
       DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/worship-services-sensitive/login" # or another endpoint
       DCR_SECRET_KEY: "key-of-the-producer"
-      DCR_LANDING_ZONE_DATABASE: "database"
-      DCR_REMAPPING_DATABASE: "database"
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
   worship-services-private-info-consumer:
@@ -63,8 +63,8 @@ Then, update `docker-compose.override.yml` to:
       DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
       DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/worship-services-sensitive/login" # or another endpoint
       DCR_SECRET_KEY: "key-of-the-producer"
-      DCR_LANDING_ZONE_DATABASE: "database"
-      DCR_REMAPPING_DATABASE: "database"
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
 ```
