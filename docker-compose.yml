@@ -466,7 +466,7 @@ services:
     logging: *default-logging
 
   worship-services-private-info-consumer:
-    image: lblod/delta-consumer:0.0.27
+    image: lblod/delta-consumer:0.1.0
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "worship-services-private-info-consumer"
