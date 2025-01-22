@@ -1,10 +1,7 @@
 # Changelog
 
-## 1.28.5 (TODO)
-### Frontend
-- Bump to [v1.28.2](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.2)
+## 1.29.0 (TODO)
 ### Backend
-- Datafix: correct merger change events for worship organisations (OP-3534)
 #### Consumer
 - Upgraded `leidinggevenden-consumer` [OP-3533], [OP-3511]
 ### Deploy notes
@@ -23,7 +20,7 @@ Update `docker-compose.override.yml` to:
 ```
 Then:
 ```
-drc up -d migrations migrations-triggering-indexing; drc logs -ft --tail=200 migrations migrations-triggering-indexing
+drc up -d migrations; drc logs -ft --tail=200 migrations
 drc up -d db leidinggevenden-consumer
 # Wait until success of the previous step
 ```
@@ -38,10 +35,17 @@ Then, update `docker-compose.override.yml` to:
       DCR_DISABLE_INITIAL_SYNC: "false"
 ```
 ```
-drc pull frontend
 drc up -d
 sh scripts/reset-elastic.sh
 ```
+## 1.28.5 (TODO)
+### Frontend
+- Bump to [v1.28.2](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.2)
+### Backend
+- Datafix: correct merger change events for worship organisations (OP-3534)
+### Deploy notes
+- `drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing`
+- `drc pull frontend; drc up -d frontend`
 
 ## 1.28.4 (2025-01-16)
 ### Backend
