@@ -1,0 +1,13 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuursfunctie <http://schema.org/contactPoint> ?contactpoint.
+  }
+
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?bestuursfunctie a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>;
+      <http://schema.org/contactPoint> ?contactpoint.
+  }
+}
