@@ -17,7 +17,5 @@ CONSTRUCT {
 
   BIND(REPLACE(?extendedDefaultBe, """^320""", "+32") AS ?finalResult)
 
-  FILTER(REGEX(?finalResult, """^\\+((32\\d{8})|(324\\d{8})|((?!32)\\d+))$"""))
-
-  BIND(CONCAT("tel:", ?finalResult) as ?cleanedPhoneNumber)
+  BIND(IF(REGEX(?finalResult, """^\\+((32\\d{8})|(324\\d{8})|((?!32)\\d+))$"""), CONCAT("tel:", ?finalResult), ?phoneNumber) AS ?cleanedPhoneNumber)
 }
