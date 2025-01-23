@@ -1,5 +1,5 @@
 # Changelog
-## 1.28.5 (TODO)
+## 1.28.5 (2025-01-23)
 ### Frontend
 - Bump to [v1.28.3](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.3)
 ### Backend
