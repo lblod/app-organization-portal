@@ -1,0 +1,16 @@
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a <http://www.w3.org/ns/person#Person>;
+    ?p ?o.
+
+  FILTER (?p IN (
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>,
+    <http://xmlns.com/foaf/0.1/familyName>,
+    <http://mu.semte.ch/vocabularies/core/uuid>
+    ))
+
+  FILTER NOT EXISTS {
+   ?s ?p "" .
+  }
+}

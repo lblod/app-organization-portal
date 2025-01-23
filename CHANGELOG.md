@@ -1,4 +1,42 @@
 # Changelog
+## Unreleased
+### Backend
+  - Upgraded `mandatarissen-consumer` [OP-3510]
+
+### Deploy notes
+```
+drc down;
+```
+Update `docker-compose.override.yml` to remove the config of `mandatarissen-consumer` and replace it by:
+```
+  mandatarissen-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+```
+Then:
+```
+drc up -d triplestore migrations
+drc up -d db mandatarissen-consumer
+# Wait until success of the previous step
+```
+Then, update `docker-compose.override.yml` to:
+```
+  mandatarissen-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+```
+```
+drc up -d
+sh scripts/reset-elastic.sh
+```
 ## 1.28.5 (TODO)
 ### Frontend
 - Bump to [v1.28.3](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.3)

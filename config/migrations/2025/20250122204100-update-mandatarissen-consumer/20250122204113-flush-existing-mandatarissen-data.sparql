@@ -1,0 +1,29 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris>;
+      ?p ?o.
+  }
+
+} WHERE {
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    <http://mu.semte.ch/vocabularies/core/uuid>
+    <http://www.w3.org/ns/org#holds>
+    <http://data.vlaanderen.be/ns/mandaat#status>
+    <http://data.vlaanderen.be/ns/mandaat#start>
+    <http://data.vlaanderen.be/ns/mandaat#einde>
+    <http://data.vlaanderen.be/ns/mandaat#isBestuurlijkeAliasVan>
+    <http://data.vlaanderen.be/ns/mandaat#isTijdelijkVervangenDoor>
+    <http://www.w3.org/ns/org#hasMembership>
+    <http://data.vlaanderen.be/ns/mandaat#beleidsdomein>
+    <http://data.vlaanderen.be/ns/mandaat#rangorde>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris>;
+      ?p ?o.
+  }
+}

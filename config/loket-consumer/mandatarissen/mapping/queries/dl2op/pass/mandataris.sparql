@@ -1,0 +1,25 @@
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a <http://data.vlaanderen.be/ns/mandaat#Mandataris>;
+    <http://www.w3.org/ns/org#holds> ?mandate;
+    ?p ?o.
+
+  ?orgaanInTime <http://www.w3.org/ns/org#hasPost> ?mandate ;
+    <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> ?orgaan .
+
+  ?orgaan <http://data.vlaanderen.be/ns/besluit#bestuurt> ?bestuur .
+  ?bestuur <http://data.vlaanderen.be/ns/besluit#classificatie> ?classification .
+
+
+  FILTER(?classification IN (
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>
+  ))
+
+  FILTER NOT EXISTS {
+    ?s ?p "" .
+  }
+}

@@ -1,0 +1,22 @@
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX persoon: <https://data.vlaanderen.be/ns/persoon#>
+PREFIX persoon_loket: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+# DL and OP both use persoon:gebruikteVoornaam but with different semantics (!)
+
+# First name: persoon:gebruikteVoornaam => foaf:givenName
+# Alternatieve voornaam: foaf:name => persoon:gebruikteVoornaam
+
+# We do both in one query with an OPTIONAL because they need to happen simultaneously
+# not to end up in a loop
+
+# Part 2
+
+CONSTRUCT {
+  ?s foaf:givenName ?gebruikteVoornaam .
+} WHERE {
+  ?s a person:Person ;
+    persoon_loket:gebruikteVoornaam ?gebruikteVoornaam .
+}
