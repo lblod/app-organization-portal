@@ -103,24 +103,6 @@
           "http://data.vlaanderen.be/ns/besluit#bestuurt",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "organization_municipality": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://www.w3.org/ns/org#hasPost",
-          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-          "http://data.vlaanderen.be/ns/besluit#bestuurt",
-          "http://www.w3.org/ns/org#hasPrimarySite",
-          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
-        ],
-        "organization_province": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://www.w3.org/ns/org#hasPost",
-          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-          "http://data.vlaanderen.be/ns/besluit#bestuurt",
-          "http://www.w3.org/ns/org#hasPrimarySite",
-          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-          "http://www.w3.org/ns/locn#adminUnitL2"
-        ],
         "position_id": [
           "http://www.w3.org/ns/org#holds",
           "http://www.w3.org/ns/org#role",
@@ -185,24 +167,6 @@
             }
           },
           "organization_name": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "organization_municipality": {
-            "type": "keyword",
-            "fields": {
-              "field": {
-                "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "organization_province": {
             "type": "text",
             "fields": {
               "field": {
@@ -270,24 +234,6 @@
           "http://data.vlaanderen.be/ns/besluit#bestuurt",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "organization_municipality": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
-          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-          "http://data.vlaanderen.be/ns/besluit#bestuurt",
-          "http://www.w3.org/ns/org#hasPrimarySite",
-          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
-        ],
-        "organization_province": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie",
-          "https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan",
-          "http://data.vlaanderen.be/ns/besluit#bestuurt",
-          "http://www.w3.org/ns/org#hasPrimarySite",
-          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-          "http://www.w3.org/ns/locn#adminUnitL2"
-        ],
         "position_id": [
           "http://www.w3.org/ns/org#holds",
           "http://www.w3.org/ns/org#role",
@@ -352,24 +298,6 @@
             }
           },
           "organization_name": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "organization_municipality": {
-            "type": "keyword",
-            "fields": {
-              "field": {
-                "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "organization_province": {
             "type": "text",
             "fields": {
               "field": {
@@ -434,20 +362,6 @@
           "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
-        "organization_municipality": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
-          "http://www.w3.org/ns/org#hasPrimarySite",
-          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-          "https://data.vlaanderen.be/ns/adres#gemeentenaam"
-        ],
-        "organization_province": [
-          "http://www.w3.org/ns/org#holds",
-          "^http://data.lblod.info/vocabularies/erediensten/wordtBediendDoor",
-          "http://www.w3.org/ns/org#hasPrimarySite",
-          "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-          "http://www.w3.org/ns/locn#adminUnitL2"
-        ],
         "position_id": [
           "http://www.w3.org/ns/org#holds",
           "http://data.lblod.info/vocabularies/erediensten/functie",
@@ -512,24 +426,6 @@
             }
           },
           "organization_name": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "organization_municipality": {
-            "type": "keyword",
-            "fields": {
-              "field": {
-                "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "organization_province": {
             "type": "text",
             "fields": {
               "field": {
@@ -623,22 +519,6 @@
           }
         },
         {
-          "name": "organization_municipality",
-          "mappings": {
-            "minister": "organization_municipality",
-            "functionary": "organization_municipality",
-            "mandatory": "organization_municipality"
-          }
-        },
-        {
-          "name": "organization_province",
-          "mappings": {
-            "minister": "organization_province",
-            "functionary": "organization_province",
-            "mandatory": "organization_province"
-          }
-        },
-        {
           "name": "position_id",
           "mappings": {
             "minister": "position_id",
@@ -708,24 +588,6 @@
             }
           },
           "organization_name": {
-            "type": "text",
-            "fields": {
-              "field": {
-                "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "organization_municipality": {
-            "type": "keyword",
-            "fields": {
-              "field": {
-                "type": "keyword",
-                "normalizer": "custom_sort_normalizer"
-              }
-            }
-          },
-          "organization_province": {
             "type": "text",
             "fields": {
               "field": {
