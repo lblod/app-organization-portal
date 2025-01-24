@@ -2,6 +2,8 @@
 ## Unreleased
 ### Backend
 - Completely remove AGB Stekene's data. [OP-3409]
+- Remove gemeente and provincie classifications from admin unit graph [OP-3393]
+
 ### Deploy Notes
 - Migration listed in [this comment](https://github.com/lblod/app-organization-portal/pull/491#issuecomment-2587185027) must run on the DEV environment.
 #### Docker Commands
