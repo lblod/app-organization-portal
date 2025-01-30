@@ -2,12 +2,12 @@ PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 
 DELETE {
-  GRAPH ?g {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     ?boi ?p ?o.
   }
 }
 WHERE {
-  GRAPH ?g {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     VALUES ?faciliteitEenheid {
       # OCMW
       <http://data.lblod.info/id/bestuurseenheden/76730bd9ab6808230335d90e9ff30ad362a3461ee0239fd978e4313bcdca44c5> # Sint-Genesius-Rode
