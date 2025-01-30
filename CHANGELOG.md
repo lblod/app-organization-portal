@@ -3,6 +3,7 @@
 ### Backend
 - Completely remove AGB Stekene's data. [OP-3409]
 - Remove gemeente and provincie classifications from admin unit graph [OP-3393]
+- Remove several OCMW bcsd faciliteitgemeenten [OP-3535]
 
 ### Deploy Notes
 - Migration listed in [this comment](https://github.com/lblod/app-organization-portal/pull/491#issuecomment-2587185027) must run on the DEV environment.
@@ -10,6 +11,9 @@
 ```
 drc restart migrations-triggering-indexing && drc logs -ft --tail=200 migrations-triggering-indexing
 ```
+
+`drc restart migrations; drc logs -ft --tail=200 migrations`
+
 
 ## 1.28.5 (2025-01-23)
 ### Frontend
