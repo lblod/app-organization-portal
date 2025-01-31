@@ -1,5 +1,7 @@
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
 
 DELETE {
   GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
@@ -19,9 +21,9 @@ WHERE {
       <http://data.lblod.info/id/bestuurseenheden/785715d2822814f7dc0b3896601b5b777feb1ef9722e1c54f4cdcc697594acca> # Voeren
     }
     ?bestuursorgaan besluit:bestuurt ?faciliteitEenheid .
-    ?bestuursorgaan besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>. # BCSD
+    ?bestuursorgaan org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>. # BCSD
 
-    ?boi mandaat:isTijdspecialisatieVan ?bestuursorgaan.
+    ?boi generiek:isTijdspecialisatieVan ?bestuursorgaan.
     ?boi mandaat:bindingStart ?startDate .
 
     ?boi ?p ?o.
