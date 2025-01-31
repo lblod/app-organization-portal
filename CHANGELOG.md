@@ -1,14 +1,37 @@
 # Changelog
 ## Unreleased
+### Frontend
+- Bump to version [v1.29.0](TODO: link to release)
 ### Backend
-- Completely remove AGB Stekene's data. [OP-3409]
+- Datafix: delete duplicate identifiers [OP-3157]
+- Feature: replace different relations between organisations by memberships [OP-3195 (epic), OP-2606, OP-3156, OP-3198, OP-3199, OP-3258, OP-3259, OP-3260, OP-3265, OP-3293, OP-3305]
+- Added `db-cleanup-service` to keep membership data backwards compatible [OP-3369]
+- Datafix: delete incorrect change event [OP-3363]
+- Feature: re-enable contact data editing [OP-3425]
 - Remove gemeente and provincie classifications from admin unit graph [OP-3393]
-
+- Completely remove AGB Stekene's data. [OP-3409]
 ### Deploy Notes
-- Migration listed in [this comment](https://github.com/lblod/app-organization-portal/pull/491#issuecomment-2587185027) must run on the DEV environment.
-#### Docker Commands
+- Re-enable contact date editing:
+  + remove `EMBER_ENABLE_EDIT_CONTACT_DATA_FEATURE` flag in `docker-compose.override.yml`
+  + Stop and remove the `clb-contact-data-consumer` service
+  + Remove the `clb-contact-data-consumer` configuration in `docker-compose.override.yml`
+- Rebuild the `search` service before starting the re-indexing
+- To enable the membership functionality:
+  + Restart migration service
+  + Restart services for which the configuration was changed: `resource`,  `dispatcher` and `db`
+  + Start the `db-cleanup-service`
+  + Pull and restart the frontend
+  + Perform a re-index using `reset-elastic.sh` script
+#### Deploy commands
 ```
+drc down clb-contact-data-consumer
+drc up -d search
+drc restart migrations; drc logs -ft --tail=200 migrations
 drc restart migrations-triggering-indexing && drc logs -ft --tail=200 migrations-triggering-indexing
+drc restart resource dispatcher db
+drc up -d db-cleanup-service
+drc pull frontend; drc up -d frontend
+./scripts/reset-elastic.sh
 ```
 
 ## 1.28.5 (2025-01-23)
