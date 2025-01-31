@@ -20,10 +20,16 @@ WHERE {
       <http://data.lblod.info/id/bestuurseenheden/f9ee0b69624bba3677b18b95110246ee9106377c948ab5d914909eac79f88bcf> # Wezembeek-Oppem
       <http://data.lblod.info/id/bestuurseenheden/785715d2822814f7dc0b3896601b5b777feb1ef9722e1c54f4cdcc697594acca> # Voeren
     }
-    ?bestuursorgaan besluit:bestuurt ?faciliteitEenheid .
-    ?bestuursorgaan org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>. # BCSD
 
-    ?boi generiek:isTijdspecialisatieVan ?bestuursorgaan.
+    VALUES ?classification {
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>   # BCSD
+      <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9> # BCSD Voorzitter
+    }
+
+    ?bestuursorgaan besluit:bestuurt ?faciliteitEenheid .
+    ?bestuursorgaan org:classification ?classification .
+
+    ?boi generiek:isTijdspecialisatieVan ?bestuursorgaan .
     ?boi mandaat:bindingStart ?startDate .
 
     ?boi ?p ?o.
