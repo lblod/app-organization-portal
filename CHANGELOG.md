@@ -9,7 +9,9 @@
 - Datafix: delete incorrect change event [OP-3363]
 - Feature: re-enable contact data editing [OP-3425]
 - Remove gemeente and provincie classifications from admin unit graph [OP-3393]
+- Remove several OCMW bcsd faciliteitgemeenten [OP-3535]
 - Completely remove AGB Stekene's data. [OP-3409]
+
 ### Deploy Notes
 - Re-enable contact date editing:
   + remove `EMBER_ENABLE_EDIT_CONTACT_DATA_FEATURE` flag in `docker-compose.override.yml`
