@@ -1,14 +1,25 @@
 # Changelog
-## Unreleased
+
+## 1.29.0 (TODO)
 ### Backend
-  - Upgraded `worship-services-sensitive-consumer` [OP-3337]
+#### Consumer
+- Upgraded `leidinggevenden-consumer` [OP-3533], [OP-3511]
+- Upgraded `worship-services-sensitive-consumer` [OP-3337]
 
 ### Deploy notes
 ```
 drc down;
 ```
+
 Update `docker-compose.override.yml` to remove the config of `worship-services-sensitive-consumer` and replace it by:
 ```
+  leidinggevenden-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
   worship-services-main-info-consumer:
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
@@ -31,11 +42,19 @@ Update `docker-compose.override.yml` to remove the config of `worship-services-s
 Then:
 ```
 drc up -d triplestore migrations
-drc up -d db worship-services-main-info-consumer worship-services-private-info-consumer
+drc up -d db leidinggevenden-consumer worship-services-main-info-consumer worship-services-private-info-consumer
+
 # Wait until success of the previous step
 ```
 Then, update `docker-compose.override.yml` to:
 ```
+  leidinggevenden-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # choose the correct endpoint
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
   worship-services-main-info-consumer:
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
@@ -59,6 +78,7 @@ Then, update `docker-compose.override.yml` to:
 drc up -d
 sh scripts/reset-elastic.sh
 ```
+
 ## 1.28.5 (2025-01-23)
 ### Frontend
 - Bump to [v1.28.3](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.3)
