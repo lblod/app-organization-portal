@@ -4,11 +4,14 @@
 ### Backend
 #### Consumer
 - Upgraded `leidinggevenden-consumer` [OP-3533], [OP-3511]
+- Upgraded `worship-services-sensitive-consumer` [OP-3337]
+
 ### Deploy notes
 ```
 drc down;
 ```
-Update `docker-compose.override.yml` to:
+
+Update `docker-compose.override.yml` to remove the config of `worship-services-sensitive-consumer` and replace it by:
 ```
   leidinggevenden-consumer:
     environment:
@@ -17,11 +20,30 @@ Update `docker-compose.override.yml` to:
       DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
+  worship-services-main-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+  worship-services-private-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
 ```
 Then:
 ```
-drc up -d migrations; drc logs -ft --tail=200 migrations
-drc up -d db leidinggevenden-consumer
+drc up -d triplestore migrations
+drc up -d db leidinggevenden-consumer worship-services-main-info-consumer worship-services-private-info-consumer
+
 # Wait until success of the previous step
 ```
 Then, update `docker-compose.override.yml` to:
@@ -33,19 +55,40 @@ Then, update `docker-compose.override.yml` to:
       DCR_REMAPPING_DATABASE: "db"
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
+  worship-services-main-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+  worship-services-private-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "database"
+      DCR_REMAPPING_DATABASE: "database"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
 ```
 ```
 drc up -d
 sh scripts/reset-elastic.sh
 ```
-## 1.28.5 (TODO)
+
+## 1.28.5 (2025-01-23)
 ### Frontend
-- Bump to [v1.28.2](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.2)
+- Bump to [v1.28.3](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.28.3)
 ### Backend
 - Datafix: correct merger change events for worship organisations (OP-3534)
+- Avoid municipality filter to include partial matches (OP-3509)
 ### Deploy notes
 - `drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing`
 - `drc pull frontend; drc up -d frontend`
+- Perform a full re-index by executing `./scripts/reset-elastic.sh`
 
 ## 1.28.4 (2025-01-16)
 ### Backend

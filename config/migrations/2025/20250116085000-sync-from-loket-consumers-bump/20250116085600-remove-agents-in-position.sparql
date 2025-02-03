@@ -1,0 +1,10 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?agent ?pagent ?oagent .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> { 
+    ?agent a <http://data.lblod.info/vocabularies/contacthub/AgentInPositie> ;
+      ?pagent ?oagent .
+  }
+}

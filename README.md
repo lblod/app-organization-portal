@@ -16,6 +16,7 @@ The application depends on external data. You'll have to perform extra steps if 
 These are multiple data sets, we'll try to be exhaustive on how to ingest these. Even though the procedures are similar.
 
 #### Setup http://data.lblod.info/vocabularies/leidinggevenden/Functionaris
+
 Note: this is assuming you have never ran this before.
 ```
 drc down;
@@ -46,6 +47,67 @@ Then, update `docker-compose.override.yml` to:
       DCR_DISABLE_DELTA_INGEST: "false"
       DCR_DISABLE_INITIAL_SYNC: "false"
 ```
+Finally, put the stack back up and reindex elasticsearch
+```
+drc up -d
+sh scripts/reset-elastic.sh
+```
+
+#### Setup worship mandatees sync
+
+Note: this is assuming you have never ran this before.
+```
+drc down;
+```
+Update `docker-compose.override.yml` to:
+```
+  worship-services-main-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_REMAPPING_DATABASE: "triplestore"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+  worship-services-private-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_REMAPPING_DATABASE: "triplestore"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+```
+Then:
+```
+drc up -d migrations
+drc up -d db worship-services-main-info-consumer worship-services-private-info-consumer
+# Wait until success of the previous step
+```
+Then, update `docker-compose.override.yml` to:
+```
+worship-services-main-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+  worship-services-private-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+```
+Finally, put the stack back up and reindex elasticsearch
 ```
 drc up -d
 sh scripts/reset-elastic.sh
