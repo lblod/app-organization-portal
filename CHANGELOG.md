@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.29.0 (TODO)
+## 1.29.0 (prerelease v1.29.0-0: 2025-02-03)
 ### Backend
 #### Consumer
 - Upgraded `mandatarissen-consumer` [OP-3510]
