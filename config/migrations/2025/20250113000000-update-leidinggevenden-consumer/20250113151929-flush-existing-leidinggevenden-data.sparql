@@ -1,0 +1,37 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://www.w3.org/ns/locn#Address>;
+      ?p ?o.
+  }
+
+} WHERE {
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    <http://mu.semte.ch/vocabularies/core/uuid>
+    <https://data.vlaanderen.be/ns/adres#verwijstNaar>
+    <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer>
+    <http://www.w3.org/ns/locn#postCode>
+    <http://www.w3.org/ns/locn#thoroughfare>
+    <http://www.w3.org/ns/locn#fullAddress>
+    <https://data.vlaanderen.be/ns/adres#gemeentenaam>
+    <https://data.vlaanderen.be/ns/adres#land>
+    <http://www.w3.org/ns/locn#adminUnit1>
+    <http://www.w3.org/ns/locn#adminUnit2>
+    <http://www.w3.org/ns/locn#addressArea>
+    <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer>
+  }
+
+  ?bestuursfunctie a <http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie>;
+    <http://schema.org/contactPoint> ?contactpoint.
+
+  ?contactpoint a <http://schema.org/ContactPoint>;
+    <http://www.w3.org/ns/locn#address> ?s.
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://www.w3.org/ns/locn#Address>;
+      ?p ?o.
+  }
+}
