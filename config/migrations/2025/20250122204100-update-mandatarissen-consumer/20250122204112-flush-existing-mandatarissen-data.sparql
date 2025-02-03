@@ -1,0 +1,21 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://www.w3.org/ns/org#Membership>;
+      ?p ?o.
+  }
+} WHERE {
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    <http://mu.semte.ch/vocabularies/core/uuid>
+    <http://www.w3.org/ns/org#organisation>
+  }
+
+  ?mandataris a <http://data.vlaanderen.be/ns/mandaat#Mandataris>;
+    <http://www.w3.org/ns/org#hasMembership> ?s.
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s a <http://www.w3.org/ns/org#Membership>;
+      ?p ?o.
+  }
+}

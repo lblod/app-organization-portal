@@ -3,6 +3,7 @@
 ## 1.29.0 (TODO)
 ### Backend
 #### Consumer
+- Upgraded `mandatarissen-consumer` [OP-3510]
 - Upgraded `leidinggevenden-consumer` [OP-3533], [OP-3511]
 - Upgraded `worship-services-sensitive-consumer` [OP-3337]
 
@@ -10,12 +11,18 @@
 ```
 drc down;
 ```
-
-Update `docker-compose.override.yml` to remove the config of `worship-services-sensitive-consumer` and replace it by:
+Update `docker-compose.override.yml` to remove the config of the consumers and replace it by:
 ```
+  mandatarissen-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
   leidinggevenden-consumer:
     environment:
-      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # or another endpoint
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
       DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
       DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
       DCR_DISABLE_DELTA_INGEST: "false"
@@ -42,15 +49,21 @@ Update `docker-compose.override.yml` to remove the config of `worship-services-s
 Then:
 ```
 drc up -d triplestore migrations
-drc up -d db leidinggevenden-consumer worship-services-main-info-consumer worship-services-private-info-consumer
-
+drc up -d db mandatarissen-consumer leidinggevenden-consumer worship-services-main-info-consumer worship-services-private-info-consumer
 # Wait until success of the previous step
 ```
 Then, update `docker-compose.override.yml` to:
 ```
+  mandatarissen-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
   leidinggevenden-consumer:
     environment:
-      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be" # choose the correct endpoint
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # choose the correct endpoint
       DCR_LANDING_ZONE_DATABASE: "db"
       DCR_REMAPPING_DATABASE: "db"
       DCR_DISABLE_DELTA_INGEST: "false"

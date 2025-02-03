@@ -370,24 +370,26 @@ services:
   # LOKET MANDATARISSEN CONSUMERS
   ################################################################################
   mandatarissen-consumer:
-    image: lblod/delta-consumer:0.0.24
+    image: lblod/delta-consumer:0.1.0
     environment:
       DCR_SERVICE_NAME: "mandatarissen-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
+      DCR_SYNC_FILES_PATH: "/sync/mandatarissen/files"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/MandatarissenCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/mandatarissen"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/mandatarissen"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/mandatarissen-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
-      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
-      BATCH_SIZE: 1000
-      DCR_SYNC_FILES_PATH: "/sync/mandatarissen/files"
       DCR_KEEP_DELTA_FILES: "true"
-      DCR_ENABLE_DELTA_CONTEXT: "true"
-      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_DELTA_JOBS_RETENTION_PERIOD: "30"
+      DCR_ENABLE_TRIPLE_REMAPPING: "true"
       DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/mandatarissen"
+      DCR_REMAPPING_GRAPH: "http://mu.semte.ch/graphs/administrative-unit"
+      DCR_BATCH_SIZE: 1000
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      SUDO_QUERY_RETRY: "true"
     volumes:
-      - ./config/loket-consumer/mandatarissen-dispatching:/config/triples-dispatching/custom-dispatching
+      - ./config/loket-consumer/mandatarissen/mapping:/config/mapping
       - ./data/files/consumer-files/mandatarissen:/consumer-files/
     restart: always
     labels:
