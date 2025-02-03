@@ -1,0 +1,14 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX persoon_loket: <http://data.vlaanderen.be/ns/persoon#>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+# DL and OP both use persoon:gebruikteVoornaam but with different semantics (!)
+
+# First name: persoon:gebruikteVoornaam => foaf:givenName
+
+CONSTRUCT {
+  ?s foaf:givenName ?gebruikteVoornaam .
+} WHERE {
+  ?s a person:Person ;
+    persoon_loket:gebruikteVoornaam ?gebruikteVoornaam .
+}
