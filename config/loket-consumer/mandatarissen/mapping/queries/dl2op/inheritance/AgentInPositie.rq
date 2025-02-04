@@ -1,0 +1,11 @@
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+CONSTRUCT {
+  ?s a ch:AgentInPositie .
+} WHERE {
+  ?s a ?type .
+  VALUES ?type {
+    mandaat:Mandataris
+  }
+}
