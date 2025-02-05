@@ -1,3 +1,5 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
 CONSTRUCT {
   ?s ?p ?o.
 } WHERE {
@@ -18,6 +20,8 @@ CONSTRUCT {
     <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>,
     <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>
   ))
+
+  FILTER (?p NOT IN (mandaat:start, mandaat:einde))
 
   FILTER NOT EXISTS {
     ?s ?p "" .
