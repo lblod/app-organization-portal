@@ -1,0 +1,11 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+  ?s mandaat:start ?startDateTime .
+} WHERE {
+  ?s mandaat:start ?startDate .
+
+  BIND(SUBSTR(STR(?startDate), 1, 10) as ?startDateWithoutTimezone)
+  BIND(STRDT(CONCAT(?startDateWithoutTimezone, 'T02:00:00'), xsd:dateTime) as ?startDateTime)
+}

@@ -1,10 +1,14 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
 CONSTRUCT {
   ?s ?p ?o.
 } WHERE {
   ?s a <http://data.lblod.info/vocabularies/leidinggevenden/Functionaris>;
     ?p ?o.
 
- FILTER NOT EXISTS {
-   ?s ?p "" .
- }
+  FILTER (?p NOT IN (mandaat:start, mandaat:einde))
+
+  FILTER NOT EXISTS {
+    ?s ?p "" .
+  }
 }
