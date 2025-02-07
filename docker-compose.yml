@@ -273,14 +273,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  reasoner:
-    image: eyereasoner/reasoning-service:1.0.4
-    volumes:
-      - ./config/reasoner:/config
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
   report-generation:
     image: lblod/loket-report-generation-service:0.7.0
     environment:
