@@ -11,8 +11,12 @@
 - Remove gemeente and provincie classifications from admin unit graph [OP-3393]
 - Remove several OCMW bcsd faciliteitgemeenten [OP-3535]
 - Completely remove AGB Stekene's data. [OP-3409]
+- Remove reasoner service, replaced by new consumer logic
 
 ### Deploy Notes
+
+- Before pulling the changes
+  + Shut down the reasoner and thank it for its good service: `drc down reasoner`
 - Re-enable contact date editing:
   + remove `EMBER_ENABLE_EDIT_CONTACT_DATA_FEATURE` flag in `docker-compose.override.yml`
   + Stop and remove the `clb-contact-data-consumer` service
