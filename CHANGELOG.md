@@ -40,7 +40,7 @@ drc pull frontend; drc up -d frontend
 ./scripts/reset-elastic.sh
 ```
 
-## 1.29.0 (prerelease v1.29.0-1: 2025-02-05)
+## 1.29.0 (2025-02-07)
 ### Backend
 #### Consumer
 - Upgraded `mandatarissen-consumer` [OP-3510]
