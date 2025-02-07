@@ -31,9 +31,8 @@
 
 ;;
 ;; TODO:
-;; - resolve errors concerning sending deltas (cf. `docker compose logs db')
-;; - Edits seem to be written to incorrect graphs, e.g. contact details for an AGB were added to
-;;   `public' or `worship-service' instead of `administrative-unit'. Further testing needed.
+;; - resolve errors concerning sending deltas (cf. `docker compose logs db'), related to search indexing?
+;; - Avoid specifying the same type multiple times
 ;; - remove unneeded resource types, if any
 ;; - thoroughly test
 
