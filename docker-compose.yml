@@ -370,7 +370,7 @@ services:
   # LOKET MANDATARISSEN CONSUMERS
   ################################################################################
   mandatarissen-consumer:
-    image: lblod/delta-consumer:0.1.0
+    image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SERVICE_NAME: "mandatarissen-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
@@ -403,7 +403,7 @@ services:
   # LOKET LEIDINGGEVENDEN CONSUMERS
   ################################################################################
   leidinggevenden-consumer:
-    image: lblod/delta-consumer:0.1.0
+    image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SERVICE_NAME: "leidinggevenden-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
@@ -436,7 +436,7 @@ services:
   # LOKET WORSHIP SENSITIVE CONSUMERS
   ################################################################################
   worship-services-main-info-consumer:
-    image: lblod/delta-consumer:0.1.0
+    image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "worship-services-main-info-consumer"
@@ -469,7 +469,7 @@ services:
     logging: *default-logging
 
   worship-services-private-info-consumer:
-    image: lblod/delta-consumer:0.1.0
+    image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "worship-services-private-info-consumer"
