@@ -30,7 +30,9 @@ DELETE {
     }
   }
 
-  GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
-    ?person ?pprivate ?oprivate .
+  OPTIONAL {
+    GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+      ?person ?pprivate ?oprivate .
+    }
   }
 }

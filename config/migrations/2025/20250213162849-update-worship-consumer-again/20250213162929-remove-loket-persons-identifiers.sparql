@@ -37,3 +37,18 @@ DELETE {
     ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
   }
 }
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+    ?structuredIdentifier ?pstructuredIdentifier ?ostructuredIdentifier .
+  }
+} WHERE {
+
+  GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+    ?structuredIdentifier a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+      ?pstructuredIdentifier ?ostructuredIdentifier.
+  }
+
+}
