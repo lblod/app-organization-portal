@@ -1,0 +1,74 @@
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+# Delete all full address triples
+# NOTE: for some `Adress` multiple `locn:fullAddress` were linked at some
+# point. Simply removing everything and then recreating the correct ones
+# allows simpler queries.
+DELETE {
+  GRAPH ?g {
+    ?address locn:fullAddress ?fullAddress.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?address a locn:Address;
+             locn:fullAddress ?fullAddress.
+  }
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+}
+;
+# Recreate full address triples in the correct graphs
+# NOTE: split the case for with and without box numbers in different
+# queries. Imo this gives easier to understand queries than adding conditional
+# logic to properly deal with whether or not there is a box number in a single
+# query.
+## Addresses without box numbers
+INSERT {
+  GRAPH ?g {
+    ?address locn:fullAddress ?newFullAddress.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?address a locn:Address;
+             locn:thoroughfare ?street;
+             adres:Adresvoorstelling.huisnummer ?buildingNo;
+             locn:postCode ?postalCode;
+             adres:gemeentenaam ?municipality;
+             adres:land ?country.
+    FILTER NOT EXISTS { ?address adres:Adresvoorstelling.busnummer ?boxNo. }
+    BIND (CONCAT(?street, " ", ?buildingNo, ", ", ?postalCode, " ", ?municipality, ", ", ?country) AS ?newFullAddress)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+}
+;
+## Addresses with box numbers
+INSERT {
+  GRAPH ?g {
+    ?address locn:fullAddress ?newFullAddress.
+  }
+} WHERE {
+  GRAPH ?g {
+    ?address a locn:Address;
+             locn:thoroughfare ?street;
+             adres:Adresvoorstelling.huisnummer ?buildingNo;
+             adres:Adresvoorstelling.busnummer ?boxNo;
+             locn:postCode ?postalCode;
+             adres:gemeentenaam ?municipality;
+             adres:land ?country.
+    BIND (CONCAT(?street, " ", ?buildingNo, " ", ?boxNo, ", ", ?postalCode, " ", ?municipality, ", ", ?country) AS ?newFullAddress)
+  }
+
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+}
