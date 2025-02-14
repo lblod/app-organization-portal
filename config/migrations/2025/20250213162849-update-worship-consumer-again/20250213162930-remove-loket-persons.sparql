@@ -1,0 +1,38 @@
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX person: <http://www.w3.org/ns/person#>
+
+# Delete persons
+DELETE {
+  GRAPH ?g {
+    ?person ?p ?o .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+    ?person ?pprivate ?oprivate .
+  }
+} WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/shared>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+
+  GRAPH ?g {
+    ?person a person:Person ;
+      ?p ?o .
+  }
+
+  FILTER EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/worship-service> {
+      ?agent a ch:AgentInPositie ;
+        mandaat:isBestuurlijkeAliasVan|org:heldBy ?person .
+    }
+  }
+
+  OPTIONAL {
+    GRAPH <http://mu.semte.ch/graphs/worship-privacy-centric-graph> {
+      ?person ?pprivate ?oprivate .
+    }
+  }
+}

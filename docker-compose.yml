@@ -370,7 +370,7 @@ services:
   # LOKET MANDATARISSEN CONSUMERS
   ################################################################################
   mandatarissen-consumer:
-    image: lblod/delta-consumer:0.1.0
+    image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SERVICE_NAME: "mandatarissen-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
@@ -403,7 +403,7 @@ services:
   # LOKET LEIDINGGEVENDEN CONSUMERS
   ################################################################################
   leidinggevenden-consumer:
-    image: lblod/delta-consumer:0.1.0
+    image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SERVICE_NAME: "leidinggevenden-consumer"
       DCR_SYNC_BASE_URL: "https://loket.lblod.info" # replace with link to Loket API
@@ -436,13 +436,13 @@ services:
   # LOKET WORSHIP SENSITIVE CONSUMERS
   ################################################################################
   worship-services-main-info-consumer:
-    image: lblod/delta-consumer:0.1.0
+    image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "worship-services-main-info-consumer"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/WorshipServicesSensitiveCacheGraphDump"
-      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitive"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitiveDeltaFileSyncing"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitive/main"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitiveDeltaFileSyncing/main"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/worship-services-main-info-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
       BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
@@ -469,13 +469,13 @@ services:
     logging: *default-logging
 
   worship-services-private-info-consumer:
-    image: lblod/delta-consumer:0.1.0
+    image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
       DCR_SERVICE_NAME: "worship-services-private-info-consumer"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/WorshipServicesSensitiveCacheGraphDump"
-      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitive"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitiveDeltaFileSyncing"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitive/private"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitiveDeltaFileSyncing/private"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/worship-services-private-info-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
       BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
