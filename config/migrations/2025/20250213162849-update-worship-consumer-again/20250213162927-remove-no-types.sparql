@@ -1,0 +1,17 @@
+DELETE {
+  GRAPH ?g {
+    ?s ?p ?o
+  }
+}
+WHERE {
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/worship-privacy-centric-graph>
+    <http://mu.semte.ch/graphs/worship-service>
+  }
+  GRAPH ?g {
+    ?s ?p ?o.
+    FILTER NOT EXISTS {
+      ?s a ?type.
+    }
+  }
+}

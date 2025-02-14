@@ -38,6 +38,67 @@ drc restart resource dispatcher db
 drc up -d db-cleanup-service
 drc pull frontend; drc up -d frontend
 ./scripts/reset-elastic.sh
+
+## 1.29.1 (2025-02-14)
+### Backend
+ - re-init `worship-services-sensitive-consumer` [OP-3483]
+### Deploy notes
+:warning: Ensure first loket did a full re-sync again of this delta-stream.
+```
+drc stop worship-services-main-info-consumer worship-services-private-info-consumer
+drc retart migrations
+```
+Update `docker-compose.override.yml` to remove the config of the consumers and replace it by:
+```
+  worship-services-main-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+  worship-services-private-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "triplestore" # for the initial sync, we go directly to virtuoso
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+```
+Then
+```
+drc up -d db mandatarissen-consumer leidinggevenden-consumer worship-services-main-info-consumer worship-services-private-info-consumer
+# Wait until success of the previous step
+```
+Then, update `docker-compose.override.yml` to:
+```
+  worship-services-main-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "db"
+      DCR_REMAPPING_DATABASE: "db"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+  worship-services-private-info-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info" # or another endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login" # or another endpoint
+      DCR_SECRET_KEY: "key-of-the-producer"
+      DCR_LANDING_ZONE_DATABASE: "database"
+      DCR_REMAPPING_DATABASE: "database"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+```
+```
+drc up -d
+sh scripts/reset-elastic.sh
+
 ```
 
 ## 1.29.0 (2025-02-07)
