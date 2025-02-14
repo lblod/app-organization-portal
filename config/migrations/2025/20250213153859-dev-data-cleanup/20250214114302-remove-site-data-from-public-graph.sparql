@@ -1,0 +1,36 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX schema: <http://schema.org/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?contactPoint ?p ?o.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?contactPoint a schema:ContactPoint;
+                  ?p ?o.
+  }
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?address ?p ?o.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?address a locn:Address;
+             ?p ?o.
+  }
+}
+;
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?site ?p ?o.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?site a org:Site;
+          ?p ?o.
+  }
+}

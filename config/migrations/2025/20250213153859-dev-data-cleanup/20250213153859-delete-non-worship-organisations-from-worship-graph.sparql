@@ -1,0 +1,44 @@
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# Remove triples for non-worship organisations from the worship graph. The
+# duplicated triples are limited to type and uuid predicates as well as site
+# data.
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?organisation ?organisationP ?organisationO.
+    ?organisationO ?siteP ?siteO.
+    ?address ?addressP ?addressO.
+    ?contactPoint ?contactPointP ?contactPointO.
+  }
+} WHERE {
+  # Limit matched organisations to non-worship organisations
+  VALUES ?g {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+  }
+  GRAPH ?g {
+    ?organisation a org:Organization.
+  }
+  # Explicitly limit to triples for the predicates that are duplicated.
+  # NOTE: Do *not* remove triples for the `ere:betrokkenBestuur` predicate,
+  # these are valid triples for defining local involvements.
+  VALUES ?organisationP {
+    rdf:type
+    mu:uuid
+    org:hasPrimarySite
+    org:hasSite
+  }
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?organisation ?organisationP ?organisationO.
+    OPTIONAL {
+      ?organisationO a org:Site;
+                     organisatie:bestaatUit ?address;
+                     org:siteAddress ?contactPoint;
+                     ?siteP ?siteO.
+      ?address ?addressP ?addressO.
+      ?contactPoint ?contactPointP ?contactPointO.
+    }
+  }
+}
