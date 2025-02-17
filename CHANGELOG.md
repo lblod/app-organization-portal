@@ -1,4 +1,7 @@
 # Changelog
+## 1.29.2 (2025-02-17)
+### Data fix
+ - restore bestrokken lokale besturen that have been accidentally flushed [OP-3546]
 ## 1.29.1 (2025-02-14)
 ### Backend
  - re-init `worship-services-sensitive-consumer` [OP-3483]
