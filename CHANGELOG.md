@@ -26,7 +26,7 @@
 - To enable the membership functionality:
   + Restart migration service
   + Restart services for which the configuration was changed: `resource`,  `dispatcher` and `db`
-  + Start the `db-cleanup-service`
+  + Start the `db-cleanup` service
   + Pull and restart the frontend
   + Perform a re-index using `reset-elastic.sh` script
 #### Deploy commands
@@ -36,7 +36,7 @@ drc up -d search
 drc restart migrations; drc logs -ft --tail=200 migrations
 drc restart migrations-triggering-indexing && drc logs -ft --tail=200 migrations-triggering-indexing
 drc restart resource dispatcher db
-drc up -d db-cleanup-service
+drc up -d db-cleanup
 drc pull frontend; drc up -d frontend
 ./scripts/reset-elastic.sh
 ```
