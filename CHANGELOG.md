@@ -1,7 +1,50 @@
 # Changelog
+## Unreleased
+
+## v1.30.0 (prerelease v1.30.0-0: 2025-02-18)
+### Frontend
+- Bump to version [v1.29.0](TODO: link to release)
+### Backend
+- Datafix: delete duplicate identifiers [OP-3157]
+- Feature: replace different relations between organisations by memberships [OP-3195 (epic), OP-2606, OP-3156, OP-3198, OP-3199, OP-3258, OP-3259, OP-3260, OP-3265, OP-3293, OP-3305]
+- Added `db-cleanup-service` to keep membership data backwards compatible [OP-3369]
+- Datafix: delete incorrect change event [OP-3363]
+- Feature: re-enable contact data editing [OP-3425]
+- Remove gemeente and provincie classifications from admin unit graph [OP-3393]
+- Remove several OCMW bcsd faciliteitgemeenten [OP-3535]
+- Completely remove AGB Stekene's data. [OP-3409]
+- Remove reasoner service, replaced by new consumer logic
+
+### Deploy Notes
+- Before pulling the changes
+  + Shut down the reasoner and thank it for its good service: `drc down reasoner`
+- Re-enable contact date editing:
+  + remove `EMBER_ENABLE_EDIT_CONTACT_DATA_FEATURE` flag in `docker-compose.override.yml`
+  + Stop and remove the `clb-contact-data-consumer` service
+  + Remove the `clb-contact-data-consumer` configuration in `docker-compose.override.yml`
+- Rebuild the `search` service before starting the re-indexing
+- To enable the membership functionality:
+  + Restart migration service
+  + Restart services for which the configuration was changed: `resource`,  `dispatcher` and `db`
+  + Start the `db-cleanup-service`
+  + Pull and restart the frontend
+  + Perform a re-index using `reset-elastic.sh` script
+#### Deploy commands
+```
+drc down clb-contact-data-consumer
+drc up -d search
+drc restart migrations; drc logs -ft --tail=200 migrations
+drc restart migrations-triggering-indexing && drc logs -ft --tail=200 migrations-triggering-indexing
+drc restart resource dispatcher db
+drc up -d db-cleanup-service
+drc pull frontend; drc up -d frontend
+./scripts/reset-elastic.sh
+```
+
 ## 1.29.2 (2025-02-17)
 ### Data fix
- - restore bestrokken lokale besturen that have been accidentally flushed [OP-3546]
+ - restore betrokken lokale besturen that have been accidentally flushed [OP-3546]
+
 ## 1.29.1 (2025-02-14)
 ### Backend
  - re-init `worship-services-sensitive-consumer` [OP-3483]

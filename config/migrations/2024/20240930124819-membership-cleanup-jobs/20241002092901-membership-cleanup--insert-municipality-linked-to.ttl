@@ -1,0 +1,45 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# Insert triples of the form:
+# <Municipality> <http://www.w3.org/ns/org#linkedTo> <subOrg>
+# matching memberships for which no such triple exists.
+
+# Municipality: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+#
+# OCMW: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>
+# APB: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+
+<http://data.lblod.info/id/cleanup-job/a99bcd5c-9781-425d-8a34-fb11a6e3e262> a cleanup:Job ;
+    mu:uuid "a99bcd5c-9781-425d-8a34-fb11a6e3e262" ;
+    dcterms:title "Insert missing `org:linkedTo` triples for Municipalities." ;
+    cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+
+      INSERT {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?organization org:linkedTo ?member .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?membership a org:Membership ;
+            org:organization ?organization ;
+            org:member ?member ;
+            org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+
+          FILTER NOT EXISTS { ?organization org:linkedTo ?member . }
+
+          ?member org:classification ?memberClass .
+          FILTER ( ?memberClass
+                   IN (
+                      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> ,
+                      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+                    )
+               )
+        }
+        GRAPH <http://mu.semte.ch/graphs/shared> {
+          ?organization org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+        }
+      }
+    """ .

@@ -1,0 +1,37 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# Add the "has a relation with" membership between provinces and municipalities
+# for the new municipalities that were added for the 2025 mergers.
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership a org:Membership ;
+      mu:uuid ?uuid ;
+      org:organization ?province ;
+      org:member ?municipality ;
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> . # has a relation with
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?province org:hasSubOrganization ?municipality .
+    FILTER (?province IN
+            (
+             <http://data.lblod.info/id/bestuurseenheden/298b13541e1e85de4b71535197aa1f3bbc4bdb67f0fe0f58ab4a7dc207af61fa> , # Oost-Vlaanderen
+             <http://data.lblod.info/id/bestuurseenheden/8b7e7bf05ace5bb1a68f5bc0d870e20c20f147b00bd9a3dcce3a01733d4da744> , # Vlaams-Brabant
+             <http://data.lblod.info/id/bestuurseenheden/14278813524c762255aeba149e7d7134ddecfbb43e7d56910731bd4e13e34f39> , # Limburg
+             <http://data.lblod.info/id/bestuurseenheden/bd74ee38a4b1e296821a11729c1f704cf439576c7ab2c910c95b067cf183d923> , # Antwerpen
+             <http://data.lblod.info/id/bestuurseenheden/8152e68420f560b8493d6c555a5bd4186903dc341028bb9855af6c44a9464fea> # West-Vlaanderen
+             )
+            )
+  }
+  BIND (SHA256(CONCAT(STR(?province), " has a relation with ", STR(?municipality))) AS ?uuid)
+  BIND (IRI(CONCAT("http://data.lblod.info/id/lidmaatschap/", ?uuid)) AS ?membership)
+
+  VALUES ?municipality {
+    <http://data.lblod.info/id/bestuurseenheden/19483103-318e-435a-aa37-45e485406ee9> # Beveren-Kruibeke-Zwijndrecht
+    <http://data.lblod.info/id/bestuurseenheden/b8bb293d-aa22-4b43-bda4-0b6af76e9493> # Merelbeke-Melle
+    <http://data.lblod.info/id/bestuurseenheden/1ca65d65-54ff-4b44-b750-bd70c91191af> # Nazareth-De Pinte
+    <http://data.lblod.info/id/bestuurseenheden/add1e4eb-9ec7-4ea6-af82-335aa76b7d48> # Pajottegem
+  }
+}

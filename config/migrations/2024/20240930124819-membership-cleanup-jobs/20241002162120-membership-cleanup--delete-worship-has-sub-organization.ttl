@@ -1,0 +1,36 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# Delete triples of the form
+# <Central Worship Service> <http://www.w3.org/ns/org#hasSubOrganization> <Worship Service>
+# for which no matching membership exists.
+
+# Central Worship Service <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>
+# Worship Service <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>
+
+<http://data.lblod.info/id/cleanup-job/50cee254-37e4-410e-936a-d974047bdd4b> a cleanup:Job ;
+    mu:uuid "50cee254-37e4-410e-936a-d974047bdd4b" ;
+    dcterms:title "Delete leftover `org:hasSubOrganization` triples for Central Worship Services and Worship Services." ;
+    cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+
+      DELETE {
+        GRAPH <http://mu.semte.ch/graphs/worship-service> {
+          ?cws org:hasSubOrganization ?ws .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/worship-service> {
+          ?cws org:hasSubOrganization ?ws .
+          FILTER NOT EXISTS {
+            ?membership a org:Membership ;
+              org:organization ?cws ;
+              org:member ?ws ;
+              org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+        }
+
+        ?cws org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054> .
+        ?ws org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86> .
+      }
+    }
+    """ .

@@ -1,0 +1,47 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# Delete triples of the form:
+# <Municipality> <http://www.w3.org/ns/org#linkedTo> <subOrg>
+# for which no matching membership exists.
+
+# Municipality: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+#
+# OCMW: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>
+# APB: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+
+<http://data.lblod.info/id/cleanup-job/14cfd05c-7047-43a1-97e4-42d3dd6b048d> a cleanup:Job ;
+    mu:uuid "14cfd05c-7047-43a1-97e4-42d3dd6b048d" ;
+    dcterms:title "Delete leftover `org:linkedTo` triples for Municipalities." ;
+    cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+
+      DELETE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?municipality org:linkedTo ?member .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?municipality org:linkedTo ?member .
+          FILTER NOT EXISTS {
+            ?membership a org:Membership ;
+              org:organization ?municipality ;
+              org:member ?member ;
+              org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+          }
+
+          ?member org:classification ?memberClass .
+          FILTER ( ?memberClass
+                   IN (
+                      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> ,
+                      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d>
+
+                    )
+               )
+        }
+        GRAPH <http://mu.semte.ch/graphs/shared> {
+          ?municipality org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+        }
+    }
+    """ .

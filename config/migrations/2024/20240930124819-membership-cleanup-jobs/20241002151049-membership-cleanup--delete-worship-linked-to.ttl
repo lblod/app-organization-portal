@@ -1,0 +1,42 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# Delete triples of the form:
+# <Representative Body> <http://www.w3.org/ns/org#linkedTo> <Worship Service>
+# <Representative Body> <http://www.w3.org/ns/org#linkedTo> <Central Worship Service>
+# for which no matching membership exists.
+
+# Worship Service: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86>
+# Central Worship Service: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>
+
+<http://data.lblod.info/id/cleanup-job/679eec55-0f69-4d45-84c1-9f73df966983> a cleanup:Job ;
+    mu:uuid "679eec55-0f69-4d45-84c1-9f73df966983" ;
+    dcterms:title "Delete leftover `org:linkedTo` triples for Representative Bodies and [Central] Worship Services." ;
+    cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+
+      DELETE {
+        GRAPH <http://mu.semte.ch/graphs/worship-service> {
+          ?s org:linkedTo ?o .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/worship-service> {
+          ?s org:linkedTo ?o .
+          FILTER NOT EXISTS {
+            ?membership a org:Membership ;
+            org:organization ?o ;
+            org:member ?s ;
+            org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+          }
+
+          ?s org:classification                           <http://data.vlaanderen.be/id/concept/RepresentatiefOrgaanClassificatieCode/89a00b5a-024f-4630-a722-65a5e68967e5> .
+
+          ?o org:classification ?oClass .
+          FILTER ( ?oClass IN (
+                               <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86> ,
+                               <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>
+                               ))
+        }
+      }
+      """ .

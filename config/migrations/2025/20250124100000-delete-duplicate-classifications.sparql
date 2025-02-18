@@ -1,0 +1,17 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?adminUnit org:classification ?c
+  }
+}
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?adminUnit org:classification ?c
+  }
+  ?c skos:prefLabel ?l .
+  FILTER (?l IN ("Gemeente", "Provincie"))
+}

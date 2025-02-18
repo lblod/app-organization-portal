@@ -1,0 +1,15 @@
+DELETE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/bestuurseenheden/8d6609b4-1a20-46b8-97ed-150c6d53acd6> <http://www.w3.org/ns/regorg#orgStatus> ?orgStatus .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    <http://data.lblod.info/id/bestuurseenheden/8d6609b4-1a20-46b8-97ed-150c6d53acd6> <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    <http://data.lblod.info/id/bestuurseenheden/8d6609b4-1a20-46b8-97ed-150c6d53acd6> <http://www.w3.org/ns/regorg#orgStatus> ?orgStatus .
+  }
+}

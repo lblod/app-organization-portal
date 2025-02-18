@@ -23,6 +23,8 @@ services:
     restart: "no"
   cache:
     restart: "no"
+  db-cleanup:
+    restart: "no"
   kalliope-api:
     environment:
       SECURITY_CONFIG_PATH: "/config/security-dev.json"
@@ -56,8 +58,6 @@ services:
     restart: "no"
   search:
     restart: "no"
-    volumes:
-      - ./config/search/dev:/config
   elasticsearch:
     restart: "no"
   file:

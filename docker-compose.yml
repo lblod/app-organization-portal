@@ -8,7 +8,7 @@ x-logging: &default-logging
 
 services:
   identifier:
-    image: semtech/mu-identifier:1.10.1
+    image: semtech/mu-identifier:1.10.3
     environment:
       DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: '[{"variables":[],"name":"public"}]'
       SESSION_COOKIE_SECURE: "on"
@@ -51,8 +51,17 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  db-cleanup:
+    image: lblod/db-cleanup-service:0.5.1
+    environment:
+      MU_SPARQL_ENDPOINT: "http://db:8890/sparql"
+      CRON_PATTERN: "23 */6 * * *"
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   migrations:
-    image: semtech/mu-migrations-service:0.7.0
+    image: semtech/mu-migrations-service:0.9.0
     links:
       - triplestore:database
     volumes:
@@ -62,7 +71,7 @@ services:
     restart: always
     logging: *default-logging
   migrations-triggering-indexing:
-    image: semtech/mu-migrations-service:0.8.0
+    image: semtech/mu-migrations-service:0.9.0
     links:
       - db:database
     volumes:
@@ -183,6 +192,7 @@ services:
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
+      EMBER_ENABLE_EDIT_CONTACT_DATA_FEATURE: "true"
       EMBER_OAUTH_API_REDIRECT_URL: "https://organisaties.abb.lblod.info/authorization/callback"
       EMBER_OAUTH_API_KEY: "677af572-2e2f-4e61-ad38-036723bb314c"
       EMBER_OAUTH_API_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
@@ -201,7 +211,7 @@ services:
     restart: always
     logging: *default-logging
   file:
-    image: semtech/mu-file-service:3.2.0
+    image: semtech/mu-file-service:3.4.0
     volumes:
       - ./data/files:/share
     links:
@@ -256,20 +266,9 @@ services:
     restart: always
     logging: *default-logging
   construct-organization-relationships:
-    image: lblod/construct-organization-relationships-service:1.0.1
-    environment:
-      START_DATE_WORSHIP_GOVERNING_BODY: "2023-04-01T00:00:00"
-      END_DATE_WORSHIP_GOVERNING_BODY: "2026-03-31T00:00:00"
+    image: lblod/construct-organization-relationships-service:1.0.3
     links:
       - db:database
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
-  reasoner:
-    image: eyereasoner/reasoning-service:1.0.4
-    volumes:
-      - ./config/reasoner:/config
     labels:
       - "logging=true"
     restart: always
@@ -439,6 +438,8 @@ services:
     image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login"
+      DCR_SECRET_KEY: "<override with secret key>"
       DCR_SERVICE_NAME: "worship-services-main-info-consumer"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/WorshipServicesSensitiveCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitive/main"
@@ -472,6 +473,8 @@ services:
     image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/worship-services-sensitive/login"
+      DCR_SECRET_KEY: "<override with secret key>"
       DCR_SERVICE_NAME: "worship-services-private-info-consumer"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/WorshipServicesSensitiveCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/wsSensitive/private"
@@ -493,37 +496,6 @@ services:
     volumes:
       - ./config/loket-consumer/worship-services-private-info/mapping:/config/mapping
       - ./data/files/consumer-files/worship-services-private-info:/consumer-files/
-    restart: always
-    labels:
-      - "logging=true"
-    links:
-      - db:database
-      - triplestore:virtuoso
-    logging: *default-logging
-
-################################################################################
-  # CLB CONSUMERS
-  ################################################################################
-  clb-contact-data-consumer:
-    image: lblod/delta-consumer:0.0.18
-    environment:
-      DCR_SYNC_BASE_URL: "https://dev.contactgegevens-loket.lblod.info/"
-      DCR_SERVICE_NAME: "clb-contact-data-consumer"
-      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/ContactGegevensCacheGraphDump"
-      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/contactData"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/contactDataDeltaFileSyncing"
-      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/clb-contact-data-consumer"
-      DCR_DISABLE_INITIAL_SYNC: "false"
-      BYPASS_MU_AUTH_FOR_EXPENSIVE_QUERIES: "true"
-      DCR_SYNC_FILES_PATH: "/sync/contact-data/files"
-      BATCH_SIZE: 1000
-      DCR_KEEP_DELTA_FILES: "true"
-      DCR_ENABLE_DELTA_CONTEXT: "true"
-      DCR_LANDING_ZONE_DATABASE: "triplestore"
-      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/clb-contact-data"
-    volumes:
-      - ./config/clb-consumer/contact-data:/config/triples-dispatching/custom-dispatching
-      - ./data/files/consumer-files/clb-contact-data:/consumer-files/
     restart: always
     labels:
       - "logging=true"
@@ -570,7 +542,7 @@ services:
   # MU SEARCH
   ################################################################################
   search:
-    image: semtech/mu-search:0.10.0-beta.5
+    image: semtech/mu-search:0.10.0
     links:
       - db:database
     restart: always
