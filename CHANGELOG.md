@@ -1,9 +1,9 @@
 # Changelog
 ## Unreleased
 
-## v1.30.0 (prerelease v1.30.0-0: 2025-02-18)
+## v1.30.0 (2025-02-19)
 ### Frontend
-- Bump to version [v1.29.0](TODO: link to release)
+- Bump to version [v1.29.0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.29.0)
 ### Backend
 - Datafix: delete duplicate identifiers [OP-3157]
 - Feature: replace different relations between organisations by memberships [OP-3195 (epic), OP-2606, OP-3156, OP-3198, OP-3199, OP-3258, OP-3259, OP-3260, OP-3265, OP-3293, OP-3305]
