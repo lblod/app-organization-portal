@@ -1,6 +1,13 @@
 # Changelog
 ## Unreleased
 
+## v1.30.1 (2025-02-20)
+### Backend
+ - Bestuursorgaanclassificatiecode of VGC was in wrong graph, so it wouldn't export. [DL-6428]
+### Deploy notes
+```
+drc restart migrations
+```
 ## v1.30.0 (2025-02-19)
 ### Frontend
 - Bump to version [v1.29.0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.29.0)
