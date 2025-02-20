@@ -1,0 +1,21 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s ?p ?o
+  }
+}
+INSERT {
+   GRAPH <http://mu.semte.ch/graphs/public> {
+     ?s ?p ?o
+   }
+}
+WHERE {
+
+  VALUES ?s {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/7148e12a-ae03-4a7b-bb16-7b6269b84175>
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ff20fa3e-806b-4160-b74b-7483fe3a6ecd>
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s ?p ?o
+  }
+}
