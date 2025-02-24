@@ -1,5 +1,14 @@
 # Changelog
 ## Unreleased
+### Frontend
+- Bump to version [TODO](Link to frontend release)
+### Backend
+- Datafix: move status for municipalities and provinces to the `shared` graph such that it can be read by worship users [OP-3469]
+### Deploy notes
+```
+drc restart migrations; drc logs -ft --tail=200 migrations
+drc pull frontend; drc up -d frontend
+```
 
 ## v1.30.1 (2025-02-20)
 ### Backend
@@ -21,7 +30,6 @@ drc restart migrations
 - Remove several OCMW bcsd faciliteitgemeenten [OP-3535]
 - Completely remove AGB Stekene's data. [OP-3409]
 - Remove reasoner service, replaced by new consumer logic
-
 ### Deploy Notes
 - Before pulling the changes
   + Shut down the reasoner and thank it for its good service: `drc down reasoner`

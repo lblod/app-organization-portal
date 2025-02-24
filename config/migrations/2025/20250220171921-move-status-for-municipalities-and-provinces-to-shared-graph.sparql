@@ -1,0 +1,28 @@
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organisation regorg:orgStatus ?status.
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?organisation regorg:orgStatus ?status.
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?organisation a besluit:Bestuurseenheid;
+                  org:classification ?class.
+    FILTER (?class IN
+            (
+             <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>, # Municipality
+             <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> # Province
+             )
+            )
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organisation regorg:orgStatus ?status.
+  }
+}
