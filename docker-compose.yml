@@ -253,10 +253,10 @@ services:
       INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/initialSyncing/organizations"
       HEALING_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/sp-sync/healingOperation/organizations"
       USE_VIRTUOSO_FOR_EXPENSIVE_SELECTS: "true"
-      USERNAME: 'username-to-override'
-      PASSWORD: 'password-to-override'
-      SITE: 'site-to-override'
-      LIST: 'list-to-override'
+      USERNAME: "username-to-override"
+      PASSWORD: "password-to-override"
+      SITE: "site-to-override"
+      LIST: "list-to-override"
     links:
       - db:database
     volumes:
@@ -350,7 +350,7 @@ services:
       PUBLICATION_VIRTUOSO_ENDPOINT: "http://publication-triplestore:8890/sparql"
       PUBLICATION_MU_AUTH_ENDPOINT: "http://publication-triplestore:8890/sparql"
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
-      CONFIG_SERVICES_JSON_PATH: '/config/publication-graph-maintainer/config.json'
+      CONFIG_SERVICES_JSON_PATH: "/config/publication-graph-maintainer/config.json"
     volumes:
       - ./config/delta-producer:/config
       - ./data/files/:/share
@@ -511,32 +511,63 @@ services:
   ################################################################################
   # LDES PRODUCERS
   ################################################################################
-
   ldes-delta-pusher:
-    image: redpencil/ldes-delta-pusher:latest
-    profiles: ["dev"] # Disable ldes feed by default until ready for qa/prod
+    image: redpencil/ldes-delta-pusher:1.2.2
     environment:
-      LDES_ENDPOINT: 'http://ldes-backend/organizations'
-    volumes:
-      - ./config/ldes-delta-pusher/:/config/
+      LDES_ENDPOINT: "http://ldes-backend"
+      LDES_BASE: "https://data.lblod.info/streams/op"
+      LDES_FOLDER: ldes
+      DATA_FOLDER: /data
+      CRON_HEALING: "0 0 0 * * *" # Every day at midnight
+      AUTO_HEALING: "true"
+      CRON_CHECKPOINT: "0 0 5 1 * *"
+      SUDO_QUERY_RETRY_TIMEOUT_INCREMENT_FACTOR: 0.003
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: 429,500,502,503,504
+      MAX_PAGE_SIZE_BYTES: 10000000
+      INITIAL_STATE_LIMIT: 10000
+      DIRECT_DB_ENDPOINT: "http://triplestore:8890/sparql"
+      WRITE_INITIAL_STATE: "false"
+      # for writing initial state
+      #WRITE_INITIAL_STATE: "true"
+
     links:
       - db:database
-    restart: always
-
-  ldes-backend:
-    image: redpencil/fragmentation-producer:0.4.0
-    profiles: ["dev"] # Disable ldes feed by default until ready for qa/prod
-    environment:
-      FOLDER_DEPTH: 1
-      PAGE_RESOURCES_COUNT: 50
-      LDES_STREAM_PREFIX: 'http://data.lblod.info/streams/op/'
-      TIME_TREE_RELATION_PATH: 'http://www.w3.org/ns/prov#generatedAtTime'
-      CACHE_SIZE: 10
-      DATA_FOLDER: '/data'
-      ENABLE_AUTH: 'false'
-    restart: always
     volumes:
-      - './data/ldes-feed/:/data/'
+      - ./config/ldes-delta-pusher/:/config/
+      - ./data/ldes-feed/:/data/
+    restart: always
+    logging: *default-logging
+    labels:
+      - "logging=true"
+  ldes-backend:
+    image: redpencil/fragmentation-producer:0.4.2
+    restart: always
+    logging: *default-logging
+    labels:
+      - "logging=true"
+    environment:
+      BASE_URL: "https://data.lblod.info/streams/op/"
+      FOLDER_DEPTH: 1
+      PAGE_RESOURCES_COUNT: 20
+      LDES_STREAM_PREFIX: "https://data.lblod.info/streams/op/"
+      TIME_TREE_RELATION_PATH: "http://www.w3.org/ns/prov#generatedAtTime"
+      CACHE_SIZE: 10
+      DATA_FOLDER: "/data"
+      ENABLE_AUTH: "false"
+    links:
+      - db:database
+    volumes:
+      - "./data/ldes-feed/:/data/"
+  modified:
+    image: lblod/track-modified-service:0.0.1
+    labels:
+      - "logging=true"
+    volumes:
+      - ./config/modified:/config
+    restart: always
+    logging: *default-logging
+    links:
+      - db:database
 
   ################################################################################
   # MU SEARCH

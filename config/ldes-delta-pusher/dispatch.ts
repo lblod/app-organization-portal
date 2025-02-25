@@ -1,73 +1,71 @@
 import { moveTriples } from "../support";
 import { Changeset } from "../types";
-import { query, sparqlEscapeUri } from 'mu';
+import { sparqlEscapeUri } from "mu";
+import { querySudo } from "@lblod/mu-auth-sudo";
+import ldesTypes from "./ldes-types";
+import ldesGraphs from "./ldes-graphs";
+
+const safeLdesTypes = ldesTypes
+  .map((type) => {
+    return sparqlEscapeUri(type);
+  })
+  .join("\n");
+
+const safeGraphValues = ldesGraphs
+  .map((graph) => {
+    return sparqlEscapeUri(graph);
+  })
+  .join("\n");
 
 export default async function dispatch(changesets: Changeset[]) {
-	for (const changeset of changesets) {
-		const subjects = new Set(changeset.inserts.map((insert) => insert.subject.value));
-		for (const subject of subjects) {
-			const { results: { bindings } } = await query(`
-        PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-        PREFIX code: <http://telegraphis.net/ontology/measurement/code#>
-        PREFIX org: <http://www.w3.org/ns/org#>
-        PREFIX adms: <http://www.w3.org/ns/adms#>
-        PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
-  
-        CONSTRUCT {
-          ?organization a org:Organization;
-                        skos:prefLabel ?prefLabel;
-                        adms:identifier ?identifier;
-                        org:hasPrimarySite ?site.
-          ?identifier skos:notation ?identifierLabel;
-                      generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
-          ?gestructureerdeIdentificator generiek:lokaleIdentificator ?lokaleIdentificator.
-          ?site org:siteAddress ?siteAddress.
-          ?siteAddress ?p ?o.
-        } WHERE {
-          {
-            VALUES ?organization { ${sparqlEscapeUri(subject)} }
-            ?organization a org:Organization;
-                          skos:prefLabel ?prefLabel;
-                          adms:identifier ?identifier;
-                          org:hasPrimarySite ?site.
-            ?identifier skos:notation ?identifierLabel;
-                        generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
-            ?gestructureerdeIdentificator generiek:lokaleIdentificator ?lokaleIdentificator.
-            ?site org:siteAddress ?siteAddress.
-            ?siteAddress ?p ?o.
-          } UNION {
-            VALUES ?site { ${sparqlEscapeUri(subject)} }
-            ?organization a org:Organization;
-                          skos:prefLabel ?prefLabel;
-                          adms:identifier ?identifier;
-                          org:hasPrimarySite ?site.
-            ?identifier skos:notation ?identifierLabel;
-                        generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
-            ?gestructureerdeIdentificator generiek:lokaleIdentificator ?lokaleIdentificator.
-            ?site org:siteAddress ?siteAddress.
-            ?siteAddress ?p ?o.
-          } UNION {
-            VALUES ?siteAddress { ${sparqlEscapeUri(subject)} }
-            ?organization a org:Organization;
-                          skos:prefLabel ?prefLabel;
-                          adms:identifier ?identifier;
-                          org:hasPrimarySite ?site.
-            ?identifier skos:notation ?identifierLabel;
-                        generiek:gestructureerdeIdentificator ?gestructureerdeIdentificator.
-            ?gestructureerdeIdentificator generiek:lokaleIdentificator ?lokaleIdentificator.
-            ?site org:siteAddress ?siteAddress.
-            ?siteAddress ?p ?o.
-          } 
-        }
-			`);
-      if(bindings.length){
-        console.log('SUCCESS')
-        await moveTriples([
-          {
-            inserts: bindings.map(({ s, p, o}) => { return { subject: s, predicate: p, object: o} }),
-          }
-        ])
+  const subjects = new Set();
+  // note: we're not getting filtered changesets here so if there is a 'change'
+  // that inserts the same triple again, we still consider it to be a change and we WILL republish
+  // this can be optimized but we don't want to impact the rest of the application
+  for (const changeset of changesets) {
+    changeset.inserts.forEach((insert) => subjects.add(insert.subject.value));
+    changeset.deletes.forEach((del) => subjects.add(del.subject.value));
+  }
+  const safeSubjects = Array.from(subjects)
+    .map((subject) => {
+      return sparqlEscapeUri(subject);
+    })
+    .join("\n");
+
+  const {
+    results: { bindings },
+  } = await querySudo(`
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX code: <http://telegraphis.net/ontology/measurement/code#>
+    PREFIX org: <http://www.w3.org/ns/org#>
+    PREFIX adms: <http://www.w3.org/ns/adms#>
+    PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX schema: <http://schema.org/>
+    PREFIX as: <http://www.w3.org/ns/activitystreams#>
+    PREFIX locn: <http://www.w3.org/ns/locn#>
+
+    CONSTRUCT {
+      ?target ?p ?o.
+    } WHERE {
+      VALUES ?target { ${safeSubjects} }
+      VALUES ?type { ${safeLdesTypes} }
+      ?target a ?type .
+      GRAPH ?g {
+        ?target ?p ?o.
       }
-		}
-	}
+      VALUES ?g {
+        ${safeGraphValues}
+      }
+    }
+  `);
+  if (bindings.length) {
+    await moveTriples([
+      {
+        inserts: bindings.map(({ s, p, o }) => {
+          return { subject: s, predicate: p, object: o };
+        }),
+      },
+    ]);
+  }
 }
