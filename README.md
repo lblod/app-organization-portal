@@ -185,3 +185,7 @@ To make sure the app can share data, producers need to be set up. There is an in
        )
      }
 ```
+
+## LDES
+
+This application uses LDES to share information with other applications. For instance, Lokaal Mandatenbeheer uses this LDES to keep its information on Bestuurseenheid, Bestuursorgaan and Mandaat instances up to date. Read more about it [here](docs/LDES.md).
