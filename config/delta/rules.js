@@ -178,56 +178,36 @@ export default [
       ignoreFromSelf: true,
       optOutMuScopeIds: [ "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync" ]
     }
-  }
-/*
-  Commenting ldes rules until ready to go to qa/prod. In the meantime, we override the configuration on dev.
-  {
-    match: {
-      graph: {
-        type: 'uri',
-        value: 'http://mu.semte.ch/graphs/shared',
-      }
-    },
-    callback: {
-      url: 'http://ldes-delta-pusher/publish',
-      method: 'POST',
-    },
-    options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-    }
   },
   {
     match: {
-      graph: {
-        type: 'uri',
-        value: 'http://mu.semte.ch/graphs/worship-service',
-      }
+      subject: {},
     },
     callback: {
-      url: 'http://ldes-delta-pusher/publish',
-      method: 'POST',
+      url: "http://modified/delta",
+      method: "POST",
     },
     options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-    }
+      resourceFormat: "v0.0.1",
+      gracePeriod: 2000,
+      retry: 3,
+      ignoreFromSelf: true,
+      retryTimeout: 250,
+    },
   },
   {
     match: {
-      graph: {
-        type: 'uri',
-        value: 'http://mu.semte.ch/graphs/administrative-unit',
-      }
+      subject: {},
     },
     callback: {
-      url: 'http://ldes-delta-pusher/publish',
-      method: 'POST',
+      url: "http://ldes-delta-pusher/publish",
+      method: "POST",
     },
     options: {
-      resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
-    }
+      resourceFormat: "v0.0.1",
+      gracePeriod: 10000,
+      retry: 3,
+      retryTimeout: 250,
+    },
   }
-*/
 ]

@@ -82,7 +82,12 @@ services:
     restart: "no"
   worship-services-private-info-consumer:
     restart: "no"
+  ldes-delta-pusher:
+    restart: "no"
+  modified:
+    restart: "no"
   ldes-backend:
+    restart: "no"
     environment:
       BASE_URL: "http://localhost/ldes/"
   kbo-data-sync:
