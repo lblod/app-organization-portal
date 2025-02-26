@@ -1,0 +1,32 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+  ?timedGoverningBody a besluit:Bestuursorgaan;
+                      mu:uuid ?timedGoverningBodyUuid;
+                      generiek:isTijdspecialisatieVan ?governingBody;
+                      mandaat:bindingStart "2025-01-02"^^xsd:dateTime;
+                      mandaat:bindingEinde "2030-12-31"^^xsd:dateTime.
+  }
+} WHERE {
+  VALUES ?governingBodyClassification {
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> # Algemene vergadering
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> # Raad van bestuur
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?agb a besluit:Bestuurseenheid;
+         org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721>; # AGB
+         mu:uuid ?organizationUuid.
+    ?governingBody besluit:bestuurt ?agb;
+                   org:classification ?governingBodyClassification.
+  }
+
+  BIND(SHA256(CONCAT(STR(?governingBodyClassification), " 2025 ", STR(?governingBody),  STR(?organizationUuid))) AS ?timedGoverningBodyUuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/bestuursorganen/", STR(?timedGoverningBodyUuid))) AS ?timedGoverningBody)
+}
