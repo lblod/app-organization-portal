@@ -1,6 +1,18 @@
 # Changelog
 ## Unreleased
 
+## v1.30.2 (TODO)
+### Backend
+- Datafix: add new timed governing bodies for new legislature for AGBs [DL-6418]
+### Deploy notes
+- Restart the migration service
+- Start a healing job the public producer, or wait for it to kick in overnight
+#### Deploy commands
+```
+drc restart migrations; drc logs -ft --tail=200 migrations
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+```
+
 ## v1.30.1 (2025-02-20)
 ### Backend
  - Bestuursorgaanclassificatiecode of VGC was in wrong graph, so it wouldn't export. [DL-6428]
@@ -8,6 +20,7 @@
 ```
 drc restart migrations
 ```
+
 ## v1.30.0 (2025-02-19)
 ### Frontend
 - Bump to version [v1.29.0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.29.0)
