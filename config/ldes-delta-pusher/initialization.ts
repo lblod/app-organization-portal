@@ -1,6 +1,7 @@
 import ldesGraphs from "./ldes-graphs";
 import ldesTypes from "./ldes-types";
 import { sparqlEscapeUri } from "mu";
+import { pathToBestuurseenheid } from "./utils";
 
 export const initialization = {
   // only one stream needs to be published, call it ldes
@@ -19,5 +20,7 @@ ldesTypes.forEach((type) => {
     graphFilter: `VALUES ?g {
       ${safeGraphValues}
     }`,
+    extraConstruct: `?versionedS <http://mu.semte.ch/vocabularies/ext/owningBestuurseenheid> ?bestuurseenheid .`,
+    extraWhere: `OPTIONAL { ?s ${pathToBestuurseenheid} ?bestuurseenheid . } `,
   };
 });

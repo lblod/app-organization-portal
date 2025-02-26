@@ -4,6 +4,7 @@ import { sparqlEscapeUri } from "mu";
 import { querySudo } from "@lblod/mu-auth-sudo";
 import ldesTypes from "./ldes-types";
 import ldesGraphs from "./ldes-graphs";
+import { pathToBestuurseenheid } from "./utils";
 
 const safeLdesTypes = ldesTypes
   .map((type) => {
@@ -44,15 +45,20 @@ export default async function dispatch(changesets: Changeset[]) {
     PREFIX schema: <http://schema.org/>
     PREFIX as: <http://www.w3.org/ns/activitystreams#>
     PREFIX locn: <http://www.w3.org/ns/locn#>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
     CONSTRUCT {
-      ?target ?p ?o.
+      ?target ?p ?o .
+      ?target ext:owningBestuurseenheid ?bestuurseenheid .
     } WHERE {
       VALUES ?target { ${safeSubjects} }
       VALUES ?type { ${safeLdesTypes} }
       ?target a ?type .
       GRAPH ?g {
         ?target ?p ?o.
+      }
+      OPTIONAL {
+        ?target ${pathToBestuurseenheid} ?bestuurseenheid .
       }
       VALUES ?g {
         ${safeGraphValues}
