@@ -1,9 +1,9 @@
 # Changelog
 ## Unreleased
 
-## v1.30.2 (TODO)
+## v1.30.2 (Pre-release v1.30.2-0 on 2025-02-28)
 ### Backend
-- Datafix: add new timed governing bodies for new legislature for AGBs [DL-6418]
+- Datafix: add new timed governing bodies for new legislature for AGBs [OP-3552]
 ### Deploy notes
 - Restart the migration service
 - Start a healing job the public producer, or wait for it to kick in overnight
