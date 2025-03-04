@@ -1,6 +1,16 @@
 # Changelog
 ## Unreleased
 
+## v1.30.3 (2025-03-04)
+### Frontend
+- Bump to [v1.29.1](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.29.1)
+### Deploy notes
+- Bump frontend
+#### Deploy commands
+```
+drc pull frontend; drc up -d frontend
+```
+
 ## v1.30.2 (2025-02-28)
 ### Backend
 - Datafix: add new timed governing bodies for new legislature for AGBs [OP-3552]
