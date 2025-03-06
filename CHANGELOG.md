@@ -1,6 +1,15 @@
 # Changelog
 ## Unreleased
 
+## v1.30.4 (to be tagged and deployed)
+### Backend
+- Add missing codes to public producer [DL-6210] [DL-6449]
+#### Deploy commands
+```
+drc restart migrations delta-producer-publication-graph-maintainer
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+```
+
 ## v1.30.3 (2025-03-04)
 ### Frontend
 - Bump to [v1.29.1](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.29.1)
