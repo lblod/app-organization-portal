@@ -1,7 +1,7 @@
 # Changelog
 ## Unreleased
 
-## v1.30.4 (to be tagged and deployed)
+## v1.30.4 (2025-03-06)
 ### Backend
 - Add missing codes to public producer [DL-6210] [DL-6449]
 #### Deploy commands
