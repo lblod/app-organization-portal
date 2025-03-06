@@ -1,0 +1,14 @@
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?s <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+  }
+} WHERE {
+  VALUES ?type {
+    <http://lblod.data.gift/vocabularies/organisatie/MandatarisStatusCode>
+    <http://lblod.data.gift/vocabularies/organisatie/BestuursfunctieCode>
+    <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>
+    <http://mu.semte.ch/vocabularies/ext/OrganizationClassificationCode>
+  }
+
+  ?s a ?type .
+}
