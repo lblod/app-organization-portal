@@ -21,6 +21,9 @@ ldesTypes.forEach((type) => {
       ${safeGraphValues}
     }`,
     extraConstruct: `?versionedS <http://mu.semte.ch/vocabularies/ext/owningBestuurseenheid> ?bestuurseenheid .`,
-    extraWhere: `OPTIONAL { ?s ${pathToBestuurseenheid} ?bestuurseenheid . } `,
+    extraWhere: `OPTIONAL {
+      ?s ${pathToBestuurseenheid} ?bestuurseenheid .
+      ?bestuurseenheid a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> .
+    } `,
   };
 });

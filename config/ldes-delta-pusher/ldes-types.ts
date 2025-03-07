@@ -8,5 +8,6 @@ export default [
   "http://schema.org/ContactPoint",
   "http://www.w3.org/ns/locn#Address",
   "http://www.w3.org/ns/org#ChangeEvent",
+  "http://www.w3.org/ns/prov#Location",
   "http://www.w3.org/ns/activitystreams#Tombstone",
 ];

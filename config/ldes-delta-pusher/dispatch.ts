@@ -59,6 +59,7 @@ export default async function dispatch(changesets: Changeset[]) {
       }
       OPTIONAL {
         ?target ${pathToBestuurseenheid} ?bestuurseenheid .
+        ?bestuurseenheid a besluit:Bestuurseenheid .
       }
       VALUES ?g {
         ${safeGraphValues}
