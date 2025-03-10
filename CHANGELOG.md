@@ -19,7 +19,9 @@ drc pull frontend; drc up -d frontend
  - Added `http://www.w3.org/ns/prov#Location` to delta stream 'public' [DL-6496]
 ### Deploy notes
 ```
+drc restart delta-producer-publication-graph-maintainer
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+
 ```
 
 ## v1.30.4 (2025-03-06)
