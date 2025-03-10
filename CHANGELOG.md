@@ -14,6 +14,14 @@ drc pull frontend; drc up -d frontend
 [This README](https://github.com/Riadabd/upgrade-virtuoso) provides the necessary steps for upgrading the database. **NOTE**: This will involve shutting down the app for small period of time (around 30 minutes).
 
 
+## v1.30.5 (2025-03-10)
+### Backend
+ - Added `http://www.w3.org/ns/prov#Location` to delta stream 'public' [DL-6496]
+### Deploy notes
+```
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+```
+
 ## v1.30.4 (2025-03-06)
 ### Backend
 - Add missing codes to public producer [DL-6210] [DL-6449]
