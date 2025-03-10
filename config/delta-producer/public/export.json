@@ -549,6 +549,21 @@
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/2004/02/skos/core#prefLabel"
       ]
+    },
+    {
+      "type": "http://www.w3.org/ns/prov#Location",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/administrative-unit"
+      ],
+      "hasRegexGraphsFilter": false,
+      "properties": [
+        "http://www.w3.org/2000/01/rdf-schema#label",
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau",
+        "http://www.opengis.net/ont/geosparql#sfWithin",
+        "http://www.w3.org/2004/02/skos/core#exactMatch"
+      ]
     }
   ]
 }
