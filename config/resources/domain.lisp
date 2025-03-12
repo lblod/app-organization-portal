@@ -23,3 +23,4 @@
 (read-domain-file "job.json")
 (read-domain-file "report.json")
 (read-domain-file "log.json")
+(read-domain-file "harvest.json")
