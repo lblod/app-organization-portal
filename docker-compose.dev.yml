@@ -5,6 +5,8 @@ services:
     restart: "no"
     ports:
       - "80:80"
+    environment:
+      SESSION_COOKIE_SECURE: "off"
   dispatcher:
     restart: "no"
   triplestore:
