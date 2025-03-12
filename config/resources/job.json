@@ -127,6 +127,11 @@
                 }
             },
             "relationships": {
+                "harvesting-collections": {
+                    "predicate": "task:hasHarvestingCollection",
+                    "target": "harvesting-collection",
+                    "cardinality": "many"
+                },
                 "result-from-tasks": {
                     "predicate": "task:resultsContainer",
                     "target": "task",
