@@ -20,3 +20,5 @@
 (read-domain-file "files-domain.lisp")
 (read-domain-file "dcat.json")
 (read-domain-file "privacy-centric-service.json")
+(read-domain-file "job.json")
+(read-domain-file "report.json")

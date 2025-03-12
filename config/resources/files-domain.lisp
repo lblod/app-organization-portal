@@ -7,7 +7,10 @@
                 (:created :datetime ,(s-prefix "nfo:fileCreated")))
   :has-one `((file :via ,(s-prefix "nie:dataSource")
                    :inverse t
-                   :as "download"))
+                   :as "download")
+             (data-container :via ,(s-prefix "task:hasFile")
+                :inverse t
+                :as "data-container"))
   :resource-base (s-url "http://data.lblod.info/files/")
   :features `(no-pagination-defaults include-uri)
   :on-path "files")
