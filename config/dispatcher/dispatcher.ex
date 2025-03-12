@@ -261,6 +261,22 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://resource/reports/")
   end
 
+  match "/log-entries/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/log-entries/")
+  end
+
+  match "/log-levels/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/log-levels/")
+  end
+
+  match "/status-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/status-codes/")
+  end
+
+  match "/log-sources/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/log-sources/")
+  end
+
   ###############
   # LOGIN
   ###############

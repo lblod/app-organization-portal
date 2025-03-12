@@ -22,3 +22,4 @@
 (read-domain-file "privacy-centric-service.json")
 (read-domain-file "job.json")
 (read-domain-file "report.json")
+(read-domain-file "log.json")
