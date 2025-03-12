@@ -5,6 +5,7 @@
 ### Backend
 - Datafix: move status for municipalities and provinces to the `shared` graph such that it can be read by worship users [OP-3469]
 - Bump `triplestore` and `publication-triplestore` to `v1.3.0-rc.1`. [OP-2492] [OP-3547]
+- Add missing docker compose keys. [DL-6490]
 ### Deploy notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
@@ -12,7 +13,10 @@ drc pull frontend; drc up -d frontend
 ```
 #### For upgrade databases
 [This README](https://github.com/Riadabd/upgrade-virtuoso) provides the necessary steps for upgrading the database. **NOTE**: This will involve shutting down the app for small period of time (around 30 minutes).
-
+#### For adding the missing keys
+```
+drc up -d search elasticsearch
+```
 
 ## v1.30.5 (2025-03-10)
 ### Backend
