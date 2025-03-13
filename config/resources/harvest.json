@@ -21,6 +21,11 @@
                 }
             },
             "relationships": {
+                "remote-data-objects": {
+                    "predicate": "dct:hasPart",
+                    "target": "remote-data-object",
+                    "cardinality": "many"
+                },
                 "data-container": {
                     "predicate": "task:hasHarvestingCollection",
                     "target": "data-container",

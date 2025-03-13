@@ -277,6 +277,10 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://resource/log-sources/")
   end
 
+  match "/remote-data-objects/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/remote-data-objects/")
+  end
+
   ###############
   # LOGIN
   ###############
