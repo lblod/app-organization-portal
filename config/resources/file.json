@@ -1,0 +1,54 @@
+{
+    "version": "0.1",
+    "prefixes": {
+        "dct": "http://purl.org/dc/terms/",
+        "dbpedia": "http://dbpedia.org/ontology/",
+        "nfo": "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#",
+        "nie": "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#",
+        "task": "http://redpencil.data.gift/vocabularies/tasks/"
+    },
+    "resources": {
+        "files": {
+            "name": "file",
+            "class": "nfo:FileDataObject",
+            "attributes": {
+                "filename": {
+                    "type": "string",
+                    "predicate": "nfo:fileName"
+                },
+                "format": {
+                    "type": "string",
+                    "predicate": "dct:format"
+                },
+                "size": {
+                    "type": "number",
+                    "predicate": "nfo:fileSize"
+                },
+                "extension": {
+                    "type": "string",
+                    "predicate": "dbpedia:fileExtension"
+                },
+                "created": {
+                    "type": "datetime",
+                    "predicate": "nfo:fileCreated"
+                }
+            },
+            "relationships": {
+                "download": {
+                    "predicate": "nie:dataSource",
+                    "target": "file",
+                    "cardinality": "one",
+                    "inverse": true
+                },
+                "data-container": {
+                    "predicate": "task:hasFile",
+                    "target": "data-container",
+                    "cardinality": "one",
+                    "inverse": true
+                }
+            },
+            "features": ["include-uri"],
+            "new-resource-base": "http://data.lblod.info/files/"
+        }
+    }
+}
