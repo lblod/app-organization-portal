@@ -522,6 +522,7 @@ services:
     links:
       - db:database
     restart: always
+    logging: *default-logging
 
   ldes-backend:
     image: redpencil/fragmentation-producer:0.4.0
@@ -535,6 +536,7 @@ services:
       DATA_FOLDER: '/data'
       ENABLE_AUTH: 'false'
     restart: always
+    logging: *default-logging
     volumes:
       - './data/ldes-feed/:/data/'
 
@@ -548,6 +550,7 @@ services:
     restart: always
     volumes:
       - ./config/search:/config
+    logging: *default-logging
   elasticsearch:
     image: semtech/mu-search-elastic-backend:1.0.1
     volumes:
@@ -555,6 +558,7 @@ services:
     environment:
       - discovery.type=single-node
     restart: always
+    logging: *default-logging
 
   error-report-service:
     image: lblod/error-report-service:0.1.0
