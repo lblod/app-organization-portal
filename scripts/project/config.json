@@ -16,6 +16,21 @@
       "mounts": {
         "app": "/data/app/"
       }
+    },
+    {
+      "documentation": {
+        "command": "generate-dashboard-login",
+        "description": "generate a login account for the jobs dashboard",
+        "arguments": []
+      },
+      "environment": {
+        "image": "ruby",
+        "interactive": true,
+        "script": "generate-dashboard-login/run.sh"
+      },
+      "mounts": {
+        "app": "/project/"
+      }
     }
   ]
 }
