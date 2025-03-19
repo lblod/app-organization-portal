@@ -388,7 +388,7 @@ services:
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
       SUDO_QUERY_RETRY: "true"
     volumes:
-      - ./config/loket-consumer/mandatarissen/mapping:/config/mapping
+      - ./config/delta-consumers/mandatarissen/mapping:/config/mapping
       - ./data/files/consumer-files/mandatarissen:/consumer-files/
     restart: always
     labels:
@@ -421,7 +421,7 @@ services:
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
       SUDO_QUERY_RETRY: "true"
     volumes:
-      - ./config/loket-consumer/leidinggevenden/mapping:/config/mapping
+      - ./config/delta-consumers/leidinggevenden/mapping:/config/mapping
       - ./data/files/consumer-files/leidinggevenden:/consumer-files/
     restart: always
     labels:
@@ -459,7 +459,7 @@ services:
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
       SUDO_QUERY_RETRY: "true"
     volumes:
-      - ./config/loket-consumer/worship-services-main-info/mapping:/config/mapping
+      - ./config/delta-consumers/worship-services-main-info/mapping:/config/mapping
       - ./data/files/consumer-files/worship-services-main-info:/consumer-files/
     restart: always
     labels:
@@ -494,7 +494,7 @@ services:
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
       SUDO_QUERY_RETRY: "true"
     volumes:
-      - ./config/loket-consumer/worship-services-private-info/mapping:/config/mapping
+      - ./config/delta-consumers/worship-services-private-info/mapping:/config/mapping
       - ./data/files/consumer-files/worship-services-private-info:/consumer-files/
     restart: always
     labels:
