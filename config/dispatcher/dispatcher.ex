@@ -305,12 +305,12 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://mocklogin/sessions/")
   end
 
-  match "/sessions/*path", %{ reverse_host: ["dashboard" | _rest] } do
-    Proxy.forward conn, path, "http://dashboard-login/sessions/"
-  end
-
-  match "/sessions/*path", %{accept: [:any], layer: :api} do
-    Proxy.forward(conn, path, "http://login/sessions/")
+  match "/sessions/*path", %{accept: [:any], layer: :api, reverse_host: reverse_host} do
+    if "dashboard" in reverse_host do
+      Proxy.forward(conn, path, "http://dashboard-login/sessions/")
+    else
+      Proxy.forward(conn, path, "http://login/sessions/")
+    end
   end
 
   ###############################################################
@@ -473,30 +473,28 @@ defmodule Dispatcher do
   # frontend layer
   ###############################################################
 
-  get "/assets/*path",  %{ reverse_host: ["dashboard" | _rest], layer: :api }  do
-    forward conn, path, "http://frontend-dashboard/assets/"
+  match "/assets/*path", %{layer: :api, reverse_host: reverse_host} do
+    if "dashboard" in reverse_host do
+      Proxy.forward(conn, path, "http://frontend-dashboard/assets/")
+    else
+      Proxy.forward(conn, path, "http://frontend/assets/")
+    end
   end
 
-  get "/@appuniversum/*path", %{ reverse_host: ["dashboard" | _rest], layer: :api} do
-    forward conn, path, "http://frontend-dashboard/@appuniversum/"
+  match "/@appuniversum/*path", %{layer: :api, reverse_host: reverse_host} do
+    if "dashboard" in reverse_host do
+      Proxy.forward(conn, path, "http://frontend-dashboard/@appuniversum/")
+    else
+      Proxy.forward(conn, path, "http://frontend/@appuniversum/")
+    end
   end
 
-  match "/*_path", %{ reverse_host: ["dashboard" | _rest], layer: :api } do
-    # *_path allows a path to be supplied, but will not yield
-    # an error that we don't use the path variable.
-    forward conn, [], "http://frontend-dashboard/index.html"
-  end
-
-  match "/assets/*path", %{layer: :api} do
-    Proxy.forward(conn, path, "http://frontend/assets/")
-  end
-
-  match "/@appuniversum/*path", %{layer: :api} do
-    Proxy.forward(conn, path, "http://frontend/@appuniversum/")
-  end
-
-  match "/*path", %{accept: [:html], layer: :api} do
-    Proxy.forward(conn, [], "http://frontend/index.html")
+  match "/*path", %{accept: [:html], layer: :api, reverse_host: reverse_host} do
+    if "dashboard" in reverse_host do
+      Proxy.forward(conn, [], "http://frontend-dashboard/index.html")
+    else
+      Proxy.forward(conn, [], "http://frontend/index.html")
+    end
   end
 
   match "/*_path", %{layer: :frontend} do
