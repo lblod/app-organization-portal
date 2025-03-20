@@ -147,6 +147,14 @@ services:
     logging: *default-logging
     links:
       - db:database
+  dashboard-login:
+    image: semtech/mu-login-service:3.0.0
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   accountdetail:
     image: lblod/account-detail-service:0.1.0
     labels:
@@ -198,6 +206,12 @@ services:
       EMBER_OAUTH_API_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
       EMBER_OAUTH_API_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
       EMBER_OAUTH_API_SCOPE: "openid vo profile abb_organisatieportaal"
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  frontend-dashboard:
+    image: lblod/frontend-dashboard:1.7.0
     labels:
       - "logging=true"
     restart: always

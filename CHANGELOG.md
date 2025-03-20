@@ -7,6 +7,7 @@
 - Bump `triplestore` and `publication-triplestore` to `v1.3.0-rc.1`. [OP-2492] [OP-3547]
 - Add missing docker compose keys. [DL-6490]
 - Reorganize delta consumers config to harmonize with the ecosystem
+- Set up the dashboard app [OP-3103]
 ### Deploy notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
@@ -19,6 +20,26 @@ drc up -d mandatarissen-consumer leidinggevenden-consumer worship-services-main-
 ```
 drc up -d search elasticsearch
 ```
+
+#### Dashboard
+
+The dashboard requires some server specific configuration before it can be used.
+
+##### 1. Dashboard domains
+To configure the domain name that's used by the dashboard frontend, you can add it to the `VIRTUAL_HOST` and `LETSENCRYPT_HOST` environment variables of the identifier service.
+- DEV domain: dev.dashboard.app-organisation-portal.contacthub-dev.s.redhost.be
+- QA domain: qa.dashboard.app-organisation-portal.contacthub-dev.s.redhost.be
+- PROD domain: dashboard.app-organisation-portal.organisaties.s.redpencil.io
+
+##### 2. Dashboard users
+Before we can generate a user we need to add an application salt to the server. Add a `MU_APPLICATION_SALT` environment variable to the `dashboard-login` service in the docker-compose.override.yml file.
+
+Once this is done you can generate a user by running `mu script project-scripts generate-dashboard-login` and following the prompts. A new local migration will be generated which can be run by restarting the migrations service and which will insert the new user into the database.
+
+Store the login credentials as a comment in the docker-compose.override.yml file. 
+
+##### 3. (Re)start the needed services
+`drc up -d frontend-dashboard dashboard-login identifier; drc restart dispatcher resource db`
 
 ## v1.30.5 (2025-03-10)
 ### Backend
