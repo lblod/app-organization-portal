@@ -27,8 +27,8 @@ The dashboard requires some server specific configuration before it can be used.
 
 ##### 1. Dashboard domains
 To configure the domain name that's used by the dashboard frontend, you can add it to the `VIRTUAL_HOST` and `LETSENCRYPT_HOST` environment variables of the identifier service.
-- DEV domain: dev.dashboard.app-organisation-portal.contacthub-dev.s.redhost.be
-- QA domain: qa.dashboard.app-organisation-portal.contacthub-dev.s.redhost.be
+- DEV domain: dashboard.dev.app-organisation-portal.contacthub-dev.s.redhost.be
+- QA domain: dashboard.qa.app-organisation-portal.contacthub-dev.s.redhost.be
 - PROD domain: dashboard.app-organisation-portal.organisaties.s.redpencil.io
 
 ##### 2. Dashboard users
