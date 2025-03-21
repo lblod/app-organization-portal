@@ -12,6 +12,7 @@
 - Update OCMWv to VVMW [OP-3565]
 ### Deploy notes
 ```
+drc restart migrations-triggering-indexing
 drc restart migrations; drc logs -ft --tail=200 migrations
 drc pull frontend; drc up -d frontend
 drc up -d mandatarissen-consumer leidinggevenden-consumer worship-services-main-info-consumer worship-services-private-info-consumer
