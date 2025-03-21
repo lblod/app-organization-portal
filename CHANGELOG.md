@@ -9,8 +9,10 @@
 - Reorganize delta consumers config to harmonize with the ecosystem
 - Set up the dashboard app [OP-3103]
 - Datafix: correct date of change event of kerkfabriek st petrus [OP-3555]
+- Update OCMWv to VVMW [OP-3565]
 ### Deploy notes
 ```
+drc restart migrations-triggering-indexing
 drc restart migrations; drc logs -ft --tail=200 migrations
 drc pull frontend; drc up -d frontend
 drc up -d mandatarissen-consumer leidinggevenden-consumer worship-services-main-info-consumer worship-services-private-info-consumer
