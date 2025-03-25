@@ -1,0 +1,15 @@
+INSERT  {
+   GRAPH <http://mu.semte.ch/graphs/public> {
+     ?s skos:inScheme <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b>.
+   }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    VALUES ?nisScheme {
+      <http://vocab.belgif.be/auth/refnis2025>
+      <http://vocab.belgif.be/auth/refnis2019>
+    }
+
+    ?s a <http://www.w3.org/2004/02/skos/core#Concept> ;
+      <http://www.w3.org/2004/02/skos/core#inScheme> ?nisScheme .
+  }
+}
