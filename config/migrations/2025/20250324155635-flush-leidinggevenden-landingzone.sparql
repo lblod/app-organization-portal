@@ -1,0 +1,22 @@
+DELETE {
+ GRAPH <http://mu.semte.ch/graphs/landing-zone/leidinggevenden> {
+  ?s a ?type;
+    ?p ?o.
+ }
+}
+WHERE {
+ VALUES ?type {
+   <http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode>
+   <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>
+   <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>
+   <http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode>
+   <http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode>
+   <http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode>
+   <http://www.w3.org/ns/prov#Location>
+ }
+
+ GRAPH <http://mu.semte.ch/graphs/landing-zone/leidinggevenden> {
+  ?s a ?type;
+    ?p ?o.
+ }
+}
