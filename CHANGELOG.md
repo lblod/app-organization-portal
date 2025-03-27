@@ -1,9 +1,9 @@
 # Changelog
 ## Unreleased
 
-## v1.31.0-0 (2025-03-26)
+## v1.31.0 (2025-03-27)
 ### Frontend
-- Bump to version [v1.30.0-0](Link to frontend release)
+- Bump to version [v1.30.0](https://github.com/lblod/frontend-organization-portal/blob/v1.30.0/CHANGELOG.md#v1300-2025-03-27)
 ### Backend
 - Datafix: move status for municipalities and provinces to the `shared` graph such that it can be read by worship users [OP-3469]
 - Bump `triplestore` and `publication-triplestore` to `v1.3.0-rc.1`. [OP-2492] [OP-3547]
