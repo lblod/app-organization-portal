@@ -12,12 +12,14 @@
 - Set up the dashboard app [OP-3103]
 - Datafix: correct date of change event of kerkfabriek st petrus [OP-3555]
 - Update OCMWv to VVMW [OP-3565] and back. It's technically a nil-operation. But you should run the migrations nevertheless.
+- Extend the public producer to include NIS codes [CLBV-980]
 ### Deploy notes
 ```
 drc restart migrations-triggering-indexing
 drc restart migrations; drc logs -ft --tail=200 migrations
 drc pull frontend; drc up -d frontend
 drc up -d mandatarissen-consumer leidinggevenden-consumer worship-services-main-info-consumer worship-services-private-info-consumer
+drc restart delta-producer-publication-graph-maintainer
 ```
 #### For upgrade databases
 [This README](https://github.com/Riadabd/upgrade-virtuoso) provides the necessary steps for upgrading the database. **NOTE**: This will involve shutting down the app for small period of time (around 30 minutes).
