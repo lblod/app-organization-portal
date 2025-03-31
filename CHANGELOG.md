@@ -12,7 +12,7 @@
 - Set up the dashboard app [OP-3103]
 - Datafix: correct date of change event of kerkfabriek st petrus [OP-3555]
 - Update OCMWv to VVMW [OP-3565] and back. It's technically a nil-operation. But you should run the migrations nevertheless.
-- Extend the public producer to include NIS codes [CLBV-980]
+- Extend the public producer to include NIS codes and more info in representative organs (sites, status) [CLBV-980]
 ### Deploy notes
 ```
 drc restart migrations-triggering-indexing
