@@ -1,6 +1,12 @@
 # Changelog
 ## Unreleased
-
+### Backend
+- Removal of change events of 8 ckb's + update of their status [OP-3562]
+### Deploy Notes
+```
+drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing
+drc restart migrations; drc logs -ft --tail=200 migrations
+```
 ## v1.31.0 (2025-03-27)
 ### Frontend
 - Bump to version [v1.30.0](https://github.com/lblod/frontend-organization-portal/blob/v1.30.0/CHANGELOG.md#v1300-2025-03-27)
