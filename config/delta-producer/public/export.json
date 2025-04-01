@@ -211,6 +211,25 @@
       ]
     },
     {
+      "type": "http://www.w3.org/ns/org#Site",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
+      ],
+      "pathToConceptScheme": [
+        "^http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#siteAddress",
+        "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+        "http://data.lblod.info/vocabularies/erediensten/vestigingstype"
+      ]
+    },
+    {
       "type": "http://www.w3.org/ns/locn#Address",
       "graphsFilter": [
         "http://mu.semte.ch/graphs/shared",
