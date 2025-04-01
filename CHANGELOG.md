@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## v1.31.1 (2025-04-01)
 ### Backend
 - Removal of change events of 8 ckb's + update of their status [OP-3562]
 ### Deploy Notes
