@@ -1,0 +1,53 @@
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lblodorg: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?event ?ep ?eo .
+
+    ?result ?rp ?ro .
+
+    ?decision ?de ?do .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    VALUES ?changeEventUuid {
+      "675AFDCA29299CC832892989" # CKB Beveren
+
+      "675AC8C529299CC83289296D" # CKB De Pinte
+
+      "675AC99229299CC83289296F" # CKB Merelbeke
+
+      "675AB94329299CC83289295D" # CKB Galmaarden
+      "675AD32529299CC83289297B" # CKB Galmaarden
+
+      "675AB98C29299CC83289295F" # CKB Gooik
+      "675AD47629299CC83289297D" # CKB Gooik
+
+      "675AD50229299CC83289297F" # CKB Herne
+      "675AB9D229299CC832892961" # CKB Herne
+
+      "675ACA5F29299CC832892971" # CKB Tessenderlo
+
+      "6774F73E29299CC8328929D3" # CKB Ham
+    }
+
+    ?event a org:ChangeEvent ;
+           core:uuid ?changeEventUuid ;
+           lblodorg:veranderingsgebeurtenisResultaat ?result ;
+           ?ep ?eo .
+
+    ?result a lblodorg:VeranderingsgebeurtenisResultaat ;
+            ?rp ?ro .
+
+    OPTIONAL {
+      ?event euro:hasFormalFramework ?decision .
+      ?decision a besluit:Besluit ;
+                ?de ?do .
+    }
+  }
+}
