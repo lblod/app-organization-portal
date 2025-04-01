@@ -1,7 +1,12 @@
 # Changelog
 ## Unreleased
 ### Backend
-- Extend the public producer to include NIS codes and more info in representative organs (sites, status) [CLBV-980]
+- Extend the public producer to include: [CLBV-980]
+  - NIS codes
+  - Sites and statuses of representative organs
+  - Secondary sites with their contacts and addresses
+  - Site descriptions
+
 ### Deploy notes
 ```
 drc restart delta-producer-publication-graph-maintainer
