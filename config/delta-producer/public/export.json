@@ -207,7 +207,28 @@
         "http://mu.semte.ch/vocabularies/core/uuid",
         "http://www.w3.org/ns/org#siteAddress",
         "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
-        "http://data.lblod.info/vocabularies/erediensten/vestigingstype"
+        "http://data.lblod.info/vocabularies/erediensten/vestigingstype",
+        "http://purl.org/dc/terms/description"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/org#Site",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
+      ],
+      "pathToConceptScheme": [
+        "^http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#siteAddress",
+        "https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+        "http://data.lblod.info/vocabularies/erediensten/vestigingstype",
+        "http://purl.org/dc/terms/description"
       ]
     },
     {
@@ -238,6 +259,33 @@
       ]
     },
     {
+      "type": "http://www.w3.org/ns/locn#Address",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
+      ],
+      "pathToConceptScheme": [
+        "^https://data.vlaanderen.be/ns/organisatie#bestaatUit",
+        "^http://www.w3.org/ns/org#hasSite",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer",
+        "https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer",
+        "http://www.w3.org/ns/locn#thoroughfare",
+        "http://www.w3.org/ns/locn#postCode",
+        "https://data.vlaanderen.be/ns/adres#gemeentenaam",
+        "http://www.w3.org/ns/locn#adminUnitL2",
+        "https://data.vlaanderen.be/ns/adres#land",
+        "http://www.w3.org/ns/locn#fullAddress",
+        "https://data.vlaanderen.be/ns/adres#verwijstNaar",
+        "http://purl.org/dc/terms/source"
+      ]
+    },
+    {
       "type": "http://schema.org/ContactPoint",
       "graphsFilter": [
         "http://mu.semte.ch/graphs/shared",
@@ -247,6 +295,30 @@
       "pathToConceptScheme": [
         "^http://www.w3.org/ns/org#siteAddress",
         "^http://www.w3.org/ns/org#hasPrimarySite",
+        "http://www.w3.org/ns/org#classification",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/locn#address",
+        "http://xmlns.com/foaf/0.1/page",
+        "http://schema.org/faxNumber",
+        "http://schema.org/contactType",
+        "http://xmlns.com/foaf/0.1/page",
+        "http://schema.org/email",
+        "http://schema.org/telephone"
+      ]
+    },
+    {
+      "type": "http://schema.org/ContactPoint",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/administrative-unit"
+      ],
+      "pathToConceptScheme": [
+        "^http://www.w3.org/ns/org#siteAddress",
+        "^http://www.w3.org/ns/org#hasSite",
         "http://www.w3.org/ns/org#classification",
         "http://www.w3.org/2004/02/skos/core#inScheme"
       ],
