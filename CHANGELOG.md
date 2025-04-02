@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## v1.31.2 (2025-04-02)
 ### Backend
 - Extend the public producer to include: [CLBV-980]
   - NIS codes
