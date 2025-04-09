@@ -1,4 +1,13 @@
 # Changelog
+## Unreleased
+### Backend
+- Fix KBO statuses not being displayed [OP-3584]
+### Deploy Notes
+```
+drc restart migrations; drc logs -ft --tail=200 migrations
+drc up -d kbo-data-sync
+drc exec kbo-data-sync curl -X POST http://localhost/sync-all-kbo-data
+```
 ## v1.31.2 (2025-04-02)
 ### Backend
 - Extend the public producer to include: [CLBV-980]

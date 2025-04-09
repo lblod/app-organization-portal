@@ -1,0 +1,14 @@
+DELETE {
+  GRAPH ?g {
+    ?s <http://purl.org/dc/terms/modified> ?modified .
+  }
+} INSERT {
+  GRAPH ?g {
+    ?s <http://purl.org/dc/terms/modified> "1000-01-01"^^xsd:date .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?s a <http://mu.semte.ch/vocabularies/ext/KboOrganisatie> ;
+      <http://purl.org/dc/terms/modified> ?modified .
+  }
+}
