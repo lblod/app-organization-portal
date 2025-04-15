@@ -312,7 +312,7 @@ services:
     restart: always
     logging: *default-logging
   kbo-data-sync:
-    image: lblod/sync-wegwijs-organization-service:2.0.2 # TODO bump when https://github.com/lblod/sync-wegwijs-organization-service/pull/9 is released
+    image: lblod/sync-wegwijs-organization-service:2.0.3
     links:
       - db:database
     labels:
