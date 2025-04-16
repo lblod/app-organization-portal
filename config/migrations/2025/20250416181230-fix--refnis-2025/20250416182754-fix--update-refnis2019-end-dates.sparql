@@ -1,0 +1,21 @@
+PREFIX schemas: <https://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?nis2019 schemas:endDate ?currentEndDate .
+  }
+} INSERT {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?nis2019 schemas:endDate ?newEndDate .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?nis2019 skos:inScheme <http://vocab.belgif.be/auth/refnis2019> ;
+             schemas:endDate ?currentEndDate .
+  }
+  GRAPH <http://mu.semte.ch/graphs/refnis2019-data-temp> {
+    ?nis2019 schemas:endDate ?newEndDate .
+  }
+  FILTER (?currentEndDate != ?newEndDate)
+}
