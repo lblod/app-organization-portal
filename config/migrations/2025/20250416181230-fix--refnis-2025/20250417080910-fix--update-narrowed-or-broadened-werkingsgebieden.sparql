@@ -1,0 +1,18 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?werkingsgebied skos:exactMatch ?nis2019 .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?werkingsgebied skos:exactMatch ?nis2025 .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?werkingsgebied skos:exactMatch ?nis2019 .
+  }
+  VALUES (?nis2019 ?nis2025) {
+    (<http://vocab.belgif.be/auth/refnis2019/10000> <http://vocab.belgif.be/auth/refnis2025/10000>) # Antwerp province
+    (<http://vocab.belgif.be/auth/refnis2019/40000> <http://vocab.belgif.be/auth/refnis2025/40000>) # East Flanders province
+    (<http://vocab.belgif.be/auth/refnis2019/11002> <http://vocab.belgif.be/auth/refnis2025/11002>) # Antwerp municipality
+  }
+}
