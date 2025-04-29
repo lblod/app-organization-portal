@@ -1,4 +1,12 @@
 # Changelog
+## v1.31.3 (2025-04-02)
+### Backend
+ - Migrate active organizations linked to inactive CKB [DL-6604]
+### Deploy notes
+```
+drc restart migrations-triggering-indexing;
+```
+
 ## v1.31.2 (2025-04-02)
 ### Backend
 - Extend the public producer to include: [CLBV-980]
