@@ -4,6 +4,7 @@
 - Fix KBO statuses not being displayed [OP-3584]
 - datafix: update NIS2019 end dates and link additional NIS2025 to werkingsgebieden [part of OP-3566]
 - datafix: correct date of change event of ckb olen [OP-3594]
+- datafix: move memberships from shared to administrative unit graph
 ### Deploy Notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations

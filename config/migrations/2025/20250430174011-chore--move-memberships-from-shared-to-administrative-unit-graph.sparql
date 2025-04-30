@@ -1,0 +1,16 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?membership ?p ?o .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?membership a org:Membership ;
+                ?p ?o .
+  }
+}
