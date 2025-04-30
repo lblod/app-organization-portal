@@ -1,0 +1,17 @@
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?districtLocation geo:sfWithin ?antwerpLocation .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?districtLocation a prov:Location ;
+                      ext:werkingsgebiedNiveau ?level .
+    FILTER (?level = "District")
+  }
+  # Hardcode the werkingsgbied for the Antwerp municipality as it is the only one with districts anyway.
+  BIND (<http://data.lblod.info/id/werkingsgebieden/3a9b09cbccb798c8f9d5bad3fce1476bce1ee014165ba243488b0af690d0f464> AS ?antwerpLocation)
+}

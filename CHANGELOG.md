@@ -5,7 +5,9 @@
 - datafix: update NIS2019 end dates and link additional NIS2025 to werkingsgebieden [part of OP-3566]
 - datafix: correct date of change event of ckb olen [OP-3594]
 - datafix: move memberships from shared to administrative unit graph
-- datafix: move werkingsgebieden to public graph [OP-3566]
+- datafix: cleanup werkingsgbieden data [OP-3566]
+  + move werkingsgebieden to public graph
+  + link district werkingsgebieden to Antwerp municipality werkingsgebied
 ### Deploy Notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
