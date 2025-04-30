@@ -5,11 +5,16 @@
 - datafix: update NIS2019 end dates and link additional NIS2025 to werkingsgebieden [part of OP-3566]
 - datafix: correct date of change event of ckb olen [OP-3594]
 - datafix: move memberships from shared to administrative unit graph
+- datafix: move werkingsgebieden to public graph [OP-3566]
 ### Deploy Notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
 drc up -d kbo-data-sync
 drc exec kbo-data-sync curl -X POST http://localhost/sync-all-kbo-data
+
+drc restart delta-producer-publication-graph-maintainer
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs # or wait until nightly healing kicks in
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs # or wait until nightly healing kicks in
 ```
 
 ## v1.31.2 (2025-04-02)

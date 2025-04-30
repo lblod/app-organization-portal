@@ -1,0 +1,22 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?sourceGraph {
+    ?werkingsgebied ?p ?o .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?werkingsgebied ?p ?o .
+  }
+} WHERE {
+  GRAPH ?sourceGraph {
+    ?werkingsgebied a prov:Location ;
+                    ext:werkingsgebiedNiveau ?level ;
+                    ?p ?o .
+  }
+  VALUES ?sourceGraph {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+  }
+}
