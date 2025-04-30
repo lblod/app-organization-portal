@@ -1,0 +1,24 @@
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?borsbeekLocation a prov:Location;
+                      mu:uuid ?uuid ;
+                      rdfs:label "Borsbeek" ;
+                      ext:werkingsgebiedNiveau "District" ;
+                      geo:sfWithin ?antwerpLocation .
+  }
+  # Also link this new werkingsgbied to the actual district
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+   ?borsbeekDistrict besluit:werkingsgebied ?borsbeekLocation .
+  }
+} WHERE {
+  BIND(SHA256(CONCAT("Werkingsgebied for the district of Borsbeek")) AS ?uuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/werkingsgebieden/", STR(?uuid))) AS ?borsbeekLocation)
+
+BIND (<http://data.lblod.info/id/werkingsgebieden/3a9b09cbccb798c8f9d5bad3fce1476bce1ee014165ba243488b0af690d0f464> AS ?antwerpLocation)
+  BIND (<http://data.lblod.info/id/bestuurseenheden/4b44e6f1-113b-4692-b149-44a889b215f2> AS ?borsbeekDistrict)
+}

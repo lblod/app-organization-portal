@@ -6,8 +6,9 @@
 - datafix: correct date of change event of ckb olen [OP-3594]
 - datafix: move memberships from shared to administrative unit graph
 - datafix: cleanup werkingsgbieden data [OP-3566]
-  + move werkingsgebieden to public graph
-  + link district werkingsgebieden to Antwerp municipality werkingsgebied
+  + Move werkingsgebieden to public graph
+  + Link district werkingsgebieden to Antwerp municipality werkingsgebied
+  + Add missing werkingsgebied for Borsbeek district
 ### Deploy Notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
