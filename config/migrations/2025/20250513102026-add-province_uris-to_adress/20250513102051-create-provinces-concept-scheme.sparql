@@ -1,0 +1,26 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX concept_schemes: <http://data.lblod.info/doc/conceptscheme#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    concept_schemes:ProvincesConceptScheme a skos:ConceptScheme ;
+                                           skos:prefLabel "Provinces Concept Scheme" ;
+                                           dcterms:description "A concept scheme containing all the location entities that are provinces".
+  }
+}
+
+;
+
+INSERT 
+{ 
+  GRAPH <http://mu.semte.ch/graphs/public> { 
+     ?province_uri rdf:type skos:Concept ;
+                   skos:inScheme concept_schemes:ProvincesConceptScheme .
+  } 
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?province_uri ext:werkingsgebiedNiveau "Provincie".
+  }
+}

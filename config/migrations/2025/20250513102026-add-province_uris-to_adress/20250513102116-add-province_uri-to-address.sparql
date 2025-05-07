@@ -1,0 +1,40 @@
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit>  {
+    ?address adres:adresIsGelegenIn ?province_uri .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> { 
+    ?address rdf:type locn:Address ;
+             locn:adminUnitL2 ?province_literal .
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?province_uri rdfs:label ?province_literal ;
+	          ext:werkingsgebiedNiveau "Provincie" .
+  }
+}
+
+;
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service>  {
+    ?address adres:adresIsGelegenIn ?province_uri .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> { 
+    ?address rdf:type locn:Address ;
+             locn:adminUnitL2 ?province_literal .
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?province_uri rdfs:label ?province_literal ;
+	          ext:werkingsgebiedNiveau "Provincie" .
+  }
+}
+
+
+
+
