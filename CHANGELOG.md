@@ -1,10 +1,10 @@
 # Changelog
-## v1.31.3 (2025-04-02)
+## v1.31.3 (2025-05-08)
 ### Backend
  - Migrate active organizations linked to inactive CKB [DL-6604]
 ### Deploy notes
 ```
-drc restart migrations-triggering-indexing;
+drc restart migrations-triggering-indexing && drc logs -ft --tail=200 migrations-triggering-indexing
 ```
 
 ## v1.31.2 (2025-04-02)
@@ -69,7 +69,7 @@ Before we can generate a user we need to add an application salt to the server. 
 
 Once this is done you can generate a user by running `mu script project-scripts generate-dashboard-login` and following the prompts. A new local migration will be generated which can be run by restarting the migrations service and which will insert the new user into the database.
 
-Store the login credentials as a comment in the docker-compose.override.yml file. 
+Store the login credentials as a comment in the docker-compose.override.yml file.
 
 ##### 3. (Re)start the needed services
 `drc up -d frontend-dashboard dashboard-login identifier; drc restart dispatcher resource db`
