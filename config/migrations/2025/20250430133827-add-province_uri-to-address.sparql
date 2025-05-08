@@ -8,6 +8,7 @@ WHERE
 	?address <http://www.w3.org/ns/locn#adminUnitL2> ?province_literal . 
 	?province_uri rdfs:label ?province_literal. 
 	?province_uri <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Provincie".
+	FILTER NOT EXISTS {?address <https://data.vlaanderene.be/ns/adres#adressisGelegenIn> ?province_uri}.
 }
 
 
