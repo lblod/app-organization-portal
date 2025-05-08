@@ -1,0 +1,55 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?activeOrg
+      <http://www.w3.org/ns/org#hasSubOrganization> ?sub .
+
+    ?membership a org:Membership ;
+      mu:uuid ?uuid ;
+      org:organization ?activeOrg ;
+      org:member ?sub ;
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+}
+WHERE {
+  BIND(<http://data.lblod.info/id/centraleBesturenVanDeEredienst/643ddbd9448ca43828702527af7bfbb8> AS ?inactiveOrg)
+  BIND(<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7f5475cfb202d12f54779f046441c9e1> AS ?activeOrg)
+
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?inactiveOrg
+      <http://www.w3.org/ns/org#hasSubOrganization> ?sub .
+  }
+
+  FILTER NOT EXISTS {
+   ?activeOrg
+     <http://www.w3.org/ns/org#hasSubOrganization> ?sub .
+  }
+
+  BIND(SHA1(CONCAT(STR(?activeOrg), STR(?sub), "sub organization")) as ?uuid)
+  BIND(IRI(CONCAT("http://data.lblod.info/id/lidmaatschap/", ?uuid)) AS ?membership)
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?inactiveOrg
+      <http://www.w3.org/ns/org#hasSubOrganization> ?sub .
+
+    ?membership ?membershipP ?membershipO .
+  }
+}
+WHERE {
+  BIND(<http://data.lblod.info/id/centraleBesturenVanDeEredienst/643ddbd9448ca43828702527af7bfbb8> AS ?inactiveOrg)
+
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?inactiveOrg
+      <http://www.w3.org/ns/org#hasSubOrganization> ?sub .
+
+    ?membership a org:Membership ;
+      org:organization ?inactiveOrg ;
+      ?membershipP ?membershipO .
+  }
+}
