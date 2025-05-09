@@ -1,0 +1,47 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+
+<http://data.lblod.info/id/cleanup-job/cdbb9f4e-90cc-40f6-a0a9-bd0bd8c9105f> a cleanup:Job ;
+    mu:uuid "cdbb9f4e-90cc-40f6-a0a9-bd0bd8c9105f" ;
+    dcterms:title "Insert missing province uris for addresses" ;
+    cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+
+      INSERT 
+{ GRAPH <http://mu.semte.ch/graphs/administrative-unit>  
+	{ ?address <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn> ?province_uri} 
+} 
+WHERE 
+{
+ GRAPH <http://mu.semte.ch/graphs/administrative-unit> { 
+	?address rdf:type <http://www.w3.org/ns/locn#Address> . 
+	?address <http://www.w3.org/ns/locn#adminUnitL2> ?province_literal . 
+	?province_uri rdfs:label ?province_literal. 
+	?province_uri <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Provincie".
+	FILTER NOT EXISTS {?address <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn> ?province_uri}.
+}
+}
+
+INSERT 
+{ GRAPH <http://mu.semte.ch/graphs/worship-service>  
+	{ ?address <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn> ?province_uri} 
+} 
+
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?address rdf:type <http://www.w3.org/ns/locn#Address> . 
+	FILTER NOT EXISTS {?address <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn> ?existing_uri}.
+	?address <http://www.w3.org/ns/locn#adminUnitL2> ?province_literal . 
+  }
+    ?province_uri rdfs:label ?province_literal. 
+    ?province_uri <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Provincie".
+
+}
+
+    """ .
+    
+    
+    
+

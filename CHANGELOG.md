@@ -9,6 +9,7 @@
   + Move werkingsgebieden to public graph
   + Link district werkingsgebieden to Antwerp municipality werkingsgebied
   + Add missing werkingsgebied for Borsbeek district
+- Write migration to extract from existing primary sites the province URI [OP-3597]
 ### Deploy Notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
