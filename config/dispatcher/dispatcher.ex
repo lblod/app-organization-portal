@@ -393,6 +393,10 @@ defmodule Dispatcher do
     forward(conn, path, "http://kbo-data-sync/sync-kbo-data/")
   end
 
+  match "/scope-of-operation/*path", %{layer: api_services, accept: %{json: true}} do
+    forward(conn, path, "http://scope-of-operation/")
+  end
+
   get "/ldes/*path", %{layer: :api_services} do
     forward(conn, path, "http://ldes-backend/")
   end
