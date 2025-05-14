@@ -53,7 +53,8 @@ defmodule Acl.UserGroups.Config do
     "http://lblod.data.gift/vocabularies/organisatie/VoorwaardenBedienaarCriterium",
     "http://lblod.data.gift/vocabularies/organisatie/BedienaarCriteriumBewijsstuk",
     "http://lblod.data.gift/vocabularies/organisatie/EredienstBeroepen",
-    "http://lblod.data.gift/vocabularies/organisatie/Rechtsvormtype"
+    "http://lblod.data.gift/vocabularies/organisatie/Rechtsvormtype",
+    "http://www.w3.org/ns/prov#Location"
   ]
 
   @org_type [
@@ -80,11 +81,10 @@ defmodule Acl.UserGroups.Config do
     "http://data.lblod.info/vocabularies/contacthub/AgentInPositie",
     "http://mu.semte.ch/vocabularies/ext/KboOrganisatie",
     "http://www.w3.org/ns/org#Membership",
-    "http://www.w3.org/2006/time#ProperInterval"
+    "http://www.w3.org/2006/time#ProperInterval",
   ]
 
   @shared_protected_type [
-    "http://www.w3.org/ns/prov#Location",
     "http://xmlns.com/foaf/0.1/Image",
     "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
   ]
@@ -117,7 +117,7 @@ defmodule Acl.UserGroups.Config do
           ?account <http://mu.semte.ch/vocabularies/ext/sessionRole> ?session_role.
           FILTER( ?session_role = \"dashboard-user\" )
         }"
-      }
+    }
   end
 
   def user_groups do
@@ -256,7 +256,7 @@ defmodule Acl.UserGroups.Config do
                 "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
               ]
             }
-          },
+          }
         ]
       },
 
