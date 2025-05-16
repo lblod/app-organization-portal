@@ -1,0 +1,41 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://data.lblod.info/id/cleanup-job/42245582-ea60-4d44-80ef-c686901eccb5> a cleanup:Job ;
+    mu:uuid "42245582-ea60-4d44-80ef-c686901eccb5" ;
+    dcterms:title "Insert missing province uris for addresses of administrative units" ;
+    cleanup:randomQuery """
+    
+    PREFIX locn: <http://www.w3.org/ns/locn#>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+    INSERT {
+      GRAPH <http://mu.semte.ch/graphs/administrative-unit>  {
+          ?address adres:adresIsGelegenIn ?province_uri .
+      }
+    }  
+    WHERE {
+       GRAPH <http://mu.semte.ch/graphs/administrative-unit> { 
+          ?address rdf:type locn:Address ;
+            locn:adminUnitL2 ?province_literal .
+            FILTER NOT EXISTS {
+              ?address adres:adresIsGelegenIn ?province_uri2 .
+            }
+       }
+       GRAPH <http://mu.semte.ch/graphs/public> {
+          ?province_uri rdfs:label ?province_literal ;
+	    ext:werkingsgebiedNiveau "Provincie" .
+	    BIND (?province_uri as ?province_uri2)
+	    
+       }
+       
+    }   
+
+    """ .
+    
+    
+    
+   
+ 

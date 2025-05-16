@@ -1,0 +1,39 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://data.lblod.info/id/cleanup-job/cdbb9f4e-90cc-40f6-a0a9-bd0bd8c9105f> a cleanup:Job ;
+    mu:uuid "cdbb9f4e-90cc-40f6-a0a9-bd0bd8c9105f" ;
+    dcterms:title "Insert missing province uris for addresses of worship services" ;
+    cleanup:randomQuery """
+
+    PREFIX locn: <http://www.w3.org/ns/locn#>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+    INSERT {
+      GRAPH <http://mu.semte.ch/graphs/worship-service>  {
+          ?address adres:adresIsGelegenIn ?province_uri .
+      }
+    }  
+    WHERE {
+       GRAPH <http://mu.semte.ch/graphs/worship-service> { 
+          ?address rdf:type locn:Address ;
+            locn:adminUnitL2 ?province_literal .
+            FILTER NOT EXISTS {
+              ?address adres:adresIsGelegenIn ?province_uri2 .
+            }
+       }
+       GRAPH <http://mu.semte.ch/graphs/public> {
+          ?province_uri rdfs:label ?province_literal ;
+	    ext:werkingsgebiedNiveau "Provincie" .
+	    BIND (?province_uri as ?province_uri2)
+       }
+       
+    }   
+
+    """ .
+    
+    
+    
+

@@ -9,6 +9,7 @@
   + Move werkingsgebieden to public graph
   + Link district werkingsgebieden to Antwerp municipality werkingsgebied
   + Add missing werkingsgebied for Borsbeek district
+- Write migration to extract from existing primary sites the province URI [OP-3597]
 ### Deploy Notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
@@ -18,6 +19,7 @@ drc exec kbo-data-sync curl -X POST http://localhost/sync-all-kbo-data
 drc restart delta-producer-publication-graph-maintainer
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs # or wait until nightly healing kicks in
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs # or wait until nightly healing kicks in
+drc exec db-cleanup curl -X POST "http://localhost/cleanup"
 ```
 
 ## v1.31.3 (2025-05-08)
