@@ -1,0 +1,32 @@
+PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX lblodorg: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX euro: <http://data.europa.eu/m8g/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?event ?ep ?eo .
+
+    ?result ?rp ?ro .
+
+    ?decision ?de ?do .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?event a org:ChangeEvent ;
+           core:uuid "6824418BD4DB18EC8BA95940" ;
+           lblodorg:veranderingsgebeurtenisResultaat ?result ;
+           ?ep ?eo .
+
+    ?result a lblodorg:VeranderingsgebeurtenisResultaat ;
+            ?rp ?ro .
+
+    OPTIONAL {
+      ?event euro:hasFormalFramework ?decision .
+      ?decision a besluit:Besluit ;
+                ?de ?do .
+    }
+  }
+}
