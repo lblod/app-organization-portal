@@ -3,7 +3,7 @@
 
 ## v1.32.0-0 (2025-05-23)
 ### Frontend
-- Bump to version [v1.31.0-0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.31.0-0)
+- Bump to version [v1.31.0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.31.0)
 ### Backend
 - Fix KBO statuses not being displayed [OP-3584]
 - datafix: update NIS2019 end dates and link additional NIS2025 to werkingsgebieden [part of OP-3566]
