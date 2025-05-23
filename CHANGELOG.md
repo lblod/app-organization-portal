@@ -21,6 +21,7 @@
 ```
 drc pull frontend; drc up -d frontend
 drc restart migrations; drc logs -ft --tail=200 migrations
+drc restart migrations-triggering-indexing && drc logs -ft --tail=200 migrations-triggering-indexing
 drc up -d kbo-data-sync
 drc exec kbo-data-sync curl -X POST http://localhost/sync-all-kbo-data
 
@@ -28,8 +29,6 @@ drc restart delta-producer-publication-graph-maintainer
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs # or wait until nightly healing kicks in
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs # or wait until nightly healing kicks in
 drc exec db-cleanup curl -X POST "http://localhost/cleanup"
-
-drc restart migrations-triggering-indexing && drc logs -ft --tail=200 migrations-triggering-indexing
 ```
 
 ## v1.31.3 (2025-05-08)
