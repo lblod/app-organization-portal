@@ -1,0 +1,32 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/a33d5059-d527-4c9a-a788-1b7f5c75d10e>
+        rdf:type  <http://www.w3.org/ns/org#Organization> , <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> , dcterms:Agent ;
+        owl:sameAs <http://data.vlaanderen.be/doc/organisatie/OVO053550> ;
+        <http://www.w3.org/ns/org#classification>  <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/52cc9d8d-1c9a-4d92-9936-da9d4a622ec4> ;
+        <http://www.w3.org/ns/org#linkedTo>  <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> ;
+        <http://mu.semte.ch/vocabularies/core/uuid>  "a33d5059-d527-4c9a-a788-1b7f5c75d10e" ;
+        skos:prefLabel	"Kabinet Crevits" ;
+        <http://www.w3.org/2004/02/skos/core#note> """This is a special case, we consider (for now) Kabinet Crevits as a bestuurseenheid, of org:classification ABB.""";
+        <http://www.w3.org/ns/adms#identifier>  <http://data.lblod.info/id/identificatoren/b53dc2b0-7fca-4c59-8f2a-276753edb81e> ;
+        <http://www.w3.org/ns/regorg#orgStatus>  <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/regorg#legalName>  "Kabinet Crevits" .
+
+    <http://data.lblod.info/id/identificatoren/b53dc2b0-7fca-4c59-8f2a-276753edb81e>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>  <http://data.lblod.info/id/gestructureerdeIdentificator/aac3f5c0-e525-4cec-8432-2d59806661e5>;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/ns/adms#Identifier>;
+      <http://www.w3.org/2004/02/skos/core#notation>  "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid>  "b53dc2b0-7fca-4c59-8f2a-276753edb81e" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/aac3f5c0-e525-4cec-8432-2d59806661e5>
+      <http://mu.semte.ch/vocabularies/core/uuid>  "aac3f5c0-e525-4cec-8432-2d59806661e5";
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator>	"OVO053550" .
+  }
+}
