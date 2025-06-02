@@ -3,7 +3,7 @@
 
 ## v1.32.1 (2025-06-02)
 ### Backend
-- Added Kabinet Crevits as bestuurseenheid.
+- Added Kabinet Crevits as bestuurseenheid. [DL-6655]
 ### Deploy Notes
 ```
 drc restart migrations;
