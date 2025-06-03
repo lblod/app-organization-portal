@@ -5,6 +5,7 @@
 ### Deploy notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
+drc exec db-cleanup curl -X POST "http://localhost/cleanup"
 ```
 
 ## v1.32.1 (2025-06-02)

@@ -1,0 +1,37 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# Delete triples of the form
+# <Province> <http://www.w3.org/ns/org#hasSubOrganization> <Municipality>
+# for which no matching membership exists.
+
+# Province: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>
+#
+# Municipality: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+
+<http://data.lblod.info/id/cleanup-job/7354dfd9-bdef-48d6-b81e-e814bd4f4e9c> a cleanup:Job ;
+    mu:uuid "7354dfd9-bdef-48d6-b81e-e814bd4f4e9c" ;
+    dcterms:title "Delete leftover `org:hasSubOrganization` triples between Provinces and municipalities." ;
+    cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+
+      DELETE {
+        GRAPH <http://mu.semte.ch/graphs/shared> {
+          ?province org:hasSubOrganization ?municipality .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/shared> {
+          ?province org:hasSubOrganization ?municipality .
+          FILTER NOT EXISTS {
+            ?membership a org:Membership ;
+              org:organization ?province ;
+              org:member ?municipality ;
+              org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+          }
+
+          ?municipality org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+          ?province org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+      }
+    }
+    """ .
