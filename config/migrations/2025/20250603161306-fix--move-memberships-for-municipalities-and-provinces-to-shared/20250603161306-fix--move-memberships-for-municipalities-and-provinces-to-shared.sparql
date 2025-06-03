@@ -1,0 +1,24 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership ?p ?o .
+    ?organization org:hasSubOrganization ?member .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/shared>{
+    ?membership ?p ?o .
+    ?organization org:hasSubOrganization ?member .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership a org:Membership ;
+                org:member ?member ;
+                org:organization ?organization ;
+                ?p ?o .
+  }
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?member org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> . # Municipality
+    ?organization org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> . # Province
+  }
+}

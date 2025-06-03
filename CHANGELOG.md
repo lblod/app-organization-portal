@@ -1,5 +1,11 @@
 # Changelog
 ## Unreleased
+### Backend
+- datafix: move memberships involving provinces and municipalities to shared graph [OP-3619]
+### Deploy notes
+```
+drc restart migrations; drc logs -ft --tail=200 migrations
+```
 
 ## v1.32.1 (2025-06-02)
 ### Backend
