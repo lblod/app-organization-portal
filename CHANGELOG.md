@@ -1,11 +1,17 @@
 # Changelog
 ## Unreleased
+### Frontend
+- Bump to TODO: link to release with scope of operation functionality
 ### Backend
 - datafix: move memberships involving provinces and municipalities to shared graph [OP-3619]
+- Add a service to manage organisation's their scope of operation [OP-3205]
+  - datamodel: Allow a location to be within multiple other locations
 ### Deploy notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
 drc exec db-cleanup curl -X POST "http://localhost/cleanup"
+drc up -d scope-of-operation
+drc restart db resource dispatcher
 ```
 
 ## v1.32.1 (2025-06-02)
