@@ -1,6 +1,15 @@
 # Changelog
 ## Unreleased
 
+## v1.32.1 (2025-06-02)
+### Backend
+- Added Kabinet Crevits as bestuurseenheid. [DL-6655]
+### Deploy Notes
+```
+drc restart migrations;
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+```
+
 ## v1.32.0 (2025-05-23)
 ### Frontend
 - Bump to version [v1.31.0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.31.0)
