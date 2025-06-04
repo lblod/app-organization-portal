@@ -1,5 +1,16 @@
 # Changelog
 ## Unreleased
+### Frontend
+- Bump to TODO: link to release with scope of operation functionality
+### Backend
+- Add a service to manage organisation's their scope of operation [OP-3205]
+- datamodel: Allow a location to be within multiple other locations [OP-3205]
+### Deploy notes
+```
+drc pull scope-of-operation; drc up -d scope-of-operation
+drc restart db resource dispatcher
+drc pull frontend; drc up -d frontend
+```
 
 ## v1.34.0 (2025-07-11)
 ### Frontend
