@@ -1,11 +1,14 @@
 # Changelog
 ## Unreleased
+### Frontend
+- Bump to version [v1.32.0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.32.0)
 ### Backend
 - datafix: move memberships involving provinces and municipalities to shared graph [OP-3619]
 ### Deploy notes
 ```
 drc restart migrations; drc logs -ft --tail=200 migrations
 drc exec db-cleanup curl -X POST "http://localhost/cleanup"
+drc pull frontend; drc up -d frontend
 ```
 
 ## v1.32.1 (2025-06-02)
