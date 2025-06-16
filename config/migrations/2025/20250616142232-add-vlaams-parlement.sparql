@@ -1,0 +1,32 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/862d7e64-fa34-4cd8-a948-00327c6260a6>
+        rdf:type  <http://www.w3.org/ns/org#Organization> , <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> , dcterms:Agent ;
+        owl:sameAs <http://data.vlaanderen.be/doc/organisatie/OVO000617> ;
+        <http://www.w3.org/ns/org#classification>  <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/52cc9d8d-1c9a-4d92-9936-da9d4a622ec4> ;
+        <http://www.w3.org/ns/org#linkedTo>  <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> ;
+        <http://mu.semte.ch/vocabularies/core/uuid>  "862d7e64-fa34-4cd8-a948-00327c6260a6" ;
+        skos:prefLabel	"Vlaams Parlement" ;
+        <http://www.w3.org/2004/02/skos/core#note> """This is a special case, we consider (for now) Vlaams Parlement as a bestuurseenheid, of org:classification ABB.""";
+        <http://www.w3.org/ns/adms#identifier>  <http://data.lblod.info/id/identificatoren/a03f0b48-1a6d-40af-84eb-5aee7b757986> ;
+        <http://www.w3.org/ns/regorg#orgStatus>  <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/regorg#legalName>  "Vlaams Parlement" .
+
+    <http://data.lblod.info/id/identificatoren/a03f0b48-1a6d-40af-84eb-5aee7b757986>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>  <http://data.lblod.info/id/gestructureerdeIdentificator/666c8cb7-030b-4e28-9042-82ac685684b9>;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/ns/adms#Identifier>;
+      <http://www.w3.org/2004/02/skos/core#notation>  "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid>  "a03f0b48-1a6d-40af-84eb-5aee7b757986" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/666c8cb7-030b-4e28-9042-82ac685684b9>
+      <http://mu.semte.ch/vocabularies/core/uuid>  "666c8cb7-030b-4e28-9042-82ac685684b9";
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator>	"OVO000617" .
+  }
+}
