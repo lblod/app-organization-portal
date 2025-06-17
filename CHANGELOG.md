@@ -1,5 +1,13 @@
 # Changelog
 ## Unreleased
+## v1.33.1 (2025-06-16)
+### Backend
+- Added Vlaams Parlement as bestuurseenheid. [DL-6686]
+### Deploy Notes
+```
+drc restart migrations;
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+```
 
 ## v1.33.0 (2025-06-05)
 ### Frontend
