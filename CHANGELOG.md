@@ -1,5 +1,14 @@
 # Changelog
 ## Unreleased
+
+## v1.33.2 (2025-06-20)
+### Backend
+- datafix: correct name for locations whose municipalities kept their URI in the 2025 mergers
+### Deploy notes
+```
+drc restart migrations-triggering-indexing && drc logs -ft --tail=200
+```
+
 ## v1.33.1 (2025-06-16)
 ### Backend
 - Added Vlaams Parlement as bestuurseenheid. [DL-6686]
