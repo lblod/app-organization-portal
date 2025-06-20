@@ -1,5 +1,11 @@
 # Changelog
 ## Unreleased
+### Backend
+- Bump delta-notifier service to most recent version [OP-3190]
+### Deploy notes
+```
+drc pull deltanotifier; drc up -d deltanotifier
+```
 
 ## v1.33.2 (2025-06-20)
 ### Backend
