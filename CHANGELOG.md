@@ -1,5 +1,12 @@
 # Changelog
 ## Unreleased
+### Backend
+- Added Brussels Hoofdstedelijk Gewest as province and location + update province of addresses in Brussel's area. [OP-3624]
+### Deploy Notes
+```
+drc restart migrations-triggering-indexing
+```
+
 ## v1.33.1 (2025-06-16)
 ### Backend
 - Added Vlaams Parlement as bestuurseenheid. [DL-6686]
