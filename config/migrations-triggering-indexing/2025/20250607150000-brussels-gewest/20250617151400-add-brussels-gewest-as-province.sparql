@@ -1,0 +1,81 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/werkingsgebieden/21c7ac68-80ff-4530-ad0f-2207562be34d>
+      a <http://www.w3.org/ns/prov#Location> ,
+        <http://www.w3.org/2004/02/skos/core#Concept> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "21c7ac68-80ff-4530-ad0f-2207562be34d" ;
+      <http://www.w3.org/2000/01/rdf-schema#label> "Brussels Hoofdstedelijk Gewest" ;
+      <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Provincie" ;
+      <http://www.w3.org/2004/02/skos/core#inScheme> <http://data.lblod.info/doc/conceptscheme#ProvincesConceptScheme> ;
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/4000> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <http://data.lblod.info/id/bestuurseenheden/89959431-6ac6-474c-9d7a-6a6b16dfc6f8>
+      a <http://www.w3.org/ns/org#Organization> ,
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+        <http://purl.org/dc/terms/Agent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "89959431-6ac6-474c-9d7a-6a6b16dfc6f8" ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Brussels Hoofdstedelijk Gewest" ;
+      <http://www.w3.org/ns/regorg#legalName> "Brussels Hoofdstedelijk Gewest" ;
+      <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+      <http://www.w3.org/2004/02/skos/core#note> "Brussel is geen officiële provincie, maar een gewest." .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/89959431-6ac6-474c-9d7a-6a6b16dfc6f8>
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/811c8126-d50f-4270-bba3-254d74f908cd> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/5f5a68f5-d854-470d-8738-aa79566147e8> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/a6369f3d-3f82-4c27-9e54-1560c8d31bc2> .
+
+    <http://data.lblod.info/id/identificatoren/811c8126-d50f-4270-bba3-254d74f908cd>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/dbee85a9-33b1-4753-a890-28a845a651ab>;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/adms#Identifier>;
+      <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "811c8126-d50f-4270-bba3-254d74f908cd" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/dbee85a9-33b1-4753-a890-28a845a651ab>
+      <http://mu.semte.ch/vocabularies/core/uuid> "dbee85a9-33b1-4753-a890-28a845a651ab";
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0316381039" .
+
+    <http://data.lblod.info/id/identificatoren/5f5a68f5-d854-470d-8738-aa79566147e8>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/d1b6c642-2075-4b5a-b05f-d928e8864472>;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/adms#Identifier>;
+      <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "5f5a68f5-d854-470d-8738-aa79566147e8" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/d1b6c642-2075-4b5a-b05f-d928e8864472>
+      <http://mu.semte.ch/vocabularies/core/uuid> "d1b6c642-2075-4b5a-b05f-d928e8864472";
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "OVO004095" .
+
+    <http://data.lblod.info/id/vestigingen/a6369f3d-3f82-4c27-9e54-1560c8d31bc2>
+      a <http://www.w3.org/ns/org#Site> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "a6369f3d-3f82-4c27-9e54-1560c8d31bc2" ;
+      <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+      <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/182b2f48-075d-41d3-b247-57a9c93d7fe1> ;
+      <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/4918c7d0-8b7a-4700-8343-ea16b310fb5b> .
+
+    <http://data.lblod.info/id/contact-punten/182b2f48-075d-41d3-b247-57a9c93d7fe1>
+      a <http://schema.org/ContactPoint> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "182b2f48-075d-41d3-b247-57a9c93d7fe1" ;
+      <http://schema.org/email> "info@gob.brussels" ;
+      <http://schema.org/telephone> "tel:+3222042111" ;
+      <http://schema.org/contactType> "Primary" ;
+      <http://xmlns.com/foaf/0.1/page> "https://overheidsdienst.brussels" .
+
+    <http://data.lblod.info/id/adressen/4918c7d0-8b7a-4700-8343-ea16b310fb5b>
+      a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid>"4918c7d0-8b7a-4700-8343-ea16b310fb5b" ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Brussel" ;
+      <https://data.vlaanderen.be/ns/adres#land> "België" ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "2" ;
+      <http://www.w3.org/ns/locn#adminUnitL2> "Brussels Hoofdstedelijk Gewest" ;
+      <http://www.w3.org/ns/locn#fullAddress> "Sint-Lazarusplein 2, 1035 Brussel, België" ;
+      <http://www.w3.org/ns/locn#postCode> "1035" ;
+      <http://www.w3.org/ns/locn#thoroughfare> "Sint-Lazarusplein" ;
+      <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn> <http://data.lblod.info/id/werkingsgebieden/21c7ac68-80ff-4530-ad0f-2207562be34d>.
+  }
+}
