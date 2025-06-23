@@ -1,10 +1,10 @@
 # Changelog
 ## Unreleased
 ### Backend
-- Added Brussels Hoofdstedelijk Gewest as province and location + update province of addresses in Brussel's area. [OP-3624]
+- Added Brussels Hoofdstedelijk Gewest as province and location, update province of addresses in Brussel's area, update resource config to add `skos:note` on organizations [OP-3624]
 ### Deploy Notes
 ```
-drc restart migrations-triggering-indexing
+drc restart migrations-triggering-indexing resource
 ```
 
 ## v1.33.1 (2025-06-16)
