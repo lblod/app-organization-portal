@@ -1,10 +1,21 @@
 # Changelog
 ## Unreleased
 ### Backend
-- Added Brussels Hoofdstedelijk Gewest as province and location, update province of addresses in Brussel's area, update resource config to add `skos:note` on organizations [OP-3624]
-### Deploy Notes
+- Add Brussels Hoofdstedelijk Gewest as province and location, update province of addresses in Brussel's area, update resource config to add `skos:note` on organizations [OP-3624]
+- Bump delta-notifier service to most recent version [OP-3190]
+
+### Deploy notes
 ```
+drc pull deltanotifier; drc up -d deltanotifier
 drc restart migrations-triggering-indexing resource
+```
+
+## v1.33.2 (2025-06-20)
+### Backend
+- datafix: correct name for locations whose municipalities kept their URI in the 2025 mergers
+### Deploy notes
+```
+drc restart migrations-triggering-indexing && drc logs -ft --tail=200
 ```
 
 ## v1.33.1 (2025-06-16)

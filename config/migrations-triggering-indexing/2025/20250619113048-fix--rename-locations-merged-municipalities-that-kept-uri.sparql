@@ -1,0 +1,22 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?scope rdfs:label ?oldLabel .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?scope rdfs:label ?newLabel .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?scope a prov:Location ;
+           rdfs:label ?oldLabel .
+    VALUES (?scope ?newLabel) {
+      (<http://data.lblod.info/id/werkingsgebieden/1f5dd7043ad54d07751da8689d5b47ad9ae0e52dccce8f00cc8debab35f8e2b2> "Bilzen-Hoeselt")
+      (<http://data.lblod.info/id/werkingsgebieden/fc34bb0a1dbf157ac5e5f8e657dd774210f03d2efa21370dd3b9a6342906c7ab> "Tessenderlo-Ham")
+      (<http://data.lblod.info/id/werkingsgebieden/fabec9e745fc9efa32afadd8b7268938805b9679dcf3b032c9b9a9a3530d6b59> "Tongeren-Borgloon")
+    }
+  }
+}
