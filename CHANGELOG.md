@@ -2,6 +2,7 @@
 ## Unreleased
 ### Backend
 - Add Brussels Hoofdstedelijk Gewest as province and location, update province of addresses in Brussel's area, update resource config to add `skos:note` on organizations [OP-3624]
+- Add Brussel as a municipality [OP-3628]
 - Bump delta-notifier service to most recent version [OP-3190]
 
 ### Deploy notes
