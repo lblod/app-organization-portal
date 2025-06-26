@@ -13,7 +13,7 @@ drc restart migrations-triggering-indexing resource
 
 ## v1.33.2 (2025-06-20)
 ### Backend
-- datafix: correct name for locations whose municipalities kept their URI in the 2025 mergers
+- datafix: correct name for locations whose municipalities kept their URI in the 2025 mergers [OP-3627]
 ### Deploy notes
 ```
 drc restart migrations-triggering-indexing && drc logs -ft --tail=200
