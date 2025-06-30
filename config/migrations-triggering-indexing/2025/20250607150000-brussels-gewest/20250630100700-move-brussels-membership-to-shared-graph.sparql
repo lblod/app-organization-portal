@@ -1,0 +1,21 @@
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/lidmaatschap/e77fcf92-0556-4c9c-a463-6f6c0c48cb31>
+      a <http://www.w3.org/ns/org#Membership> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "e77fcf92-0556-4c9c-a463-6f6c0c48cb31" ;
+      <http://www.w3.org/ns/org#organization> <http://data.lblod.info/id/bestuurseenheden/89959431-6ac6-474c-9d7a-6a6b16dfc6f8> ;
+      <http://www.w3.org/ns/org#member> <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224> ;
+      <http://www.w3.org/ns/org#role> <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <http://data.lblod.info/id/lidmaatschap/e77fcf92-0556-4c9c-a463-6f6c0c48cb31>
+      a <http://www.w3.org/ns/org#Membership> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "e77fcf92-0556-4c9c-a463-6f6c0c48cb31" ;
+      <http://www.w3.org/ns/org#organization> <http://data.lblod.info/id/bestuurseenheden/89959431-6ac6-474c-9d7a-6a6b16dfc6f8> ;
+      <http://www.w3.org/ns/org#member> <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224> ;
+      <http://www.w3.org/ns/org#role> <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+}
