@@ -20,7 +20,6 @@ export default {
     WHERE {
       VALUES ?type {
         org:Organization
-        besluit:Bestuurseenheid
       }
 
       GRAPH ?g {
@@ -61,7 +60,6 @@ export default {
     WHERE {
       VALUES ?type {
         org:Organization
-        besluit:Bestuurseenheid
       }
 
       GRAPH ?g {
