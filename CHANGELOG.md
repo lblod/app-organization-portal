@@ -5,11 +5,14 @@
 - Add Brussel as a municipality [OP-3628]
 - Bump delta-notifier service to most recent version [OP-3190]
 - Add URI to resource's organization responses
+- Fix query for organizations report [OP-3636]
+- Bump report-generation-service to most recent version
 ### Deploy notes
 ```
 drc pull deltanotifier; drc up -d deltanotifier
 drc restart migrations-triggering-indexing resource
 drc pull frontend; drc up -d frontend
+drc pull report-generation; drc up -d report-generation
 ```
 
 ## v1.33.2 (2025-06-20)
