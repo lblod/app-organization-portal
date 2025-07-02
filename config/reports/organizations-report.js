@@ -18,12 +18,8 @@ export default {
 
     SELECT DISTINCT ?bestuur ?label ?classification ?typeEredienst
     WHERE {
-      VALUES ?type {
-        org:Organization
-      }
-
       GRAPH ?g {
-        ?bestuur a ?type .
+        ?bestuur a org:Organization .
         OPTIONAL { ?bestuur skos:prefLabel ?label. }
       }
 
@@ -58,12 +54,8 @@ export default {
 
     SELECT DISTINCT ?bestuur ?provincie
     WHERE {
-      VALUES ?type {
-        org:Organization
-      }
-
       GRAPH ?g {
-        ?bestuur a ?type .
+        ?bestuur a org:Organization .
       }
 
       GRAPH ?h {
