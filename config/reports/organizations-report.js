@@ -58,8 +58,8 @@ export default {
         ?bestuur a org:Organization .
       }
 
-      GRAPH ?h {
-        OPTIONAL {
+      OPTIONAL {
+        GRAPH ?h {
           ?bestuur org:hasPrimarySite ?primarySite.
 
           OPTIONAL {
@@ -67,10 +67,11 @@ export default {
             OPTIONAL { ?sa locn:adminUnitL2 ?provincie. }
           }
         }
+        FILTER (?h IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service> ))
       }
 
       FILTER (?g IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service>, <http://mu.semte.ch/graphs/shared>))
-      FILTER (?h IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service> ))
+
     }
     `;
 
