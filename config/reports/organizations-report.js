@@ -70,7 +70,7 @@ export default {
       }
 
       FILTER (?g IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service>, <http://mu.semte.ch/graphs/shared>))
-      FILTER (?h IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service>, <http://mu.semte.ch/graphs/shared>))
+      FILTER (?h IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service> ))
     }
     `;
 
