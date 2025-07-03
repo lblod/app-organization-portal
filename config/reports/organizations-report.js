@@ -1,30 +1,25 @@
-import { generateReportFromData, batchedQuery } from '../helpers.js';
-import { PREFIXES } from './utils'
+import { generateReportFromData, batchedQuery } from "../helpers.js";
+import { PREFIXES } from "./utils";
 
 export default {
-  cronPattern: '0 00 23 * * *',
-  name: 'organizations',
+  cronPattern: "0 00 23 * * *",
+  name: "organizations",
   execute: async () => {
     const reportData = {
-      title: 'organizations',
-      description: 'List of the Organizations',
-      filePrefix: 'exports/organizations'
+      title: "organizations",
+      description: "List of the Organizations",
+      filePrefix: "exports/organizations",
     };
 
-    console.log('Generating organizations report');
+    console.log("Generating organizations report");
 
     const queryStringPart1 = `
     ${PREFIXES}
 
     SELECT DISTINCT ?bestuur ?label ?classification ?typeEredienst
     WHERE {
-      VALUES ?type {
-        org:Organization
-        besluit:Bestuurseenheid
-      }
-
       GRAPH ?g {
-        ?bestuur a ?type .
+        ?bestuur a org:Organization .
         OPTIONAL { ?bestuur skos:prefLabel ?label. }
       }
 
@@ -44,12 +39,12 @@ export default {
 
     const queryResponsePart1 = await batchedQuery(queryStringPart1);
 
-    const dataPart1 = queryResponsePart1.results.bindings.reduce( (acc, row) => {
-      acc[getSafeValue(row, 'bestuur')] = {
-        bestuur: getSafeValue(row, 'bestuur'),
-        label: getSafeValue(row, 'label'),
-        classification: getSafeValue(row, 'classification'),
-        typeEredienst: getSafeValue(row, 'typeEredienst'),
+    const dataPart1 = queryResponsePart1.results.bindings.reduce((acc, row) => {
+      acc[getSafeValue(row, "bestuur")] = {
+        bestuur: getSafeValue(row, "bestuur"),
+        label: getSafeValue(row, "label"),
+        classification: getSafeValue(row, "classification"),
+        typeEredienst: getSafeValue(row, "typeEredienst"),
       };
       return acc;
     }, {});
@@ -59,17 +54,12 @@ export default {
 
     SELECT DISTINCT ?bestuur ?provincie
     WHERE {
-      VALUES ?type {
-        org:Organization
-        besluit:Bestuurseenheid
-      }
-
       GRAPH ?g {
-        ?bestuur a ?type .
+        ?bestuur a org:Organization .
       }
 
-      GRAPH ?h {
-        OPTIONAL {
+      OPTIONAL {
+        GRAPH ?h {
           ?bestuur org:hasPrimarySite ?primarySite.
 
           OPTIONAL {
@@ -77,35 +67,37 @@ export default {
             OPTIONAL { ?sa locn:adminUnitL2 ?provincie. }
           }
         }
+        FILTER (?h IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service> ))
       }
 
       FILTER (?g IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service>, <http://mu.semte.ch/graphs/shared>))
-      FILTER (?h IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service>, <http://mu.semte.ch/graphs/shared>))
+
     }
     `;
 
     const queryResponsePart2 = await batchedQuery(queryStringPart2);
-    const dataPart2 = queryResponsePart2.results.bindings.reduce( (acc, row) => {
+    const dataPart2 = queryResponsePart2.results.bindings.reduce((acc, row) => {
       let dataPart = {
-        bestuur: getSafeValue(row, 'bestuur'),
-        provincie: getSafeValue(row, 'provincie')
+        bestuur: getSafeValue(row, "bestuur"),
+        provincie: getSafeValue(row, "provincie"),
       };
 
-      acc[getSafeValue(row, 'bestuur')] = Object.assign(dataPart, dataPart1[getSafeValue(row, 'bestuur')]);
+      acc[getSafeValue(row, "bestuur")] = Object.assign(
+        dataPart,
+        dataPart1[getSafeValue(row, "bestuur")],
+      );
       return acc;
     }, {});
 
-    await generateReportFromData(Object.values(dataPart2), [
-      'bestuur',
-      'label',
-      'classification',
-      'typeEredienst',
-      'provincie'
-    ], reportData);
-  }
+    await generateReportFromData(
+      Object.values(dataPart2),
+      ["bestuur", "label", "classification", "typeEredienst", "provincie"],
+      reportData,
+    );
+  },
 };
 
-function getSafeValue(entry, property){
+function getSafeValue(entry, property) {
   return entry[property] ? wrapInQuote(entry[property].value) : null;
 }
 
