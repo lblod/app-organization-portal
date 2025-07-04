@@ -1,0 +1,105 @@
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/werkingsgebieden/870d1288-3de3-4720-9971-4cda1f39eee0>
+      a <http://www.w3.org/ns/prov#Location> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "870d1288-3de3-4720-9971-4cda1f39eee0" ;
+      <http://www.w3.org/2000/01/rdf-schema#label> "Brussel" ;
+      <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21004> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224>
+      a <http://www.w3.org/ns/org#Organization> ,
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+        <http://purl.org/dc/terms/Agent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "2aa7bf5e-2d15-4cea-b6ff-3da34f449224" ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Brussel" ;
+      <http://www.w3.org/ns/regorg#legalName> "Brussel" ;
+      <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+
+    <http://data.lblod.info/id/bestuurseenheden/89959431-6ac6-474c-9d7a-6a6b16dfc6f8>
+      <http://www.w3.org/ns/org#hasSubOrganization> <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224> . 
+  
+    <http://data.lblod.info/id/lidmaatschap/e77fcf92-0556-4c9c-a463-6f6c0c48cb31>
+      a <http://www.w3.org/ns/org#Membership> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "e77fcf92-0556-4c9c-a463-6f6c0c48cb31" ;
+      <http://www.w3.org/ns/org#organization> <http://data.lblod.info/id/bestuurseenheden/89959431-6ac6-474c-9d7a-6a6b16dfc6f8> ;
+      <http://www.w3.org/ns/org#member> <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224> ;
+      <http://www.w3.org/ns/org#role> <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224>
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/1e849010-9624-4f57-bb36-2f0468ab200d> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9439dfb6-2b10-4c45-8f31-b178e2405c74> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/c58f6c0b-eebd-4b6d-a3cb-bbdf6fe5265e> .
+
+    <http://data.lblod.info/id/bestuurseenheden/89959431-6ac6-474c-9d7a-6a6b16dfc6f8>
+      <http://www.w3.org/ns/org#hasSubOrganization> <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224> . 
+
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/7a48ea24-5557-420a-bdd0-712d05309ab7>
+      a <http://www.w3.org/ns/org#ChangeEvent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "7a48ea24-5557-420a-bdd0-712d05309ab7" ;
+      <http://data.lblod.info/vocabularies/contacthub/typeWijziging> <http://lblod.data.gift/concepts/e4c3d1ef-a34d-43b0-a18c-f4e60e2c8af3> ;
+      <http://www.w3.org/ns/org#originalOrganization> <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224> ;
+      <http://www.w3.org/ns/org#resultingOrganization> <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224> ;
+      <http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat> <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/5dfdca74-05a9-43d4-963e-d5376f668060> .
+    
+    <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/5dfdca74-05a9-43d4-963e-d5376f668060>
+      a <http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "5dfdca74-05a9-43d4-963e-d5376f668060" ;
+      <http://mu.semte.ch/vocabularies/ext/resultingOrganization> <http://data.lblod.info/id/bestuurseenheden/2aa7bf5e-2d15-4cea-b6ff-3da34f449224> ;
+      <http://lblod.data.gift/vocabularies/organisatie/resulterendeStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+
+    <http://data.lblod.info/id/identificatoren/1e849010-9624-4f57-bb36-2f0468ab200d>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/f46696ea-bef9-4108-9866-4f8b609ee869>;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/adms#Identifier>;
+      <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "1e849010-9624-4f57-bb36-2f0468ab200d" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/f46696ea-bef9-4108-9866-4f8b609ee869>
+      <http://mu.semte.ch/vocabularies/core/uuid> "f46696ea-bef9-4108-9866-4f8b609ee869";
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0207373429" .
+
+    <http://data.lblod.info/id/identificatoren/9439dfb6-2b10-4c45-8f31-b178e2405c74>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/67b2909d-8a98-4a58-86b0-028f0706df09>;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/adms#Identifier>;
+      <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "9439dfb6-2b10-4c45-8f31-b178e2405c74" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/67b2909d-8a98-4a58-86b0-028f0706df09>
+      <http://mu.semte.ch/vocabularies/core/uuid> "67b2909d-8a98-4a58-86b0-028f0706df09";
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "OVO008216" .
+
+    <http://data.lblod.info/id/vestigingen/c58f6c0b-eebd-4b6d-a3cb-bbdf6fe5265e>
+      a <http://www.w3.org/ns/org#Site> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "c58f6c0b-eebd-4b6d-a3cb-bbdf6fe5265e" ;
+      <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+      <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/64d54dd8-cf48-46c6-b4b5-8b10c8745ad3> ;
+      <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/062c3219-dae8-4e44-8f0a-93ef8fd7b1c3> .
+
+    <http://data.lblod.info/id/contact-punten/64d54dd8-cf48-46c6-b4b5-8b10c8745ad3>
+      a <http://schema.org/ContactPoint> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "64d54dd8-cf48-46c6-b4b5-8b10c8745ad3" ;
+      <http://schema.org/email> "cellule.web@brucity.be" ;
+      <http://schema.org/telephone> "tel:+3222792211" ;
+      <http://schema.org/contactType> "Primary" ;
+      <http://xmlns.com/foaf/0.1/page> "https://www.brussel.be" .
+
+    <http://data.lblod.info/id/adressen/062c3219-dae8-4e44-8f0a-93ef8fd7b1c3>
+      a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid>"062c3219-dae8-4e44-8f0a-93ef8fd7b1c3" ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Brussel" ;
+      <https://data.vlaanderen.be/ns/adres#land> "België" ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "4" ;
+      <http://www.w3.org/ns/locn#adminUnitL2> "Brussels Hoofdstedelijk Gewest" ;
+      <http://www.w3.org/ns/locn#fullAddress> "Hallenstraat 4, 1000 Brussel, België" ;
+      <http://www.w3.org/ns/locn#postCode> "1000" ;
+      <http://www.w3.org/ns/locn#thoroughfare> "Hallenstraat" ;
+      <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn> <http://data.lblod.info/id/werkingsgebieden/870d1288-3de3-4720-9971-4cda1f39eee0>.
+  }
+}
