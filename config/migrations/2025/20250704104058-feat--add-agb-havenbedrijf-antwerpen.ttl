@@ -1,0 +1,129 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Core data
+<http://data.lblod.info/id/bestuurseenheden/604d50138929f0e450f629b1caad73733d2a5dc31018edb53e50a5940f4dafe7> rdf:type <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> , <http://www.w3.org/ns/org#Organization> , dcterms:Agent ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "604d50138929f0e450f629b1caad73733d2a5dc31018edb53e50a5940f4dafe7" ;
+    skos:prefLabel "Havenbedrijf Antwerpen" ;
+    <http://www.w3.org/ns/regorg#legalName> "Havenbedrijf Antwerpen" ;
+    <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/6867A955D4D5D97D41D25644> ;
+    <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+    <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/6867A953D4D5D97D41D2563E> , <http://data.lblod.info/id/identificatoren/6867A954D4D5D97D41D25640> , <http://data.lblod.info/id/identificatoren/90a07cc0-58bf-11f0-a83a-cf8f2103999b> ;
+    <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721> .
+
+## Identifiers
+### KBO no.
+<http://data.lblod.info/id/identificatoren/6867A953D4D5D97D41D2563E> rdf:type <http://www.w3.org/ns/adms#Identifier> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A953D4D5D97D41D2563E" ;
+    <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificatoren/6867A953D4D5D97D41D2563D> ;
+    skos:notation "KBO nummer" .
+<http://data.lblod.info/id/gestructureerdeIdentificatoren/6867A953D4D5D97D41D2563D> rdf:type <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A953D4D5D97D41D2563D" ;
+    <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0248399380" .
+### SharePoint id
+<http://data.lblod.info/id/identificatoren/6867A954D4D5D97D41D25640> rdf:type <http://www.w3.org/ns/adms#Identifier> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A954D4D5D97D41D25640" ;
+    <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificatoren/6867A954D4D5D97D41D2563F> ;
+    skos:notation "SharePoint identificator" .
+<http://data.lblod.info/id/gestructureerdeIdentificatoren/6867A954D4D5D97D41D2563F> rdf:type <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A954D4D5D97D41D2563F" .
+### OVO no.
+<http://data.lblod.info/id/identificatoren/90a07cc0-58bf-11f0-a83a-cf8f2103999b> rdf:type <http://www.w3.org/ns/adms#Identifier> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "90a07cc0-58bf-11f0-a83a-cf8f2103999b" ;
+    <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificatoren/90a07cc1-58bf-11f0-a83a-cf8f2103999b> ;
+    skos:notation "OVO-nummer" .
+<http://data.lblod.info/id/gestructureerdeIdentificatoren/90a07cc1-58bf-11f0-a83a-cf8f2103999b> rdf:type <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "90a07cc1-58bf-11f0-a83a-cf8f2103999b" .
+
+# Contact information
+<http://data.lblod.info/id/vestigingen/6867A955D4D5D97D41D25644> rdf:type <http://www.w3.org/ns/org#Site> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A955D4D5D97D41D25644" ;
+    <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/6867A954D4D5D97D41D25641> , <http://data.lblod.info/id/contact-punten/6867A954D4D5D97D41D25642> ;
+    <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/6867A954D4D5D97D41D25643> ;
+    <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> .
+
+<http://data.lblod.info/id/contact-punten/6867A954D4D5D97D41D25641> rdf:type <http://schema.org/ContactPoint> ;
+    <http://schema.org/contactType> "Primary" ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A954D4D5D97D41D25641" .
+
+<http://data.lblod.info/id/contact-punten/6867A954D4D5D97D41D25642> rdf:type <http://schema.org/ContactPoint> ;
+    <http://schema.org/contactType> "Secondary" ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A954D4D5D97D41D25642" .
+
+<http://data.lblod.info/id/adressen/6867A954D4D5D97D41D25643> rdf:type <http://www.w3.org/ns/locn#Address> ;
+    <https://data.vlaanderen.be/ns/adres#verwijstNaar> <https://data.vlaanderen.be/id/adres/3883528> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A954D4D5D97D41D25643" ;
+    dcterms:source <http://lblod.data.gift/concepts/e59c97a9-4e95-4d65-9696-756de47fbc1f> ;
+    <http://www.w3.org/ns/locn#postCode> "2030" ;
+    <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1" ;
+    <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen" ;
+    <http://www.w3.org/ns/locn#fullAddress> "Zaha Hadidplein 1, 2030 Antwerpen, Belgi\u00EB" ;
+    <http://www.w3.org/ns/locn#thoroughfare> "Zaha Hadidplein" ;
+    <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Antwerpen" ;
+    <https://data.vlaanderen.be/ns/adres#land> "Belgi\u00EB" .
+
+# Governing bodies
+## Raad van bestuur
+<http://data.lblod.info/id/bestuursorganen/8ffdfb30-58bf-11f0-8a90-dda5d31bcff4> rdf:type <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "8ffdfb30-58bf-11f0-8a90-dda5d31bcff4" ;
+    skos:prefLabel "Raad van bestuur Havenbedrijf Antwerpen" ;
+    <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> ;
+    <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/604d50138929f0e450f629b1caad73733d2a5dc31018edb53e50a5940f4dafe7> .
+
+<http://data.lblod.info/id/bestuursorganen/903007b0-58bf-11f0-8a90-dda5d31bcff4> rdf:type <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "903007b0-58bf-11f0-8a90-dda5d31bcff4" ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/8ffdfb30-58bf-11f0-8a90-dda5d31bcff4> ;
+    <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00Z"^^xsd:dateTime .
+
+## Bevoegd beslissingsorgaan
+<http://data.lblod.info/id/bestuursorganen/900b1a90-58bf-11f0-8a90-dda5d31bcff4> rdf:type <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "900b1a90-58bf-11f0-8a90-dda5d31bcff4" ;
+    skos:prefLabel "Bevoegd beslissingsorgaan Havenbedrijf Antwerpen" ;
+    <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382> ;
+    <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/604d50138929f0e450f629b1caad73733d2a5dc31018edb53e50a5940f4dafe7> .
+
+<http://data.lblod.info/id/bestuursorganen/90384510-58bf-11f0-8a90-dda5d31bcff4> rdf:type <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "90384510-58bf-11f0-8a90-dda5d31bcff4" ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/900b1a90-58bf-11f0-8a90-dda5d31bcff4> ;
+    <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00Z"^^xsd:dateTime .
+
+## Algemene vergadering
+<http://data.lblod.info/id/bestuursorganen/901812e0-58bf-11f0-8a90-dda5d31bcff4> rdf:type <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "901812e0-58bf-11f0-8a90-dda5d31bcff4" ;
+    skos:prefLabel "Algemene vergadering Havenbedrijf Antwerpen" ;
+    <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> ;
+    <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/604d50138929f0e450f629b1caad73733d2a5dc31018edb53e50a5940f4dafe7> .
+
+<http://data.lblod.info/id/bestuursorganen/903c3cb0-58bf-11f0-8a90-dda5d31bcff4> rdf:type <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "903c3cb0-58bf-11f0-8a90-dda5d31bcff4" ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/901812e0-58bf-11f0-8a90-dda5d31bcff4> ;
+    <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00Z"^^xsd:dateTime .
+
+## Leidend Ambtenaar
+<http://data.lblod.info/id/bestuursorganen/90230f60-58bf-11f0-8a90-dda5d31bcff4> rdf:type <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "90230f60-58bf-11f0-8a90-dda5d31bcff4" ;
+    skos:prefLabel "Leidend Ambtenaar Havenbedrijf Antwerpen" ;
+    <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4> ;
+    <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/604d50138929f0e450f629b1caad73733d2a5dc31018edb53e50a5940f4dafe7> .
+
+<http://data.lblod.info/id/bestuursorganen/90427e40-58bf-11f0-8a90-dda5d31bcff4> rdf:type <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "90427e40-58bf-11f0-8a90-dda5d31bcff4" ;
+    <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> <http://data.lblod.info/id/bestuursfuncties/904a6d80-58bf-11f0-8a90-dda5d31bcff4> ;
+    <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/90230f60-58bf-11f0-8a90-dda5d31bcff4> ;
+    <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00Z"^^xsd:dateTime .
+
+
+# Related organisations
+<http://data.lblod.info/id/lidmaatschap/6867A956D4D5D97D41D25646> rdf:type <http://www.w3.org/ns/org#Membership> ;
+    <http://www.w3.org/ns/org#organization> <http://data.lblod.info/id/bestuurseenheden/604d50138929f0e450f629b1caad73733d2a5dc31018edb53e50a5940f4dafe7> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A956D4D5D97D41D25646" ;
+    <http://www.w3.org/ns/org#member> <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c> ;
+    <http://www.w3.org/ns/org#role> <http://data.lblod.info/id/rollen/73d5e1cf250d42fab15926771f07505a> .
+
+<http://data.lblod.info/id/lidmaatschap/6867A956D4D5D97D41D25647> rdf:type <http://www.w3.org/ns/org#Membership> ;
+    <http://www.w3.org/ns/org#organization> <http://data.lblod.info/id/bestuurseenheden/604d50138929f0e450f629b1caad73733d2a5dc31018edb53e50a5940f4dafe7> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "6867A956D4D5D97D41D25647" ;
+    <http://www.w3.org/ns/org#member> <http://data.lblod.info/id/bestuurseenheden/bd74ee38a4b1e296821a11729c1f704cf439576c7ab2c910c95b067cf183d923> ;
+    <http://www.w3.org/ns/org#role> <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
