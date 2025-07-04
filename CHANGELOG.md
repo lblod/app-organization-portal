@@ -18,6 +18,15 @@ drc pull frontend; drc up -d frontend
 drc pull report-generation; drc up -d report-generation
 ```
 
+## v1.33.3 (2025-07-04)
+### Backend
+- datafix: re-add Havenbedrijf Antwerpen as an AGB [OP-3639]
+### Deploy notes
+```
+drc restart migrations; drc logs -ft --tail=200 migrations
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+```
+
 ## v1.33.2 (2025-06-20)
 ### Backend
 - datafix: correct name for locations whose municipalities kept their URI in the 2025 mergers [OP-3627]
