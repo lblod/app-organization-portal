@@ -1,5 +1,7 @@
 # Changelog
 ## Unreleased
+### Frontend
+- Bump to version [v1.33.0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.33.0)
 ### Backend
 - Add Brussels Hoofdstedelijk Gewest as province and location, update province of addresses in Brussel's area, update resource config to add `skos:note` on organizations [OP-3624]
 - Add Brussel as a municipality [OP-3628]
