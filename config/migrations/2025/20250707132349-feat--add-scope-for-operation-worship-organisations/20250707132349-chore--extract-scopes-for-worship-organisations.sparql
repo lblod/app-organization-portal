@@ -1,0 +1,112 @@
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+# This migration extracts the relations between (central) worship services and
+# their locations according to the rules provided by business. These links are
+# inserted into a temporary graph for further processing.
+
+# Worship services
+## Municipality organised
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-worship-organizations-scope> {
+    ?ws besluit:werkingsgebied ?scope .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?ws a ere:BestuurVanDeEredienst ;
+        ere:typeEredienst ?worshipType .
+    VALUES ?worshipType {
+      <http://lblod.data.gift/concepts/99536dd6eb0d2ef38a89efafb17e7389> # Anglicaans
+      <http://lblod.data.gift/concepts/1a1abeafc973d27cebcb2d7a15b2d823> # Israëlitisch
+      <http://lblod.data.gift/concepts/e8cba1540b35a32e9cb45126c38c03c6> # Protestants
+      <http://lblod.data.gift/concepts/b13d1d623626bc1ee75c7d20bc60e3c0> # Rooms-Katholiek
+    }
+
+    ?involvement a ere:BetrokkenLokaleBesturen ;
+                 org:organization ?ws ;
+                 ere:typebetrokkenheid ?involvementType .
+    VALUES ?involvementType {
+      <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e> # Mede-financierend
+      <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1> # Toezichthoudend
+    }
+    ?org ere:betrokkenBestuur ?involvement .
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?org besluit:werkingsgebied ?scope .
+  }
+}
+;
+## Province organised
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-worship-organizations-scope> {
+    ?ws besluit:werkingsgebied ?scope .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?ws a ere:BestuurVanDeEredienst ;
+        ere:typeEredienst ?worshipType .
+    VALUES ?worshipType {
+      <http://lblod.data.gift/concepts/9d8bd472a00bf0a5c7b7186606365a52> # Islamitisch
+      <http://lblod.data.gift/concepts/84bcd6896f575bae4857ff8d2764bed8> # Orthodox
+    }
+
+    ?involvement a ere:BetrokkenLokaleBesturen ;
+                 org:organization ?ws ;
+                 ere:typebetrokkenheid ?involvementType .
+    VALUES ?involvementType {
+      <http://lblod.data.gift/concepts/0f845f00ee76099c89518cbaf6a7b77f> # Adviserend
+    }
+    ?org ere:betrokkenBestuur ?involvement .
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?org besluit:werkingsgebied ?scope .
+  }
+}
+;
+# Central worship services
+## Municipality organised
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-worship-organizations-scope> {
+    ?ws besluit:werkingsgebied ?scope .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?ws a ere:CentraalBestuurVanDeEredienst ;
+        ere:typeEredienst ?worshipType .
+    VALUES ?worshipType {
+      <http://lblod.data.gift/concepts/b13d1d623626bc1ee75c7d20bc60e3c0> # Rooms-Katholiek
+    }
+
+    ?involvement a ere:BetrokkenLokaleBesturen ;
+                 org:organization ?ws ;
+                 ere:typebetrokkenheid ?involvementType .
+    VALUES ?involvementType {
+      <http://lblod.data.gift/concepts/ac400cc9f135ac7873fb3e551ec738c1> # Toezichthoudend
+    }
+    ?org ere:betrokkenBestuur ?involvement .
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?org besluit:werkingsgebied ?scope .
+  }
+}
+;
+## Province organised
+## Note: Business requested to use the location for the municipality of Ghent as
+## default value. They will update it manually afterwards.
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-worship-organizations-scope> {
+    ?ws besluit:werkingsgebied ?locationGhent .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?ws a ere:CentraalBestuurVanDeEredienst ;
+        ere:typeEredienst ?worshipType .
+    VALUES ?worshipType {
+      <http://lblod.data.gift/concepts/9d8bd472a00bf0a5c7b7186606365a52> # Islamitisch
+      <http://lblod.data.gift/concepts/84bcd6896f575bae4857ff8d2764bed8> # Orthodox
+    }
+
+    BIND(URI("http://data.lblod.info/id/werkingsgebieden/ce94eeae827cdc5c00f3f2f4276ff628580edefb3aa5861e4669b0c5d93adc57") AS ?locationGhent)
+  }
+}

@@ -1,0 +1,49 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# This migration sets the scope of operation for worship organisations that have
+# multiple location as scope. It creates new aggregate locations to contain the
+# already existing municipality/province level ones.  This migration depends on
+# `20250707132349-chore--extract-scopes-for-worship-organisations` being
+# executed first, as it uses the data created by the migration.
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?location a prov:Location ;
+              mu:uuid ?locationUuid ;
+              rdfs:label ?scopeLabel ;
+              ext:werkingsgebiedNiveau """Samengesteld werkingsgebied""" .
+    ?scope geo:sfWithin ?location .
+  }
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?ws besluit:werkingsgebied ?location .
+  }
+} WHERE {
+  {
+    SELECT DISTINCT ?ws (count(DISTINCT ?scope) AS ?count) (GROUP_CONCAT(?uuid," ") AS ?scopeUuids) (GROUP_CONCAT(?label,", ") AS ?scopeLabel)
+    WHERE {
+      GRAPH <http://mu.semte.ch/graphs/temp-for-worship-organizations-scope> {
+        ?ws besluit:werkingsgebied ?scope .
+      }
+      GRAPH <http://mu.semte.ch/graphs/public> {
+        ?scope mu:uuid ?uuid ;
+               rdfs:label ?label .
+      }
+    }
+  }
+  FILTER (?count > 1)
+  GRAPH <http://mu.semte.ch/graphs/temp-for-worship-organizations-scope> {
+    ?ws besluit:werkingsgebied ?scope .
+  }
+  # NOTE (10/07/2025): The SPARQL specification does not specify any order for
+  # `GROUP_CONCAT`. But virtuoso does seem to concatenate elements always in the
+  # same order. Therefore, this way of generating a UUID is a bit of a hack to
+  # ensure that new locations that contain the same locations will receive the
+  # same UUUID, which results in the same location resource being inserted
+  # twice.
+  BIND (STR(SHA256(?scopeUuids)) AS ?locationUuid)
+  BIND (URI(CONCAT("http://data.lblod.info/id/werkingsgebieden/", ?locationUuid)) AS ?location)
+}
