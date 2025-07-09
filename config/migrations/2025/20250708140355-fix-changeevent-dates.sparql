@@ -1,0 +1,26 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+  GRAPH ?g {
+    ?s dcterms:date ?oldDate .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?s dcterms:date ?newDate .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?s a org:ChangeEvent ;
+        dcterms:date ?oldDate .
+    FILTER(DATATYPE(?oldDate) != xsd:date)
+    FILTER(?g IN (
+      <http://mu.semte.ch/graphs/administrative-unit>,
+      <http://mu.semte.ch/graphs/worship-service>,
+    ))
+    BIND(STRDT(SUBSTR(STR(?oldDate), 1, 10), xsd:date) AS ?newDate)
+  }
+}
