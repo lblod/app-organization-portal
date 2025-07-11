@@ -1,7 +1,7 @@
 # Changelog
 ## Unreleased
 
-## v1.34.0-0 (2025-07-10)
+## v1.34.0 (2025-07-11)
 ### Frontend
 - Bump to version [v1.33.0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.33.0)
 ### Backend
