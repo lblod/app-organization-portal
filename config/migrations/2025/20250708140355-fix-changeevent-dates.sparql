@@ -19,7 +19,7 @@ WHERE {
     FILTER(DATATYPE(?oldDate) != xsd:date)
     FILTER(?g IN (
       <http://mu.semte.ch/graphs/administrative-unit>,
-      <http://mu.semte.ch/graphs/worship-service>,
+      <http://mu.semte.ch/graphs/worship-service>
     ))
     BIND(STRDT(SUBSTR(STR(?oldDate), 1, 10), xsd:date) AS ?newDate)
   }
