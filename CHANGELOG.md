@@ -6,6 +6,7 @@
 - Add a service to manage organisation's their scope of operation [OP-3205]
 - datamodel: Allow a location to be within multiple other locations [OP-3205]
 - datafix: set scope of operation for worship administrative units [OP-3626]
+- Clean dev addresses linked to both sites and contact points of mandatarissen [DL-6701]
 ### Deploy notes
 ```
 drc pull scope-of-operation; drc up -d scope-of-operation
@@ -32,7 +33,6 @@ drc restart migrations; drc logs -ft --tail=200 migrations
 - Add URI to resource's organization responses
 - Fix query for organizations report [OP-3636]
 - Bump report-generation-service to most recent version
-- Write migration to harmonize date formats of change events [OP-3559]
 ### Deploy notes
 ```
 drc pull deltanotifier; drc up -d deltanotifier
