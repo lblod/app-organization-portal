@@ -6,6 +6,7 @@
 - Add a service to manage organisation's their scope of operation [OP-3205]
 - datamodel: Allow a location to be within multiple other locations [OP-3205]
 - datafix: set scope of operation for worship administrative units [OP-3626]
+- datafix: cleanup of general memberships if specific ones exist [OP-3640]
 ### Deploy notes
 ```
 drc pull scope-of-operation; drc up -d scope-of-operation

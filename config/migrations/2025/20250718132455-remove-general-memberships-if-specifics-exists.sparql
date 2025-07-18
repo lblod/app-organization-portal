@@ -1,0 +1,33 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH ?g {
+    ?membership ?p ?o .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    # Find memberships that use the general 'gerelateerd' role
+    ?membership a org:Membership ;
+                org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> ;
+                org:member ?orgMember ;
+                org:organization ?organization .
+
+    # Only delete if there's a specific role for the inverse membership
+    FILTER EXISTS {
+      ?specific_membership a org:Membership ;
+                           org:member ?organization ;
+                           org:organization ?orgMember ;
+                           org:role ?specificRole .
+
+      VALUES ?specificRole {
+        <http://data.lblod.info/id/rollen/2152eb830b1143bfb97a7dd9596d6c63> # participant
+        <http://data.lblod.info/id/rollen/73d5e1cf250d42fab15926771f07505a> # stichtend lid
+      }
+    }
+
+    ?membership ?p ?o .
+  }
+}
