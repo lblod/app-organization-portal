@@ -7,9 +7,7 @@ DELETE {
     ?newAddressUri a <http://www.w3.org/ns/locn#Address> ;
       <http://mu.semte.ch/vocabularies/core/uuid> ?newAddressUuid ;
       ?p ?o .
-  }
 
-  GRAPH ?h {
     ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?newAddressUri .
   }
 } WHERE {
@@ -23,9 +21,10 @@ DELETE {
   ?mandatarisContact <http://www.w3.org/ns/locn#address> ?oldAddressUri .
 
   GRAPH ?h {
-    ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?oldAddressUri .
+    ?site a <http://www.w3.org/ns/org#Site>;
+     <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?oldAddressUri .
   }
 
-  BIND(MD5(CONCAT(?oldAddressUri,"OLD_ADDRESS")) AS ?newAddressUuid) .
+  BIND(MD5(CONCAT(?oldAddressUri,"NEW_ADDRESS")) AS ?newAddressUuid) .
   BIND(IRI(CONCAT("http://data.lblod.info/id/adressen/", STR(?newAddressUuid))) AS ?newAddressUri) .
 }
