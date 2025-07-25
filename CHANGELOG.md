@@ -34,6 +34,7 @@ drc restart migrations; drc logs -ft --tail=200 migrations
 - Add URI to resource's organization responses
 - Fix query for organizations report [OP-3636]
 - Bump report-generation-service to most recent version
+- Write migration to harmonize date formats of change events [OP-3559]
 ### Deploy notes
 ```
 drc pull deltanotifier; drc up -d deltanotifier
