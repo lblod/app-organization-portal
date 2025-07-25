@@ -7,6 +7,7 @@
 - datamodel: Allow a location to be within multiple other locations [OP-3205]
 - datafix: set scope of operation for worship administrative units [OP-3626]
 - Clean addresses linked to both sites and contact points of mandatarissen and addresses that are in the wrong graph (admin unit graph but linked to a contact point in the worship graph) [DL-6701]
+- datafix: cleanup of general memberships if specific ones exist [OP-3640]
 ### Deploy notes
 ```
 drc pull scope-of-operation; drc up -d scope-of-operation
