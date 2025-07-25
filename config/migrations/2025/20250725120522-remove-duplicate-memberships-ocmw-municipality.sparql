@@ -1,0 +1,33 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?duplicateMembership ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?duplicateMembership a org:Membership ;
+      org:organization ?orgB ; # OCMW
+      org:member ?orgA ; # Municipality
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> ;
+      ?p ?o .
+
+    # Find the other memberships with swapped organizations
+    ?correctMembership a org:Membership ;
+      org:organization ?orgA ; # Municipality
+      org:member ?orgB ; # OCMW
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+
+  GRAPH ?gA {
+    ?orgA org:classification ?classA .
+  }
+
+  GRAPH ?gB {
+    ?orgB org:classification ?classB .
+  }
+
+  FILTER(?classA = <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>)
+  FILTER(?classB = <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>)
+}
