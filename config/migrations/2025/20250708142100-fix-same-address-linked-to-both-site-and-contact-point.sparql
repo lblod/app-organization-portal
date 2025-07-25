@@ -1,0 +1,30 @@
+DELETE {
+  GRAPH ?h {
+    ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?oldAddressUri .
+  }
+} INSERT {
+  GRAPH ?g {
+    ?newAddressUri a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> ?newAddressUuid ;
+      ?p ?o .
+
+    ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?newAddressUri .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?oldAddressUri a <http://www.w3.org/ns/locn#Address> ;
+      ?p ?o .
+
+    FILTER (?p NOT IN (<http://mu.semte.ch/vocabularies/core/uuid>))
+  }
+
+  ?mandatarisContact <http://www.w3.org/ns/locn#address> ?oldAddressUri .
+
+  GRAPH ?h {
+    ?site a <http://www.w3.org/ns/org#Site>;
+     <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?oldAddressUri .
+  }
+
+  BIND(MD5(CONCAT(?oldAddressUri,"NEW_ADDRESS")) AS ?newAddressUuid) .
+  BIND(IRI(CONCAT("http://data.lblod.info/id/adressen/", STR(?newAddressUuid))) AS ?newAddressUri) .
+}
