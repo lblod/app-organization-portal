@@ -1,0 +1,18 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?address ?p ?o .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?address ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?contactPoint a <http://schema.org/ContactPoint> ;
+      <http://www.w3.org/ns/locn#address> ?address .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?address ?p ?o .
+  }
+}

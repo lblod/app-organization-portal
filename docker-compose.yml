@@ -285,6 +285,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  scope-of-operation:
+    image: lblod/scope-of-operation-service:0.1.0
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   report-generation:
     image: lblod/loket-report-generation-service:0.8.3
     environment:

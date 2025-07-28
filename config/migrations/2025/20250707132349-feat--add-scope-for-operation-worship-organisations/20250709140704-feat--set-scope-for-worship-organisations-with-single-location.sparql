@@ -1,0 +1,24 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+# This migration sets the scope of operation for worship organisations that have
+# single, already existing, location as scope. This migration depends on
+# `20250707132349-chore--extract-scopes-for-worship-organisations` being
+# executed first, as it uses the data created by the migration.
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?ws besluit:werkingsgebied ?scope .
+  }
+} WHERE {
+  {
+    SELECT DISTINCT ?ws (count(DISTINCT ?scope) as ?count)
+    WHERE {
+      GRAPH <http://mu.semte.ch/graphs/temp-for-worship-organizations-scope> {
+        ?ws besluit:werkingsgebied ?scope .
+      }
+    }
+  }
+  FILTER (?count = 1)
+  GRAPH <http://mu.semte.ch/graphs/temp-for-worship-organizations-scope> {
+    ?ws besluit:werkingsgebied ?scope .
+  }
+}
