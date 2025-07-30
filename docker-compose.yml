@@ -286,7 +286,7 @@ services:
     restart: always
     logging: *default-logging
   scope-of-operation:
-    image: lblod/scope-of-operation-service:0.1.0
+    image: lblod/scope-of-operation-service:0.1.1
     links:
       - db:database
     labels:
