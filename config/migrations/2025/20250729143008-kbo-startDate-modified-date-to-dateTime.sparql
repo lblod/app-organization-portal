@@ -23,9 +23,6 @@ WHERE {
       <http://mu.semte.ch/vocabularies/ext/startDate>
     }
 
-    FILTER (datatype(?date) != xsd:dateTime)
-    FILTER (regex(str(?date), "^[0-9]{4}-[0-9]{2}-[0-9]{2}"))
-
     BIND(STRDT(CONCAT(STR(?date), "T02:00:00"), xsd:dateTime) AS ?dateTime)
   }
 }
