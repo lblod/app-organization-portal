@@ -8,26 +8,26 @@ DELETE {
 } WHERE {
   GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     ?duplicateMembership a org:Membership ;
-      org:organization ?orgB ; # OCMW
-      org:member ?orgA ; # Municipality
+      org:organization ?ocmw ;
+      org:member ?municipality ;
       org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> ;
       ?p ?o .
 
     # Find the other memberships with swapped organizations
     ?correctMembership a org:Membership ;
-      org:organization ?orgA ; # Municipality
-      org:member ?orgB ; # OCMW
+      org:organization ?municipality ;
+      org:member ?ocmw ;
       org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
   }
 
-  GRAPH ?gA {
-    ?orgA org:classification ?classA .
+  GRAPH ?graphMunicipality {
+    ?municipality org:classification ?municipalityClassification .
   }
 
-  GRAPH ?gB {
-    ?orgB org:classification ?classB .
+  GRAPH ?graphOCMW {
+    ?ocmw org:classification ?ocmwClassificiation .
   }
 
-  FILTER(?classA = <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>)
-  FILTER(?classB = <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>)
+  FILTER(?municipalityClassification = <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>)
+  FILTER(?ocmwClassificiation = <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>)
 }
