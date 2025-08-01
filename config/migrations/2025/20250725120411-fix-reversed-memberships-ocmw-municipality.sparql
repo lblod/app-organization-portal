@@ -1,0 +1,40 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership org:organization ?ocmw ;
+                org:member ?municipality .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership org:organization ?municipality ;
+                org:member ?ocmw .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership a org:Membership ;
+      org:organization ?ocmw ;
+      org:member ?municipality ;
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+
+  GRAPH ?graphMunicipality {
+    ?municipality org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  }
+
+  GRAPH ?graphOCMW {
+    ?ocmw org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
+  }
+
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+      ?correctMembership a org:Membership ;
+        org:organization ?municipality ;
+        org:member ?ocmw ;
+        org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+    }
+  }
+}
