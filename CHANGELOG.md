@@ -8,6 +8,7 @@
 - datafix: set scope of operation for worship administrative units [OP-3626]
 - Clean addresses linked to both sites and contact points of mandatarissen and addresses that are in the wrong graph (admin unit graph but linked to a contact point in the worship graph) [DL-6701]
 - datafix: cleanup of general memberships if specific ones exist [OP-3640]
+- datafix: cleanup of duplicate memberships [OP-3634]
 - Fix KBO organizations' date formats [OP-3560]
 
 ### Deploy notes
@@ -38,7 +39,6 @@ drc restart migrations; drc logs -ft --tail=200 migrations
 - Fix query for organizations report [OP-3636]
 - Bump report-generation-service to most recent version
 - Write migration to harmonize date formats of change events [OP-3559]
-- datafix: cleanup of duplicate memberships [OP-3634]
 ### Deploy notes
 ```
 drc pull deltanotifier; drc up -d deltanotifier
