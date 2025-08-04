@@ -1,0 +1,77 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/werkingsgebieden/bc62f0ed-e116-467e-8951-7191f5766075>
+      a <http://www.w3.org/ns/prov#Location> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "bc62f0ed-e116-467e-8951-7191f5766075" ;
+      <http://www.w3.org/2000/01/rdf-schema#label> "Watermaal-Bosvoorde" ;
+      <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21017> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025822>
+      a <http://www.w3.org/ns/org#Organization> ,
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+        <http://purl.org/dc/terms/Agent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "573cbf00-13bd-473a-9ce9-fa13c2753101" ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Watermaal-Bosvoorde" ;
+      <http://www.w3.org/ns/regorg#legalName> "Watermaal-Bosvoorde" ;
+      <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025822>
+      <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/bc62f0ed-e116-467e-8951-7191f5766075> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/37e09806-6e60-4fff-8099-beb908cdea63> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/1bbdd727-9902-4d07-a209-ea15ea8c0200> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/54182a8a-6bf9-4e6e-9b14-6206979f16ea> .
+
+    <http://data.lblod.info/id/identificatoren/37e09806-6e60-4fff-8099-beb908cdea63>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/f2fa6a01-5e44-4996-91d7-128004e74f48>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "37e09806-6e60-4fff-8099-beb908cdea63" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/f2fa6a01-5e44-4996-91d7-128004e74f48>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0207372637" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "f2fa6a01-5e44-4996-91d7-128004e74f48" .
+
+    <http://data.lblod.info/id/identificatoren/1bbdd727-9902-4d07-a209-ea15ea8c0200>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/84af9199-7355-41c3-896d-681b247af833>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "1bbdd727-9902-4d07-a209-ea15ea8c0200" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/84af9199-7355-41c3-896d-681b247af833>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "OVO025822" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "84af9199-7355-41c3-896d-681b247af833" .
+
+    <http://data.lblod.info/id/vestigingen/54182a8a-6bf9-4e6e-9b14-6206979f16ea>
+      a <http://www.w3.org/ns/org#Site> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "54182a8a-6bf9-4e6e-9b14-6206979f16ea" ;
+      <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+      <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/01454978-bf23-43fa-9963-59ac9cf547b0> ;
+      <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/e9614c95-9f91-4773-afbb-2ab1f043eb33> .
+
+    <http://data.lblod.info/id/contact-punten/01454978-bf23-43fa-9963-59ac9cf547b0>
+      a <http://schema.org/ContactPoint> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "01454978-bf23-43fa-9963-59ac9cf547b0" ;
+      <http://schema.org/email> "information@wb1170.brussels" ;
+      <http://schema.org/telephone> "tel:+3226747411" ;
+      <http://schema.org/contactType> "Primary" ;
+      <http://xmlns.com/foaf/0.1/page> "https://watermaal-bosvoorde.be/" .
+
+    <http://data.lblod.info/id/adressen/e9614c95-9f91-4773-afbb-2ab1f043eb33>
+      a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "e9614c95-9f91-4773-afbb-2ab1f043eb33" ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Watermaal-Bosvoorde" ;
+      <https://data.vlaanderen.be/ns/adres#land> "België" ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1" ;
+      <http://www.w3.org/ns/locn#fullAddress> "Antoine Gilsonplein 1, 1170 Watermaal-Bosvoorde, België" ;
+      <http://www.w3.org/ns/locn#postCode> "1170" ;
+      <http://www.w3.org/ns/locn#thoroughfare> "Antoine Gilsonplein" .
+  }
+}

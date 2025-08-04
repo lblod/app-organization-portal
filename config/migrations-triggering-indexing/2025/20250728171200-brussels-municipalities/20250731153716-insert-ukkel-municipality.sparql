@@ -1,0 +1,77 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/werkingsgebieden/4bd12290-8a0e-43c8-b308-500af066ae47>
+      a <http://www.w3.org/ns/prov#Location> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "4bd12290-8a0e-43c8-b308-500af066ae47" ;
+      <http://www.w3.org/2000/01/rdf-schema#label> "Ukkel" ;
+      <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21016> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025821>
+      a <http://www.w3.org/ns/org#Organization> ,
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+        <http://purl.org/dc/terms/Agent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "f020aef0-16f8-4de8-a37d-d51088b3db72" ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Ukkel" ;
+      <http://www.w3.org/ns/regorg#legalName> "Ukkel" ;
+      <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025821>
+      <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/4bd12290-8a0e-43c8-b308-500af066ae47> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e23d0e95-13f9-4a2d-b45b-e425d1aecf2c> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/ab742ed2-1d1c-482e-885e-2416efd7d346> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/8f36d9b3-8ad9-4ec0-a22e-fb10096cc01f> .
+
+    <http://data.lblod.info/id/identificatoren/e23d0e95-13f9-4a2d-b45b-e425d1aecf2c>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/da31d8dd-64fa-4978-8d4d-c3f1e4aaf209>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "e23d0e95-13f9-4a2d-b45b-e425d1aecf2c" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/da31d8dd-64fa-4978-8d4d-c3f1e4aaf209>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0207368875" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "da31d8dd-64fa-4978-8d4d-c3f1e4aaf209" .
+
+    <http://data.lblod.info/id/identificatoren/ab742ed2-1d1c-482e-885e-2416efd7d346>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/6306f2ff-b6ad-4b15-8b34-7b1cacfff6c7>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "ab742ed2-1d1c-482e-885e-2416efd7d346" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/6306f2ff-b6ad-4b15-8b34-7b1cacfff6c7>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "OVO025821" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "6306f2ff-b6ad-4b15-8b34-7b1cacfff6c7" .
+
+    <http://data.lblod.info/id/vestigingen/8f36d9b3-8ad9-4ec0-a22e-fb10096cc01f>
+      a <http://www.w3.org/ns/org#Site> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "8f36d9b3-8ad9-4ec0-a22e-fb10096cc01f" ;
+      <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+      <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/6e54043b-79e4-4482-be24-047a64d013a7> ;
+      <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/54dacc64-d6e7-477b-a5c8-174ccf0dbcc3> .
+
+    <http://data.lblod.info/id/contact-punten/6e54043b-79e4-4482-be24-047a64d013a7>
+      a <http://schema.org/ContactPoint> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "6e54043b-79e4-4482-be24-047a64d013a7" ;
+      <http://schema.org/email> "secretariaat@ukkel.be" ;
+      <http://schema.org/telephone> "tel:+3223486511" ;
+      <http://schema.org/contactType> "Primary" ;
+      <http://xmlns.com/foaf/0.1/page> "https://www.ukkel.be" .
+
+    <http://data.lblod.info/id/adressen/54dacc64-d6e7-477b-a5c8-174ccf0dbcc3>
+      a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "54dacc64-d6e7-477b-a5c8-174ccf0dbcc3" ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Ukkel" ;
+      <https://data.vlaanderen.be/ns/adres#land> "België" ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "77" ;
+      <http://www.w3.org/ns/locn#fullAddress> "Stallestraat 77, 1180 Ukkel, België" ;
+      <http://www.w3.org/ns/locn#postCode> "1180" ;
+      <http://www.w3.org/ns/locn#thoroughfare> "Stallestraat" .
+  }
+}

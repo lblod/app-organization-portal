@@ -1,0 +1,77 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/werkingsgebieden/e5b0ab35-aa0d-4f73-ad2d-446bd67f299d>
+      a <http://www.w3.org/ns/prov#Location> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "e5b0ab35-aa0d-4f73-ad2d-446bd67f299d" ;
+      <http://www.w3.org/2000/01/rdf-schema#label> "Sint-Agatha-Berchem" ;
+      <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21003> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025827>
+      a <http://www.w3.org/ns/org#Organization> ,
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+        <http://purl.org/dc/terms/Agent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "6c7276cb-5aaf-41fd-917d-22df996ac186" ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Sint-Agatha-Berchem" ;
+      <http://www.w3.org/ns/regorg#legalName> "Sint-Agatha-Berchem" ;
+      <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025827>
+      <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/e5b0ab35-aa0d-4f73-ad2d-446bd67f299d> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e73cddaa-21fc-4464-b759-6591e15c213d> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/0b0301c4-eb97-4ba4-b8b6-c9e4c089e06c> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/2d163096-b31e-4006-b3c0-e46c87325aa2> .
+
+    <http://data.lblod.info/id/identificatoren/e73cddaa-21fc-4464-b759-6591e15c213d>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/4576728a-b5d3-4fcd-9290-6cee5473de53>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "e73cddaa-21fc-4464-b759-6591e15c213d" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/4576728a-b5d3-4fcd-9290-6cee5473de53>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0207541594" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "4576728a-b5d3-4fcd-9290-6cee5473de53" .
+
+    <http://data.lblod.info/id/identificatoren/0b0301c4-eb97-4ba4-b8b6-c9e4c089e06c>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/fe86c32e-8910-4530-8042-cb4b9dddf859>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "0b0301c4-eb97-4ba4-b8b6-c9e4c089e06c" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/fe86c32e-8910-4530-8042-cb4b9dddf859>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "OVO025827" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "fe86c32e-8910-4530-8042-cb4b9dddf859" .
+
+    <http://data.lblod.info/id/vestigingen/2d163096-b31e-4006-b3c0-e46c87325aa2>
+      a <http://www.w3.org/ns/org#Site> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "2d163096-b31e-4006-b3c0-e46c87325aa2" ;
+      <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+      <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/536dcfb0-d384-41d5-ac82-770cda4ffaeb> ;
+      <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/02b6b31a-893e-45c4-94f3-964d58039bff> .
+
+    <http://data.lblod.info/id/contact-punten/536dcfb0-d384-41d5-ac82-770cda4ffaeb>
+      a <http://schema.org/ContactPoint> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "536dcfb0-d384-41d5-ac82-770cda4ffaeb" ;
+      <http://schema.org/email> "info@berchem.brussels" ;
+      <http://schema.org/telephone> "tel:+3224640411" ;
+      <http://schema.org/contactType> "Primary" ;
+      <http://xmlns.com/foaf/0.1/page> "https://berchem.brussels/" .
+
+    <http://data.lblod.info/id/adressen/02b6b31a-893e-45c4-94f3-964d58039bff>
+      a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "02b6b31a-893e-45c4-94f3-964d58039bff" ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Sint-Agatha-Berchem" ;
+      <https://data.vlaanderen.be/ns/adres#land> "België" ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "33" ;
+      <http://www.w3.org/ns/locn#fullAddress> "Koning Albertlaan 33, 1082 Sint-Agatha-Berchem, België" ;
+      <http://www.w3.org/ns/locn#postCode> "1082" ;
+      <http://www.w3.org/ns/locn#thoroughfare> "Koning Albertlaan" .
+  }
+}
