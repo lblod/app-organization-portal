@@ -1,7 +1,9 @@
 # Changelog
 ## Unreleased
+
+## v1.35.0 (2025-08-04)
 ### Frontend
-- Bump to TODO: link to release with scope of operation functionality
+- Bump to [v1.34.0](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.34.0)
 ### Backend
 - Add a service to manage organisation's their scope of operation [OP-3205]
 - datamodel: Allow a location to be within multiple other locations [OP-3205]
