@@ -12,7 +12,7 @@
 - datafix: cleanup of general memberships if specific ones exist [OP-3640]
 - datafix: cleanup of duplicate memberships [OP-3634]
 - Fix KBO organizations' date formats [OP-3560]
-- Add municipalities in the area of Brussel and remove province for addresses in this area [OP-3638] & [OP-3648]
+- Remove province for addresses in the Brussels area [OP-3638] & [OP-3648]
 
 ### Deploy notes
 ```
