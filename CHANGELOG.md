@@ -1,5 +1,12 @@
 # Changelog
 ## Unreleased
+### Frontend
+- Bump to [v1.34.1](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.34.1)
+
+### Deploy notes
+```
+drc pull frontend; drc up -d frontend
+```
 
 ## v1.35.0 (2025-08-04)
 ### Frontend
