@@ -1,11 +1,13 @@
 # Changelog
 ## Unreleased
 ### Frontend
-- Bump to [v1.34.1](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.34.1)
+- Bump to [v1.34.1](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.34.1) [OP-3638]
+- Remove province for addresses in the Brussels area [OP-3638] & [OP-3648]
 
 ### Deploy notes
 ```
 drc pull frontend; drc up -d frontend
+drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing
 ```
 
 ## v1.35.0 (2025-08-04)
@@ -19,7 +21,7 @@ drc pull frontend; drc up -d frontend
 - datafix: cleanup of general memberships if specific ones exist [OP-3640]
 - datafix: cleanup of duplicate memberships [OP-3634]
 - Fix KBO organizations' date formats [OP-3560]
-- Remove province for addresses in the Brussels area [OP-3638] & [OP-3648]
+
 
 ### Deploy notes
 ```
@@ -28,7 +30,6 @@ drc restart db resource dispatcher
 drc pull frontend; drc up -d frontend
 drc restart migrations; drc logs -ft --tail=200 migrations
 drc up -d kbo-data-sync
-drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing
 ```
 
 The labels for new location resources created when setting the scope of operation for worship services are not necessarily alphabetically sorted. To correct this run the `correct-location-labels` project script using [mu-cli](https://github.com/mu-semtech/mu-cli) and restart the migrations service once more to execute the generated local migrations.
