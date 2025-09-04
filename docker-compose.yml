@@ -122,7 +122,7 @@ services:
     restart: always
     logging: *default-logging
   sink:
-    image: nginx:1.15.2
+    image: nginx:1.25.1
     volumes:
       - ./config/sink/sink.conf:/etc/nginx/conf.d/default.conf
     labels:
@@ -145,10 +145,17 @@ services:
     logging: *default-logging
     links:
       - db:database
-  dashboard-login:
-    image: semtech/mu-login-service:3.0.0
-    links:
-      - db:database
+  login-dashboard:
+    image: lblod/acmidm-login-service:0.12.0
+    environment:
+      LOG_SINK_URL: "http://sink"
+      MU_APPLICATION_AUTH_ROLE_CLAIM: "abb_organisatieportaal_rol_3d"
+      # MU_APPLICATION_AUTH_USERID_CLAIM: "sub" #TODO: check if needed?
+      # MU_APPLICATION_AUTH_ACCOUNTID_CLAIM: "sub"
+      MU_APPLICATION_AUTH_DISCOVERY_URL: "<ACM_IDM_AUTH_DISCOVERY_URL>"
+      MU_APPLICATION_AUTH_CLIENT_ID: "<ACM_IDM_AUTH_CLIENT_ID>"
+      MU_APPLICATION_AUTH_REDIRECT_URI: "<ACMIDM_AUTH_REDIRECT_URI>"
+      MU_APPLICATION_AUTH_CLIENT_SECRET: "<ACMIDM_AUTH_CLIENT_SECRET>"
     labels:
       - "logging=true"
     restart: always
@@ -209,7 +216,15 @@ services:
     restart: always
     logging: *default-logging
   frontend-dashboard:
-    image: lblod/frontend-dashboard:1.7.0
+    image: lblod/frontend-dashboard:1.9.0
+    environment:
+      EMBER_LOGIN_ROUTE: "acmidm-login"
+      EMBER_DISABLE_ERRORS: "true"
+      EMBER_ACMIDM_CLIENT_ID: "<CLIENT_ID>"
+      EMBER_ACMIDM_BASE_URL: "<BASE_URL>"
+      EMBER_ACMIDM_REDIRECT_URL: "<REDIRECT_URL>"
+      EMBER_ACMIDM_LOGOUT_URL: "<LOGOUT_URL>"
+      EMBER_ACMIDM_SCOPE: "openid vo profile abb_organisatieportaal"
     labels:
       - "logging=true"
     restart: always
