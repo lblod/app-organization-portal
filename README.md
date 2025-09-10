@@ -185,26 +185,3 @@ To make sure the app can share data, producers need to be set up. There is an in
        )
      }
 ```
-
-## Configuring the dashboard
-### Accessing the dashboard from your local machine
-
-Since we use dispatcher v2, which dispatches on hostname, we'll have to update `/etc/hosts`.
-Add an entry similar to the following. Ensure the first part of the domain starts with `dashboard`.:
-
-```
-127.0.0.1 dashboard.localhost
-```
-
-### Creating new users
-For now, we use specific logins for the dashboard users. Each environment has its own passwords.
-
-To add a user, make sure to have [mu-cli](https://github.com/mu-semtech/mu-cli) installed first.
-Then in `docker-compose.override.yml`
-```
-  dashboard-login:
-    environment:
-      MU_APPLICATION_SALT: 'a_random_string_with_sufficient_entropy_hence_not_this_one'
-```
-You can now generate a user by running `mu script project-scripts generate-dashboard-login` and following the steps.
-Restart `migrations` and it should insert the new user into the database.
