@@ -1,5 +1,11 @@
 # Changelog
-## Unreleased
+## v1.35.1 (2025-09-15)
+### Backend
+- Produce memberships and their roles in organizations and public producers [OP-3658] & [OP-3661]
+### Deploy notes
+```
+drc restart delta-producer-publication-graph-maintainer
+```
 
 ## v1.35.0 (2025-08-04)
 ### Frontend
