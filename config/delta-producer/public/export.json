@@ -675,6 +675,32 @@
         "http://www.w3.org/2004/02/skos/core#prefLabel",
         "http://www.w3.org/2000/01/rdf-schema#label"
       ]
+    },
+    {
+      "type": "http://www.w3.org/ns/org#Membership",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/worship-service",
+        "http://mu.semte.ch/graphs/shared",
+        "http://mu.semte.ch/graphs/administrative-unit"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/ns/org#organization",
+        "http://www.w3.org/ns/org#member",
+        "http://www.w3.org/ns/org#role"
+      ]
+    },
+    {
+      "type": "http://www.w3.org/ns/org#Role",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel",
+        "http://www.w3.org/2004/02/skos/core#broader",
+        "http://www.w3.org/2004/02/skos/core#topConceptOf"
+      ]
     }
   ]
 }
