@@ -40,6 +40,8 @@ services:
     restart: "no"
   login:
     restart: "no"
+  login-dashboard:
+    restart: "no"
   accountdetail:
     restart: "no"
   privacy-unit:
@@ -49,6 +51,10 @@ services:
   adressenregister:
     restart: "no"
   frontend:
+    restart: "no"
+  frontend-dashboard:
+    # environment:
+      # EMBER_LOGIN_ROUTE: "mock-login"
     restart: "no"
   uri-info:
     restart: "no"
