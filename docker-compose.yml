@@ -130,7 +130,7 @@ services:
     restart: always
     logging: *default-logging
   login:
-    image: lblod/acmidm-login-service:0.9.2
+    image: lblod/acmidm-login-service:0.12.0
     environment:
       MU_APPLICATION_AUTH_USERID_CLAIM: "vo_id"
       MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/contacthub/accounts"
@@ -150,8 +150,8 @@ services:
     environment:
       LOG_SINK_URL: "http://sink"
       MU_APPLICATION_AUTH_ROLE_CLAIM: "abb_organisatieportaal_rol_3d"
-      # MU_APPLICATION_AUTH_USERID_CLAIM: "sub" #TODO: check if needed?
-      # MU_APPLICATION_AUTH_ACCOUNTID_CLAIM: "sub"
+      MU_APPLICATION_AUTH_USERID_CLAIM: "sub"
+      MU_APPLICATION_AUTH_ACCOUNTID_CLAIM: "sub"
       MU_APPLICATION_AUTH_DISCOVERY_URL: "<ACM_IDM_AUTH_DISCOVERY_URL>"
       MU_APPLICATION_AUTH_CLIENT_ID: "<ACM_IDM_AUTH_CLIENT_ID>"
       MU_APPLICATION_AUTH_REDIRECT_URI: "<ACMIDM_AUTH_REDIRECT_URI>"
@@ -160,6 +160,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+    links:
+      - db:database
   accountdetail:
     image: lblod/account-detail-service:0.1.0
     labels:
@@ -219,7 +221,6 @@ services:
     image: lblod/frontend-dashboard:1.9.0
     environment:
       EMBER_LOGIN_ROUTE: "acmidm-login"
-      EMBER_DISABLE_ERRORS: "true"
       EMBER_ACMIDM_CLIENT_ID: "<CLIENT_ID>"
       EMBER_ACMIDM_BASE_URL: "<BASE_URL>"
       EMBER_ACMIDM_REDIRECT_URL: "<REDIRECT_URL>"
