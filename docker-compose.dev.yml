@@ -53,8 +53,8 @@ services:
   frontend:
     restart: "no"
   frontend-dashboard:
-    # environment:
-      # EMBER_LOGIN_ROUTE: "mock-login"
+    environment:
+      EMBER_LOGIN_ROUTE: "mock-login"
     restart: "no"
   uri-info:
     restart: "no"

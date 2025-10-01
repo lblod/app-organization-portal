@@ -150,8 +150,7 @@ services:
     environment:
       LOG_SINK_URL: "http://sink"
       MU_APPLICATION_AUTH_ROLE_CLAIM: "abb_organisatieportaal_rol_3d"
-      MU_APPLICATION_AUTH_USERID_CLAIM: "sub"
-      MU_APPLICATION_AUTH_ACCOUNTID_CLAIM: "sub"
+      MU_APPLICATION_AUTH_USERID_CLAIM: "vo_id"
       MU_APPLICATION_AUTH_DISCOVERY_URL: "<ACM_IDM_AUTH_DISCOVERY_URL>"
       MU_APPLICATION_AUTH_CLIENT_ID: "<ACM_IDM_AUTH_CLIENT_ID>"
       MU_APPLICATION_AUTH_REDIRECT_URI: "<ACMIDM_AUTH_REDIRECT_URI>"
@@ -218,7 +217,7 @@ services:
     restart: always
     logging: *default-logging
   frontend-dashboard:
-    image: lblod/frontend-dashboard:1.9.0
+    image: lblod/frontend-dashboard:feature-english-accounts-model-support
     environment:
       EMBER_LOGIN_ROUTE: "acmidm-login"
       EMBER_ACMIDM_CLIENT_ID: "<CLIENT_ID>"
@@ -226,6 +225,7 @@ services:
       EMBER_ACMIDM_REDIRECT_URL: "<REDIRECT_URL>"
       EMBER_ACMIDM_LOGOUT_URL: "<LOGOUT_URL>"
       EMBER_ACMIDM_SCOPE: "openid vo profile abb_organisatieportaal"
+      EMBER_ENGLISH_ACCOUNTS_MODEL: true
     labels:
       - "logging=true"
     restart: always
