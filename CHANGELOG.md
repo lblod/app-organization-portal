@@ -24,8 +24,13 @@ Configure the environment variables for the QA ACM/IDM environment:
       MU_APPLICATION_AUTH_CLIENT_SECRET: "snip" # see ticket for secret
 
 ```
+
+Link the new domain name to QA (and remove from dev)
+
 #### PROD
 Configure the environment variables for the PROD ACM/IDM environment once the values are known.
+
+Link the new domain name to PROD + DNS config to the server
 
 #### CLI
 ```
