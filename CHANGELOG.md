@@ -1,6 +1,39 @@
 # Changelog
 
 ## Unreleased
+### Dashboard
+- Enable ACM/IDM for the dashboard [OP-3674]
+
+#### QA
+Configure the environment variables for the QA ACM/IDM environment:
+
+```yml
+  frontend-dashboard:
+    environment:
+      EMBER_ACMIDM_CLIENT_ID: "03382bf4-4886-4fb6-8602-945ad3080a7a"
+      EMBER_ACMIDM_BASE_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/auth"
+      EMBER_ACMIDM_REDIRECT_URL: "https://dashboard.organisaties.abb.lblod.info/authorization/callback"
+      EMBER_ACMIDM_LOGOUT_URL: "https://authenticatie-ti.vlaanderen.be/op/v1/logout"
+      EMBER_ACMIDM_SCOPE: "openid vo profile abb_organisatieportaal"
+
+  login-dashboard:
+    environment:
+      MU_APPLICATION_AUTH_DISCOVERY_URL: "https://authenticatie-ti.vlaanderen.be/op"
+      MU_APPLICATION_AUTH_CLIENT_ID: "03382bf4-4886-4fb6-8602-945ad3080a7a"
+      MU_APPLICATION_AUTH_REDIRECT_URI: "https://dashboard.organisaties.abb.lblod.info/authorization/callback"
+      MU_APPLICATION_AUTH_CLIENT_SECRET: "snip" # see ticket for secret
+
+```
+#### PROD
+Configure the environment variables for the PROD ACM/IDM environment once the values are known.
+
+#### CLI
+```
+drc restart migrations
+drc restart dispatcher database
+drc up -d --remove-orphans
+```
+
 ### Frontend
 - Bump to [v1.34.1](https://github.com/lblod/frontend-organization-portal/releases/tag/v1.34.1) [OP-3638]
 - Remove province for addresses in the Brussels area [OP-3638] & [OP-3648]
