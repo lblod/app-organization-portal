@@ -306,7 +306,7 @@ defmodule Dispatcher do
   end
 
   match "/sessions/*path", %{ reverse_host: ["dashboard" | _rest] } do
-    Proxy.forward conn, path, "http://dashboard-login/sessions/"
+    Proxy.forward conn, path, "http://login-dashboard/sessions/"
   end
 
   match "/sessions/*path", %{accept: [:any], layer: :api} do
