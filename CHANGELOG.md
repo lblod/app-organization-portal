@@ -35,7 +35,7 @@ Link the new domain name to PROD + DNS config to the server
 #### CLI
 ```
 drc restart migrations
-drc restart dispatcher database
+drc restart dispatcher db
 drc up -d --remove-orphans
 ```
 
