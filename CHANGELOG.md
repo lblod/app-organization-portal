@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.36.0 (2025-10-03)
 ### Dashboard
 - Enable ACM/IDM for the dashboard [OP-3674]
 
