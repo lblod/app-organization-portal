@@ -1,0 +1,77 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/werkingsgebieden/7d3175ad-d4fc-4b56-a780-dab8e159c21d>
+      a <http://www.w3.org/ns/prov#Location> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "7d3175ad-d4fc-4b56-a780-dab8e159c21d" ;
+      <http://www.w3.org/2000/01/rdf-schema#label> "Sint-Gillis" ;
+      <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21013> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025819>
+      a <http://www.w3.org/ns/org#Organization> ,
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+        <http://purl.org/dc/terms/Agent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "b93cd217-0c25-48f7-9751-b8723c6c1ac9" ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Sint-Gillis" ;
+      <http://www.w3.org/ns/regorg#legalName> "Sint-Gillis" ;
+      <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025819>
+      <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/7d3175ad-d4fc-4b56-a780-dab8e159c21d> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/3b113d58-a06b-428c-9ef6-36e7d354d299> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/10f45315-05d9-409b-b7fd-b8f323ced0d2> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/8749766d-e283-4145-8460-62360e278175> .
+
+    <http://data.lblod.info/id/identificatoren/3b113d58-a06b-428c-9ef6-36e7d354d299>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/12028344-1808-4ac1-81e0-443beaab6684>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "3b113d58-a06b-428c-9ef6-36e7d354d299" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/12028344-1808-4ac1-81e0-443beaab6684>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0207367588" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "12028344-1808-4ac1-81e0-443beaab6684" .
+
+    <http://data.lblod.info/id/identificatoren/10f45315-05d9-409b-b7fd-b8f323ced0d2>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/93b4be45-6225-42f3-b0d2-4a40a7741c25>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "10f45315-05d9-409b-b7fd-b8f323ced0d2" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/93b4be45-6225-42f3-b0d2-4a40a7741c25>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "OVO025819" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "93b4be45-6225-42f3-b0d2-4a40a7741c25" .
+
+    <http://data.lblod.info/id/vestigingen/8749766d-e283-4145-8460-62360e278175>
+      a <http://www.w3.org/ns/org#Site> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "8749766d-e283-4145-8460-62360e278175" ;
+      <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+      <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/14df8707-b30f-478f-8e7a-e22b046bee49> ;
+      <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/65e4a56c-123a-48a4-946e-be205ff69ed3> .
+
+    <http://data.lblod.info/id/contact-punten/14df8707-b30f-478f-8e7a-e22b046bee49>
+      a <http://schema.org/ContactPoint> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "14df8707-b30f-478f-8e7a-e22b046bee49" ;
+      <http://schema.org/email> "contact.1060@stgilles.brussels" ;
+      <http://schema.org/telephone> "tel:+3225360211" ;
+      <http://schema.org/contactType> "Primary" ;
+      <http://xmlns.com/foaf/0.1/page> "https://stgillis.brussels/" .
+
+    <http://data.lblod.info/id/adressen/65e4a56c-123a-48a4-946e-be205ff69ed3>
+      a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "65e4a56c-123a-48a4-946e-be205ff69ed3" ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Sint-Gillis" ;
+      <https://data.vlaanderen.be/ns/adres#land> "België" ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "39" ;
+      <http://www.w3.org/ns/locn#fullAddress> "Maurice Van Meenenplein 39, 1060 Sint-Gillis (bij-Brussel), België" ;
+      <http://www.w3.org/ns/locn#postCode> "1060" ;
+      <http://www.w3.org/ns/locn#thoroughfare> "Maurice Van Meenenplein" .
+  }
+}
