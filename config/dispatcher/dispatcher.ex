@@ -457,6 +457,10 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://delta-producer-publication-graph-maintainer/public/files/")
   end
 
+  get "/sync/contact-data/files/*path", %{ accept: [:any], layer: :api} do
+    Proxy.forward conn, path, "http://delta-producer-publication-graph-maintainer/files/"
+  end
+
   #################################################################
   #  DELTA: posts
   #################################################################
