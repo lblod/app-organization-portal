@@ -5,6 +5,49 @@ x-logging: &default-logging
     max-file: "3"
 
 services:
+
+  # TMP: testing if we have a loop or not
+  contact-data-consumer:
+    image: lblod/delta-consumer:0.1.1
+    environment:
+      DCR_SERVICE_NAME: "contact-data-consumer"
+      DCR_SYNC_BASE_URL: 'http://contactapp-producer-identifier/'
+      DCR_SYNC_FILES_PATH: "/sync/contact-data/files"
+      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/ContactGegevensCacheGraphDump"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/contact-data"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/contact-data"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/contact-data-consumer"
+      DCR_KEEP_DELTA_FILES: "true"
+      DCR_DELTA_JOBS_RETENTION_PERIOD: "30"
+      DCR_ENABLE_TRIPLE_REMAPPING: "true"
+      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/contact-data"
+      DCR_REMAPPING_GRAPH: "http://mu.semte.ch/graphs/administrative-unit"
+      DCR_BATCH_SIZE: 1000
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      SUDO_QUERY_RETRY: "true"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_LANDING_ZONE_DATABASE: "db" # for the initial sync, we go directly to virtuoso
+      DCR_REMAPPING_DATABASE: "db" # for the initial sync, we go directly to virtuoso
+    volumes:
+      - ./config/delta-consumers/contact-data/mapping:/config/mapping
+      - ./data/files/consumer-files/contact-data:/consumer-files/
+    restart: always
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+      - triplestore:virtuoso
+    logging: *default-logging
+    networks:
+      - default
+      - deltas-sync
+
+
+
+
+
+
   identifier:
     image: semtech/mu-identifier:1.10.3
     environment:
@@ -363,7 +406,7 @@ services:
     restart: always
     logging: *default-logging
   delta-producer-publication-graph-maintainer:
-    image: lblod/delta-producer-publication-graph-maintainer:1.2.2
+    image: lblod/delta-producer-publication-graph-maintainer:1.4.0
     environment:
       MAX_BODY_SIZE: "50mb"
       PRETTY_PRINT_DIFF_JSON: "true"
