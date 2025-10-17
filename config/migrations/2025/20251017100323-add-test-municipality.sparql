@@ -1,0 +1,106 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/werkingsgebieden/00cfb328-1082-470d-9328-e615fbe42308>
+      a <http://www.w3.org/ns/prov#Location> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "00cfb328-1082-470d-9328-e615fbe42308" ;
+      <http://www.w3.org/2000/01/rdf-schema#label> "testgemeente" ;
+      <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21004> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222>
+      a <http://www.w3.org/ns/org#Organization> ,
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+        <http://purl.org/dc/terms/Agent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "115d9fdc-4858-4fc8-b0ac-033263425222" ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "testgemeente" ;
+      <http://www.w3.org/ns/regorg#legalName> "testgemeente" ;
+      <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+
+    # Gemeente kruisem
+    <http://data.lblod.info/id/bestuurseenheden/52cc723a-9717-496d-9897-c6774cf124e4>
+      <http://www.w3.org/ns/org#hasSubOrganization> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222>
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/6d60f06a-2eab-4b05-9f2d-138a13a5d1f8> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/cfaf6807-5982-4015-ad3c-276ad72dcce2> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/e407c87e-4923-43c9-aa95-3cd6a576c81e> .
+
+    <http://data.lblod.info/id/bestuurseenheden/52cc723a-9717-496d-9897-c6774cf124e4>
+      <http://www.w3.org/ns/org#hasSubOrganization> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+
+    <http://data.lblod.info/id/veranderingsgebeurtenissen/7e1c02a2-7175-4b63-812e-40a6c49e4f13>
+      a <http://www.w3.org/ns/org#ChangeEvent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "7e1c02a2-7175-4b63-812e-40a6c49e4f13" ;
+      <http://data.lblod.info/vocabularies/contacthub/typeWijziging> <http://lblod.data.gift/concepts/e4c3d1ef-a34d-43b0-a18c-f4e60e2c8af3> ;
+      <http://www.w3.org/ns/org#originalOrganization> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> ;
+      <http://www.w3.org/ns/org#resultingOrganization> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> ;
+      <http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat> <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/3d2654c3-4805-4adc-bc88-047d87464556> .
+
+    <http://lblod.data.info/id/veranderingsgebeurtenis-resultaten/3d2654c3-4805-4adc-bc88-047d87464556>
+      a <http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "3d2654c3-4805-4adc-bc88-047d87464556" ;
+      <http://mu.semte.ch/vocabularies/ext/resultingOrganization> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> ;
+      <http://lblod.data.gift/vocabularies/organisatie/resulterendeStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+
+    <http://data.lblod.info/id/identificatoren/6d60f06a-2eab-4b05-9f2d-138a13a5d1f8>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/1341545c-f03a-4108-8f44-e695c74b2781>;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/adms#Identifier>;
+      <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "6d60f06a-2eab-4b05-9f2d-138a13a5d1f8" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/1341545c-f03a-4108-8f44-e695c74b2781>
+      <http://mu.semte.ch/vocabularies/core/uuid> "1341545c-f03a-4108-8f44-e695c74b2781";
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0209999999" .
+
+    <http://data.lblod.info/id/identificatoren/cfaf6807-5982-4015-ad3c-276ad72dcce2>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/48572385-540f-4437-bf72-415208e8ca15>;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/ns/adms#Identifier>;
+      <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "cfaf6807-5982-4015-ad3c-276ad72dcce2" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/48572385-540f-4437-bf72-415208e8ca15>
+      <http://mu.semte.ch/vocabularies/core/uuid> "48572385-540f-4437-bf72-415208e8ca15";
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator>;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "OVO009999" .
+
+    <http://data.lblod.info/id/vestigingen/e407c87e-4923-43c9-aa95-3cd6a576c81e>
+      a <http://www.w3.org/ns/org#Site> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "e407c87e-4923-43c9-aa95-3cd6a576c81e" ;
+      <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+      <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/a0de1669-d2ad-4081-99c9-a9e2697caf7c> ;
+      <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/bccac74c-408c-4254-ad4f-3443585c7fe6> .
+
+    <http://data.lblod.info/id/contact-punten/a0de1669-d2ad-4081-99c9-a9e2697caf7c>
+      a <http://schema.org/ContactPoint> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "a0de1669-d2ad-4081-99c9-a9e2697caf7c" ;
+      <http://schema.org/email> "test@test.be" ;
+      <http://schema.org/telephone> "tel:+3222999999" ;
+      <http://schema.org/contactType> "Primary" ;
+      <http://xmlns.com/foaf/0.1/page> "https://www.example.com" .
+
+    <http://data.lblod.info/id/adressen/bccac74c-408c-4254-ad4f-3443585c7fe6>
+      a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid>"bccac74c-408c-4254-ad4f-3443585c7fe6" ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Herselt" ;
+      <https://data.vlaanderen.be/ns/adres#land> "België" ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1" ;
+      <http://www.w3.org/ns/locn#adminUnitL2> "Antwerpen" ;
+      <http://www.w3.org/ns/locn#fullAddress> "Testeltsebaan 1, 2230 Herselt, België" ;
+      <http://www.w3.org/ns/locn#postCode> "2230" ;
+      <http://www.w3.org/ns/locn#thoroughfare> "Testeltsebaan" ;
+      <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn> <http://data.lblod.info/id/werkingsgebieden/00cfb328-1082-470d-9328-e615fbe42308>.
+
+    <http://data.lblod.info/id/lidmaatschap/825e1945-1623-405e-aea6-75c580b7ae9a>
+      a <http://www.w3.org/ns/org#Membership> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "825e1945-1623-405e-aea6-75c580b7ae9a" ;
+      <http://www.w3.org/ns/org#organization> <http://data.lblod.info/id/bestuurseenheden/52cc723a-9717-496d-9897-c6774cf124e4> ;
+      <http://www.w3.org/ns/org#member> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> ;
+      <http://www.w3.org/ns/org#role> <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+}
