@@ -23,6 +23,50 @@ INSERT DATA {
       <http://www.w3.org/ns/org#hasSubOrganization> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
   }
 
+  GRAPH <http://mu.semte.ch/graphs/landing-zone/mandatarissen> {
+    <http://data.lblod.info/id/fracties/21593445-d323-48f7-810f-4ec8d38514c8>
+      a <http://data.vlaanderen.be/ns/mandaat#Fractie> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "21593445-d323-48f7-810f-4ec8d38514c8" ;
+      <http://purl.org/dc/terms/modified> "2024-12-11T18:13:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <https://www.w3.org/ns/regorg#legalName> "N-VA"
+      <http://www.w3.org/ns/org#memberOf> <http://data.lblod.info/id/bestuursorganen/846a1251-3518-4b93-948e-d469a5c9dd44>
+      <http://www.w3.org/ns/org#linkedTo> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+
+    <http://data.lblod.info/id/fracties/df3ec548-873d-48fe-9d2f-4f045982b3af>
+      a <http://data.vlaanderen.be/ns/mandaat#Fractie> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "df3ec548-873d-48fe-9d2f-4f045982b3af" ;
+      <http://purl.org/dc/terms/modified> "2024-12-12T18:13:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <https://www.w3.org/ns/regorg#legalName> "CD&V"
+      <http://www.w3.org/ns/org#memberOf> <http://data.lblod.info/id/bestuursorganen/846a1251-3518-4b93-948e-d469a5c9dd44>
+      <http://www.w3.org/ns/org#linkedTo> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+
+    <http://data.lblod.info/id/fracties/203ce6eb-3b6a-44f3-8e6d-b62e57625883>
+      a <http://data.vlaanderen.be/ns/mandaat#Fractie> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "203ce6eb-3b6a-44f3-8e6d-b62e57625883" ;
+      <http://purl.org/dc/terms/modified> "2024-12-12T18:13:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <https://www.w3.org/ns/regorg#legalName> "Open Vld"
+      <http://www.w3.org/ns/org#memberOf> <http://data.lblod.info/id/bestuursorganen/846a1251-3518-4b93-948e-d469a5c9dd44>
+      <http://www.w3.org/ns/org#linkedTo> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+
+    <http://data.lblod.info/id/fracties/2a58ec64-83d4-48fa-bf4e-01f0ead3c148>
+      a <http://data.vlaanderen.be/ns/mandaat#Fractie> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "2a58ec64-83d4-48fa-bf4e-01f0ead3c148" ;
+      <http://purl.org/dc/terms/modified> "2024-12-12T18:13:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <https://www.w3.org/ns/regorg#legalName> "Groen&Co"
+      <http://www.w3.org/ns/org#memberOf> <http://data.lblod.info/id/bestuursorganen/846a1251-3518-4b93-948e-d469a5c9dd44>
+      <http://www.w3.org/ns/org#linkedTo> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+
+    <http://data.lblod.info/id/fracties/c73fea89-de81-4628-9f20-a390a8f1c822>
+      a <http://data.vlaanderen.be/ns/mandaat#Fractie> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "c73fea89-de81-4628-9f20-a390a8f1c822" ;
+      <http://purl.org/dc/terms/modified> "2024-12-12T18:13:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+      <https://www.w3.org/ns/regorg#legalName> "Onafhankelijk"
+      <http://www.w3.org/ns/org#memberOf> <http://data.lblod.info/id/bestuursorganen/846a1251-3518-4b93-948e-d469a5c9dd44>
+      <http://www.w3.org/ns/org#memberOf> <http://data.lblod.info/id/bestuursorganen/eb8f1a65-ebac-41e3-8d50-ad4d6f1760c6>
+      <http://www.w3.org/ns/org#memberOf> <http://data.lblod.info/id/bestuursorganen/47f00c2d-7696-4b9e-a80f-909661ec914b>
+      <http://www.w3.org/ns/org#linkedTo> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+  }
+
   GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
     <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222>
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/6d60f06a-2eab-4b05-9f2d-138a13a5d1f8> ;
@@ -160,6 +204,8 @@ INSERT DATA {
     <http://data.lblod.info/id/bestuursorganen/846a1251-3518-4b93-948e-d469a5c9dd44> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
       <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01"^^<http://www.w3.org/2001/XMLSchema#date>;
       <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/1112989e-2ee5-4575-a305-ea7127ccbbf0>;
+      <http://www.w3.org/ns/org#hasPost> <http://data.lblod.info/id/mandaten/19413fd7-ca6a-4363-af8c-5b8e30ca13d4> ;
+      <http://www.w3.org/ns/org#hasPost> <http://data.lblod.info/id/mandaten/fb84271e-e936-4b75-9534-42527052b554> ;
       <http://mu.semte.ch/vocabularies/core/uuid> "846a1251-3518-4b93-948e-d469a5c9dd44" .
 
     <http://data.lblod.info/id/bestuursorganen/9f490864-8b0b-49df-b9ad-8c2b3026a762> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
@@ -179,5 +225,16 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#classificatie> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005>;
       <http://mu.semte.ch/vocabularies/core/uuid> "1112989e-2ee5-4575-a305-ea7127ccbbf0";
       <http://www.w3.org/2004/02/skos/core#prefLabel> "Gemeenteraad Testgemeente" .
+
+    <http://data.lblod.info/id/mandaten/19413fd7-ca6a-4363-af8c-5b8e30ca13d4>
+      a <http://data.vlaanderen.be/ns/mandaat#Mandaat> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "19413fd7-ca6a-4363-af8c-5b8e30ca13d4" ;
+      <http://www.w3.org/ns/org#role> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000011> .
+
+    <http://data.lblod.info/id/mandaten/fb84271e-e936-4b75-9534-42527052b554>
+      a <http://data.vlaanderen.be/ns/mandaat#Mandaat> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "fb84271e-e936-4b75-9534-42527052b554" ;
+      <http://www.w3.org/ns/org#role> <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ab0e9b8a3b2ca7c5e000012> .
+
   }
 }
