@@ -52,10 +52,10 @@ services:
     restart: "no"
   frontend:
     restart: "no"
-  frontend-dashboard:
-    environment:
-      EMBER_LOGIN_ROUTE: "mock-login"
-    restart: "no"
+  #frontend-dashboard:
+  #  environment:
+  #    EMBER_LOGIN_ROUTE: "mock-login"
+  #  restart: "no"
   uri-info:
     restart: "no"
   delta-producer-background-jobs-initiator:
