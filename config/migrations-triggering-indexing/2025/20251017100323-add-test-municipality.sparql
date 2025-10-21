@@ -146,5 +146,38 @@ INSERT DATA {
         <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> <http://data.lblod.info/id/bestuursfuncties/904a6d80-58bf-11f0-8a90-dda5d31bcff4> ;
         <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/794324e5-3730-4f6f-8a78-564a5e231582> ;
         <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+    <http://data.lblod.info/id/bestuursorganen/eb8f1a65-ebac-41e3-8d50-ad4d6f1760c6> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01"^^<http://www.w3.org/2001/XMLSchema#date>;
+      <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/9f490864-8b0b-49df-b9ad-8c2b3026a762>;
+      <http://mu.semte.ch/vocabularies/core/uuid> "eb8f1a65-ebac-41e3-8d50-ad4d6f1760c6" .
+
+    <http://data.lblod.info/id/bestuursorganen/47f00c2d-7696-4b9e-a80f-909661ec914b> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01"^^<http://www.w3.org/2001/XMLSchema#date>;
+      <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/e776db01-2b65-4350-a768-fe960484507b>;
+      <http://mu.semte.ch/vocabularies/core/uuid> "47f00c2d-7696-4b9e-a80f-909661ec914b" .
+
+    <http://data.lblod.info/id/bestuursorganen/846a1251-3518-4b93-948e-d469a5c9dd44> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01"^^<http://www.w3.org/2001/XMLSchema#date>;
+      <http://data.vlaanderen.be/ns/mandaat#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/1112989e-2ee5-4575-a305-ea7127ccbbf0>;
+      <http://mu.semte.ch/vocabularies/core/uuid> "846a1251-3518-4b93-948e-d469a5c9dd44" .
+
+    <http://data.lblod.info/id/bestuursorganen/9f490864-8b0b-49df-b9ad-8c2b3026a762> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222>;
+      <http://data.vlaanderen.be/ns/besluit#classificatie> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284>;
+      <http://mu.semte.ch/vocabularies/core/uuid> "9f490864-8b0b-49df-b9ad-8c2b3026a762";
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Burgemeester Testgemeente" .
+
+    <http://data.lblod.info/id/bestuursorganen/e776db01-2b65-4350-a768-fe960484507b> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222>;
+      <http://data.vlaanderen.be/ns/besluit#classificatie> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006>;
+      <http://mu.semte.ch/vocabularies/core/uuid> "e776db01-2b65-4350-a768-fe960484507b";
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "College van Burgemeester en Schepenen Testgemeente" .
+
+    <http://data.lblod.info/id/bestuursorganen/1112989e-2ee5-4575-a305-ea7127ccbbf0> a <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan>;
+      <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222>;
+      <http://data.vlaanderen.be/ns/besluit#classificatie> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005>;
+      <http://mu.semte.ch/vocabularies/core/uuid> "1112989e-2ee5-4575-a305-ea7127ccbbf0";
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Gemeenteraad Testgemeente" .
   }
 }
