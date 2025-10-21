@@ -101,5 +101,50 @@ INSERT DATA {
       <http://www.w3.org/ns/org#organization> <http://data.lblod.info/id/bestuurseenheden/52cc723a-9717-496d-9897-c6774cf124e4> ;
       <http://www.w3.org/ns/org#member> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> ;
       <http://www.w3.org/ns/org#role> <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+
+    <http://data.lblod.info/id/bestuursorganen/b93dbe87-27c8-47ee-bc73-430dc95d65ec> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> "b93dbe87-27c8-47ee-bc73-430dc95d65ec" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Raad van bestuur Testgemeente" ;
+        <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/013cc838-173a-4657-b1ae-b00c048df943> ;
+        <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+
+    <http://data.lblod.info/id/bestuursorganen/a20565f4-2d86-4461-9485-bc8bce865950> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> "a20565f4-2d86-4461-9485-bc8bce865950" ;
+        <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/b93dbe87-27c8-47ee-bc73-430dc95d65ec> ;
+        <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+    <http://data.lblod.info/id/bestuursorganen/4561ea34-b441-4780-a008-0c772cdbb68a> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> "4561ea34-b441-4780-a008-0c772cdbb68a" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Bevoegd beslissingsorgaan Testgemeente" ;
+        <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382> ;
+        <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+
+    <http://data.lblod.info/id/bestuursorganen/8b1ba8a0-fa45-4211-9129-8a18d24889b8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> "8b1ba8a0-fa45-4211-9129-8a18d24889b8" ;
+        <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/4561ea34-b441-4780-a008-0c772cdbb68a> ;
+        <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+    <http://data.lblod.info/id/bestuursorganen/4fc8d45c-965c-443d-ae25-38562c1afd9f> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> "4fc8d45c-965c-443d-ae25-38562c1afd9f" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Algemene vergadering Testgemeente" ;
+        <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/b52094ff-21a2-4da8-8dbe-f513365d1528> ;
+        <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+
+    <http://data.lblod.info/id/bestuursorganen/f4e6ebe1-81f1-4ed0-a780-c6cb4a0a58c1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> "f4e6ebe1-81f1-4ed0-a780-c6cb4a0a58c1" ;
+        <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/4fc8d45c-965c-443d-ae25-38562c1afd9f> ;
+        <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
+
+    <http://data.lblod.info/id/bestuursorganen/794324e5-3730-4f6f-8a78-564a5e231582> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> "794324e5-3730-4f6f-8a78-564a5e231582" ;
+        <http://www.w3.org/2004/02/skos/core#prefLabel> "Leidend Ambtenaar Testgemeente" ;
+        <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4> ;
+        <http://data.vlaanderen.be/ns/besluit#bestuurt> <http://data.lblod.info/id/bestuurseenheden/115d9fdc-4858-4fc8-b0ac-033263425222> .
+
+    <http://data.lblod.info/id/bestuursorganen/945418a9-36dc-4dbb-8a41-fb1176b4ce75> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.vlaanderen.be/ns/besluit#Bestuursorgaan> ;
+        <http://mu.semte.ch/vocabularies/core/uuid> "945418a9-36dc-4dbb-8a41-fb1176b4ce75" ;
+        <http://data.lblod.info/vocabularies/leidinggevenden/heeftBestuursfunctie> <http://data.lblod.info/id/bestuursfuncties/904a6d80-58bf-11f0-8a90-dda5d31bcff4> ;
+        <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> <http://data.lblod.info/id/bestuursorganen/794324e5-3730-4f6f-8a78-564a5e231582> ;
+        <http://data.vlaanderen.be/ns/mandaat#bindingStart> "2019-01-01T00:00:00Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
   }
 }
