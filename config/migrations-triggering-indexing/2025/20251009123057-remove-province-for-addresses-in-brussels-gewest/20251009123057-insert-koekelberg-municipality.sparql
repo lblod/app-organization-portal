@@ -5,8 +5,7 @@ INSERT DATA {
       <http://mu.semte.ch/vocabularies/core/uuid> "457e89c4-a41b-41ad-b20d-03086c402639" ;
       <http://www.w3.org/2000/01/rdf-schema#label> "Koekelberg" ;
       <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21011> ;
-      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21011> .
   }
 
   GRAPH <http://mu.semte.ch/graphs/shared> {
@@ -26,7 +25,8 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/457e89c4-a41b-41ad-b20d-03086c402639> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/4abab8a9-7c79-4330-8fc7-e4a325604b2d> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/f9ec107a-73cd-4a9e-882b-bf714b6b9485> ;
-      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/fe1ed9ff-3e07-4f67-bbc3-9fae906f6cc3> .
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/fe1ed9ff-3e07-4f67-bbc3-9fae906f6cc3> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
 
     <http://data.lblod.info/id/identificatoren/4abab8a9-7c79-4330-8fc7-e4a325604b2d>
       <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/bacf971e-7143-4e74-97c6-89ce746aeb09>;

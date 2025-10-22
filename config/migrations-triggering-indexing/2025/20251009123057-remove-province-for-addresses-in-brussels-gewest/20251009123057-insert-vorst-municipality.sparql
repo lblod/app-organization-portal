@@ -5,8 +5,7 @@ INSERT DATA {
       <http://mu.semte.ch/vocabularies/core/uuid> "e84a58df-37f5-4b2b-bc0c-00f4658e87da" ;
       <http://www.w3.org/2000/01/rdf-schema#label> "Vorst" ;
       <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21007> ;
-      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21007> .
   }
 
   GRAPH <http://mu.semte.ch/graphs/shared> {
@@ -26,7 +25,8 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/e84a58df-37f5-4b2b-bc0c-00f4658e87da> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/0254289b-a981-4016-a47b-e094da4230b5> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/b02f2258-d89b-4d5f-9052-49fe79deb395> ;
-      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/41104d5e-5eea-47d3-aba3-680737890023> .
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/41104d5e-5eea-47d3-aba3-680737890023> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
 
     <http://data.lblod.info/id/identificatoren/0254289b-a981-4016-a47b-e094da4230b5>
       <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/65471c13-b9df-4cf4-9cff-38948521413b>;

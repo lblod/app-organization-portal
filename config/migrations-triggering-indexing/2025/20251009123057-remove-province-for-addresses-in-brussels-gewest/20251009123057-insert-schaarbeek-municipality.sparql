@@ -5,8 +5,7 @@ INSERT DATA {
       <http://mu.semte.ch/vocabularies/core/uuid> "aaec0a10-8bb9-4644-8be5-89da0920dbed" ;
       <http://www.w3.org/2000/01/rdf-schema#label> "Schaarbeek" ;
       <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21015> ;
-      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21015> .
   }
 
   GRAPH <http://mu.semte.ch/graphs/shared> {
@@ -26,7 +25,8 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/aaec0a10-8bb9-4644-8be5-89da0920dbed> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/d9ea7d1d-87f3-4178-856c-265a95acbc91> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/14e75d82-eff1-49fc-a753-cb96420f8c8a> ;
-      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/be200efc-8399-4cd6-a913-d64a239bce78> .
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/be200efc-8399-4cd6-a913-d64a239bce78> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
 
     <http://data.lblod.info/id/identificatoren/d9ea7d1d-87f3-4178-856c-265a95acbc91>
       <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/e9479cf1-e50e-4761-8128-b8992216263f>;

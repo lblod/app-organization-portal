@@ -5,8 +5,7 @@ INSERT DATA {
       <http://mu.semte.ch/vocabularies/core/uuid> "77b98d71-5c90-484d-ba2f-2ca9bafe1abb" ;
       <http://www.w3.org/2000/01/rdf-schema#label> "Ganshoren" ;
       <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21008> ;
-      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21008> .
   }
 
   GRAPH <http://mu.semte.ch/graphs/shared> {
@@ -26,7 +25,8 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/77b98d71-5c90-484d-ba2f-2ca9bafe1abb> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/9ee7b37b-dcb2-41f7-a623-4b409b21c514> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/f3c1a6c7-23a7-49df-9338-065659186575> ;
-      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/ed10ce9c-c582-4b49-9ba6-9e228868f860> .
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/ed10ce9c-c582-4b49-9ba6-9e228868f860> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
 
     <http://data.lblod.info/id/identificatoren/9ee7b37b-dcb2-41f7-a623-4b409b21c514>
       <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/63a1ccfa-3545-4883-8f56-2bad82302028>;

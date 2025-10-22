@@ -5,8 +5,7 @@ INSERT DATA {
       <http://mu.semte.ch/vocabularies/core/uuid> "7d3175ad-d4fc-4b56-a780-dab8e159c21d" ;
       <http://www.w3.org/2000/01/rdf-schema#label> "Sint-Gillis" ;
       <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21013> ;
-      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21013> .
   }
 
   GRAPH <http://mu.semte.ch/graphs/shared> {
@@ -26,7 +25,8 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/7d3175ad-d4fc-4b56-a780-dab8e159c21d> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/3b113d58-a06b-428c-9ef6-36e7d354d299> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/10f45315-05d9-409b-b7fd-b8f323ced0d2> ;
-      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/8749766d-e283-4145-8460-62360e278175> .
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/8749766d-e283-4145-8460-62360e278175> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
 
     <http://data.lblod.info/id/identificatoren/3b113d58-a06b-428c-9ef6-36e7d354d299>
       <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/12028344-1808-4ac1-81e0-443beaab6684>;

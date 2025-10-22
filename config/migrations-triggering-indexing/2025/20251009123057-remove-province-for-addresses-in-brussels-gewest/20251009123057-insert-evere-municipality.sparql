@@ -5,8 +5,7 @@ INSERT DATA {
       <http://mu.semte.ch/vocabularies/core/uuid> "cd00668d-9233-4108-b690-f70e2f2e28a0" ;
       <http://www.w3.org/2000/01/rdf-schema#label> "Evere" ;
       <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21006> ;
-      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21006> .
   }
 
   GRAPH <http://mu.semte.ch/graphs/shared> {
@@ -26,7 +25,8 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/cd00668d-9233-4108-b690-f70e2f2e28a0> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/ecb0f120-36b3-492c-b20e-8009fa8e4828> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/80edaf56-2f42-451d-aa7f-473450386b67> ;
-      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/9080f879-d78d-47fc-b083-8912fb31474e> .
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/9080f879-d78d-47fc-b083-8912fb31474e> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
 
     <http://data.lblod.info/id/identificatoren/ecb0f120-36b3-492c-b20e-8009fa8e4828>
       <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/cc8deba0-3d7c-4ecc-96b0-9aea331d5bda>;

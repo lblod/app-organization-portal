@@ -5,8 +5,7 @@ INSERT DATA {
       <http://mu.semte.ch/vocabularies/core/uuid> "07e8d443-2ebb-48ca-a7e4-d57c105db465" ;
       <http://www.w3.org/2000/01/rdf-schema#label> "Sint-Jans-Molenbeek" ;
       <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21012> ;
-      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21012> .
   }
 
   GRAPH <http://mu.semte.ch/graphs/shared> {
@@ -26,7 +25,8 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/07e8d443-2ebb-48ca-a7e4-d57c105db465> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/019c56fd-072c-4253-836d-e4b52142f4ee> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/24a23c41-317e-466c-a177-5cbabccc08cf> ;
-      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/9aa004da-3abd-4c5b-9b36-194cf7fcb9de> .
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/9aa004da-3abd-4c5b-9b36-194cf7fcb9de> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
 
     <http://data.lblod.info/id/identificatoren/019c56fd-072c-4253-836d-e4b52142f4ee>
       <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/bedb852c-3bb6-4ee7-8e9a-4b3e3a66a954>;

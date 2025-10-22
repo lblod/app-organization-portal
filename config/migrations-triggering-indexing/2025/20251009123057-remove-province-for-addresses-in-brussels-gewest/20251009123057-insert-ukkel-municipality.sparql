@@ -5,8 +5,7 @@ INSERT DATA {
       <http://mu.semte.ch/vocabularies/core/uuid> "4bd12290-8a0e-43c8-b308-500af066ae47" ;
       <http://www.w3.org/2000/01/rdf-schema#label> "Ukkel" ;
       <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21016> ;
-      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21016> .
   }
 
   GRAPH <http://mu.semte.ch/graphs/shared> {
@@ -26,7 +25,8 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/4bd12290-8a0e-43c8-b308-500af066ae47> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e23d0e95-13f9-4a2d-b45b-e425d1aecf2c> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/ab742ed2-1d1c-482e-885e-2416efd7d346> ;
-      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/8f36d9b3-8ad9-4ec0-a22e-fb10096cc01f> .
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/8f36d9b3-8ad9-4ec0-a22e-fb10096cc01f> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
 
     <http://data.lblod.info/id/identificatoren/e23d0e95-13f9-4a2d-b45b-e425d1aecf2c>
       <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/da31d8dd-64fa-4978-8d4d-c3f1e4aaf209>;

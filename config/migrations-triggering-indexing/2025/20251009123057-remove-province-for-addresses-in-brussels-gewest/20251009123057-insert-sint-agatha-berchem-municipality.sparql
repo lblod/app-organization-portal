@@ -5,8 +5,7 @@ INSERT DATA {
       <http://mu.semte.ch/vocabularies/core/uuid> "e5b0ab35-aa0d-4f73-ad2d-446bd67f299d" ;
       <http://www.w3.org/2000/01/rdf-schema#label> "Sint-Agatha-Berchem" ;
       <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
-      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21003> ;
-      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21003> .
   }
 
   GRAPH <http://mu.semte.ch/graphs/shared> {
@@ -26,7 +25,8 @@ INSERT DATA {
       <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/e5b0ab35-aa0d-4f73-ad2d-446bd67f299d> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/e73cddaa-21fc-4464-b759-6591e15c213d> ;
       <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/0b0301c4-eb97-4ba4-b8b6-c9e4c089e06c> ;
-      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/2d163096-b31e-4006-b3c0-e46c87325aa2> .
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/2d163096-b31e-4006-b3c0-e46c87325aa2> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
 
     <http://data.lblod.info/id/identificatoren/e73cddaa-21fc-4464-b759-6591e15c213d>
       <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/4576728a-b5d3-4fcd-9290-6cee5473de53>;
