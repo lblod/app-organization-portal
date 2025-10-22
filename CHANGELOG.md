@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+### Backend
+- Add municipalities and werkingsgebieden in the area of Brussel [OP-3669]
+- Updated mu-search configuration with source [OP-3670]
+
+### Deploy notes
+```
+drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing
+sh scripts/reset-elastic.sh
+```
+
 ## 1.36.0 (2025-10-03)
 ### Dashboard
 - Enable ACM/IDM for the dashboard [OP-3674]
