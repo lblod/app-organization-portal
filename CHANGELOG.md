@@ -5,6 +5,7 @@
 
 #### CLI
 ```
+drc restart migrations
 drc exec db-cleanup curl -X GET "http://localhost/runCronJob?cronJobID=8ffd9f11-db25-430d-a66a-31fc8b393d5f"
 ```
 
