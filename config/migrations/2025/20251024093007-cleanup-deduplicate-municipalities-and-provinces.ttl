@@ -1,0 +1,48 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://data.lblod.info/id/cleanup-job/48ffd9f11-db25-430d-a66a-31fc8b393d5f> a cleanup:Job ;
+    mu:uuid "8ffd9f11-db25-430d-a66a-31fc8b393d5f" ;
+    dcterms:title "Cleaning duplicated data of municipalities and provinces" ;
+    cleanup:randomQuery """
+
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+    DELETE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+        ?s ?p ?o .
+        }
+    }
+    WHERE {
+      VALUES (?g1 ?g2) {
+        (<http://mu.semte.ch/graphs/shared> <http://mu.semte.ch/graphs/administrative-unit>)
+      }
+
+      {
+        GRAPH ?g1 {
+          ?s a besluit:Bestuurseenheid ;
+             ?p ?o .
+          FILTER(?p != rdf:type)
+        }
+        GRAPH ?g2 {
+          ?s a besluit:Bestuurseenheid ;
+             ?p ?o .
+          FILTER(?p != rdf:type)
+        }
+      }
+      UNION
+      {
+        GRAPH ?g1 {
+          ?s ?p ?o .
+          ?o a besluit:Bestuurseenheid .
+          FILTER(?p != rdf:type)
+        }
+        GRAPH ?g2 {
+          ?s ?p ?o .
+          ?o a besluit:Bestuurseenheid .
+          FILTER(?p != rdf:type)
+        }
+      }
+    }
+    """ .
