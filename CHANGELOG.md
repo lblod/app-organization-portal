@@ -1,15 +1,19 @@
 # Changelog
-
-## Unreleaased
+## Unreleased
 ### Backend
 - Added cleanup job to clean duplicated data of municipalities and provinces [OP-3676]
+- Remove deprecated organizations-public-info producer [OP-3581]
 
-### Deploy notes
-
+### Deploy instructions
 ```
+# cleanup job
 drc restart migrations
 drc exec db-cleanup curl -X GET "http://localhost/runCronJob?cronJobID=8ffd9f11-db25-430d-a66a-31fc8b393d5f"
-
+# removing producer
+drc restart dispatcher delta-producer-dump-file-publisher delta-producer-background-jobs-initiator delta-producer-publication-graph-maintainer jobs-controller
+drc up -d publication-triplestore-migrations
+rm -r data/files/deltas/organizations-public-info
+rm -r data/files/delta-producer-dumps/dump-organizations-public-info
 ```
 
 ## 1.37.0 (2025-10-24)
