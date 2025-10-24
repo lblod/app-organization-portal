@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased
+- Remove deprecated organizations-public-info producer [OP-3581]
+
+### Deploy instructions
+```
+drc restart dispatcher delta-producer-dump-file-publisher delta-producer-background-jobs-initiator delta-producer-publication-graph-maintainer jobs-controller
+drc up -d publication-triplestore-migrations
+rm -r data/files/deltas/organizations-public-info
+rm -r data/files/delta-producer-dumps/dump-organizations-public-info
+```
+
 ## 1.37.0 (2025-10-24)
 - Added cleanup job to clean duplicated data of municipalities and provinces [OP-3676]
 
