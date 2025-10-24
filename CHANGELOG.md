@@ -1,12 +1,17 @@
 # Changelog
 
-## 1.37.0 (2025-10-24)
+## Unreleaased
 - Added cleanup job to clean duplicated data of municipalities and provinces [OP-3676]
 
-#### CLI
+### Deploy notes
+
 ```
 drc restart migrations
 drc exec db-cleanup curl -X GET "http://localhost/runCronJob?cronJobID=8ffd9f11-db25-430d-a66a-31fc8b393d5f"
+
+```
+
+## 1.37.0 (2025-10-24)
 ### Backend
 - Add municipalities and werkingsgebieden in the area of Brussel [OP-3669]
 - Updated mu-search configuration with source [OP-3670]
