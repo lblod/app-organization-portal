@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.37.0 (2025-10-24)
+- Added cleanup job to clean duplicated data of municipalities and provinces [OP-3676]
+
+#### CLI
+```
+drc exec db-cleanup curl -X GET "http://localhost/runCronJob?cronJobID=8ffd9f11-db25-430d-a66a-31fc8b393d5f"
+```
+
 ## 1.36.0 (2025-10-03)
 ### Dashboard
 - Enable ACM/IDM for the dashboard [OP-3674]
