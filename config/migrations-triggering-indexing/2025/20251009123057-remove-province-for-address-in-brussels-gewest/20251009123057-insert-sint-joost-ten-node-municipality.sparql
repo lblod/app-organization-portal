@@ -1,0 +1,78 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/werkingsgebieden/430218c1-910d-4c19-abcf-7ad536f5e6d1>
+      a <http://www.w3.org/ns/prov#Location> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "430218c1-910d-4c19-abcf-7ad536f5e6d1" ;
+      <http://www.w3.org/2000/01/rdf-schema#label> "Sint-Joost-ten-Node" ;
+      <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21014> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025814>
+      a <http://www.w3.org/ns/org#Organization> ,
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+        <http://purl.org/dc/terms/Agent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "3a7e2441-e179-4514-9063-8f43700769f7" ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Sint-Joost-ten-Node" ;
+      <http://www.w3.org/ns/regorg#legalName> "Sint-Joost-ten-Node" ;
+      <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025814>
+      <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/430218c1-910d-4c19-abcf-7ad536f5e6d1> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/8a6f1584-6cf8-4f00-94fa-0667f498e0df> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/8f1176aa-52c7-4945-b7ab-743726904765> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/ff6ab486-8622-4ace-ac7d-6a26780a06dc> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+
+    <http://data.lblod.info/id/identificatoren/8a6f1584-6cf8-4f00-94fa-0667f498e0df>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/072b23da-7ccb-4c98-a550-cfa9f6d57b5d>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "8a6f1584-6cf8-4f00-94fa-0667f498e0df" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/072b23da-7ccb-4c98-a550-cfa9f6d57b5d>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0207202193" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "072b23da-7ccb-4c98-a550-cfa9f6d57b5d" .
+
+    <http://data.lblod.info/id/identificatoren/8f1176aa-52c7-4945-b7ab-743726904765>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/b576e3f8-776b-4c3f-8584-5fb57d0ea45a>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "8f1176aa-52c7-4945-b7ab-743726904765" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/b576e3f8-776b-4c3f-8584-5fb57d0ea45a>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "OVO025814" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "b576e3f8-776b-4c3f-8584-5fb57d0ea45a" .
+
+    <http://data.lblod.info/id/vestigingen/ff6ab486-8622-4ace-ac7d-6a26780a06dc>
+      a <http://www.w3.org/ns/org#Site> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "ff6ab486-8622-4ace-ac7d-6a26780a06dc" ;
+      <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+      <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/ec65fdd4-d69f-4c63-af95-343f6acb38b7> ;
+      <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/a6792559-ab56-4f9f-8124-49140ced25de> .
+
+    <http://data.lblod.info/id/contact-punten/ec65fdd4-d69f-4c63-af95-343f6acb38b7>
+      a <http://schema.org/ContactPoint> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "ec65fdd4-d69f-4c63-af95-343f6acb38b7" ;
+      <http://schema.org/email> "info@sjtn.brussels" ;
+      <http://schema.org/telephone> "tel:+3222202611" ;
+      <http://schema.org/contactType> "Primary" ;
+      <http://xmlns.com/foaf/0.1/page> "https://www.sjtn.brussels/" .
+
+    <http://data.lblod.info/id/adressen/a6792559-ab56-4f9f-8124-49140ced25de>
+      a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "a6792559-ab56-4f9f-8124-49140ced25de" ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Sint-Joost-ten-Node" ;
+      <https://data.vlaanderen.be/ns/adres#land> "België" ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "13" ;
+      <http://www.w3.org/ns/locn#fullAddress> "Sterrenkundelaan 13, 1210 Sint-Joost-ten-Node, België" ;
+      <http://www.w3.org/ns/locn#postCode> "1210" ;
+      <http://www.w3.org/ns/locn#thoroughfare> "Sterrenkundelaan" .
+  }
+}

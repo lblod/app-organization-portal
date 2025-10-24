@@ -654,6 +654,7 @@
         "name": "http://www.w3.org/2004/02/skos/core#prefLabel",
         "legal_name": "http://www.w3.org/ns/regorg#legalName",
         "alternative_name": "http://www.w3.org/2004/02/skos/core#altLabel",
+        "source": "http://purl.org/dc/terms/source",
         "classification_id": [
           "http://www.w3.org/ns/org#classification",
           "http://mu.semte.ch/vocabularies/core/uuid"
@@ -715,6 +716,15 @@
             }
           },
           "alternative_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "source": {
             "type": "text",
             "fields": {
               "field": {
