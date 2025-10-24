@@ -1,0 +1,78 @@
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/werkingsgebieden/1c491c48-643f-44c3-bdd8-2ba8f11f4d5d>
+      a <http://www.w3.org/ns/prov#Location> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "1c491c48-643f-44c3-bdd8-2ba8f11f4d5d" ;
+      <http://www.w3.org/2000/01/rdf-schema#label> "Anderlecht" ;
+      <http://mu.semte.ch/vocabularies/ext/werkingsgebiedNiveau> "Gemeente" ;
+      <http://www.w3.org/2004/02/skos/core#exactMatch> <http://vocab.belgif.be/auth/refnis2025/21001> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025866>
+      a <http://www.w3.org/ns/org#Organization> ,
+        <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> ,
+        <http://purl.org/dc/terms/Agent> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "1e912379-eeab-4d33-8f6c-2e160e230dab" ;
+      <http://www.w3.org/ns/org#classification> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      <http://www.w3.org/2004/02/skos/core#prefLabel> "Anderlecht" ;
+      <http://www.w3.org/ns/regorg#legalName> "Anderlecht" ;
+      <http://www.w3.org/ns/regorg#orgStatus> <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+  }
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <https://data.vlaanderen.be/id/organisatie/OVO025866>
+      <http://data.vlaanderen.be/ns/besluit#werkingsgebied> <http://data.lblod.info/id/werkingsgebieden/1c491c48-643f-44c3-bdd8-2ba8f11f4d5d> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/d422793b-ee14-4c49-9633-2460a2bd5597> ;
+      <http://www.w3.org/ns/adms#identifier> <http://data.lblod.info/id/identificatoren/55f5718e-753d-4bf5-9e54-51107cb0233e> ;
+      <http://www.w3.org/ns/org#hasPrimarySite> <http://data.lblod.info/id/vestigingen/dbd1ab23-f6c8-40eb-92c1-ad96768581be> ;
+      <http://purl.org/dc/terms/source> <https://data.vlaanderen.be/doc/organisatie> .
+
+    <http://data.lblod.info/id/identificatoren/d422793b-ee14-4c49-9633-2460a2bd5597>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/6a614bee-ce07-44ae-b9b8-6c62b5d59f03>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "KBO nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "d422793b-ee14-4c49-9633-2460a2bd5597" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/6a614bee-ce07-44ae-b9b8-6c62b5d59f03>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "0206582284" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "6a614bee-ce07-44ae-b9b8-6c62b5d59f03" .
+
+    <http://data.lblod.info/id/identificatoren/55f5718e-753d-4bf5-9e54-51107cb0233e>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator> <http://data.lblod.info/id/gestructureerdeIdentificator/d78905a7-c997-4faa-a431-0fc536e5c13c>;
+      a <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation> "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "55f5718e-753d-4bf5-9e54-51107cb0233e" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/d78905a7-c997-4faa-a431-0fc536e5c13c>
+      a <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator> "OVO025866" ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "d78905a7-c997-4faa-a431-0fc536e5c13c" .
+
+    <http://data.lblod.info/id/vestigingen/dbd1ab23-f6c8-40eb-92c1-ad96768581be>
+      a <http://www.w3.org/ns/org#Site> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "dbd1ab23-f6c8-40eb-92c1-ad96768581be" ;
+      <http://data.lblod.info/vocabularies/erediensten/vestigingstype> <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> ;
+      <http://www.w3.org/ns/org#siteAddress> <http://data.lblod.info/id/contact-punten/0a39a310-4e93-4443-989c-1ea630f82033> ;
+      <https://data.vlaanderen.be/ns/organisatie#bestaatUit> <http://data.lblod.info/id/adressen/cc216687-6049-41ae-8fd7-6757117e0e16> .
+
+    <http://data.lblod.info/id/contact-punten/0a39a310-4e93-4443-989c-1ea630f82033>
+      a <http://schema.org/ContactPoint> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "0a39a310-4e93-4443-989c-1ea630f82033" ;
+      <http://schema.org/email> "info@anderlecht.brussels" ;
+      <http://schema.org/telephone> "tel:+3225580800" ;
+      <http://schema.org/contactType> "Primary" ;
+      <http://xmlns.com/foaf/0.1/page> "https://www.anderlecht.be/" .
+
+    <http://data.lblod.info/id/adressen/cc216687-6049-41ae-8fd7-6757117e0e16>
+      a <http://www.w3.org/ns/locn#Address> ;
+      <http://mu.semte.ch/vocabularies/core/uuid> "cc216687-6049-41ae-8fd7-6757117e0e16" ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Anderlecht" ;
+      <https://data.vlaanderen.be/ns/adres#land> "België" ;
+      <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer> "1" ;
+      <http://www.w3.org/ns/locn#fullAddress> "Raadsplein 1, 1070 Anderlecht, België" ;
+      <http://www.w3.org/ns/locn#postCode> "1070" ;
+      <http://www.w3.org/ns/locn#thoroughfare> "Raadsplein" .
+  }
+}
