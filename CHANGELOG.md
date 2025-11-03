@@ -1,4 +1,12 @@
 # Changelog
+## v1.35.2 (2025-11-03) (Not yet released, hotfix PR)
+### Backend
+- Fix camel case name of municipality Heist-op-den-Berg in addresses [OP-3694]
+### Deploy notes
+```
+drc restart migrations-triggering-indexing
+```
+
 ## v1.35.1 (2025-09-15)
 ### Backend
 - Produce memberships and their roles in organizations and public producers [OP-3658] & [OP-3661]
