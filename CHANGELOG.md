@@ -5,13 +5,14 @@
 - Added cleanup job to clean duplicated data of municipalities and provinces [OP-3676]
 
 ### Deploy notes
-
 ```
 drc restart migrations
 drc exec db-cleanup curl -X GET "http://localhost/runCronJob?cronJobID=8ffd9f11-db25-430d-a66a-31fc8b393d5f"
-
 ```
 
+## 1.37.1 (2025-11-04)
+### Bakend
+- Include v1.35.2 hotfix to the 1.37.x version. Already deployed so no deploy instructions
 ## 1.37.0 (2025-10-24)
 ### Backend
 - Add municipalities and werkingsgebieden in the area of Brussel [OP-3669]
@@ -71,6 +72,14 @@ drc up -d --remove-orphans
 ```
 drc pull frontend; drc up -d frontend
 drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing
+```
+
+## v1.35.2 (2025-11-04)
+### Backend
+- Fix camel case name of municipality Heist-op-den-Berg in addresses [OP-3694]
+### Deploy notes
+```
+drc restart migrations-triggering-indexing
 ```
 
 ## v1.35.1 (2025-09-15)
