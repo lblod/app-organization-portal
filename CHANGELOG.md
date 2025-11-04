@@ -1,5 +1,5 @@
 # Changelog
-## v1.35.2 (2025-11-03) (Not yet released, hotfix PR)
+## v1.35.2 (2025-11-04)
 ### Backend
 - Fix camel case name of municipality Heist-op-den-Berg in addresses [OP-3694]
 ### Deploy notes
