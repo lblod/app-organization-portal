@@ -1,4 +1,7 @@
 # Changelog
+## 1.37.1 (2025-11-04)
+### Bakend
+- Include v1.35.2 hotfix to the 1.37.x version. Already deployed so no deploy instructions
 ## 1.37.0 (2025-10-24)
 ### Backend
 - Add municipalities and werkingsgebieden in the area of Brussel [OP-3669]
