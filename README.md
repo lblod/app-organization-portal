@@ -159,11 +159,11 @@ To make sure the app can share data, producers need to be set up. There is an in
 1. make sure the app is up and running, the migrations have run
 2. in docker-compose.override.yml, make sure the following configuration is provided:
 ```
-  delta-producer-pub-graph-maintainer-administrative-units:
+  delta-producer-publication-graph-maintainer-administrative-units:
     environment:
       START_INITIAL_SYNC: 'true'
 ```
-3. `drc up -d delta-producer-pub-graph-maintainer-administrative-units`
+3. `drc up -d delta-producer-publication-graph-maintainer-administrative-units`
 4. You can follow the status of the job, ideally through the dashboard, but this hasn't been setup yet. The following query should also give results:
 ```
    PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>

@@ -1,0 +1,20 @@
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a org:Site;
+    ?p ?o.
+
+  FILTER (?p IN (
+    rdf:type,
+    mu:uuid,
+    org:siteAddress,
+    organisatie:bestaatUit,
+    ere:vestigingstype
+  ))
+}

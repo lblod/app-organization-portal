@@ -1,0 +1,26 @@
+CONSTRUCT {
+  ?s ?p ?o .
+}
+WHERE {
+  ?s ?p ?o .
+
+  FILTER EXISTS {
+    ?s a ?type .
+
+    VALUES ?type {
+      <http://lblod.data.gift/vocabularies/organisatie/BestuurseenheidClassificatieCode>
+      <http://lblod.data.gift/vocabularies/organisatie/BestuursorgaanClassificatieCode>
+      <http://lblod.data.gift/vocabularies/organisatie/OrganisatieStatusCode>
+      <http://lblod.data.gift/vocabularies/organisatie/TypeEredienst>
+      <http://lblod.data.gift/vocabularies/organisatie/TypeVestiging>
+      <http://lblod.data.gift/vocabularies/organisatie/Veranderingsgebeurtenis>
+      <http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode>
+      <http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode>
+      <http://mu.semte.ch/vocabularies/ext/RepresentatiefOrgaanClassificatieCode>
+      <http://mu.semte.ch/vocabularies/ext/OrganizationClassificationCode>
+      <http://publications.europa.eu/ontology/euvoc#Country>
+      <http://www.w3.org/2004/02/skos/core#Concept>
+      <http://www.w3.org/ns/prov#Location>
+    }
+  }
+}
