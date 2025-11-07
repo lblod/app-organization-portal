@@ -1,0 +1,35 @@
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/150c7b74277a2602994ce1aaa9553c8a> ?p ?o.
+  }
+}
+
+;
+
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuurseenheden/69e815e62d4698903b7db1df39f372317439cb28a8c4ca62aa6bfd1acaa62266> <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> <http://data.lblod.info/id/betrokkenLokaleBesturen/150c7b74277a2602994ce1aaa9553c8a>.
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+      ?localInvolvementKapellen <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?localInvolvementKapellen <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> 100.
+  }
+}
+WHERE {
+  BIND(<http://mu.semte.ch/graphs/worship-service> AS ?g)
+  GRAPH ?g {
+    ?localInvolvementKapellen <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+  VALUES ?localInvolvementKapellen {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/4a08c9a735bb0ef402a7bbed0a39afd0>
+  }
+}
