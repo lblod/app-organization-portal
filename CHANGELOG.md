@@ -1,4 +1,10 @@
 # Changelog
+## 1.37.2 (2025-11-13)
+- Bump frontend to v1.36.0
+### Deploy notes
+```
+drc up -d frontend
+```
 ## 1.37.1 (2025-11-04)
 ### Bakend
 - Include v1.35.2 hotfix to the 1.37.x version. Already deployed so no deploy instructions
