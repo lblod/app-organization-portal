@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleaased
+## 1.37.3 (2025-11-14)
 ### Backend
 - Added cleanup job to clean duplicated data of municipalities and provinces [OP-3676]
 - Delete local involvements for worship services [OP-3693]
