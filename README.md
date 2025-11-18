@@ -2,14 +2,40 @@
 
 Backend for the organization portal application, based on the mu.semte.ch microservices stack.
 
-## How to
-
 ### Boot up the system in DEV environment
 
-    cd /path/to/mu-project
-    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+    cd /path/to/app-organization-portal
+    docker compose -f docker-compose.yml -f docker-compose.dev.yml up
 
-You can shut down using `docker-compose stop` and remove everything using `docker-compose rm`.
+You can shut down using `docker compose stop` and remove everything using `docker compose rm`.
+
+You need to wait until the migrations are ready.
+
+After that, you need to trigger the ES index manually.
+
+You can do it by:
+```
+# Assumes you are in root of app-organization-portal
+/bin/bash scripts/reset-elastic.sh 
+```
+And follow the steps. It takes a bit, from an install from scratch, about 10 mins. (Mileage may vary)
+
+
+#### Tricks to make it a bit easier.
+If you think typing the full command takes too long every time, run this in your shell:
+
+```
+# Assumes you are in root of app-organization-portal
+echo "COMPOSE_FILE=docker-compose.yml:docker-compose.dev.yml:docker-compose.override.yml" > .env
+touch docker-compose.override.yml
+```
+Now you can just run `docker compose up` and it will take the config files into account.
+If you want to go a step further, and still think (like most of us) that `docker compose` is too long to type, you can alias it:
+```
+echo "alias drc='docker compose'" >> ~/.bashrc
+echo "alias drcl='docker compose logs -ft --tail=100'" >> ~/.bashrc
+```
+Now everywhere `drc up -d` will work as shorthand for `docker compose up -d`.
 
 #### Setup consumers
 
