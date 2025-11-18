@@ -9,7 +9,19 @@ Backend for the organization portal application, based on the mu.semte.ch micros
 
 You can shut down using `docker compose stop` and remove everything using `docker compose rm`.
 
-#### Trick
+You need to wait until the migrations are ready.
+
+After that, you need to trigger the ES index manually.
+
+You can do it by:
+```
+# Assumes you are in root of app-organization-portal
+/bin/bash scripts/reset-elastic.sh 
+```
+And follow the steps. It takes a bit, from an install from scratch, about 10 mins. (Mileage may vary)
+
+
+#### Tricks to make it a bit easier.
 If you think typing the full command takes too long every time, run this in your shell:
 
 ```
