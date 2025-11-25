@@ -541,24 +541,35 @@ services:
     logging: *default-logging
 
   vendor-management-consumer:
-    image: lblod/delta-consumer:0.0.24
+    image: lblod/delta-consumer:0.1.1
     environment:
       DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
-      DCR_SYNC_LOGIN_ENDPOINT: 'https://loket.lblod.info/sync/vendor-management/login' # Add DCR_SECRET_KEY in docker-compose.override.yml
+      DCR_SYNC_LOGIN_ENDPOINT: 'https://loket.lblod.info/sync/vendor-management/login'
+      DCR_SECRET_KEY: "<override with secret key>"
       DCR_SERVICE_NAME: "vendor-management-consumer"
-      DCR_SYNC_FILES_PATH: "/sync/vendor-management/files"
       DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/VendorManagementCacheGraphDump"
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/vendor-management"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/VendorManagementFileSyncing"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/vendor-management-consumer"
       DCR_DISABLE_INITIAL_SYNC: "true"
+      DCR_SYNC_FILES_PATH: "/sync/vendor-management/files"
       DCR_KEEP_DELTA_FILES: "true"
+      DCR_DELTA_JOBS_RETENTION_PERIOD: "30"
+      DCR_ENABLE_TRIPLE_REMAPPING: "true"
+      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/vendor-management-data"
+      DCR_REMAPPING_GRAPH: "http://mu.semte.ch/graphs/vendor-management-data"
+      BATCH_SIZE: "500"
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      SUDO_QUERY_RETRY: "true"
       DCR_DELTA_FILE_FOLDER: "/consumer-files"
-      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/VendorManagementFileSyncing"
-      INGEST_GRAPH: "http://mu.semte.ch/graphs/vendor-management-data"
+    volumes:
+      - ./config/delta-consumers/vendor-management/mapping:/config/mapping
+      - ./data/files/consumer-files/vendor-management:/consumer-files/
     labels:
       - "logging=true"
     links:
       - db:database
+      - triplestore:virtuoso
     restart: always
     logging: *default-logging
   ################################################################################

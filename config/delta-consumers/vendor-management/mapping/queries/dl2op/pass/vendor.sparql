@@ -1,0 +1,18 @@
+CONSTRUCT {
+    ?s ?p ?o.
+} WHERE {
+    ?s a <http://mu.semte.ch/vocabularies/ext/Vendor>;
+    ?p ?o.
+
+    FILTER (?s IN (
+    <http://data.lblod.info/vendors/b1e41693-639a-4f61-92a9-5b9a3e0b924e>
+    ))
+
+    FILTER (?p IN (
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>,
+    <http://mu.semte.ch/vocabularies/core/uuid>,
+    <http://mu.semte.ch/vocabularies/account/canActOnBehalfOf>
+    ))
+
+
+}
