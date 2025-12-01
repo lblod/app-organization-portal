@@ -468,7 +468,13 @@
           "target": "kbo-organizations",
           "cardinality": "one",
           "inverse": true
-        }
+        },
+        "vendors": {
+          "predicate": "muAccount:canActOnBehalfOf",
+          "target": "vendors",
+          "cardinality": "many",
+          "inverse": true
+          }
       },
       "features": ["include-uri"],
       "new-resource-base": "http://data.lblod.info/id/organisaties/"
@@ -563,9 +569,9 @@
         }
       },
       "relationships": {
-        "worship-service": {
+        "organizations": {
           "predicate": "muAccount:canActOnBehalfOf",
-          "target": "worship-services",
+          "target": "organizations",
           "cardinality": "many"
         }
       },
@@ -582,14 +588,6 @@
         "cross-border": {
           "type": "boolean",
           "predicate": "ere:grensoverschrijdend"
-        }
-      },
-      "relationships": {
-        "vendor": {
-          "predicate": "muAccount:canActOnBehalfOf",
-          "target": "vendors",
-          "cardinality": "one",
-          "inverse": true
         }
       },
       "new-resource-base": "http://data.lblod.info/id/besturenVanDeEredienst/"

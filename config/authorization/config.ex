@@ -135,6 +135,12 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: @org_type
             }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/vendor-management-data",
+            constraint: %ResourceConstraint{
+              resource_types: @vendor_type
+            }
           }
         ]
       },
@@ -148,6 +154,12 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type
             }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/vendor-management-data",
+            constraint: %ResourceConstraint{
+              resource_types: @vendor_type
+            }
           }
         ]
       },
@@ -160,6 +172,12 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/administrative-unit",
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/vendor-management-data",
+            constraint: %ResourceConstraint{
+              resource_types: @vendor_type
             }
           }
         ]
