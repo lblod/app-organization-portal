@@ -1,5 +1,9 @@
 # Changelog
 
+## unreleased
+### Backend
+- Indicate whether a worship service is a customer of ReligioPoint or Loket voor Lokale Besturen [OP-3680]
+
 ## 1.37.3 (2025-11-14)
 ### Backend
 - Added cleanup job to clean duplicated data of municipalities and provinces [OP-3676]
