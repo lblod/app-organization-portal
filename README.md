@@ -177,6 +177,31 @@ drc up -d
 sh scripts/reset-elastic.sh
 ```
 
+#### Setup vendors sync
+Note: this is assuming you have never ran this before.
+```
+drc down;
+```
+Update `docker-compose.override.yml` to:
+```
+  vendor-management-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.loket.lblod.info/" # or another endpoint
+      DCR_DISABLE_INITIAL_SYNC: "true"
+      BATCH_SIZE: "500"
+      DCR_SECRET_KEY: "<key>>" # fill in key for selected endpoint
+      DCR_SYNC_LOGIN_ENDPOINT: "https://dev.loket.lblod.info/sync/vendor-management/login" # login for selected endpoint
+```
+Then:
+```
+drc up -d migrations
+drc up -d db vendor-management-consumer
+```
+Finally, put the stack back up.
+```
+drc up -d
+```
+
 ### Setting up the delta-producers related services
 To make sure the app can share data, producers need to be set up. There is an intial sync, that is potentially very expensive, and must be started manually
 
