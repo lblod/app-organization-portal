@@ -557,6 +557,8 @@ services:
       INGEST_GRAPH: "http://mu.semte.ch/graphs/vendor-management-data"
     labels:
       - "logging=true"
+    links:
+      - db:database
     restart: always
     logging: *default-logging
   ################################################################################
