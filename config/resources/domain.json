@@ -30,7 +30,8 @@
     "ext": "http://mu.semte.ch/vocabularies/ext/",
     "geo": "http://www.opengis.net/ont/geosparql#",
     "nacebel": "http://data.gift/vocabularies/nace-bel/",
-    "time": "http://www.w3.org/2006/time#"
+    "time": "http://www.w3.org/2006/time#",
+    "muAccount": "http://mu.semte.ch/vocabularies/account/"
   },
   "resources": {
     "agents": {
@@ -473,7 +474,13 @@
           "target": "kbo-organizations",
           "cardinality": "one",
           "inverse": true
-        }
+        },
+        "vendors": {
+          "predicate": "muAccount:canActOnBehalfOf",
+          "target": "vendors",
+          "cardinality": "many",
+          "inverse": true
+          }
       },
       "features": ["include-uri"],
       "new-resource-base": "http://data.lblod.info/id/organisaties/"
@@ -558,6 +565,23 @@
         }
       },
       "new-resource-base": "http://data.lblod.info/id/eredienstBestuurseenheden/"
+    },
+    "vendors": {
+      "class": "ext:Vendor",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "foaf:name"
+        }
+      },
+      "relationships": {
+        "organizations": {
+          "predicate": "muAccount:canActOnBehalfOf",
+          "target": "organizations",
+          "cardinality": "many"
+        }
+      },
+      "new-resource-base": "http://data.lblod.info/vendors/"
     },
     "worship-services": {
       "class": "ere:BestuurVanDeEredienst",
