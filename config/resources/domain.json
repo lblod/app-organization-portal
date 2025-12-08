@@ -252,6 +252,12 @@
     "mandates": {
       "class": "mandaat:Mandaat",
       "super": ["posts"],
+      "attributes": {
+        "aantal-houders": {
+          "type": "number",
+          "predicate": "mandaat:aantalHouders"
+        }
+      },
       "relationships": {
         "role-board": {
           "predicate": "org:role",
