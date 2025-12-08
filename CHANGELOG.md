@@ -1,8 +1,17 @@
 # Changelog
 
-## unreleased
-### Backend
-- Indicate whether a worship service is a customer of ReligioPoint or Loket voor Lokale Besturen [OP-3680]
+
+## Unreleased
+### General
+ - [OP-3590]: OP is now master of "aantal houders" of mandates
+ - [OP-3699]: Update aantal houders for some mandates Hasselt and Antwerp
+ - [OP-3680]: Indicate whether a worship service is a customer of ReligioPoint or Loket voor Lokale Besturen 
+
+### Deploy instructions
+```
+drc restart migrations
+drc restart delta-producer-publication-graph-maintainer resource
+```
 
 ## 1.37.3 (2025-11-14)
 ### Backend
