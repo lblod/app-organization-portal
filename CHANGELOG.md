@@ -14,7 +14,7 @@ drc restart migrations
 drc restart delta-producer-publication-graph-maintainer resource
 drc pull vendor-management-consumer; drc up -d vendor-management-consumer
 drc restart db resource
-drc up -d frontend
+drc pull frontend && drc up -d frontend
 ```
 
 ## 1.37.3 (2025-11-14)
