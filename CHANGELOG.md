@@ -9,6 +9,40 @@
 - Bump frontend to v1.36.1 [OP-3623] [OP-3681] [OP-3703] [OP-2712]
 
 ### Deploy instructions
+#### For the vendor-management-consumer
+Per environment a slightly different configuration is needed. Update the `docker-compose.override.yml` accordingly.
+##### development
+```
+  vendor-management-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.loket.lblod.info/"
+      DCR_SYNC_LOGIN_ENDPOINT: "https://dev.loket.lblod.info/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_SECRET_KEY: "SECRECT KEY TO ASK"
+```
+##### qa
+```
+  vendor-management-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_SECRET_KEY: "SECRECT KEY TO ASK"
+```
+##### production
+```
+  vendor-management-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be/"
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_SECRET_KEY: "SECRECT KEY TO ASK"
+```
+
+#### Deploy instructions
 ```
 drc restart migrations
 drc restart delta-producer-publication-graph-maintainer resource
