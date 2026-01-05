@@ -187,19 +187,22 @@ Update `docker-compose.override.yml` to:
   vendor-management-consumer:
     environment:
       DCR_SYNC_BASE_URL: "https://dev.loket.lblod.info/" # or another endpoint
-      DCR_DISABLE_INITIAL_SYNC: "true"
       BATCH_SIZE: "500"
       DCR_SECRET_KEY: "<key>>" # fill in key for selected endpoint
       DCR_SYNC_LOGIN_ENDPOINT: "https://dev.loket.lblod.info/sync/vendor-management/login" # login for selected endpoint
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
 ```
 Then:
 ```
 drc up -d migrations
 drc up -d db vendor-management-consumer
-```
-Finally, put the stack back up.
+# Wait until success of the previous step
+
+Finally, put the stack back up and reindex elasticsearch:
 ```
 drc up -d
+sh scripts/reset-elastic.sh
 ```
 
 ### Setting up the delta-producers related services
