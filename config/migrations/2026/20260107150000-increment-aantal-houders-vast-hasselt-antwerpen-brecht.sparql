@@ -1,0 +1,24 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+DELETE {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+        ?mandaat mandaat:aantalHouders ?oldValue .
+    }
+}
+INSERT {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+        ?mandaat mandaat:aantalHouders ?newValue  .
+    }
+}
+WHERE {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+        VALUES ?mandaat {
+            <http://data.lblod.info/id/mandaten/1d6bf704b39472c5aa987779b7c0162183736d7990ddbd54835c0a6f98e52116>
+            <http://data.lblod.info/id/mandaten/23d2744cdb69fbdbbd4aa63f22752e19dc20b9a71bebbf260fa7812c20db483a>
+            <http://data.lblod.info/id/mandaten/68021f6bbdb0835e116b252030c420fc15de36732dc50a50bb76e119bd273ec8>
+        }
+        ?mandaat mandaat:aantalHouders ?oldValue .
+        BIND(?oldValue + 1 AS ?newValue)
+    }
+}
