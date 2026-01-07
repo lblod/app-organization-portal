@@ -6,7 +6,7 @@
  - [OP-3590]: OP is now master of "aantal houders" of mandates
  - [OP-3699]: Update aantal houders for some mandates Hasselt and Antwerp
  - [OP-3680]: Indicate whether a worship service is a customer of ReligioPoint or Loket voor Lokale Besturen 
-- Bump frontend to v1.36.1 [OP-3623] [OP-3681] [OP-3703] [OP-2712]
+- Bump frontend to v1.36.2 [OP-3623] [OP-3681] [OP-3703] [OP-2712]
 
 ### Deploy instructions
 #### For the vendor-management-consumer
