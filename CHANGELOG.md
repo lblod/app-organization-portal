@@ -1,7 +1,5 @@
 # Changelog
-
-
-## Unreleased
+## 1.38.0 (2026-01-08)
 ### General
  - [OP-3590]: OP is now master of "aantal houders" of mandates
  - [OP-3699]: Update aantal houders for some mandates Hasselt and Antwerp
