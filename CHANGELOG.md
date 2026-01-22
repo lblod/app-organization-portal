@@ -5,7 +5,8 @@
 
 ### Deploy instructions
 #### For error-alert and deliver-email-service
-Per environment a specfic configuration for the email service
+Per environment a specfic configuration for the email service similar to loket config. 
+Ask colleague for specfic credentials.
 
 #### Deploy instructions
 ```
