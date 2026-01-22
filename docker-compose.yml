@@ -626,6 +626,28 @@ services:
     restart: always
     logging: *default-logging
 
+  error-alert:
+    image: lblod/loket-error-alert-service:1.0.0
+    volumes:
+      - ./config/error-alert:/config/
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+
+  deliver-email-service:
+    image: redpencil/deliver-email-service:1.0.0
+    environment:
+      MAILBOX_URI: "http://data.lblod.info/id/mailboxes/1"
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+
   roles:
     image: lblod/select-role-service:0.1.0
     labels:
