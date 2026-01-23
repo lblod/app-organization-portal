@@ -1,4 +1,19 @@
 # Changelog
+## unreleased
+### General
+- [OP-3720]: Delta background job having errors/getting stuck, send an email
+
+### Deploy instructions
+#### For error-alert and deliver-email-service
+Per environment a specfic configuration for the email service similar to loket config. 
+Ask colleague for specfic credentials.
+
+#### Deploy instructions
+```
+drc restart migrations deltanotifier
+drc up -d error-alert deliver-email-service
+```
+
 ## 1.38.0 (2026-01-08)
 ### General
  - [OP-3590]: OP is now master of "aantal houders" of mandates

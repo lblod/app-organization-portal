@@ -95,6 +95,17 @@ services:
       BASE_URL: "http://localhost/ldes/"
   kbo-data-sync:
     restart: "no"
+  error-alert:
+    environment:
+      EMAIL_FROM: 'test@domain.net'
+      EMAIL_TO: '123@domain.com'
+    restart: "no"
+  deliver-email-service:
+    environment:
+      EMAIL_CRON_PATTERN: "*/5 * * * *"
+      WELL_KNOWN_SERVICE: "test"
+      FROM_NAME: "Your Name"
+    restart: "no"
   # use this to test acmidm
   # tlsproxy:
   #   image: caddy:2
