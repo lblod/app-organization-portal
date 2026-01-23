@@ -8,6 +8,25 @@
 Per environment a specfic configuration for the email service similar to loket config. 
 Ask colleague for specfic credentials.
 
+```
+   deliver-email-service:
+     environment:
+      EMAIL_PROTOCOL: "smtp"
+      #WELL_KNOWN_SERVICE: "smtp"
+      EMAIL_HOST: "Fill in Email host adress"
+      EMAIL_ADDRESS: "Fill in email"  
+      EMAIL_PASSWORD: "Fill in email password"
+      EMAIL_PORT: "Fill in port"
+      SECURE_CONNECTION: "true"
+      EMAIL_CRON_PATTERN: "*/1 * * * *"
+     restart: "no"
+     
+   error-alert:
+    environment:
+      EMAIL_FROM: "Fill in email adress of sender
+      EMAIL_TO: "Fill in email adress of receiver"
+```
+
 #### Deploy instructions
 ```
 drc restart migrations deltanotifier

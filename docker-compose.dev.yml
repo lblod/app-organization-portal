@@ -97,8 +97,8 @@ services:
     restart: "no"
   error-alert:
     environment:
-      EMAIL_FROM: 'test@domain.net'
-      EMAIL_TO: '123@domain.com'
+      EMAIL_FROM: 'test@example.com'
+      EMAIL_TO: '123@example.com'
     restart: "no"
   deliver-email-service:
     environment:
