@@ -1,6 +1,7 @@
 # Changelog
-## unreleased
+## 1.38.1 (2026-01-30)
 ### General
+- Bump frontend to v1.36.3 [OP-3428]
 - [OP-3720]: Delta background job having errors/getting stuck, send an email
 
 ### Deploy instructions
@@ -30,7 +31,7 @@ Ask colleague for specfic credentials.
 #### Deploy instructions
 ```
 drc restart migrations deltanotifier
-drc up -d error-alert deliver-email-service
+drc up -d error-alert deliver-email-service frontend
 ```
 
 ## 1.38.0 (2026-01-08)
