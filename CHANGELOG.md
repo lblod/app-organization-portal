@@ -1,7 +1,6 @@
 # Changelog
 ## Unreleased
 ### Backend
-- Added cleanup job to clean duplicated data of municipalities and provinces [OP-3676]
 - Remove deprecated organizations-public-info producer [OP-3581]
 
 ### Deploy instructions
