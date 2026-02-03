@@ -78,6 +78,16 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  publication-triplestore-migrations:
+    image: semtech/mu-migrations-service:0.9.0
+    links:
+      - publication-triplestore:database
+    volumes:
+      - ./config/publication-triplestore-migrations:/data/migrations
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   resource:
     image: semtech/mu-cl-resources:1.24.0
     environment:

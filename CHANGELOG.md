@@ -1,4 +1,18 @@
 # Changelog
+## Unreleased
+### Backend
+- Remove deprecated organizations-public-info producer [OP-3581]
+
+### Deploy instructions
+```
+# removing producer
+drc restart dispatcher delta-producer-dump-file-publisher delta-producer-background-jobs-initiator delta-producer-publication-graph-maintainer jobs-controller
+drc up -d publication-triplestore-migrations
+rm -r data/files/deltas/organizations-public-info
+rm -r data/files/delta-producer-dumps/dump-organizations-public-info
+```
+
+### Deploy instructions
 ## 1.38.1 (2026-01-30)
 ### General
 - Bump frontend to v1.36.3 [OP-3428]
@@ -91,6 +105,7 @@ drc pull frontend && drc up -d frontend
 
 ### Deploy notes
 ```
+# cleanup job
 drc restart migrations
 drc exec db-cleanup curl -X GET "http://localhost/runCronJob?cronJobID=8ffd9f11-db25-430d-a66a-31fc8b393d5f"
 ```
