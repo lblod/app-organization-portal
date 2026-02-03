@@ -1,0 +1,16 @@
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a <http://www.w3.org/ns/locn#Address> ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Heist-Op-Den-Berg" .
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a <http://www.w3.org/ns/locn#Address> ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Heist-op-den-Berg" .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?s a <http://www.w3.org/ns/locn#Address> ;
+      <https://data.vlaanderen.be/ns/adres#gemeentenaam> "Heist-Op-Den-Berg" .
+  }
+}

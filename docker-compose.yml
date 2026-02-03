@@ -212,7 +212,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-organization-portal:1.35.0
+    image: lblod/frontend-organization-portal:1.36.3
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
@@ -550,6 +550,27 @@ services:
       - triplestore:virtuoso
     logging: *default-logging
 
+  vendor-management-consumer:
+    image: lblod/delta-consumer:0.1.1
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
+      DCR_SYNC_LOGIN_ENDPOINT: 'https://loket.lblod.info/sync/vendor-management/login' # Add DCR_SECRET_KEY in docker-compose.override.yml
+      DCR_SERVICE_NAME: "vendor-management-consumer"
+      DCR_SYNC_FILES_PATH: "/sync/vendor-management/files"
+      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/VendorManagementCacheGraphDump"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/vendor-management"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/vendor-management-consumer"
+      DCR_DISABLE_INITIAL_SYNC: "true"
+      DCR_KEEP_DELTA_FILES: "true"
+      DCR_DELTA_FILE_FOLDER: "/consumer-files"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/VendorManagementFileSyncing"
+      INGEST_GRAPH: "http://mu.semte.ch/graphs/vendor-management-data"
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+    restart: always
+    logging: *default-logging
   ################################################################################
   # DELTA CONSUMERS: END
   ################################################################################
@@ -608,6 +629,28 @@ services:
 
   error-report-service:
     image: lblod/error-report-service:0.1.0
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+
+  error-alert:
+    image: lblod/loket-error-alert-service:1.0.0
+    volumes:
+      - ./config/error-alert:/config/
+    links:
+      - db:database
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+
+  deliver-email-service:
+    image: redpencil/deliver-email-service:1.0.0
+    environment:
+      MAILBOX_URI: "http://data.lblod.info/id/mailboxes/1"
     links:
       - db:database
     labels:

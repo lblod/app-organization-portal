@@ -6,9 +6,6 @@
 
 ### Deploy instructions
 ```
-# cleanup job
-drc restart migrations
-drc exec db-cleanup curl -X GET "http://localhost/runCronJob?cronJobID=8ffd9f11-db25-430d-a66a-31fc8b393d5f"
 # removing producer
 drc restart dispatcher delta-producer-dump-file-publisher delta-producer-background-jobs-initiator delta-producer-publication-graph-maintainer jobs-controller
 drc up -d publication-triplestore-migrations
@@ -16,6 +13,113 @@ rm -r data/files/deltas/organizations-public-info
 rm -r data/files/delta-producer-dumps/dump-organizations-public-info
 ```
 
+### Deploy instructions
+## 1.38.1 (2026-01-30)
+### General
+- Bump frontend to v1.36.3 [OP-3428]
+- [OP-3720]: Delta background job having errors/getting stuck, send an email
+
+### Deploy instructions
+#### For error-alert and deliver-email-service
+Per environment a specfic configuration for the email service similar to loket config. 
+Ask colleague for specfic credentials.
+
+```
+   deliver-email-service:
+     environment:
+      EMAIL_PROTOCOL: "smtp"
+      #WELL_KNOWN_SERVICE: "smtp"
+      EMAIL_HOST: "Fill in Email host adress"
+      EMAIL_ADDRESS: "Fill in email"  
+      EMAIL_PASSWORD: "Fill in email password"
+      EMAIL_PORT: "Fill in port"
+      SECURE_CONNECTION: "true"
+      EMAIL_CRON_PATTERN: "*/1 * * * *"
+     restart: "no"
+     
+   error-alert:
+    environment:
+      EMAIL_FROM: "Fill in email adress of sender
+      EMAIL_TO: "Fill in email adress of receiver"
+```
+
+#### Deploy instructions
+```
+drc restart migrations deltanotifier
+drc up -d error-alert deliver-email-service frontend
+```
+
+## 1.38.0 (2026-01-08)
+### General
+ - [OP-3590]: OP is now master of "aantal houders" of mandates
+ - [OP-3699]: Update aantal houders for some mandates Hasselt and Antwerp
+ - [OP-3680]: Indicate whether a worship service is a customer of ReligioPoint or Loket voor Lokale Besturen 
+- Bump frontend to v1.36.2 [OP-3623] [OP-3681] [OP-3703] [OP-2712]
+
+### Deploy instructions
+#### For the vendor-management-consumer
+Per environment a slightly different configuration is needed. Update the `docker-compose.override.yml` accordingly.
+##### development
+```
+  vendor-management-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.loket.lblod.info/"
+      DCR_SYNC_LOGIN_ENDPOINT: "https://dev.loket.lblod.info/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_SECRET_KEY: "SECRECT KEY TO ASK"
+```
+##### qa
+```
+  vendor-management-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lblod.info/"
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lblod.info/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_SECRET_KEY: "SECRECT KEY TO ASK"
+```
+##### production
+```
+  vendor-management-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://loket.lokaalbestuur.vlaanderen.be/"
+      DCR_SYNC_LOGIN_ENDPOINT: "https://loket.lokaalbestuur.vlaanderen.be/sync/vendor-management/login" # Add DCR_SECRET_KEY in docker-compose.override.yml
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_SECRET_KEY: "SECRECT KEY TO ASK"
+```
+
+#### Deploy instructions
+```
+drc restart migrations
+drc restart delta-producer-publication-graph-maintainer resource
+drc pull vendor-management-consumer; drc up -d vendor-management-consumer
+drc restart db resource
+drc pull frontend && drc up -d frontend
+```
+
+## 1.37.3 (2025-11-14)
+### Backend
+- Added cleanup job to clean duplicated data of municipalities and provinces [OP-3676]
+- Delete local involvements for worship services [OP-3693]
+
+### Deploy notes
+```
+# cleanup job
+drc restart migrations
+drc exec db-cleanup curl -X GET "http://localhost/runCronJob?cronJobID=8ffd9f11-db25-430d-a66a-31fc8b393d5f"
+```
+
+## 1.37.2 (2025-11-13)
+- Bump frontend to v1.36.0
+### Deploy notes
+```
+drc up -d frontend
+```
+## 1.37.1 (2025-11-04)
+### Bakend
+- Include v1.35.2 hotfix to the 1.37.x version. Already deployed so no deploy instructions
 ## 1.37.0 (2025-10-24)
 ### Backend
 - Add municipalities and werkingsgebieden in the area of Brussel [OP-3669]
@@ -75,6 +179,14 @@ drc up -d --remove-orphans
 ```
 drc pull frontend; drc up -d frontend
 drc restart migrations-triggering-indexing; drc logs -ft --tail=200 migrations-triggering-indexing
+```
+
+## v1.35.2 (2025-11-04)
+### Backend
+- Fix camel case name of municipality Heist-op-den-Berg in addresses [OP-3694]
+### Deploy notes
+```
+drc restart migrations-triggering-indexing
 ```
 
 ## v1.35.1 (2025-09-15)

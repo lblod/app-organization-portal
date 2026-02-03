@@ -89,6 +89,11 @@ defmodule Acl.UserGroups.Config do
     "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
   ]
 
+  @vendor_type [
+    "http://mu.semte.ch/vocabularies/ext/Vendor"
+  ]
+
+
   defp access_by_role(group_string) do
     %AccessByQuery{
       #      vars: ["session_group","session_role"], todo we might have to  create multiple graph depending on role
@@ -130,6 +135,12 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: @org_type
             }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/vendor-management-data",
+            constraint: %ResourceConstraint{
+              resource_types: @vendor_type
+            }
           }
         ]
       },
@@ -142,6 +153,12 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/administrative-unit",
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/vendor-management-data",
+            constraint: %ResourceConstraint{
+              resource_types: @vendor_type
             }
           }
         ]
@@ -156,6 +173,12 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type
             }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/vendor-management-data",
+            constraint: %ResourceConstraint{
+              resource_types: @vendor_type
+            }
           }
         ]
       },
@@ -168,6 +191,12 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/worship-service",
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @worship_type
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/vendor-management-data",
+            constraint: %ResourceConstraint{
+              resource_types: @vendor_type
             }
           }
         ]
@@ -182,6 +211,12 @@ defmodule Acl.UserGroups.Config do
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type ++ @worship_type
             }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/vendor-management-data",
+            constraint: %ResourceConstraint{
+              resource_types: @vendor_type
+            }
           }
         ]
       },
@@ -194,6 +229,12 @@ defmodule Acl.UserGroups.Config do
             graph: "http://mu.semte.ch/graphs/worship-service",
             constraint: %ResourceConstraint{
               resource_types: @org_type ++ @error_type ++ @worship_type
+            }
+          },
+          %GraphSpec{
+            graph: "http://mu.semte.ch/graphs/vendor-management-data",
+            constraint: %ResourceConstraint{
+              resource_types: @vendor_type
             }
           }
         ]
