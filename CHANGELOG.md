@@ -4,11 +4,12 @@
 - Remove deprecated organizations-public-info producer [OP-3581]
 - bump loket-error-alert-service [DL-7142]
 - bump adressenregister [OP-3721]
+- Aalter can be selected twice in editing "werkingsgebied" when making a new Politiezone [OP-3724]
 
 ### Deploy instructions
 ```
 # removing producer
-drc restart dispatcher delta-producer-dump-file-publisher delta-producer-background-jobs-initiator delta-producer-publication-graph-maintainer jobs-controller
+drc restart dispatcher delta-producer-dump-file-publisher delta-producer-background-jobs-initiator delta-producer-publication-graph-maintainer jobs-controller migrations cache
 drc up -d publication-triplestore-migrations error-alert adressenregister
 rm -r data/files/deltas/organizations-public-info
 rm -r data/files/delta-producer-dumps/dump-organizations-public-info
