@@ -11,7 +11,7 @@
 ```
 # removing producer
 drc restart dispatcher delta-producer-dump-file-publisher delta-producer-background-jobs-initiator delta-producer-publication-graph-maintainer jobs-controller migrations cache
-drc up -d publication-triplestore-migrations error-alert adressenregister
+drc up -d publication-triplestore-migrations error-alert adressenregister frontend
 rm -r data/files/deltas/organizations-public-info
 rm -r data/files/delta-producer-dumps/dump-organizations-public-info
 ```
