@@ -5,6 +5,7 @@
 - bump loket-error-alert-service [DL-7142]
 - bump adressenregister [OP-3721]
 - Aalter can be selected twice in editing "werkingsgebied" when making a new Politiezone [OP-3724]
+- bump frontend [OP-3726]
 
 ### Deploy instructions
 ```
