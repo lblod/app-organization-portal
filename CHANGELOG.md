@@ -6,6 +6,7 @@
 - bump adressenregister [OP-3721]
 - Aalter can be selected twice in editing "werkingsgebied" when making a new Politiezone [OP-3724]
 - bump frontend [OP-3726]
+- Add related organizations report to report generation service [OP-3739]
 
 ### Deploy instructions
 ```
@@ -14,6 +15,9 @@ drc restart dispatcher delta-producer-dump-file-publisher delta-producer-backgro
 drc up -d publication-triplestore-migrations error-alert adressenregister frontend
 rm -r data/files/deltas/organizations-public-info
 rm -r data/files/delta-producer-dumps/dump-organizations-public-info
+
+# new related organizations report
+drc pull report-generation; drc up -d report-generation
 ```
 
 ### Deploy instructions
