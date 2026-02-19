@@ -30,7 +30,6 @@ export default {
       ?related_organization_kbo_number
     WHERE {
       {
-        # branch 1
         ?membership org:member ?organization ;
                     org:role ?role ;
                     org:organization ?related_organization .
@@ -45,7 +44,7 @@ export default {
       }
       UNION
       {
-        # branch 2 (reversed direction)
+
         ?membership org:member ?related_organization ;
                     org:role ?role ;
                     org:organization ?organization .
@@ -58,7 +57,7 @@ export default {
           AS ?role_label_renamed
         )
       }
-      # shared constraints
+
       ?organization a org:Organization ;
                     skos:prefLabel ?organization_label ;
                     regorg:orgStatus ?organization_status .
