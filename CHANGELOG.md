@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 1.38.2 (2026-02-20)
 ### Backend
 - Remove deprecated organizations-public-info producer [OP-3581]
 - bump loket-error-alert-service [DL-7142]
