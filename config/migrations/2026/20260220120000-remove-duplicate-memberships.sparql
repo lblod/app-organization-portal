@@ -1,0 +1,26 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership ?p ?o .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership ?p ?o .
+  }
+
+  FILTER(?membership IN (
+    <http://data.lblod.info/id/lidmaatschap/e30da404c9e798fbf6c3cb08c18aa2fb3467fbb17d0ee3bf7aeea2e33b506394>,
+    <http://data.lblod.info/id/lidmaatschap/57e299c1371ff49f9ab4a59c04f213adb95bbd412fca118ba7b97923e8911f1e>,
+    <http://data.lblod.info/id/lidmaatschap/b5ffde4275206674ce04aec50b96055790fe2bc899688cafab5f317aa351340c>,
+    <http://data.lblod.info/id/lidmaatschap/6b63778ff8a7805b1bb6eadf016e4eb16eb5bf41>,
+    <http://data.lblod.info/id/lidmaatschap/7983bd733dd478ee37e74077a9079d34d0d2f8e1>,
+    <http://data.lblod.info/id/lidmaatschap/b9024618552754cdcf0802109404f2bb5948fe03>,
+    <http://data.lblod.info/id/lidmaatschap/ef819edf7cce76075aa41d5b42a41ad95e54c73225e1eca066352ecda3780e2a>,
+    <http://data.lblod.info/id/lidmaatschap/ce7ae35e02378f6496d02ef27a826330b22a083b>,
+    <http://data.lblod.info/id/lidmaatschap/d275f7cb4cbe0dbf5311d9015c08830a982bb7d3dca565862206d6a840b30dbf>
+  ))
+}
