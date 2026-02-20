@@ -1,4 +1,13 @@
 # Changelog
+## unreleased
+### Backend
+- Related organisations: Duplicate relations between municipalities and OCMWs [OP-3743]
+
+### Deploy instructions
+```
+drc restart migrations cache
+```
+
 ## 1.38.2 (2026-02-20)
 ### Backend
 - Remove deprecated organizations-public-info producer [OP-3581]
