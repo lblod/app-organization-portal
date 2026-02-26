@@ -2,10 +2,12 @@
 ## unreleased
 ### Backend
 - Related organisations: Duplicate relations between municipalities and OCMWs [OP-3743]
+- Bump frontend [OP-3735]
 
 ### Deploy instructions
 ```
 drc restart migrations cache
+drc pull frontend && drc up -d frontend
 ```
 
 ## 1.38.2 (2026-02-20)
