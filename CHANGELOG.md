@@ -1,5 +1,6 @@
 # Changelog
-## unreleased
+
+## 1.38.3 (2026-02-26)
 ### Backend
 - Related organisations: Duplicate relations between municipalities and OCMWs [OP-3743]
 - Bump frontend [OP-3735]
