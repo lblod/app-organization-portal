@@ -59,20 +59,20 @@ export default {
 
          OPTIONAL {
            ?org_contact_point schema:email ?primary_email .
-           ?org_contact_point schema:contactType "primary" .
+           ?org_contact_point schema:contactType "Primary" .
          }
          OPTIONAL {
            ?org_contact_point schema:telephone ?primary_telephone .
-           ?org_contact_point schema:contactType "primary" .
+           ?org_contact_point schema:contactType "Primary" .
          }
          OPTIONAL {
            ?org_contact_point schema:telephone ?secondary_telephone .
-           ?org_contact_point schema:contactType "secondary" .
+           ?org_contact_point schema:contactType "Secondary" .
          }
 
          OPTIONAL {
            ?org_contact_point foaf:page ?website .
-           ?org_contact_point schema:contactType "primary" .
+           ?org_contact_point schema:contactType "Primary" .
          }
 
          OPTIONAL { ?org_contact_point schema:contactType ?contact_type . }
