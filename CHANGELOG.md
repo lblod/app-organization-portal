@@ -1,4 +1,7 @@
 # Changelog
+## Unreleased
+- Add KBO organizations report to report generation service
+- Add organizations detail report (addresses and contact info) to report generation service
 
 ## 1.38.4 (2026-02-26)
 ### Backend
