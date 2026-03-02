@@ -3,6 +3,11 @@
 - Add KBO organizations report to report generation service [OP-3738]
 - Add organizations detail report (addresses and contact info) to report generation service [OP-3738]
 
+### Deploy notes
+```
+drc restart report-generation
+```
+
 ## 1.38.4 (2026-02-26)
 ### Backend
 - Bump frontend [OP-3735]
