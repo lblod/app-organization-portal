@@ -1,4 +1,12 @@
 # Changelog
+## Unreleased
+- Bump to kbo-data-sync [OP-3765]
+
+### Deploy notes
+```
+drc pull kbo-data-sync && drc up -d kbo-data-sync
+```
+
 ## 1.39.0 (2026-04-02)
 - Add KBO organizations report to report generation service [OP-3738]
 - Add organizations detail report (addresses and contact info) to report generation service [OP-3738]
