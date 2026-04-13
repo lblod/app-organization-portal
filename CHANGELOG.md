@@ -1,10 +1,13 @@
 # Changelog
 ## Unreleased
 - Bump to kbo-data-sync [OP-3765]
+- Added administrativeUnits report with strekking [OP-3766]
+
 
 ### Deploy notes
 ```
 drc pull kbo-data-sync && drc up -d kbo-data-sync
+drc restart report-generation
 ```
 
 ## 1.39.0 (2026-04-02)
