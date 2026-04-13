@@ -3,7 +3,7 @@ import { PREFIXES } from "./utils";
 
 export default {
   cronPattern: "0 00 1 * * *",
-  name: "administrative units",
+  name: "administrativeUnits",
   execute: async () => {
     const reportData = {
       title: "administrative units",
