@@ -6,93 +6,68 @@ export default {
   name: "organizations",
   execute: async () => {
     const reportData = {
-      title: "organizations",
-      description: "List of the Organizations",
+      title: "organisations in database",
+      description: "List of the Organisations in the database",
       filePrefix: "exports/organizations",
     };
 
     console.log("Generating organizations report");
 
-    const queryStringPart1 = `
+    const queryString = `
     ${PREFIXES}
-
-    SELECT DISTINCT ?bestuur ?label ?classification ?typeEredienst
+    PREFIX org: <http://www.w3.org/ns/org#>
+    PREFIX adms: <http://www.w3.org/ns/adms#>
+    PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    SELECT DISTINCT 
+            ?bestuur
+            ?label
+            ?classification
+            ?typeEredienst
+            ?provincie
+            ?status
     WHERE {
-      GRAPH ?g {
-        ?bestuur a org:Organization .
-        OPTIONAL { ?bestuur skos:prefLabel ?label. }
-      }
-
-      OPTIONAL {
-        ?bestuur org:classification ?classificationUri .
-        ?classificationUri skos:prefLabel ?classification.
-      }
-
-      OPTIONAL {
-        ?bestuur ere:typeEredienst ?typeEredienstUri.
-        ?typeEredienstUri skos:prefLabel ?typeEredienst.
-      }
-
-      FILTER (?g IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service>, <http://mu.semte.ch/graphs/shared>))
-    }
-    `;
-
-    const queryResponsePart1 = await batchedQuery(queryStringPart1);
-
-    const dataPart1 = queryResponsePart1.results.bindings.reduce((acc, row) => {
-      acc[getSafeValue(row, "bestuur")] = {
-        bestuur: getSafeValue(row, "bestuur"),
-        label: getSafeValue(row, "label"),
-        classification: getSafeValue(row, "classification"),
-        typeEredienst: getSafeValue(row, "typeEredienst"),
-      };
-      return acc;
-    }, {});
-
-    const queryStringPart2 = `
-    ${PREFIXES}
-
-    SELECT DISTINCT ?bestuur ?provincie
-    WHERE {
-      GRAPH ?g {
-        ?bestuur a org:Organization .
-      }
-
-      OPTIONAL {
-        GRAPH ?h {
-          ?bestuur org:hasPrimarySite ?primarySite.
-
+          ?bestuur a org:Organization .
           OPTIONAL {
-            ?primarySite organisatie:bestaatUit ?sa.
-            OPTIONAL { ?sa locn:adminUnitL2 ?provincie. }
+              ?bestuur <http://www.w3.org/ns/org#hasPrimarySite> ?site.
+              ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address.
+              ?address <http://www.w3.org/ns/locn#adminUnitL2> ?provincie
           }
-        }
-        FILTER (?h IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service> ))
-      }
-
-      FILTER (?g IN ( <http://mu.semte.ch/graphs/administrative-unit>, <http://mu.semte.ch/graphs/worship-service>, <http://mu.semte.ch/graphs/shared>))
-
+          OPTIONAL {?bestuur <http://data.lblod.info/vocabularies/erediensten/typeEredienst> ?typeEredienst.}
+          OPTIONAL {?bestuur skos:prefLabel ?label}
+                OPTIONAL {
+                    ?bestuur <http://www.w3.org/ns/org#classification> ?org_classification .
+                    ?org_classification skos:prefLabel ?classification
+                }
+                OPTIONAL {
+                    ?bestuur <http://www.w3.org/ns/regorg#orgStatus> ?org_status.
+                    ?org_status skos:prefLabel ?status.
+                }
     }
     `;
 
-    const queryResponsePart2 = await batchedQuery(queryStringPart2);
-    const dataPart2 = queryResponsePart2.results.bindings.reduce((acc, row) => {
-      let dataPart = {
-        bestuur: getSafeValue(row, "bestuur"),
-        provincie: getSafeValue(row, "provincie"),
-      };
+    const queryResponse = await batchedQuery(queryString);
 
-      acc[getSafeValue(row, "bestuur")] = Object.assign(
-        dataPart,
-        dataPart1[getSafeValue(row, "bestuur")],
-      );
-      return acc;
-    }, {});
+    const data = queryResponse.results.bindings.map((row) => ({
+        "bestuur": getSafeValue(row, "bestuur"),
+        "label": getSafeValue(row, "label"),
+        "classification": getSafeValue(row, "classification"),
+        "typeEredienst": getSafeValue(row, "typeEredienst"),
+        "provincie": getSafeValue(row, "provincie"),
+        "status": getSafeValue(row, "status"),
+    }));
 
     await generateReportFromData(
-      Object.values(dataPart2),
-      ["bestuur", "label", "classification", "typeEredienst", "provincie"],
-      reportData,
+        data,
+        [
+          "bestuur",
+          "label",
+          "classification",
+          "typeEredienst",
+          "provincie",
+          "status",
+        ],
+        reportData,
     );
   },
 };
