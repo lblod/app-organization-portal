@@ -1,0 +1,35 @@
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/a648cf4f6e94d3ea0b0ed32b73b75dd9> ?p ?o.
+  }
+}
+
+;
+
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuurseenheden/c648ea5d12626ee3364a02debb223908a71e68f53d69a7a7136585b58a083e77> <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> <http://data.lblod.info/id/betrokkenLokaleBesturen/a648cf4f6e94d3ea0b0ed32b73b75dd9>.
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+      ?localInvolvementOudHeverlee <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?localInvolvementOudHeverlee <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> 100.
+  }
+}
+WHERE {
+  BIND(<http://mu.semte.ch/graphs/worship-service> AS ?g)
+  GRAPH ?g {
+    ?localInvolvementOudHeverlee <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+  VALUES ?localInvolvementOudHeverlee {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/3c8696890fb0bb865a798923acf58dcf>
+  }
+}
