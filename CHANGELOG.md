@@ -1,4 +1,12 @@
 # Changelog
+## Unreleased
+- OP-3771: Adds labels for: EredienstBeroepen and TypeBetrokkenheid
+### deploy notes
+```
+drc restart migrations
+drc up -d delta-producer-publication-graph-maintainer
+```
+
 ## 1.39.0 (2026-04-02)
 - Add KBO organizations report to report generation service [OP-3738]
 - Add organizations detail report (addresses and contact info) to report generation service [OP-3738]
