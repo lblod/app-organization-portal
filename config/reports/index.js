@@ -3,6 +3,7 @@ import RelatedOrganizationsReport from './related-organizations-report'
 import KboOrganizationsReport from './kbo-organizations-report'
 import OrganizationsDetailReport from './organizations-detail-report'
 import OrganizationsPlatformReport from './organizations-platform-report'
+import AdministrativeUnitsReport from "./administrative-units-report";
 
 export default [
   OrganizationsReport,
@@ -10,4 +11,5 @@ export default [
   KboOrganizationsReport,
   OrganizationsDetailReport,
   OrganizationsPlatformReport,
+  AdministrativeUnitsReport
 ];
