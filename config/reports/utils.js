@@ -26,4 +26,5 @@ export const PREFIXES = `
   PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
   PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
   PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+  PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 `;
