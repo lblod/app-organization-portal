@@ -1,0 +1,85 @@
+PREFIX prov:    <http://www.w3.org/ns/prov#>
+PREFIX geo:     <http://www.opengis.net/ont/geosparql#>
+PREFIX ext:     <http://mu.semte.ch/vocabularies/ext/>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX org:     <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+# 1) Link the 5 Flemish province werkingsgebieden themselves to Vlaams Gewest
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?provWg geo:sfWithin ?vlaamsGewest .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?vlaamsGewest a prov:Location ;
+                  ext:werkingsgebiedNiveau "Gewest" ;
+                  rdfs:label "Vlaams Gewest" .
+  }
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?province a besluit:Bestuurseenheid ;
+              org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?province besluit:werkingsgebied ?provWg .
+  }
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?provWg geo:sfWithin ?vlaamsGewest .
+    }
+  }
+} ;
+
+# 2) Link Flemish municipality werkingsgebieden to Vlaams Gewest
+#    Selector: any Gemeente-level location whose sfWithin is a werkingsgebied
+#    belonging to a Bestuurseenheid classified as Provincie (i.e. a Flemish province).
+#    Brussels has no provinces, and there are no Waals-Gewest provinces in OP,
+#    so "classified as Provincie" == "Flemish province".
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?munWg geo:sfWithin ?vlaamsGewest .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?vlaamsGewest a prov:Location ;
+                  ext:werkingsgebiedNiveau "Gewest" ;
+                  rdfs:label "Vlaams Gewest" .
+    ?munWg a prov:Location ;
+           ext:werkingsgebiedNiveau "Gemeente" ;
+           geo:sfWithin ?provWg .
+  }
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?province a besluit:Bestuurseenheid ;
+              org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?province besluit:werkingsgebied ?provWg .
+  }
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?munWg geo:sfWithin ?vlaamsGewest .
+    }
+  }
+} ;
+
+# 3) Link all District and Referentieregio werkingsgebieden to Vlaams Gewest
+#    All districts and referentieregios in the data are Flemish by scope;
+#    no further filtering required.
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?wg geo:sfWithin ?vlaamsGewest .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?vlaamsGewest a prov:Location ;
+                  ext:werkingsgebiedNiveau "Gewest" ;
+                  rdfs:label "Vlaams Gewest" .
+    ?wg a prov:Location ; ext:werkingsgebiedNiveau ?niveau .
+    VALUES ?niveau { "District" "Referentieregio" }
+  }
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?wg geo:sfWithin ?vlaamsGewest .
+    }
+  }
+}
