@@ -4,6 +4,9 @@
 - Bump to kbo-data-sync [OP-3765]
 - Added administrativeUnits report with strekking [OP-3766]
 - Cleanup local involvement for oud heverlee [OP-3757]
+- Add column to query organizations in Dashboard [OP-3758]
+- Query list change events of organisations in Dashboard [OP-3760]
+
 ### Deploy notes
 ```
 drc pull kbo-data-sync && drc up -d kbo-data-sync
