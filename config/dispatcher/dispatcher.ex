@@ -503,9 +503,9 @@ defmodule Dispatcher do
   # sparql endpoint
   ###############################################################
 
-  post "/sparql/*path", %{layer: :api_services, accept: %{sparql_json: true}} do
-    forward(conn, path, "http://db:8890/sparql/")
-  end
+#  post "/sparql/*path", %{layer: :api_services, accept: %{sparql_json: true}} do
+#    forward(conn, path, "http://db:8890/sparql/")
+#  end
 
   ###############################################################
   # errors
