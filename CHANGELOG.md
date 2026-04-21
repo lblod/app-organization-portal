@@ -7,6 +7,7 @@
 - Add column to query organizations in Dashboard [OP-3758]
 - Query list change events of organisations in Dashboard [OP-3760]
 - Disable SPARQL endpoint
+- Prepare worship election period: backfill missing 2026-2029 governing bodies + mandates, seed fresh 2029-2032 period, and clean up `hhttp://` Secretaris typo from the 2022 central-worship migrations
 
 ### Deploy notes
 ```
