@@ -7,7 +7,7 @@
 - Add column to query organizations in Dashboard [OP-3758]
 - Query list change events of organisations in Dashboard [OP-3760]
 - Disable SPARQL endpoint
-- Prepare worship election period: backfill missing 2026-2029 governing bodies + mandates, seed fresh 2029-2032 period, and clean up `hhttp://` Secretaris typo from the 2022 central-worship migrations
+- Prepare worship election period: backfill missing 2026-2029 governing bodies + mandates, seed fresh 2029-2032 period, and clean up `hhttp://` Secretaris typo from the 2022 central-worship migrations [OP-3776] and [DL-7294]
 
 ### Deploy notes
 ```
@@ -75,7 +75,7 @@ drc pull report-generation; drc up -d report-generation
 
 ### Deploy instructions
 #### For error-alert and deliver-email-service
-Per environment a specfic configuration for the email service similar to loket config. 
+Per environment a specfic configuration for the email service similar to loket config.
 Ask colleague for specfic credentials.
 
 ```
@@ -84,13 +84,13 @@ Ask colleague for specfic credentials.
       EMAIL_PROTOCOL: "smtp"
       #WELL_KNOWN_SERVICE: "smtp"
       EMAIL_HOST: "Fill in Email host adress"
-      EMAIL_ADDRESS: "Fill in email"  
+      EMAIL_ADDRESS: "Fill in email"
       EMAIL_PASSWORD: "Fill in email password"
       EMAIL_PORT: "Fill in port"
       SECURE_CONNECTION: "true"
       EMAIL_CRON_PATTERN: "*/1 * * * *"
      restart: "no"
-     
+
    error-alert:
     environment:
       EMAIL_FROM: "Fill in email adress of sender
@@ -107,7 +107,7 @@ drc up -d error-alert deliver-email-service frontend
 ### General
  - [OP-3590]: OP is now master of "aantal houders" of mandates
  - [OP-3699]: Update aantal houders for some mandates Hasselt and Antwerp
- - [OP-3680]: Indicate whether a worship service is a customer of ReligioPoint or Loket voor Lokale Besturen 
+ - [OP-3680]: Indicate whether a worship service is a customer of ReligioPoint or Loket voor Lokale Besturen
 - Bump frontend to v1.36.2 [OP-3623] [OP-3681] [OP-3703] [OP-2712]
 
 ### Deploy instructions
