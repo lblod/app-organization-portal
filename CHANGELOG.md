@@ -7,6 +7,7 @@
 - Add column to query organizations in Dashboard [OP-3758]
 - Query list change events of organisations in Dashboard [OP-3760]
 - Disable SPARQL endpoint
+- Create new query 'organisations shown in OP frontend' in Dashboard [OP-3774]
 
 ### Deploy notes
 ```
