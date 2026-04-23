@@ -33,7 +33,7 @@ services:
     restart: always
     logging: *default-logging
   db:
-    image: semtech/mu-authorization:feature-service-roam-r1.1
+    image: semtech/sparql-parser:0.0.15
     environment:
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       LOG_OUTGOING_SPARQL_QUERIES: "true"
@@ -45,6 +45,7 @@ services:
       QUERY_MAX_EXECUTION_TIME: "300000"
     volumes:
       - ./config/authorization:/config
+      - ./data/authorization:/data
     labels:
       - "logging=true"
     restart: always
