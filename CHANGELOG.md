@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 1.39.1 (2026-04-24)
 - OP-3771: Adds labels for: EredienstBeroepen and TypeBetrokkenheid
 - Bump to kbo-data-sync [OP-3765]
 - Added administrativeUnits report with strekking [OP-3766]
