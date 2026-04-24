@@ -35,6 +35,7 @@ services:
   db:
     image: semtech/sparql-parser:0.0.15
     environment:
+      LISP_DYNAMIC_SPACE_SIZE: 8192
       MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
       LOG_OUTGOING_SPARQL_QUERIES: "true"
       LOG_INCOMING_SPARQL_QUERIES: "true"
@@ -90,9 +91,10 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.24.0
+    image: semtech/mu-cl-resources:1.27.2
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
+      LISP_DYNAMIC_SPACE_SIZE: "8192" # 1GB by default, increase to 8GB on systems with a lot of data
     links:
       - db:database
     volumes:

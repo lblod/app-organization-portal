@@ -11,7 +11,7 @@
 
 ### Deploy notes
 ```
-drc pull kbo-data-sync db && drc up -d kbo-data-sync db
+drc pull kbo-data-sync db resource && drc up -d kbo-data-sync db resource
 drc restart report-generation 
 drc restart migrations && drc logs -ft --tail=200 migrations
 drc up -d delta-producer-publication-graph-maintainer
