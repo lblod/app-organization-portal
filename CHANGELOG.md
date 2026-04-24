@@ -7,6 +7,7 @@
 - Add column to query organizations in Dashboard [OP-3758]
 - Query list change events of organisations in Dashboard [OP-3760]
 - Disable SPARQL endpoint
+- Cleanup local involvements for Sint Laureins [OP-3775]
 - sparql-parser [DL-6575]
 
 ### Deploy notes

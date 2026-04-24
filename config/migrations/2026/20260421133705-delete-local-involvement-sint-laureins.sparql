@@ -1,0 +1,51 @@
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/912bd10fb40c208e9b6e2a20af23fc80> ?p ?o.
+  }
+}
+
+;
+
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuurseenheden/e971816acb021c37576835e6a96922442628956fd029d885fd849c9f07414469> <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> <http://data.lblod.info/id/betrokkenLokaleBesturen/912bd10fb40c208e9b6e2a20af23fc80>.
+  }
+}
+
+;
+
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/4495dfe049edadb53a29379426ab1c50> ?p ?o.
+  }
+}
+
+;
+
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuurseenheden/d3000e1841d968dd70d4534bf216699d830d146ccc1f88b902b0793caad9daf2> <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> <http://data.lblod.info/id/betrokkenLokaleBesturen/4495dfe049edadb53a29379426ab1c50>.
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+      ?localInvolvementSintLaureins <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?localInvolvementSintLaureins <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> 100.
+  }
+}
+WHERE {
+  BIND(<http://mu.semte.ch/graphs/worship-service> AS ?g)
+  GRAPH ?g {
+    ?localInvolvementSintLaureins <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+  VALUES ?localInvolvementSintLaureins {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/479bf2ff79dc2af870f371f5d86b08bc>
+  }
+}
