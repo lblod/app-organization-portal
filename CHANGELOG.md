@@ -7,11 +7,12 @@
 - Add column to query organizations in Dashboard [OP-3758]
 - Query list change events of organisations in Dashboard [OP-3760]
 - Disable SPARQL endpoint
+- sparql-parser [DL-6575]
 
 ### Deploy notes
 ```
-drc pull kbo-data-sync && drc up -d kbo-data-sync
-drc restart report-generation
+drc pull kbo-data-sync db resource && drc up -d kbo-data-sync db resource
+drc restart report-generation 
 drc restart migrations && drc logs -ft --tail=200 migrations
 drc up -d delta-producer-publication-graph-maintainer
 drc restart dispatcher
