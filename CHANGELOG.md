@@ -7,14 +7,14 @@
 - Add column to query organizations in Dashboard [OP-3758]
 - Query list change events of organisations in Dashboard [OP-3760]
 - Disable SPARQL endpoint
-- Prepare worship election period: backfill missing 2026-2029 governing bodies + mandates, seed fresh 2029-2032 period, and clean up `hhttp://` Secretaris typo from the 2022 central-worship migrations [OP-3776] and [DL-7294]
+- Prepare worship election period: backfill missing 2026-2029 governing bodies + mandates, seed fresh 2029-2032 period, and clean up `hhttp://` Secretaris typo from the 2022 central-worship migrations and bumped construct-organization-relationships to 1.1.1[OP-3776] and [DL-7294]
 - Cleanup local involvements for Sint Laureins [OP-3775]
 - sparql-parser [DL-6575]
 
 ### Deploy notes
 ```
 drc pull kbo-data-sync db resource && drc up -d kbo-data-sync db resource
-drc restart report-generation 
+drc restart report-generation
 drc restart migrations && drc logs -ft --tail=200 migrations
 drc up -d delta-producer-publication-graph-maintainer
 drc restart dispatcher
