@@ -1,4 +1,12 @@
 # Changelog
+## Unreleased
+- Query to check missing address URI's [OP-3784]
+
+### Deploy notes
+```
+drc restart report-generation 
+```
+
 ## 1.39.1 (2026-04-24)
 - OP-3771: Adds labels for: EredienstBeroepen and TypeBetrokkenheid
 - Bump to kbo-data-sync [OP-3765]
