@@ -307,7 +307,7 @@ services:
     restart: always
     logging: *default-logging
   construct-organization-relationships:
-    image: lblod/construct-organization-relationships-service:1.0.3
+    image: lblod/construct-organization-relationships-service:1.1.1
     links:
       - db:database
     labels:
