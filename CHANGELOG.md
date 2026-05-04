@@ -1,4 +1,12 @@
 # Changelog
+## Unreleased
+- Create new query 'organisations shown in OP frontend' in Dashboard [OP-3774]
+
+### Deploy notes
+```
+drc restart report-generation
+```
+
 ## 1.39.1 (2026-04-24)
 - OP-3771: Adds labels for: EredienstBeroepen and TypeBetrokkenheid
 - Bump to kbo-data-sync [OP-3765]
