@@ -1,6 +1,7 @@
 # Changelog
 ## Unreleased
 - Query to check missing address URI's [OP-3784]
+- Create new query 'organisations shown in OP frontend' in Dashboard [OP-3774]
 
 ### Deploy notes
 ```
