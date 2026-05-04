@@ -8,7 +8,7 @@ export default {
     const reportData = {
       title: "organisations in frontend",
       description: "List of the Organisations shown in the frontend",
-      filePrefix: "exports/organizations InFrontend",
+      filePrefix: "exports/organizationsInFrontend",
     };
 
     console.log("Generating organizations in frontend report");
@@ -33,13 +33,13 @@ export default {
           OPTIONAL {
               ?bestuur <http://www.w3.org/ns/org#hasPrimarySite> ?site.
               ?site <https://data.vlaanderen.be/ns/organisatie#bestaatUit> ?address.
-              ?address <http://www.w3.org/ns/locn#adminUnitL2> ?provincie
+              ?address <http://www.w3.org/ns/locn#adminUnitL2> ?provincie.
           }
           OPTIONAL {?bestuur <http://data.lblod.info/vocabularies/erediensten/typeEredienst> ?typeEredienst.}
           OPTIONAL {?bestuur skos:prefLabel ?label}
                 OPTIONAL {
                     ?bestuur <http://www.w3.org/ns/org#classification> ?org_classification .
-                    ?org_classification skos:prefLabel ?classification
+                    ?org_classification skos:prefLabel ?classification.
                 }
                 OPTIONAL {
                     ?bestuur <http://www.w3.org/ns/regorg#orgStatus> ?org_status.
@@ -48,7 +48,7 @@ export default {
 
           FILTER(
             NOT EXISTS {
-              ?bestuur org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+              ?bestuur org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>.
             }
             ||
             EXISTS {
@@ -59,7 +59,7 @@ export default {
           
           FILTER(
             NOT EXISTS {
-              ?bestuur org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/52cc9d8d-1c9a-4d92-9936-da9d4a622ec4>
+              ?bestuur org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/52cc9d8d-1c9a-4d92-9936-da9d4a622ec4>.
             }
 
           )
@@ -69,12 +69,12 @@ export default {
     const queryResponse = await batchedQuery(queryString);
 
     const data = queryResponse.results.bindings.map((row) => ({
-        "bestuur": getSafeValue(row, "bestuur"),
-        "label": getSafeValue(row, "label"),
-        "classification": getSafeValue(row, "classification"),
-        "typeEredienst": getSafeValue(row, "typeEredienst"),
-        "provincie": getSafeValue(row, "provincie"),
-        "status": getSafeValue(row, "status"),
+        bestuur: getSafeValue(row, "bestuur"),
+        label: getSafeValue(row, "label"),
+        classification: getSafeValue(row, "classification"),
+        typeEredienst: getSafeValue(row, "typeEredienst"),
+        provincie: getSafeValue(row, "provincie"),
+        status: getSafeValue(row, "status"),
     }));
 
     await generateReportFromData(
