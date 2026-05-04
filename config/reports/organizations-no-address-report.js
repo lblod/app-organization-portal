@@ -6,12 +6,12 @@ export default {
   name: "organizationsNoAddressregister",
   execute: async () => {
     const reportData = {
-      title: "organisations in database with no link to Addressregister",
-      description: "List of the Organisations in the database with no link to Addressregister",
+      title: "missing address URI's",
+      description: "List of Organizations with addresses that have no address URI",
       filePrefix: "exports/organizations-no-addressregister",
     };
 
-    console.log("Generating organizationsNoAddressregister report");
+    console.log("Generating organizations no addressregister report");
 
     const queryString = `
     ${PREFIXES}
@@ -59,15 +59,15 @@ export default {
     const queryResponse = await batchedQuery(queryString);
 
     const data = queryResponse.results.bindings.map((row) => ({
-        "bestuur": getSafeValue(row, "bestuur"),
-        "label": getSafeValue(row, "label"),
-        "classification": getSafeValue(row, "classification"),
-        "status": getSafeValue(row, "status"),
-        "street": getSafeValue(row, "street"),
-        "number": getSafeValue(row, "number"),
-        "bus": getSafeValue(row, "bus"),
-        "postal": getSafeValue(row, "postal"),
-        "location": getSafeValue(row, "location"),
+        bestuur: getSafeValue(row, "bestuur"),
+        label: getSafeValue(row, "label"),
+        classification: getSafeValue(row, "classification"),
+        status: getSafeValue(row, "status"),
+        street: getSafeValue(row, "street"),
+        number: getSafeValue(row, "number"),
+        bus: getSafeValue(row, "bus"),
+        postal: getSafeValue(row, "postal"),
+        location: getSafeValue(row, "location"),
     }));
 
     await generateReportFromData(
