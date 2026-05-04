@@ -1,0 +1,39 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/application> {
+    ?s ?p ?o
+  }
+} INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s ?p ?o
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/application> {
+    VALUES ?s {
+      <http://data.lblod.info/id/bestuurseenheden/5c6ab343-3405-475d-a184-d44bbe7e787a>
+      <http://data.lblod.info/id/identificatoren/2aa74846-a99d-423b-8c9e-b2a344b39f2a>
+      <http://data.lblod.info/id/gestructureerdeIdentificatoren/0edd4e8e-44b6-4e86-8717-cda144f91ebb>
+      <http://data.lblod.info/id/vestigingen/29faec77-652a-4d8e-afbb-635b141b13f0>
+      <http://data.lblod.info/id/contact-punten/bc66afca-f8cf-4e4d-b038-500906e9ffa9>
+      <http://data.lblod.info/id/contact-punten/1d1da2b5-8f38-41b6-a81d-5bfa72e7d7db>
+      <http://data.lblod.info/id/adressen/2d6c327a-cf81-43a6-8536-17602781fb2f>
+    }
+    ?s ?p ?o.
+  }
+}
+
+;
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/5c6ab343-3405-475d-a184-d44bbe7e787a> a dcterms:Agent ;
+      regorg:legalName "AGB BRUGGE" ;
+      besluit:werkingsgebied <http://data.lblod.info/id/werkingsgebieden/e1a7aa197d1fa117ad5fdc30dee57cf95974c149ed0f319237bb8fb1355d911e> .
+
+    <http://data.lblod.info/id/adressen/2d6c327a-cf81-43a6-8536-17602781fb2f> adres:adresIsGelegenIn <http://data.lblod.info/id/werkingsgebieden/9c503a712d448bc8b89c1f8802c207e30bd192bc8da3bf22509a547949a45301> .
+  }
+}

@@ -1,4 +1,12 @@
 # Changelog
+## Unreleased
+- Moved AGB BRUGGE to correct graph [OP-3790]
+
+### Deploy notes
+```
+drc restart migrations
+```
+
 ## 1.39.1 (2026-04-24)
 - OP-3771: Adds labels for: EredienstBeroepen and TypeBetrokkenheid
 - Bump to kbo-data-sync [OP-3765]
