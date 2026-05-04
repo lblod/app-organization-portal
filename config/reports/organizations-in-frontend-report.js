@@ -8,7 +8,7 @@ export default {
     const reportData = {
       title: "organisations in frontend",
       description: "List of the Organisations shown in the frontend",
-      filePrefix: "exports/organizationsInFrontend",
+      filePrefix: "exports/organizations-in-frontend",
     };
 
     console.log("Generating organizations in frontend report");
