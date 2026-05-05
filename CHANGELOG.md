@@ -8,6 +8,7 @@
 ```
 drc restart report-generation 
 drc restart migrations
+scripts/reset-elastic.sh
 ```
 
 ## 1.39.1 (2026-04-24)
