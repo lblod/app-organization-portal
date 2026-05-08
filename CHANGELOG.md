@@ -3,12 +3,14 @@
 - Query to check missing address URI's [OP-3784]
 - Create new query 'organisations shown in OP frontend' in Dashboard [OP-3774]
 - Moved AGB BRUGGE to correct graph [OP-3790]
+- Bump acm-login service [DL-7346]
 
 ### Deploy notes
 ```
 drc restart report-generation 
 drc restart migrations
 scripts/reset-elastic.sh
+drc up -d login login-dashboard
 ```
 
 ## 1.39.1 (2026-04-24)

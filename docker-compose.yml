@@ -143,7 +143,7 @@ services:
     restart: always
     logging: *default-logging
   login:
-    image: lblod/acmidm-login-service:0.12.0
+    image: lblod/acmidm-login-service:0.12.1.rc-2
     environment:
       MU_APPLICATION_AUTH_USERID_CLAIM: "vo_id"
       MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/contacthub/accounts"
@@ -159,7 +159,7 @@ services:
     links:
       - db:database
   login-dashboard:
-    image: lblod/acmidm-login-service:0.12.0
+    image: lblod/acmidm-login-service:0.12.1.rc-2
     environment:
       LOG_SINK_URL: "http://sink"
       MU_APPLICATION_AUTH_ROLE_CLAIM: "abb_organisatieportaal_rol_2d"
