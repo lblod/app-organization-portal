@@ -4,13 +4,14 @@
 - Create new query 'organisations shown in OP frontend' in Dashboard [OP-3774]
 - Moved AGB BRUGGE to correct graph [OP-3790]
 - Bump acm-login service [DL-7346]
+- Frontend [v1.37.0](https://github.com/lblod/frontend-organization-portal/blob/99e0ca22617d17cbc8a23dfa2f6d31691fed90b9/CHANGELOG.md#v1370-2026-05-27)
 
 ### Deploy notes
 ```
 drc restart report-generation 
 drc restart migrations
 scripts/reset-elastic.sh
-drc up -d login login-dashboard
+drc up -d login login-dashboard frontend
 ```
 
 ## 1.39.1 (2026-04-24)
