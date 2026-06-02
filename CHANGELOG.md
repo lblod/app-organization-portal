@@ -1,5 +1,7 @@
 # Changelog
 ## Unreleased
+
+## v1.40.0
 - Query to check missing address URI's [OP-3784]
 - Create new query 'organisations shown in OP frontend' in Dashboard [OP-3774]
 - Moved AGB BRUGGE to correct graph [OP-3790]
