@@ -1,5 +1,11 @@
 # Changelog
 ## Unreleased
+- Added service to link addresses to addressregister uris [OP-3795]
+
+### Deploy notes
+```
+drc up -d link-adressenregister-uri
+```
 
 ## v1.40.0
 - Query to check missing address URI's [OP-3784]

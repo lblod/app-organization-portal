@@ -354,6 +354,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  link-adressenregister-uri:
+    image: lblod/link-adressenregister-uri-service:0.1.1
+    environment:
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+      MU_SPARQL_UPDATEPOINT: "http://triplestore:8890/sparql"
+      CRON_SCHEDULE: "0 0 * * *"
+    restart: always
+    logging: *default-logging
 
   ################################################################################
   # DELTA GENERAL
