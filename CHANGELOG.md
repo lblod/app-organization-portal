@@ -1,10 +1,16 @@
 # Changelog
 ## Unreleased
 - Added service to link addresses to addressregister uris [OP-3795]
+- Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
+- Frontend [v1.38.0]
 
 ### Deploy notes
 ```
 drc up -d link-adressenregister-uri
+```
+
+```
+drc up -d frontend scope-of-operation
 ```
 
 ## v1.40.0
@@ -16,7 +22,7 @@ drc up -d link-adressenregister-uri
 
 ### Deploy notes
 ```
-drc restart report-generation 
+drc restart report-generation
 drc restart migrations
 scripts/reset-elastic.sh
 drc up -d login login-dashboard frontend
