@@ -404,6 +404,11 @@
           "target": "organization-classification-codes",
           "cardinality": "one"
         },
+        "legal-form": {
+          "predicate": "organisatie:rechtsvorm",
+          "target": "legal-form-codes",
+          "cardinality": "one"
+        },
         "identifiers": {
           "predicate": "adms:identifier",
           "target": "identifiers",
@@ -941,6 +946,11 @@
         }
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "legal-form-codes": {
+      "class": "ext:LegalForm",
+      "super": ["concepts"],
+      "new-resource-base": "http://data.vlaanderen.be/id/concept/LegalFormCode/"
     },
     "organization-status-codes": {
       "class": "code:OrganisatieStatusCode",
