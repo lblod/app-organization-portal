@@ -950,6 +950,12 @@
     "legal-form-codes": {
       "class": "code:Rechtsvormtype",
       "super": ["concepts"],
+      "attributes": {
+        "order": {
+          "type": "number",
+          "predicate": "ext:order"
+        }
+      },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/LegalFormCode/"
     },
     "organization-status-codes": {
