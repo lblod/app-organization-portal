@@ -1,10 +1,16 @@
 # Changelog
 ## Unreleased
 - Added service to link addresses to addressregister uris [OP-3795]
+- Site type changes [OP-3818]
 
 ### Deploy notes
 ```
 drc up -d link-adressenregister-uri
+```
+
+```
+drc restart migrations
+drc restart cache resource
 ```
 
 ## v1.40.0
