@@ -31,7 +31,8 @@
     "geo": "http://www.opengis.net/ont/geosparql#",
     "nacebel": "http://data.gift/vocabularies/nace-bel/",
     "time": "http://www.w3.org/2006/time#",
-    "muAccount": "http://mu.semte.ch/vocabularies/account/"
+    "muAccount": "http://mu.semte.ch/vocabularies/account/",
+    "sh": "http://www.w3.org/ns/shacl#"
   },
   "resources": {
     "agents": {
@@ -946,7 +947,7 @@
         },
         "order": {
           "type": "number",
-          "predicate": "ext:order"
+          "predicate": "sh:order"
         }
       },
       "relationships": {
