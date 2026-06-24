@@ -130,7 +130,9 @@ defmodule Dispatcher do
   match "/identifiers/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://cache/identifiers/")
   end
-
+  match "/access-with-audit-trail/*path", %{ layer: :api_services, accept: %{ json: true } } do
+    forward conn, path, "http://access-with-audit-trail"
+  end
   match "/structured-identifiers/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://cache/structured-identifiers/")
   end
