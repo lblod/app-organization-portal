@@ -406,7 +406,7 @@
         },
         "legal-form": {
           "predicate": "organisatie:rechtsvorm",
-          "target": "legal-form-codes",
+          "target": "concepts",
           "cardinality": "one"
         },
         "identifiers": {
@@ -943,20 +943,31 @@
         "alt-label": {
           "type": "string",
           "predicate": "skos:altLabel"
-        }
-      },
-      "new-resource-base": "http://lblod.data.gift/concepts/"
-    },
-    "legal-form-codes": {
-      "class": "code:Rechtsvormtype",
-      "super": ["concepts"],
-      "attributes": {
+        },
         "order": {
           "type": "number",
           "predicate": "ext:order"
         }
       },
-      "new-resource-base": "http://data.vlaanderen.be/id/concept/LegalFormCode/"
+      "relationships": {
+        "in-scheme": {
+          "predicate": "skos:inScheme",
+          "target": "concept-schemes",
+          "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "concept-schemes": {
+      "class": "skos:ConceptScheme",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.vlaanderen.be/id/conceptscheme/"
     },
     "organization-status-codes": {
       "class": "code:OrganisatieStatusCode",

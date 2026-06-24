@@ -95,10 +95,6 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://cache/registered-organization-classification-codes/")
   end
 
-  match "/legal-form-codes/*path", %{accept: [:json], layer: :api} do
-      Proxy.forward(conn, path, "http://cache/legal-form-codes/")
-    end
-
   match "/worship-administrative-units/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://cache/worship-administrative-units/")
   end

@@ -3,236 +3,212 @@
 @prefix mu: <http://mu.semte.ch/vocabularies/core/> .
 @prefix code: <http://lblod.data.gift/vocabularies/organisatie/> .
 @prefix conceptscheme: <http://data.vlaanderen.be/id/conceptscheme/> .
-@prefix concept: <http://data.vlaanderen.be/id/concept/LegalFormCode/> .
+@prefix concept: <http://lblod.data.gift/concepts/> .
 @prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
 
 # Concept Scheme for Legal Forms
-conceptscheme:LegalFormCode
+conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af
   rdf:type skos:ConceptScheme ;
+  mu:uuid "c3ff1a7f-c091-484d-8785-c8a5740573af" ;
   skos:prefLabel "Juridische vorm" .
 
 # Legal Form Codes
 concept:4a55b679-e4c7-4014-a0b8-3d6762e0225f
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "4a55b679-e4c7-4014-a0b8-3d6762e0225f" ;
   skos:prefLabel "Stad / gemeente" ;
   ext:order 1 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:e87b0707-1f9c-4577-8918-023e60974d2f
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "e87b0707-1f9c-4577-8918-023e60974d2f" ;
   skos:prefLabel "Openbaar centrum voor maatschappelijk welzijn" ;
   ext:order 2 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:fa7b4356-6e67-4d3a-9256-72922a12227a
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "fa7b4356-6e67-4d3a-9256-72922a12227a" ;
   skos:prefLabel "Provinciale overheid" ;
   ext:order 3 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:37e78d58-ab28-4047-8d23-4f2c09707c22
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "37e78d58-ab28-4047-8d23-4f2c09707c22" ;
   skos:prefLabel "Autonoom gemeentebedrijf" ;
   ext:order 4 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:5a015434-4917-4124-a8ad-7f80d5300952
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "5a015434-4917-4124-a8ad-7f80d5300952" ;
   skos:prefLabel "Autonoom provinciebedrijf" ;
   ext:order 5 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:107b192a-44e4-4d4b-aba7-e41aa6cc7f69
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "107b192a-44e4-4d4b-aba7-e41aa6cc7f69" ;
   skos:prefLabel "Projectvereniging" ;
   ext:order 6 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:960f8bb1-ea5d-40d7-bbf4-dbc0794afd26
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "960f8bb1-ea5d-40d7-bbf4-dbc0794afd26" ;
   skos:prefLabel "Dienstverlenende vereniging (Vlaams Gewest)" ;
   ext:order 7 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:574a4cfb-7958-463a-9f4c-d9c4b250847c
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "574a4cfb-7958-463a-9f4c-d9c4b250847c" ;
   skos:prefLabel "Opdrachthoudende vereniging (Vlaams Gewest)" ;
   ext:order 8 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:c28b64ce-bb6c-4f8f-b03f-51dc09ae6748
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "c28b64ce-bb6c-4f8f-b03f-51dc09ae6748" ;
   skos:prefLabel "Lokale politiezone" ;
   ext:order 9 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:75b075c8-1076-4ea3-9bc3-366f6cf866f4
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "75b075c8-1076-4ea3-9bc3-366f6cf866f4" ;
   skos:prefLabel "Hulpverleningszone" ;
   ext:order 10 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:dbdd09f3-55b1-48bc-ac51-2c87f951860a
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "dbdd09f3-55b1-48bc-ac51-2c87f951860a" ;
   skos:prefLabel "Vereniging zonder winstoogmerk" ;
   ext:order 11 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:925fbdb3-4693-4dcf-b75e-0a98985b1785
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "925fbdb3-4693-4dcf-b75e-0a98985b1785" ;
   skos:prefLabel "Internationale vereniging zonder winstoogmerk" ;
   ext:order 12 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:f25de736-bbc3-4e73-b401-5ee0b277f5f8
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "f25de736-bbc3-4e73-b401-5ee0b277f5f8" ;
   skos:prefLabel "Private stichting" ;
   ext:order 13 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:9f578b10-255a-4403-ab4c-5d4415c30a0a
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "9f578b10-255a-4403-ab4c-5d4415c30a0a" ;
   skos:prefLabel "Stichting van openbaar nut" ;
   ext:order 14 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:30fb3516-fc48-453b-b1f6-a571d149ca3a
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "30fb3516-fc48-453b-b1f6-a571d149ca3a" ;
   skos:prefLabel "Maatschap" ;
   ext:order 15 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:7e31d057-fde3-47f3-ad89-3efd9e22ab08
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "7e31d057-fde3-47f3-ad89-3efd9e22ab08" ;
   skos:prefLabel "Vennootschap onder firma" ;
   ext:order 16 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:cab6c3f9-aeee-48f0-88eb-c404310870ad
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "cab6c3f9-aeee-48f0-88eb-c404310870ad" ;
   skos:prefLabel "Commanditaire vennootschap" ;
   ext:order 17 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:8aa6149a-0916-42ed-a907-f760c0720527
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "8aa6149a-0916-42ed-a907-f760c0720527" ;
   skos:prefLabel "Besloten Vennootschap" ;
   ext:order 18 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:e85bdc30-a69f-48f2-bc08-d32b640b1730
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "e85bdc30-a69f-48f2-bc08-d32b640b1730" ;
   skos:prefLabel "Naamloze vennootschap" ;
   ext:order 19 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:f35352d5-9454-4561-916a-f5f6459bc92b
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "f35352d5-9454-4561-916a-f5f6459bc92b" ;
   skos:prefLabel "Coöperatieve vennootschap" ;
   ext:order 20 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:205d4e7b-d6cc-4534-8336-7fae98dc139e
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "205d4e7b-d6cc-4534-8336-7fae98dc139e" ;
   skos:prefLabel "Organisme voor de Financiering van Pensioenen" ;
   ext:order 21 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:b4f2c3d5-8a7e-4f1b-9c2d-3e5f6a7b8c9d
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "b4f2c3d5-8a7e-4f1b-9c2d-3e5f6a7b8c9d" ;
   skos:prefLabel "Autonome verzorgingsinstelling" ;
   ext:order 22 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:c7d8e9f0-1a2b-4c5d-6e7f-8a9b0c1d2e3f
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "c7d8e9f0-1a2b-4c5d-6e7f-8a9b0c1d2e3f" ;
   skos:prefLabel "Welzijnsvereniging" ;
   ext:order 23 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:d1e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6a
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "d1e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6a" ;
   skos:prefLabel "Geen rechtspersoonlijkheid" ;
   ext:order 24 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
 
 concept:aa2590a0-b6de-4cba-982c-27d70553b17e
-  rdf:type code:Rechtsvormtype ;
   rdf:type skos:Concept ;
   mu:uuid "aa2590a0-b6de-4cba-982c-27d70553b17e" ;
   skos:prefLabel "Andere" ;
   ext:order 25 ;
-  skos:topConceptOf conceptscheme:LegalFormCode ;
-  skos:inScheme conceptscheme:LegalFormCode .
+  skos:topConceptOf conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af ;
+  skos:inScheme conceptscheme:c3ff1a7f-c091-484d-8785-c8a5740573af .
