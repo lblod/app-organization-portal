@@ -219,7 +219,8 @@
   ("code:BedienaarCriteriumBewijsstuk" -> _)
   ("code:EredienstBeroepen" -> _)
   ("code:Rechtsvormtype" -> _)
-  ("prov:Location" -> _))
+  ("prov:Location" -> _)
+  ("code:inhoudelijkThema" -> _))
 
 (define-graph shared ("http://mu.semte.ch/graphs/shared")
   ("foaf:Image" -> _)
