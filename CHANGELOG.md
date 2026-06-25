@@ -8,7 +8,7 @@
 
 ### Deploy notes
 ```
-drc up -d link-adressenregister-uri
+drc up -d link-adressenregister-uri frontend
 drc restart resource migrations
 ```
 
