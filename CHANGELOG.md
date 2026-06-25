@@ -3,10 +3,13 @@
 - Added service to link addresses to addressregister uris [OP-3795]
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
 - Frontend [v1.38.0]
+- Added Juridische vorm [OP-3816] [OP-3820]
+- Frontend [v1.39.0]
 
 ### Deploy notes
 ```
-drc up -d link-adressenregister-uri
+drc up -d link-adressenregister-uri frontend
+drc restart resource migrations
 ```
 
 ```
