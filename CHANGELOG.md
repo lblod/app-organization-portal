@@ -1,10 +1,13 @@
 # Changelog
 ## Unreleased
 - Added service to link addresses to addressregister uris [OP-3795]
+- Added Juridische vorm [OP-3816] [OP-3820]
+- Frontend [v1.39.0]
 
 ### Deploy notes
 ```
-drc up -d link-adressenregister-uri
+drc up -d link-adressenregister-uri frontend
+drc restart resource migrations
 ```
 
 ## v1.40.0
@@ -16,7 +19,7 @@ drc up -d link-adressenregister-uri
 
 ### Deploy notes
 ```
-drc restart report-generation 
+drc restart report-generation
 drc restart migrations
 scripts/reset-elastic.sh
 drc up -d login login-dashboard frontend
