@@ -2,6 +2,7 @@
 ## Unreleased
 - Added service to link addresses to addressregister uris [OP-3795]
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
+- Site type changes [OP-3818]
 - Frontend [v1.38.0]
 - Added Juridische vorm [OP-3816] [OP-3820]
 - Frontend [v1.39.0]
@@ -13,7 +14,9 @@ drc restart resource migrations
 ```
 
 ```
+drc restart migrations
 drc up -d frontend scope-of-operation
+drc restart cache resource
 ```
 
 ## v1.40.0
