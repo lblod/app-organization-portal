@@ -386,7 +386,7 @@ defmodule Dispatcher do
     layer: :api_services,
     accept: %{json: true}
   } do
-    forward(conn, path, "http://construct-organization-relationships/create-relationships/")
+    forward(conn, path, "http://construct-organization-relationships/")
   end
 
   post "/kbo-data-sync/*path", %{layer: :api_services, accept: %{json: true}} do
