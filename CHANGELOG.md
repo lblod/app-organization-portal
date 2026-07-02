@@ -10,8 +10,8 @@
 
 ### Deploy notes
 ```
-drc up -d link-adressenregister-uri frontend construct-organization-relationships dispatcher
-drc restart resource migrations
+drc up -d link-adressenregister-uri frontend construct-organization-relationships
+drc restart resource migrations dispatcher
 ```
 
 ```
