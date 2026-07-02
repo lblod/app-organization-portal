@@ -4,10 +4,11 @@
 - Site type changes [OP-3818]
 - Added Juridische vorm [OP-3816] [OP-3820]
 - Frontend [v1.39.0]
+- "In Oprichting" bestuursorgaan lifecycle [OP-3810]
 
 ### Deploy notes
 ```
-drc up -d link-adressenregister-uri frontend
+drc up -d link-adressenregister-uri frontend construct-organization-relationships dispatcher
 drc restart resource migrations
 ```
 
