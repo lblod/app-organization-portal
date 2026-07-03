@@ -7,6 +7,7 @@
 - Added Juridische vorm [OP-3816] [OP-3820]
 - Frontend [v1.39.0]
 - Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
+- Rename generic organization types to "Vereniging algemeen" / "Vennootschap algemeen" [OP-3828]
 
 ### Deploy notes
 ```
@@ -20,10 +21,11 @@ drc up -d frontend scope-of-operation
 drc restart cache resource
 ```
 
-Release construct-organization-relationships-service first (build + publish image), then bump its tag in docker-compose. Then:
 ```
 drc pull construct-organization-relationships && drc up -d construct-organization-relationships
-drc restart migrations resource cache
+drc restart migrations
+drc restart resource cache
+scripts/reset-elastic.sh
 ```
 
 ## v1.40.0
