@@ -9,6 +9,8 @@ DELETE {
   GRAPH <http://mu.semte.ch/graphs/worship-service> {
     ?otherOrgaanInTime ?p ?o .
     ?s ?p2 ?otherOrgaanInTime .
+    ?mandate ?mp ?mo .
+    ?ms ?mp2 ?mandate .
   }
 }
 WHERE {
@@ -18,22 +20,30 @@ WHERE {
 
     ?bestuursorgaan besluit:bestuurt ?worshipService .
 
-    ?otherOrgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan .
-
     {
-      SELECT ?bestuursorgaan (SAMPLE(?orgaanInTime) AS ?keptOrgaanInTime) {
+      SELECT ?bestuursorgaan (MAX(?start) AS ?keptStart) {
         GRAPH <http://mu.semte.ch/graphs/worship-service> {
-          ?orgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan .
+          ?orgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan ;
+            mandaat:bindingStart ?start .
+          FILTER(?start <= NOW())
         }
       }
       GROUP BY ?bestuursorgaan
     }
 
+    ?keptOrgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan ;
+      mandaat:bindingStart ?keptStart .
+
+    ?otherOrgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan .
     FILTER(?otherOrgaanInTime != ?keptOrgaanInTime)
 
     { ?otherOrgaanInTime ?p ?o . }
     UNION
     { ?s ?p2 ?otherOrgaanInTime . }
+    UNION
+    { ?otherOrgaanInTime org:hasPost ?mandate . ?mandate ?mp ?mo . }
+    UNION
+    { ?otherOrgaanInTime org:hasPost ?mandate . ?ms ?mp2 ?mandate . }
   }
 };
 
