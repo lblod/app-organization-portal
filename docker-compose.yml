@@ -215,7 +215,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-organization-portal:1.39.1
+    image: lblod/frontend-organization-portal:1.40.0
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
@@ -308,7 +308,7 @@ services:
     restart: always
     logging: *default-logging
   construct-organization-relationships:
-    image: lblod/construct-organization-relationships-service:1.1.1
+    image: lblod/construct-organization-relationships-service:1.1.2
     links:
       - db:database
     labels:

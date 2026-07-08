@@ -663,6 +663,10 @@
           "http://www.w3.org/ns/org#classification",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
         ],
+        "classification_alternative_name": [
+          "http://www.w3.org/ns/org#classification",
+          "http://www.w3.org/2004/02/skos/core#altLabel"
+        ],
         "status": [
           "http://www.w3.org/ns/regorg#orgStatus",
           "http://www.w3.org/2004/02/skos/core#prefLabel"
@@ -737,6 +741,15 @@
             "type": "text"
           },
           "classification_name": {
+            "type": "text",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "classification_alternative_name": {
             "type": "text",
             "fields": {
               "field": {
