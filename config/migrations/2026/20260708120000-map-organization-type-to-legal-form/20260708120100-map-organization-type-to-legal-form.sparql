@@ -1,0 +1,38 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX classcode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+PREFIX regcode: <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/>
+PREFIX legalform: <http://lblod.data.gift/concepts/>
+
+INSERT {
+  GRAPH ?g { ?org organisatie:rechtsvorm ?legalForm . }
+}
+WHERE {
+  VALUES (?classification ?legalForm) {
+    (classcode:34b5af85-dc9f-468f-9e03-ef89b174c267 legalform:b4f2c3d5-8a7e-4f1b-9c2d-3e5f6a7b8c9d)
+    (classcode:36a82ba0-7ff1-4697-a9dd-2e94df73b721 legalform:37e78d58-ab28-4047-8d23-4f2c09707c22)
+    (classcode:80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d legalform:5a015434-4917-4124-a8ad-7f80d5300952)
+    (classcode:d01bb1f6-2439-4e33-9c25-1fc295de2e71 legalform:960f8bb1-ea5d-40d7-bbf4-dbc0794afd26)
+    (classcode:5ab0e9b8a3b2ca7c5e000003 legalform:d1e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6a)
+    (classcode:5ab0e9b8a3b2ca7c5e000001 legalform:4a55b679-e4c7-4014-a0b8-3d6762e0225f)
+    (classcode:ea446861-2c51-45fa-afd3-4e4a37b71562 legalform:75b075c8-1076-4ea3-9bc3-366f6cf866f4)
+    (classcode:5ab0e9b8a3b2ca7c5e000002 legalform:e87b0707-1f9c-4577-8918-023e60974d2f)
+    (classcode:cd93f147-3ece-4308-acab-5c5ada3ec63d legalform:574a4cfb-7958-463a-9f4c-d9c4b250847c)
+    (classcode:4b8450cf-a326-4c66-9e63-b4ec10acc7f6 legalform:574a4cfb-7958-463a-9f4c-d9c4b250847c)
+    (classcode:a3922c6d-425b-474f-9a02-ffb71a436bfc legalform:c28b64ce-bb6c-4f8f-b03f-51dc09ae6748)
+    (classcode:b156b67f-c5f4-4584-9b30-4c090be02fdc legalform:107b192a-44e4-4d4b-aba7-e41aa6cc7f69)
+    (classcode:5ab0e9b8a3b2ca7c5e000000 legalform:fa7b4356-6e67-4d3a-9256-72922a12227a)
+    (classcode:d90c511e-f827-488c-84ba-432c8f69561c legalform:418f7041-4b01-4802-992f-5a9412f5b4a0)
+    (classcode:e8294b73-87c9-4fa2-9441-1937350763c9 legalform:c7d8e9f0-1a2b-4c5d-6e7f-8a9b0c1d2e3f)
+    (regcode:82250452-83a0-48f4-89cc-b430320493ce legalform:dbdd09f3-55b1-48bc-ac51-2c87f951860a)
+    (classcode:3a2649ef-7345-4d3a-8709-f89fc9b44f58 legalform:d1e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6a)
+    (regcode:8392b885-a875-4b0d-b6a2-b52e53bda454 legalform:d1e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6a)
+    (classcode:b2133b86-24f0-44f0-9d10-5b4c7f944a9d legalform:d1e2f3a4-5b6c-7d8e-9f0a-1b2c3d4e5f6a)
+    (regcode:b22948f9-e695-4f24-a530-b6bf3af3b37f legalform:dbdd09f3-55b1-48bc-ac51-2c87f951860a)
+    (regcode:f4e5bb57-1007-4397-828b-b34bbf1e760d legalform:8aa6149a-0916-42ed-a907-f760c0720527)
+  }
+  GRAPH ?g {
+    ?org org:classification ?classification .
+    FILTER NOT EXISTS { ?org organisatie:rechtsvorm ?existingLegalForm . }
+  }
+}

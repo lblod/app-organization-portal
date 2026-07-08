@@ -7,6 +7,7 @@
 - Added Juridische vorm [OP-3816] [OP-3820]
 - Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
 - Rename generic organization types to "Vereniging algemeen" / "Vennootschap algemeen" [OP-3828]
+- Data migration: backfill Juridische vorm from existing organization type [OP-3816]
 
 ### Deploy notes
 ```
