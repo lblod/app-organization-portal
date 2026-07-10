@@ -4,6 +4,7 @@
 - Site type changes [OP-3818]
 - Added Juridische vorm [OP-3816] [OP-3820]
 - Frontend [v1.39.0]
+- Added "werkingsgebied" filter [OP-3812]
 
 ### Deploy notes
 ```
@@ -14,6 +15,12 @@ drc restart resource migrations
 ```
 drc restart migrations
 drc restart cache resource
+```
+
+```
+drc restart migrations frontend
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
 ```
 
 ## v1.40.0
