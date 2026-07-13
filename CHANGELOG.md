@@ -6,6 +6,7 @@
 - Frontend [v1.39.0]
 - bump construct-organization-relationships [OP-3810]
 - "In Oprichting" bestuursorgaan lifecycle [OP-3810]
+- Added "werkingsgebied" filter [OP-3812]
 
 ### Deploy notes
 ```
@@ -16,6 +17,12 @@ drc restart resource migrations dispatcher
 ```
 drc restart migrations
 drc restart cache resource
+```
+
+```
+drc restart migrations frontend
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
 ```
 
 ## v1.40.0
