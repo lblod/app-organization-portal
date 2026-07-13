@@ -697,6 +697,10 @@
           "http://www.w3.org/ns/adms#identifier",
           "https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator",
           "https://data.vlaanderen.be/ns/generiek#lokaleIdentificator"
+        ],
+        "operation_area": [
+          "http://data.vlaanderen.be/ns/besluit#werkingsgebied",
+          "http://www.w3.org/2004/02/skos/core#prefLabel"
         ]
       },
       "mappings": {
@@ -806,6 +810,15 @@
               "index": {
                 "type": "keyword",
                 "normalizer": "identifier_normalizer"
+              }
+            }
+          },
+          "operation_area": {
+            "type": "keyword",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
               }
             }
           }
