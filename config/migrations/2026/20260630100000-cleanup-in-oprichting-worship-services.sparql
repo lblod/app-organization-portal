@@ -1,0 +1,95 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?otherOrgaanInTime ?p ?o .
+    ?s ?p2 ?otherOrgaanInTime .
+    ?mandate ?mp ?mo .
+    ?ms ?mp2 ?mandate .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?worshipService a ere:BestuurVanDeEredienst ;
+      regorg:orgStatus <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab> .
+
+    ?bestuursorgaan besluit:bestuurt ?worshipService .
+
+    {
+      SELECT ?bestuursorgaan (MAX(?start) AS ?keptStart) {
+        GRAPH <http://mu.semte.ch/graphs/worship-service> {
+          ?orgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan ;
+            mandaat:bindingStart ?start .
+          FILTER(?start <= NOW())
+        }
+      }
+      GROUP BY ?bestuursorgaan
+    }
+
+    ?keptOrgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan ;
+      mandaat:bindingStart ?keptStart .
+
+    ?otherOrgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan .
+    FILTER(?otherOrgaanInTime != ?keptOrgaanInTime)
+
+    { ?otherOrgaanInTime ?p ?o . }
+    UNION
+    { ?s ?p2 ?otherOrgaanInTime . }
+    UNION
+    { ?otherOrgaanInTime org:hasPost ?mandate . ?mandate ?mp ?mo . }
+    UNION
+    { ?otherOrgaanInTime org:hasPost ?mandate . ?ms ?mp2 ?mandate . }
+  }
+};
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?mandate ?p ?o .
+    ?s ?p2 ?mandate .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?worshipService a ere:BestuurVanDeEredienst ;
+      regorg:orgStatus <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab> .
+
+    ?bestuursorgaan besluit:bestuurt ?worshipService .
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan .
+
+    ?orgaanInTime org:hasPost ?mandate .
+    ?mandate a mandaat:Mandaat ;
+      org:role ?role .
+
+    FILTER(?role NOT IN (
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/67e6e585166cd97575b3e17ffc430a43>,
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5ac134b9800b81da3c450d6b9605cef2>,
+      <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/180d13930d6f1a3938e0aa7fa9990002>
+    ))
+
+    { ?mandate ?p ?o . }
+    UNION
+    { ?s ?p2 ?mandate . }
+  }
+};
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?orgaanInTime mandaat:bindingEinde ?endDate .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?worshipService a ere:BestuurVanDeEredienst ;
+      regorg:orgStatus <http://lblod.data.gift/concepts/abf4fee82019f88cf122f986830621ab> .
+
+    ?bestuursorgaan besluit:bestuurt ?worshipService .
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?bestuursorgaan .
+
+    ?orgaanInTime mandaat:bindingEinde ?endDate .
+  }
+};

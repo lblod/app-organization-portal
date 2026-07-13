@@ -532,6 +532,13 @@
     "registered-organizations": {
       "class": "regorg:RegisteredOrganization",
       "super": ["organizations"],
+      "relationships": {
+        "scope": {
+          "predicate": "dc_terms:spatial",
+          "target": "locations",
+          "cardinality": "one"
+        }
+      },
       "new-resource-base": "http://data.lblod.info/id/geregistreerdeOrganisaties/"
     },
     "organization-classification-codes": {
@@ -540,6 +547,10 @@
         "label": {
           "type": "string",
           "predicate": "skos:prefLabel"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
         }
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/OrganizationClassificationCode/"
