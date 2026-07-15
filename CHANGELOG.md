@@ -6,6 +6,7 @@
 - Frontend [v1.39.0]
 - bump construct-organization-relationships [OP-3810]
 - "In Oprichting" bestuursorgaan lifecycle [OP-3810]
+- Inhoudelijk thema [OP-3817]
 
 ### Deploy notes
 ```
