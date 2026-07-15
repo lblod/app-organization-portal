@@ -31,7 +31,7 @@ drc restart resource cache
 scripts/reset-elastic.sh
 ```
 ```
-drc restart migrations frontend
+drc restart migrations frontend db resource cache
 # reindex elastic search:
 /bin/bash scripts/reset-elastic.sh
 ```
