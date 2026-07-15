@@ -10,6 +10,7 @@
 - bump construct-organization-relationships [OP-3810]
 - "In Oprichting" bestuursorgaan lifecycle [OP-3810]
 - Added "werkingsgebied" filter [OP-3812]
+- Inhoudelijk thema [OP-3817]
 
 ### Deploy notes
 ```
