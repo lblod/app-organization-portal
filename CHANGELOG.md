@@ -9,6 +9,7 @@
 - Rename generic organization types to "Vereniging algemeen" / "Vennootschap algemeen" [OP-3828]
 - bump construct-organization-relationships [OP-3810]
 - "In Oprichting" bestuursorgaan lifecycle [OP-3810]
+- Added "werkingsgebied" filter [OP-3812]
 - Inhoudelijk thema [OP-3817]
 
 ### Deploy notes
@@ -28,6 +29,11 @@ drc pull construct-organization-relationships && drc up -d construct-organizatio
 drc restart migrations
 drc restart resource cache
 scripts/reset-elastic.sh
+```
+```
+drc restart migrations frontend
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
 ```
 
 ## v1.40.0
