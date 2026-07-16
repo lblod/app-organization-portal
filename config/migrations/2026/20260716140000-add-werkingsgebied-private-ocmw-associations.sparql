@@ -1,0 +1,36 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX adres: <https://data.vlaanderen.be/ns/adres#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?org dct:spatial ?werkingsgebied .
+  }
+} WHERE {
+  VALUES ?classification {
+    <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82250452-83a0-48f4-89cc-b430320493ce>
+    <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/35833ba2-7371-400b-8df2-2912f66fb153>
+    <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/82fd21dc-e8bb-4d13-a010-f4a12358ef10>
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?org org:classification ?classification ;
+      org:hasPrimarySite ?site .
+    ?site organisatie:bestaatUit ?address .
+    ?address adres:gemeentenaam ?municipalityName .
+  }
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+      ?org dct:spatial ?existing .
+    }
+  }
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+      skos:prefLabel ?municipalityName .
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?municipality besluit:werkingsgebied ?werkingsgebied .
+  }
+}
