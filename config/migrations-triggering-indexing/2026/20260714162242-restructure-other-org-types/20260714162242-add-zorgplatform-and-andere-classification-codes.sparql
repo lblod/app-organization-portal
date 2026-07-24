@@ -1,0 +1,25 @@
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu:     <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext:    <http://mu.semte.ch/vocabularies/ext/>
+PREFIX scheme: <http://data.vlaanderen.be/id/conceptscheme/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/e3afe092-6ca6-4685-94c6-1ee20811efc4>
+      rdf:type ext:OrganizationClassificationCode , ext:GeregistreerdeOrganisatieClassificatieCode ;
+      mu:uuid "e3afe092-6ca6-4685-94c6-1ee20811efc4" ;
+      skos:prefLabel "Regionaal zorgplatform" ;
+      skos:altLabel "Regionale zorgzone" ;
+      skos:topConceptOf scheme:GeregistreerdeOrganisatieClassificatieCode ;
+      skos:inScheme scheme:GeregistreerdeOrganisatieClassificatieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+    <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/7a199d27-31c3-44bb-a58f-b3a64673a8b6>
+      rdf:type ext:OrganizationClassificationCode , ext:GeregistreerdeOrganisatieClassificatieCode ;
+      mu:uuid "7a199d27-31c3-44bb-a58f-b3a64673a8b6" ;
+      skos:prefLabel "Andere" ;
+      skos:definition "Restcategorie: geregistreerde organisatie die niet onder een van de andere classificaties valt." ;
+      skos:topConceptOf scheme:GeregistreerdeOrganisatieClassificatieCode ;
+      skos:inScheme scheme:GeregistreerdeOrganisatieClassificatieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+  }
+}
