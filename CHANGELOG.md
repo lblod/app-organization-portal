@@ -11,6 +11,7 @@
 - "In Oprichting" bestuursorgaan lifecycle [OP-3810]
 - Added "werkingsgebied" filter [OP-3812]
 - Inhoudelijk thema [OP-3817]
+- Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
 
 ### Deploy notes
 ```
@@ -28,10 +29,18 @@ drc restart cache resource
 drc pull construct-organization-relationships && drc up -d construct-organization-relationships
 drc restart migrations
 drc restart resource cache
+drc restart delta-producer-publication-graph-maintainer
 scripts/reset-elastic.sh
 ```
 ```
 drc restart migrations frontend db resource cache
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
+```
+
+```
+drc restart migrations search
+drc up -d frontend
 # reindex elastic search:
 /bin/bash scripts/reset-elastic.sh
 ```

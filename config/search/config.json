@@ -700,7 +700,11 @@
         ],
         "operation_area": [
           "http://data.vlaanderen.be/ns/besluit#werkingsgebied",
-          "http://www.w3.org/2004/02/skos/core#prefLabel"
+          "http://www.w3.org/2000/01/rdf-schema#label"
+        ],
+        "operation_area_spatial": [
+          "http://purl.org/dc/terms/spatial",
+          "http://www.w3.org/2000/01/rdf-schema#label"
         ]
       },
       "mappings": {
@@ -814,6 +818,15 @@
             }
           },
           "operation_area": {
+            "type": "keyword",
+            "fields": {
+              "field": {
+                "type": "keyword",
+                "normalizer": "custom_sort_normalizer"
+              }
+            }
+          },
+          "operation_area_spatial": {
             "type": "keyword",
             "fields": {
               "field": {
