@@ -12,6 +12,7 @@
 - Added "werkingsgebied" filter [OP-3812]
 - Inhoudelijk thema [OP-3817]
 - Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
+- Add a new "Wijkkantoor" site type [OP-3837]
 
 ### Deploy notes
 ```
