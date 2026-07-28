@@ -8,6 +8,7 @@
 - "In Oprichting" bestuursorgaan lifecycle [OP-3810]
 - Added "werkingsgebied" filter [OP-3812]
 - Inhoudelijk thema [OP-3817]
+- Add a new "Wijkkantoor" site type [OP-3837]
 
 ### Deploy notes
 ```
