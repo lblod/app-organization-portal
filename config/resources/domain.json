@@ -69,6 +69,26 @@
         "first-name-used": {
           "type": "string",
           "predicate": "persoon:gebruikteVoornaam"
+        },
+        "vendor": {
+          "type": "string",
+          "predicate": "prov:wasAssociatedWith"
+        },
+        "source": {
+          "type": "string",
+          "predicate": "prov:wasGeneratedBy"
+        },
+        "source-id": {
+          "type": "uri",
+          "predicate": "owl:sameAs"
+        },
+        "harvest-date": {
+          "type": "datetime",
+          "predicate": "task:modifiedOn"
+        },
+        "harvest-job": {
+          "type": "uri",
+          "predicate": "task:modifiedBy"
         }
       },
       "relationships": {
@@ -113,15 +133,15 @@
           "type": "string",
           "predicate": "prov:wasGeneratedBy"
         },
-        "sourceId": {
-          "type": "string",
+        "source-id": {
+          "type": "uri",
           "predicate": "owl:sameAs"
         },
-        "harvestDate": {
+        "harvest-date": {
           "type": "datetime",
           "predicate": "task:modifiedOn"
         },
-        "harvestJob": {
+        "harvest-job": {
           "type": "uri",
           "predicate": "task:modifiedBy"
         },
@@ -224,6 +244,26 @@
         "reason-stopped": {
           "type": "string",
           "predicate": "ere:redenVanStopzetting"
+        },
+        "vendor": {
+          "type": "string",
+          "predicate": "prov:wasAssociatedWith"
+        },
+        "source": {
+          "type": "string",
+          "predicate": "prov:wasGeneratedBy"
+        },
+        "source-id": {
+          "type": "uri",
+          "predicate": "owl:sameAs"
+        },
+        "harvest-date": {
+          "type": "datetime",
+          "predicate": "task:modifiedOn"
+        },
+        "harvest-job": {
+          "type": "uri",
+          "predicate": "task:modifiedBy"
         }
       },
       "relationships": {
@@ -267,6 +307,26 @@
         "type": {
           "type": "string",
           "predicate": "schema:contactType"
+        },
+        "vendor": {
+          "type": "string",
+          "predicate": "prov:wasAssociatedWith"
+        },
+        "source": {
+          "type": "string",
+          "predicate": "prov:wasGeneratedBy"
+        },
+        "source-id": {
+          "type": "uri",
+          "predicate": "owl:sameAs"
+        },
+        "harvest-date": {
+          "type": "datetime",
+          "predicate": "task:modifiedOn"
+        },
+        "harvest-job": {
+          "type": "uri",
+          "predicate": "task:modifiedBy"
         }
       },
       "relationships": {
@@ -873,6 +933,26 @@
         "address-register-uri": {
           "type": "url",
           "predicate": "adres:verwijstNaar"
+        },
+        "vendor": {
+          "type": "string",
+          "predicate": "prov:wasAssociatedWith"
+        },
+        "source": {
+          "type": "string",
+          "predicate": "prov:wasGeneratedBy"
+        },
+        "source-id": {
+          "type": "uri",
+          "predicate": "owl:sameAs"
+        },
+        "harvest-date": {
+          "type": "datetime",
+          "predicate": "task:modifiedOn"
+        },
+        "harvest-job": {
+          "type": "uri",
+          "predicate": "task:modifiedBy"
         }
       },
       "relationships": {
