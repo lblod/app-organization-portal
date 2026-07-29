@@ -7,7 +7,12 @@ CONSTRUCT {
   FILTER (?p IN (
     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>,
     <http://mu.semte.ch/vocabularies/core/uuid>,
-    <http://xmlns.com/foaf/0.1/familyName>
+    <http://xmlns.com/foaf/0.1/familyName>,
+    <http://www.w3.org/2002/07/owl#sameAs>,
+    <http://www.w3.org/ns/prov#wasGeneratedBy>,
+    <http://www.w3.org/ns/prov#wasAssociatedWith>,
+    <http://redpencil.data.gift/vocabularies/tasks/modifiedOn>,
+    <http://redpencil.data.gift/vocabularies/tasks/modifiedBy>
   ))
 
   FILTER NOT EXISTS {
