@@ -33,7 +33,7 @@
     "time": "http://www.w3.org/2006/time#",
     "muAccount": "http://mu.semte.ch/vocabularies/account/",
     "sh": "http://www.w3.org/ns/shacl#",
-    "rdfs": "rdfs: <http://www.w3.org/2000/01/rdf-schema#>",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "owl": "http://www.w3.org/2002/07/owl#",
     "task": "http://redpencil.data.gift/vocabularies/tasks/"
   },
@@ -119,11 +119,11 @@
         },
         "harvestDate": {
           "type": "datetime",
-          "predicate": "task:modifiedOn>"
+          "predicate": "task:modifiedOn"
         },
         "harvestJob": {
           "type": "uri",
-          "predicate": "task:modifiedBy>"
+          "predicate": "task:modifiedBy"
         },
         "harvestLink": {
           "type": "uri",
