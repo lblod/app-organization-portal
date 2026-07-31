@@ -1,5 +1,6 @@
 # Changelog
 ## Unreleased
+- Islamitisch eredienstbestuur: only offer relevant imam roles based on status (erkenningszoekend -> Waarnemende imam; erkend -> Eerste/Tweede/Derde imam in rang); bump construct-organization-relationships [OP-XXXX]
 - Added service to link addresses to addressregister uris [OP-3795]
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
 - Site type changes [OP-3818]
@@ -29,6 +30,11 @@ drc pull construct-organization-relationships && drc up -d construct-organizatio
 drc restart migrations
 drc restart resource cache
 scripts/reset-elastic.sh
+```
+
+```
+drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart migrations
 ```
 ```
 drc restart migrations frontend db resource cache
