@@ -1,4 +1,40 @@
 # Changelog
+
+## Unreleased
+- Added service to link addresses to addressregister uris [OP-3795]
+- Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
+- Site type changes [OP-3818]
+- Frontend [v1.40.1](https://github.com/lblod/frontend-organization-portal/blob/v1.40.1/CHANGELOG.md), [v1.40.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1400-2026-07-06), [v1.39.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1390-2026-06-25) ,[v1.38.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1380-2026-06-12)
+- Added Juridische vorm [OP-3816] [OP-3820]
+- Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
+- Rename generic organization types to "Vereniging algemeen" / "Vennootschap algemeen" [OP-3828]
+- bump construct-organization-relationships [OP-3810]
+- "In Oprichting" bestuursorgaan lifecycle [OP-3810]
+- Added "werkingsgebied" filter [OP-3812]
+- Inhoudelijk thema [OP-3817]
+
+### Deploy notes
+```
+drc up -d link-adressenregister-uri frontend construct-organization-relationships
+drc restart resource migrations dispatcher
+```
+
+```
+drc restart migrations
+drc up -d frontend scope-of-operation
+drc restart cache resource
+```
+
+```
+drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart migrations
+drc restart resource cache
+scripts/reset-elastic.sh
+drc restart migrations frontend db resource cache
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
+```
+
 ## v1.41.0
  - added explicit healtchecks [DL-7466]
 
@@ -16,7 +52,7 @@ drc restart dispatcher
 
 ### Deploy notes
 ```
-drc restart report-generation 
+drc restart report-generation
 drc restart migrations
 scripts/reset-elastic.sh
 drc up -d login login-dashboard frontend

@@ -1,0 +1,35 @@
+# Governing body (bestuursorgaan) + mandate (bestuursfunctie) codes for the Vervoerregioraad.
+# The vervoerregioraad is itself the deliberative organ (no AV/RvB substructure); members + a
+# (dual) voorzitter. URIs under data.vlaanderen.be (to be published), matching existing codes.
+# NOTE (business to confirm): exact role set + the dual voorzitterschap (gemeente-vertegenwoordiger
+# + Departement MOW) — modeled here as a single Voorzitter + Lid.
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu:     <http://mu.semte.ch/vocabularies/core/> .
+@prefix ext:    <http://mu.semte.ch/vocabularies/ext/> .
+@prefix code:   <http://lblod.data.gift/vocabularies/organisatie/> .
+@prefix scheme: <http://data.vlaanderen.be/id/conceptscheme/> .
+
+# --- Bestuursorgaan: the Vervoerregioraad itself ---
+<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/a04a5fb1-b79c-4b8d-a664-c5410d466d49>
+  rdf:type code:BestuursorgaanClassificatieCode , skos:Concept , ext:BestuursorgaanClassificatieCode ;
+  mu:uuid "a04a5fb1-b79c-4b8d-a664-c5410d466d49" ;
+  skos:prefLabel "Vervoerregioraad" ;
+  skos:inScheme <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+# --- Bestuursfunctie codes (mandate roles) applying to the Vervoerregioraad ---
+<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/540f3be6-73ed-4935-9de7-30997bab379c>
+  rdf:type code:BestuursfunctieCode ;
+  mu:uuid "540f3be6-73ed-4935-9de7-30997bab379c" ;
+  skos:prefLabel "Voorzitter van de vervoerregioraad" ;
+  ext:appliesTo <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/a04a5fb1-b79c-4b8d-a664-c5410d466d49> ;
+  skos:topConceptOf scheme:BestuursfunctieCode ;
+  skos:inScheme scheme:BestuursfunctieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+<http://data.vlaanderen.be/id/concept/BestuursfunctieCode/1093c55c-84d5-424b-980e-8b2ca32dc445>
+  rdf:type code:BestuursfunctieCode ;
+  mu:uuid "1093c55c-84d5-424b-980e-8b2ca32dc445" ;
+  skos:prefLabel "Lid van de vervoerregioraad" ;
+  ext:appliesTo <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/a04a5fb1-b79c-4b8d-a664-c5410d466d49> ;
+  skos:topConceptOf scheme:BestuursfunctieCode ;
+  skos:inScheme scheme:BestuursfunctieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .

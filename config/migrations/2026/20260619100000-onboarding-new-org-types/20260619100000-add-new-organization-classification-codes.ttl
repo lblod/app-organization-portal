@@ -1,0 +1,51 @@
+# New organization classification codes (ticket: new org types).
+# prefLabel = technically-correct org name; altLabel = colloquial werkingsgebied term.
+# URIs under data.vlaanderen.be/id/concept/<Family>/<uuid> (to be published upstream) - matches existing codes.
+# Each code is inScheme its family scheme AND the public-export scheme (10caf4a4) = the export switch.
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu:     <http://mu.semte.ch/vocabularies/core/> .
+@prefix ext:    <http://mu.semte.ch/vocabularies/ext/> .
+@prefix code:   <http://lblod.data.gift/vocabularies/organisatie/> .
+@prefix scheme: <http://data.vlaanderen.be/id/conceptscheme/> .
+
+# --- BestuurseenheidClassificatieCode (besluit:Bestuurseenheid) ---
+
+<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/3a2649ef-7345-4d3a-8709-f89fc9b44f58>
+  rdf:type ext:OrganizationClassificationCode , code:BestuurseenheidClassificatieCode ;
+  mu:uuid "3a2649ef-7345-4d3a-8709-f89fc9b44f58" ;
+  skos:prefLabel "Interlokale vereniging" ;
+  skos:topConceptOf scheme:BestuurseenheidClassificatieCode ;
+  skos:inScheme scheme:BestuurseenheidClassificatieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/b2133b86-24f0-44f0-9d10-5b4c7f944a9d>
+  rdf:type ext:OrganizationClassificationCode , code:BestuurseenheidClassificatieCode ;
+  mu:uuid "b2133b86-24f0-44f0-9d10-5b4c7f944a9d" ;
+  skos:prefLabel "Vervoerregioraad" ;
+  skos:altLabel "Vervoerregio" ; # Modelled as the werkingsgebied of a Vervoerregioraad, but colloquially known as a Vervoerregio.
+  skos:topConceptOf scheme:BestuurseenheidClassificatieCode ;
+  skos:inScheme scheme:BestuurseenheidClassificatieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+# --- GeregistreerdeOrganisatieClassificatieCode (regorg:RegisteredOrganization) ---
+
+<http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/8392b885-a875-4b0d-b6a2-b52e53bda454>
+  rdf:type ext:OrganizationClassificationCode , ext:GeregistreerdeOrganisatieClassificatieCode ;
+  mu:uuid "8392b885-a875-4b0d-b6a2-b52e53bda454" ;
+  skos:prefLabel "Zorgraad" ;
+  skos:altLabel "Eerstelijnszone" ; # Modelled as the werkingsgebied of a Zorgraad, but colloquially known as an Eerstelijnszone.
+  skos:topConceptOf scheme:GeregistreerdeOrganisatieClassificatieCode ;
+  skos:inScheme scheme:GeregistreerdeOrganisatieClassificatieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+<http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/b22948f9-e695-4f24-a530-b6bf3af3b37f>
+  rdf:type ext:OrganizationClassificationCode , ext:GeregistreerdeOrganisatieClassificatieCode ;
+  mu:uuid "b22948f9-e695-4f24-a530-b6bf3af3b37f" ;
+  skos:prefLabel "Bosgroep" ;
+  skos:topConceptOf scheme:GeregistreerdeOrganisatieClassificatieCode ;
+  skos:inScheme scheme:GeregistreerdeOrganisatieClassificatieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+
+<http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/f4e5bb57-1007-4397-828b-b34bbf1e760d>
+  rdf:type ext:OrganizationClassificationCode , ext:GeregistreerdeOrganisatieClassificatieCode ;
+  mu:uuid "f4e5bb57-1007-4397-828b-b34bbf1e760d" ;
+  skos:prefLabel "Woonmaatschappij" ;
+  skos:topConceptOf scheme:GeregistreerdeOrganisatieClassificatieCode ;
+  skos:inScheme scheme:GeregistreerdeOrganisatieClassificatieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
