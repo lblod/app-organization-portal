@@ -1,4 +1,5 @@
 # Changelog
+
 ## Unreleased
 - Added service to link addresses to addressregister uris [OP-3795]
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
@@ -29,11 +30,17 @@ drc pull construct-organization-relationships && drc up -d construct-organizatio
 drc restart migrations
 drc restart resource cache
 scripts/reset-elastic.sh
-```
-```
 drc restart migrations frontend db resource cache
 # reindex elastic search:
 /bin/bash scripts/reset-elastic.sh
+```
+
+## v1.41.0
+ - added explicit healtchecks [DL-7466]
+
+### Deploy notes
+```
+drc restart dispatcher
 ```
 
 ## v1.40.0
