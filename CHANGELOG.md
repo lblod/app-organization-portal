@@ -26,6 +26,14 @@ drc restart migrations frontend db resource cache
 /bin/bash scripts/reset-elastic.sh
 ```
 
+## v1.41.0
+ - added explicit healtchecks [DL-7466]
+
+### Deploy notes
+```
+drc restart dispatcher
+```
+
 ## v1.40.0
 - Query to check missing address URI's [OP-3784]
 - Create new query 'organisations shown in OP frontend' in Dashboard [OP-3774]
