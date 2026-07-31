@@ -1,5 +1,11 @@
 # Changelog
-## Unreleased
+## v1.41.0
+ - added explicit healtchecks [DL-7466]
+
+### Deploy notes
+```
+drc restart dispatcher
+```
 
 ## v1.40.0
 - Query to check missing address URI's [OP-3784]
