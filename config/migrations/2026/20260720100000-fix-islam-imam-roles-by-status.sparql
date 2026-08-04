@@ -1,95 +1,62 @@
-PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
-PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-PREFIX org: <http://www.w3.org/ns/org#>
-PREFIX regorg: <http://www.w3.org/ns/regorg#>
-
-# Deduplicate islamitisch minister positions: if an eredienstbestuur has more
-# than one position for the same function (e.g. 2 "Waarnemende Imam"), keep
-# only one - deterministically the lowest-URI position - and merge the rest
-# into it: any minister (org:holds) on a non-kept position is reparented onto
-# the kept position instead of being dropped. Ministers and their conditions
-# (ere:voldoetAan) are left fully intact, just re-pointed to survive the dedup.
-DELETE {
-  GRAPH <http://mu.semte.ch/graphs/worship-service> {
-    ?minister org:holds ?position .
-  }
-}
-INSERT {
-  GRAPH <http://mu.semte.ch/graphs/worship-service> {
-    ?minister org:holds ?keptPosition .
-  }
-}
-WHERE {
-  GRAPH <http://mu.semte.ch/graphs/worship-service> {
-    ?worshipService a ere:BestuurVanDeEredienst ;
-      ere:typeEredienst <http://lblod.data.gift/concepts/9d8bd472a00bf0a5c7b7186606365a52> ; # Islamitisch
-      ere:wordtBediendDoor ?position .
-
-    ?position ere:functie ?functie .
-    ?minister org:holds ?position .
-
-    {
-      SELECT ?worshipService ?functie (IRI(MIN(STR(?anyPosition))) AS ?keptPosition) WHERE {
-        GRAPH <http://mu.semte.ch/graphs/worship-service> {
-          ?worshipService ere:wordtBediendDoor ?anyPosition .
-          ?anyPosition ere:functie ?functie .
-        }
-      }
-      GROUP BY ?worshipService ?functie
-    }
-
-    FILTER(?position != ?keptPosition)
-  }
-}
-;
-
-# Delete the now-empty duplicate positions left behind by the reparenting
-# above (same "lowest URI wins" rule, kept in sync with it). Since ministers
-# were already moved off in the previous step, this only drops the position
-# shells and their own triples (org:Post, mu:uuid, ere:functie).
-DELETE {
-  GRAPH <http://mu.semte.ch/graphs/worship-service> {
-    ?worshipService ere:wordtBediendDoor ?position .
-    ?position ?p ?o .
-  }
-}
-WHERE {
-  GRAPH <http://mu.semte.ch/graphs/worship-service> {
-    ?worshipService a ere:BestuurVanDeEredienst ;
-      ere:typeEredienst <http://lblod.data.gift/concepts/9d8bd472a00bf0a5c7b7186606365a52> ; # Islamitisch
-      ere:wordtBediendDoor ?position .
-
-    ?position ?p ?o ;
-      ere:functie ?functie .
-
-    {
-      SELECT ?worshipService ?functie (IRI(MIN(STR(?anyPosition))) AS ?keptPosition) WHERE {
-        GRAPH <http://mu.semte.ch/graphs/worship-service> {
-          ?worshipService ere:wordtBediendDoor ?anyPosition .
-          ?anyPosition ere:functie ?functie .
-        }
-      }
-      GROUP BY ?worshipService ?functie
-    }
-
-    FILTER(?position != ?keptPosition)
-  }
-}
-;
-
-## Islamitisch eredienstbesturen "In Oprichting" (erkenningszoekend) should only
-## have the "Waarnemende Imam" minister position. Remove the 3 ranked-imam
-## positions that were always created before this fix. Any minister
-## (ere:RolBedienaar) currently holding such a position is removed along with
-## its own conditions (ere:VoorwaardenBedienaar); the person they link to
-## (org:heldBy) is left untouched, since that's a shared, reusable resource,
-## not owned by this position/minister.
+#PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+#PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+#PREFIX org: <http://www.w3.org/ns/org#>
+#PREFIX regorg: <http://www.w3.org/ns/regorg#>
+#
+## Deduplicate islamitisch minister positions: if an eredienstbestuur has more
+## than one position for the same function (e.g. 2 "Waarnemende Imam"), keep
+## only one - deterministically the lowest-URI position - and drop the rest
+## (their own triples: org:Post, mu:uuid, ere:functie, and the
+## ere:wordtBediendDoor link). This only touches ere:PositieBedienaar, which OP
+## owns. The bedienaar side (ere:RolBedienaar, org:holds, conditions) is owned
+## by loket and is handled there instead (app-digitaal-loket
+## 20260803120000-cleanup-islam-imam-bedienaren-by-status.sparql, step 1 - same
+## lowest-URI-wins rule, applied to org:holds at the actual source of truth).
+## That migration must run first/land before this one, so no bedienaar is
+## still pointing at a position this deletes.
 #DELETE {
 #  GRAPH <http://mu.semte.ch/graphs/worship-service> {
 #    ?worshipService ere:wordtBediendDoor ?position .
 #    ?position ?p ?o .
-#    ?minister ?mp ?mo .
-#    ?condition ?cp ?co .
+#  }
+#}
+#WHERE {
+#  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+#    ?worshipService a ere:BestuurVanDeEredienst ;
+#      ere:typeEredienst <http://lblod.data.gift/concepts/9d8bd472a00bf0a5c7b7186606365a52> ; # Islamitisch
+#      ere:wordtBediendDoor ?position .
+#
+#    ?position ?p ?o ;
+#      ere:functie ?functie .
+#
+#    {
+#      SELECT ?worshipService ?functie (IRI(MIN(STR(?anyPosition))) AS ?keptPosition) WHERE {
+#        GRAPH <http://mu.semte.ch/graphs/worship-service> {
+#          ?worshipService ere:wordtBediendDoor ?anyPosition .
+#          ?anyPosition ere:functie ?functie .
+#        }
+#      }
+#      GROUP BY ?worshipService ?functie
+#    }
+#
+#    FILTER(?position != ?keptPosition)
+#  }
+#}
+#;
+#
+## Islamitisch eredienstbesturen "In Oprichting" (erkenningszoekend) should only
+## have the "Waarnemende Imam" minister position - same rule the
+## construct-organization-relationships-service applies going forward
+## (WORSHIP_IN_OPRICHTING_MINISTERS). Remove the 3 ranked-imam positions that
+## were always created before this fix. Position-only: any bedienaar that was
+## still holding one of these is already gone by now, removed by loket's own
+## migration (app-digitaal-loket
+## 20260803120000-cleanup-islam-imam-bedienaren-by-status.sparql, step 3),
+## which must run before this one.
+#DELETE {
+#  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+#    ?worshipService ere:wordtBediendDoor ?position .
+#    ?position ?p ?o .
 #  }
 #}
 #WHERE {
@@ -107,30 +74,20 @@ WHERE {
 #      <http://lblod.data.gift/concepts/c4a3fd586211b17b06f574885e23f355> # Tweede Imam in rang
 #      <http://lblod.data.gift/concepts/5ebb798bd59c3b48c25116032caa02b7> # Derde Imam in rang
 #    }
-#
-#    OPTIONAL {
-#      ?minister org:holds ?position ;
-#        ?mp ?mo .
-#
-#      OPTIONAL {
-#        ?minister ere:voldoetAan ?condition .
-#        ?condition ?cp ?co .
-#      }
-#    }
 #  }
 #}
 #;
 #
 ## Islamitisch eredienstbesturen that are "Actief" (erkend) should only have the
-## 3 ranked-imam positions. Remove the "Waarnemende Imam" position that was
-## always created before this fix. Same cascade as above: any minister holding
-## it (and its conditions) is removed, the person is left untouched.
+## 3 ranked-imam positions - same rule as MINISTER_CLASSIFICATIONS in
+## construct-organization-relationships-service. Remove the "Waarnemende Imam"
+## position that was always created before this fix. Position-only, same
+## precondition as above: loket's migration step 2 must have already cleared
+## any bedienaar holding it.
 #DELETE {
 #  GRAPH <http://mu.semte.ch/graphs/worship-service> {
 #    ?worshipService ere:wordtBediendDoor ?position .
 #    ?position ?p ?o .
-#    ?minister ?mp ?mo .
-#    ?condition ?cp ?co .
 #  }
 #}
 #WHERE {
@@ -142,16 +99,6 @@ WHERE {
 #
 #    ?position ?p ?o ;
 #      ere:functie <http://lblod.data.gift/concepts/7d8e0c15-7726-4196-9416-6dc40ed858bb> . # Waarnemende Imam
-#
-#    OPTIONAL {
-#      ?minister org:holds ?position ;
-#        ?mp ?mo .
-#
-#      OPTIONAL {
-#        ?minister ere:voldoetAan ?condition .
-#        ?condition ?cp ?co .
-#      }
-#    }
 #  }
 #}
 #;
@@ -159,6 +106,7 @@ WHERE {
 ## Create the 3 ranked-imam positions for "Actief" islamitisch eredienstbesturen
 ## that are missing one or more of them (idempotent: MD5-derived deterministic
 ## UUID + FILTER NOT EXISTS, matching 20221004113653-create-missing-bedienaren-positions.sparql).
+## Pure creation, nothing to coordinate with loket for.
 #INSERT {
 #  GRAPH <http://mu.semte.ch/graphs/worship-service> {
 #    ?worshipService ere:wordtBediendDoor ?newMinisterPosition .
@@ -193,7 +141,8 @@ WHERE {
 #
 ## Create the "Waarnemende Imam" position for "In Oprichting" islamitisch
 ## eredienstbesturen that are missing it (should be rare, kept for
-## completeness/idempotency).
+## completeness/idempotency). Pure creation, nothing to coordinate with loket
+## for.
 #INSERT {
 #  GRAPH <http://mu.semte.ch/graphs/worship-service> {
 #    ?worshipService ere:wordtBediendDoor ?newMinisterPosition .
