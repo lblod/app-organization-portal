@@ -1,0 +1,35 @@
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/6187e2d787cc954587dd7dce215e96b5> ?p ?o.
+  }
+}
+
+;
+
+DELETE WHERE {
+  graph <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuurseenheden/73840d393bd94828f0903e8357c7f328d4bf4b8fbd63adbfa443e784f056a589> <http://data.lblod.info/vocabularies/erediensten/betrokkenBestuur> <http://data.lblod.info/id/betrokkenLokaleBesturen/6187e2d787cc954587dd7dce215e96b5>.
+  }
+}
+
+;
+
+DELETE {
+  GRAPH ?g {
+      ?localInvolvementPajottegem <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?localInvolvementPajottegem <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> 100.
+  }
+}
+WHERE {
+  BIND(<http://mu.semte.ch/graphs/worship-service> AS ?g)
+  GRAPH ?g {
+    ?localInvolvementPajottegem <http://data.lblod.info/vocabularies/erediensten/financieringspercentage> ?percentage.
+  }
+  VALUES ?localInvolvementPajottegem {
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/58bfe3f61f5a661383a5db8502994210>
+  }
+}
