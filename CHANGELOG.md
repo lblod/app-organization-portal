@@ -9,6 +9,7 @@
 - Added "werkingsgebied" filter [OP-3812]
 - Inhoudelijk thema [OP-3817]
 - Add a new "Wijkkantoor" site type [OP-3837]
+- cleanup local involvement herne [OP-3858]
 
 ### Deploy notes
 ```
