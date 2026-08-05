@@ -14,6 +14,7 @@
 - Inhoudelijk thema [OP-3817]
 - Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
 - Add a new "Wijkkantoor" site type [OP-3837]
+- cleanup local involvement herne [OP-3858]
 
 ### Deploy notes
 ```
