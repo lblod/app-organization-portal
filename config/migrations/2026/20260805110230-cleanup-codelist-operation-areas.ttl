@@ -1,0 +1,109 @@
+@prefix cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<http://data.lblod.info/id/cleanup-job/db1e677e-fc84-47b1-8204-020ce139cfbb> a cleanup:Job ;
+    mu:uuid "db1e677e-fc84-47b1-8204-020ce139cfbb" ;
+    dcterms:title "Adding new werkingsgebieden to codelist" ;
+    cleanup:randomQuery """
+
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+    PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    INSERT {
+        GRAPH <http://mu.semte.ch/graphs/public> {
+            ?uri a skos:Concept ;
+                skos:inScheme <http://lblod.data.gift/concept-schemes/3307738e-f84d-4f95-9b14-3e9162d83394> ;
+                core:uuid ?uuid ;
+                skos:prefLabel ?label .
+        }
+    }
+    WHERE {
+    ?sub besluit:werkingsgebied ?uri .
+
+    ?uri a prov:Location ;
+        core:uuid ?uuid ;
+        rdfs:label ?label ;
+        ext:werkingsgebiedNiveau "Gemeente" .
+
+    FILTER NOT EXISTS {
+        ?existingConcept a skos:Concept ;
+            core:uuid ?uuid ;
+            skos:inScheme <http://lblod.data.gift/concept-schemes/3307738e-f84d-4f95-9b14-3e9162d83394> .
+    }
+    }
+    """ .
+
+<http://data.lblod.info/id/cleanup-job/64c7a5c9-5d73-43bf-a856-ad31c8fc8cd4> a cleanup:Job ;
+    mu:uuid "64c7a5c9-5d73-43bf-a856-ad31c8fc8cd4" ;
+    dcterms:title "Cleaning up old werkingsgebieden from codelist" ;
+    cleanup:randomQuery """
+
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+    PREFIX core: <http://mu.semte.ch/vocabularies/core/>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+    DELETE {
+        GRAPH <http://mu.semte.ch/graphs/public> {
+            ?uri a skos:Concept ;
+                skos:inScheme <http://lblod.data.gift/concept-schemes/3307738e-f84d-4f95-9b14-3e9162d83394> ;
+                core:uuid ?uuid ;
+                skos:prefLabel ?label .
+        }
+    }
+    WHERE {
+    ?uri a skos:Concept ;
+        core:uuid ?uuid ;
+        skos:prefLabel ?label ;
+        skos:inScheme <http://lblod.data.gift/concept-schemes/3307738e-f84d-4f95-9b14-3e9162d83394> .
+
+    FILTER NOT EXISTS {
+        ?sub besluit:werkingsgebied ?existingEntry .
+        ?existingEntry a prov:Location ;
+            core:uuid ?uuid ;
+            ext:werkingsgebiedNiveau "Gemeente" .
+    }
+    }
+    """ .
+
+<http://data.lblod.info/id/cleanup-job/6061ca0c-12d8-4fb7-9c24-511e21ab7e0e> a cleanup:Job ;
+    mu:uuid "6061ca0c-12d8-4fb7-9c24-511e21ab7e0e" ;
+    dcterms:title "Updating werkingsgebieden labels from codelist" ;
+    cleanup:randomQuery """
+
+    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+    PREFIX prov: <http://www.w3.org/ns/prov#>
+    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    DELETE {
+        GRAPH <http://mu.semte.ch/graphs/public> {
+            ?uri skos:prefLabel ?oldLabel .
+        }
+    }
+    INSERT {
+        GRAPH <http://mu.semte.ch/graphs/public> {
+            ?uri skos:prefLabel ?newLabel .
+        }
+    }
+    WHERE {
+    ?sub besluit:werkingsgebied ?uri .
+
+    ?uri a prov:Location ;
+        rdfs:label ?newLabel ;
+        ext:werkingsgebiedNiveau "Gemeente" .
+
+    ?uri a skos:Concept ;
+        skos:inScheme <http://lblod.data.gift/concept-schemes/3307738e-f84d-4f95-9b14-3e9162d83394> ;
+        skos:prefLabel ?oldLabel .
+
+    FILTER(STR(?oldLabel) != STR(?newLabel))
+    }
+    """ .

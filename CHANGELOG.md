@@ -15,6 +15,7 @@
 - Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
 - Add a new "Wijkkantoor" site type [OP-3837]
 - cleanup local involvement herne [OP-3858]
+- Keep werkingsgebied filter up to date via db-cleanup service [OP-3841]
 
 ### Deploy notes
 ```
@@ -39,6 +40,10 @@ drc restart migrations frontend db resource cache
 /bin/bash scripts/reset-elastic.sh
 drc restart migrations search
 drc up -d frontend
+```
+```
+drc restart migrations
+drc restart db-cleanup
 ```
 ## v1.41.0
  - added explicit healtchecks [DL-7466]
