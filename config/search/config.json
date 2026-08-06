@@ -705,6 +705,10 @@
         "operation_area_spatial": [
           "http://purl.org/dc/terms/spatial",
           "http://www.w3.org/2000/01/rdf-schema#label"
+        ],
+        "vendor": [
+          "^http://mu.semte.ch/vocabularies/account/canActOnBehalfOf",
+          "http://mu.semte.ch/vocabularies/core/uuid"
         ]
       },
       "mappings": {
@@ -834,6 +838,9 @@
                 "normalizer": "custom_sort_normalizer"
               }
             }
+          },
+          "vendor": {
+            "type": "keyword"
           }
         }
       }

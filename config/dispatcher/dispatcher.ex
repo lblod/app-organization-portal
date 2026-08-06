@@ -235,6 +235,10 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://cache/membership-roles/")
   end
 
+  match "/vendors/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/vendors/")
+  end
+
   # There is currently no logic to invalidate the kboOrganization cache when wegwijse updates the content
   match "/kbo-organizations/*path", %{accept: [:any], layer: :api} do
     Proxy.forward(conn, path, "http://resource/kbo-organizations/")
@@ -506,6 +510,14 @@ defmodule Dispatcher do
 #  post "/sparql/*path", %{layer: :api_services, accept: %{sparql_json: true}} do
 #    forward(conn, path, "http://db:8890/sparql/")
 #  end
+
+  #################################################################
+  # Health checks
+  #################################################################
+
+  get "/health/accounts", %{layer: :api} do
+    Proxy.forward(conn, [], "http://resource/accounts/")
+  end
 
   ###############################################################
   # errors

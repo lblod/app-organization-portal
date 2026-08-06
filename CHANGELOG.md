@@ -1,4 +1,5 @@
 # Changelog
+
 ## Unreleased
 - Added service to link addresses to addressregister uris [OP-3795]
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
@@ -12,6 +13,9 @@
 - Added "werkingsgebied" filter [OP-3812]
 - Inhoudelijk thema [OP-3817]
 - Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
+- Add a new "Wijkkantoor" site type [OP-3837]
+- cleanup local involvement herne [OP-3858]
+- Search organizations by vendor [OP-3808]
 - Add organization types "Regionaal zorgplatform" (altLabel "Regionale zorgzone") and residual "Andere" [OP-3844]
 - Move organizations from "Vereniging algemeen" / "Vennootschap algemeen" to "Andere"; delete those codes [OP-3844]
 - Bump construct-organization-relationships [OP-3844]
@@ -34,18 +38,11 @@ drc restart migrations
 drc restart resource cache
 drc restart delta-producer-publication-graph-maintainer
 scripts/reset-elastic.sh
-```
-```
 drc restart migrations frontend db resource cache
 # reindex elastic search:
 /bin/bash scripts/reset-elastic.sh
-```
-
-```
 drc restart migrations search
 drc up -d frontend
-# reindex elastic search:
-/bin/bash scripts/reset-elastic.sh
 ```
 
 ```
@@ -55,6 +52,14 @@ drc pull construct-organization-relationships && drc up -d construct-organizatio
 drc restart migrations-triggering-indexing
 drc up -d frontend
 drc restart cache resource
+```
+
+## v1.41.0
+ - added explicit healtchecks [DL-7466]
+
+### Deploy notes
+```
+drc restart dispatcher
 ```
 
 ## v1.40.0
