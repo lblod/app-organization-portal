@@ -1,4 +1,31 @@
 # Changelog
+## Unreleased
+- Added service to link addresses to addressregister uris [OP-3795]
+- Site type changes [OP-3818]
+- Added Juridische vorm [OP-3816] [OP-3820]
+- Frontend [v1.39.0]
+- bump construct-organization-relationships [OP-3810]
+- "In Oprichting" bestuursorgaan lifecycle [OP-3810]
+- Added "werkingsgebied" filter [OP-3812]
+- Inhoudelijk thema [OP-3817]
+
+### Deploy notes
+```
+drc up -d link-adressenregister-uri frontend construct-organization-relationships
+drc restart resource migrations dispatcher
+```
+
+```
+drc restart migrations
+drc restart cache resource
+```
+
+```
+drc restart migrations frontend db resource cache
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
+```
+
 ## v1.41.0
  - added explicit healtchecks [DL-7466]
 
@@ -16,7 +43,7 @@ drc restart dispatcher
 
 ### Deploy notes
 ```
-drc restart report-generation 
+drc restart report-generation
 drc restart migrations
 scripts/reset-elastic.sh
 drc up -d login login-dashboard frontend
