@@ -15,6 +15,7 @@
 - Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
 - Add a new "Wijkkantoor" site type [OP-3837]
 - cleanup local involvement herne [OP-3858]
+- Search organizations by vendor [OP-3808]
 - Keep werkingsgebied filter up to date via db-cleanup service [OP-3841]
 
 ### Deploy notes
