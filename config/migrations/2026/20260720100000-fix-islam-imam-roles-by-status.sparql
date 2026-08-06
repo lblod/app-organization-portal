@@ -31,6 +31,7 @@ WHERE {
         }
 
         FILTER(?position != ?keptPosition)
+        FILTER NOT EXISTS { ?anyMinister org:holds ?position }
     }
 }
 ;
@@ -65,7 +66,7 @@ WHERE {
             ?ministerPosition ere:functie ?functie .
         }
 
-        BIND(MD5(CONCAT(?worshipService, ?functie)) as ?uuidNewMinisterPosition)
+        BIND(MD5(CONCAT(?worshipService, ?functie, "fix-islam-imam-roles-by-status")) as ?uuidNewMinisterPosition)
         BIND(IRI(CONCAT("http://data.lblod.info/id/positiesBedienaar/", ?uuidNewMinisterPosition)) AS ?newMinisterPosition)
     }
 }
