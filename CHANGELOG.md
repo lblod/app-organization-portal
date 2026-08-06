@@ -13,7 +13,7 @@
 - Inhoudelijk thema [OP-3817]
 - Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
 - Add organization types "Regionaal zorgplatform" (altLabel "Regionale zorgzone") and residual "Andere" [OP-3844]
-- Move organizations from "Vereniging algemeen" / "Vennootschap algemeen" / "Energieholdings en -participaties" to "Andere"; delete those codes [OP-3844]
+- Move organizations from "Vereniging algemeen" / "Vennootschap algemeen" to "Andere"; delete those codes [OP-3844]
 - Bump construct-organization-relationships [OP-3844]
 
 ### Deploy notes
@@ -49,7 +49,8 @@ drc up -d frontend
 ```
 
 ```
-# requires compose bumps first: construct-organization-relationships 1.1.4, frontend >= 1.40.3
+# requires: construct-organization-relationships v1.1.4 released (bumped in compose here),
+# and frontend bumped to the release containing frontend-organization-portal#720
 drc pull construct-organization-relationships && drc up -d construct-organization-relationships
 drc restart migrations-triggering-indexing
 drc up -d frontend

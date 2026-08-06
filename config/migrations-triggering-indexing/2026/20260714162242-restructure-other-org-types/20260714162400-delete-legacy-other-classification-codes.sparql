@@ -11,17 +11,3 @@ WHERE {
   }
   GRAPH <http://mu.semte.ch/graphs/public> { ?code ?p ?o . }
 }
-
-;
-
-DELETE {
-  GRAPH <http://mu.semte.ch/graphs/public> { ?code ?p ?o . }
-}
-WHERE {
-  GRAPH <http://mu.semte.ch/graphs/public> {
-    ?code a ext:OrganizationClassificationCode ;
-      skos:prefLabel ?label .
-    FILTER(REGEX(STR(?label), "^Energieholding", "i"))
-    ?code ?p ?o .
-  }
-}
