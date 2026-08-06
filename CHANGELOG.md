@@ -1,5 +1,30 @@
 # Changelog
 ## Unreleased
+- Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
+- Frontend [v1.40.1], [v1.40.0], [v1.39.0] ,[v1.38.0]
+- Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
+- Rename generic organization types to "Vereniging algemeen" / "Vennootschap algemeen" [OP-3828]
+- Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
+
+### Deploy notes
+```
+drc restart migrations
+drc up -d frontend scope-of-operation
+drc restart cache resource
+```
+
+```
+drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart delta-producer-publication-graph-maintainer
+scripts/reset-elastic.sh
+drc restart migrations frontend db resource cache
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
+drc restart migrations search
+drc up -d frontend
+```
+
+## v1.41.1
 - Added service to link addresses to addressregister uris [OP-3795]
 - Site type changes [OP-3818]
 - Added Juridische vorm [OP-3816] [OP-3820]
