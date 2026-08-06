@@ -3,7 +3,7 @@
 - Added service to link addresses to addressregister uris [OP-3795]
 - Site type changes [OP-3818]
 - Added Juridische vorm [OP-3816] [OP-3820]
-- Frontend [v1.39.0]
+- Frontend [v1.40.4-1]
 - bump construct-organization-relationships [OP-3810]
 - "In Oprichting" bestuursorgaan lifecycle [OP-3810]
 - Added "werkingsgebied" filter [OP-3812]
