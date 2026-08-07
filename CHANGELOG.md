@@ -20,6 +20,7 @@
 - Move organizations from "Vereniging algemeen" / "Vennootschap algemeen" to "Andere"; delete those codes [OP-3844]
 - Bump construct-organization-relationships [OP-3844]
 - Frontend [v1.40.5](https://github.com/lblod/frontend-organization-portal/blob/v1.40.5/CHANGELOG.md) [OP-3844] [OP-3808] [OP-3849]
+- Consume and serve provenance properties on harvested Worship positions [DL-7437]
 
 ### Deploy notes
 ```
