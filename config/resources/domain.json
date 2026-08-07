@@ -70,15 +70,11 @@
           "type": "string",
           "predicate": "persoon:gebruikteVoornaam"
         },
-        "vendor": {
-          "type": "string",
-          "predicate": "prov:wasAssociatedWith"
-        },
-        "source": {
+        "harvest-source": {
           "type": "string",
           "predicate": "prov:wasGeneratedBy"
         },
-        "source-id": {
+        "harvest-original-uri": {
           "type": "uri",
           "predicate": "owl:sameAs"
         },
@@ -92,6 +88,11 @@
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "mandatories": {
           "predicate": "mandaat:isBestuurlijkeAliasVan",
           "target": "mandatories",
@@ -125,15 +126,11 @@
           "type": "datetime",
           "predicate": "ch:eindedatum"
         },
-        "vendor": {
-          "type": "string",
-          "predicate": "prov:wasAssociatedWith"
-        },
-        "source": {
+        "harvest-source": {
           "type": "string",
           "predicate": "prov:wasGeneratedBy"
         },
-        "source-id": {
+        "harvest-original-uri": {
           "type": "uri",
           "predicate": "owl:sameAs"
         },
@@ -151,6 +148,11 @@
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "person": {
           "predicate": "org:heldBy",
           "target": "people",
@@ -245,15 +247,11 @@
           "type": "string",
           "predicate": "ere:redenVanStopzetting"
         },
-        "vendor": {
-          "type": "string",
-          "predicate": "prov:wasAssociatedWith"
-        },
-        "source": {
+        "harvest-source": {
           "type": "string",
           "predicate": "prov:wasGeneratedBy"
         },
-        "source-id": {
+        "harvest-original-uri": {
           "type": "uri",
           "predicate": "owl:sameAs"
         },
@@ -267,6 +265,11 @@
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "type-half": {
           "predicate": "ere:typeHelft",
           "target": "half-elections",
@@ -308,15 +311,11 @@
           "type": "string",
           "predicate": "schema:contactType"
         },
-        "vendor": {
-          "type": "string",
-          "predicate": "prov:wasAssociatedWith"
-        },
-        "source": {
+        "harvest-source": {
           "type": "string",
           "predicate": "prov:wasGeneratedBy"
         },
-        "source-id": {
+        "harvest-original-uri": {
           "type": "uri",
           "predicate": "owl:sameAs"
         },
@@ -330,6 +329,11 @@
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "contact-address": {
           "predicate": "locn:address",
           "target": "addresses",
@@ -690,6 +694,7 @@
           "cardinality": "many"
         }
       },
+      "features": ["include-uri"],
       "new-resource-base": "http://data.lblod.info/vendors/"
     },
     "worship-services": {
@@ -934,15 +939,11 @@
           "type": "url",
           "predicate": "adres:verwijstNaar"
         },
-        "vendor": {
-          "type": "string",
-          "predicate": "prov:wasAssociatedWith"
-        },
-        "source": {
+        "harvest-source": {
           "type": "string",
           "predicate": "prov:wasGeneratedBy"
         },
-        "source-id": {
+        "harvest-original-uri": {
           "type": "uri",
           "predicate": "owl:sameAs"
         },
@@ -956,6 +957,11 @@
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "source": {
           "predicate": "dc_terms:source",
           "target": "concepts",
