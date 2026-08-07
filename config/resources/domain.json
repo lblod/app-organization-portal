@@ -1263,6 +1263,13 @@
           "predicate": "skos:prefLabel"
         }
       },
+      "relationships": {
+        "applicable-statuses": {
+          "predicate": "ere:vanToepassingBijStatus",
+          "target": "organization-status-codes",
+          "cardinality": "many"
+        }
+      },
       "new-resource-base": "http://lblod.data.gift/concepts/"
     },
     "financing-codes": {

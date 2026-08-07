@@ -23,6 +23,8 @@
 - Consume and serve provenance properties on harvested Worship positions [DL-7437]
 - Frontend [v1.41.0](https://github.com/lblod/frontend-organization-portal/blob/v1.41.0/CHANGELOG.md) [DL-7438]
 - Keep werkingsgebied filter up to date via db-cleanup service [OP-3841]
+- Restrict available imam roles based on worship organisation status [DL-7485]
+  - IMPORTANT NOTE: Make sure first the [DL-7485] loket migration has completed + data has flown from loket to OP
 
 ### Deploy notes
 ```
@@ -59,6 +61,10 @@ drc pull construct-organization-relationships && drc up -d construct-organizatio
 drc restart migrations-triggering-indexing
 drc up -d frontend
 drc restart cache resource
+```
+
+```
+drc restart migrations resource delta-producer-publication-graph-maintainer
 ```
 
 ## v1.41.0
