@@ -19,6 +19,7 @@
 - Add organization types "Regionaal zorgplatform" (altLabel "Regionale zorgzone") and residual "Andere" [OP-3844]
 - Move organizations from "Vereniging algemeen" / "Vennootschap algemeen" to "Andere"; delete those codes [OP-3844]
 - Bump construct-organization-relationships [OP-3844]
+- Frontend [v1.40.5](https://github.com/lblod/frontend-organization-portal/blob/v1.40.5/CHANGELOG.md) [OP-3844] [OP-3808] [OP-3849]
 
 ### Deploy notes
 ```
@@ -46,8 +47,7 @@ drc up -d frontend
 ```
 
 ```
-# requires: construct-organization-relationships v1.1.4 released (bumped in compose here),
-# and frontend bumped to the release containing frontend-organization-portal#720
+# requires frontend >= 1.40.5 and construct-organization-relationships >= 1.1.4 (both bumped in compose here)
 drc pull construct-organization-relationships && drc up -d construct-organization-relationships
 drc restart migrations-triggering-indexing
 drc up -d frontend
