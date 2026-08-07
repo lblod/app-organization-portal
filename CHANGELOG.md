@@ -11,6 +11,7 @@
 - "In Oprichting" bestuursorgaan lifecycle [OP-3810]
 - Added "werkingsgebied" filter [OP-3812]
 - Inhoudelijk thema [OP-3817]
+- Restrict available imam roles based on worship organisation status [DL-7485]
 
 ### Deploy notes
 ```
@@ -34,6 +35,9 @@ scripts/reset-elastic.sh
 drc restart migrations frontend db resource cache
 # reindex elastic search:
 /bin/bash scripts/reset-elastic.sh
+```
+```
+drc restart migrations resource delta-producer-publication-graph-maintainer
 ```
 
 ## v1.40.0
