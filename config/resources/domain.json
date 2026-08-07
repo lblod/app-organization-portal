@@ -32,7 +32,10 @@
     "nacebel": "http://data.gift/vocabularies/nace-bel/",
     "time": "http://www.w3.org/2006/time#",
     "muAccount": "http://mu.semte.ch/vocabularies/account/",
-    "sh": "http://www.w3.org/ns/shacl#"
+    "sh": "http://www.w3.org/ns/shacl#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "task": "http://redpencil.data.gift/vocabularies/tasks/"
   },
   "resources": {
     "agents": {
@@ -66,9 +69,30 @@
         "first-name-used": {
           "type": "string",
           "predicate": "persoon:gebruikteVoornaam"
+        },
+        "harvest-source": {
+          "type": "string",
+          "predicate": "prov:wasGeneratedBy"
+        },
+        "harvest-original-uri": {
+          "type": "uri",
+          "predicate": "owl:sameAs"
+        },
+        "harvest-date": {
+          "type": "datetime",
+          "predicate": "task:modifiedOn"
+        },
+        "harvest-job": {
+          "type": "uri",
+          "predicate": "task:modifiedBy"
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "mandatories": {
           "predicate": "mandaat:isBestuurlijkeAliasVan",
           "target": "mandatories",
@@ -101,9 +125,34 @@
         "agent-end-date": {
           "type": "datetime",
           "predicate": "ch:eindedatum"
+        },
+        "harvest-source": {
+          "type": "string",
+          "predicate": "prov:wasGeneratedBy"
+        },
+        "harvest-original-uri": {
+          "type": "uri",
+          "predicate": "owl:sameAs"
+        },
+        "harvest-date": {
+          "type": "datetime",
+          "predicate": "task:modifiedOn"
+        },
+        "harvest-job": {
+          "type": "uri",
+          "predicate": "task:modifiedBy"
+        },
+        "harvestLink": {
+          "type": "uri",
+          "predicate": "rdfs:seeAlso"
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "person": {
           "predicate": "org:heldBy",
           "target": "people",
@@ -197,9 +246,30 @@
         "reason-stopped": {
           "type": "string",
           "predicate": "ere:redenVanStopzetting"
+        },
+        "harvest-source": {
+          "type": "string",
+          "predicate": "prov:wasGeneratedBy"
+        },
+        "harvest-original-uri": {
+          "type": "uri",
+          "predicate": "owl:sameAs"
+        },
+        "harvest-date": {
+          "type": "datetime",
+          "predicate": "task:modifiedOn"
+        },
+        "harvest-job": {
+          "type": "uri",
+          "predicate": "task:modifiedBy"
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "type-half": {
           "predicate": "ere:typeHelft",
           "target": "half-elections",
@@ -240,9 +310,30 @@
         "type": {
           "type": "string",
           "predicate": "schema:contactType"
+        },
+        "harvest-source": {
+          "type": "string",
+          "predicate": "prov:wasGeneratedBy"
+        },
+        "harvest-original-uri": {
+          "type": "uri",
+          "predicate": "owl:sameAs"
+        },
+        "harvest-date": {
+          "type": "datetime",
+          "predicate": "task:modifiedOn"
+        },
+        "harvest-job": {
+          "type": "uri",
+          "predicate": "task:modifiedBy"
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "contact-address": {
           "predicate": "locn:address",
           "target": "addresses",
@@ -603,6 +694,7 @@
           "cardinality": "many"
         }
       },
+      "features": ["include-uri"],
       "new-resource-base": "http://data.lblod.info/vendors/"
     },
     "worship-services": {
@@ -846,9 +938,30 @@
         "address-register-uri": {
           "type": "url",
           "predicate": "adres:verwijstNaar"
+        },
+        "harvest-source": {
+          "type": "string",
+          "predicate": "prov:wasGeneratedBy"
+        },
+        "harvest-original-uri": {
+          "type": "uri",
+          "predicate": "owl:sameAs"
+        },
+        "harvest-date": {
+          "type": "datetime",
+          "predicate": "task:modifiedOn"
+        },
+        "harvest-job": {
+          "type": "uri",
+          "predicate": "task:modifiedBy"
         }
       },
       "relationships": {
+        "vendor": {
+          "predicate": "prov:wasAssociatedWith",
+          "target": "vendors",
+          "cardinality": "one"
+        },
         "source": {
           "predicate": "dc_terms:source",
           "target": "concepts",
