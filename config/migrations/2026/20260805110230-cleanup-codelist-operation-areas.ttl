@@ -38,40 +38,6 @@
     }
     """ .
 
-<http://data.lblod.info/id/cleanup-job/64c7a5c9-5d73-43bf-a856-ad31c8fc8cd4> a cleanup:Job ;
-    mu:uuid "64c7a5c9-5d73-43bf-a856-ad31c8fc8cd4" ;
-    dcterms:title "Cleaning up old werkingsgebieden from codelist" ;
-    cleanup:randomQuery """
-
-    PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
-    PREFIX prov: <http://www.w3.org/ns/prov#>
-    PREFIX core: <http://mu.semte.ch/vocabularies/core/>
-    PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-    PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-
-    DELETE {
-        GRAPH <http://mu.semte.ch/graphs/public> {
-            ?uri a skos:Concept ;
-                skos:inScheme <http://lblod.data.gift/concept-schemes/3307738e-f84d-4f95-9b14-3e9162d83394> ;
-                core:uuid ?uuid ;
-                skos:prefLabel ?label .
-        }
-    }
-    WHERE {
-    ?uri a skos:Concept ;
-        core:uuid ?uuid ;
-        skos:prefLabel ?label ;
-        skos:inScheme <http://lblod.data.gift/concept-schemes/3307738e-f84d-4f95-9b14-3e9162d83394> .
-
-    FILTER NOT EXISTS {
-        ?sub besluit:werkingsgebied ?existingEntry .
-        ?existingEntry a prov:Location ;
-            core:uuid ?uuid ;
-            ext:werkingsgebiedNiveau "Gemeente" .
-    }
-    }
-    """ .
-
 <http://data.lblod.info/id/cleanup-job/6061ca0c-12d8-4fb7-9c24-511e21ab7e0e> a cleanup:Job ;
     mu:uuid "6061ca0c-12d8-4fb7-9c24-511e21ab7e0e" ;
     dcterms:title "Updating werkingsgebieden labels from codelist" ;
