@@ -16,6 +16,10 @@
 - Add a new "Wijkkantoor" site type [OP-3837]
 - cleanup local involvement herne [OP-3858]
 - Search organizations by vendor [OP-3808]
+- Add organization types "Regionaal zorgplatform" (altLabel "Regionale zorgzone") and residual "Andere" [OP-3844]
+- Move organizations from "Vereniging algemeen" / "Vennootschap algemeen" to "Andere"; delete those codes [OP-3844]
+- Bump construct-organization-relationships [OP-3844]
+- Frontend [v1.40.5](https://github.com/lblod/frontend-organization-portal/blob/v1.40.5/CHANGELOG.md) [OP-3844] [OP-3808] [OP-3849]
 
 ### Deploy notes
 ```
@@ -41,6 +45,15 @@ drc restart migrations frontend db resource cache
 drc restart migrations search
 drc up -d frontend
 ```
+
+```
+# requires frontend >= 1.40.5 and construct-organization-relationships >= 1.1.4 (both bumped in compose here)
+drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart migrations-triggering-indexing
+drc up -d frontend
+drc restart cache resource
+```
+
 ## v1.41.0
  - added explicit healtchecks [DL-7466]
 
