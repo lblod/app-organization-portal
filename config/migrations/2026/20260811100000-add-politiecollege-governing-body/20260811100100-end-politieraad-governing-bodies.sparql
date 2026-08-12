@@ -1,0 +1,19 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?timedBody mandaat:bindingEinde "2026-07-02T00:00:00"^^xsd:dateTime .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?politiezone a besluit:Bestuurseenheid ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc> . # Politiezone
+    ?governingBody besluit:bestuurt ?politiezone ;
+      org:classification <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/1afce932-53c1-46d8-8aab-90dcc331e67d> . # Politieraad
+    ?timedBody generiek:isTijdspecialisatieVan ?governingBody .
+    FILTER NOT EXISTS { ?timedBody mandaat:bindingEinde ?endDate . }
+  }
+}

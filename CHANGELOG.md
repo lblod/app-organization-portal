@@ -5,6 +5,17 @@
 - Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
 - Rename generic organization types to "Vereniging algemeen" / "Vennootschap algemeen" [OP-3828]
 - Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
+- Search organizations by vendor [OP-3808]
+- Add organization types "Regionaal zorgplatform" (altLabel "Regionale zorgzone") and residual "Andere" [OP-3844]
+- Move organizations from "Vereniging algemeen" / "Vennootschap algemeen" to "Andere"; delete those codes [OP-3844]
+- Bump construct-organization-relationships [OP-3844]
+- Frontend [v1.40.5](https://github.com/lblod/frontend-organization-portal/blob/v1.40.5/CHANGELOG.md) [OP-3844] [OP-3808] [OP-3849]
+- Consume and serve provenance properties on harvested Worship positions [DL-7437]
+- Frontend [v1.41.0](https://github.com/lblod/frontend-organization-portal/blob/v1.41.0/CHANGELOG.md) [DL-7438]
+- Keep werkingsgebied filter up to date via db-cleanup service [OP-3841]
+- Restrict available imam roles based on worship organisation status [DL-7485]
+  - IMPORTANT NOTE: Make sure first the [DL-7485] loket migration has completed + data has flown from loket to OP
+- Add the value politiecollege to the existing dropdown list beslissingsorgaan [DL-7473]
 
 ### Deploy notes
 ```
@@ -83,6 +94,12 @@ drc restart cache resource
 drc restart migrations frontend db resource cache
 # reindex elastic search:
 /bin/bash scripts/reset-elastic.sh
+```
+
+```
+drc restart migrations
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+drc up -d construct-organization-relationships
 ```
 
 ## v1.41.0
