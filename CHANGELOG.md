@@ -25,6 +25,8 @@
 - Keep werkingsgebied filter up to date via db-cleanup service [OP-3841]
 - Restrict available imam roles based on worship organisation status [DL-7485]
   - IMPORTANT NOTE: Make sure first the [DL-7485] loket migration has completed + data has flown from loket to OP
+- fix duplicate van rechtswege/grote helft mandates [OP-3851]
+  - IMPORTANT NOTE: Make sure first the [OP-3851] loket migration has completed + data has flown from loket to OP
 
 ### Deploy notes
 ```
