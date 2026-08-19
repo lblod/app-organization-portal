@@ -1,0 +1,40 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?s ?p ?o.
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/landing-zone/mandatarissen> {
+    ?s a mandaat:Mandataris;
+      org:holds ?mandate;
+      ?p ?o.
+  }
+
+  ?orgaanInTime org:hasPost ?mandate ;
+    generiek:isTijdspecialisatieVan ?orgaan .
+
+  ?orgaan besluit:bestuurt ?bestuur .
+  ?bestuur org:classification ?classification .
+
+  FILTER(?classification IN (
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>,
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>
+  ))
+
+  FILTER (?p NOT IN (mandaat:start, mandaat:einde))
+
+  FILTER NOT EXISTS {
+    ?s ?p "" .
+  }
+
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/administrative-unit> { ?s org:holds ?mandate }
+  }
+}
