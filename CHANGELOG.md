@@ -25,6 +25,7 @@
 - Keep werkingsgebied filter up to date via db-cleanup service [OP-3841]
 - Restrict available imam roles based on worship organisation status [DL-7485]
   - IMPORTANT NOTE: Make sure first the [DL-7485] loket migration has completed + data has flown from loket to OP
+- Frontend [v1.41.1](https://github.com/lblod/frontend-organization-portal/blob/v1.41.1/CHANGELOG.md) [DL-7438]
 
 ### Deploy notes
 ```
