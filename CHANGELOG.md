@@ -25,8 +25,12 @@
 - Keep werkingsgebied filter up to date via db-cleanup service [OP-3841]
 - Restrict available imam roles based on worship organisation status [DL-7485]
   - IMPORTANT NOTE: Make sure first the [DL-7485] loket migration has completed + data has flown from loket to OP
+- Frontend [v1.41.1](https://github.com/lblod/frontend-organization-portal/blob/v1.41.1/CHANGELOG.md) [DL-7438]
+- Fix broken lmb mandataris mappin query [OP-3867]
+- Add the value politiecollege to the existing dropdown list beslissingsorgaan [DL-7473]
+- Bump construct-organization-relationships [DL-7473] [OP-3851]
 - fix duplicate van rechtswege/grote helft mandates [OP-3851]
-  - IMPORTANT NOTE: Make sure first the [OP-3851] loket migration has completed + data has flown from loket to OP
+  - IMPORTANT NOTE: Make sure first the loket migration has completed + data has flown from loket to OP
 
 ### Deploy notes
 ```
@@ -67,6 +71,16 @@ drc restart cache resource
 
 ```
 drc restart migrations resource delta-producer-publication-graph-maintainer
+```
+
+```
+drc restart migrations mandatarissen-consumer
+```
+
+```
+drc restart migrations
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+drc up -d construct-organization-relationships
 ```
 
 ## v1.41.0
