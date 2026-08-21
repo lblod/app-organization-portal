@@ -1,0 +1,45 @@
+# Delete duplicate van rechtswege mandaten per governing body
+# Must be run AFTER the corresponding loket migration
+
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?orgaanInTime org:hasPost ?mandaat .
+    ?mandaat ?p ?o .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?orgaanInTime org:hasPost ?canonicalMandaat .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?worshipService a ere:BestuurVanDeEredienst .
+    ?orgaan besluit:bestuurt ?worshipService .
+    ?orgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
+      org:hasPost ?mandaat .
+    ?mandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5972fccd87f864c4ec06bfbd20b5008b> ;
+      ?p ?o .
+
+    FILTER NOT EXISTS { ?holder org:holds ?mandaat . }
+  }
+
+  {
+    SELECT ?orgaan (IRI(MIN(STR(?anyMandaat))) AS ?canonicalMandaat) WHERE {
+      GRAPH <http://mu.semte.ch/graphs/worship-service> {
+        ?anyOrgaanInTime generiek:isTijdspecialisatieVan ?orgaan ;
+          org:hasPost ?anyMandaat .
+        ?anyMandaat org:role <http://data.vlaanderen.be/id/concept/BestuursfunctieCode/5972fccd87f864c4ec06bfbd20b5008b> .
+      }
+    }
+    GROUP BY ?orgaan
+  }
+
+  FILTER(?mandaat != ?canonicalMandaat)
+}
