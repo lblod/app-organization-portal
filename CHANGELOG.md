@@ -26,6 +26,7 @@
 - Restrict available imam roles based on worship organisation status [DL-7485]
   - IMPORTANT NOTE: Make sure first the [DL-7485] loket migration has completed + data has flown from loket to OP
 - Frontend [v1.41.1](https://github.com/lblod/frontend-organization-portal/blob/v1.41.1/CHANGELOG.md) [DL-7438]
+- Fix broken lmb mandataris mappin query [OP-3867]
 
 ### Deploy notes
 ```
@@ -68,6 +69,9 @@ drc restart cache resource
 drc restart migrations resource delta-producer-publication-graph-maintainer
 ```
 
+```
+drc restart migrations mandatarissen-consumer
+```
 ## v1.41.0
  - added explicit healtchecks [DL-7466]
 
