@@ -1,0 +1,94 @@
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?bestuur ere:betrokkenBestuur ?betrokkenLokaleBesturen .
+    ?betrokkenLokaleBesturen ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    VALUES ?betrokkenLokaleBesturen {
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6363D5718DE5818A7C9F4402>
+
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A462F3FDD4B9E78BCCD458F>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A462F3FDD4B9E78BCCD4590>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A462F3FDD4B9E78BCCD458E>
+
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439361>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A43935D>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A43935F>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439364>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439366>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439367>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A43936A>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439369>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A43936B>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A43936D>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A43936C>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439368>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439360>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439365>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A43935E>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439362>
+      <http://data.lblod.info/id/betrokkenLokaleBesturen/6A71F922F541BB824A439363>
+    }
+
+    ?bestuur ere:betrokkenBestuur ?betrokkenLokaleBesturen .
+    ?betrokkenLokaleBesturen ?p ?o .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?bestuur ere:betrokkenBestuur ?betrokkenLokaleBesturen .
+    ?betrokkenLokaleBesturen ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    VALUES ?worshipService {
+      <http://data.lblod.info/id/besturenVanDeEredienst/6371F8418DE5818A7C9F44A5>
+      <http://data.lblod.info/id/besturenVanDeEredienst/65F5B3BEE77A4F2289F6B64C>
+    }
+
+    ?bestuur ere:betrokkenBestuur ?betrokkenLokaleBesturen .
+    ?betrokkenLokaleBesturen ere:typebetrokkenheid <http://lblod.data.gift/concepts/0f845f00ee76099c89518cbaf6a7b77f> ;
+      org:organization ?worshipService ;
+      ?p ?o .
+  }
+}
+
+;
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuurseenheden/be278471a2a318edba32e7ac4294c0eafbe4c8077a34dcbb9c2e43211d4a78a6>
+      ere:betrokkenBestuur <http://data.lblod.info/id/betrokkenLokaleBesturen/c663fdc9-642a-44c0-ac41-18e0ba047a9c> .
+
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/c663fdc9-642a-44c0-ac41-18e0ba047a9c>
+      a ere:BetrokkenLokaleBesturen ;
+      mu:uuid "c663fdc9-642a-44c0-ac41-18e0ba047a9c" ;
+      ere:financieringspercentage "0"^^xsd:integer ;
+      ere:typebetrokkenheid <http://lblod.data.gift/concepts/0f845f00ee76099c89518cbaf6a7b77f> ;
+      org:organization <http://data.lblod.info/id/besturenVanDeEredienst/65F5B3BEE77A4F2289F6B64C> .
+  }
+}
+
+;
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuurseenheden/298b13541e1e85de4b71535197aa1f3bbc4bdb67f0fe0f58ab4a7dc207af61fa>
+      ere:betrokkenBestuur <http://data.lblod.info/id/betrokkenLokaleBesturen/a26b6366-982a-40e1-aafe-eea7ade5865e> .
+
+    <http://data.lblod.info/id/betrokkenLokaleBesturen/a26b6366-982a-40e1-aafe-eea7ade5865e>
+      a ere:BetrokkenLokaleBesturen ;
+      mu:uuid "a26b6366-982a-40e1-aafe-eea7ade5865e" ;
+      ere:financieringspercentage "0"^^xsd:integer ;
+      ere:typebetrokkenheid <http://lblod.data.gift/concepts/86fcbbbff764f1cba4c7e10dbbae578e> ;
+      org:organization <http://data.lblod.info/id/besturenVanDeEredienst/6874B0FE8806FCC9C1BBF1C3> .
+  }
+}

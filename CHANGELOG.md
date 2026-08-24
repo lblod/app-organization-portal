@@ -5,6 +5,7 @@
 - Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
 - Rename generic organization types to "Vereniging algemeen" / "Vennootschap algemeen" [OP-3828]
 - Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
+- Fix betrokken lokale besturen links via migration [OP-3877]
 
 ### Deploy notes
 ```
