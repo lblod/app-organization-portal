@@ -1,4 +1,13 @@
 # Changelog
+## Unreleased
+- Fix betrokken lokale besturen links via migration [OP-3877]
+
+### Deploy notes
+```
+drc restart migrations
+drc restart resource cache
+```
+
 ## v1.41.0
  - added explicit healtchecks [DL-7466]
 
