@@ -1,5 +1,6 @@
 # Changelog
 ## Unreleased
+- Fix betrokken lokale besturen links via migration [OP-3877]
 - Add timeout to producer jobs to prevent them staying stuck forever [OP-3815]
 
 ### Deploy notes
@@ -8,6 +9,8 @@ In the docker-compose.override.yml, on PROD only, set the `error-alert` environm
 Then:
 ```
 drc up -d error-alert delta-producer-background-jobs-initiator
+drc restart migrations
+drc restart resource cache
 ```
 
 ## v1.41.0
