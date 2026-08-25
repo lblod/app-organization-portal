@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## v1.41.2
 - Fix betrokken lokale besturen links via migration [OP-3877]
 - Add timeout to producer jobs to prevent them staying stuck forever [OP-3815]
 
