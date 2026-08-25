@@ -1,4 +1,15 @@
 # Changelog
+## Unreleased
+- Add timeout to producer jobs to prevent them staying stuck forever [OP-3815]
+
+### Deploy notes
+In the docker-compose.override.yml, on PROD only, set the `error-alert` environment variable `EMAIL_TO:` to `support+lblod@redpencil.io`.
+
+Then:
+```
+drc up -d error-alert delta-producer-background-jobs-initiator
+```
+
 ## v1.41.0
  - added explicit healtchecks [DL-7466]
 
