@@ -26,6 +26,7 @@
 - Restrict available imam roles based on worship organisation status [DL-7485]
   - IMPORTANT NOTE: Make sure first the [DL-7485] loket migration has completed + data has flown from loket to OP
 - Frontend [v1.41.1](https://github.com/lblod/frontend-organization-portal/blob/v1.41.1/CHANGELOG.md) [DL-7438]
+- Frontend [v1.42.0](https://github.com/lblod/frontend-organization-portal/blob/a0fb2536afe7019c2943c8312e50648c14249e02/CHANGELOG.md#v1420-2026-08-20)
 - Fix broken lmb mandataris mappin query [OP-3867]
 - Add the value politiecollege to the existing dropdown list beslissingsorgaan [DL-7473]
 - Bump construct-organization-relationships [DL-7473] [OP-3851]
