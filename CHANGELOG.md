@@ -31,10 +31,11 @@
 - Bump construct-organization-relationships [DL-7473] [OP-3851]
 - fix duplicate van rechtswege/grote helft mandates [OP-3851]
   - IMPORTANT NOTE: Make sure first the loket migration has completed + data has flown from loket to OP
+- Add missing headers to identifier calls
 
 ### Deploy notes
 ```
-drc up -d link-adressenregister-uri frontend construct-organization-relationships
+drc up -d link-adressenregister-uri frontend construct-organization-relationships identifier
 drc restart resource migrations dispatcher
 ```
 
