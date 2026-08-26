@@ -31,7 +31,8 @@
     "geo": "http://www.opengis.net/ont/geosparql#",
     "nacebel": "http://data.gift/vocabularies/nace-bel/",
     "time": "http://www.w3.org/2006/time#",
-    "muAccount": "http://mu.semte.ch/vocabularies/account/"
+    "muAccount": "http://mu.semte.ch/vocabularies/account/",
+    "sh": "http://www.w3.org/ns/shacl#"
   },
   "resources": {
     "agents": {
@@ -404,6 +405,16 @@
           "target": "organization-classification-codes",
           "cardinality": "one"
         },
+        "legal-form": {
+          "predicate": "organisatie:rechtsvorm",
+          "target": "concepts",
+          "cardinality": "one"
+        },
+        "content-themes": {
+          "predicate": "code:inhoudelijkThema",
+          "target": "concepts",
+          "cardinality": "many"
+        },
         "identifiers": {
           "predicate": "adms:identifier",
           "target": "identifiers",
@@ -521,6 +532,13 @@
     "registered-organizations": {
       "class": "regorg:RegisteredOrganization",
       "super": ["organizations"],
+      "relationships": {
+        "scope": {
+          "predicate": "dc_terms:spatial",
+          "target": "locations",
+          "cardinality": "one"
+        }
+      },
       "new-resource-base": "http://data.lblod.info/id/geregistreerdeOrganisaties/"
     },
     "organization-classification-codes": {
@@ -529,6 +547,10 @@
         "label": {
           "type": "string",
           "predicate": "skos:prefLabel"
+        },
+        "alt-label": {
+          "type": "string",
+          "predicate": "skos:altLabel"
         }
       },
       "new-resource-base": "http://data.vlaanderen.be/id/concept/OrganizationClassificationCode/"
@@ -938,9 +960,31 @@
         "alt-label": {
           "type": "string",
           "predicate": "skos:altLabel"
+        },
+        "order": {
+          "type": "number",
+          "predicate": "sh:order"
+        }
+      },
+      "relationships": {
+        "in-scheme": {
+          "predicate": "skos:inScheme",
+          "target": "concept-schemes",
+          "cardinality": "one"
         }
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "concept-schemes": {
+      "class": "skos:ConceptScheme",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.vlaanderen.be/id/conceptscheme/"
     },
     "organization-status-codes": {
       "class": "code:OrganisatieStatusCode",
