@@ -8,7 +8,8 @@ services:
   identifier:
     image: semtech/mu-identifier:1.10.3
     environment:
-      DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: '[{"variables":[],"name":"public"}]'
+      # It is INCREDIBLY important that the "clean" group is part of this config, DO NOT ADJUST unless you know EXACTLY what you're doing
+      DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: '[{"variables":[],"name":"clean"}, {"variables":[],"name":"public"}]'
       SESSION_COOKIE_SECURE: "on"
     labels:
       - "logging=true"
