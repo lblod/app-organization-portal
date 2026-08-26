@@ -394,6 +394,8 @@ services:
     image: lblod/delta-producer-background-jobs-initiator:1.0.1
     volumes:
       - ./config/delta-producer/background-job-initiator:/config
+    environment:
+      JOB_TIMEOUT_MINUTES: 1380 # 23h
     links:
       - db:database
     labels:
