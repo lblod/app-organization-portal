@@ -85,6 +85,15 @@ drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/
 drc up -d construct-organization-relationships
 ```
 
+## v1.41.3 (to be released)
+- Fix betrokken lokale besturen links via migration [OP-3882]
+
+### Deploy notes
+```
+drc restart migrations
+drc restart cache resource
+```
+
 ## v1.41.2
 - Fix betrokken lokale besturen links via migration [OP-3877]
 - Add timeout to producer jobs to prevent them staying stuck forever [OP-3815]
