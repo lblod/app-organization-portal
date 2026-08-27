@@ -1,0 +1,23 @@
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    ?bestuur ere:betrokkenBestuur ?betrokkenLokaleBesturen .
+    ?betrokkenLokaleBesturen ?p ?o .
+  }
+} WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    VALUES ?worshipService {
+      <http://data.lblod.info/id/besturenVanDeEredienst/6A5624A4174153E0CE6F0423>
+    }
+
+    ?bestuur ere:betrokkenBestuur ?betrokkenLokaleBesturen .
+    ?betrokkenLokaleBesturen ere:typebetrokkenheid <http://lblod.data.gift/concepts/0f845f00ee76099c89518cbaf6a7b77f> ;
+      org:organization ?worshipService ;
+      ?p ?o .
+
+    FILTER (?bestuur != <http://data.lblod.info/id/bestuurseenheden/670db1d66c0de3b931962e1044033ccfa9d6e3023aa9828a5f252c3bc69bd32c>)
+  }
+}
