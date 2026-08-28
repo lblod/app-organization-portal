@@ -85,7 +85,7 @@ drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/
 drc up -d construct-organization-relationships
 ```
 
-## v1.41.3 (to be released)
+## v1.41.3
 - Fix betrokken lokale besturen links via migration [OP-3882]
 
 ### Deploy notes
