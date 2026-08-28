@@ -24,7 +24,7 @@ drc restart migrations search
 drc up -d frontend
 ```
 
-## v1.41.3 (to be released)
+## v1.41.3
 - Fix betrokken lokale besturen links via migration [OP-3882]
 
 ### Deploy notes
