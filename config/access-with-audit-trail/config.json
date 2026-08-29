@@ -1,0 +1,43 @@
+{
+  "prefixes": {
+    "dc_terms": "http://purl.org/dc/terms/",
+    "schema": "http://schema.org/",
+    "person": "http://www.w3.org/ns/person#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "persoon": "https://data.vlaanderen.be/ns/persoon#"
+  },
+  "resources": {
+    "people": {
+      "rdfType": "person:Person",
+      "attributes": {
+        "given-name": {
+          "label": "Given Name",
+          "type": "string",
+          "path": [
+            "foaf:givenName"
+          ]
+        },
+        "gender": {
+          "label": "Gender",
+          "type": "string",
+          "path": [
+            "persoon:geslacht",
+            "http://www.w3.org/2004/02/skos/core#prefLabel"
+          ]
+        },
+        "family-name": {
+          "label": "Family Name",
+          "type": "string",
+          "path": [
+            "foaf:familyName"
+          ]
+        },
+        "first-name-used": {
+          "label": "First name used",
+          "type": "string",
+          "path": "persoon:gebruikteVoornaam"
+        }
+      }
+    }
+  }
+}
