@@ -24,6 +24,15 @@ drc restart migrations search
 drc up -d frontend
 ```
 
+## v1.41.4
+- Fix broken lmb mandataris mappin query [OP-3867]
+
+### Deploy notes
+```
+drc restart migrations mandatarissen-consumer
+
+```
+
 ## v1.41.3
 - Fix betrokken lokale besturen links via migration [OP-3882]
 
