@@ -2,7 +2,7 @@ import { generateReportFromData, batchedQuery } from "../helpers.js";
 import { PREFIXES } from "./utils";
 
 export default {
-  cronPattern: "0 */5 * * * *",
+  cronPattern: "0 00 1 * * *",
   name: "administrativeUnits",
   execute: async () => {
     const reportData = {
