@@ -33,6 +33,7 @@
 - fix duplicate van rechtswege/grote helft mandates [OP-3851]
   - IMPORTANT NOTE: Make sure first the loket migration has completed + data has flown from loket to OP
 - Add missing headers to identifier calls
+- Add columns to administrative units report [OP-3835]
 
 ### Deploy notes
 ```
@@ -80,7 +81,7 @@ drc restart migrations mandatarissen-consumer
 ```
 
 ```
-drc restart migrations
+drc restart migrations report-generation
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
 drc up -d construct-organization-relationships
 ```
