@@ -18,13 +18,18 @@ export default {
     
     SELECT DISTINCT
       ?Bestuurseenheid
+      ?JuridischeNaam
+      ?AlternatieveNaam
       ?Classificatie
       ?Status
       ?KBO_nr
       ?OVO_nr
       ?Sharepoint_id
       ?NIS_code
+      ?JuridischeVorm
       ?Regio
+      ?Werkingsgebied
+      ?GeplandeEinddatum
       ?Provincie
       ?Straat
       ?Huisnummer
@@ -48,7 +53,31 @@ export default {
         a ?type.
       OPTIONAL { ?BestuurseenheidURI skos:prefLabel ?Bestuurseenheid . }
       OPTIONAL { ?BestuurseenheidURI org:classification/skos:prefLabel ?Classificatie. }
-    
+      OPTIONAL { ?BestuurseenheidURI regorg:legalName ?JuridischeNaam. }
+      OPTIONAL { ?BestuurseenheidURI organisatie:rechtsvorm/skos:prefLabel ?JuridischeVorm. }
+      OPTIONAL { ?BestuurseenheidURI lblodgeneriek:geplandeEindDatum ?GeplandeEinddatum. }
+
+      OPTIONAL {
+        SELECT ?BestuurseenheidURI (GROUP_CONCAT(DISTINCT ?altLabelValue; separator=", ") AS ?AlternatieveNaam)
+        WHERE {
+          ?BestuurseenheidURI skos:altLabel ?altLabelValue .
+        }
+        GROUP BY ?BestuurseenheidURI
+      }
+
+      OPTIONAL {
+        SELECT ?BestuurseenheidURI (GROUP_CONCAT(DISTINCT ?scopeLabel; separator=", ") AS ?Werkingsgebied)
+        WHERE {
+          {
+            ?BestuurseenheidURI besluit:werkingsgebied ?scopeURI .
+          } UNION {
+            ?BestuurseenheidURI dc_terms:spatial ?scopeURI .
+          }
+          ?scopeURI rdfs:label ?scopeLabel .
+        }
+        GROUP BY ?BestuurseenheidURI
+      }
+
       OPTIONAL {
         ?BestuurseenheidURI besluit:werkingsgebied ?werkingsgebiedURI.
         ?werkingsgebiedURI rdfs:label ?werkingsgebied.
@@ -131,13 +160,18 @@ export default {
 
     const data = queryResponse.results.bindings.map((row) => ({
         Bestuurseenheid: getSafeValue(row, "Bestuurseenheid"),
+        JuridischeNaam: getSafeValue(row, "JuridischeNaam"),
+        AlternatieveNaam: getSafeValue(row, "AlternatieveNaam"),
         Classificatie: getSafeValue(row, "Classificatie"),
         Status: getSafeValue(row, "Status"),
         KBO_nr: getSafeValue(row, "KBO_nr"),
         OVO_nr: getSafeValue(row, "OVO_nr"),
         Sharepoint_id: getSafeValue(row, "Sharepoint_id"),
         NIS_code: getSafeValue(row, "NIS_code"),
+        JuridischeVorm: getSafeValue(row, "JuridischeVorm"),
         Regio: getSafeValue(row, "Regio"),
+        Werkingsgebied: getSafeValue(row, "Werkingsgebied"),
+        GeplandeEinddatum: getSafeValue(row, "GeplandeEinddatum"),
         Provincie: getSafeValue(row, "Provincie"),
         Straat: getSafeValue(row, "Straat"),
         Huisnummer: getSafeValue(row, "Huisnummer"),
@@ -154,13 +188,18 @@ export default {
         data,
         [
           "Bestuurseenheid",
+          "JuridischeNaam",
+          "AlternatieveNaam",
           "Classificatie",
           "Status",
           "KBO_nr",
           "OVO_nr",
           "Sharepoint_id",
           "NIS_code",
+          "JuridischeVorm",
           "Regio",
+          "Werkingsgebied",
+          "GeplandeEinddatum",
           "Provincie",
           "Straat",
           "Huisnummer",
