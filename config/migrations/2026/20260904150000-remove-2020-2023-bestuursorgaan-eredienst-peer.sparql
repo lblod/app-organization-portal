@@ -1,0 +1,57 @@
+
+PREFIX org: <http://www.w3.org/ns/org#>
+
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuursorganen/63513CFE8DE5818A7C9F4164> org:hasPost ?exclusiveMandaat .
+    ?exclusiveMandaat ?p ?o .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    VALUES ?exclusiveMandaat {
+      <http://data.lblod.info/id/mandaten/08c134c8f7bf3dafe933782a25f57f7b>
+      <http://data.lblod.info/id/mandaten/a633a2042d4b0dfe109343f599a63ca9>
+      <http://data.lblod.info/id/mandaten/7c27711e745e278f951218c6d3da964e>
+      <http://data.lblod.info/id/mandaten/c825e5a0b82ef87d556cef7df7d23311>
+      <http://data.lblod.info/id/mandaten/63C161A04E1F899807CFFAB7>
+    }
+
+    <http://data.lblod.info/id/bestuursorganen/63513CFE8DE5818A7C9F4164> org:hasPost ?exclusiveMandaat .
+    ?exclusiveMandaat ?p ?o .
+
+    FILTER NOT EXISTS { ?holder org:holds ?exclusiveMandaat . }
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuursorganen/63513CFE8DE5818A7C9F4164> org:hasPost ?sharedMandaat .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    VALUES ?sharedMandaat {
+      <http://data.lblod.info/id/mandaten/57198afdc3a8962f5636d5a84f022355>
+      <http://data.lblod.info/id/mandaten/7edcdf3855c7360695d1167587738806>
+    }
+
+    <http://data.lblod.info/id/bestuursorganen/63513CFE8DE5818A7C9F4164> org:hasPost ?sharedMandaat .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuursorganen/63513CFE8DE5818A7C9F4164> ?p ?o .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/worship-service> {
+    <http://data.lblod.info/id/bestuursorganen/63513CFE8DE5818A7C9F4164> ?p ?o .
+  }
+}
