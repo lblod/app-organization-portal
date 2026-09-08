@@ -1,0 +1,26 @@
+PREFIX org:  <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+# DGS-631: Haven van Antwerpen-Brugge (KBO 0248399380) is a naamloze vennootschap van
+# publiek recht (Havendecreet; decreet van 11 maart 2022), not an autonoom gemeentebedrijf.
+# It was re-added as an AGB in OP-3639 only so it keeps access to its running
+# fietsinfrastructuur dossiers in Subsidiepunt. It stays typed besluit:Bestuurseenheid
+# (Loket login and the Subsidiepunt consumer require that type) but moves to the hidden
+# "Havenbedrijf" classification, which takes it out of the OP frontend.
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?haven org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721> .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?haven org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/ac350c36-77bb-47e8-8699-b313ca7da32a> ;
+      skos:note "This is a special case (DGS-631): Haven van Antwerpen-Brugge is a naamloze vennootschap van publiek recht, not a bestuurseenheid. It is kept as a besluit:Bestuurseenheid with the hidden classification 'Havenbedrijf' so Loket and Subsidiepunt keep access to its running subsidy dossiers; it is not shown in the OP frontend." .
+  }
+}
+WHERE {
+  VALUES ?haven { <http://data.lblod.info/id/bestuurseenheden/604d50138929f0e450f629b1caad73733d2a5dc31018edb53e50a5940f4dafe7> }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?haven org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721> .
+  }
+}

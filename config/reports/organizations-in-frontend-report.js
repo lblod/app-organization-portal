@@ -57,11 +57,15 @@ export default {
             }
           )
           
+          # Special organisations are kept for Loket/Subsidiepunt but hidden in the frontend
           FILTER(
             NOT EXISTS {
-              ?bestuur org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/52cc9d8d-1c9a-4d92-9936-da9d4a622ec4>.
+              VALUES ?hiddenClassification {
+                <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/52cc9d8d-1c9a-4d92-9936-da9d4a622ec4> # Agentschap Binnenlands Bestuur
+                <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/ac350c36-77bb-47e8-8699-b313ca7da32a> # Havenbedrijf [DGS-631]
+              }
+              ?bestuur org:classification ?hiddenClassification .
             }
-
           )
     }
     `;
