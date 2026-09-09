@@ -35,6 +35,7 @@
 - Add missing headers to identifier calls
 - Add columns to administrative units report [OP-3835]
 - Add "Bijkomende kwalificatie" (with "Rechtsgrond" and "Definitie") codelist and organization relationship [OP-3902]
+- Added "Wijziging bijkomende kwalificatie" change event [OP-3907]
 
 ### Deploy notes
 ```
@@ -90,6 +91,11 @@ drc up -d construct-organization-relationships
 ```
 drc restart migrations
 drc restart resource cache db dispatcher
+```
+
+```
+drc restart migrations
+drc restart resource cache
 ```
 
 ## v1.41.3
