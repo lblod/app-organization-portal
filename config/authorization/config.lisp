@@ -220,7 +220,6 @@
   ("code:EredienstBeroepen" -> _)
   ("code:Rechtsvormtype" -> _)
   ("prov:Location" -> _)
-  ("code:inhoudelijkThema" -> _)
   ("code:BijkomendeKwalificatieCode" -> _))
 
 (define-graph shared ("http://mu.semte.ch/graphs/shared")
