@@ -36,6 +36,7 @@
 - Add columns to administrative units report [OP-3835]
 - Added "Wijziging werkingsgebied" change event [OP-3905]
 - Frontend [v1.43.0](https://github.com/lblod/frontend-organization-portal/blob/v1.43.0/CHANGELOG.md)
+- Add organization type "Regionaal landschap" [OP-3876]
 
 ### Deploy notes
 ```
@@ -76,6 +77,14 @@ drc restart cache resource
 
 ```
 drc restart migrations resource delta-producer-publication-graph-maintainer
+```
+
+```
+# requires the frontend and construct-organization-relationships releases for OP-3876 (bump both in compose)
+drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart migrations-triggering-indexing
+drc up -d frontend
+drc restart cache resource
 ```
 
 ```
