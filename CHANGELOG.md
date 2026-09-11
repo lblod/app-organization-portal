@@ -15,7 +15,6 @@
 - Keep werkingsgebied filter up to date via db-cleanup service [OP-3841]
 - Restrict available imam roles based on worship organisation status [DL-7485]
   - IMPORTANT NOTE: Make sure first the [DL-7485] loket migration has completed + data has flown from loket to OP
-- Add the value politiecollege to the existing dropdown list beslissingsorgaan [DL-7473]
 
 ### Deploy notes
 ```
@@ -33,6 +32,18 @@ drc restart migrations frontend db resource cache
 /bin/bash scripts/reset-elastic.sh
 drc restart migrations search
 drc up -d frontend
+```
+
+## v1.41.5
+- Add the value politiecollege to the existing dropdown list beslissingsorgaan [DL-7473]
+- Bump construct-organization-relationships [DL-7473]
+
+### Deploy notes
+```
+drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart migrations cache
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+
 ```
 
 ## v1.41.4
