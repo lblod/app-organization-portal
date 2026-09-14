@@ -90,6 +90,7 @@ drc up -d construct-organization-relationships frontend
 ```
 
 ```
+drc up -d frontend
 drc restart migrations
 drc restart resource cache db dispatcher
 ```
