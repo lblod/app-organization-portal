@@ -364,12 +364,23 @@
       <SESSION_ID> session:account/mu:uuid ?session_account.
     }")
 
+;; Note: this actually a nasty thing in the orginal code. workaround here
+(supply-allowed-group "chat-access"
+  :parameters ()
+  :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+    SELECT DISTINCT ?session_role WHERE {
+      <SESSION_ID> ext:sessionRole ?session_role.
+      FILTER( ?session_role = \"ABBOrganisatiePortaalGebruiker-editeerder\" )
+    }")
+
 (grant (read)
   :to-graph (acmidm-lezer acmidm-vendor)
   :for-allowed-group "ABBOrganisatiePortaalGebruiker-lezer")
 
 (grant (read write)
-  :to-graph (acmidm-editeerder acmidm-vendor chat)
+  :to-graph (acmidm-editeerder acmidm-vendor)
   :for-allowed-group "ABBOrganisatiePortaalGebruiker-editeerder")
 
 (grant (read write)
@@ -397,5 +408,9 @@
   :for-allowed-group "o-admin-rwf")
 
 (grant (read write)
-  :to-graph (chat)
+  :to-graph (chat) ;; Note: this actually a nasty thing in the orginal code. workaround here
   :for-allowed-group "chat-owner")
+
+(grant (read)
+  :to-graph (acmidm-editeerder) ;; Note: this actually a nasty thing in the orginal code. workaround here
+  :for-allowed-group "chat-access")
