@@ -34,6 +34,14 @@ drc restart migrations search
 drc up -d frontend
 ```
 
+## v1.41.6 (to be released)
+- Change KBO-nr for Centraal Israëlitische Consistorie van België [OP-3916]
+
+### Deploy notes
+```
+drc restart migrations-triggering-indexing
+```
+
 ## v1.41.5
 - Add the value politiecollege to the existing dropdown list beslissingsorgaan [DL-7473]
 - Bump construct-organization-relationships [DL-7473]
