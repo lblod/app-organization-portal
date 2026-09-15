@@ -1,0 +1,184 @@
+{
+  "version": "0.1",
+  "prefixes": {
+    "sioc": "http://rdfs.org/sioc/ns#",
+    "sioct": "http://rdfs.org/sioc/types#",
+    "as": "https://www.w3.org/ns/activitystreams#",
+    "dct": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "mu": "http://mu.semte.ch/vocabularies/core/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "org": "http://www.w3.org/ns/org#",
+    "besluit": "http://data.vlaanderen.be/ns/besluit#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "code": "http://lblod.data.gift/vocabularies/organisatie/"
+  },
+  "resources": {
+    "gebruikers": {
+      "class": "foaf:Person",
+      "attributes": {
+        "voornaam": {
+          "type": "string",
+          "predicate": "foaf:firstName"
+        },
+        "achternaam": {
+          "type": "string",
+          "predicate": "foaf:familyName"
+        }
+      },
+      "relationships": {
+        "account": {
+          "predicate": "foaf:account",
+          "target": "account",
+          "cardinality": "many"
+        },
+        "bestuurseenheden": {
+          "predicate": "foaf:member",
+          "target": "bestuurseenheden",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.lblod.info/id/gebruiker/"
+    },
+    "bestuurseenheden": {
+      "class": "besluit:Bestuurseenheid",
+      "attributes": {
+        "naam": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        }
+      },
+      "relationships": {
+        "classificatie": {
+          "predicate": "org:classification",
+          "target": "bestuurseenheid-classificatie-codes",
+          "cardinality": "one"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.lblod.info/id/bestuurseenheden/"
+    },
+    "bestuurseenheid-classificatie-codes": {
+      "class": "code:BestuurseenheidClassificatieCode",
+      "attributes": {
+        "label": {
+          "type": "string",
+          "predicate": "skos:prefLabel"
+        },
+        "scope-note": {
+          "type": "string",
+          "predicate": "skos:scopeNote"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/"
+    },
+    "chat-conversations": {
+      "name": "chat-conversation",
+      "class": "sioc:Thread",
+      "attributes": {
+        "title": {
+          "type": "string",
+          "predicate": "dct:title"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        },
+        "last-activity": {
+          "type": "datetime",
+          "predicate": "sioc:last_activity_date"
+        }
+      },
+      "relationships": {
+        "creator": {
+          "predicate": "foaf:maker",
+          "target": "gebruikers",
+          "cardinality": "one"
+        },
+        "messages": {
+          "predicate": "sioc:has_container",
+          "target": "chat-message",
+          "cardinality": "many",
+          "inverse": true
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.lblod.info/id/chat-conversations/"
+    },
+    "chat-messages": {
+      "name": "chat-message",
+      "class": "sioc:Post",
+      "attributes": {
+        "content": {
+          "type": "string",
+          "predicate": "sioc:content"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "dct:created"
+        },
+        "maker": {
+          "type": "uri",
+          "predicate": "foaf:maker"
+        }
+      },
+      "relationships": {
+        "conversation": {
+          "predicate": "sioc:has_container",
+          "target": "chat-conversation",
+          "cardinality": "one"
+        },
+        "attachments": {
+          "predicate": "as:attachment",
+          "target": "chat-documents",
+          "cardinality": "many"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.lblod.info/id/chat-messages/"
+    },
+    "chat-instant-messages": {
+      "name": "chat-instant-message",
+      "class": "sioct:InstantMessage",
+      "super": ["chat-message"],
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.lblod.info/id/chat-messages/"
+    },
+    "chat-documents": {
+      "class": "as:Document",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "as:name"
+        },
+        "media-type": {
+          "type": "string",
+          "predicate": "as:mediaType"
+        },
+        "url": {
+          "type": "string",
+          "predicate": "as:url"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.lblod.info/id/chat-documents/"
+    },
+    "chat-agents": {
+      "class": "prov:SoftwareAgent",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "foaf:name"
+        },
+        "description": {
+          "type": "string",
+          "predicate": "dct:description"
+        }
+      },
+      "features": ["include-uri"],
+      "new-resource-base": "http://data.lblod.info/id/chat-agents/"
+    }
+  }
+}

@@ -1,0 +1,433 @@
+# Profiel "Erediensten": eredienstbestuurseenheden (besturen van de
+# eredienst, centrale besturen), representatieve organen, eredienst-
+# mandatarissen, bedienaren (ministers) met hun posities, voorwaarden
+# en financiering, betrokken lokale besturen.
+#
+# Bron: config/resources/domain.json is de autoriteit (worship-
+# administrative-units, worship-services, central-worship-services,
+# representative-bodies, worship-mandatories, ministers,
+# minister-positions, minister-conditions en de bijhorende codes),
+# aangevuld met de contact- en mandaatvelden van de oudertypes.
+#
+# Datatypes volgen de resource-config (number → xsd:decimal,
+# datetime → xsd:dateTime, boolean → xsd:boolean). De triplestore stond
+# niet aan tijdens het opstellen; waar de data afwijkt wint later de data.
+#
+# Niet opgenomen (geen rapportvelden): harvest-velden en vendor-relaties.
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix adres:   <https://data.vlaanderen.be/ns/adres#> .
+@prefix schema:  <http://schema.org/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix persoon: <http://data.vlaanderen.be/ns/persoon#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#> .
+@prefix generiek: <http://data.vlaanderen.be/ns/generiek#> .
+@prefix lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/> .
+@prefix ch:      <http://data.lblod.info/vocabularies/contacthub/> .
+@prefix ere:     <http://data.lblod.info/vocabularies/erediensten/> .
+@prefix code:    <http://lblod.data.gift/vocabularies/organisatie/> .
+@prefix regorg:  <http://www.w3.org/ns/regorg#> .
+@prefix ext:     <http://mu.semte.ch/vocabularies/ext/> .
+@prefix geo:     <http://www.opengis.net/ont/geosparql#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix ent:     <http://data.lblod.info/id/report-entities/> .
+
+<http://data.lblod.info/id/report-profiles/erediensten>
+  a owl:Ontology ;
+  dct:title "Erediensten" ;
+  sh:prefixes [
+    sh:declare [ sh:prefix "ere"      ; sh:namespace "http://data.lblod.info/vocabularies/erediensten/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "mandaat"  ; sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "besluit"  ; sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "org"      ; sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "persoon"  ; sh:namespace "http://data.vlaanderen.be/ns/persoon#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "person"   ; sh:namespace "http://www.w3.org/ns/person#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "foaf"     ; sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "skos"     ; sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "schema"   ; sh:namespace "http://schema.org/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "ch"       ; sh:namespace "http://data.lblod.info/vocabularies/contacthub/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "code"     ; sh:namespace "http://lblod.data.gift/vocabularies/organisatie/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "ext"      ; sh:namespace "http://mu.semte.ch/vocabularies/ext/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "regorg"   ; sh:namespace "http://www.w3.org/ns/regorg#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "geo"      ; sh:namespace "http://www.opengis.net/ont/geosparql#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "generiek" ; sh:namespace "http://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "lblodlg"  ; sh:namespace "http://data.lblod.info/vocabularies/leidinggevenden/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "dct"      ; sh:namespace "http://purl.org/dc/terms/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "rdfs"     ; sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "xsd"      ; sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ] ;
+  ] .
+
+ent:EredienstBestuurseenheid
+  a sh:NodeShape ;
+  rdfs:label "eredienstbestuurseenheid" ;
+  sh:targetClass ere:EredienstBestuurseenheid ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path skos:altLabel ; sh:name "andere naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path regorg:legalName ; sh:name "juridische naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path org:classification ; sh:name "soort bestuur" ;
+                sh:node ent:BestuurseenheidClassificatie ] ;
+  sh:property [ sh:path regorg:orgStatus ; sh:name "organisatiestatus" ;
+                sh:node ent:OrganisatieStatus ] ;
+  sh:property [ sh:path ere:typeEredienst ; sh:name "type eredienst" ;
+                sh:description "Bv. rooms-katholiek, anglicaans, ..." ;
+                sh:node ent:TypeEredienst ] ;
+  sh:property [ sh:path besluit:werkingsgebied ; sh:name "werkingsgebied" ;
+                sh:node ent:Werkingsgebied ] ;
+  sh:property [ sh:path geo:sfWithin ; sh:name "ligt in" ;
+                sh:node ent:Werkingsgebied ] ;
+  sh:property [ sh:path [ sh:inversePath besluit:bestuurt ] ; sh:name "bestuursorganen" ;
+                sh:description "De bestuursorganen van deze eredienst" ;
+                sh:node ent:Bestuursorgaan ] ;
+  sh:property [ sh:path ere:wordtBediendDoor ; sh:name "wordt bediend door" ;
+                sh:description "De posities waarop bedienaren deze eredienst bedienen" ;
+                sh:node ent:PositieBedienaar ] ;
+  sh:property [ sh:path ere:betrokkenBestuur ; sh:name "betrokken lokale besturen" ;
+                sh:description "De lokale besturen waarin deze eredienst betrokken is" ;
+                sh:node ent:BetrokkenLokaleBesturen ] ;
+  sh:property [ sh:path [ sh:inversePath org:organization ] ; sh:name "is betrokken bij" ;
+                sh:description "De betrokkenheden waar deze eredienst het eredienstbestuur van is" ;
+                sh:node ent:BetrokkenLokaleBesturen ] .
+
+ent:BestuurVanDeEredienst
+  a sh:NodeShape ;
+  rdfs:label "bestuur van de eredienst" ;
+  sh:targetClass ere:BestuurVanDeEredienst ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path regorg:legalName ; sh:name "juridische naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path org:classification ; sh:name "soort bestuur" ;
+                sh:node ent:BestuurseenheidClassificatie ] ;
+  sh:property [ sh:path regorg:orgStatus ; sh:name "organisatiestatus" ;
+                sh:node ent:OrganisatieStatus ] ;
+  sh:property [ sh:path ere:typeEredienst ; sh:name "type eredienst" ;
+                sh:node ent:TypeEredienst ] ;
+  sh:property [ sh:path ere:denominatie ; sh:name "denominatie" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path ere:grensoverschrijdend ; sh:name "grensoverschrijdend" ;
+                sh:description "Of het bestuur over de landsgrens werkt" ;
+                sh:datatype xsd:boolean ] ;
+  sh:property [ sh:path besluit:werkingsgebied ; sh:name "werkingsgebied" ;
+                sh:node ent:Werkingsgebied ] ;
+  sh:property [ sh:path [ sh:inversePath besluit:bestuurt ] ; sh:name "bestuursorganen" ;
+                sh:node ent:Bestuursorgaan ] ;
+  sh:property [ sh:path ere:wordtBediendDoor ; sh:name "wordt bediend door" ;
+                sh:node ent:PositieBedienaar ] ;
+  sh:property [ sh:path ere:betrokkenBestuur ; sh:name "betrokken lokale besturen" ;
+                sh:node ent:BetrokkenLokaleBesturen ] .
+
+ent:CentraalBestuurVanDeEredienst
+  a sh:NodeShape ;
+  rdfs:label "centraal bestuur van de eredienst" ;
+  sh:targetClass ere:CentraalBestuurVanDeEredienst ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path regorg:legalName ; sh:name "juridische naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path org:classification ; sh:name "soort bestuur" ;
+                sh:node ent:BestuurseenheidClassificatie ] ;
+  sh:property [ sh:path regorg:orgStatus ; sh:name "organisatiestatus" ;
+                sh:node ent:OrganisatieStatus ] ;
+  sh:property [ sh:path ere:typeEredienst ; sh:name "type eredienst" ;
+                sh:node ent:TypeEredienst ] ;
+  sh:property [ sh:path besluit:werkingsgebied ; sh:name "werkingsgebied" ;
+                sh:node ent:Werkingsgebied ] ;
+  sh:property [ sh:path [ sh:inversePath besluit:bestuurt ] ; sh:name "bestuursorganen" ;
+                sh:node ent:Bestuursorgaan ] ;
+  sh:property [ sh:path ere:wordtBediendDoor ; sh:name "wordt bediend door" ;
+                sh:node ent:PositieBedienaar ] .
+
+ent:RepresentatiefOrgaan
+  a sh:NodeShape ;
+  rdfs:label "representatief orgaan" ;
+  sh:targetClass ere:RepresentatiefOrgaan ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path org:classification ; sh:name "classificatie" ;
+                sh:node ent:RepresentatiefOrgaanClassificatie ] ;
+  sh:property [ sh:path ere:typeEredienst ; sh:name "type eredienst" ;
+                sh:node ent:TypeEredienst ] ;
+  sh:property [ sh:path [ sh:inversePath ere:behoort ] ; sh:name "bedienaren" ;
+                sh:description "De posities van bedienaren die bij dit orgaan horen" ;
+                sh:node ent:PositieBedienaar ] .
+
+ent:RepresentatiefOrgaanClassificatie
+  a sh:NodeShape ;
+  rdfs:label "representatief orgaan classificatie" ;
+  sh:targetClass ext:RepresentatiefOrgaanClassificatieCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path skos:altLabel ; sh:name "andere naam" ;
+                sh:datatype xsd:string ] .
+
+ent:TypeEredienst
+  a sh:NodeShape ;
+  rdfs:label "type eredienst" ;
+  sh:targetClass code:TypeEredienst ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:BestuurseenheidClassificatie
+  a sh:NodeShape ;
+  rdfs:label "soort bestuur" ;
+  sh:targetClass code:BestuurseenheidClassificatieCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:OrganisatieStatus
+  a sh:NodeShape ;
+  rdfs:label "organisatiestatus" ;
+  sh:targetClass code:OrganisatieStatusCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:Werkingsgebied
+  a sh:NodeShape ;
+  rdfs:label "werkingsgebied" ;
+  sh:targetClass prov:Location ;
+  sh:property [ sh:path rdfs:label ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path ext:werkingsgebiedNiveau ; sh:name "niveau" ;
+                sh:datatype xsd:string ] .
+
+ent:Bestuursorgaan
+  a sh:NodeShape ;
+  rdfs:label "bestuursorgaan" ;
+  sh:targetClass besluit:Bestuursorgaan ;
+  sh:property [ sh:path mandaat:bindingStart ; sh:name "binding start" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path mandaat:bindingEinde ; sh:name "binding einde" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path org:classification ; sh:name "soort bestuursorgaan" ;
+                sh:node ent:BestuursorgaanClassificatie ] ;
+  sh:property [ sh:path besluit:bestuurt ; sh:name "bestuurt" ;
+                sh:node ent:EredienstBestuurseenheid ] ;
+  sh:property [ sh:path generiek:isTijdspecialisatieVan ; sh:name "is tijdspecialisatie van" ;
+                sh:node ent:Bestuursorgaan ] ;
+  sh:property [ sh:path [ sh:inversePath generiek:isTijdspecialisatieVan ] ; sh:name "heeft tijdsspecialisaties" ;
+                sh:node ent:Bestuursorgaan ] ;
+  sh:property [ sh:path org:hasPost ; sh:name "bevat mandaat" ;
+                sh:node ent:Mandaat ] .
+
+ent:BestuursorgaanClassificatie
+  a sh:NodeShape ;
+  rdfs:label "soort bestuursorgaan" ;
+  sh:targetClass code:BestuursorgaanClassificatieCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:Mandaat
+  a sh:NodeShape ;
+  rdfs:label "mandaat" ;
+  sh:targetClass mandaat:Mandaat ;
+  sh:property [ sh:path mandaat:aantalHouders ; sh:name "aantal houders" ;
+                sh:datatype xsd:decimal ] ;
+  sh:property [ sh:path org:role ; sh:name "bestuursfunctie" ;
+                sh:node ent:BestuursfunctieCode ] ;
+  sh:property [ sh:path [ sh:inversePath org:hasPost ] ; sh:name "zit in bestuursorgaan" ;
+                sh:node ent:Bestuursorgaan ] ;
+  sh:property [ sh:path [ sh:inversePath org:holds ] ; sh:name "bekleders" ;
+                sh:node ent:EredienstMandataris ] .
+
+ent:BestuursfunctieCode
+  a sh:NodeShape ;
+  rdfs:label "bestuursfunctie" ;
+  sh:targetClass code:BestuursfunctieCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:EredienstMandataris
+  a sh:NodeShape ;
+  rdfs:label "eredienstmandataris" ;
+  sh:targetClass ere:EredienstMandataris ;
+  sh:property [ sh:path mandaat:start ; sh:name "start" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path mandaat:einde ; sh:name "einde" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path ere:geplandeEinddatumAanstelling ; sh:name "geplande einddatum aanstelling" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path ere:redenVanStopzetting ; sh:name "reden van stopzetting" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path mandaat:status ; sh:name "status" ;
+                sh:node ent:MandatarisStatus ] ;
+  sh:property [ sh:path ere:typeHelft ; sh:name "type helft" ;
+                sh:description "Bv. eerste helft, tweede helft van de bestuursperiode" ;
+                sh:node ent:HelftVerkiezing ] ;
+  sh:property [ sh:path mandaat:isBestuurlijkeAliasVan ; sh:name "persoon" ;
+                sh:node ent:Persoon ] ;
+  sh:property [ sh:path org:holds ; sh:name "bekleedt mandaat" ;
+                sh:node ent:Mandaat ] ;
+  sh:property [ sh:path schema:contactPoint ; sh:name "contact" ;
+                sh:node ent:ContactPunt ] .
+
+ent:MandatarisStatus
+  a sh:NodeShape ;
+  rdfs:label "status" ;
+  sh:targetClass code:MandatarisStatusCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:HelftVerkiezing
+  a sh:NodeShape ;
+  rdfs:label "helft verkiezing" ;
+  sh:targetClass code:HelftVerkiezing ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:Persoon
+  a sh:NodeShape ;
+  rdfs:label "persoon" ;
+  sh:targetClass person:Person ;
+  sh:property [ sh:path foaf:givenName ; sh:name "voornaam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path foaf:familyName ; sh:name "achternaam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path persoon:gebruikteVoornaam ; sh:name "gebruikte voornaam" ;
+                sh:datatype xsd:string ] .
+
+ent:PositieBedienaar
+  a sh:NodeShape ;
+  rdfs:label "positie" ;
+  sh:targetClass ere:PositieBedienaar ;
+  sh:property [ sh:path ere:functie ; sh:name "functie" ;
+                sh:description "Het beroep van de bedienaar, bv. pastoor, imam" ;
+                sh:node ent:EredienstBeroep ] ;
+  sh:property [ sh:path [ sh:inversePath org:holds ] ; sh:name "bedienaren" ;
+                sh:description "De bedienaren die deze positie bekleden" ;
+                sh:node ent:Bedienaar ] ;
+  sh:property [ sh:path [ sh:inversePath ere:wordtBediendDoor ] ; sh:name "eredienstbestuur" ;
+                sh:description "Het eredienstbestuur dat door deze positie bediend wordt" ;
+                sh:node ent:EredienstBestuurseenheid ] ;
+  sh:property [ sh:path ere:behoort ; sh:name "representatief orgaan" ;
+                sh:node ent:RepresentatiefOrgaan ] .
+
+ent:EredienstBeroep
+  a sh:NodeShape ;
+  rdfs:label "beroep" ;
+  sh:targetClass code:EredienstBeroepen ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path ere:vanToepassingBijStatus ; sh:name "van toepassing bij status" ;
+                sh:description "De organisatiestatussen waarbij dit beroep voorkomt" ;
+                sh:node ent:OrganisatieStatus ] .
+
+ent:Bedienaar
+  a sh:NodeShape ;
+  rdfs:label "bedienaar" ;
+  sh:targetClass ere:RolBedienaar ;
+  sh:property [ sh:path ch:startdatum ; sh:name "startdatum" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path ch:eindedatum ; sh:name "eindedatum" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path org:holds ; sh:name "bekleedt positie" ;
+                sh:description "De functiepositie die de bedienaar bekleedt" ;
+                sh:node ent:PositieBedienaar ] ;
+  sh:property [ sh:path ere:financiering ; sh:name "financiering" ;
+                sh:node ent:BedienaarFinancieringCode ] ;
+  sh:property [ sh:path ere:voldoetAan ; sh:name "voldoet aan" ;
+                sh:description "De voorwaarden waaraan de bedienaar voldoet" ;
+                sh:node ent:VoorwaardenBedienaar ] .
+
+ent:BedienaarFinancieringCode
+  a sh:NodeShape ;
+  rdfs:label "financiering" ;
+  sh:targetClass code:BedienaarFinancieringCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:VoorwaardenBedienaar
+  a sh:NodeShape ;
+  rdfs:label "voorwaarde" ;
+  sh:targetClass ere:VoorwaardenBedienaar ;
+  sh:property [ sh:path ere:voldaan ; sh:name "voldaan" ;
+                sh:datatype xsd:boolean ] ;
+  sh:property [ sh:path ere:criterium ; sh:name "criterium" ;
+                sh:node ent:VoorwaardenBedienaarCriterium ] ;
+  sh:property [ sh:path ere:criteriumbewijsstuktype ; sh:name "bewijsstuktype" ;
+                sh:node ent:BedienaarCriteriumBewijsstuk ] .
+
+ent:VoorwaardenBedienaarCriterium
+  a sh:NodeShape ;
+  rdfs:label "criterium" ;
+  sh:targetClass code:VoorwaardenBedienaarCriterium ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:BedienaarCriteriumBewijsstuk
+  a sh:NodeShape ;
+  rdfs:label "bewijsstuktype" ;
+  sh:targetClass code:BedienaarCriteriumBewijsstuk ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:BetrokkenLokaleBesturen
+  a sh:NodeShape ;
+  rdfs:label "betrokken lokale besturen" ;
+  sh:targetClass ere:BetrokkenLokaleBesturen ;
+  sh:property [ sh:path ere:financieringspercentage ; sh:name "financieringspercentage" ;
+                sh:datatype xsd:decimal ] ;
+  sh:property [ sh:path ere:typebetrokkenheid ; sh:name "type betrokkenheid" ;
+                sh:node ent:TypeBetrokkenheid ] ;
+  sh:property [ sh:path org:organization ; sh:name "eredienstbestuur" ;
+                sh:description "Het eredienstbestuur dat betrokken is" ;
+                sh:node ent:EredienstBestuurseenheid ] ;
+  sh:property [ sh:path [ sh:inversePath ere:betrokkenBestuur ] ; sh:name "bestuurseenheid" ;
+                sh:description "Het lokale bestuur waar de eredienst bij betrokken is" ;
+                sh:node ent:Bestuurseenheid ] .
+
+ent:TypeBetrokkenheid
+  a sh:NodeShape ;
+  rdfs:label "type betrokkenheid" ;
+  sh:targetClass code:TypeBetrokkenheid ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:Bestuurseenheid
+  a sh:NodeShape ;
+  rdfs:label "bestuurseenheid" ;
+  sh:targetClass besluit:Bestuurseenheid ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path org:classification ; sh:name "soort bestuur" ;
+                sh:node ent:BestuurseenheidClassificatie ] .
+
+ent:ContactPunt
+  a sh:NodeShape ;
+  rdfs:label "contactpunt" ;
+  sh:targetClass schema:ContactPoint ;
+  sh:property [ sh:path schema:email ; sh:name "email" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path schema:telephone ; sh:name "telefoon" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path schema:contactType ; sh:name "contactsoort" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path locn:address ; sh:name "adres" ;
+                sh:node ent:Adres ] .
+
+ent:Adres
+  a sh:NodeShape ;
+  rdfs:label "adres" ;
+  sh:targetClass locn:Address ;
+  sh:property [ sh:path locn:thoroughfare ; sh:name "straat" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path adres:Adresvoorstelling.huisnummer ; sh:name "huisnummer" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path adres:Adresvoorstelling.busnummer ; sh:name "busnummer" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path locn:postCode ; sh:name "postcode" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path adres:gemeentenaam ; sh:name "gemeente" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path adres:land ; sh:name "land" ;
+                sh:datatype xsd:string ] .

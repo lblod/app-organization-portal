@@ -1,0 +1,302 @@
+# Profiel "Mandaten": bestuursorganen (in tijd), mandaten,
+# bestuursfuncties, mandatarissen, functionarissen (leidinggevenden),
+# personen en hun contacten.
+#
+# Bron: config/resources/domain.json is de autoriteit (governing-bodies,
+# mandates, board-positions, mandatories, functionaries, people,
+# agents-in-position, posts en de status- en classificatiecodes).
+#
+# Datatypes volgen de resource-config (number → xsd:decimal,
+# datetime → xsd:dateTime). De triplestore stond niet aan tijdens het
+# opstellen; waar de data afwijkt wint later de data.
+#
+# Keten: bestuurseenheid <- bestuursorgaan ("bestuurt", omgekeerd) ->
+# bestuursorgaan in tijd (generiek:isTijdspecialisatieVan,
+# mandaat:bindingStart/-Einde) -> mandaat (org:hasPost) -> mandataris
+# (org:holds) -> persoon (mandaat:isBestuurlijkeAliasVan).
+#
+# Bestuursorgaan en bestuursorgaanInTijd delen besluit:Bestuursorgaan als
+# sh:targetClass; rep:discriminator houdt ze in de seed uit elkaar (een
+# orgaan in tijd heeft generiek:isTijdspecialisatieVan, een vast orgaan
+# heeft die niet). Een spec kiest er één met rep:entity.
+#
+# Niet opgenomen (geen rapportvelden): harvest-velden en vendor-relaties.
+# Een generiek org:Post (posts) deelt org:role met het mandaat; hier wint
+# de lezing van het mandaat (bestuursfunctie). De eredienst-varianten
+# (EredienstMandataris) staan in erediensten.ttl.
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix org:     <http://www.w3.org/ns/org#> .
+@prefix locn:    <http://www.w3.org/ns/locn#> .
+@prefix adres:   <https://data.vlaanderen.be/ns/adres#> .
+@prefix schema:  <http://schema.org/> .
+@prefix foaf:    <http://xmlns.com/foaf/0.1/> .
+@prefix persoon: <http://data.vlaanderen.be/ns/persoon#> .
+@prefix person:  <http://www.w3.org/ns/person#> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#> .
+@prefix generiek: <http://data.vlaanderen.be/ns/generiek#> .
+@prefix lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/> .
+@prefix ch:      <http://data.lblod.info/vocabularies/contacthub/> .
+@prefix code:    <http://lblod.data.gift/vocabularies/organisatie/> .
+@prefix ext:     <http://mu.semte.ch/vocabularies/ext/> .
+@prefix rep:     <http://mu.semte.ch/vocabularies/reporting/> .
+@prefix ent:     <http://data.lblod.info/id/report-entities/> .
+
+<http://data.lblod.info/id/report-profiles/mandaten>
+  a owl:Ontology ;
+  dct:title "Mandaten" ;
+  sh:prefixes [
+    sh:declare [ sh:prefix "mandaat"  ; sh:namespace "http://data.vlaanderen.be/ns/mandaat#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "besluit"  ; sh:namespace "http://data.vlaanderen.be/ns/besluit#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "org"      ; sh:namespace "http://www.w3.org/ns/org#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "generiek" ; sh:namespace "https://data.vlaanderen.be/ns/generiek#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "persoon"  ; sh:namespace "https://data.vlaanderen.be/ns/persoon#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "person"   ; sh:namespace "http://www.w3.org/ns/person#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "foaf"     ; sh:namespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "skos"     ; sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "schema"   ; sh:namespace "http://schema.org/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "lblodlg"  ; sh:namespace "http://data.lblod.info/vocabularies/leidinggevenden/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "ch"       ; sh:namespace "http://data.lblod.info/vocabularies/contacthub/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "code"     ; sh:namespace "http://lblod.data.gift/vocabularies/organisatie/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "ext"      ; sh:namespace "http://mu.semte.ch/vocabularies/ext/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "locn"     ; sh:namespace "http://www.w3.org/ns/locn#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "adres"    ; sh:namespace "https://data.vlaanderen.be/ns/adres#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "dct"      ; sh:namespace "http://purl.org/dc/terms/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "rdfs"     ; sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "xsd"      ; sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ] ;
+  ] .
+
+ent:Bestuursorgaan
+  a sh:NodeShape ;
+  rdfs:label "bestuursorgaan" ;
+  sh:targetClass besluit:Bestuursorgaan ;
+  rep:discriminator [ sh:path generiek:isTijdspecialisatieVan ; sh:maxCount 0 ] ;
+  sh:property [ sh:path besluit:bestuurt ; sh:name "bestuurt" ;
+                sh:description "De bestuurseenheid die door dit orgaan bestuurd wordt" ;
+                sh:node ent:Bestuurseenheid ] ;
+  sh:property [ sh:path org:classification ; sh:name "soort bestuursorgaan" ;
+                sh:description "Bv. gemeenteraad, college van burgemeester en schepenen" ;
+                sh:node ent:BestuursorgaanClassificatie ] ;
+  sh:property [ sh:path [ sh:inversePath generiek:isTijdspecialisatieVan ] ; sh:name "heeft tijdsspecialisaties" ;
+                sh:description "De organen in tijd die bij dit vaste orgaan horen" ;
+                sh:node ent:BestuursorgaanInTijd ] .
+
+ent:BestuursorgaanInTijd
+  a sh:NodeShape ;
+  rdfs:label "bestuursorgaanInTijd" ;
+  sh:targetClass besluit:Bestuursorgaan ;
+  rep:discriminator [ sh:path generiek:isTijdspecialisatieVan ; sh:minCount 1 ] ;
+  sh:property [ sh:path mandaat:bindingStart ; sh:name "binding start" ;
+                sh:description "Start van de bestuursperiode; orgaan in tijd" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path mandaat:bindingEinde ; sh:name "binding einde" ;
+                sh:description "Einde van de bestuursperiode; orgaan in tijd" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ; sh:name "is tijdspecialisatie van" ;
+                sh:description "Het vaste orgaan waarvan dit orgaan in tijd een periode is" ;
+                sh:node ent:Bestuursorgaan ] ;
+  sh:property [ sh:path org:hasPost ; sh:name "bevat mandaat" ;
+                sh:description "De mandaten die dit orgaan bevat" ;
+                sh:node ent:Mandaat ] ;
+  sh:property [ sh:path lblodlg:heeftBestuursfunctie ; sh:name "bevat bestuursfunctie" ;
+                sh:description "De leidinggevende functies van dit orgaan, bv. secretaris" ;
+                sh:node ent:LeidinggevendeBestuursfunctie ] .
+
+ent:BestuursorgaanClassificatie
+  a sh:NodeShape ;
+  rdfs:label "soort bestuursorgaan" ;
+  sh:targetClass code:BestuursorgaanClassificatieCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path ext:appliesWithin ; sh:name "geldt binnen" ;
+                sh:description "De soorten bestuur waarbinnen deze orgaanclassificatie voorkomt" ;
+                sh:node ent:BestuurseenheidClassificatie ] .
+
+ent:BestuurseenheidClassificatie
+  a sh:NodeShape ;
+  rdfs:label "soort bestuur" ;
+  sh:targetClass code:BestuurseenheidClassificatieCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:Bestuurseenheid
+  a sh:NodeShape ;
+  rdfs:label "bestuurseenheid" ;
+  sh:targetClass besluit:Bestuurseenheid ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path org:classification ; sh:name "soort bestuur" ;
+                sh:node ent:BestuurseenheidClassificatie ] ;
+  sh:property [ sh:path [ sh:inversePath besluit:bestuurt ] ; sh:name "bestuursorganen" ;
+                sh:description "De bestuursorganen van deze bestuurseenheid" ;
+                sh:node ent:Bestuursorgaan ] .
+
+ent:Mandaat
+  a sh:NodeShape ;
+  rdfs:label "mandaat" ;
+  sh:targetClass mandaat:Mandaat ;
+  sh:property [ sh:path mandaat:aantalHouders ; sh:name "aantal houders" ;
+                sh:description "Aantal mandatarissen dat het mandaat kan hebben" ;
+                sh:datatype xsd:decimal ] ;
+  sh:property [ sh:path org:role ; sh:name "bestuursfunctie" ;
+                sh:description "De functie waarvoor het mandaat geldt, bv. burgemeester" ;
+                sh:node ent:BestuursfunctieCode ] ;
+  sh:property [ sh:path [ sh:inversePath org:hasPost ] ; sh:name "zit in bestuursorgaan" ;
+                sh:description "Het bestuursorgaan (in tijd) dat dit mandaat bevat" ;
+                sh:node ent:BestuursorgaanInTijd ] ;
+  sh:property [ sh:path [ sh:inversePath org:holds ] ; sh:name "bekleders" ;
+                sh:description "De mandatarissen die dit mandaat bekleden" ;
+                sh:node ent:Mandataris ] .
+
+ent:BestuursfunctieCode
+  a sh:NodeShape ;
+  rdfs:label "bestuursfunctie" ;
+  sh:targetClass code:BestuursfunctieCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path ext:appliesTo ; sh:name "geldt voor" ;
+                sh:description "De orgaanclassificaties waarop deze functie van toepassing is" ;
+                sh:node ent:BestuursorgaanClassificatie ] .
+
+ent:Mandataris
+  a sh:NodeShape ;
+  rdfs:label "mandataris" ;
+  sh:targetClass mandaat:Mandataris ;
+  sh:property [ sh:path mandaat:start ; sh:name "start" ;
+                sh:description "Start van de aanstelling" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path mandaat:einde ; sh:name "einde" ;
+                sh:description "Einde van de aanstelling" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path mandaat:status ; sh:name "status" ;
+                sh:description "Status van de mandataris, bv. effectief, verhindering" ;
+                sh:node ent:MandatarisStatus ] ;
+  sh:property [ sh:path mandaat:isBestuurlijkeAliasVan ; sh:name "persoon" ;
+                sh:description "De persoon achter de mandataris" ;
+                sh:node ent:Persoon ] ;
+  sh:property [ sh:path org:holds ; sh:name "bekleedt mandaat" ;
+                sh:description "Het mandaat dat de mandataris bekleedt" ;
+                sh:node ent:Mandaat ] ;
+  sh:property [ sh:path schema:contactPoint ; sh:name "contact" ;
+                sh:node ent:ContactPunt ] .
+
+ent:MandatarisStatus
+  a sh:NodeShape ;
+  rdfs:label "status" ;
+  sh:targetClass code:MandatarisStatusCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:LeidinggevendeBestuursfunctie
+  a sh:NodeShape ;
+  rdfs:label "bestuursfunctie" ;
+  sh:targetClass lblodlg:Bestuursfunctie ;
+  sh:property [ sh:path org:role ; sh:name "functie" ;
+                sh:description "De leidinggevende functie, bv. secretaris, financieel directeur" ;
+                sh:node ent:BestuursfunctieCode ] ;
+  sh:property [ sh:path schema:contactPoint ; sh:name "contact" ;
+                sh:node ent:ContactPunt ] ;
+  sh:property [ sh:path [ sh:inversePath lblodlg:heeftBestuursfunctie ] ; sh:name "in bestuursorgaan" ;
+                sh:description "Het bestuursorgaan waar deze functie bij hoort" ;
+                sh:node ent:Bestuursorgaan ] .
+
+ent:Functionaris
+  a sh:NodeShape ;
+  rdfs:label "functionaris" ;
+  sh:targetClass lblodlg:Functionaris ;
+  sh:property [ sh:path mandaat:start ; sh:name "start" ;
+                sh:description "Start van de aanstelling" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path mandaat:einde ; sh:name "einde" ;
+                sh:description "Einde van de aanstelling" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path mandaat:status ; sh:name "status" ;
+                sh:node ent:FunctionarisStatus ] ;
+  sh:property [ sh:path mandaat:isBestuurlijkeAliasVan ; sh:name "persoon" ;
+                sh:description "De persoon achter de functionaris" ;
+                sh:node ent:Persoon ] ;
+  sh:property [ sh:path org:holds ; sh:name "bekleedt bestuursfunctie" ;
+                sh:description "De leidinggevende functie die de functionaris bekleedt" ;
+                sh:node ent:LeidinggevendeBestuursfunctie ] .
+
+ent:FunctionarisStatus
+  a sh:NodeShape ;
+  rdfs:label "status" ;
+  sh:targetClass lblodlg:FunctionarisStatusCode ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] .
+
+ent:Persoon
+  a sh:NodeShape ;
+  rdfs:label "persoon" ;
+  sh:targetClass person:Person ;
+  sh:property [ sh:path foaf:givenName ; sh:name "voornaam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path foaf:familyName ; sh:name "achternaam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path persoon:gebruikteVoornaam ; sh:name "gebruikte voornaam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path [ sh:inversePath mandaat:isBestuurlijkeAliasVan ] ; sh:name "mandatarissen" ;
+                sh:description "De mandatarissen van deze persoon" ;
+                sh:node ent:Mandataris ] ;
+  sh:property [ sh:path [ sh:inversePath mandaat:isBestuurlijkeAliasVan ] ; sh:name "functionarissen" ;
+                sh:description "De leidinggevende functies van deze persoon" ;
+                sh:node ent:Functionaris ] ;
+  sh:property [ sh:path [ sh:inversePath org:heldBy ] ; sh:name "posities" ;
+                sh:description "De posities (agent-in-positie) van deze persoon" ;
+                sh:node ent:AgentInPositie ] .
+
+ent:AgentInPositie
+  a sh:NodeShape ;
+  rdfs:label "agent in positie" ;
+  sh:targetClass ch:AgentInPositie ;
+  sh:property [ sh:path ch:startdatum ; sh:name "startdatum" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path ch:eindedatum ; sh:name "eindedatum" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path org:heldBy ; sh:name "persoon" ;
+                sh:node ent:Persoon ] ;
+  sh:property [ sh:path schema:contactPoint ; sh:name "contact" ;
+                sh:node ent:ContactPunt ] .
+
+ent:ContactPunt
+  a sh:NodeShape ;
+  rdfs:label "contactpunt" ;
+  sh:targetClass schema:ContactPoint ;
+  sh:property [ sh:path schema:email ; sh:name "email" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path schema:telephone ; sh:name "telefoon" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path schema:faxNumber ; sh:name "fax" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path foaf:page ; sh:name "website" ;
+                sh:description "URI van de website" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path schema:contactType ; sh:name "contactsoort" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path locn:address ; sh:name "adres" ;
+                sh:node ent:Adres ] .
+
+ent:Adres
+  a sh:NodeShape ;
+  rdfs:label "adres" ;
+  sh:targetClass locn:Address ;
+  sh:property [ sh:path locn:thoroughfare ; sh:name "straat" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path adres:Adresvoorstelling.huisnummer ; sh:name "huisnummer" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path adres:Adresvoorstelling.busnummer ; sh:name "busnummer" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path locn:postCode ; sh:name "postcode" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path adres:gemeentenaam ; sh:name "gemeente" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path adres:land ; sh:name "land" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path locn:fullAddress ; sh:name "volledig adres" ;
+                sh:datatype xsd:string ] .
