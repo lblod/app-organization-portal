@@ -34,7 +34,7 @@ drc restart migrations search
 drc up -d frontend
 ```
 
-## v1.41.6 (to be released)
+## v1.41.6
 - Change KBO-nr for Centraal Israëlitische Consistorie van België [OP-3916]
 
 ### Deploy notes
