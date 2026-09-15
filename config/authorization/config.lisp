@@ -56,6 +56,9 @@
     :reporting "http://lblod.data.gift/vocabularies/reporting/"
     :oslc "http://open-services.net/ns/core#"
     :cogs "http://vocab.deri.ie/cogs#"
+    :sioc "http://rdfs.org/sioc/ns#"
+    :sioct "http://rdfs.org/sioc/types#"
+    :as "https://www.w3.org/ns/activitystreams#"
   )
 
 (type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
@@ -220,7 +223,8 @@
   ("code:EredienstBeroepen" -> _)
   ("code:Rechtsvormtype" -> _)
   ("prov:Location" -> _)
-  ("code:BijkomendeKwalificatieCode" -> _))
+  ("code:BijkomendeKwalificatieCode" -> _)
+  ("prov:SoftwareAgent" -> _))
 
 (define-graph shared ("http://mu.semte.ch/graphs/shared")
   ("foaf:Image" -> _)
@@ -265,6 +269,22 @@
   ("cogs:Job" -> _)
   ("nfo:DataContainer" -> _)
   ("nfo:FileDataObject" -> _))
+
+;; Chat: one graph per account, only its owner reads or writes it.
+;; The four chat types appear in no other group: a graph-less insert lands
+;; in every graph whose group allows the type.
+(define-graph chat ("http://mu.semte.ch/graphs/users/")
+  ("reporting:Report" -> _)
+  ("oslc:Error" -> _)
+  ("nfo:DataContainer" -> _)
+  ("nfo:FileDataObject" -> _)
+  ("cogs:Job" -> _)
+  ("nfo:DataContainer" -> _)
+  ("nfo:FileDataObject" -> _)
+  ("sioc:Thread" -> _)
+  ("sioc:Post" -> _)
+  ("sioct:InstantMessage" -> _)
+  ("as:Document" -> _))
 
 (supply-allowed-group "public")
 
@@ -336,12 +356,20 @@
       FILTER( ?session_role = \"ABBOrganisatiePortaalErediensten-beheerder\" )
     }")
 
+(supply-allowed-group "chat-owner"
+  :parameters ("session_account")
+  :query "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    SELECT DISTINCT ?session_account WHERE {
+      <SESSION_ID> session:account/mu:uuid ?session_account.
+    }")
+
 (grant (read)
   :to-graph (acmidm-lezer acmidm-vendor)
   :for-allowed-group "ABBOrganisatiePortaalGebruiker-lezer")
 
 (grant (read write)
-  :to-graph (acmidm-editeerder acmidm-vendor)
+  :to-graph (acmidm-editeerder acmidm-vendor chat)
   :for-allowed-group "ABBOrganisatiePortaalGebruiker-editeerder")
 
 (grant (read write)
@@ -367,3 +395,7 @@
 (grant (read write)
   :to-graph (reports jobs system-jobs)
   :for-allowed-group "o-admin-rwf")
+
+(grant (read write)
+  :to-graph (chat)
+  :for-allowed-group "chat-owner")
