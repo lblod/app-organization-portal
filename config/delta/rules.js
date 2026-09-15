@@ -199,6 +199,27 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true
     }
+  },
+  // The chat's data (per-user graphs) is written straight to the store by
+  // the natural-language-report service, so mu-cl-resources only sees it
+  // fresh when a delta clears its caches.
+  {
+    match: {
+      subject: {}
+    },
+    callback: {
+      url: 'http://resource/.mu/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 250,
+      ignoreFromSelf: true,
+      optOutMuScopeIds: [
+        "http://redpencil.data.gift/id/concept/muScope/deltas/initialSync",
+        "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data"
+      ]
+    }
   }
 /*
   Commenting ldes rules until ready to go to qa/prod. In the meantime, we override the configuration on dev.

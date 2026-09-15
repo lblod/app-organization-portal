@@ -684,6 +684,43 @@ services:
     restart: always
     logging: *default-logging
 
+  ################################################################################
+  # CHAT / NATURAL LANGUAGE REPORTS
+  ################################################################################
+  natural-language-report:
+    image: lblod/natural-language-report-service:0.1.0
+    build: ../natural-language-report-service/
+    volumes:
+      - ./data/files:/share
+      - ./config/report-profiles/:/config/profiles/
+    environment:
+      MU_SPARQL_ENDPOINT: "http://db:8890/sparql"
+      CSV_SEPARATOR: ";"
+      SUBJECT_CHUNK_SIZE: "100"
+      ROW_LIMIT: "200000"
+      MAX_PATH_DEPTH: "8"
+      # The chat's turn answers in the background; full-organisation runs
+      # easily outgrow a minute.
+      RUN_TIMEOUT: "300"
+      INLINE_VALUES_MAX: "50"
+      VALUES_TTL: "3600"
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  chat:
+    image: lblod/frontend-lblod-chat:0.1.0
+    build: ../frontend-lblod-chat/
+    links:
+      - identifier:backend
+    environment:
+      EMBER_ASSISTANT_PATH: "/assistant"
+      EMBER_APP_NAME: "Rapportassistent"
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+
   ###################################################################################
   # MU SCRIPTS
   # #################################################################################

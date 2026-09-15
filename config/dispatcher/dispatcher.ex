@@ -248,6 +248,47 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://resource/kbo-organizations/")
   end
 
+  ###############################################################
+  # CHAT
+  # To the resource service, not the cache: the data is per user and
+  # changes every few seconds.
+  ###############################################################
+
+  match "/chat-conversations/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-conversations/")
+  end
+
+  match "/chat-messages/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-messages/")
+  end
+
+  match "/chat-instant-messages/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-instant-messages/")
+  end
+
+  match "/chat-documents/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-documents/")
+  end
+
+  match "/chat-agents/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-agents/")
+  end
+
+  # The chat frontend's login screens speak the gebruiker/bestuurseenheid
+  # resource names (frontend-lblod-chat, used verbatim). The same data as
+  # /users and /groups, seen through the loket naming.
+  match "/gebruikers/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/gebruikers/")
+  end
+
+  match "/bestuurseenheden/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/bestuurseenheden/")
+  end
+
+  match "/bestuurseenheid-classificatie-codes/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://cache/bestuurseenheid-classificatie-codes/")
+  end
+
   # Dashboard
   match "/jobs/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://cache/jobs/")
@@ -418,6 +459,15 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # CHAT ASSISTANT
+  # The chat's turn endpoint: POST /assistant/conversations/:id/turns
+  #################################################################
+
+  match "/assistant/*path" do
+    forward(conn, path, "http://natural-language-report/assistant/")
+  end
+
+  #################################################################
   # FILES
   #################################################################
 
@@ -489,6 +539,20 @@ defmodule Dispatcher do
     # *_path allows a path to be supplied, but will not yield
     # an error that we don't use the path variable.
     forward conn, [], "http://frontend-dashboard/index.html"
+  end
+
+  # The chat frontend (frontend-lblod-chat). Hosted on the "chat"
+  # subdomain (reverse_host), so the SPA stays a separate app.
+  get "/assets/*path", %{ reverse_host: ["chat" | _rest], layer: :api } do
+    forward conn, path, "http://chat/assets/"
+  end
+
+  get "/@appuniversum/*path", %{ reverse_host: ["chat" | _rest], layer: :api } do
+    forward conn, path, "http://chat/@appuniversum/"
+  end
+
+  match "/*_path", %{ reverse_host: ["chat" | _rest], layer: :api, accept: [:html] } do
+    forward conn, [], "http://chat/index.html"
   end
 
   match "/assets/*path", %{layer: :api} do
