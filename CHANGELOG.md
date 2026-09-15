@@ -37,7 +37,7 @@
 - Added "Wijziging werkingsgebied" change event [OP-3905]
 - Frontend [v1.43.0](https://github.com/lblod/frontend-organization-portal/blob/v1.43.0/CHANGELOG.md)
 - Add "Bijkomende kwalificatie" (with "Rechtsgrond" and "Definitie") codelist and organization relationship [OP-3902]
-- Added "Wijziging bijkomende kwalificatie" change event [OP-3907]
+- Added "Wijziging bijkomende kwalificatie(s)" change event [OP-3907]
 
 ### Deploy notes
 ```
