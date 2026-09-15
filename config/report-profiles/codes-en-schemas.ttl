@@ -1,0 +1,61 @@
+# Profiel "Codes en schemas": skos:Concept en skos:ConceptScheme.
+# De codelijsten van de andere profielen zijn skos:Concept-instanties die bij
+# een schema horen via skos:inScheme. Met dit profiel kan de LLM een schema
+# opzoeken en de concepten eruit tonen (bijvoorbeeld om een filterwaarde te
+# kiezen). De andere profielen verwijzen naar ent:Concept via sh:node; dit
+# profiel maakt van die entiteiten zelfstandig bevraagbare rapportonderwerpen.
+#
+# Rapporten hier zijn leeslijsten: een lijst van de concepten van één schema,
+# of van schemas zelf. Ze landen in de publieke grafiek.
+@prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix ent:     <http://data.lblod.info/id/report-entities/> .
+
+<http://data.lblod.info/id/report-profiles/skos-concepten>
+  a owl:Ontology ;
+  dct:title "Codes en schemas" ;
+  sh:prefixes [
+    sh:declare [ sh:prefix "skos" ; sh:namespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "dct"  ; sh:namespace "http://purl.org/dc/terms/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "rdfs" ; sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "xsd"  ; sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ] ;
+  ] .
+
+ent:Concept
+  a sh:NodeShape ;
+  rdfs:label "concept" ;
+  sh:targetClass skos:Concept ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path skos:altLabel ; sh:name "andere naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path skos:notation ; sh:name "notatie" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path skos:definition ; sh:name "definitie" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path sh:order ; sh:name "volgorde" ;
+                sh:datatype xsd:decimal ] ;
+  sh:property [ sh:path skos:inScheme ; sh:name "in schema" ;
+                sh:description "Filter hiermee op één codeschema." ;
+                sh:node ent:ConceptSchema ] ;
+  sh:property [ sh:path skos:topConceptOf ; sh:name "top van schema" ;
+                sh:node ent:ConceptSchema ] ;
+  sh:property [ sh:path skos:exactMatch ; sh:name "exacte match" ;
+                sh:node ent:Concept ] .
+
+ent:ConceptSchema
+  a sh:NodeShape ;
+  rdfs:label "conceptschema" ;
+  sh:targetClass skos:ConceptScheme ;
+  sh:property [ sh:path skos:prefLabel ; sh:name "naam" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path rdfs:label ; sh:name "label" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path dct:title ; sh:name "titel" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path skos:notation ; sh:name "notatie" ;
+                sh:datatype xsd:string ] .
