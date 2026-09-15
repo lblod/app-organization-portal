@@ -403,6 +403,16 @@
   :to-graph (public shared)
   :for-allowed-group "public")
 
+;; natural-language-report-service reads the public graph under its own
+;; scope during refinement (code lists, lookup_values). The service passes
+;; this scope with mu's query(q, { scope }); sparql-parser then uses only
+;; this grant, so the LLM reads public data and nothing beyond it.
+;; Execution (run_report) still runs as the caller's session.
+(with-scope "http://services.semantic.works/natural-language-report"
+  (grant (read)
+    :to-graph public
+    :for-allowed-group "public"))
+
 (grant (read write)
   :to-graph (reports jobs system-jobs)
   :for-allowed-group "o-admin-rwf")
