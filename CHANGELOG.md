@@ -37,7 +37,9 @@
 - Added "Wijziging werkingsgebied" change event [OP-3905]
 - Frontend [v1.43.0](https://github.com/lblod/frontend-organization-portal/blob/v1.43.0/CHANGELOG.md)
 - Add "Bijkomende kwalificatie" (with "Rechtsgrond" and "Definitie") codelist and organization relationship [OP-3902]
+- Frontend [v1.44.0](https://github.com/lblod/frontend-organization-portal/blob/v1.44.0/CHANGELOG.md)
 - Added "Wijziging bijkomende kwalificatie(s)" change event [OP-3907]
+- Frontend [v1.44.1](https://github.com/lblod/frontend-organization-portal/blob/v1.44.1/CHANGELOG.md)
 
 ### Deploy notes
 ```
@@ -97,6 +99,7 @@ drc restart resource cache db dispatcher
 ```
 
 ```
+drc up -d frontend
 drc restart migrations
 drc restart resource cache
 ```
