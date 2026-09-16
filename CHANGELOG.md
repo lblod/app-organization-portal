@@ -36,6 +36,10 @@
 - Add columns to administrative units report [OP-3835]
 - Added "Wijziging werkingsgebied" change event [OP-3905]
 - Frontend [v1.43.0](https://github.com/lblod/frontend-organization-portal/blob/v1.43.0/CHANGELOG.md)
+- Add "Bijkomende kwalificatie" (with "Rechtsgrond" and "Definitie") codelist and organization relationship [OP-3902]
+- Frontend [v1.44.0](https://github.com/lblod/frontend-organization-portal/blob/v1.44.0/CHANGELOG.md)
+- Added "Wijziging bijkomende kwalificatie(s)" change event [OP-3907]
+- Frontend [v1.44.1](https://github.com/lblod/frontend-organization-portal/blob/v1.44.1/CHANGELOG.md)
 - Add organization type "Regionaal landschap" [OP-3876]
 
 ### Deploy notes
@@ -80,14 +84,6 @@ drc restart migrations resource delta-producer-publication-graph-maintainer
 ```
 
 ```
-# requires the frontend and construct-organization-relationships releases for OP-3876 (bump both in compose)
-drc pull construct-organization-relationships && drc up -d construct-organization-relationships
-drc restart migrations-triggering-indexing
-drc up -d frontend
-drc restart cache resource
-```
-
-```
 drc restart migrations mandatarissen-consumer
 ```
 
@@ -95,6 +91,26 @@ drc restart migrations mandatarissen-consumer
 drc restart migrations report-generation resource cache
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
 drc up -d construct-organization-relationships frontend
+```
+
+```
+drc up -d frontend
+drc restart migrations
+drc restart resource cache db dispatcher
+```
+
+```
+drc up -d frontend
+drc restart migrations
+drc restart resource cache
+```
+
+```
+# requires the frontend and construct-organization-relationships releases for OP-3876 (bump both in compose)
+drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart migrations-triggering-indexing
+drc up -d frontend
+drc restart cache resource
 ```
 
 ## v1.41.3
