@@ -41,6 +41,7 @@
 - Added "Wijziging bijkomende kwalificatie(s)" change event [OP-3907]
 - Frontend [v1.44.1](https://github.com/lblod/frontend-organization-portal/blob/v1.44.1/CHANGELOG.md)
 - Add organization type "Regionaal landschap" [OP-3876]
+- Bump construct-organization-relationships to 1.2.1 [OP-3876]
 
 ### Deploy notes
 ```
@@ -106,10 +107,9 @@ drc restart resource cache
 ```
 
 ```
-# requires the frontend and construct-organization-relationships releases for OP-3876 (bump both in compose)
+# requires frontend >= 1.44.0 and construct-organization-relationships >= 1.2.1 (both in compose)
 drc pull construct-organization-relationships && drc up -d construct-organization-relationships
 drc restart migrations-triggering-indexing
-drc up -d frontend
 drc restart cache resource
 ```
 
