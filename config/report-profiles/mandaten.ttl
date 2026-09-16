@@ -132,9 +132,12 @@ ent:Bestuurseenheid
                 sh:datatype xsd:string ] ;
   sh:property [ sh:path org:classification ; sh:name "soort bestuur" ;
                 sh:node ent:BestuurseenheidClassificatie ] ;
+  sh:property [ sh:path org:hasPrimarySite ; sh:name "hoofdvestiging" ;
+                sh:description "De hoofdvestiging van de bestuurseenheid" ;
+                sh:node ent:Vestiging ] ;
   sh:property [ sh:path [ sh:inversePath besluit:bestuurt ] ; sh:name "bestuursorganen" ;
                 sh:description "De bestuursorganen van deze bestuurseenheid" ;
-                sh:node ent:Bestuursorgaan ] .
+                sh:node ent:Bestuursorgaan ].
 
 ent:Mandaat
   a sh:NodeShape ;
@@ -281,6 +284,19 @@ ent:ContactPunt
                 sh:datatype xsd:string ] ;
   sh:property [ sh:path locn:address ; sh:name "adres" ;
                 sh:node ent:Adres ] .
+
+ent:Vestiging
+  a sh:NodeShape ;
+  rdfs:label "hoofdvestiging" ;
+  sh:targetClass org:Site ;
+  sh:property [ sh:path dct:description ; sh:name "omschrijving" ;
+                sh:datatype xsd:string ] ;
+  sh:property [ sh:path org:siteAddress ; sh:name "contact" ;
+                sh:description "Contactgegevens (ContactPoint) van de vestiging" ;
+                sh:node ent:ContactPunt ] ;
+  sh:property [ sh:path [ sh:inversePath org:hasPrimarySite ] ; sh:name "hoofdvestiging van" ;
+                sh:description "De bestuurseenheid waarvan dit de hoofdvestiging is" ;
+                sh:node ent:Bestuurseenheid ] .
 
 ent:Adres
   a sh:NodeShape ;
