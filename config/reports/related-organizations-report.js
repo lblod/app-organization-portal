@@ -13,6 +13,21 @@ export default {
 
     console.log("Generating related organizations report");
 
+    // Display label per role, read from the org:member side and from the
+    // org:organization side. Keep in sync with MEMBERSHIP_ROLES_MAPPING in
+    // frontend-organization-portal (app/models/membership-role.js).
+    const roleLabels = `
+        OPTIONAL {
+          VALUES (?role ?member_perspective_label ?organization_perspective_label) {
+            (<http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> "Heeft een relatie met" "Heeft een relatie met")
+            (<http://data.lblod.info/id/rollen/73d5e1cf250d42fab15926771f07505a> "Is oprichter van" "Werd opgericht door")
+            (<http://data.lblod.info/id/rollen/2152eb830b1143bfb97a7dd9596d6c63> "Is lid van" "Heeft als leden")
+            (<http://data.lblod.info/id/rollen/d44a34ed-5007-45fe-9adb-43b695740dbc> "Verleent erkenning aan" "Werd erkend door")
+            (<http://data.lblod.info/id/rollen/2c0994d0-5e25-4b43-b2e4-12c98028bccb> "Is feitelijk vertegenwoordigd in (niet lidmaatschap)" "Heeft als feitelijke vertegenwoordigers (niet lidmaatschap)")
+            (<http://data.lblod.info/id/rollen/de8efef6-8d5c-42aa-90e9-1b9e9d27f395> "Bedient" "Wordt bediend door")
+          }
+        }`;
+
     const queryString = `
     ${PREFIXES}
 
@@ -34,28 +49,17 @@ export default {
                     org:role ?role ;
                     org:organization ?related_organization .
         ?role skos:prefLabel ?role_label .
-        BIND(
-          IF(?role_label = "participant", "Participeert in",
-            IF(?role_label = "stichtend lid", "Is oprichter van",
-              IF(?role_label = "gerelateerd", "Heeft een relatie met",
-                 ?role_label)))
-          AS ?role_label_renamed
-        )
+        ${roleLabels}
+        BIND(COALESCE(?member_perspective_label, ?role_label) AS ?role_label_renamed)
       }
       UNION
       {
-
         ?membership org:member ?related_organization ;
                     org:role ?role ;
                     org:organization ?organization .
         ?role skos:prefLabel ?role_label .
-        BIND(
-          IF(?role_label = "participant", "Heeft als participanten",
-            IF(?role_label = "stichtend lid", "Werd opgericht door",
-              IF(?role_label = "gerelateerd", "Heeft een relatie met",
-                 ?role_label)))
-          AS ?role_label_renamed
-        )
+        ${roleLabels}
+        BIND(COALESCE(?organization_perspective_label, ?role_label) AS ?role_label_renamed)
       }
 
       ?organization a org:Organization ;

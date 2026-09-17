@@ -1,0 +1,33 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+# OP-3904: same as the previous file for the few generic rows stored in the
+# other direction (gemeente as member, zone as organization).
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership ?p ?o .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership a org:Membership ;
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> ;
+      org:member ?municipality ;
+      org:organization ?zone ;
+      ?p ?o .
+    ?zone org:classification ?zoneClassification .
+    FILTER (?zoneClassification IN (
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc> ,
+      <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/ea446861-2c51-45fa-afd3-4e4a37b71562>
+    ))
+    FILTER EXISTS {
+      ?replacement a org:Membership ;
+        org:member ?municipality ;
+        org:organization ?zone ;
+        org:role <http://data.lblod.info/id/rollen/2152eb830b1143bfb97a7dd9596d6c63> .
+    }
+  }
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  }
+}

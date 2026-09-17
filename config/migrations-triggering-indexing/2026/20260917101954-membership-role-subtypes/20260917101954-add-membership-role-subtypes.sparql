@@ -1,0 +1,33 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu:   <http://mu.semte.ch/vocabularies/core/>
+PREFIX org:  <http://www.w3.org/ns/org#>
+
+# OP-3903: three specific relation types as subtypes of the generic role
+# "gerelateerd" (Heeft een relatie met). Direction convention, as for the
+# existing roles: the org:member side carries the role.
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/rollen/d44a34ed-5007-45fe-9adb-43b695740dbc>
+      rdf:type org:Role ;
+      mu:uuid "d44a34ed-5007-45fe-9adb-43b695740dbc" ;
+      skos:prefLabel "erkenner" ;
+      skos:definition "De organisatie (org:member) verleent erkenning aan de andere organisatie (org:organization). Getoond als 'Verleent erkenning aan' / 'Werd erkend door'." ;
+      skos:broader <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+
+    <http://data.lblod.info/id/rollen/2c0994d0-5e25-4b43-b2e4-12c98028bccb>
+      rdf:type org:Role ;
+      mu:uuid "2c0994d0-5e25-4b43-b2e4-12c98028bccb" ;
+      skos:prefLabel "feitelijk vertegenwoordiger" ;
+      skos:definition "De organisatie (org:member) is feitelijk vertegenwoordigd in de andere organisatie (org:organization), zonder lidmaatschap. Getoond als 'Is feitelijk vertegenwoordigd in (niet lidmaatschap)' / 'Heeft als feitelijke vertegenwoordigers (niet lidmaatschap)'." ;
+      skos:broader <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+
+    <http://data.lblod.info/id/rollen/de8efef6-8d5c-42aa-90e9-1b9e9d27f395>
+      rdf:type org:Role ;
+      mu:uuid "de8efef6-8d5c-42aa-90e9-1b9e9d27f395" ;
+      skos:prefLabel "bedienend" ;
+      skos:definition "De organisatie (org:member) bedient de andere organisatie (org:organization), bv. een OCMW bedient een gemeente. Getoond als 'Bedient' / 'Wordt bediend door'." ;
+      skos:broader <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+}

@@ -43,6 +43,10 @@
 - Add organization type "Regionaal landschap" [OP-3876]
 - Bump construct-organization-relationships to 1.2.1 [OP-3876]
 - Convert Haven van Antwerpen-Brugge from AGB to the hidden "Havenbedrijf" special-organisation type [DGS-631]
+- Add membership roles erkenner, feitelijk vertegenwoordiger, bedienend (subtypes of gerelateerd) [OP-3903]
+- Related-organizations report: new role labels [OP-3903]
+- Retype OCMW-gemeente relations to bedienend; add gemeente lid memberships for active politie- and hulpverleningszones [OP-3904]
+- Extend municipality cleanup jobs to the new roles [OP-3904]
 
 ### Deploy notes
 ```
@@ -118,6 +122,16 @@ drc restart cache resource
 drc restart migrations-triggering-indexing
 drc restart report-generation
 # verify downstream (Loket, Subsidiepunt) that the classification of Haven van Antwerpen-Brugge changed to "Havenbedrijf"
+```
+
+```
+drc up -d frontend             # FIRST: the old frontend breaks on the new relation types
+drc stop db-cleanup            # keeps its jobs in memory; must not run between the two migration steps
+drc restart migrations         # wait for "All migrations executed"
+drc restart migrations-triggering-indexing
+drc up -d db-cleanup
+drc restart resource cache report-generation
+# expect a one-time anomaly on the DWH data-monitoring "Lidmaatschap" query
 ```
 
 

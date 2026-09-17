@@ -1,0 +1,28 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+# OP-3904: OCMW "gerelateerd" gemeente becomes OCMW "bedienend" gemeente.
+# Direction is kept: member = OCMW, organization = gemeente
+# (see 2025/20250725120411-fix-reversed-memberships-ocmw-municipality.sparql).
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership org:role <http://data.lblod.info/id/rollen/de8efef6-8d5c-42aa-90e9-1b9e9d27f395> .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership a org:Membership ;
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> ;
+      org:member ?ocmw ;
+      org:organization ?municipality .
+    ?ocmw org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
+  }
+  GRAPH <http://mu.semte.ch/graphs/shared> {
+    ?municipality org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  }
+}

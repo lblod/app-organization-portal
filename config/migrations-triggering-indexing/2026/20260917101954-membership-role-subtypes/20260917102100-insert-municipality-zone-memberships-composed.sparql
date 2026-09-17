@@ -1,0 +1,54 @@
+PREFIX org:     <http://www.w3.org/ns/org#>
+PREFIX mu:      <http://mu.semte.ch/vocabularies/core/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX regorg:  <http://www.w3.org/ns/regorg#>
+PREFIX geo:     <http://www.opengis.net/ont/geosparql#>
+
+# OP-3904: gemeente "participant" (Is lid van) politiezone / hulpverleningszone,
+# derived from the zone's composed werkingsgebied (gemeente location sfWithin
+# zone location). Active zones and active gemeenten only.
+# The uuid is produced in a subselect: Virtuoso inlines a BIND(STRUUID()), so
+# a plain BIND would give the URI and mu:uuid two different values.
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership a org:Membership ;
+      mu:uuid ?uuid ;
+      org:member ?municipality ;
+      org:organization ?zone ;
+      org:role <http://data.lblod.info/id/rollen/2152eb830b1143bfb97a7dd9596d6c63> .
+  }
+}
+WHERE {
+  {
+    SELECT ?municipality ?zone (LCASE(STRUUID()) AS ?uuid)
+    WHERE {
+      GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+        ?zone org:classification ?zoneClassification ;
+          regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+          besluit:werkingsgebied ?zoneLocation .
+        FILTER (?zoneClassification IN (
+          <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc> ,
+          <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/ea446861-2c51-45fa-afd3-4e4a37b71562>
+        ))
+        ?municipality besluit:werkingsgebied ?municipalityLocation .
+      }
+      GRAPH <http://mu.semte.ch/graphs/public> {
+        ?municipalityLocation geo:sfWithin ?zoneLocation .
+      }
+      GRAPH <http://mu.semte.ch/graphs/shared> {
+        ?municipality org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+          regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+      }
+      FILTER NOT EXISTS {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?existing a org:Membership ;
+            org:member ?municipality ;
+            org:organization ?zone ;
+            org:role <http://data.lblod.info/id/rollen/2152eb830b1143bfb97a7dd9596d6c63> .
+        }
+      }
+    }
+  }
+  BIND (IRI(CONCAT("http://data.lblod.info/id/lidmaatschap/", ?uuid)) AS ?membership)
+}
