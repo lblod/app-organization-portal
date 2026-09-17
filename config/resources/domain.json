@@ -506,6 +506,11 @@
           "target": "concepts",
           "cardinality": "many"
         },
+        "additional-qualifications": {
+          "predicate": "code:bijkomendeKwalificatie",
+          "target": "additional-qualification-codes",
+          "cardinality": "many"
+        },
         "identifiers": {
           "predicate": "adms:identifier",
           "target": "identifiers",
@@ -1084,6 +1089,21 @@
           "predicate": "skos:inScheme",
           "target": "concept-schemes",
           "cardinality": "one"
+        }
+      },
+      "new-resource-base": "http://lblod.data.gift/concepts/"
+    },
+    "additional-qualification-codes": {
+      "class": "code:BijkomendeKwalificatieCode",
+      "super": ["concepts"],
+      "attributes": {
+        "legal-basis": {
+          "type": "string",
+          "predicate": "code:rechtsgrond"
+        },
+        "definition": {
+          "type": "string",
+          "predicate": "skos:definition"
         }
       },
       "new-resource-base": "http://lblod.data.gift/concepts/"

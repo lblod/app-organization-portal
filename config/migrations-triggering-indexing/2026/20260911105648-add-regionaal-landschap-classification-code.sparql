@@ -1,0 +1,17 @@
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu:     <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext:    <http://mu.semte.ch/vocabularies/ext/>
+PREFIX scheme: <http://data.vlaanderen.be/id/conceptscheme/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/2de60048-ddbb-4020-ada7-4b81f98f9fe2>
+      rdf:type ext:OrganizationClassificationCode , ext:GeregistreerdeOrganisatieClassificatieCode ;
+      mu:uuid "2de60048-ddbb-4020-ada7-4b81f98f9fe2" ;
+      skos:prefLabel "Regionaal landschap" ;
+      skos:definition "Duurzaam interbestuurlijk en intersectoraal samenwerkingsverband tussen maatschappelijke en bestuurlijke actoren onder de vorm van een private vereniging zonder winstuitkeringsoogmerk, gericht op algemene landschapszorg (decreet van 9 juni 2023 houdende de Vlaamse Parken en algemene landschapszorg, art. 2 en 19)." ;
+      skos:topConceptOf scheme:GeregistreerdeOrganisatieClassificatieCode ;
+      skos:inScheme scheme:GeregistreerdeOrganisatieClassificatieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+  }
+}

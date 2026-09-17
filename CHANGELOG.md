@@ -34,6 +34,14 @@
   - IMPORTANT NOTE: Make sure first the loket migration has completed + data has flown from loket to OP
 - Add missing headers to identifier calls
 - Add columns to administrative units report [OP-3835]
+- Added "Wijziging werkingsgebied" change event [OP-3905]
+- Frontend [v1.43.0](https://github.com/lblod/frontend-organization-portal/blob/v1.43.0/CHANGELOG.md)
+- Add "Bijkomende kwalificatie" (with "Rechtsgrond" and "Definitie") codelist and organization relationship [OP-3902]
+- Frontend [v1.44.0](https://github.com/lblod/frontend-organization-portal/blob/v1.44.0/CHANGELOG.md)
+- Added "Wijziging bijkomende kwalificatie(s)" change event [OP-3907]
+- Frontend [v1.44.1](https://github.com/lblod/frontend-organization-portal/blob/v1.44.1/CHANGELOG.md)
+- Add organization type "Regionaal landschap" [OP-3876]
+- Bump construct-organization-relationships to 1.2.1 [OP-3876]
 - Convert Haven van Antwerpen-Brugge from AGB to the hidden "Havenbedrijf" special-organisation type [DGS-631]
 
 ### Deploy notes
@@ -82,10 +90,30 @@ drc restart migrations mandatarissen-consumer
 ```
 
 ```
-drc restart migrations report-generation
+drc restart migrations report-generation resource cache
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
-drc up -d construct-organization-relationships
+drc up -d construct-organization-relationships frontend
 ```
+
+```
+drc up -d frontend
+drc restart migrations
+drc restart resource cache db dispatcher
+```
+
+```
+drc up -d frontend
+drc restart migrations
+drc restart resource cache
+```
+
+```
+# requires frontend >= 1.44.0 and construct-organization-relationships >= 1.2.1 (both in compose)
+drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart migrations-triggering-indexing
+drc restart cache resource
+```
+
 ```
 drc restart migrations-triggering-indexing
 drc restart report-generation
