@@ -42,6 +42,7 @@
 - Frontend [v1.44.1](https://github.com/lblod/frontend-organization-portal/blob/v1.44.1/CHANGELOG.md)
 - Add organization type "Regionaal landschap" [OP-3876]
 - Bump construct-organization-relationships to 1.2.1 [OP-3876]
+- Convert Haven van Antwerpen-Brugge from AGB to the hidden "Havenbedrijf" special-organisation type [DGS-631]
 
 ### Deploy notes
 ```
@@ -112,6 +113,13 @@ drc pull construct-organization-relationships && drc up -d construct-organizatio
 drc restart migrations-triggering-indexing
 drc restart cache resource
 ```
+
+```
+drc restart migrations-triggering-indexing
+drc restart report-generation
+# verify downstream (Loket, Subsidiepunt) that the classification of Haven van Antwerpen-Brugge changed to "Havenbedrijf"
+```
+
 
 ## v1.41.3
 - Fix betrokken lokale besturen links via migration [OP-3882]
