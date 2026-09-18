@@ -48,6 +48,7 @@
 - Retype OCMW-gemeente relations to bedienend; add gemeente lid memberships for active politie- and hulpverleningszones [OP-3904]
 - Extend municipality cleanup jobs to the new roles [OP-3904]
 - Frontend [v1.45.0](https://github.com/lblod/frontend-organization-portal/blob/v1.45.0/CHANGELOG.md) [OP-3903] [OP-3904]
+- Frontend [v1.45.1](https://github.com/lblod/frontend-organization-portal/blob/v1.45.1/CHANGELOG.md) [OP-3911] [OP-3874]
 
 ### Deploy notes
 ```
