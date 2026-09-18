@@ -47,6 +47,7 @@
 - Related-organizations report: new role labels [OP-3903]
 - Retype OCMW-gemeente relations to bedienend; add gemeente lid memberships for active politie- and hulpverleningszones [OP-3904]
 - Extend municipality cleanup jobs to the new roles [OP-3904]
+- Frontend [v1.45.0](https://github.com/lblod/frontend-organization-portal/blob/v1.45.0/CHANGELOG.md) [OP-3903] [OP-3904]
 
 ### Deploy notes
 ```
@@ -125,6 +126,7 @@ drc restart report-generation
 ```
 
 ```
+# requires frontend >= 1.45.0 (in compose)
 drc up -d frontend             # FIRST: the old frontend breaks on the new relation types
 drc stop db-cleanup            # keeps its jobs in memory; must not run between the two migration steps
 drc restart migrations         # wait for "All migrations executed"
