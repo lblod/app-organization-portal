@@ -123,7 +123,7 @@ drc restart cache resource
 ```
 
 ```
-drc restart migrations-triggering-indexing
+drc restart migrations-triggering-indexing delta-producer-publication-graph-maintainer
 drc restart report-generation
 # verify downstream (Loket, Subsidiepunt) that the classification of Haven van Antwerpen-Brugge changed to "Havenbedrijf"
 ```
