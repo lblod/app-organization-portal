@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+
+- missing kwalificatie code in producer [OP-3819]
 - Added service to link addresses to addressregister uris [OP-3795]
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
 - Site type changes [OP-3818]
