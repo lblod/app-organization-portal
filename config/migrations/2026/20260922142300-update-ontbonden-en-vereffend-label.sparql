@@ -1,0 +1,17 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH ?g {
+		<http://lblod.data.gift/concepts/b5f471a8-eb2e-4ec3-9f84-2c179134e2be> skos:prefLabel ?oldLabel .
+	}
+}
+INSERT {
+  GRAPH ?g {
+		<http://lblod.data.gift/concepts/b5f471a8-eb2e-4ec3-9f84-2c179134e2be> skos:prefLabel "Ontbonden en/of vereffend" .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    <http://lblod.data.gift/concepts/b5f471a8-eb2e-4ec3-9f84-2c179134e2be> skos:prefLabel ?oldLabel .
+  }
+}
