@@ -1,0 +1,24 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?location rdfs:label ?label .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?location rdfs:label ?newLabel .
+  }
+}
+WHERE {
+  GRAPH ?g {
+    ?location a prov:Location ;
+              ext:werkingsgebiedNiveau "Provincie" ;
+              rdfs:label ?label .
+
+    FILTER (!STRENDS(?label, "(provincie)"))
+    BIND(CONCAT(?label, " (provincie)") AS ?newLabel)
+  }
+}
