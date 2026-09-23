@@ -50,6 +50,7 @@
 - Frontend [v1.45.0](https://github.com/lblod/frontend-organization-portal/blob/v1.45.0/CHANGELOG.md) [OP-3903] [OP-3904]
 - Frontend [v1.45.1](https://github.com/lblod/frontend-organization-portal/blob/v1.45.1/CHANGELOG.md) [OP-3911] [OP-3874]
 - Update change event label [OP-3924]
+- Frontend [v1.45.2](https://github.com/lblod/frontend-organization-portal/blob/v1.45.2/CHANGELOG.md) [OP-3936] [OP-3931]
 
 ### Deploy notes
 ```
