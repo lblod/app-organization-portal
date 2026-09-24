@@ -1,20 +1,11 @@
 # Changelog
 
 ## Unreleased
-- Added service to link addresses to addressregister uris [OP-3795]
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
-- Site type changes [OP-3818]
-- Frontend [v1.40.1](https://github.com/lblod/frontend-organization-portal/blob/v1.40.1/CHANGELOG.md), [v1.40.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1400-2026-07-06), [v1.39.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1390-2026-06-25) ,[v1.38.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1380-2026-06-12)
-- Added Juridische vorm [OP-3816] [OP-3820]
+- Frontend [v1.40.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1400-2026-07-06), [v1.38.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1380-2026-06-12)
 - Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
 - Rename generic organization types to "Vereniging algemeen" / "Vennootschap algemeen" [OP-3828]
-- bump construct-organization-relationships [OP-3810]
-- "In Oprichting" bestuursorgaan lifecycle [OP-3810]
-- Added "werkingsgebied" filter [OP-3812]
-- Inhoudelijk thema [OP-3817]
 - Werkingsgebied (dct:spatial) for private OCMW associations [OP-3832]
-- Add a new "Wijkkantoor" site type [OP-3837]
-- cleanup local involvement herne [OP-3858]
 - Search organizations by vendor [OP-3808]
 - Add organization types "Regionaal zorgplatform" (altLabel "Regionale zorgzone") and residual "Andere" [OP-3844]
 - Move organizations from "Vereniging algemeen" / "Vennootschap algemeen" to "Andere"; delete those codes [OP-3844]
@@ -27,9 +18,7 @@
   - IMPORTANT NOTE: Make sure first the [DL-7485] loket migration has completed + data has flown from loket to OP
 - Frontend [v1.41.1](https://github.com/lblod/frontend-organization-portal/blob/v1.41.1/CHANGELOG.md) [DL-7438]
 - Frontend [v1.42.0](https://github.com/lblod/frontend-organization-portal/blob/a0fb2536afe7019c2943c8312e50648c14249e02/CHANGELOG.md#v1420-2026-08-20)
-- Fix broken lmb mandataris mappin query [OP-3867]
-- Add the value politiecollege to the existing dropdown list beslissingsorgaan [DL-7473]
-- Bump construct-organization-relationships [DL-7473] [OP-3851]
+- Bump construct-organization-relationships [OP-3851]
 - fix duplicate van rechtswege/grote helft mandates [OP-3851]
   - IMPORTANT NOTE: Make sure first the loket migration has completed + data has flown from loket to OP
 - Add missing headers to identifier calls
@@ -54,7 +43,7 @@
 
 ### Deploy notes
 ```
-drc up -d link-adressenregister-uri frontend construct-organization-relationships identifier
+drc up -d frontend construct-organization-relationships identifier
 drc restart resource migrations dispatcher
 ```
 
@@ -91,10 +80,6 @@ drc restart cache resource
 
 ```
 drc restart migrations resource delta-producer-publication-graph-maintainer
-```
-
-```
-drc restart migrations mandatarissen-consumer
 ```
 
 ```
@@ -140,6 +125,35 @@ drc restart resource cache report-generation
 ```
 
 
+## v1.41.6
+- Change KBO-nr for Centraal Israëlitische Consistorie van België [OP-3916]
+
+### Deploy notes
+```
+drc restart migrations-triggering-indexing
+```
+
+## v1.41.5
+- Add the value politiecollege to the existing dropdown list beslissingsorgaan [DL-7473]
+- Bump construct-organization-relationships [DL-7473]
+
+### Deploy notes
+```
+drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart migrations cache
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+
+```
+
+## v1.41.4
+- Fix broken lmb mandataris mappin query [OP-3867]
+
+### Deploy notes
+```
+drc restart migrations mandatarissen-consumer
+
+```
+
 ## v1.41.3
 - Fix betrokken lokale besturen links via migration [OP-3882]
 
@@ -161,6 +175,35 @@ Then:
 drc up -d error-alert delta-producer-background-jobs-initiator
 drc restart migrations
 drc restart resource cache
+```
+
+## v1.41.1
+- Added service to link addresses to addressregister uris [OP-3795]
+- Site type changes [OP-3818]
+- Added Juridische vorm [OP-3816] [OP-3820]
+- Frontend [v1.40.4-1](https://github.com/lblod/frontend-organization-portal/blob/v1.40.4-1/CHANGELOG.md)
+- bump construct-organization-relationships [OP-3810]
+- "In Oprichting" bestuursorgaan lifecycle [OP-3810]
+- Added "werkingsgebied" filter [OP-3812]
+- Inhoudelijk thema [OP-3817]
+- Add a new "Wijkkantoor" site type [OP-3837]
+- cleanup local involvement herne [OP-3858]
+
+### Deploy notes
+```
+drc up -d link-adressenregister-uri frontend construct-organization-relationships
+drc restart resource migrations dispatcher
+```
+
+```
+drc restart migrations
+drc restart cache resource
+```
+
+```
+drc restart migrations frontend db resource cache
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
 ```
 
 ## v1.41.0
