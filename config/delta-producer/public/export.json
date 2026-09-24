@@ -2,6 +2,26 @@
   "conceptScheme": "http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b",
   "export": [
     {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/administrative-unit",
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "pathToConceptScheme": [
+        "^http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat",
+        "http://data.lblod.info/vocabularies/contacthub/typeWijziging",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://mu.semte.ch/vocabularies/ext/resultingOrganization",
+        "http://lblod.data.gift/vocabularies/organisatie/resulterendeStatus",
+        "http://lblod.data.gift/vocabularies/organisatie/resulterendeRechtsvorm",
+        "http://lblod.data.gift/vocabularies/organisatie/resulterendWerkingsgebied",
+        "http://lblod.data.gift/vocabularies/organisatie/resulterendeBijkomendeKwalificatie"
+      ]
+    },
+    {
       "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
       "strictTypeExport": "true",
       "graphsFilter": [
