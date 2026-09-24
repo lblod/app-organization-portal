@@ -84,6 +84,7 @@ drc restart db-cleanup
 ```
 # requires frontend >= 1.40.5 and construct-organization-relationships >= 1.1.4 (both bumped in compose here)
 drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart delta-producer-publication-graph-maintainer #  wait for it to be ready 
 drc restart migrations-triggering-indexing
 drc up -d frontend
 drc restart cache resource
@@ -123,7 +124,7 @@ drc restart cache resource
 ```
 
 ```
-drc restart migrations-triggering-indexing delta-producer-publication-graph-maintainer
+drc restart migrations-triggering-indexing
 drc restart report-generation
 # verify downstream (Loket, Subsidiepunt) that the classification of Haven van Antwerpen-Brugge changed to "Havenbedrijf"
 ```
