@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+
+- missing kwalificatie code in producer [OP-3819]
 - Added service to link addresses to addressregister uris [OP-3795]
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
 - Site type changes [OP-3818]
@@ -84,6 +86,7 @@ drc restart db-cleanup
 ```
 # requires frontend >= 1.40.5 and construct-organization-relationships >= 1.1.4 (both bumped in compose here)
 drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart delta-producer-publication-graph-maintainer #  wait for it to be ready 
 drc restart migrations-triggering-indexing
 drc up -d frontend
 drc restart cache resource
