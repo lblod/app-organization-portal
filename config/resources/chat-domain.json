@@ -132,7 +132,7 @@
         },
         "attachments": {
           "predicate": "as:attachment",
-          "target": "chat-documents",
+          "target": "file",
           "cardinality": "many"
         }
       },
@@ -145,25 +145,6 @@
       "super": ["chat-message"],
       "features": ["include-uri"],
       "new-resource-base": "http://data.lblod.info/id/chat-messages/"
-    },
-    "chat-documents": {
-      "class": "as:Document",
-      "attributes": {
-        "name": {
-          "type": "string",
-          "predicate": "as:name"
-        },
-        "media-type": {
-          "type": "string",
-          "predicate": "as:mediaType"
-        },
-        "url": {
-          "type": "string",
-          "predicate": "as:url"
-        }
-      },
-      "features": ["include-uri"],
-      "new-resource-base": "http://data.lblod.info/id/chat-documents/"
     },
     "chat-agents": {
       "class": "prov:SoftwareAgent",
