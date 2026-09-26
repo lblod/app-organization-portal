@@ -39,7 +39,7 @@
 @prefix person:  <http://www.w3.org/ns/person#> .
 @prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
 @prefix besluit: <http://data.vlaanderen.be/ns/besluit#> .
-@prefix generiek: <http://data.vlaanderen.be/ns/generiek#> .
+@prefix generiek: <https://data.vlaanderen.be/ns/generiek#> .
 @prefix lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/> .
 @prefix ch:      <http://data.lblod.info/vocabularies/contacthub/> .
 @prefix code:    <http://lblod.data.gift/vocabularies/organisatie/> .
@@ -206,7 +206,7 @@ ent:LeidinggevendeBestuursfunctie
                 sh:node ent:ContactPunt ] ;
   sh:property [ sh:path [ sh:inversePath lblodlg:heeftBestuursfunctie ] ; sh:name "in bestuursorgaan" ;
                 sh:description "Het bestuursorgaan waar deze functie bij hoort" ;
-                sh:node ent:Bestuursorgaan ] .
+                sh:node ent:BestuursorgaanInTijd ] .
 
 ent:Functionaris
   a sh:NodeShape ;

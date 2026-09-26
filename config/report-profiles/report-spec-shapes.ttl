@@ -2,7 +2,8 @@
 # Reference definition of the spec format: a machine-readable
 # contract that doubles as documentation. validate_spec does more than this
 # graph can express: it walks every path through the mounted profile and
-# refuses what shapes alone cannot see (columns ending on a link, unresolved
+# refuses what shapes alone cannot see (columns ending on a link without
+# sh:nodeKind sh:IRI, unresolved
 # hops, anyOf term limits, filters without a condition).
 #
 # Not yet: sh:count, sh:sum, sh:orderBy, sh:limit, sh:offset, rep:graph.
@@ -139,6 +140,15 @@ rep:FilterShape
     sh:name "een van deze woorden" ;
     sh:maxCount 1 ;
   ] ;
+  # rep:where: a condition on a node this filter walks through, written as a
+  # filter from the row. The steps it shares with this filter are the same
+  # nodes. check.js refuses one that shares no step, and one nested in
+  # another (whereConditions).
+  sh:property [
+    sh:path rep:where ;
+    sh:name "voorwaarde onderweg" ;
+    sh:node rep:FilterShape ;
+  ] ;
   sh:property [
     sh:path rdfs:label ;
     sh:name "label" ;
@@ -146,7 +156,11 @@ rep:FilterShape
   ] .
 
 # A column: path, label, collect mode, separator. No constraints here;
-# check.js refuses a constraint inside rep:columns (columnPure).
+# check.js refuses a constraint inside rep:columns (columnPure). The one
+# exception is sh:nodeKind sh:IRI: the cell shows the URI of the node the
+# path ends on, and only then may the path end on a link. A condition
+# on a node the column walks through goes in rep:where; it drops values from
+# the cell, never rows.
 rep:ColumnShape
   a sh:NodeShape ;
   sh:property [
@@ -173,6 +187,17 @@ rep:ColumnShape
     sh:name "scheidingsteken" ;
     sh:datatype xsd:string ;
     sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path sh:nodeKind ;
+    sh:name "toon de URI" ;
+    sh:in ( sh:IRI ) ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path rep:where ;
+    sh:name "voorwaarde onderweg" ;
+    sh:node rep:FilterShape ;
   ] .
 
 # rep:collect takes exactly these values (SHACL Core groupConcat is the
