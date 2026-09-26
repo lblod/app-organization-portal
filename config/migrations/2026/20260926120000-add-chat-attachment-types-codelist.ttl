@@ -1,0 +1,29 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix mu:   <http://mu.semte.ch/vocabularies/core/> .
+
+# The bijlagen of the report assistant get a dct:type. Two types for now:
+# the specification of the report, and the executed report with its results.
+
+<http://lblod.data.gift/concept-schemes/f1103789-c5c9-406e-8079-be6c833d0d69>
+  rdf:type skos:ConceptScheme ;
+  mu:uuid "f1103789-c5c9-406e-8079-be6c833d0d69" ;
+  skos:prefLabel "Bijlagetypen rapportassistent"@nl, "Report assistant attachment types"@en ;
+  skos:definition "Types bijlage bij berichten van de rapportassistent: rapport specificaties en uitgevoerde rapporten."@nl ;
+  skos:hasTopConcept <http://lblod.data.gift/concepts/6693014e-7b7d-448c-bb24-80c9758521f3>,
+      <http://lblod.data.gift/concepts/28d97698-e219-4a92-bdbd-7ab367a7524e> .
+
+<http://lblod.data.gift/concepts/6693014e-7b7d-448c-bb24-80c9758521f3>
+  rdf:type skos:Concept ;
+  mu:uuid "6693014e-7b7d-448c-bb24-80c9758521f3" ;
+  skos:prefLabel "Rapportspecificatie"@nl, "Report specification"@en ;
+  skos:altLabel "Query spec"@nl, "Query spec"@en ;
+  skos:definition "De specificatie die vastlegt welk rapport gemaakt wordt: filter en kolommen."@nl ;
+  skos:inScheme <http://lblod.data.gift/concept-schemes/f1103789-c5c9-406e-8079-be6c833d0d69> .
+
+<http://lblod.data.gift/concepts/28d97698-e219-4a92-bdbd-7ab367a7524e>
+  rdf:type skos:Concept ;
+  mu:uuid "28d97698-e219-4a92-bdbd-7ab367a7524e" ;
+  skos:prefLabel "Uitgevoerd rapport"@nl, "Executed report"@en ;
+  skos:definition "De resultaten van een rapport dat de rapportassistent heeft uitgevoerd."@nl ;
+  skos:inScheme <http://lblod.data.gift/concept-schemes/f1103789-c5c9-406e-8079-be6c833d0d69> .
