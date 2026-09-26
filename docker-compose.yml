@@ -688,7 +688,7 @@ services:
   # CHAT / NATURAL LANGUAGE REPORTS
   ################################################################################
   natural-language-report:
-    image: lblod/natural-language-report-service:0.1.0
+    image: lblod/natural-language-report-service:0.2.0
     build: ../natural-language-report-service/
     volumes:
       - ./data/files:/share
@@ -698,10 +698,7 @@ services:
       CSV_SEPARATOR: ";"
       SUBJECT_CHUNK_SIZE: "100"
       ROW_LIMIT: "200000"
-      MAX_PATH_DEPTH: "8"
-      # The chat's turn answers in the background; full-organisation runs
-      # easily outgrow a minute.
-      RUN_TIMEOUT: "300"
+      MAX_PATH_DEPTH: "12"
       INLINE_VALUES_MAX: "50"
       VALUES_TTL: "3600"
     labels:
