@@ -389,10 +389,8 @@ ent:Werkingsgebied
   sh:property [ sh:path geo:sfWithin ; sh:name "ligt in" ;
                 sh:node ent:Werkingsgebied ] ;
   sh:property [ sh:path [ sh:inversePath geo:sfWithin ] ; sh:name "bevat" ;
-                sh:node ent:Werkingsgebied ] ;
-  sh:property [ sh:path [ sh:inversePath geo:sfWithin ] ; sh:name "bestuurseenheden" ;
-                sh:description "De bestuurseenheden die in dit gebied liggen" ;
-                sh:node ent:Bestuurseenheid ] ;
+                sh:description "De gebieden en de bestuurseenheden die in dit gebied liggen" ;
+                sh:or ( [ sh:node ent:Werkingsgebied ] [ sh:node ent:Bestuurseenheid ] ) ] ;
   sh:property [ sh:path skos:exactMatch ; sh:name "exacte match" ;
                 sh:node ent:Concept ] .
 
