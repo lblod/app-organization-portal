@@ -688,8 +688,7 @@ services:
   # CHAT / NATURAL LANGUAGE REPORTS
   ################################################################################
   natural-language-report:
-    image: lblod/natural-language-report-service:0.2.0
-    build: ../natural-language-report-service/
+    image: lblod/natural-language-report-service:0.1.0
     volumes:
       - ./data/files:/share
       - ./config/report-profiles/:/config/profiles/
@@ -706,8 +705,7 @@ services:
     restart: always
     logging: *default-logging
   chat:
-    image: lblod/frontend-lblod-chat:0.1.0
-    build: ../frontend-lblod-chat/
+    image: lblod/frontend-report-assistant:0.1.0
     links:
       - identifier:backend
     environment:
