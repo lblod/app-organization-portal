@@ -705,7 +705,7 @@ services:
     restart: always
     logging: *default-logging
   chat:
-    image: lblod/frontend-report-assistant:0.2.0
+    image: lblod/frontend-report-assistant:0.3.0
     links:
       - identifier:backend
     environment:
