@@ -15,16 +15,32 @@
 # mandaat:bindingStart/-Einde) -> mandaat (org:hasPost) -> mandataris
 # (org:holds) -> persoon (mandaat:isBestuurlijkeAliasVan).
 #
-# Bestuursorgaan en bestuursorgaanInTijd delen besluit:Bestuursorgaan als
-# sh:targetClass; rep:discriminator houdt ze in de seed uit elkaar (een
-# orgaan in tijd heeft generiek:isTijdspecialisatieVan, een vast orgaan
-# heeft die niet). Een spec kiest er één met rep:entity.
+# Keten leidinggevenden: functionaris -> bestuursfunctie (org:holds) <-
+# leidinggevend orgaan in tijd (lblodlg:heeftBestuursfunctie) ->
+# leidinggevend bestuursorgaan (generiek:isTijdspecialisatieVan) ->
+# bestuurseenheid (besluit:bestuurt). Elke leidinggevende functie heeft een
+# eigen orgaan per eenheid (bv. "Algemeen directeur Gemeente Lille"), zonder
+# mandaten. Naar de mandatarissen van dezelfde eenheid gaat het dus via de
+# eenheid terug naar haar politieke organen.
+#
+# Vier entiteiten delen besluit:Bestuursorgaan als sh:targetClass;
+# rep:discriminator houdt ze in de seed uit elkaar (alle voorwaarden gelden
+# samen): een orgaan in tijd heeft generiek:isTijdspecialisatieVan, een vast
+# orgaan niet; een leidinggevend orgaan heeft een classificatie uit
+# ent:LeidinggevendeOrgaanClassificaties, een orgaan in tijd via zijn vaste
+# orgaan. De classificatie beslist, niet of er een functie aan hangt: zo
+# blijft een leidinggevend orgaan zonder functie zichtbaar als fout in de
+# data. Een spec kiest er één met rep:entity. Let op: in zuivere SHACL moet
+# elk besluit:Bestuursorgaan aan alle vier de shapes voldoen;
+# rep:discriminator (een eigen uitbreiding) beperkt sh:targetClass. Zie de
+# README van natural-language-report-service.
 #
 # Niet opgenomen (geen rapportvelden): harvest-velden en vendor-relaties.
 # Een generiek org:Post (posts) deelt org:role met het mandaat; hier wint
 # de lezing van het mandaat (bestuursfunctie). De eredienst-varianten
 # (EredienstMandataris) staan in erediensten.ttl.
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
@@ -71,11 +87,26 @@
     sh:declare [ sh:prefix "xsd"      ; sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ] ;
   ] .
 
+# De classificaties van leidinggevende organen, zoals de migraties ze
+# gebruiken (bv. 2024/20241028125621). Eén lijst voor de rep:discriminator
+# van de vier organen hieronder.
+ent:LeidinggevendeOrgaanClassificaties
+  rdf:first <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> ;  # Algemeen directeur
+  rdf:rest (
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc>  # Adjunct-algemeen directeur
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35>  # Financieel directeur
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0>  # Adjunct-financieel directeur
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/3e9f22c1-0d35-445b-8a37-494addedf2d8>  # Financieel beheerder
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4>  # Leidend ambtenaar
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab19107-82d2-4273-a986-3da86fda050d>  # Griffier
+  ) .
+
 ent:Bestuursorgaan
   a sh:NodeShape ;
   rdfs:label "bestuursorgaan" ;
   sh:targetClass besluit:Bestuursorgaan ;
   rep:discriminator [ sh:path generiek:isTijdspecialisatieVan ; sh:maxCount 0 ] ;
+  rep:discriminator [ sh:path org:classification ; sh:in ent:LeidinggevendeOrgaanClassificaties ; sh:maxCount 0 ] ;
   sh:property [ sh:path besluit:bestuurt ; sh:name "bestuurt" ;
                 sh:description "De bestuurseenheid die door dit orgaan bestuurd wordt" ;
                 sh:node ent:Bestuurseenheid ] ;
@@ -86,11 +117,28 @@ ent:Bestuursorgaan
                 sh:description "De organen in tijd die bij dit vaste orgaan horen" ;
                 sh:node ent:BestuursorgaanInTijd ] .
 
+ent:LeidinggevendBestuursorgaan
+  a sh:NodeShape ;
+  rdfs:label "leidinggevend bestuursorgaan" ;
+  sh:targetClass besluit:Bestuursorgaan ;
+  rep:discriminator [ sh:path generiek:isTijdspecialisatieVan ; sh:maxCount 0 ] ;
+  rep:discriminator [ sh:path org:classification ; sh:in ent:LeidinggevendeOrgaanClassificaties ] ;
+  sh:property [ sh:path besluit:bestuurt ; sh:name "bestuurt" ;
+                sh:description "De bestuurseenheid waar deze leidinggevende functie bij hoort" ;
+                sh:node ent:Bestuurseenheid ] ;
+  sh:property [ sh:path org:classification ; sh:name "soort bestuursorgaan" ;
+                sh:description "Bv. algemeen directeur, financieel directeur" ;
+                sh:node ent:BestuursorgaanClassificatie ] ;
+  sh:property [ sh:path [ sh:inversePath generiek:isTijdspecialisatieVan ] ; sh:name "heeft tijdsspecialisaties" ;
+                sh:description "De leidinggevende organen in tijd die bij dit vaste orgaan horen" ;
+                sh:node ent:LeidinggevendBestuursorgaanInTijd ] .
+
 ent:BestuursorgaanInTijd
   a sh:NodeShape ;
   rdfs:label "bestuursorgaanInTijd" ;
   sh:targetClass besluit:Bestuursorgaan ;
   rep:discriminator [ sh:path generiek:isTijdspecialisatieVan ; sh:minCount 1 ] ;
+  rep:discriminator [ sh:path ( generiek:isTijdspecialisatieVan org:classification ) ; sh:in ent:LeidinggevendeOrgaanClassificaties ; sh:maxCount 0 ] ;
   sh:property [ sh:path mandaat:bindingStart ; sh:name "binding start" ;
                 sh:description "Start van de bestuursperiode; orgaan in tijd" ;
                 sh:datatype xsd:dateTime ] ;
@@ -102,7 +150,22 @@ ent:BestuursorgaanInTijd
                 sh:node ent:Bestuursorgaan ] ;
   sh:property [ sh:path org:hasPost ; sh:name "bevat mandaat" ;
                 sh:description "De mandaten die dit orgaan bevat" ;
-                sh:node ent:Mandaat ] ;
+                sh:node ent:Mandaat ] .
+
+ent:LeidinggevendBestuursorgaanInTijd
+  a sh:NodeShape ;
+  rdfs:label "leidinggevend bestuursorgaanInTijd" ;
+  sh:targetClass besluit:Bestuursorgaan ;
+  rep:discriminator [ sh:path ( generiek:isTijdspecialisatieVan org:classification ) ; sh:in ent:LeidinggevendeOrgaanClassificaties ] ;
+  sh:property [ sh:path mandaat:bindingStart ; sh:name "binding start" ;
+                sh:description "Start van de periode; leidinggevend orgaan in tijd" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path mandaat:bindingEinde ; sh:name "binding einde" ;
+                sh:description "Einde van de periode; leidinggevend orgaan in tijd" ;
+                sh:datatype xsd:dateTime ] ;
+  sh:property [ sh:path <https://data.vlaanderen.be/ns/generiek#isTijdspecialisatieVan> ; sh:name "is tijdspecialisatie van" ;
+                sh:description "Het leidinggevend vaste orgaan waarvan dit orgaan in tijd een periode is" ;
+                sh:node ent:LeidinggevendBestuursorgaan ] ;
   sh:property [ sh:path lblodlg:heeftBestuursfunctie ; sh:name "bevat bestuursfunctie" ;
                 sh:description "De leidinggevende functies van dit orgaan, bv. secretaris" ;
                 sh:node ent:LeidinggevendeBestuursfunctie ] .
@@ -136,8 +199,8 @@ ent:Bestuurseenheid
                 sh:description "De hoofdvestiging van de bestuurseenheid" ;
                 sh:node ent:Vestiging ] ;
   sh:property [ sh:path [ sh:inversePath besluit:bestuurt ] ; sh:name "bestuursorganen" ;
-                sh:description "De bestuursorganen van deze bestuurseenheid" ;
-                sh:node ent:Bestuursorgaan ].
+                sh:description "De bestuursorganen van deze bestuurseenheid: politiek of leidinggevend" ;
+                sh:or ( [ sh:node ent:Bestuursorgaan ] [ sh:node ent:LeidinggevendBestuursorgaan ] ) ].
 
 ent:Mandaat
   a sh:NodeShape ;
@@ -205,8 +268,11 @@ ent:LeidinggevendeBestuursfunctie
   sh:property [ sh:path schema:contactPoint ; sh:name "contact" ;
                 sh:node ent:ContactPunt ] ;
   sh:property [ sh:path [ sh:inversePath lblodlg:heeftBestuursfunctie ] ; sh:name "in bestuursorgaan" ;
-                sh:description "Het bestuursorgaan waar deze functie bij hoort" ;
-                sh:node ent:BestuursorgaanInTijd ] .
+                sh:description "Het leidinggevend orgaan in tijd waar deze functie bij hoort" ;
+                sh:node ent:LeidinggevendBestuursorgaanInTijd ] ;
+  sh:property [ sh:path [ sh:inversePath org:holds ] ; sh:name "bekleders" ;
+                sh:description "De functionarissen die deze functie bekleden" ;
+                sh:node ent:Functionaris ] .
 
 ent:Functionaris
   a sh:NodeShape ;
@@ -244,12 +310,9 @@ ent:Persoon
                 sh:datatype xsd:string ] ;
   sh:property [ sh:path persoon:gebruikteVoornaam ; sh:name "gebruikte voornaam" ;
                 sh:datatype xsd:string ] ;
-  sh:property [ sh:path [ sh:inversePath mandaat:isBestuurlijkeAliasVan ] ; sh:name "mandatarissen" ;
-                sh:description "De mandatarissen van deze persoon" ;
-                sh:node ent:Mandataris ] ;
-  sh:property [ sh:path [ sh:inversePath mandaat:isBestuurlijkeAliasVan ] ; sh:name "functionarissen" ;
-                sh:description "De leidinggevende functies van deze persoon" ;
-                sh:node ent:Functionaris ] ;
+  sh:property [ sh:path [ sh:inversePath mandaat:isBestuurlijkeAliasVan ] ; sh:name "mandatarissen en functionarissen" ;
+                sh:description "De mandaten en de leidinggevende functies van deze persoon" ;
+                sh:or ( [ sh:node ent:Mandataris ] [ sh:node ent:Functionaris ] ) ] ;
   sh:property [ sh:path [ sh:inversePath org:heldBy ] ; sh:name "posities" ;
                 sh:description "De posities (agent-in-positie) van deze persoon" ;
                 sh:node ent:AgentInPositie ] .
