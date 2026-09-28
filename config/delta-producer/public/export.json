@@ -2,6 +2,26 @@
   "conceptScheme": "http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b",
   "export": [
     {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/VeranderingsgebeurtenisResultaat",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/administrative-unit",
+        "http://mu.semte.ch/graphs/worship-service"
+      ],
+      "pathToConceptScheme": [
+        "^http://lblod.data.gift/vocabularies/organisatie/veranderingsgebeurtenisResultaat",
+        "http://data.lblod.info/vocabularies/contacthub/typeWijziging",
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://mu.semte.ch/vocabularies/ext/resultingOrganization",
+        "http://lblod.data.gift/vocabularies/organisatie/resulterendeStatus",
+        "http://lblod.data.gift/vocabularies/organisatie/resulterendeRechtsvorm",
+        "http://lblod.data.gift/vocabularies/organisatie/resulterendWerkingsgebied",
+        "http://lblod.data.gift/vocabularies/organisatie/resulterendeBijkomendeKwalificatie"
+      ]
+    },
+    {
       "type": "http://data.lblod.info/vocabularies/erediensten/BestuurVanDeEredienst",
       "strictTypeExport": "true",
       "graphsFilter": [
@@ -96,7 +116,10 @@
         "http://www.w3.org/ns/org#hasSubOrganization",
         "http://www.w3.org/ns/org#linkedTo",
         "http://www.w3.org/ns/org#resultedFrom",
-        "http://www.w3.org/ns/regorg#orgStatus"
+        "http://www.w3.org/ns/regorg#orgStatus",
+        "http://lblod.data.gift/vocabularies/organisatie/bijkomendeKwalificatie",
+        "https://data.vlaanderen.be/ns/organisatie#rechtsvorm",
+        "http://lblod.data.gift/vocabularies/organisatie/inhoudelijkThema"     
       ]
     },
     {
@@ -143,7 +166,10 @@
         "http://www.w3.org/ns/org#resultedFrom",
         "http://www.w3.org/ns/regorg#orgStatus",
         "https://data.lblod.info/vocabularies/generiek/geplandeEindDatum",
-        "http://www.w3.org/ns/org#purpose"
+        "http://www.w3.org/ns/org#purpose",
+        "http://lblod.data.gift/vocabularies/organisatie/bijkomendeKwalificatie",
+        "https://data.vlaanderen.be/ns/organisatie#rechtsvorm",
+        "http://lblod.data.gift/vocabularies/organisatie/inhoudelijkThema"
       ]
     },
     {
@@ -631,6 +657,19 @@
     },
     {
       "type": "http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode",
+      "graphsFilter": [
+        "http://mu.semte.ch/graphs/public"
+      ],
+      "pathToConceptScheme": [
+        "http://www.w3.org/2004/02/skos/core#inScheme"
+      ],
+      "properties": [
+        "http://mu.semte.ch/vocabularies/core/uuid",
+        "http://www.w3.org/2004/02/skos/core#prefLabel"
+      ]
+    }, 
+    {
+      "type": "http://lblod.data.gift/vocabularies/organisatie/BijkomendeKwalificatieCode",
       "graphsFilter": [
         "http://mu.semte.ch/graphs/public"
       ],

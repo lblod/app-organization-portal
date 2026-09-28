@@ -1,6 +1,8 @@
 # Changelog
 
 ## Unreleased
+
+- missing kwalificatie code in producer [OP-3819]
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
 - Frontend [v1.40.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1400-2026-07-06), [v1.38.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1380-2026-06-12)
 - Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
@@ -73,6 +75,7 @@ drc restart db-cleanup
 ```
 # requires frontend >= 1.40.5 and construct-organization-relationships >= 1.1.4 (both bumped in compose here)
 drc pull construct-organization-relationships && drc up -d construct-organization-relationships
+drc restart delta-producer-publication-graph-maintainer #  wait for it to be ready 
 drc restart migrations-triggering-indexing
 drc up -d frontend
 drc restart cache resource
