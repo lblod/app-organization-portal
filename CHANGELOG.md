@@ -51,6 +51,8 @@
 - Frontend [v1.45.1](https://github.com/lblod/frontend-organization-portal/blob/v1.45.1/CHANGELOG.md) [OP-3911] [OP-3874]
 - Update change event label [OP-3924]
 - Frontend [v1.45.2](https://github.com/lblod/frontend-organization-portal/blob/v1.45.2/CHANGELOG.md) [OP-3936] [OP-3931]
+- Frontend [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/v1.45.3/CHANGELOG.md) [OP-3923] [OP-3915] [OP-3927]
+
 
 ### Deploy notes
 ```
@@ -137,6 +139,13 @@ drc restart migrations-triggering-indexing
 drc up -d db-cleanup
 drc restart resource cache report-generation
 # expect a one-time anomaly on the DWH data-monitoring "Lidmaatschap" query
+```
+
+```
+drc up -d frontend
+drc restart search
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
 ```
 
 
