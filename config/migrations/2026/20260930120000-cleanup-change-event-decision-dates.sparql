@@ -1,0 +1,47 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX m8g: <http://data.europa.eu/m8g/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX ch: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX eli: <http://data.europa.eu/eli/ontology#>
+
+# Remove decision activities and their dates for decisions attached to change events.
+DELETE {
+  GRAPH ?activityGraph {
+    ?decisionActivity ?activityPredicate ?activityObject .
+  }
+}
+WHERE {
+  GRAPH ?eventGraph {
+    ?changeEvent a org:ChangeEvent ;
+      m8g:hasFormalFramework ?decision .
+  }
+
+  GRAPH ?activityGraph {
+    ?decisionActivity a besluitvorming:Beslissingsactiviteit ;
+      prov:generated ?decision ;
+      ?activityPredicate ?activityObject .
+  }
+}
+;
+# Keep publication dates only for name changes and city Stadstitel changes.
+DELETE {
+  GRAPH ?eventGraph {
+    ?decision eli:date_publication ?publicationDate .
+  }
+}
+WHERE {
+  GRAPH ?eventGraph {
+    ?changeEvent a org:ChangeEvent ;
+      m8g:hasFormalFramework ?decision .
+    ?decision eli:date_publication ?publicationDate .
+
+    FILTER NOT EXISTS {
+      ?changeEvent ch:typeWijziging ?retainedType .
+      VALUES ?retainedType {
+        <http://lblod.data.gift/concepts/6651dc69b0ae8f7ff9974e8a23db1dec>
+        <http://lblod.data.gift/concepts/e4c3d1ef-a34d-43b0-a18c-f4e60e2c8af3>
+      }
+    }
+  }
+}

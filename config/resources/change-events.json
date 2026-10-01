@@ -122,23 +122,6 @@
         }
       },
       "new-resource-base": "http://lblod.data.info/id/besluiten/"
-    },
-    "decision-activities": {
-      "class": "https://data.vlaanderen.be/ns/besluitvorming#Beslissingsactiviteit",
-      "attributes": {
-        "end-date": {
-          "type": "date",
-          "predicate": "https://data.vlaanderen.be/ns/dossier#Activiteit.einddatum"
-        }
-      },
-      "relationships": {
-        "gives-cause-to": {
-          "predicate": "http://www.w3.org/ns/prov#generated",
-          "target": "decisions",
-          "cardinality": "many"
-        }
-      },
-      "new-resource-base": "http://lblod.data.info/id/beslissingsactiviteit/"
     }
   }
 }
