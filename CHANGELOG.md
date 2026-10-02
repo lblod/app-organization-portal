@@ -43,6 +43,7 @@
 - Update change event label [OP-3924]
 - Frontend [v1.45.2](https://github.com/lblod/frontend-organization-portal/blob/v1.45.2/CHANGELOG.md) [OP-3936] [OP-3931]
 - Frontend [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/v1.45.3/CHANGELOG.md) [OP-3923] [OP-3915] [OP-3927]
+- Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
 
 
 ### Deploy notes
