@@ -1,0 +1,33 @@
+PREFIX cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/>
+PREFIX mu:      <http://mu.semte.ch/vocabularies/core/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/104f504d-4ba5-43cb-8ec1-15a1b5d2fbd4>
+      a cleanup:Job ;
+      mu:uuid "104f504d-4ba5-43cb-8ec1-15a1b5d2fbd4" ;
+      dcterms:title "Clean up user sessions older than 3 months" ;
+      cleanup:randomQuery """
+        DELETE {
+          GRAPH <http://mu.semte.ch/graphs/sessions> {
+            ?session ?sessionP ?sessionO .
+          }
+        }
+        WHERE {
+          GRAPH <http://mu.semte.ch/graphs/sessions> {
+            ?session <http://mu.semte.ch/vocabularies/ext/sessionGroup> ?organization ;
+              <http://mu.semte.ch/vocabularies/ext/sessionRole> ?sessionRole ;
+              <http://purl.org/dc/terms/modified> ?modified ;
+              ?sessionP ?sessionO .
+          }
+
+          BIND(xsd:dateTime(REPLACE(STR(?modified), "Z", "")) AS ?date)
+          BIND(xsd:date(NOW() - "P3M"^^xsd:duration) AS ?lastMonth)
+
+          FILTER(xsd:date(?date) <= ?lastMonth)
+        }
+      """ ;
+      cleanup:cronPattern "0 5 * * 0" . # Every Sunday at 05:00
+  }
+}
