@@ -1,0 +1,16 @@
+PREFIX mu:      <http://mu.semte.ch/vocabularies/core/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+SELECT * WHERE {
+  GRAPH <http://mu.semte.ch/graphs/sessions> {
+    ?session dcterms:modified ?modified .
+    
+    FILTER NOT EXISTS {
+      ?session <http://mu.semte.ch/vocabularies/ext/sessionRole> ?role ;
+               <http://mu.semte.ch/vocabularies/ext/sessionGroup> ?group .
+    }
+  }
+  BIND(NOW() - "P3M"^^xsd:yearMonthDuration AS ?lastMonth)
+  FILTER(xsd:dateTime(?modified) <= ?lastMonth)
+}
