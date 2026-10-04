@@ -1,8 +1,23 @@
 # Changelog
 
 ## Unreleased
-
 - missing kwalificatie code in producer [OP-3819]
+- Frontend [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/v1.45.3/CHANGELOG.md) [OP-3923] [OP-3915] [OP-3927]
+- Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
+
+### Deploy notes
+```
+drc restart delta-producer-publication-graph-maintainer   # wait until it is up
+drc restart migrations-triggering-indexing
+```
+
+```
+drc up -d frontend
+drc restart search
+/bin/bash scripts/reset-elastic.sh
+```
+
+## v1.42.0
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
 - Frontend [v1.40.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1400-2026-07-06), [v1.38.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1380-2026-06-12)
 - Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
@@ -42,101 +57,26 @@
 - Frontend [v1.45.1](https://github.com/lblod/frontend-organization-portal/blob/v1.45.1/CHANGELOG.md) [OP-3911] [OP-3874]
 - Update change event label [OP-3924]
 - Frontend [v1.45.2](https://github.com/lblod/frontend-organization-portal/blob/v1.45.2/CHANGELOG.md) [OP-3936] [OP-3931]
-- Frontend [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/v1.45.3/CHANGELOG.md) [OP-3923] [OP-3915] [OP-3927]
-- Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
-
 
 ### Deploy notes
-```
-drc up -d frontend construct-organization-relationships identifier
-drc restart resource migrations dispatcher
-```
+Loket must run v1.228.0 or later, with its worship data already consumed by OP [DL-7485] [OP-3851].
 
 ```
-drc restart migrations
-drc up -d frontend scope-of-operation
-drc restart cache resource
-```
-
-```
-drc pull construct-organization-relationships && drc up -d construct-organization-relationships
-drc restart migrations
-drc restart resource cache
-drc restart delta-producer-publication-graph-maintainer
-scripts/reset-elastic.sh
-drc restart migrations frontend db resource cache
-# reindex elastic search:
-/bin/bash scripts/reset-elastic.sh
-drc restart migrations search
-drc up -d frontend
-```
-```
-drc restart migrations
-drc restart db-cleanup
-```
-
-```
-# requires frontend >= 1.40.5 and construct-organization-relationships >= 1.1.4 (both bumped in compose here)
-drc pull construct-organization-relationships && drc up -d construct-organization-relationships
-drc restart delta-producer-publication-graph-maintainer #  wait for it to be ready 
-drc restart migrations-triggering-indexing
-drc up -d frontend
-drc restart cache resource
-```
-
-```
-drc restart migrations resource delta-producer-publication-graph-maintainer
-```
-
-```
-drc restart migrations report-generation resource cache
-drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
-drc up -d construct-organization-relationships frontend
-```
-
-```
-drc up -d frontend
-drc restart migrations
-drc restart resource cache db dispatcher
-```
-
-```
-drc up -d frontend
-drc restart migrations
-drc restart resource cache
-```
-
-```
-# requires frontend >= 1.44.0 and construct-organization-relationships >= 1.2.1 (both in compose)
-drc pull construct-organization-relationships && drc up -d construct-organization-relationships
-drc restart migrations-triggering-indexing
-drc restart cache resource
-```
-
-```
-drc restart migrations-triggering-indexing
-drc restart report-generation
-# verify downstream (Loket, Subsidiepunt) that the classification of Haven van Antwerpen-Brugge changed to "Havenbedrijf"
-```
-
-```
-# requires frontend >= 1.45.0 (in compose)
-drc up -d frontend             # FIRST: the old frontend breaks on the new relation types
-drc stop db-cleanup            # keeps its jobs in memory; must not run between the two migration steps
-drc restart migrations         # wait for "All migrations executed"
-drc restart migrations-triggering-indexing
+drc pull frontend construct-organization-relationships scope-of-operation
+drc up -d frontend                 # first: the old frontend breaks on the new relation types
+drc up -d construct-organization-relationships scope-of-operation identifier
+drc stop db-cleanup                # keeps its jobs in memory; stays down until both migration runs are done
+drc restart db dispatcher resource
+drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
+drc restart migrations             # wait for "All migrations executed"
+drc restart migrations-triggering-indexing                # wait for "All migrations executed"
 drc up -d db-cleanup
-drc restart resource cache report-generation
-# expect a one-time anomaly on the DWH data-monitoring "Lidmaatschap" query
+drc restart resource cache report-generation worship-services-main-info-consumer
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+/bin/bash scripts/reset-elastic.sh # last: it ends with "up -d"
 ```
 
-```
-drc up -d frontend
-drc restart search
-# reindex elastic search:
-/bin/bash scripts/reset-elastic.sh
-```
-
+Afterwards: check in Loket and Subsidiepunt that Haven van Antwerpen-Brugge is classified as "Havenbedrijf" [DGS-631]. Expect a one-time anomaly on the DWH data-monitoring "Lidmaatschap" query [OP-3904].
 
 ## v1.41.6
 - Change KBO-nr for Centraal Israëlitische Consistorie van België [OP-3916]
