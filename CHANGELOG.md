@@ -1,23 +1,6 @@
 # Changelog
 
-## Unreleased
-- missing kwalificatie code in producer [OP-3819]
-- Frontend [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/v1.45.3/CHANGELOG.md) [OP-3923] [OP-3915] [OP-3927]
-- Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
-
-### Deploy notes
-```
-drc restart delta-producer-publication-graph-maintainer   # wait until it is up
-drc restart migrations-triggering-indexing
-```
-
-```
-drc up -d frontend
-drc restart search
-/bin/bash scripts/reset-elastic.sh
-```
-
-## v1.42.0
+## v1.42.0 (2026-10-04)
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
 - Frontend [v1.40.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1400-2026-07-06), [v1.38.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1380-2026-06-12)
 - Add new organization types (interlokale vereniging, vervoerregioraad, zorgraad, bosgroep, woonmaatschappij); add werkingsgebied (dct:spatial) to registered organizations [OP-3828]
@@ -78,7 +61,7 @@ drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/
 
 Afterwards: check in Loket and Subsidiepunt that Haven van Antwerpen-Brugge is classified as "Havenbedrijf" [DGS-631]. Expect a one-time anomaly on the DWH data-monitoring "Lidmaatschap" query [OP-3904].
 
-## v1.41.6
+## v1.41.6 (2026-09-15)
 - Change KBO-nr for Centraal Israëlitische Consistorie van België [OP-3916]
 
 ### Deploy notes
@@ -86,7 +69,7 @@ Afterwards: check in Loket and Subsidiepunt that Haven van Antwerpen-Brugge is c
 drc restart migrations-triggering-indexing
 ```
 
-## v1.41.5
+## v1.41.5 (2026-09-11)
 - Add the value politiecollege to the existing dropdown list beslissingsorgaan [DL-7473]
 - Bump construct-organization-relationships [DL-7473]
 
@@ -98,7 +81,7 @@ drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/
 
 ```
 
-## v1.41.4
+## v1.41.4 (2026-08-31)
 - Fix broken lmb mandataris mappin query [OP-3867]
 
 ### Deploy notes
@@ -107,7 +90,7 @@ drc restart migrations mandatarissen-consumer
 
 ```
 
-## v1.41.3
+## v1.41.3 (2026-08-28)
 - Fix betrokken lokale besturen links via migration [OP-3882]
 
 ### Deploy notes
@@ -116,7 +99,7 @@ drc restart migrations
 drc restart cache resource
 ```
 
-## v1.41.2
+## v1.41.2 (2026-08-25)
 - Fix betrokken lokale besturen links via migration [OP-3877]
 - Add timeout to producer jobs to prevent them staying stuck forever [OP-3815]
 
@@ -130,7 +113,7 @@ drc restart migrations
 drc restart resource cache
 ```
 
-## v1.41.1
+## v1.41.1 (2026-08-06)
 - Added service to link addresses to addressregister uris [OP-3795]
 - Site type changes [OP-3818]
 - Added Juridische vorm [OP-3816] [OP-3820]
@@ -159,7 +142,7 @@ drc restart migrations frontend db resource cache
 /bin/bash scripts/reset-elastic.sh
 ```
 
-## v1.41.0
+## v1.41.0 (2026-07-31)
  - added explicit healtchecks [DL-7466]
 
 ### Deploy notes
@@ -167,7 +150,7 @@ drc restart migrations frontend db resource cache
 drc restart dispatcher
 ```
 
-## v1.40.0
+## v1.40.0 (2026-06-02)
 - Query to check missing address URI's [OP-3784]
 - Create new query 'organisations shown in OP frontend' in Dashboard [OP-3774]
 - Moved AGB BRUGGE to correct graph [OP-3790]
