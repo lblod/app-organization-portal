@@ -55,7 +55,12 @@
     },
     "change-event-results": {
       "class": "code:VeranderingsgebeurtenisResultaat",
-      "attributes": {},
+      "attributes": {
+        "resulting-name": {
+          "type": "string",
+          "predicate": "code:resulterendeNaam"
+        }
+      },
       "relationships": {
         "resulting-organization": {
           "predicate": "ext:resultingOrganization",
