@@ -1,4 +1,12 @@
 # Changelog
+## Unreleased
+- Update frontend
+  - [v1.46.0](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1460-2026-10-08) [OP-3913] [OP-3949]
+
+### Deploy notes
+```
+drc up -d frontend
+```
 
 ## v1.42.0 (2026-10-04)
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
