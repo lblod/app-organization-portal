@@ -2,6 +2,7 @@
 ## Unreleased
 - Update frontend
   - [v1.46.0](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1460-2026-10-08) [OP-3913] [OP-3949]
+  - [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1453-2026-09-28) [OP-3923] [OP-3915] [OP-3927]
 
 ### Deploy notes
 ```
