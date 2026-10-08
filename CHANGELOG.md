@@ -3,10 +3,18 @@
 - Update frontend
   - [v1.46.0](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1460-2026-10-08) [OP-3913] [OP-3949]
   - [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1453-2026-09-28) [OP-3923] [OP-3915] [OP-3927]
+- Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
+- missing kwalificatie code in producer [OP-3819]
 
 ### Deploy notes
 ```
+drc restart migrations
+drc restart resource cache
 drc up -d frontend
+drc restart search
+# reindex elastic search:
+/bin/bash scripts/reset-elastic.sh
+drc restart delta-producer-publication-graph-maintainer #  wait for it to be ready 
 ```
 
 ## v1.42.0 (2026-10-04)
