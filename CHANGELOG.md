@@ -5,16 +5,23 @@
   - [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1453-2026-09-28) [OP-3923] [OP-3915] [OP-3927]
 - Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
 - missing kwalificatie code in producer [OP-3819]
+- Expose the period of a relation between organizations (start and end date) and produce it in the public and organizations producers [OP-3947]
+- Set the end date of the relations of organizations that became inactive through an 'Ontbonden en/of vereffend' or 'Fusie' change event [OP-3947]
 
 ### Deploy notes
+Deploy before the frontend release that ships OP-3947. The current frontend keeps working on this backend.
+
 ```
 drc restart migrations
-drc restart resource cache
+drc restart dispatcher resource cache
 drc up -d frontend
+drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
+drc restart migrations-triggering-indexing                # wait for "All migrations executed"
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs
 drc restart search
 # reindex elastic search:
 /bin/bash scripts/reset-elastic.sh
-drc restart delta-producer-publication-graph-maintainer #  wait for it to be ready 
 ```
 
 ## v1.42.0 (2026-10-04)

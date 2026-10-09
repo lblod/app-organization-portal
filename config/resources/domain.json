@@ -1022,7 +1022,7 @@
         },
         "during": {
           "predicate": "euro:memberDuring",
-          "target": "period-of-time",
+          "target": "period-of-times",
           "cardinality": "one"
         }
       },
@@ -1050,16 +1050,16 @@
       },
       "new-resource-base": "http://data.lblod.info/id/rollen/"
     },
-    "period-of-time": {
+    "period-of-times": {
       "class": "time:ProperInterval",
       "attributes": {
         "start-date": {
           "predicate": "time:hasBeginning",
-          "type": "datetime"
+          "type": "date"
         },
         "end-date": {
           "predicate": "time:hasEnd",
-          "type": "datetime"
+          "type": "date"
         }
       },
       "new-resource-base": "http://data.lblod.info/id/periode/"
