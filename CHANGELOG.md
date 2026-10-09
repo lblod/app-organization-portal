@@ -5,6 +5,7 @@
   - [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1453-2026-09-28) [OP-3923] [OP-3915] [OP-3927]
 - Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
 - missing kwalificatie code in producer [OP-3819]
+- Autofill some related organizations with special organizations (federale and vlaamse regering) [OP-3955]
 
 ### Deploy notes
 ```
