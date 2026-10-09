@@ -1,0 +1,31 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+INSERT DATA {
+
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    <http://data.lblod.info/id/bestuurseenheden/4f309543-43a2-485d-9328-7b81e5e032a1>
+        rdf:type  <http://www.w3.org/ns/org#Organization> , <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid> , dcterms:Agent ;
+        owl:sameAs <http://data.vlaanderen.be/doc/organisatie/OVO000729> ;
+        <http://www.w3.org/ns/org#classification>  <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/52cc9d8d-1c9a-4d92-9936-da9d4a622ec4> ;
+        <http://mu.semte.ch/vocabularies/core/uuid>  "4f309543-43a2-485d-9328-7b81e5e032a1" ;
+        skos:prefLabel	"Vlaamse regering" ;
+        <http://www.w3.org/2004/02/skos/core#note> """This is a special case, we consider (for now) Vlaamse regering as a bestuurseenheid, of org:classification ABB. It is used as founder and recognizer of Regionaal zorgplatforms, Regionale landschappen, Vervoerregioraden, Woonmaatschappijen and Zorgraden.""" ;
+        <http://www.w3.org/ns/adms#identifier>  <http://data.lblod.info/id/identificatoren/8aa8b94a-f699-4e41-9cb2-82930e052391> ;
+        <http://www.w3.org/ns/regorg#orgStatus>  <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> ;
+        <http://www.w3.org/ns/regorg#legalName>  "Vlaamse regering" .
+
+    <http://data.lblod.info/id/identificatoren/8aa8b94a-f699-4e41-9cb2-82930e052391>
+      <https://data.vlaanderen.be/ns/generiek#gestructureerdeIdentificator>  <http://data.lblod.info/id/gestructureerdeIdentificator/1d7fcc91-f54b-4ac3-87a7-d81e69161047> ;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/ns/adms#Identifier> ;
+      <http://www.w3.org/2004/02/skos/core#notation>  "OVO-nummer" ;
+      <http://mu.semte.ch/vocabularies/core/uuid>  "8aa8b94a-f699-4e41-9cb2-82930e052391" .
+
+    <http://data.lblod.info/id/gestructureerdeIdentificator/1d7fcc91-f54b-4ac3-87a7-d81e69161047>
+      <http://mu.semte.ch/vocabularies/core/uuid>  "1d7fcc91-f54b-4ac3-87a7-d81e69161047" ;
+      <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://data.vlaanderen.be/ns/generiek#GestructureerdeIdentificator> ;
+      <https://data.vlaanderen.be/ns/generiek#lokaleIdentificator>	"OVO000729" .
+  }
+}

@@ -1,0 +1,58 @@
+PREFIX org:    <http://www.w3.org/ns/org#>
+PREFIX mu:     <http://mu.semte.ch/vocabularies/core/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+
+# Backfill the auto-filled government relations ("Werd opgericht door" and
+# "Werd erkend door") for the existing active organizations of the seven
+# autofill types. The uuid lives in a subselect: Virtuoso inlines a
+# BIND(STRUUID()), so a plain BIND would give the URI and mu:uuid two
+# different values (see the 20260917101954 zone-membership migrations).
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?membership a org:Membership ;
+      mu:uuid ?uuid ;
+      org:organization ?organization ;
+      org:member ?government ;
+      org:role ?role .
+  }
+}
+WHERE {
+  {
+    SELECT ?organization ?government ?role (LCASE(STRUUID()) AS ?uuid)
+    WHERE {
+      VALUES ?role {
+        <http://data.lblod.info/id/rollen/73d5e1cf250d42fab15926771f07505a> # Werd opgericht door
+        <http://data.lblod.info/id/rollen/d44a34ed-5007-45fe-9adb-43b695740dbc> # Werd erkend door
+      }
+
+      VALUES (?government ?classification) {
+        # Federale regering: Hulpverleningszone, Politiezone
+        (<http://data.lblod.info/id/bestuurseenheden/382a011d-9964-4e4a-bf50-d81192e539ad> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/ea446861-2c51-45fa-afd3-4e4a37b71562>)
+        (<http://data.lblod.info/id/bestuurseenheden/382a011d-9964-4e4a-bf50-d81192e539ad> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/a3922c6d-425b-474f-9a02-ffb71a436bfc>)
+        # Vlaamse regering: Regionaal zorgplatform, Regionaal landschap,
+        # Vervoerregioraad, Woonmaatschappij, Zorgraad
+        (<http://data.lblod.info/id/bestuurseenheden/4f309543-43a2-485d-9328-7b81e5e032a1> <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/e3afe092-6ca6-4685-94c6-1ee20811efc4>)
+        (<http://data.lblod.info/id/bestuurseenheden/4f309543-43a2-485d-9328-7b81e5e032a1> <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/2de60048-ddbb-4020-ada7-4b81f98f9fe2>)
+        (<http://data.lblod.info/id/bestuurseenheden/4f309543-43a2-485d-9328-7b81e5e032a1> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/b2133b86-24f0-44f0-9d10-5b4c7f944a9d>)
+        (<http://data.lblod.info/id/bestuurseenheden/4f309543-43a2-485d-9328-7b81e5e032a1> <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/f4e5bb57-1007-4397-828b-b34bbf1e760d>)
+        (<http://data.lblod.info/id/bestuurseenheden/4f309543-43a2-485d-9328-7b81e5e032a1> <http://data.vlaanderen.be/id/concept/GeregistreerdeOrganisatieClassificatieCode/8392b885-a875-4b0d-b6a2-b52e53bda454>)
+      }
+
+      GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+        ?organization org:classification ?classification ;
+          regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+      }
+
+      FILTER NOT EXISTS {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?existing a org:Membership ;
+            org:organization ?organization ;
+            org:member ?government ;
+            org:role ?role .
+        }
+      }
+    }
+  }
+  BIND (IRI(CONCAT("http://data.lblod.info/id/lidmaatschap/", ?uuid)) AS ?membership)
+}
