@@ -6,11 +6,12 @@
   - [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1453-2026-09-28) [OP-3923] [OP-3915] [OP-3927]
 - Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
 - missing kwalificatie code in producer [OP-3819]
+- Add support for multiple "link naar besluit" in change events [OP-3925]
 
 ### Deploy notes
 ```
 drc restart migrations
-drc restart resource cache
+drc restart resource cache report-generation
 drc up -d frontend
 drc restart search
 # reindex elastic search:
