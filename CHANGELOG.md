@@ -9,7 +9,7 @@
 
 ### Deploy notes
 ```
-drc restart migrations
+drc restart migrations migrations-triggering-indexing
 drc restart resource cache
 drc up -d frontend
 drc restart search
