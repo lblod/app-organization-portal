@@ -1,16 +1,19 @@
 # Changelog
 ## Unreleased
 - Update frontend
+  - [v1.48.0](https://github.com/lblod/frontend-organization-portal/blob/v1.48.0/CHANGELOG.md#v1480-2026-10-15) [OP-3948] [OP-3925] [OP-3925]
+  - [v1.47.0](https://github.com/lblod/frontend-organization-portal/blob/c45d25fb269fe2500f4a105bc2e68ce7a0ebcb35/CHANGELOG.md#v1470-2026-10-13) [OP-3928] [OP-3913]
   - [v1.46.0](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1460-2026-10-08) [OP-3913] [OP-3949]
   - [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1453-2026-09-28) [OP-3923] [OP-3915] [OP-3927]
 - Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
 - missing kwalificatie code in producer [OP-3819]
 - Autofill some related organizations with special organizations (federale and vlaamse regering) [OP-3955]
+- Add support for multiple "link naar besluit" in change events [OP-3925]
 
 ### Deploy notes
 ```
 drc restart migrations migrations-triggering-indexing
-drc restart resource cache
+drc restart resource cache report-generation
 drc up -d frontend
 drc restart search
 # reindex elastic search:
