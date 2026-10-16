@@ -1,0 +1,63 @@
+PREFIX org:    <http://www.w3.org/ns/org#>
+PREFIX mu:     <http://mu.semte.ch/vocabularies/core/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX euro:   <http://data.europa.eu/m8g/>
+PREFIX time:   <http://www.w3.org/2006/time#>
+PREFIX ch:     <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX ext:    <http://mu.semte.ch/vocabularies/ext/>
+PREFIX code:   <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX dct:    <http://purl.org/dc/terms/>
+PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
+
+INSERT {
+  GRAPH ?graph {
+    ?membership euro:memberDuring ?interval .
+    ?interval a time:ProperInterval ;
+      mu:uuid ?uuid ;
+      time:hasEnd ?endDate .
+  }
+}
+WHERE {
+  {
+    SELECT ?membership ?graph ?endDate (LCASE(STRUUID()) AS ?uuid)
+    WHERE {
+      {
+        SELECT ?membership ?graph (MIN(?dissolutionDate) AS ?firstDissolutionDate)
+        WHERE {
+          {
+            SELECT ?membership ?graph ?org (MAX(?date) AS ?dissolutionDate)
+            WHERE {
+              VALUES ?eventType {
+                <http://lblod.data.gift/concepts/b5f471a8-eb2e-4ec3-9f84-2c179134e2be>
+                <http://lblod.data.gift/concepts/fa80032794c841ecac73ff874f856db1>
+              }
+              GRAPH ?orgGraph {
+                ?org regorg:orgStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> .
+                ?event a org:ChangeEvent ;
+                  ch:typeWijziging ?eventType ;
+                  dct:date ?date ;
+                  code:veranderingsgebeurtenisResultaat ?result .
+                ?result ext:resultingOrganization ?org ;
+                  code:resulterendeStatus <http://lblod.data.gift/concepts/d02c4e12bf88d2fdf5123b07f29c9311> .
+              }
+              VALUES ?graph {
+                <http://mu.semte.ch/graphs/administrative-unit>
+                <http://mu.semte.ch/graphs/worship-service>
+                <http://mu.semte.ch/graphs/shared>
+              }
+              GRAPH ?graph {
+                ?membership a org:Membership .
+                { ?membership org:member ?org } UNION { ?membership org:organization ?org }
+              }
+              FILTER NOT EXISTS { ?membership euro:memberDuring ?existing }
+            }
+            GROUP BY ?membership ?graph ?org
+          }
+        }
+        GROUP BY ?membership ?graph
+      }
+      BIND (STRDT(SUBSTR(STR(?firstDissolutionDate), 1, 10), xsd:date) AS ?endDate)
+    }
+  }
+  BIND (IRI(CONCAT("http://data.lblod.info/id/periode/", ?uuid)) AS ?interval)
+}
