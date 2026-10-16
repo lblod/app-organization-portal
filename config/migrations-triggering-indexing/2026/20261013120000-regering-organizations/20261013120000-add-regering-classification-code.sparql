@@ -1,0 +1,18 @@
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX skos:   <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu:     <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext:    <http://mu.semte.ch/vocabularies/ext/>
+PREFIX code:   <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX scheme: <http://data.vlaanderen.be/id/conceptscheme/>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/d4e1ca1c-668c-4316-adbf-731b5b07af1a>
+      rdf:type code:BestuurseenheidClassificatieCode , ext:OrganizationClassificationCode ;
+      mu:uuid "d4e1ca1c-668c-4316-adbf-731b5b07af1a" ;
+      skos:prefLabel "Regering" ;
+      skos:definition "De federale en de Vlaamse regering. Speciale organisatie: niet getoond in het Organisatieportaal, wel aangeboden aan Loket en de andere interne consumenten." ;
+      skos:topConceptOf scheme:BestuurseenheidClassificatieCode ;
+      skos:inScheme scheme:BestuurseenheidClassificatieCode , <http://lblod.data.gift/concept-schemes/10caf4a4-1ff5-4c05-917e-56489910d68b> .
+  }
+}
