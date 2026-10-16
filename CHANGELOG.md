@@ -1,10 +1,14 @@
 # Changelog
 ## Unreleased
 - Update frontend
+  - [v1.48.0](https://github.com/lblod/frontend-organization-portal/blob/v1.48.0/CHANGELOG.md#v1480-2026-10-15) [OP-3948] [OP-3925] [OP-3925]
+  - [v1.47.0](https://github.com/lblod/frontend-organization-portal/blob/c45d25fb269fe2500f4a105bc2e68ce7a0ebcb35/CHANGELOG.md#v1470-2026-10-13) [OP-3928] [OP-3913]
   - [v1.46.0](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1460-2026-10-08) [OP-3913] [OP-3949]
   - [v1.45.3](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1453-2026-09-28) [OP-3923] [OP-3915] [OP-3927]
 - Add db-cleanup script removing sessions older then 3 months + cleanup pre-2021 session [DL-7348]
 - missing kwalificatie code in producer [OP-3819]
+- Autofill some related organizations with special organizations (federale and vlaamse regering) [OP-3955]
+- Add support for multiple "link naar besluit" in change events [OP-3925]
 - Expose the period of a relation between organizations (start and end date) and produce it in the public and organizations producers [OP-3947]
 - Set the end date of the relations of organizations that became inactive through an 'Ontbonden en/of vereffend' or 'Fusie' change event [OP-3947]
 
@@ -13,10 +17,10 @@ Deploy before the frontend release that ships OP-3947. The current frontend keep
 
 ```
 drc restart migrations
-drc restart dispatcher resource cache
-drc up -d frontend
+drc restart dispatcher resource cache report-generation
 drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
+drc up -d frontend
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs
 drc restart search

@@ -1,5 +1,5 @@
-import {generateReportFromData, batchedQuery} from "../helpers.js";
-import {PREFIXES} from "./utils";
+import { generateReportFromData, batchedQuery } from "../helpers.js";
+import { PREFIXES } from "./utils";
 
 export default {
     cronPattern: "0 00 3 * * *",
@@ -39,7 +39,7 @@ SELECT DISTINCT
    ?resulterendeStatusLabel
    ?veranderingsgebeurtenisTypeLabel
    ?beschrijving
-   ?linkNaarBesluit
+   ?linksNaarBesluiten
    ?datumMinisterieelBesluit
    ?datumPublicatieBS
    ?datumVeranderingsgebeurtenis
@@ -69,16 +69,22 @@ WHERE {
   OPTIONAL { ?veranderingsgebeurtenis dct:description ?beschrijving . }
   OPTIONAL { ?veranderingsgebeurtenis dct:date ?datumVeranderingsgebeurtenis . }
 
- OPTIONAL {
-     ?veranderingsgebeurtenis m8g:hasFormalFramework ?besluit .
-     OPTIONAL { ?besluit foaf:page ?linkNaarBesluit . }
-     OPTIONAL { ?besluit eli:date_publication ?datumPublicatieBS . }
-     OPTIONAL {
-       ?beslissingsactiviteit prov:generated ?besluit ;
-         dossier:Activiteit.einddatum ?datumMinisterieelBesluit .
-     }
-   }
-
+  OPTIONAL {
+    ?veranderingsgebeurtenis m8g:hasFormalFramework ?besluit .
+    OPTIONAL {
+      SELECT ?besluit (GROUP_CONCAT(DISTINCT STR(?link); separator=", ") AS ?linksNaarBesluiten)
+      WHERE {
+        ?besluit a besluit:Besluit ;
+          foaf:page ?link .
+      }
+      GROUP BY ?besluit
+    }
+    OPTIONAL { ?besluit eli:date_publication ?datumPublicatieBS . }
+    OPTIONAL {
+      ?beslissingsactiviteit prov:generated ?besluit ;
+        dossier:Activiteit.einddatum ?datumMinisterieelBesluit .
+    }
+  }
 }
 ORDER BY ?organisatieLabel ?datumVeranderingsgebeurtenis
     `;
@@ -96,7 +102,7 @@ ORDER BY ?organisatieLabel ?datumVeranderingsgebeurtenis
             resulterendeStatusLabel: getSafeValue(row, "resulterendeStatusLabel"),
             veranderingsgebeurtenisTypeLabel: getSafeValue(row, "veranderingsgebeurtenisTypeLabel"),
             beschrijving: getSafeValue(row, "beschrijving"),
-            linkNaarBesluit: getSafeValue(row, "linkNaarBesluit"),
+            linksNaarBesluiten: getSafeValue(row, "linksNaarBesluiten"),
             datumMinisterieelBesluit: getSafeValue(row, "datumMinisterieelBesluit"),
             datumPublicatieBS: getSafeValue(row, "datumPublicatieBS"),
             datumVeranderingsgebeurtenis: getSafeValue(row, "datumVeranderingsgebeurtenis"),
@@ -115,7 +121,7 @@ ORDER BY ?organisatieLabel ?datumVeranderingsgebeurtenis
                 "resulterendeStatusLabel",
                 "veranderingsgebeurtenisTypeLabel",
                 "beschrijving",
-                "linkNaarBesluit",
+                "linksNaarBesluiten",
                 "datumMinisterieelBesluit",
                 "datumPublicatieBS",
                 "datumVeranderingsgebeurtenis",
