@@ -1,6 +1,8 @@
 # Changelog
 ## Unreleased
 - Update frontend
+  - [v1.50.0](https://github.com/lblod/frontend-organization-portal/blob/v1.50.0/CHANGELOG.md#v1500-2026-10-16) [OP-3947]
+  - [v1.49.0](https://github.com/lblod/frontend-organization-portal/blob/v1.49.0/CHANGELOG.md#v1490-2026-10-16) [OP-3929] [OP-3955]
   - [v1.48.0](https://github.com/lblod/frontend-organization-portal/blob/v1.48.0/CHANGELOG.md#v1480-2026-10-15) [OP-3948] [OP-3925] [OP-3925]
   - [v1.47.0](https://github.com/lblod/frontend-organization-portal/blob/c45d25fb269fe2500f4a105bc2e68ce7a0ebcb35/CHANGELOG.md#v1470-2026-10-13) [OP-3928] [OP-3913]
   - [v1.46.0](https://github.com/lblod/frontend-organization-portal/blob/439ee388020c1046758bd80bda11a1753f0be868/CHANGELOG.md#v1460-2026-10-08) [OP-3913] [OP-3949]
