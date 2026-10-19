@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.42.1 (To be released)
+## v1.42.1 (2026-10-19)
 - Fix max amout of mandatarissen for Lochristi [OP-3957]
 
 ### Deploy notes
