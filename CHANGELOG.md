@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.42.1 (To be released)
+- Fix max amout of mandatarissen for Lochristi [OP-3957]
+
+### Deploy notes
+```
+drc restart migrations-triggering-indexing
+```
+
 ## v1.42.0 (2026-10-04)
 - Derive an organization's reference region(s) from its werkingsgebied; bump scope-of-operation to 0.2.0 [OP-3799]
 - Frontend [v1.40.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1400-2026-07-06), [v1.38.0](https://github.com/lblod/frontend-organization-portal/blob/5d2147662f620d420f54b9624a12c42ca2ac964a/CHANGELOG.md#v1380-2026-06-12)
