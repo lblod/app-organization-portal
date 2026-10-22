@@ -1,0 +1,11 @@
+# The kept markers, as N-Triples. Not loaded into RVS: kept.nt is the export's
+# audit trail of what it claimed to keep, useful when a count on the RVS side
+# disagrees.
+#
+# The sub-select is load-bearing: a bare `CONSTRUCT ... WHERE { ?s ?p ?o }` over
+# a FROM dataset drops literals in this Virtuoso (7.20.3241).
+CONSTRUCT { ?s ?p ?o }
+FROM @GRAPH@
+WHERE {
+  { SELECT ?s ?p ?o WHERE { ?s ?p ?o } }
+}
