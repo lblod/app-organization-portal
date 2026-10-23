@@ -1,0 +1,17 @@
+# The number of triples in the OP source graphs, to check the read against.
+# @PATTERNS@ is one GRAPH <...> { ?s ?p ?o } per source graph, written by
+# export.sh.
+#
+# @SKIP@ carries the same excluded-subject filter as export-page.rq, so the
+# expected count is over exactly the subjects the pages read. Both are written
+# by export.sh and must stay in step.
+#
+# The UNION over the source graphs can yield the same triple twice when it sits
+# in two of them (469 triples do, in the dev data), so the count is over distinct
+# triples, not over union rows. A plain count over the union read high by 469 and
+# the export refused a complete read; the load graph, which is a set, had the
+# distinct number. SELECT DISTINCT in the sub-select is what makes COUNT(*) the
+# distinct count here -- COUNT(DISTINCT ?s, ?p, ?o) is not usable on this store.
+SELECT (COUNT(*) AS ?c) WHERE {
+  { SELECT DISTINCT ?s ?p ?o WHERE { @PATTERNS@ FILTER(@SKIP@) } }
+}

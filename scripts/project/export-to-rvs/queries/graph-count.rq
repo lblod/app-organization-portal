@@ -1,0 +1,6 @@
+# The number of triples in a graph.
+# FROM, not GRAPH: export.sh and import.sh both pass the graph as @GRAPH@
+# (<iri>).
+SELECT (COUNT(*) AS ?c)
+FROM @GRAPH@
+WHERE { ?s ?p ?o }

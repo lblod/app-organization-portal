@@ -1,0 +1,36 @@
+# One page of the OP dump: all triples of the first @PAGE_SIZE@ subjects after
+# @FROM_TEXT@ (the cursor; empty on the first page). export.sh fills in
+# @SOURCE_GRAPHS@, the cursor and @PAGE_SIZE@.
+#
+# Deliberately plain shape: on this Virtuoso (7.20.3241), a CONSTRUCT over a
+# FILTER on a named graph's subject returns nothing, a sub-select plus an
+# outer FILTER returns nothing, and `?s > <iri>` matches nothing. A plain
+# FROM pattern with a string comparison works.
+#
+# A subject cursor, not an OFFSET: this Virtuoso refuses a sorted TOP once
+# LIMIT + OFFSET passes ~10,000 rows, and an unsorted OFFSET page repeats
+# rows.
+#
+# The inner SELECT takes whole subjects. A triple LIMIT can cut inside a
+# subject and the next page's cursor would skip the rest — an earlier
+# triple-LIMIT version lost triples that way, caught by the count check.
+#
+# @SKIP@ is the body of a FILTER the caller fills in: one `!STRSTARTS(...)`
+# per excluded prefix, joined by &&, starting from `1` so it is never empty.
+CONSTRUCT { ?s ?p ?o }
+@SOURCE_GRAPHS@
+WHERE {
+  {
+    SELECT ?s
+    @SOURCE_GRAPHS@
+    WHERE {
+      ?s ?p ?o
+      FILTER(STR(?s) > "@FROM_TEXT@")
+      FILTER(@SKIP@)
+    }
+    GROUP BY ?s
+    ORDER BY ?s
+    LIMIT @PAGE_SIZE@
+  }
+  ?s ?p ?o
+}

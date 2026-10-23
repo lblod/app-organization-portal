@@ -1,0 +1,15 @@
+# The lowest unit IRI in the source graphs, with its closing '>' removed: the
+# dry run starts its cursor here so the first page begins on the units. The
+# first subjects of an OP store are its file store and loader bookkeeping
+# (http://data.lblod.info/files/..., delta timestamps), so a sample from the
+# start can hold no unit or body at all. STR(?s) > "<iri without '>'" holds for
+# the IRI itself.
+#
+# Plain SELECT with one FROM and no nesting, like export-page.rq: MIN over a
+# GRAPH pattern needs no nesting (one row per unit, MIN of it), and keeping the
+# shape identical keeps one class of Virtuoso surprise out of the script.
+SELECT (MIN(?s) AS ?first)
+@SOURCE_GRAPHS@
+WHERE {
+  ?s rdf:type besluit:Bestuurseenheid .
+}

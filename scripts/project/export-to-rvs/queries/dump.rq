@@ -1,0 +1,64 @@
+# One page of the export as N-Triples: the kept triples of the first
+# @PAGE_SIZE@ subjects after @FROM_TEXT@ (the cursor; empty on the first page).
+#
+# The export is not materialised in a graph. Writing ~5M filtered triples in one
+# INSERT aborted with "Hash dictionary is full, exceeded 1000000 entries", so the
+# filter is applied here and the result is paged by subject instead. Subjects
+# travel whole, like queries/export-page.rq, for the same reason: a triple limit
+# can cut inside a subject and the next page's cursor would skip the rest.
+#
+# The export rule:
+#   - the subject must carry the kept marker;
+#   - a link to a worship concept or scheme is dropped (the subject stays);
+#   - schema:publication is OP's listing of RVS relations, not RVS data.
+# org:member and foaf:account are kept: persons and accounts are RVS's data.
+#
+# The sub-select is load-bearing: a bare `CONSTRUCT ... WHERE { ?s ?p ?o }` over
+# a FROM dataset drops literals in this Virtuoso (7.20.3241).
+CONSTRUCT { ?s ?p ?o }
+WHERE {
+  {
+    SELECT ?s
+    WHERE {
+      GRAPH @LOAD@ {
+        ?s ?p ?o .
+      }
+      GRAPH @KEPT@ {
+        ?s a <urn:x-rvs-kept> .
+      }
+      FILTER(STR(?s) > "@FROM_TEXT@")
+    }
+    GROUP BY ?s
+    ORDER BY ?s
+    LIMIT @PAGE_SIZE@
+  }
+  {
+    GRAPH @LOAD@ {
+      ?s ?p ?o .
+    }
+    FILTER(?p NOT IN (schema:publication))
+    MINUS {
+      GRAPH @COMPUTED@ {
+        ?o a <urn:x-rvs-marker-worship> .
+      }
+    }
+  }
+  UNION
+  {
+    # RVS-25: every kept unit and governing body is an org:Organization, which
+    # OP lacks on most units and on all bodies. Emitted here because the
+    # export is not materialised. MINUS, never FILTER NOT EXISTS: this store
+    # answers the latter wrongly.
+    BIND(rdf:type AS ?p)
+    BIND(org:Organization AS ?o)
+    GRAPH @LOAD@ {
+      ?s rdf:type ?keptType .
+    }
+    VALUES ?keptType { besluit:Bestuurseenheid besluit:Bestuursorgaan }
+    MINUS {
+      GRAPH @LOAD@ {
+        ?s rdf:type org:Organization .
+      }
+    }
+  }
+}
