@@ -70,13 +70,16 @@ Flags:
   the run refuses one that does, so a typo cannot overwrite or nest into an older dump.
 - `--page-size N` (subjects per page, default 9000) — bounds each response, not the write:
   every page is inserted in 500-triple chunks regardless.
-- `--dry-run` (a smoke test: `OP_DRY_RUN_PAGES` pages, 4 by default, starting at the
+- `--dry-run` (a smoke test: `OP_DRY_RUN_PAGES` read pages, 4 by default, starting at the
   first unit IRI so the sample is organisation data and not OP's file store; override
-  with `OP_DRY_RUN_FROM`).
+  with `OP_DRY_RUN_FROM`. The artifact stops after `OP_DRY_RUN_DUMP_PAGES` pages, 2 by
+  default, so the whole test is a couple of minutes).
 
 The stamp is `YYMMDDhhmmss` in UTC, e.g. `261022102439`. No separators, no timezone suffix: it sorts and reads left to right.
 
-A full export reads ~5.7M triples and takes 60–90 minutes; the dump is ~1.4M triples. Progress goes to stderr — it is not a silent command.
+A full export reads ~1.9M triples in 34 pages and takes ~25 minutes; the dump is ~1.4M
+triples. Progress goes to stderr, one line per read page and per artifact page — it is not
+a silent command.
 
 ## Output
 

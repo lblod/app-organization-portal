@@ -56,7 +56,10 @@ skip_filter() {
 page_size=9000
 out=
 dry_run=0
+# A dry run samples this many pages of the read and builds this many pages of
+# the artifact: enough to exercise every step, small enough to run in minutes.
 dry_pages=${OP_DRY_RUN_PAGES:-4}
+dry_dump_pages=${OP_DRY_RUN_DUMP_PAGES:-2}
 while [ $# -gt 0 ]; do
   case "$1" in
     --page-size) page_size=$2; shift 2; continue ;;
@@ -80,13 +83,17 @@ die() { log "error: $*"; exit 1; }
 
 # --out names the dump folder, so it must not exist yet: replacing it would
 # either nest the dump inside the old one (mv into a directory) or overwrite a
-# dump someone may want to keep. A leftover .tmp from a failed run is ours.
-[ -e "$final" ] && die "$final exists; --out must name a new folder (delete it, or pass a different path)"
+# dump someone may want to keep.
+#
 # Write into <stamp>.tmp and rename only on success: a failed run then leaves a
 # .tmp folder the operator can delete at a glance, never an empty dump folder
 # that looks like a usable dump.
 out=${final}.tmp
-rm -rf "$out"
+[ -e "$final" ] && die "$final exists; --out must name a new folder (delete it, or pass a different path)"
+# Never delete a folder this run did not create: an earlier run's .tmp is
+# evidence, and removing it is how a failed run comes to look like it "ate" the
+# previous dump.
+[ -e "$out" ] && die "$out exists (left by an earlier run); inspect it, then delete it or pass --out"
 made_out=0
 mkdir_out() {
   # Called after the first request has answered: a run that dies before it
@@ -370,10 +377,14 @@ while :; do
   [ -s "$page" ] || { rm -f "$page"; break; }
   cat "$page" >> "$out/op-rvs.nt"
   dump_cursor=$(sed -n 's/^<\([^>]*\)>.*/\1/p' "$page" | LC_ALL=C sort | tail -1)
-  rm -f "$page"
   dump_pages=$((dump_pages + 1))
-  if [ $((dump_pages % 10)) -eq 0 ]; then
-    log "artifact: $dump_pages pages, through <$dump_cursor>"
+  # Every page, not every tenth: the artifact step runs for many minutes and a
+  # silent gap reads as a hang.
+  log "artifact page $dump_pages: $(grep -c . "$page" || true) triples, through <$dump_cursor>"
+  rm -f "$page"
+  if [ "$dry_run" -eq 1 ] && [ "$dump_pages" -ge "$dry_dump_pages" ]; then
+    log "dry run: stopped after $dump_pages artifact pages"
+    break
   fi
 done
 LC_ALL=C sort -u "$out/op-rvs.nt" -o "$out/op-rvs.nt"
@@ -425,5 +436,5 @@ log "clearing scratch graphs"
 clear_scratch
 
 if [ "$dry_run" -eq 1 ]; then
-  log "dry run: this is a $pages-page sample, not a usable dump"
+  log "dry run: this is a $pages-page / $dump_pages-artifact-page sample, not a usable dump"
 fi
