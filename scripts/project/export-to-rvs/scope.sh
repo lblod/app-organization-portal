@@ -2,7 +2,7 @@
 # Run queries/scope.rq against the OP store until the closure stops growing.
 # Called by export.sh; not meant to be run by hand.
 #
-# Arguments: endpoint user password scratch computed export kept
+# Arguments: endpoint user password scratch computed kept
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd)
 endpoint=$1 user=$2 password=$3 scratch=$4 computed=$5 kept=$6

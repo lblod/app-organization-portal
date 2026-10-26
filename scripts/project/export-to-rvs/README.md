@@ -2,7 +2,7 @@
 
 Reads OP's non-worship organisation data over SPARQL and writes a dump for RVS's
 `import-from-op` script. This is the export half of the OP → RVS sync; the import lives in
-`Projects/LokaleVerkenner/app-lokale-verkenner/config/project-scripts/import-from-op/`.
+lblod/app-lokale-verkenner, `config/project-scripts/import-from-op/`.
 
 ## What travels
 
@@ -11,10 +11,24 @@ From OP's `administrative-unit`, `shared` and `public` graphs:
 - units (`besluit:Bestuurseenheid`) and registered organisations (`regorg:RegisteredOrganization`), each also typed `org:Organization` (RVS-25; OP does not always assert it);
 - governing bodies (`besluit:Bestuursorgaan`): those that `bestuurt` a unit or registered organisation, and their time specialisations (`generiek:isTijdspecialisatieVan`);
 - persons (`person:Person`), mandatarissen, mandaten, posts, bestuursfuncties and functionarissen, with full detail;
-- identifiers, sites, addresses, contact points, memberships, change events, locations, KBO shadow organisations;
+- identifiers, sites, addresses, contact points, memberships, locations;
+- change events and KBO shadow organisations, when their organisation is kept;
 - the codelists all of the above point at.
 
-Only worship is excluded: every `ere:*` type, plus the worship classification codes and schemes. The export fails if worship or another contradiction reaches its output (`check-export.py`).
+Only worship is excluded. A subject is worship when it has an `ere:*` type in any graph of
+the store (the worship graph included: OP keeps fragments of worship units in
+`administrative-unit`, typed as plain units, with their `ere:*` type in `worship-service`
+only), or when its IRI is under one of OP's worship bases (`besturenVanDeEredienst/`,
+`centraleBesturenVanDeEredienst/`, `representatieveOrganen/`, ...). Worship concept
+schemes and the concepts in them are worship too. A link from a kept subject to a worship
+subject is dropped; the kept subject stays. The export fails if worship or another
+contradiction reaches its output (`check-export.py`).
+
+A root (unit, registered organisation, change event, KBO shadow) needs a `mu:uuid`; a
+unit IRI with nothing but a type triple in the source graphs is a stub RVS could not show,
+and the check would refuse it. Stubs, and change events or KBO shadows whose organisation
+is not kept, are listed in `skipped.tsv` with their reason. The run does not fail on
+them.
 
 The dump contains natural-person data. It is written under the git-ignored `data/dumps/`. Never commit it, never copy it outside a guarded location.
 
@@ -71,8 +85,8 @@ Flags:
 - `--page-size N` (subjects per page, default 9000) — bounds each response, not the write:
   every page is inserted in 500-triple chunks regardless.
 - `--dry-run` (a smoke test: `OP_DRY_RUN_PAGES` read pages, 4 by default, starting at the
-  first unit IRI so the sample is organisation data and not OP's file store; override
-  with `OP_DRY_RUN_FROM`. The artifact stops after `OP_DRY_RUN_DUMP_PAGES` pages, 2 by
+  first unit IRI with a uuid so the sample is organisation data and not OP's file store or
+  a stub; override with `OP_DRY_RUN_FROM`. The artifact stops after `OP_DRY_RUN_DUMP_PAGES` pages, 2 by
   default, so the whole test is a couple of minutes).
 
 The stamp is `YYMMDDhhmmss` in UTC, e.g. `261022102439`. No separators, no timezone suffix: it sorts and reads left to right.
@@ -93,7 +107,7 @@ The folder is created after the first request has answered, so a run that fails 
 (wrong endpoint, nothing to read) leaves nothing behind — no empty `<stamp>.tmp/`. One
 that fails later leaves its `.tmp/` with what it wrote, as above.
 
-In `data/dumps/<stamp>/`: `op-rvs.nt`, `kept.nt`, `counts.tsv`, `contradictions.tsv`, `manifest.json`. Copy the whole directory to the RVS project's `data/dumps/<stamp>/`, keeping the same name; RVS's `import-from-op --dump data/dumps/<stamp>` reads it from there.
+In `data/dumps/<stamp>/`: `op-rvs.nt`, `kept.nt`, `counts.tsv`, `contradictions.tsv`, `skipped.tsv`, `manifest.json`. Copy the whole directory to the RVS project's `data/dumps/<stamp>/`, keeping the same name; RVS's `import-from-op --dump data/dumps/<stamp>` reads it from there.
 
 `kept.nt` is an audit trail of what the export kept; it is not loaded into RVS.
 

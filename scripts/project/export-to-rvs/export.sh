@@ -361,6 +361,15 @@ fi
 bash "$here/scope.sh" "$OP_SPARQL_ENDPOINT" "$OP_SPARQL_USER" "$OP_SPARQL_PASSWORD" \
   "$load" "$computed" "$kept"
 
+# Root candidates the scope left out (stubs without uuid, change events and
+# KBO shadows without a kept organisation): listed, not fatal. The worship
+# subjects are not in it; leaving those out is the point.
+select_file "$here/queries/skipped.rq" "$tmp_filtered" \
+  '@LOAD@' "<$load>" '@COMPUTED@' "<$computed>"
+tr ',' '\t' < "$tmp_filtered" | tr -d '"' > "$out/skipped.tsv"
+skipped=$(grep -c . "$out/skipped.tsv" || true)
+log "skipped $skipped root candidates (see $out/skipped.tsv)"
+
 # --- 4. the artifact ----------------------------------------------------------
 # Paged by subject, straight out of the load graph: the filtered export is
 # never written into a graph (one INSERT of ~5M triples exceeds Virtuoso's
@@ -411,6 +420,7 @@ python3 "$here/manifest.py" \
   --triples "$nt" \
   --pages "$pages" \
   --dry-run "$dry_run" \
+  --skipped "$skipped" \
   --dir "$out" > "$out/manifest.json"
 
 log "wrote $nt triples to $out/op-rvs.nt"

@@ -67,6 +67,8 @@ def main():
     parser.add_argument("--triples", type=int, required=True)
     parser.add_argument("--pages", type=int, required=True)
     parser.add_argument("--dry-run", type=int, required=True)
+    parser.add_argument("--skipped", type=int, default=0,
+                        help="root candidates the scope left out (rows of skipped.tsv)")
     parser.add_argument("--dir", required=True)
     args = parser.parse_args()
 
@@ -80,6 +82,7 @@ def main():
         "dryRun": bool(args.dry_run),
         "triples": args.triples,
         "pages": args.pages,
+        "skipped": args.skipped,
         "counts": read_counts(os.path.join(args.dir, "counts.tsv")),
         "contradictions": read_contradictions(os.path.join(args.dir, "contradictions.tsv")),
     }

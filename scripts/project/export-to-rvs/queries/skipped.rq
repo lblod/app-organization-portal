@@ -1,0 +1,47 @@
+# Root candidates the scope left out, for skipped.tsv: one row per subject with
+# the reason. Written by export.sh after the scope settled; informational, the
+# run does not fail on it.
+#
+#   no-uuid                  typed as a root but without mu:uuid in the source
+#                            graphs: a stub (OP data has unit IRIs with nothing
+#                            but a type triple there)
+#   organisation-not-kept    a change event or KBO shadow whose organisation is
+#                            not a kept root (worship, a stub, or missing)
+#
+# Worship-marked subjects are not listed: leaving them out is the point of the
+# export, not an anomaly.
+SELECT ?reason ?type ?s
+WHERE {
+  {
+    GRAPH @LOAD@ {
+      ?s rdf:type ?type .
+    }
+    VALUES ?type { besluit:Bestuurseenheid regorg:RegisteredOrganization org:ChangeEvent ext:KboOrganisatie }
+    MINUS {
+      GRAPH @LOAD@ {
+        ?s mu:uuid ?uuid .
+      }
+    }
+    BIND("no-uuid" AS ?reason)
+  }
+  UNION
+  {
+    GRAPH @LOAD@ {
+      ?s rdf:type ?type ;
+        mu:uuid ?uuid .
+    }
+    VALUES ?type { org:ChangeEvent ext:KboOrganisatie }
+    MINUS {
+      GRAPH @COMPUTED@ {
+        ?s a <urn:x-rvs-marker-root> .
+      }
+    }
+    BIND("organisation-not-kept" AS ?reason)
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?s a <urn:x-rvs-marker-worship> .
+    }
+  }
+}
+ORDER BY ?reason ?type ?s

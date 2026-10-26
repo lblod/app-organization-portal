@@ -5,11 +5,16 @@
 # start can hold no unit or body at all. STR(?s) > "<iri without '>'" holds for
 # the IRI itself.
 #
+# A unit with a uuid: the lowest unit IRIs of the April 2026 data are stubs of
+# worship units (besturenVanDeEredienst/..., a type and nothing else), which
+# the scope leaves out; the sample should start on a record it keeps.
+#
 # Plain SELECT with one FROM and no nesting, like export-page.rq: MIN over a
 # GRAPH pattern needs no nesting (one row per unit, MIN of it), and keeping the
 # shape identical keeps one class of Virtuoso surprise out of the script.
 SELECT (MIN(?s) AS ?first)
 @SOURCE_GRAPHS@
 WHERE {
-  ?s rdf:type besluit:Bestuurseenheid .
+  ?s rdf:type besluit:Bestuurseenheid ;
+    mu:uuid ?uuid .
 }
