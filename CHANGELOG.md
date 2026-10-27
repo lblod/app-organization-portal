@@ -14,6 +14,7 @@
 - Add support for multiple "link naar besluit" in change events [OP-3925]
 - Expose the period of a relation between organizations (start and end date) and produce it in the public and organizations producers [OP-3947]
 - Set the end date of the relations of organizations that became inactive through an 'Ontbonden en/of vereffend' or 'Fusie' change event [OP-3947]
+- Delete the generic "Heeft een relatie met" relations without a successor in the new codelist; relations between a Provincie and a Gemeente or OCMW are kept [OP-3953]
 
 ### Deploy notes
 Deploy before the frontend release that ships OP-3947. The current frontend keeps working on this backend.
