@@ -14,6 +14,7 @@
 - Add support for multiple "link naar besluit" in change events [OP-3925]
 - Expose the period of a relation between organizations (start and end date) and produce it in the public and organizations producers [OP-3947]
 - Set the end date of the relations of organizations that became inactive through an 'Ontbonden en/of vereffend' or 'Fusie' change event [OP-3947]
+- Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
 
 ### Deploy notes
 Deploy before the frontend release that ships OP-3947. The current frontend keeps working on this backend.
