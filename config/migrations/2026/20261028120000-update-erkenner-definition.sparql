@@ -1,0 +1,21 @@
+# OP-3940: the UI label of the recognition role changed from "Werd erkend door"
+# to "Is erkend door" (see the membership-role model of the frontend). Update
+# the "Getoond als" documentation in the definition inserted by
+# 20260917101954-add-membership-role-subtypes.sparql accordingly.
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/rollen/d44a34ed-5007-45fe-9adb-43b695740dbc> skos:definition ?definition .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/rollen/d44a34ed-5007-45fe-9adb-43b695740dbc> skos:definition "De organisatie (org:member) verleent erkenning aan de andere organisatie (org:organization). Getoond als 'Verleent erkenning aan' / 'Is erkend door'." .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/rollen/d44a34ed-5007-45fe-9adb-43b695740dbc> skos:definition ?definition .
+  }
+}
