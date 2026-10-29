@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## v1.43.0 (2026-10-29)
 - Update frontend
   - [v1.50.1](https://github.com/lblod/frontend-organization-portal/blob/v1.50.1/CHANGELOG.md#v1501-2026-10-26) [OP-3961]
   - [v1.50.0](https://github.com/lblod/frontend-organization-portal/blob/v1.50.0/CHANGELOG.md#v1500-2026-10-16) [OP-3947]
@@ -16,19 +16,17 @@
 - Set the end date of the relations of organizations that became inactive through an 'Ontbonden en/of vereffend' or 'Fusie' change event [OP-3947]
 
 ### Deploy notes
-Deploy before the frontend release that ships OP-3947. The current frontend keeps working on this backend.
-
 ```
-drc restart migrations
-drc restart dispatcher resource cache report-generation
+drc restart migrations                                    # wait for "All migrations executed"
+drc restart db-cleanup                                    # reads its jobs at start; schedules the new session cleanup
 drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
-drc up -d frontend
+drc restart dispatcher resource cache report-generation   # after the migrations: they do not invalidate the cache
+drc up -d frontend                                        # after resource: 1.50.1 needs the OP-3947 attributes
+# once the maintainer log shows "Remaining number of tasks" for public and organizations:
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs
-drc restart search
-# reindex elastic search:
-/bin/bash scripts/reset-elastic.sh
+/bin/bash scripts/reset-elastic.sh                        # last: it ends with "up -d"
 ```
 
 ## v1.42.1 (2026-10-19)
