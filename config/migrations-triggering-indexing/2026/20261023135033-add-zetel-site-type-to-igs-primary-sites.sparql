@@ -1,0 +1,22 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?site ere:vestigingstype <http://lblod.data.gift/concepts/f1381723dec42c0b6ba6492e41d6f5dd> . # Maatschappelijke zetel
+  }
+}
+WHERE {
+  # The four IGS (intergemeentelijk samenwerkingsverband) classifications
+  VALUES ?classification {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/b156b67f-c5f4-4584-9b30-4c090be02fdc> # Projectvereniging
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/d01bb1f6-2439-4e33-9c25-1fc295de2e71> # Dienstverlenende vereniging
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/cd93f147-3ece-4308-acab-5c5ada3ec63d> # Opdrachthoudende vereniging
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/4b8450cf-a326-4c66-9e63-b4ec10acc7f6> # Opdrachthoudende vereniging met private deelname
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization org:classification ?classification ;
+      org:hasPrimarySite ?site .
+  }
+  FILTER NOT EXISTS { ?site ere:vestigingstype ?siteType }
+}
