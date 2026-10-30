@@ -1,0 +1,20 @@
+PREFIX org:  <http://www.w3.org/ns/org#>
+PREFIX euro: <http://data.europa.eu/m8g/>
+
+# OP-3953: delete the periods of the generic "gerelateerd" memberships of non-worship
+# organizations. Runs first: the next file removes the memberDuring links to them.
+# Worship memberships are in another graph and stay.
+
+DELETE {
+  GRAPH ?periodGraph { ?period ?predicate ?object . }
+}
+WHERE {
+  VALUES ?membershipGraph { <http://mu.semte.ch/graphs/administrative-unit> <http://mu.semte.ch/graphs/shared> }
+  GRAPH ?membershipGraph {
+    ?membership a org:Membership ;
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> .
+  }
+  ?membership euro:memberDuring ?period .
+  VALUES ?periodGraph { <http://mu.semte.ch/graphs/administrative-unit> <http://mu.semte.ch/graphs/shared> }
+  GRAPH ?periodGraph { ?period ?predicate ?object . }
+}

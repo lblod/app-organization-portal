@@ -3,13 +3,22 @@
 - Update frontend
   - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
 - Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
+- Delete the generic "Heeft een relatie met" relations of non-worship organizations, with their periods [OP-3953]
+- Derive the provincie of a gemeente and an OCMW (org:hasSubOrganization) from the werkingsgebied [OP-3953]
 
 ### Deploy notes
 ```
+drc stop db-cleanup                                       # keeps its jobs in memory; stays down until both migration runs are done
+drc restart migrations                                    # wait for "All migrations executed"
+drc up -d frontend                                        # first: older frontends read the provincie from the relations deleted below
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
-drc restart cache                                         # the migration does not invalidate it
-drc up -d frontend
+drc up -d db-cleanup
+drc restart cache                                         # the migrations do not invalidate it
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs
 ```
+
+Afterwards: expect a one-time anomaly on the DWH data-monitoring "Lidmaatschap" query [OP-3953].
 
 ## v1.43.0 (2026-10-29)
 - Update frontend

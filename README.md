@@ -239,3 +239,9 @@ To make sure the app can share data, producers need to be set up. There is an in
        )
      }
 ```
+
+### Municipality mergers
+
+The db-cleanup jobs (`org:hasSubOrganization`, exported by the producers) and the frontend find the Provincie of a Gemeente and its OCMW through the werkingsgebied: the Gemeente location lies `geo:sfWithin` the Provincie location, and an OCMW has the location of its Gemeente.
+A migration that adds a merged Gemeente must therefore give its location, in graph `http://mu.semte.ch/graphs/public`, the name of the Gemeente as `rdfs:label`, `ext:werkingsgebiedNiveau "Gemeente"` and `geo:sfWithin` the Provincie location.
+It must also give the new OCMW that location as `besluit:werkingsgebied`, in graph `http://mu.semte.ch/graphs/administrative-unit`.
