@@ -1,6 +1,27 @@
 # Changelog
 ## Unreleased
 - Update frontend
+  - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
+- Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
+- Delete the generic "Heeft een relatie met" relations of non-worship organizations, with their periods [OP-3953]
+- Derive the provincie of a gemeente and an OCMW (org:hasSubOrganization) from the werkingsgebied [OP-3953]
+
+### Deploy notes
+```
+drc stop db-cleanup                                       # keeps its jobs in memory; stays down until both migration runs are done
+drc restart migrations                                    # wait for "All migrations executed"
+drc up -d frontend                                        # first: older frontends read the provincie from the relations deleted below
+drc restart migrations-triggering-indexing                # wait for "All migrations executed"
+drc up -d db-cleanup
+drc restart cache                                         # the migrations do not invalidate it
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs
+```
+
+Afterwards: expect a one-time anomaly on the DWH data-monitoring "Lidmaatschap" query [OP-3953].
+
+## v1.43.0 (2026-10-29)
+- Update frontend
   - [v1.50.1](https://github.com/lblod/frontend-organization-portal/blob/v1.50.1/CHANGELOG.md#v1501-2026-10-26) [OP-3961]
   - [v1.50.0](https://github.com/lblod/frontend-organization-portal/blob/v1.50.0/CHANGELOG.md#v1500-2026-10-16) [OP-3947]
   - [v1.49.0](https://github.com/lblod/frontend-organization-portal/blob/v1.49.0/CHANGELOG.md#v1490-2026-10-16) [OP-3929] [OP-3955]
@@ -14,29 +35,20 @@
 - Add support for multiple "link naar besluit" in change events [OP-3925]
 - Expose the period of a relation between organizations (start and end date) and produce it in the public and organizations producers [OP-3947]
 - Set the end date of the relations of organizations that became inactive through an 'Ontbonden en/of vereffend' or 'Fusie' change event [OP-3947]
-- Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
-- Delete the generic "Heeft een relatie met" relations of non-worship organizations, with their periods [OP-3953]
-- Derive the provincie of a gemeente and an OCMW (org:hasSubOrganization) from the werkingsgebied [OP-3953]
 
 ### Deploy notes
 ```
-drc pull frontend
-drc stop db-cleanup                                       # keeps its jobs in memory; stays down until both migration runs are done
 drc restart migrations                                    # wait for "All migrations executed"
-drc restart dispatcher resource cache report-generation
+drc restart db-cleanup                                    # reads its jobs at start; schedules the new session cleanup
 drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
-drc up -d frontend                                        # first: older frontends read the provincie from the relations deleted below
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
-drc up -d db-cleanup
-drc restart cache                                         # deletions in graph shared do not reach the resource cache
+drc restart dispatcher resource cache report-generation   # after the migrations: they do not invalidate the cache
+drc up -d frontend                                        # after resource: 1.50.1 needs the OP-3947 attributes
+# once the maintainer log shows "Remaining number of tasks" for public and organizations:
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs
-drc restart search
-# reindex elastic search:
-/bin/bash scripts/reset-elastic.sh
+/bin/bash scripts/reset-elastic.sh                        # last: it ends with "up -d"
 ```
-
-Afterwards: expect a one-time anomaly on the DWH data-monitoring "Lidmaatschap" query [OP-3953].
 
 ## v1.42.1 (2026-10-19)
 - Fix max amout of mandatarissen for Lochristi [OP-3957]
