@@ -1,0 +1,167 @@
+PREFIX cleanup: <http://mu.semte.ch/vocabularies/ext/cleanup/>
+
+# OP-3953: the province cleanup jobs derive org:hasSubOrganization from the werkingsgebied
+# (unit location geo:sfWithin provincie location, matched in any graph) instead of the
+# generic memberships. In graph administrative-unit only OCMWs keep a provincie parent; the
+# other member classes came from generic memberships that no longer exist.
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/0cc5e981-a61e-433e-b6f2-c59fd8599944> cleanup:randomQuery ?old .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/0cc5e981-a61e-433e-b6f2-c59fd8599944> cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+      PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+      PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+      INSERT {
+        GRAPH <http://mu.semte.ch/graphs/shared> {
+          ?province org:hasSubOrganization ?municipality .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/shared> {
+          ?municipality org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+          ?province org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+          FILTER NOT EXISTS { ?province org:hasSubOrganization ?municipality . }
+        }
+        ?municipality besluit:werkingsgebied ?municipalityLocation .
+        ?municipalityLocation geo:sfWithin ?provinceLocation .
+        ?province besluit:werkingsgebied ?provinceLocation .
+      }
+    """ .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/0cc5e981-a61e-433e-b6f2-c59fd8599944> cleanup:randomQuery ?old .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/7354dfd9-bdef-48d6-b81e-e814bd4f4e9c> cleanup:randomQuery ?old .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/7354dfd9-bdef-48d6-b81e-e814bd4f4e9c> cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+      PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+      PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+      DELETE {
+        GRAPH <http://mu.semte.ch/graphs/shared> {
+          ?province org:hasSubOrganization ?municipality .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/shared> {
+          ?province org:hasSubOrganization ?municipality .
+          ?municipality org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+          ?province org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+        }
+        FILTER NOT EXISTS {
+          ?municipality besluit:werkingsgebied ?municipalityLocation .
+          ?municipalityLocation geo:sfWithin ?provinceLocation .
+          ?province besluit:werkingsgebied ?provinceLocation .
+        }
+      }
+    """ .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/7354dfd9-bdef-48d6-b81e-e814bd4f4e9c> cleanup:randomQuery ?old .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/434b8b52-b695-4358-a927-ddaceb22e7e3> cleanup:randomQuery ?old .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/434b8b52-b695-4358-a927-ddaceb22e7e3> cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+      PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+      PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+      INSERT {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?province org:hasSubOrganization ?ocmw .
+        }
+      } WHERE {
+        ?province org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+        ?ocmw org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> .
+        ?ocmw besluit:werkingsgebied ?ocmwLocation .
+        ?ocmwLocation geo:sfWithin ?provinceLocation .
+        ?province besluit:werkingsgebied ?provinceLocation .
+        FILTER NOT EXISTS {
+          GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+            ?province org:hasSubOrganization ?ocmw .
+          }
+        }
+      }
+    """ .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/434b8b52-b695-4358-a927-ddaceb22e7e3> cleanup:randomQuery ?old .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/7b2f66c8-1433-47f4-b730-62316f288631> cleanup:randomQuery ?old .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/7b2f66c8-1433-47f4-b730-62316f288631> cleanup:randomQuery """
+      PREFIX org: <http://www.w3.org/ns/org#>
+      PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+      PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+      DELETE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?province org:hasSubOrganization ?member .
+        }
+      } WHERE {
+        GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+          ?province org:hasSubOrganization ?member .
+        }
+        ?member org:classification ?memberClass .
+        FILTER ( ?memberClass
+                 IN (
+                    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ,
+                    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> ,
+                    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36a82ba0-7ff1-4697-a9dd-2e94df73b721> ,
+                    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/80310756-ce0a-4a1b-9b8e-7c01b6cc7a2d> ,
+                    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/2ad46df5-5c79-4d67-84d5-604c1377231e> ,
+                    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/088784b6-e188-48bf-b94f-94665f9e1f53>
+                  )
+             )
+        GRAPH <http://mu.semte.ch/graphs/shared> {
+          ?province org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+        }
+        FILTER NOT EXISTS {
+          ?member org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> ;
+            besluit:werkingsgebied ?memberLocation .
+          ?memberLocation geo:sfWithin ?provinceLocation .
+          ?province besluit:werkingsgebied ?provinceLocation .
+        }
+      }
+    """ .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/id/cleanup-job/7b2f66c8-1433-47f4-b730-62316f288631> cleanup:randomQuery ?old .
+  }
+}

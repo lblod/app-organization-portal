@@ -15,23 +15,28 @@
 - Expose the period of a relation between organizations (start and end date) and produce it in the public and organizations producers [OP-3947]
 - Set the end date of the relations of organizations that became inactive through an 'Ontbonden en/of vereffend' or 'Fusie' change event [OP-3947]
 - Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
-- Delete the generic "Heeft een relatie met" relations without a successor in the new codelist; relations between a Provincie and a Gemeente or OCMW are kept [OP-3953]
+- Delete the generic "Heeft een relatie met" relations of non-worship organizations, with their periods [OP-3953]
+- Derive the provincie of a gemeente and an OCMW (org:hasSubOrganization) from the werkingsgebied [OP-3953]
 
 ### Deploy notes
-Deploy before the frontend release that ships OP-3947. The current frontend keeps working on this backend.
-
 ```
-drc restart migrations
+drc pull frontend
+drc stop db-cleanup                                       # keeps its jobs in memory; stays down until both migration runs are done
+drc restart migrations                                    # wait for "All migrations executed"
 drc restart dispatcher resource cache report-generation
 drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
+drc up -d frontend                                        # first: older frontends read the provincie from the relations deleted below
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
-drc up -d frontend
+drc up -d db-cleanup
+drc restart cache                                         # deletions in graph shared do not reach the resource cache
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
 drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/organizations/healing-jobs
 drc restart search
 # reindex elastic search:
 /bin/bash scripts/reset-elastic.sh
 ```
+
+Afterwards: expect a one-time anomaly on the DWH data-monitoring "Lidmaatschap" query [OP-3953].
 
 ## v1.42.1 (2026-10-19)
 - Fix max amout of mandatarissen for Lochristi [OP-3957]
