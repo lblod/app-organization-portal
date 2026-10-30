@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "scripts": [
     {
       "documentation": {
@@ -47,6 +47,22 @@
       },
       "mounts": {
         "app": "/data/app/"
+      }
+    },
+    {
+      "documentation": {
+        "command": "export-to-rvs",
+        "description": "write OP's non-worship organisation data to data/dumps/<stamp>/ as a dump for RVS (~25 min)",
+        "arguments": ["--out DIR", "--page-size N", "--dry-run"]
+      },
+      "environment": {
+        "image": "python:3.12-bookworm",
+        "interactive": false,
+        "script": "export-to-rvs/run.sh",
+        "join_networks": true
+      },
+      "mounts": {
+        "app": "/app/"
       }
     }
   ]

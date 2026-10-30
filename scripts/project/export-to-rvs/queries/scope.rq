@@ -1,0 +1,419 @@
+# Scope, transform and closure of the OP dump.
+# Runs inside the OP store on the raw copy of the pages (graph @SCRATCH@) and
+# writes two graphs:
+#   @COMPUTED@  markers: worship, kept roots, kept bodies, reached subjects
+#   @KEPT@      one marker per kept subject; the export's audit trail of what
+#               it claimed, not loaded into RVS
+#
+# Scope (6 Oct note, "The dump migration"):
+#   in:  organisations, governing bodies, identifiers, sites, addresses, contact
+#        points, memberships, change events, werkgebied locations, non-worship
+#        codelists and concept schemes, KBO shadows.
+#   out: every ere:* class, worship classification codes and their schemes.
+#        Persons, accounts, mandates, posts and functionaries are IN scope: the
+#        developer confirmed RVS takes all of OP's non-worship data, natural
+#        persons and their details included (the dump is never committed and is
+#        loaded into guarded graphs).
+#
+# Transforms:
+#   - RVS-25: org:Organization on every kept unit and governing body. OP lacks
+#     it on most units and on all bodies.
+#   - A link from a kept subject to a worship concept is dropped; the subject
+#     stays. The register is clean, but OP data has links like a non-worship
+#     unit in a worship scheme, and dropping a unit over a link is worse.
+#
+# scope.sh re-runs this file until the markers stop growing, so each pass may
+# assume the markers it reads are the previous pass's. Every pass is idempotent.
+#
+# Negative checks are MINUS, never FILTER NOT EXISTS: the OP Virtuoso answers
+# the latter wrongly (plan, dev-data item 7).
+
+# --- 1. Worship ---------------------------------------------------------------
+
+# Typed worship, looked up in every graph of the store, not only in the load
+# graph. OP keeps fragments of worship units outside worship-service: on the
+# April 2026 data, 102 besturen van de eredienst sit in administrative-unit
+# with their types and a primary-site link, but without uuid, label or ere:*
+# type; that type is in worship-service. Read from the source graphs alone
+# they are plain units, and the first export kept them as roots (the dry run
+# failed on "unit-without-uuid"). The worship graph is in the same store, so
+# the marker is taken from wherever the type is.
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?s a <urn:x-rvs-marker-worship> .
+  }
+}
+WHERE {
+  {
+    SELECT DISTINCT ?s WHERE {
+      GRAPH ?anyGraph {
+        ?s rdf:type ?type .
+      }
+      FILTER(STRSTARTS(STR(?type), STR(ere:)))
+    }
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?s a <urn:x-rvs-marker-worship> .
+    }
+  }
+}
+;
+
+# Worship by IRI, for a store that lacks the worship graph (a restore of the
+# source graphs only): OP mints its worship resources under these bases
+# (new-resource-base in config/resources/domain.json). Mandatarissen share
+# their base with the non-worship ones and are not listed; their ere:* type
+# travels with them.
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?s a <urn:x-rvs-marker-worship> .
+  }
+}
+WHERE {
+  {
+    SELECT DISTINCT ?s WHERE {
+      GRAPH @SCRATCH@ {
+        ?s rdf:type ?anyType .
+      }
+    }
+  }
+  VALUES ?base {
+    "http://data.lblod.info/id/besturenVanDeEredienst/"
+    "http://data.lblod.info/id/centraleBesturenVanDeEredienst/"
+    "http://data.lblod.info/id/representatieveOrganen/"
+    "http://data.lblod.info/id/eredienstBestuurseenheden/"
+    "http://data.lblod.info/id/betrokkenLokaleBesturen/"
+    "http://data.lblod.info/id/rollenBedienaar/"
+    "http://data.lblod.info/id/voorwaardenBedienaar/"
+    "http://data.lblod.info/id/positiesBedienaar/"
+  }
+  FILTER(STRSTARTS(STR(?s), ?base))
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?s a <urn:x-rvs-marker-worship> .
+    }
+  }
+}
+;
+
+# Worship concepts: concepts and schemes in an ere:* scheme, plus the schemes
+# the note names explicitly.
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?concept a <urn:x-rvs-marker-worship> .
+  }
+}
+WHERE {
+  GRAPH @SCRATCH@ {
+    ?concept skos:inScheme|skos:topConceptOf ?scheme .
+  }
+  FILTER(STRSTARTS(STR(?scheme), STR(ere:)))
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?concept a ?marker .
+    }
+    VALUES ?marker { <urn:x-rvs-marker-worship> }
+  }
+}
+;
+
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?scheme a <urn:x-rvs-marker-worship> .
+  }
+}
+WHERE {
+  GRAPH @SCRATCH@ {
+    ?concept skos:inScheme|skos:topConceptOf ?scheme .
+  }
+  FILTER(STRSTARTS(STR(?scheme), STR(ere:)))
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?scheme a ?marker .
+    }
+    VALUES ?marker { <urn:x-rvs-marker-worship> }
+  }
+}
+;
+
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?scheme a <urn:x-rvs-marker-worship> .
+  }
+}
+WHERE {
+  VALUES ?scheme {
+    <http://data.vlaanderen.be/id/conceptscheme/TypeEredienst>
+    <http://data.vlaanderen.be/id/conceptscheme/EredienstBeroepen>
+    <http://data.vlaanderen.be/id/conceptscheme/PositieBedienaar>
+    <http://data.vlaanderen.be/id/conceptscheme/VoorwaardenBedienaarCriterium>
+    <http://data.vlaanderen.be/id/conceptscheme/BedienaarCriteriumBewijsstuk>
+    <http://data.vlaanderen.be/id/conceptscheme/BedienaarFinancieringCode>
+    <http://data.vlaanderen.be/id/conceptscheme/RepresentatiefOrgaanClassificatieCode>
+    <http://data.vlaanderen.be/id/conceptscheme/TypeBetrokkenheid>
+    <http://data.vlaanderen.be/id/conceptscheme/HelftVerkiezing>
+  }
+  GRAPH @SCRATCH@ {
+    ?scheme ?schemePredicate ?schemeObject .
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?scheme a ?marker .
+    }
+    VALUES ?marker { <urn:x-rvs-marker-worship> }
+  }
+}
+;
+
+# --- 2. Roots -----------------------------------------------------------------
+
+# The organisation register: units, and the registered organisations that carry
+# the KBO identity. org:Organization is not a root: OP has a single organisation
+# without a unit (the mock vereniging its own seed adds), and taking it would
+# import OP's leftover mock data. Every real organisation is reachable from a
+# unit.
+#
+# A root carries a mu:uuid. A subject typed as a unit without one is a stub:
+# OP's data has unit IRIs with nothing but a type triple in the source graphs
+# (their record, when there is one, lives in another graph). RVS cannot show
+# them and the export's check refuses a unit without uuid, so they are not
+# roots; export.sh lists them in skipped.tsv (queries/skipped.rq).
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?s a <urn:x-rvs-marker-root> .
+  }
+}
+WHERE {
+  GRAPH @SCRATCH@ {
+    ?s rdf:type ?type ;
+      mu:uuid ?uuid .
+  }
+  FILTER(?type IN (
+    besluit:Bestuurseenheid,
+    regorg:RegisteredOrganization
+  ))
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?s a <urn:x-rvs-marker-worship> .
+    }
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?s a <urn:x-rvs-marker-root> .
+    }
+  }
+}
+;
+
+# Change events and KBO shadows belong to an organisation but nothing points at
+# them (the links go from the event and from the shadow to the organisation),
+# so a closure seeded from units never reached them: the first full export had
+# 0 change events and 0 KBO shadows against 12,902 and 1,222 in OP. They are
+# roots of their own, but only when their organisation is kept: a change event
+# or a KBO record of a worship unit is worship data, whichever graph it sits
+# in, and one without any organisation is noise. Both are in scope by the 6 Oct
+# note. The roots they depend on come from the statement above, in the same
+# pass.
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?event a <urn:x-rvs-marker-root> .
+  }
+}
+WHERE {
+  GRAPH @SCRATCH@ {
+    ?event rdf:type org:ChangeEvent ;
+      mu:uuid ?uuid .
+  }
+  {
+    GRAPH @SCRATCH@ {
+      ?event org:originalOrganization|org:resultingOrganization ?organization .
+    }
+  }
+  UNION
+  {
+    GRAPH @SCRATCH@ {
+      ?event code:veranderingsgebeurtenisResultaat ?result .
+      ?result ext:resultingOrganization ?organization .
+    }
+  }
+  GRAPH @COMPUTED@ {
+    ?organization a <urn:x-rvs-marker-root> .
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?event a <urn:x-rvs-marker-worship> .
+    }
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?event a <urn:x-rvs-marker-root> .
+    }
+  }
+}
+;
+
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?shadow a <urn:x-rvs-marker-root> .
+  }
+}
+WHERE {
+  GRAPH @SCRATCH@ {
+    ?shadow rdf:type ext:KboOrganisatie ;
+      mu:uuid ?uuid ;
+      owl:sameAs ?organization .
+  }
+  GRAPH @COMPUTED@ {
+    ?organization a <urn:x-rvs-marker-root> .
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?shadow a <urn:x-rvs-marker-worship> .
+    }
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?shadow a <urn:x-rvs-marker-root> .
+    }
+  }
+}
+;
+
+# --- 3. Governing bodies ------------------------------------------------------
+
+# Two disjoint kinds in the OP data (plan, dev-data item 5): a body links its
+# unit with besluit:bestuurt, or it is a time specialisation of another body
+# with generiek:isTijdspecialisatieVan. Accept both, and bodies of bodies.
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?body a <urn:x-rvs-marker-body> .
+  }
+}
+WHERE {
+  {
+    GRAPH @SCRATCH@ {
+      ?body besluit:bestuurt ?unit .
+    }
+    GRAPH @COMPUTED@ {
+      ?unit a ?parentMarker .
+    }
+    VALUES ?parentMarker { <urn:x-rvs-marker-root> <urn:x-rvs-marker-body> }
+  }
+  UNION
+  {
+    GRAPH @SCRATCH@ {
+      ?body generiek:isTijdspecialisatieVan ?parent .
+    }
+    GRAPH @COMPUTED@ {
+      ?parent a <urn:x-rvs-marker-body> .
+    }
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?body a <urn:x-rvs-marker-body> .
+    }
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?body a <urn:x-rvs-marker-worship> .
+    }
+  }
+}
+;
+
+# --- 4. Everything else reachable --------------------------------------------
+
+# Everything a kept subject points at travels, persons and mandates included.
+# Only worship is filtered out, and that is section 1.
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?object a <urn:x-rvs-marker-reached> .
+  }
+}
+WHERE {
+  GRAPH @COMPUTED@ {
+    ?subject a ?from .
+  }
+  VALUES ?from {
+    <urn:x-rvs-marker-root>
+    <urn:x-rvs-marker-body>
+    <urn:x-rvs-marker-reached>
+  }
+  GRAPH @SCRATCH@ {
+    ?subject ?predicate ?object .
+  }
+  FILTER(isIRI(?object))
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?object a ?seen .
+    }
+    VALUES ?seen {
+      <urn:x-rvs-marker-root>
+      <urn:x-rvs-marker-body>
+      <urn:x-rvs-marker-reached>
+    }
+  }
+}
+;
+
+# Memberships reach the organisation via org:organization — an inbound link
+# the closure above does not follow (it follows outbound links from kept
+# subjects). Once kept, the membership's own links, org:member to the person
+# included, are followed on the next pass.
+INSERT {
+  GRAPH @COMPUTED@ {
+    ?membership a <urn:x-rvs-marker-reached> .
+  }
+}
+WHERE {
+  GRAPH @SCRATCH@ {
+    ?membership rdf:type org:Membership ;
+      org:organization ?organization .
+  }
+  GRAPH @COMPUTED@ {
+    ?organization a ?organizationMarker .
+  }
+  VALUES ?organizationMarker { <urn:x-rvs-marker-root> <urn:x-rvs-marker-body> }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?membership a <urn:x-rvs-marker-reached> .
+    }
+  }
+}
+;
+
+# --- 5. The kept set ----------------------------------------------------------
+
+INSERT {
+  GRAPH @KEPT@ {
+    ?s a <urn:x-rvs-kept> .
+  }
+}
+WHERE {
+  GRAPH @COMPUTED@ {
+    ?s a ?marker .
+  }
+  VALUES ?marker {
+    <urn:x-rvs-marker-root>
+    <urn:x-rvs-marker-body>
+    <urn:x-rvs-marker-reached>
+  }
+  MINUS {
+    GRAPH @COMPUTED@ {
+      ?s a <urn:x-rvs-marker-worship> .
+    }
+  }
+  MINUS {
+    GRAPH @KEPT@ {
+      ?s a <urn:x-rvs-kept> .
+    }
+  }
+}
+;
+
+# The export itself is not written into a graph: a ~5M-triple INSERT aborts
+# with "Hash dictionary is full, exceeded 1000000 entries". The export filter
+# and the RVS-25 transform live in queries/dump.rq, which pages the artifact
+# straight out of the load graph. This file leaves behind the kept set plus
+# the markers, and nothing else.
