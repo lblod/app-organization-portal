@@ -192,6 +192,22 @@
   ("org:Membership" -> _)
   ("time:ProperInterval" -> _))
 
+;; Chat: one graph per account, only its owner reads or writes it.
+;; The four chat types appear in no other group: a graph-less insert lands
+;; in every graph whose group allows the type.
+(define-graph chat ("http://mu.semte.ch/graphs/users/")
+  ("reporting:Report" -> _)
+  ("oslc:Error" -> _)
+  ("nfo:DataContainer" -> _)
+  ("nfo:FileDataObject" -> _)
+  ("cogs:Job" -> _)
+  ("nfo:DataContainer" -> _)
+  ("nfo:FileDataObject" -> _)
+  ("sioc:Thread" -> _)
+  ("sioc:Post" -> _)
+  ("sioct:InstantMessage" -> _)
+  ("as:Document" -> _))
+
 (define-graph public ("http://mu.semte.ch/graphs/public")
   ("org:Role" -> _)
   ("besluit:Bestuurseenheid" -> _)
@@ -270,22 +286,6 @@
   ("nfo:DataContainer" -> _)
   ("nfo:FileDataObject" -> _))
 
-;; Chat: one graph per account, only its owner reads or writes it.
-;; The four chat types appear in no other group: a graph-less insert lands
-;; in every graph whose group allows the type.
-(define-graph chat ("http://mu.semte.ch/graphs/users/")
-  ("reporting:Report" -> _)
-  ("oslc:Error" -> _)
-  ("nfo:DataContainer" -> _)
-  ("nfo:FileDataObject" -> _)
-  ("cogs:Job" -> _)
-  ("nfo:DataContainer" -> _)
-  ("nfo:FileDataObject" -> _)
-  ("sioc:Thread" -> _)
-  ("sioc:Post" -> _)
-  ("sioct:InstantMessage" -> _)
-  ("as:Document" -> _))
-
 (supply-allowed-group "public")
 
 (supply-allowed-group "o-admin-rwf"
@@ -356,25 +356,6 @@
       FILTER( ?session_role = \"ABBOrganisatiePortaalErediensten-beheerder\" )
     }")
 
-(supply-allowed-group "chat-owner"
-  :parameters ("session_account")
-  :query "PREFIX session: <http://mu.semte.ch/vocabularies/session/>
-    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-    SELECT DISTINCT ?session_account WHERE {
-      <SESSION_ID> session:account/mu:uuid ?session_account.
-    }")
-
-;; Note: this actually a nasty thing in the orginal code. workaround here
-(supply-allowed-group "chat-access"
-  :parameters ()
-  :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-    PREFIX session: <http://mu.semte.ch/vocabularies/session/>
-    SELECT DISTINCT ?session_role WHERE {
-      <SESSION_ID> ext:sessionRole ?session_role.
-      FILTER( ?session_role = \"ABBOrganisatiePortaalGebruiker-editeerder\" )
-    }")
-
 (grant (read)
   :to-graph (acmidm-lezer acmidm-vendor)
   :for-allowed-group "ABBOrganisatiePortaalGebruiker-lezer")
@@ -403,24 +384,19 @@
   :to-graph (public shared)
   :for-allowed-group "public")
 
-;; natural-language-report-service reads the public graph under its own
-;; scope during refinement (code lists, lookup_values). The service passes
-;; this scope with mu's query(q, { scope }); sparql-parser then uses only
-;; this grant, so the LLM reads public data and nothing beyond it.
-;; Execution (run_report) still runs as the caller's session.
-(with-scope "http://services.semantic.works/natural-language-report"
-  (grant (read)
-    :to-graph public
-    :for-allowed-group "public"))
-
 (grant (read write)
   :to-graph (reports jobs system-jobs)
   :for-allowed-group "o-admin-rwf")
 
 (grant (read write)
-  :to-graph (chat) ;; Note: this actually a nasty thing in the orginal code. workaround here
-  :for-allowed-group "chat-owner")
+  :to-graph (chat)
+  :for-allowed-group "o-admin-rwf")
 
 (grant (read)
-  :to-graph (acmidm-editeerder) ;; Note: this actually a nasty thing in the orginal code. workaround here
-  :for-allowed-group "chat-access")
+  :to-graph (acmidm-editeerder acmidm-worship-editeerder acmidm-vendor)
+  :for-allowed-group "o-admin-rwf")
+
+(with-scope "http://services.semantic.works/natural-language-report"
+  (grant (read)
+    :to-graph public
+    :for-allowed-group "public"))
