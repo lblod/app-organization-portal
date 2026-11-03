@@ -695,6 +695,7 @@ services:
       - ./config/report-profiles/:/config/profiles/
     environment:
       MU_SPARQL_ENDPOINT: "http://db:8890/sparql"
+      WRITE_SCOPE: "http://services.semantic.works/natural-language-report/chat"
       CSV_SEPARATOR: ";"
       SUBJECT_CHUNK_SIZE: "100"
       ROW_LIMIT: "200000"
