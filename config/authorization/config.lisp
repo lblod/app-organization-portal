@@ -197,6 +197,7 @@
 ;; in every graph whose group allows the type.
 (define-graph chat ("http://mu.semte.ch/graphs/users/")
   ("reporting:Report" -> _)
+  ("reporting:ReportSpec" -> _)
   ("oslc:Error" -> _)
   ("nfo:DataContainer" -> _)
   ("nfo:FileDataObject" -> _)
@@ -272,6 +273,7 @@
 
 (define-graph reports ("http://mu.semte.ch/graphs/reports")
   ("reporting:Report" -> _)
+  ("reporting:ReportSpec" -> _)
   ("oslc:Error" -> _)
   ("nfo:DataContainer" -> _)
   ("nfo:FileDataObject" -> _))

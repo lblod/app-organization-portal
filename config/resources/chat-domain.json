@@ -7,73 +7,9 @@
     "dct": "http://purl.org/dc/terms/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "mu": "http://mu.semte.ch/vocabularies/core/",
-    "prov": "http://www.w3.org/ns/prov#",
-    "org": "http://www.w3.org/ns/org#",
-    "besluit": "http://data.vlaanderen.be/ns/besluit#",
-    "skos": "http://www.w3.org/2004/02/skos/core#",
-    "code": "http://lblod.data.gift/vocabularies/organisatie/"
+    "prov": "http://www.w3.org/ns/prov#"
   },
   "resources": {
-    "gebruikers": {
-      "class": "foaf:Person",
-      "attributes": {
-        "voornaam": {
-          "type": "string",
-          "predicate": "foaf:firstName"
-        },
-        "achternaam": {
-          "type": "string",
-          "predicate": "foaf:familyName"
-        }
-      },
-      "relationships": {
-        "account": {
-          "predicate": "foaf:account",
-          "target": "account",
-          "cardinality": "many"
-        },
-        "bestuurseenheden": {
-          "predicate": "foaf:member",
-          "target": "bestuurseenheden",
-          "cardinality": "many"
-        }
-      },
-      "features": ["include-uri"],
-      "new-resource-base": "http://data.lblod.info/id/gebruiker/"
-    },
-    "bestuurseenheden": {
-      "class": "besluit:Bestuurseenheid",
-      "attributes": {
-        "naam": {
-          "type": "string",
-          "predicate": "skos:prefLabel"
-        }
-      },
-      "relationships": {
-        "classificatie": {
-          "predicate": "org:classification",
-          "target": "bestuurseenheid-classificatie-codes",
-          "cardinality": "one"
-        }
-      },
-      "features": ["include-uri"],
-      "new-resource-base": "http://data.lblod.info/id/bestuurseenheden/"
-    },
-    "bestuurseenheid-classificatie-codes": {
-      "class": "code:BestuurseenheidClassificatieCode",
-      "attributes": {
-        "label": {
-          "type": "string",
-          "predicate": "skos:prefLabel"
-        },
-        "scope-note": {
-          "type": "string",
-          "predicate": "skos:scopeNote"
-        }
-      },
-      "features": ["include-uri"],
-      "new-resource-base": "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/"
-    },
     "chat-conversations": {
       "name": "chat-conversation",
       "class": "sioc:Thread",
@@ -94,7 +30,7 @@
       "relationships": {
         "creator": {
           "predicate": "foaf:maker",
-          "target": "gebruikers",
+          "target": "user",
           "cardinality": "one"
         },
         "messages": {

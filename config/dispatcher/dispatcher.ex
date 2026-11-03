@@ -274,21 +274,6 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://resource/chat-agents/")
   end
 
-  # The chat frontend's login screens speak the gebruiker/bestuurseenheid
-  # resource names (frontend-lblod-chat, used verbatim). The same data as
-  # /users and /groups, seen through the loket naming.
-  match "/gebruikers/*path", %{accept: [:json], layer: :api} do
-    Proxy.forward(conn, path, "http://cache/gebruikers/")
-  end
-
-  match "/bestuurseenheden/*path", %{accept: [:json], layer: :api} do
-    Proxy.forward(conn, path, "http://cache/bestuurseenheden/")
-  end
-
-  match "/bestuurseenheid-classificatie-codes/*path", %{accept: [:json], layer: :api} do
-    Proxy.forward(conn, path, "http://cache/bestuurseenheid-classificatie-codes/")
-  end
-
   # Dashboard
   match "/jobs/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://cache/jobs/")
