@@ -192,9 +192,11 @@
   ("org:Membership" -> _)
   ("time:ProperInterval" -> _))
 
-;; Chat: one graph per account, only its owner reads or writes it.
-;; The four chat types appear in no other group: a graph-less insert lands
-;; in every graph whose group allows the type.
+;; Report assistant: one graph per user, http://mu.semte.ch/graphs/users/<user uuid>.
+;; Only that user reads or writes it. A graph-less insert lands in every
+;; writable graph that allows the type, and admins may also write the reports
+;; and jobs graphs. So the service writes reports and files under the chat
+;; scope below, where only this graph is granted.
 (define-graph chat ("http://mu.semte.ch/graphs/users/")
   ("reporting:Report" -> _)
   ("reporting:ReportSpec" -> _)
@@ -297,6 +299,19 @@
       <SESSION_ID> ext:sessionRole \"LoketLB-AdminDashboardOrganisatiePortaalGebruiker\" .
     }")
 
+(supply-allowed-group "report-assistant-user"
+  :parameters ("user_uuid")
+  :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    SELECT DISTINCT ?user_uuid WHERE {
+      <SESSION_ID> ext:sessionRole \"LoketLB-AdminDashboardOrganisatiePortaalGebruiker\" ;
+                   session:account ?account .
+      ?user foaf:account ?account ;
+            mu:uuid ?user_uuid .
+    }")
+
 (supply-allowed-group "ABBOrganisatiePortaalGebruiker-lezer"
   :parameters ()
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
@@ -392,7 +407,7 @@
 
 (grant (read write)
   :to-graph (chat)
-  :for-allowed-group "o-admin-rwf")
+  :for-allowed-group "report-assistant-user")
 
 (grant (read)
   :to-graph (acmidm-editeerder acmidm-worship-editeerder acmidm-vendor)
@@ -402,3 +417,11 @@
   (grant (read)
     :to-graph public
     :for-allowed-group "public"))
+
+;; natural-language-report-service writes reports and files under this scope
+;; (its WRITE_SCOPE). Only the user's own graph is granted here, so they do not
+;; also land in the reports and jobs graphs.
+(with-scope "http://services.semantic.works/natural-language-report/chat"
+  (grant (read write)
+    :to-graph chat
+    :for-allowed-group "report-assistant-user"))
