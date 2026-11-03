@@ -27,10 +27,62 @@
                     "predicate": "prov:generated",
                     "target": "file",
                     "cardinality": "one"
+                },
+                "report-spec": {
+                    "predicate": "dct:conformsTo",
+                    "target": "report-specs",
+                    "cardinality": "one"
+                },
+                "creator": {
+                    "predicate": "prov:wasAttributedTo",
+                    "target": "chat-agents",
+                    "cardinality": "one"
                 }
             },
             "features": ["include-uri"],
-            "new-resource-base": "http://data.lblod.info/id/reports/"
+             "new-resource-base": "http://data.lblod.info/id/reports/"
+        },
+        "report-specs": {
+            "class": "http://lblod.data.gift/vocabularies/reporting/ReportSpec",
+            "attributes": {
+                "created": {
+                    "type": "datetime",
+                    "predicate": "dct:created"
+                },
+                "title": {
+                    "type": "string",
+                    "predicate": "dct:title"
+                },
+                "description": {
+                    "type": "string",
+                    "predicate": "dct:description"
+                }
+            },
+            "relationships": {
+                "file": {
+                    "predicate": "prov:generated",
+                    "target": "file",
+                    "cardinality": "one"
+                },
+                "conversation": {
+                    "predicate": "dct:isPartOf",
+                    "target": "chat-conversation",
+                    "cardinality": "one"
+                },
+                "reports": {
+                    "predicate": "dct:conformsTo",
+                    "target": "report",
+                    "cardinality": "many",
+                    "inverse": true
+                },
+                "creator": {
+                    "predicate": "prov:wasAttributedTo",
+                    "target": "chat-agents",
+                    "cardinality": "one"
+                }
+            },
+            "features": ["include-uri"],
+            "new-resource-base": "http://data.lblod.info/id/report-spec/"
         }
     }
 }
