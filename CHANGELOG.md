@@ -9,7 +9,7 @@
 ```
 drc restart migrations                                    # wait for "All migrations executed"
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
-drc restart cache                                         # the migration does not invalidate it
+drc restart resource cache                                # the migration does not invalidate it
 drc up -d frontend
 ```
 
