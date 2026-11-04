@@ -3,9 +3,11 @@
 - Update frontend
   - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
 - Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
+- Set the legal form (Juridische vorm) of existing organizations based on their organization type [OP-3830]
 
 ### Deploy notes
 ```
+drc restart migrations                                    # wait for "All migrations executed"
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
 drc restart cache                                         # the migration does not invalidate it
 drc up -d frontend

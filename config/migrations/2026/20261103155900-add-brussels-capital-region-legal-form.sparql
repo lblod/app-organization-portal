@@ -1,0 +1,15 @@
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+# Legal form "Overheid van het Brusselse Hoofdstedelijk Gewest" is not part of the
+# "Juridische vorm" codelist. We create it as a standalone concept in the public graph.
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://lblod.data.gift/concepts/7b3c1e52-9f4a-4d6b-8e21-5a0c3d9f6b47>
+      rdf:type skos:Concept ;
+      mu:uuid "7b3c1e52-9f4a-4d6b-8e21-5a0c3d9f6b47" ;
+      skos:prefLabel "Overheid van het Brusselse Hoofdstedelijk Gewest" .
+  }
+}
