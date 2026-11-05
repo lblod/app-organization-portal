@@ -59,6 +59,10 @@
         "resulting-name": {
           "type": "string",
           "predicate": "code:resulterendeNaam"
+        },
+        "original-name": {
+          "type": "string",
+          "predicate": "code:origineleNaam"
         }
       },
       "relationships": {
@@ -84,6 +88,21 @@
         },
         "resulting-additional-qualifications": {
           "predicate": "code:resulterendeBijkomendeKwalificatie",
+          "target": "additional-qualification-codes",
+          "cardinality": "many"
+        },
+        "original-legal-form": {
+          "predicate": "code:origineleRechtsvorm",
+          "target": "concepts",
+          "cardinality": "one"
+        },
+        "original-scope": {
+          "predicate": "code:origineelWerkingsgebied",
+          "target": "locations",
+          "cardinality": "one"
+        },
+        "original-additional-qualifications": {
+          "predicate": "code:origineleBijkomendeKwalificatie",
           "target": "additional-qualification-codes",
           "cardinality": "many"
         },
