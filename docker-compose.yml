@@ -702,10 +702,11 @@ services:
       WRITE_SCOPE: "http://services.semantic.works/report-assistant/chat"
       LOG_SINK_URL: "http://sink/llm"
       CSV_SEPARATOR: ";"
-      SUBJECT_CHUNK_SIZE: "100"
+      SUBJECT_CHUNK_SIZE: "10"
       ROW_LIMIT: "200000"
       MAX_PATH_DEPTH: "12"
       INLINE_VALUES_MAX: "50"
+      LOG_SPARQL_ALL: "true"
     labels:
       - "logging=true"
     restart: always
