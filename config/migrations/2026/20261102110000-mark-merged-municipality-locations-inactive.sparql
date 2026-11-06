@@ -1,0 +1,54 @@
+# Mark the municipality locations (werkingsgebieden) that ceased to exist
+# through mergers as inactive. Locations without an ext:inactive triple are
+# considered active. The frontend filters location pickers with
+# `filter[:has-no:inactive]` so these no longer show up.
+
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+INSERT {
+  GRAPH ?g {
+    ?location ext:inactive true .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?location a prov:Location .
+
+    VALUES ?location {
+      <http://data.lblod.info/id/werkingsgebieden/7a7daa48e9e6449358cf96be6c7b30466648d31236e56b8958fae7d53e2308b8> # Aalter (voor fusie)
+      <http://data.lblod.info/id/werkingsgebieden/40e6ed8a858ceca76bf9bdf1fefcfc989cf48c5251c814ff728521ef798d75b3> # Beveren
+      <http://data.lblod.info/id/werkingsgebieden/befb7a34c7553277713e2163ec4f523e8e8892f69bcfcff9de9b4f8071abdfaa> # Borgloon
+      <http://data.lblod.info/id/werkingsgebieden/f7ee528550fde82654c7506f58856198864920a54f010c25a81c21942dc0091d> # Borsbeek
+      <http://data.lblod.info/id/werkingsgebieden/acfaca9156320d6ba6f5959e31c8a27d8ea52da0a3294dc2ead6db718ecee7c0> # De Pinte
+      <http://data.lblod.info/id/werkingsgebieden/a567b3fdb462a8513ffeeff0188317003c5bbb7debb8f1ea9245b83e1d43b437> # Deinze (voor fusie)
+      <http://data.lblod.info/id/werkingsgebieden/35565086f9052b928018dea9132aec3abb33dea291e7800fa549f77ea14394ee> # Galmaarden
+      <http://data.lblod.info/id/werkingsgebieden/f2de66512b7a6f1c3fa08ff935f161ee67d50c46a6fee98ce5ace4b21ef8c5b8> # Gooik
+      <http://data.lblod.info/id/werkingsgebieden/449aa5890bffcdf4f412f52df20ab60a4a1994d69a2485735c27f1d0966bfe3b> # Herne
+      <http://data.lblod.info/id/werkingsgebieden/ca78471edc6177372d61280f95fb14f50be4b77bc36650aeffb62b6c96a7cd2c> # Hoeselt
+      <http://data.lblod.info/id/werkingsgebieden/f66c44d21e725e01e1bb3bb65d4eb0cb02c00fc415a0f31e82f17cf7b9abb878> # Knesselare
+      <http://data.lblod.info/id/werkingsgebieden/08351c13d1f1a227dceaa6b4b479b0c9ee5f340c5a64d7ea18403f53bcea3a42> # Kortessem
+      <http://data.lblod.info/id/werkingsgebieden/4257b4b87f9bc4b6ee50ddb606d473cbdf274eed9c5e3e4edb43d3cf5fffd68c> # Kruibeke
+      <http://data.lblod.info/id/werkingsgebieden/9398188baec8d653dec67da8687d5a3fec3868ca3e068306a79c6d72e5c88b19> # Kruishoutem
+      <http://data.lblod.info/id/werkingsgebieden/18756266517c4d9b5b4cfc043c6253f6a47b6020f338cdeaad228e957ec20e9a> # Lovendegem
+      <http://data.lblod.info/id/werkingsgebieden/3ed4f7a1a41ee5ead3eb179f45ceef21869a3aaaeebc2317581d47b50208b541> # Meeuwen-Gruitrode
+      <http://data.lblod.info/id/werkingsgebieden/72b7b5aabad11c6b9d247e3c714b07145acac1c86084ec7bf0f4b0d8dbebd03e> # Melle
+      <http://data.lblod.info/id/werkingsgebieden/38f8bb87f2a0c0f4ac1e39c846ba15f559843c81ecadddd0d0efbcb70334cef5> # Merelbeke
+      <http://data.lblod.info/id/werkingsgebieden/51a8d2feb4eb2fbde92f8484451eb1cd433bb84c4b03257ca284c4401005f3f7> # Meulebeke
+      <http://data.lblod.info/id/werkingsgebieden/8df0e3a74165897b6e91087715eff512f627a17aa99b4e067d707b69be843085> # Moerbeke
+      <http://data.lblod.info/id/werkingsgebieden/f5e6249a32bfdb673e1a79b5575d8a8cf2831083051d5e5137a49e48966369d4> # Nazareth
+      <http://data.lblod.info/id/werkingsgebieden/5e506589a7fd8753afa62186d5e8f92133b35bc737f495a88dde203e15e0f1ac> # Neerpelt
+      <http://data.lblod.info/id/werkingsgebieden/28d7f91e4dd1b81defa71ab5852efae1056f08fb26f27c6d176007da12795ec4> # Nevele
+      <http://data.lblod.info/id/werkingsgebieden/c6c31b076d50fee7065e3c08c9ccb0087419cd608d106888dc393fe8206dd2cc> # Opglabbeek
+      <http://data.lblod.info/id/werkingsgebieden/19e78e16a123b25a9fffedac722ad37349889dd8cc1572fbadd909efb08acc38> # Overpelt
+      <http://data.lblod.info/id/werkingsgebieden/b8417fe3a9c9f7c503f23c3131a4402670d5f92bde291490661594477a96e24d> # Puurs
+      <http://data.lblod.info/id/werkingsgebieden/e9117d893f58c1a556e8280b923b39016c95980ec7ec5dd41073c17428a0e7a5> # Ruiselede
+      <http://data.lblod.info/id/werkingsgebieden/69ed617537b10459eae95096e4805b4736534dfab197bed258381a8e192a799f> # Sint-Amands
+      <http://data.lblod.info/id/werkingsgebieden/c3c5671949a6b06c707235fe45a565eb29bf966632a27f206056b5eb2a9bcb16> # Tessenderlo
+      <http://data.lblod.info/id/werkingsgebieden/f3fa37aec9ae714e8043f35609ebe1edf44068b813493392051587d45f73d2b7> # Waarschoot
+      <http://data.lblod.info/id/werkingsgebieden/d729c9ffa1cc9818bd3982da0c1b358dc1de013ac453c5778ee7ba6b133d0912> # Wachtebeke
+      <http://data.lblod.info/id/werkingsgebieden/291b4f387f2e1094ba55edde327e5070c1f8e5cf7848298c0addf5e0d06ea906> # Zingem
+      <http://data.lblod.info/id/werkingsgebieden/1b0f76306122edbed100dd1d61c00063f36e259e4e58ced59fef96da759afdc7> # Zomergem
+      <http://data.lblod.info/id/werkingsgebieden/245c7249341fa053902cf672f54c3d0a311c402dce9c943d6763ada403d02e94> # Zwijndrecht
+    }
+  }
+}
