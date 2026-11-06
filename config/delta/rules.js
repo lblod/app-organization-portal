@@ -200,9 +200,6 @@ export default [
       ignoreFromSelf: true
     }
   },
-  // The chat's data (per-user graphs) is written straight to the store by
-  // the natural-language-report service, so mu-cl-resources only sees it
-  // fresh when a delta clears its caches.
   {
     match: {
       subject: {}

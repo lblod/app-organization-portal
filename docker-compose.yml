@@ -686,16 +686,17 @@ services:
     logging: *default-logging
 
   ################################################################################
-  # CHAT / NATURAL LANGUAGE REPORTS
+  # REPORT ASSISTANT
   ################################################################################
-  natural-language-report:
-    image: lblod/natural-language-report-service:0.2.0
+  report-assistant:
+    image: lblod/report-assistant-service:0.1.0
     volumes:
       - ./data/files:/share
       - ./config/report-profiles/:/config/profiles/
     environment:
       MU_SPARQL_ENDPOINT: "http://db:8890/sparql"
-      WRITE_SCOPE: "http://services.semantic.works/natural-language-report/chat"
+      WRITE_SCOPE: "http://services.semantic.works/report-assistant/chat"
+      LOG_SINK_URL: "http://sink/llm"
       CSV_SEPARATOR: ";"
       SUBJECT_CHUNK_SIZE: "100"
       ROW_LIMIT: "200000"

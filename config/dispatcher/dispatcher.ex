@@ -453,7 +453,7 @@ defmodule Dispatcher do
   #################################################################
 
   match "/assistant/*path" do
-    forward(conn, path, "http://natural-language-report/assistant/")
+    forward(conn, path, "http://report-assistant/assistant/")
   end
 
   #################################################################
