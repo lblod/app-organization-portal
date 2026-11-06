@@ -232,7 +232,9 @@ services:
     restart: always
     logging: *default-logging
   frontend-dashboard:
-    image: lblod/frontend-dashboard:1.10.0
+    #image: lblod/frontend-dashboard:1.10.0
+    image: lblod/frontend-dashboard:feature-rapport-assistent
+    build: https://github.com/lblod/frontend-dashboard.git#feature/rapport-assistent
     environment:
       EMBER_LOGIN_ROUTE: "acmidm-login"
       EMBER_ACMIDM_CLIENT_ID: "<CLIENT_ID>"
@@ -689,7 +691,9 @@ services:
   # REPORT ASSISTANT
   ################################################################################
   report-assistant:
-    image: lblod/report-assistant-service:0.1.0
+    #image: lblod/report-assistant-service:0.1.0
+    image: lblod/report-assistant-service:feature-first-version-report-assistent
+    build: https://github.com/lblod/report-assistant-service.git#feature/first-version-report-assistent
     volumes:
       - ./data/files:/share
       - ./config/report-profiles/:/config/profiles/
@@ -706,18 +710,6 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  chat:
-    image: lblod/frontend-report-assistant:0.3.0
-    links:
-      - identifier:backend
-    environment:
-      EMBER_ASSISTANT_PATH: "/assistant"
-      EMBER_APP_NAME: "Rapportassistent"
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
-
   ###################################################################################
   # MU SCRIPTS
   # #################################################################################
