@@ -413,15 +413,15 @@
   :to-graph (acmidm-editeerder acmidm-worship-editeerder acmidm-vendor)
   :for-allowed-group "o-admin-rwf")
 
-(with-scope "http://services.semantic.works/natural-language-report"
+(with-scope "http://services.semantic.works/report-assistant"
   (grant (read)
     :to-graph public
     :for-allowed-group "public"))
 
-;; natural-language-report-service writes reports and files under this scope
+;; report-assistant-service writes reports and files under this scope
 ;; (its WRITE_SCOPE). Only the user's own graph is granted here, so they do not
 ;; also land in the reports and jobs graphs.
-(with-scope "http://services.semantic.works/natural-language-report/chat"
+(with-scope "http://services.semantic.works/report-assistant/chat"
   (grant (read write)
     :to-graph chat
     :for-allowed-group "report-assistant-user"))
