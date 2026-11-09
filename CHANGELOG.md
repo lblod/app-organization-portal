@@ -5,6 +5,7 @@
 - Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
 - Set the legal form (Juridische vorm) of existing organizations based on their organization type [OP-3830]
 - Add an inactive flag to some municipality locations [OP-3973]
+- Add support for storing "original values" when creating change events [OP-3950]
 
 ### Deploy notes
 ```
