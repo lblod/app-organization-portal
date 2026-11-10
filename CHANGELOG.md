@@ -8,13 +8,14 @@
 - Add an inactive flag to some municipality locations [OP-3973]
 - Add support for storing "original values" when creating change events [OP-3950]
 - Update some related organization role labels [OP-3940]
+- Bump link-adressenregister-uri-service to v0.3.0: addresses without a country are matched as Belgian [OP-3831]
 
 ### Deploy notes
 ```
 drc restart migrations                                    # wait for "All migrations executed"
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migrations do not invalidate the cache
-drc up -d frontend
+drc up -d frontend link-adressenregister-uri
 ```
 
 ## v1.43.0 (2026-10-29)
