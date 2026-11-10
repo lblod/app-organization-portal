@@ -12,6 +12,7 @@
 
 ### Deploy notes
 ```
+drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
 drc restart migrations                                    # wait for "All migrations executed"
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migrations do not invalidate the cache
