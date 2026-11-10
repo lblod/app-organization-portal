@@ -1,19 +1,19 @@
 # Changelog
 ## Unreleased
 - Update frontend
+  - [v1.51.0](https://github.com/lblod/frontend-organization-portal/blob/v1.51.0/CHANGELOG.md#v1510-2026-11-09) [OP-3950] [OP-3940] [OP-3973] [OP-3969]
   - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
 - Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
 - Set the legal form (Juridische vorm) of existing organizations based on their organization type [OP-3830]
 - Add an inactive flag to some municipality locations [OP-3973]
 - Add support for storing "original values" when creating change events [OP-3950]
+- Update some related organization role labels [OP-3940]
 
 ### Deploy notes
 ```
 drc restart migrations                                    # wait for "All migrations executed"
-drc restart migrations
-drc restart resource
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
-drc restart resource cache                                # the migration does not invalidate it
+drc restart resource cache report-generation              # the migrations do not invalidate the cache
 drc up -d frontend
 ```
 
