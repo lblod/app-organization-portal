@@ -1,4 +1,14 @@
 # Changelog
+## Unreleased
+- Delete the generic "Heeft een relatie met" relations of non-worship organizations that do not impact a hierarchy link, with their periods [OP-3953]
+
+### Deploy notes
+```
+# PRD, before the migration: dump what the migration deletes with the dump queries on OP-3953, to files outside the stack; compare the counts with the dry run on the ticket
+drc restart migrations-triggering-indexing                # wait for "All migrations executed"
+drc restart resource cache report-generation              # the migration does not invalidate the cache
+```
+
 ## v1.44.0 (2026-11-12)
 - Update frontend
   - [v1.51.0](https://github.com/lblod/frontend-organization-portal/blob/v1.51.0/CHANGELOG.md#v1510-2026-11-09) [OP-3950] [OP-3940] [OP-3973] [OP-3969]
