@@ -1,6 +1,6 @@
 # Changelog
 ## Unreleased
-- Add two delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: one lands organizations in `administrative-unit`, one lands memberships and unit identities in `shared`. Worship data stays out [RVS-29] [RVS-30]
+- Add two delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: one lands organizations in `administrative-unit`, the other lands unit and registered-organization identities, plus organization-to-organization memberships, in `shared`. Worship data stays out [RVS-29] [RVS-30]
 - Add `org:Role` to the readable types [RVS-29]
 - Update frontend
   - [v1.51.0](https://github.com/lblod/frontend-organization-portal/blob/v1.51.0/CHANGELOG.md#v1510-2026-11-09) [OP-3950] [OP-3940] [OP-3973] [OP-3969]
