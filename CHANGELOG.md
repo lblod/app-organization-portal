@@ -3,18 +3,22 @@
 - Add two delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: one lands organizations in `administrative-unit`, one lands memberships and unit identities in `shared`. Worship data stays out [RVS-29] [RVS-30]
 - Add `org:Role` to the readable types [RVS-29]
 - Update frontend
+  - [v1.51.0](https://github.com/lblod/frontend-organization-portal/blob/v1.51.0/CHANGELOG.md#v1510-2026-11-09) [OP-3950] [OP-3940] [OP-3973] [OP-3969]
   - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
 - Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
+- Set the legal form (Juridische vorm) of existing organizations based on their organization type [OP-3830]
 - Add an inactive flag to some municipality locations [OP-3973]
+- Add support for storing "original values" when creating change events [OP-3950]
+- Update some related organization role labels [OP-3940]
+- Bump link-adressenregister-uri-service to v0.3.0: addresses without a country are matched as Belgian [OP-3831]
 
 ### Deploy notes
 ```
-drc restart migrations
-drc restart resource
+drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
+drc restart migrations                                    # wait for "All migrations executed"
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
-drc restart cache                                         # the migration does not invalidate it
-drc up -d frontend
-drc up -d lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer
+drc restart resource cache report-generation              # the migrations do not invalidate the cache
+drc up -d frontend link-adressenregister-uri lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer
 ```
 To start the Lokale Verkenner sync:
 1. Point `DCR_SYNC_BASE_URL` of both consumers at the Lokale Verkenner deployed app (match the env you're on),
