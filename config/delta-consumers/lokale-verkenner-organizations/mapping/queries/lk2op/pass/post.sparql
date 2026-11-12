@@ -1,0 +1,22 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# Posts whose mandate file did not reach them (a post is dual-typed, so the mandaat file
+# carries most). Same properties, same org:heldBy exclusion.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a org:Post ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    org:role
+    mandaat:aantalHouders
+    org:postIn
+  }
+
+  FILTER (?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> || ?o IN (mandaat:Mandaat, org:Post))
+}

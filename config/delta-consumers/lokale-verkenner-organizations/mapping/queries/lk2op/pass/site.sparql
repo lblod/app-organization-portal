@@ -1,0 +1,27 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+
+# Sites of the exported units: the primary site and every other site the unit lists. The site
+# is a companion subject of the organization: its contact points and the addresses under it
+# have their own queries. Properties per Task 1's export. The organization's own linking
+# triples are emitted too, or the frontend cannot find a non-primary site.
+CONSTRUCT {
+  ?s ?p ?o.
+  ?org ?linkPred ?s.
+} WHERE {
+  VALUES ?linkPred { org:hasPrimarySite org:hasSite }
+  ?org ?linkPred ?s .
+
+  ?s a org:Site ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    ere:vestigingstype
+    org:siteAddress
+    organisatie:bestaatUit
+  }
+}

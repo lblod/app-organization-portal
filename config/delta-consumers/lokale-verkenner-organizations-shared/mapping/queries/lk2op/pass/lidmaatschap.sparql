@@ -1,0 +1,72 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX m8g: <http://data.europa.eu/m8g/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rechtsvorm: <https://data.vlaanderen.be/ns/organisatie#>
+
+# Org-to-org memberships (Lokale Verkenner's kind, edited via related organizations). The two
+# org:Membership families are told apart by the type of org:member, never by class: a
+# membership whose org:member is a person is skipped and stays Loket's.
+#
+# The membership travels with the identity and classification fields of its organizations, so a
+# membership stays readable when the organization record itself is written by the units query.
+# The volume filter drops person memberships from every file, this one included.
+CONSTRUCT {
+  ?s ?p ?o .
+  ?member a ?memberType .
+  ?member mu:uuid ?memberUuid .
+  ?member skos:prefLabel ?memberLabel .
+  ?member skos:altLabel ?memberAltLabel .
+  ?member regorg:legalName ?memberLegalName .
+  ?member regorg:orgStatus ?memberStatus .
+  ?member rechtsvorm:rechtsvorm ?memberRechtsvorm .
+  ?member org:classification ?memberClassification .
+  ?organization a ?organizationType .
+  ?organization mu:uuid ?organizationUuid .
+  ?organization skos:prefLabel ?organizationLabel .
+  ?organization skos:altLabel ?organizationAltLabel .
+  ?organization regorg:legalName ?organizationLegalName .
+  ?organization regorg:orgStatus ?organizationStatus .
+  ?organization rechtsvorm:rechtsvorm ?organizationRechtsvorm .
+  ?organization org:classification ?organizationClassification .
+} WHERE {
+  ?s a org:Membership ;
+    org:member ?member ;
+    ?p ?o .
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    org:member
+    org:organization
+    org:organisation
+    org:role
+    m8g:memberDuring
+  }
+
+  # Lokale Verkenner's family only: the member is an organization.
+  ?member a ?memberType .
+  FILTER(?memberType IN (besluit:Bestuurseenheid, regorg:RegisteredOrganization, org:Organization))
+
+  OPTIONAL { ?member mu:uuid ?memberUuid }
+  OPTIONAL { ?member skos:prefLabel ?memberLabel }
+  OPTIONAL { ?member skos:altLabel ?memberAltLabel }
+  OPTIONAL { ?member regorg:legalName ?memberLegalName }
+  OPTIONAL { ?member regorg:orgStatus ?memberStatus }
+  OPTIONAL { ?member rechtsvorm:rechtsvorm ?memberRechtsvorm }
+  OPTIONAL { ?member org:classification ?memberClassification }
+
+  OPTIONAL {
+    ?s org:organization ?organization .
+    ?organization a ?organizationType .
+    OPTIONAL { ?organization mu:uuid ?organizationUuid }
+    OPTIONAL { ?organization skos:prefLabel ?organizationLabel }
+    OPTIONAL { ?organization skos:altLabel ?organizationAltLabel }
+    OPTIONAL { ?organization regorg:legalName ?organizationLegalName }
+    OPTIONAL { ?organization regorg:orgStatus ?organizationStatus }
+    OPTIONAL { ?organization rechtsvorm:rechtsvorm ?organizationRechtsvorm }
+    OPTIONAL { ?organization org:classification ?organizationClassification }
+  }
+}

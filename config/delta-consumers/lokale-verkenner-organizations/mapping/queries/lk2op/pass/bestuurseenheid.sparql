@@ -1,0 +1,42 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX generiek: <https://data.lblod.info/vocabularies/generiek/>
+PREFIX organisatie: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX rechtsvorm: <https://data.vlaanderen.be/ns/organisatie#>
+
+# Units: the properties Lokale Verkenner's export publishes (Task 1), plus the org:Organization type.
+# Nothing else follows: no sites, addresses or contact points, no persons, no heldBy.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a besluit:Bestuurseenheid ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    skos:prefLabel
+    skos:altLabel
+    regorg:legalName
+    org:purpose
+    generiek:geplandeEindDatum
+    organisatie:inhoudelijkThema
+    organisatie:bijkomendeKwalificatie
+    regorg:orgStatus
+    rechtsvorm:rechtsvorm
+    besluit:werkingsgebied
+    org:classification
+    adms:identifier
+    org:hasPrimarySite
+    org:contactPoint
+    org:hasSubOrganization
+    org:linkedTo
+  }
+
+  # rdf:type only carries the class and org:Organization.
+  FILTER (?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> || ?o IN (besluit:Bestuurseenheid, org:Organization))
+}

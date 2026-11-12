@@ -1,0 +1,18 @@
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# The period a governing body binds through (mandaat:bindingStart/bindingEinde point here)
+# or a membership runs through (m8g:memberDuring). Properties per Task 1's export.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a time:ProperInterval ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    time:hasBeginning
+    time:hasEnd
+  }
+}

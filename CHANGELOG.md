@@ -1,5 +1,7 @@
 # Changelog
 ## Unreleased
+- Add two delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: one lands organizations in `administrative-unit`, one lands memberships and unit identities in `shared`. Worship data stays out [RVS-29] [RVS-30]
+- Add `org:Role` to the readable types [RVS-29]
 - Update frontend
   - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
 - Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
@@ -12,7 +14,15 @@ drc restart resource
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
 drc restart cache                                         # the migration does not invalidate it
 drc up -d frontend
+drc up -d lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer
 ```
+To start the Lokale Verkenner sync:
+1. Point `DCR_SYNC_BASE_URL` of both consumers at the Lokale Verkenner deployed app (match the env you're on),
+   and make sure Lokale Verkenner's dispatcher serves `/sync/public-organization-data/files/*`.
+   Dev placeholder to use until Lokale Verkenner has a production URL:
+   `https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/`.
+   This implies that Lokale Verkenner's producer has been already deployed and initialized.
+2. `drc up -d` both consumers
 
 ## v1.43.0 (2026-10-29)
 - Update frontend

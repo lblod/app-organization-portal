@@ -1,0 +1,23 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# Mandates and posts, the same subjects dual-typed. Lokale Verkenner owns them; org:heldBy is absent
+# from Lokale Verkenner's payload by design (Task 1) and is never constructed here. A holder's own
+# triple is a mandataris (Loket's); the link is left to OP's Loket consumer.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a mandaat:Mandaat ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    org:role
+    mandaat:aantalHouders
+    org:postIn
+  }
+
+  FILTER (?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> || ?o IN (mandaat:Mandaat, org:Post))
+}
