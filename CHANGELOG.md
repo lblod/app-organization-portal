@@ -4,6 +4,17 @@
 - Start no consumer's initial sync without the per-environment override, and load its dump straight on Virtuoso: it no longer reaches OP's own publication graph [RVS-30]
 - Give units and registered organizations their `org:Organization` and `dcterms:Agent` types through inheritance queries [RVS-30]
 - Keep a site's deletion from removing the organization's link to it, and make identifiers land whichever of its triples arrives first [RVS-30]
+- Delete the generic "Heeft een relatie met" relations of non-worship organizations that do not impact a hierarchy link, with their periods [OP-3953]
+
+### Deploy notes
+```
+# PRD, before the migration: dump what the migration deletes with the dump queries on OP-3953, to files outside the stack; compare the counts with the dry run on the ticket
+drc restart migrations-triggering-indexing                # wait for "All migrations executed"
+drc restart resource cache report-generation              # the migration does not invalidate the cache
+drc up -d frontend lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer lokale-verkenner-locations-consumer
+```
+
+## v1.44.0 (2026-11-12)
 - Update frontend
   - [v1.51.0](https://github.com/lblod/frontend-organization-portal/blob/v1.51.0/CHANGELOG.md#v1510-2026-11-09) [OP-3950] [OP-3940] [OP-3973] [OP-3969]
   - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
@@ -13,6 +24,7 @@
 - Add support for storing "original values" when creating change events [OP-3950]
 - Update some related organization role labels [OP-3940]
 - Bump link-adressenregister-uri-service to v0.3.0: addresses without a country are matched as Belgian [OP-3831]
+- Add mu-script to export data to Lokale Verkenner [RVS-40]
 
 ### Deploy notes
 ```
@@ -20,7 +32,9 @@ drc restart delta-producer-publication-graph-maintainer   # reads export.json at
 drc restart migrations                                    # wait for "All migrations executed"
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migrations do not invalidate the cache
-drc up -d frontend link-adressenregister-uri lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer lokale-verkenner-locations-consumer
+drc up -d frontend link-adressenregister-uri
+# once the maintainer log shows "Remaining number of tasks" for public (the OP-3830 legal forms come from a raw migration):
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
 ```
 To start the Lokale Verkenner sync:
 

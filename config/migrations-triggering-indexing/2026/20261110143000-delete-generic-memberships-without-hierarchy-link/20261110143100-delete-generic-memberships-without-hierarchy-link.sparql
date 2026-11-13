@@ -1,0 +1,65 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+
+# OP-3953: delete the generic "Heeft een relatie met" relations between non-worship
+# organisations that do not impact a hierarchy link, their euro:memberDuring links
+# included (the previous file deleted the periods).
+# Worship relations are in another graph and stay.
+#
+# A relation is kept when its organization side is a Gemeente or a Provincie (every
+# db-cleanup job that derives org:hasSubOrganization or org:linkedTo from a generic
+# relation requires that), or when a hierarchy link exists between its two
+# organisations, in either direction and in any graph.
+# Keep the relation selection (everything but the triple block) identical to the previous file.
+
+DELETE {
+  GRAPH ?tripleGraph { ?membership ?predicate ?object . }
+}
+WHERE {
+  VALUES ?membershipGraph {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+  }
+  GRAPH ?membershipGraph {
+    ?membership a org:Membership ;
+      org:role <http://data.lblod.info/id/rollen/4ec7d5c39bdc4e84b4174379b9e22ad8> ;
+      org:member ?member ;
+      org:organization ?organization .
+  }
+  GRAPH ?classificationGraph { ?organization org:classification ?organizationClass . }
+
+  VALUES ?tripleGraph {
+    <http://mu.semte.ch/graphs/administrative-unit>
+    <http://mu.semte.ch/graphs/shared>
+  }
+  GRAPH ?tripleGraph { ?membership ?predicate ?object . }
+
+  FILTER NOT EXISTS {
+    ?membership org:organization ?gemeente .
+    ?gemeente org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  }
+  FILTER NOT EXISTS {
+    ?membership org:organization ?provincie .
+    ?provincie org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+  }
+
+  FILTER NOT EXISTS {
+    ?membership org:organization ?parent ;
+      org:member ?child .
+    ?parent org:hasSubOrganization ?child .
+  }
+  FILTER NOT EXISTS {
+    ?membership org:organization ?subOrganization ;
+      org:member ?superOrganization .
+    ?superOrganization org:hasSubOrganization ?subOrganization .
+  }
+  FILTER NOT EXISTS {
+    ?membership org:organization ?linkingOrganization ;
+      org:member ?linkedMember .
+    ?linkingOrganization org:linkedTo ?linkedMember .
+  }
+  FILTER NOT EXISTS {
+    ?membership org:organization ?linkedOrganization ;
+      org:member ?linkingMember .
+    ?linkingMember org:linkedTo ?linkedOrganization .
+  }
+}
