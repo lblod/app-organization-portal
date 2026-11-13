@@ -1,0 +1,38 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX rechtsvorm: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+# Unit identities in shared, as OP's shared graph holds them: the fields other applications
+# read to resolve and label a unit, not the editable surface (that stays in administrative-unit).
+# Municipalities and provinces only: shared is readable without a session.
+# The VGC unit already sits in shared from OP's own data.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a besluit:Bestuurseenheid ;
+    ?p ?o.
+
+  VALUES ?class {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>
+  }
+  ?s org:classification ?class .
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    skos:prefLabel
+    skos:altLabel
+    regorg:legalName
+    regorg:orgStatus
+    rechtsvorm:rechtsvorm
+    org:classification
+  }
+
+  # rdf:type carries only the class and dcterms:Agent, as OP's shared graph does.
+  FILTER (?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> || ?o IN (besluit:Bestuurseenheid, dcterms:Agent))
+}

@@ -1,0 +1,39 @@
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX generiek: <https://data.lblod.info/vocabularies/generiek/>
+PREFIX organisatie: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX rechtsvorm: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+# Registered organizations: the same editable surface as a unit, with dcterms:spatial
+# instead of besluit:werkingsgebied. Properties per Lokale Verkenner's export.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a regorg:RegisteredOrganization ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    skos:prefLabel
+    skos:altLabel
+    regorg:legalName
+    org:purpose
+    generiek:geplandeEindDatum
+    organisatie:inhoudelijkThema
+    organisatie:bijkomendeKwalificatie
+    regorg:orgStatus
+    rechtsvorm:rechtsvorm
+    dcterms:spatial
+    org:classification
+    adms:identifier
+    org:hasPrimarySite
+    org:hasSite
+  }
+
+  FILTER (?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> || ?o IN (regorg:RegisteredOrganization, org:Organization))
+}

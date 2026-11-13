@@ -1,0 +1,27 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+
+# Sites of the exported units: the primary site and every other site the unit lists. The site
+# is a companion subject of the organization: its contact points and the addresses under it
+# have their own queries. Properties per Lokale Verkenner's export.
+#
+# Only the site's own triples are constructed. The organization's links to the site are
+# written by bestuurseenheid.sparql and geregistreerde-organisatie.sparql: the delete flow
+# removes the whole template of a deleted site triple, so listing the links here would wipe
+# them from the organization.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a org:Site ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    ere:vestigingstype
+    org:siteAddress
+    organisatie:bestaatUit
+  }
+}

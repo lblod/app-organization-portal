@@ -1,0 +1,22 @@
+PREFIX organisatie: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+# The companions of an org:ChangeEvent. Properties per Lokale Verkenner's export.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a organisatie:VeranderingsgebeurtenisResultaat ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    organisatie:resulterendeNaam
+    organisatie:resulterendeStatus
+    organisatie:resulterendeRechtsvorm
+    organisatie:resulterendWerkingsgebied
+    organisatie:resulterendeBijkomendeKwalificatie
+    ext:resultingOrganization
+  }
+}

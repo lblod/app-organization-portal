@@ -1,0 +1,21 @@
+PREFIX besluitvorming: <https://data.vlaanderen.be/ns/besluitvorming#>
+PREFIX dossier: <https://data.vlaanderen.be/ns/dossier#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# Decision activities of the decisions a change event points at. The activity generates the
+# decision (<activity> prov:generated <besluit>), so its own prov:generated triple is copied
+# here, not from besluit.sparql. The type triple is keyed on the activity's own type.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a besluitvorming:Beslissingsactiviteit ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    dossier:Activiteit.einddatum
+    prov:generated
+  }
+}

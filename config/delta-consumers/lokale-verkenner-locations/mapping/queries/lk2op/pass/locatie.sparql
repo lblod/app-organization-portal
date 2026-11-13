@@ -1,0 +1,30 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+# Werkingsgebied locations, keyed on the location's own type: the link from a unit or a
+# registered organization is written by its own query. Lokale Verkenner publishes only the
+# composed ones (dcterms:creator is scope-of-operation), so the base set (gemeenten,
+# provincies, regio's) never arrives from Lokale Verkenner; it stays OP's. dcterms:creator is
+# not carried: it is Lokale Verkenner's bookkeeping, not data. Properties per Lokale
+# Verkenner's export.
+#
+# OP keeps its locations in the public graph, so this consumer remaps to that graph.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a prov:Location ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    rdfs:label
+    geosparql:sfWithin
+    ext:werkingsgebiedNiveau
+    skos:exactMatch
+  }
+}
