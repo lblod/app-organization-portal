@@ -600,9 +600,11 @@ services:
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/lokale-verkenner-organizations"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/lokale-verkenner-organizations"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/lokale-verkenner-organizations-consumer"
+      DCR_DISABLE_INITIAL_SYNC: "true" # the per-environment override sets the real URL and "false"
       DCR_KEEP_DELTA_FILES: "true"
       DCR_DELTA_JOBS_RETENTION_PERIOD: "30"
       DCR_ENABLE_TRIPLE_REMAPPING: "true"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
       DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/lokale-verkenner-organizations"
       DCR_REMAPPING_GRAPH: "http://mu.semte.ch/graphs/administrative-unit"
       DCR_BATCH_SIZE: 1000
@@ -629,9 +631,11 @@ services:
       DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/lokale-verkenner-organizations-shared"
       DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/lokale-verkenner-organizations-shared"
       DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/lokale-verkenner-organizations-shared-consumer"
+      DCR_DISABLE_INITIAL_SYNC: "true" # the per-environment override sets the real URL and "false"
       DCR_KEEP_DELTA_FILES: "true"
       DCR_DELTA_JOBS_RETENTION_PERIOD: "30"
       DCR_ENABLE_TRIPLE_REMAPPING: "true"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
       DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/lokale-verkenner-organizations-shared"
       DCR_REMAPPING_GRAPH: "http://mu.semte.ch/graphs/shared"
       DCR_BATCH_SIZE: 1000
@@ -640,6 +644,38 @@ services:
     volumes:
       - ./config/delta-consumers/lokale-verkenner-organizations-shared/mapping:/config/mapping
       - ./data/files/consumer-files/lokale-verkenner-organizations-shared:/consumer-files/
+    restart: always
+    labels:
+      - "logging=true"
+    links:
+      - db:database
+      - triplestore:virtuoso
+    logging: *default-logging
+
+  lokale-verkenner-locations-consumer:
+    # OP keeps its locations in the public graph, apart from the organizations.
+    image: lblod/delta-consumer:0.4.1
+    environment:
+      DCR_SERVICE_NAME: "lokale-verkenner-locations-consumer"
+      DCR_SYNC_BASE_URL: "https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/" # dev placeholder: Lokale Verkenner is not deployed on prod yet; the local one is wired in docker-compose.override.yml
+      DCR_SYNC_FILES_PATH: "/sync/public-organization-data/files"
+      DCR_SYNC_DATASET_SUBJECT: "http://data.lblod.info/datasets/delta-producer/dumps/PublicOrganizationDataCacheGraphDump"
+      DCR_INITIAL_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/initialSync/lokale-verkenner-locations"
+      DCR_DELTA_SYNC_JOB_OPERATION: "http://redpencil.data.gift/id/jobs/concept/JobOperation/deltas/consumer/deltaSync/lokale-verkenner-locations"
+      DCR_JOB_CREATOR_URI: "http://data.lblod.info/services/id/lokale-verkenner-locations-consumer"
+      DCR_DISABLE_INITIAL_SYNC: "true" # the per-environment override sets the real URL and "false"
+      DCR_KEEP_DELTA_FILES: "true"
+      DCR_DELTA_JOBS_RETENTION_PERIOD: "30"
+      DCR_ENABLE_TRIPLE_REMAPPING: "true"
+      DCR_LANDING_ZONE_DATABASE: "triplestore"
+      DCR_LANDING_ZONE_GRAPH: "http://mu.semte.ch/graphs/landing-zone/lokale-verkenner-locations"
+      DCR_REMAPPING_GRAPH: "http://mu.semte.ch/graphs/public"
+      DCR_BATCH_SIZE: 1000
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      SUDO_QUERY_RETRY: "true"
+    volumes:
+      - ./config/delta-consumers/lokale-verkenner-locations/mapping:/config/mapping
+      - ./data/files/consumer-files/lokale-verkenner-locations:/consumer-files/
     restart: always
     labels:
       - "logging=true"

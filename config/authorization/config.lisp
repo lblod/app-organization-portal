@@ -84,7 +84,6 @@
   ("ch:AgentInPositie" -> _)
   ("ext:KboOrganisatie" -> _)
   ("org:Membership" -> _)
-  ("org:Role" -> _)
   ("time:ProperInterval" -> _))
 
 (define-graph acmidm-vendor ("http://mu.semte.ch/graphs/vendor-management-data")
@@ -115,7 +114,6 @@
   ("ch:AgentInPositie" -> _)
   ("ext:KboOrganisatie" -> _)
   ("org:Membership" -> _)
-  ("org:Role" -> _)
   ("time:ProperInterval" -> _))
 
 (define-graph acmidm-worship-lezer ("http://mu.semte.ch/graphs/worship-service")

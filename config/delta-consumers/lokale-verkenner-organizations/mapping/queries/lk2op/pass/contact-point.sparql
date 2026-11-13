@@ -2,9 +2,9 @@ PREFIX schema: <http://schema.org/>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
-# Contact points of the exported units: the primary address (org:siteAddress on a site) and
-# the general contact (org:contactPoint on the organization). A contact point is a companion
-# subject of either. Properties per Task 1's export.
+# Contact points of the exported units, reached through the site that carries them. Lokale
+# Verkenner exports no contact points of the organization itself. Properties per Lokale
+# Verkenner's export.
 #
 # The query keys on the contact point's own rdf:type only, not on the site link. The consumer
 # remaps per incoming triple, binding the triple's subject, and runs every query naming that

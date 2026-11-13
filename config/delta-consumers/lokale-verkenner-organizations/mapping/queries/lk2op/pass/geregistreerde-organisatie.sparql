@@ -9,7 +9,7 @@ PREFIX rechtsvorm: <https://data.vlaanderen.be/ns/organisatie#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 
 # Registered organizations: the same editable surface as a unit, with dcterms:spatial
-# instead of besluit:werkingsgebied. Properties per Task 1's export.
+# instead of besluit:werkingsgebied. Properties per Lokale Verkenner's export.
 CONSTRUCT {
   ?s ?p ?o.
 } WHERE {
@@ -32,8 +32,7 @@ CONSTRUCT {
     org:classification
     adms:identifier
     org:hasPrimarySite
-    org:contactPoint
-    org:linkedTo
+    org:hasSite
   }
 
   FILTER (?p != <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> || ?o IN (regorg:RegisteredOrganization, org:Organization))

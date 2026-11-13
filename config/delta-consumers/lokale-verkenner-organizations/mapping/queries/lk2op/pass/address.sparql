@@ -3,7 +3,7 @@ PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 
 # Addresses of the exported units' sites, reached through organisatie:bestaatUit. Properties
-# per Task 1's export.
+# per Lokale Verkenner's export.
 CONSTRUCT {
   ?s ?p ?o.
 } WHERE {
@@ -24,7 +24,7 @@ CONSTRUCT {
     <https://data.vlaanderen.be/ns/adres#gemeentenaam>
     <https://data.vlaanderen.be/ns/adres#land>
     <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn>
-    <https://data.vlaanderen.be/ns/adres#verwijstNaar>
+    <http://purl.org/dc/terms/source>
     <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer>
     <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer>
   }

@@ -1,0 +1,14 @@
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+
+CONSTRUCT {
+  ?s a dc_terms:Agent .
+} WHERE {
+  ?s a ?type .
+
+  VALUES ?type {
+    besluit:Bestuurseenheid
+    regorg:RegisteredOrganization
+  }
+}

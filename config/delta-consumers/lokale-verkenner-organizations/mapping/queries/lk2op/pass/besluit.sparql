@@ -1,10 +1,9 @@
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX eli: <http://data.europa.eu/eli/ontology#>
-PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
-# Decisions a change event points at. Properties per Task 1's export.
+# Decisions a change event points at. Properties per Lokale Verkenner's export.
 CONSTRUCT {
   ?s ?p ?o.
 } WHERE {
@@ -15,7 +14,6 @@ CONSTRUCT {
     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
     mu:uuid
     eli:date_publication
-    prov:generated
     foaf:page
   }
 }

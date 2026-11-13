@@ -6,14 +6,21 @@ PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX rechtsvorm: <https://data.vlaanderen.be/ns/organisatie#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 
-# Units in shared, as OP's shared graph holds them today: the identity and classification
-# fields other applications read to resolve and label a unit, not the editable surface
-# (that stays in administrative-unit). Covers every unit, not only those in a membership.
+# Unit identities in shared, as OP's shared graph holds them: the fields other applications
+# read to resolve and label a unit, not the editable surface (that stays in administrative-unit).
+# Municipalities and provinces only: shared is readable without a session.
+# The VGC unit already sits in shared from OP's own data.
 CONSTRUCT {
   ?s ?p ?o.
 } WHERE {
   ?s a besluit:Bestuurseenheid ;
     ?p ?o.
+
+  VALUES ?class {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>
+  }
+  ?s org:classification ?class .
 
   VALUES ?p {
     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
@@ -24,7 +31,6 @@ CONSTRUCT {
     regorg:orgStatus
     rechtsvorm:rechtsvorm
     org:classification
-    org:hasSubOrganization
   }
 
   # rdf:type carries only the class and dcterms:Agent, as OP's shared graph does.

@@ -8,7 +8,7 @@ PREFIX organisatie: <http://lblod.data.gift/vocabularies/organisatie/>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX rechtsvorm: <https://data.vlaanderen.be/ns/organisatie#>
 
-# Units: the properties Lokale Verkenner's export publishes (Task 1), plus the org:Organization type.
+# Units: the properties Lokale Verkenner's export publishes, plus the org:Organization type.
 # Nothing else follows: no sites, addresses or contact points, no persons, no heldBy.
 CONSTRUCT {
   ?s ?p ?o.
@@ -32,9 +32,7 @@ CONSTRUCT {
     org:classification
     adms:identifier
     org:hasPrimarySite
-    org:contactPoint
-    org:hasSubOrganization
-    org:linkedTo
+    org:hasSite
   }
 
   # rdf:type only carries the class and org:Organization.

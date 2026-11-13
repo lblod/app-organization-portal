@@ -1,7 +1,9 @@
 # Changelog
 ## Unreleased
-- Add two delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: one lands organizations in `administrative-unit`, the other lands unit and registered-organization identities, plus organization-to-organization memberships, in `shared`. Worship data stays out [RVS-29] [RVS-30]
-- Add `org:Role` to the readable types [RVS-29]
+- Add three delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: one lands organizations in `administrative-unit`, one lands unit identities in `shared`, and one lands werkingsgebieden in `public`. Their initial sync stays disabled until their override turns it on; worship data stays out [RVS-29] [RVS-30]
+- Start no consumer's initial sync without the per-environment override, and load its dump straight on Virtuoso: it no longer reaches OP's own publication graph [RVS-30]
+- Give units and registered organizations their `org:Organization` and `dcterms:Agent` types through inheritance queries [RVS-30]
+- Keep a site's deletion from removing the organization's link to it, and make identifiers land whichever of its triples arrives first [RVS-30]
 - Update frontend
   - [v1.51.0](https://github.com/lblod/frontend-organization-portal/blob/v1.51.0/CHANGELOG.md#v1510-2026-11-09) [OP-3950] [OP-3940] [OP-3973] [OP-3969]
   - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
@@ -18,15 +20,39 @@ drc restart delta-producer-publication-graph-maintainer   # reads export.json at
 drc restart migrations                                    # wait for "All migrations executed"
 drc restart migrations-triggering-indexing                # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migrations do not invalidate the cache
-drc up -d frontend link-adressenregister-uri lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer
+drc up -d frontend link-adressenregister-uri lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer lokale-verkenner-locations-consumer
 ```
 To start the Lokale Verkenner sync:
-1. Point `DCR_SYNC_BASE_URL` of both consumers at the Lokale Verkenner deployed app (match the env you're on),
-   and make sure Lokale Verkenner's dispatcher serves `/sync/public-organization-data/files/*`.
-   Dev placeholder to use until Lokale Verkenner has a production URL:
-   `https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/`.
+
+1. Add all three consumers to `docker-compose.override.yml` per environment: point `DCR_SYNC_BASE_URL` at the
+   Lokale Verkenner deployed app (match the env you're on) and set `DCR_DISABLE_INITIAL_SYNC` to `"false"`.
+   The base `docker-compose.yml` ships `"true"`, so a consumer stays idle until its override enables it.
+   Never point ACC or PRD at the Lokale Verkenner dev app. Dev placeholder to use until Lokale Verkenner
+   has a production URL: `https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/`.
    This implies that Lokale Verkenner's producer has been already deployed and initialized.
-2. `drc up -d` both consumers
+```
+  lokale-verkenner-organizations-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+
+  lokale-verkenner-organizations-shared-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+
+  lokale-verkenner-locations-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+```
+   Also make sure Lokale Verkenner's dispatcher serves `/sync/public-organization-data/files/*`.
+2. `drc up -d` all three consumers. Each starts its initial sync once it is up.
+   An environment that already ran the two organizations consumers needs the `lokale-verkenner-locations-consumer`
+   added to its override too: without it, werkingsgebieden stay in the landing zone and units point at a scope
+   OP does not have.
+3. The dump loads straight on Virtuoso, so the mapping produces no deltas: after the initial sync,
+   rebuild Elasticsearch (`sh scripts/reset-elastic.sh`) and restart `resource` to clear its cache.
 
 ## v1.43.0 (2026-10-29)
 - Update frontend
