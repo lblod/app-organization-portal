@@ -1,0 +1,63 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+
+# OP-3978: give the organisations in the temporary graph the location that
+# replaces their werkingsgebied. For a merged municipality that is its
+# successor (public graph, first file of this folder); for a "samengesteld
+# werkingsgebied" it was decided in the temporary graph. The new locations
+# exist by now, so search indexes their members when it picks up this change.
+# An organisation whose werkingsgebied changed in the meantime is left alone.
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization besluit:werkingsgebied ?scope .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization besluit:werkingsgebied ?replacement .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?organization besluit:werkingsgebied ?scope .
+  }
+  {
+    GRAPH <http://mu.semte.ch/graphs/public> { ?scope dct:isReplacedBy ?replacement . }
+  }
+  UNION
+  {
+    GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> { ?scope dct:isReplacedBy ?replacement . }
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization besluit:werkingsgebied ?scope .
+  }
+}
+
+;
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization dct:spatial ?scope .
+  }
+}
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization dct:spatial ?replacement .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?organization dct:spatial ?scope .
+  }
+  {
+    GRAPH <http://mu.semte.ch/graphs/public> { ?scope dct:isReplacedBy ?replacement . }
+  }
+  UNION
+  {
+    GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> { ?scope dct:isReplacedBy ?replacement . }
+  }
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization dct:spatial ?scope .
+  }
+}

@@ -1,0 +1,72 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+# OP-3978: a candidate that nothing existing could stand in for becomes a new
+# "samengesteld werkingsgebied", shaped like the ones scope-of-operation-service
+# makes: the label is the labels of its members, sorted and joined with ", ".
+# SPARQL does not define the order of GROUP_CONCAT; Virtuoso keeps the order of
+# the subselect, which is what this relies on. Should a label ever come out
+# unsorted, the correct-location-labels project script repairs it.
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?candidate a prov:Location ;
+      mu:uuid ?uuid ;
+      rdfs:label ?label ;
+      ext:werkingsgebiedNiveau "Samengesteld werkingsgebied" .
+  }
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?scope dct:isReplacedBy ?candidate .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?candidate dct:replaces ?scope ;
+      mu:uuid ?uuid .
+  }
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+      ?scope dct:isReplacedBy ?resolved .
+    }
+  }
+  {
+    SELECT ?candidate (GROUP_CONCAT(?memberLabel; separator=", ") AS ?label)
+    WHERE {
+      {
+        SELECT ?candidate ?memberLabel
+        WHERE {
+          GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+            ?member geo:sfWithin ?candidate .
+          }
+          GRAPH <http://mu.semte.ch/graphs/public> {
+            ?member rdfs:label ?memberLabel .
+          }
+        }
+        ORDER BY ?candidate ?memberLabel
+      }
+    }
+    GROUP BY ?candidate
+  }
+}
+
+;
+
+# The members of the new locations. Only candidates that were made real above
+# are their own scope's replacement.
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?member geo:sfWithin ?candidate .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?candidate dct:replaces ?scope .
+    ?scope dct:isReplacedBy ?candidate .
+    ?member geo:sfWithin ?candidate .
+  }
+}
