@@ -4,6 +4,7 @@
 - Rename Regio Oostende to Regio Middenkust [OP-3977]
 - Record the successor of merged municipality locations [OP-3978]
 - Replace merged municipalities in the werkingsgebied of active non-worship organizations [OP-3978]
+- Add the "Is lid van" relation between merged municipalities and the zones they now belong to [OP-3978]
 
 ### Deploy notes
 ```
