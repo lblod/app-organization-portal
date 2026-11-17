@@ -1,0 +1,12 @@
+DELETE {
+  # OP-3978: the working data of this folder is no longer needed. The successor
+  # links of the merged municipalities are in the public graph and stay.
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?s ?p ?o .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?s ?p ?o .
+  }
+}

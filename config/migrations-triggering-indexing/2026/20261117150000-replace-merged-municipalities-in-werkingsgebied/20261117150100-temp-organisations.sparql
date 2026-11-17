@@ -1,0 +1,105 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+# OP-3978, working data. Copy the werkingsgebied triple of every organisation
+# this folder will re-point into a temporary graph, cleared by the last file.
+# An organisation is in scope when
+#  - it is active (and has no other status in any graph),
+#  - it is not a provincie (OP-3976) and not a worship organisation,
+#  - its werkingsgebied is a merged municipality, or a "samengesteld
+#    werkingsgebied" that contains one.
+# Organisations whose werkingsgebied is a whole provincie, referentieregio or
+# gewest are not touched: those locations are not replaced.
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?organization besluit:werkingsgebied ?scope .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization besluit:werkingsgebied ?scope .
+  }
+  GRAPH ?statusGraph {
+    ?organization regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+  }
+  FILTER NOT EXISTS {
+    GRAPH ?otherStatusGraph { ?organization regorg:orgStatus ?otherStatus . }
+    FILTER (?otherStatus != <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>)
+  }
+  FILTER NOT EXISTS {
+    GRAPH ?classificationGraph {
+      ?organization org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+    }
+  }
+  FILTER NOT EXISTS {
+    GRAPH ?typeGraph { ?organization a ?worshipType . }
+    FILTER (STRSTARTS(STR(?worshipType), "http://data.lblod.info/vocabularies/erediensten/"))
+  }
+  # A municipality left these three politiezones on 1 January 2025. That is a
+  # real change of werkingsgebied, which the business records as a
+  # "Wijziging werkingsgebied" veranderingsgebeurtenis; replacing the old
+  # municipality by its successor would add a municipality the zone never had.
+  FILTER (?organization NOT IN (
+    <http://data.lblod.info/id/bestuurseenheden/80a9ab8eb46716ab23c597d13313ce24b17884ffcbdf00d216b877d57a52ade4> , # PZ MINOS: Borsbeek went to PZ Antwerpen
+    <http://data.lblod.info/id/bestuurseenheden/fa52110c7c3e70feab724980e2d991a97712a1deeeb25b168ef6de7b16de41ae> , # PZ MIDOW: Meulebeke went to PZ Regio Tielt
+    <http://data.lblod.info/id/bestuurseenheden/9cb5a65d9190da4bb96d0f59882cbcfb34248d354e6bd27101fccba186f4c7b7>   # PZ Regio Puyenbroeck: Moerbeke went to PZ Lokeren
+  ))
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    {
+      ?scope dct:isReplacedBy ?successor .
+    }
+    UNION
+    {
+      ?scope ext:werkingsgebiedNiveau "Samengesteld werkingsgebied" .
+      ?member geo:sfWithin ?scope ;
+        dct:isReplacedBy ?successor .
+    }
+  }
+}
+
+;
+
+# The same for registered organisations, whose werkingsgebied is dct:spatial.
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?organization dct:spatial ?scope .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/administrative-unit> {
+    ?organization dct:spatial ?scope .
+  }
+  GRAPH ?statusGraph {
+    ?organization regorg:orgStatus <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6> .
+  }
+  FILTER NOT EXISTS {
+    GRAPH ?otherStatusGraph { ?organization regorg:orgStatus ?otherStatus . }
+    FILTER (?otherStatus != <http://lblod.data.gift/concepts/63cc561de9188d64ba5840a42ae8f0d6>)
+  }
+  FILTER NOT EXISTS {
+    GRAPH ?classificationGraph {
+      ?organization org:classification <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000> .
+    }
+  }
+  FILTER NOT EXISTS {
+    GRAPH ?typeGraph { ?organization a ?worshipType . }
+    FILTER (STRSTARTS(STR(?worshipType), "http://data.lblod.info/vocabularies/erediensten/"))
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    {
+      ?scope dct:isReplacedBy ?successor .
+    }
+    UNION
+    {
+      ?scope ext:werkingsgebiedNiveau "Samengesteld werkingsgebied" .
+      ?member geo:sfWithin ?scope ;
+        dct:isReplacedBy ?successor .
+    }
+  }
+}

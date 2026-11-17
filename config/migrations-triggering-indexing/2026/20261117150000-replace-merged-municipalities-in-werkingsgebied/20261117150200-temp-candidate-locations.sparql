@@ -1,0 +1,93 @@
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+# OP-3978, working data. An organisation has one werkingsgebied; several
+# municipalities are one "samengesteld werkingsgebied" location that the
+# municipalities are geo:sfWithin. Such a location is shared and may also be
+# used by organisations this folder leaves alone, so it is not edited: for
+# every one in the temporary graph a candidate replacement is described here,
+# still in the temporary graph.
+# The uuid is produced in a subselect: Virtuoso inlines a BIND(STRUUID()), so
+# a plain BIND would give the URI and mu:uuid two different values (see the
+# 20260917101954 zone-membership migrations).
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?candidate a prov:Location ;
+      mu:uuid ?uuid ;
+      dct:replaces ?scope .
+  }
+}
+WHERE {
+  {
+    SELECT ?scope (LCASE(STRUUID()) AS ?uuid)
+    WHERE {
+      {
+        SELECT DISTINCT ?scope
+        WHERE {
+          GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+            { ?organization besluit:werkingsgebied ?scope . }
+            UNION
+            { ?organization dct:spatial ?scope . }
+          }
+          GRAPH <http://mu.semte.ch/graphs/public> {
+            ?scope ext:werkingsgebiedNiveau "Samengesteld werkingsgebied" .
+          }
+          FILTER NOT EXISTS {
+            GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+              ?existingCandidate dct:replaces ?scope .
+            }
+          }
+        }
+      }
+    }
+  }
+  BIND (IRI(CONCAT("http://data.lblod.info/id/werkingsgebieden/", ?uuid)) AS ?candidate)
+}
+
+;
+
+# Members of the candidate: a merged municipality becomes its successor ...
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?successor geo:sfWithin ?candidate .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?candidate dct:replaces ?scope .
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?member geo:sfWithin ?scope ;
+      dct:isReplacedBy ?successor .
+  }
+}
+
+;
+
+# ... and every other member is kept. A successor that was already a member
+# ends up in the candidate once.
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?member geo:sfWithin ?candidate .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?candidate dct:replaces ?scope .
+  }
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    ?member geo:sfWithin ?scope .
+  }
+  FILTER NOT EXISTS {
+    GRAPH <http://mu.semte.ch/graphs/public> {
+      ?member dct:isReplacedBy ?successor .
+    }
+  }
+}

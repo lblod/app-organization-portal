@@ -1,0 +1,87 @@
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+
+# OP-3978, working data. Decide what replaces each "samengesteld
+# werkingsgebied" in the temporary graph, the way scope-of-operation-service
+# does when a user saves a werkingsgebied:
+#  - one municipality left: that municipality itself;
+#  - a location with exactly these members exists already: that location;
+#  - otherwise the candidate becomes a new location (next file).
+# Sets are compared by counting, as the service does.
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?scope dct:isReplacedBy ?member .
+  }
+}
+WHERE {
+  {
+    SELECT ?candidate (COUNT(DISTINCT ?anyMember) AS ?size)
+    WHERE {
+      GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+        ?anyMember geo:sfWithin ?candidate .
+      }
+    }
+    GROUP BY ?candidate
+  }
+  FILTER (?size = 1)
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?candidate dct:replaces ?scope .
+    ?member geo:sfWithin ?candidate .
+  }
+}
+
+;
+
+# An existing location matches when it holds all members of the candidate
+# (?shared = ?wanted) and nothing else (?size = ?wanted). MIN keeps it to one
+# location should two ever have the same members.
+
+INSERT {
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?scope dct:isReplacedBy ?existing .
+  }
+}
+WHERE {
+  {
+    SELECT ?candidate (MIN(STR(?match)) AS ?existingUri)
+    WHERE {
+      {
+        SELECT ?candidate (COUNT(DISTINCT ?wantedMember) AS ?wanted)
+        WHERE {
+          GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+            ?wantedMember geo:sfWithin ?candidate .
+          }
+        }
+        GROUP BY ?candidate
+      }
+      {
+        SELECT ?candidate ?match (COUNT(DISTINCT ?sharedMember) AS ?shared)
+        WHERE {
+          GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+            ?sharedMember geo:sfWithin ?candidate .
+          }
+          GRAPH <http://mu.semte.ch/graphs/public> {
+            ?sharedMember geo:sfWithin ?match .
+          }
+        }
+        GROUP BY ?candidate ?match
+      }
+      {
+        SELECT ?match (COUNT(DISTINCT ?matchMember) AS ?size)
+        WHERE {
+          GRAPH <http://mu.semte.ch/graphs/public> {
+            ?matchMember geo:sfWithin ?match .
+          }
+        }
+        GROUP BY ?match
+      }
+      FILTER (?wanted > 1 && ?shared = ?wanted && ?size = ?wanted)
+    }
+    GROUP BY ?candidate
+  }
+  GRAPH <http://mu.semte.ch/graphs/temp-for-merged-municipalities-scope> {
+    ?candidate dct:replaces ?scope .
+  }
+  BIND (IRI(?existingUri) AS ?existing)
+}

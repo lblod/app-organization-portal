@@ -2,10 +2,13 @@
 ## Unreleased
 - Delete the generic "Heeft een relatie met" relations of non-worship organizations that do not impact a hierarchy link, with their periods [OP-3953]
 - Rename Regio Oostende to Regio Middenkust [OP-3977]
+- Record the successor of merged municipality locations [OP-3978]
+- Replace merged municipalities in the werkingsgebied of active non-worship organizations [OP-3978]
 
 ### Deploy notes
 ```
 # PRD, before the migration: dump what the migration deletes with the dump queries on OP-3953, to files outside the stack; compare the counts with the dry run on the ticket
+# PRD, before the migration: save the before/after list of OP-3978 with the dry-run query on the ticket
 drc restart migrations migrations-triggering-indexing     # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migration does not invalidate the cache
 ```
