@@ -193,10 +193,9 @@
   ("time:ProperInterval" -> _))
 
 ;; Report assistant: one graph per user, http://mu.semte.ch/graphs/users/<user uuid>.
-;; Only that user reads or writes it. A graph-less insert lands in every
-;; writable graph that allows the type, and admins may also write the reports
-;; and jobs graphs. So the service writes reports and files under the chat
-;; scope below, where only this graph is granted.
+;; Only that user reads or writes it. Reports and report specs fit no other
+;; graph an admin may write. Files do: admins may also write the jobs graphs,
+;; so a file of the assistant can land there.
 (define-graph chat ("http://mu.semte.ch/graphs/users/")
   ("reporting:Report" -> _)
   ("reporting:ReportSpec" -> _)
@@ -275,7 +274,6 @@
 
 (define-graph reports ("http://mu.semte.ch/graphs/reports")
   ("reporting:Report" -> _)
-  ("reporting:ReportSpec" -> _)
   ("oslc:Error" -> _)
   ("nfo:DataContainer" -> _)
   ("nfo:FileDataObject" -> _))
@@ -401,8 +399,12 @@
   :to-graph (public shared)
   :for-allowed-group "public")
 
+(grant (read)
+  :to-graph (reports)
+  :for-allowed-group "o-admin-rwf")
+
 (grant (read write)
-  :to-graph (reports jobs system-jobs)
+  :to-graph (jobs system-jobs)
   :for-allowed-group "o-admin-rwf")
 
 (grant (read write)
@@ -417,11 +419,3 @@
   (grant (read)
     :to-graph public
     :for-allowed-group "public"))
-
-;; report-assistant-service writes reports and files under this scope
-;; (its WRITE_SCOPE). Only the user's own graph is granted here, so they do not
-;; also land in the reports and jobs graphs.
-(with-scope "http://services.semantic.works/report-assistant/chat"
-  (grant (read write)
-    :to-graph chat
-    :for-allowed-group "report-assistant-user"))
