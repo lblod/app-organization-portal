@@ -92,11 +92,8 @@ ent:EredienstBestuurseenheid
   sh:property [ sh:path ere:wordtBediendDoor ; sh:name "wordt bediend door" ;
                 sh:description "De posities waarop bedienaren deze eredienst bedienen" ;
                 sh:node ent:PositieBedienaar ] ;
-  sh:property [ sh:path [ sh:inversePath ere:betrokkenBestuur ] ; sh:name "betrokken lokale besturen" ;
+  sh:property [ sh:path [ sh:inversePath org:organization ] ; sh:name "betrokken lokale besturen" ;
                 sh:description "De lokale besturen waarin deze eredienst betrokken is" ;
-                sh:node ent:BetrokkenLokaleBesturen ] ;
-  sh:property [ sh:path [ sh:inversePath org:organization ] ; sh:name "is betrokken bij" ;
-                sh:description "De betrokkenheden waar deze eredienst het eredienstbestuur van is" ;
                 sh:node ent:BetrokkenLokaleBesturen ] .
 
 ent:BestuurVanDeEredienst
@@ -124,7 +121,8 @@ ent:BestuurVanDeEredienst
                 sh:node ent:Bestuursorgaan ] ;
   sh:property [ sh:path ere:wordtBediendDoor ; sh:name "wordt bediend door" ;
                 sh:node ent:PositieBedienaar ] ;
-  sh:property [ sh:path [ sh:inversePath ere:betrokkenBestuur ] ; sh:name "betrokken lokale besturen" ;
+  sh:property [ sh:path [ sh:inversePath org:organization ] ; sh:name "betrokken lokale besturen" ;
+                sh:description "De lokale besturen waarin deze eredienst betrokken is" ;
                 sh:node ent:BetrokkenLokaleBesturen ] .
 
 ent:CentraalBestuurVanDeEredienst
