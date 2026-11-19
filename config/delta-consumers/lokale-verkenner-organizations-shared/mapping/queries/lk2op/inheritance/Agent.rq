@@ -1,0 +1,18 @@
+PREFIX dc_terms: <http://purl.org/dc/terms/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX org: <http://www.w3.org/ns/org#>
+
+# Municipalities and provinces only, as in bestuurseenheid.sparql: shared is readable without a
+# session. The classification shares the type's top-level bgp, so it triggers the query too when
+# it arrives after the type.
+CONSTRUCT {
+  ?s a dc_terms:Agent .
+} WHERE {
+  ?s a besluit:Bestuurseenheid ;
+    org:classification ?class .
+
+  VALUES ?class {
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>
+    <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>
+  }
+}

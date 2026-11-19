@@ -1,0 +1,25 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX generiek: <https://data.vlaanderen.be/ns/generiek#>
+
+# Identifiers of units and registered organizations, reached from either. A structured
+# identifier is a companion subject (its own query). Properties per Lokale Verkenner's export.
+#
+# The link shares the query's top-level bgp: a link is not part of the trigger group, so in
+# a group of its own an identifier arriving after its link is never copied.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?org adms:identifier ?s .
+
+  ?s a adms:Identifier ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    skos:notation
+    generiek:gestructureerdeIdentificator
+  }
+}

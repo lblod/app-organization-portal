@@ -1,0 +1,14 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX regorg: <http://www.w3.org/ns/regorg#>
+
+CONSTRUCT {
+  ?s a org:Organization .
+} WHERE {
+  ?s a ?type .
+
+  VALUES ?type {
+    besluit:Bestuurseenheid
+    regorg:RegisteredOrganization
+  }
+}

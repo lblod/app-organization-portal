@@ -1,0 +1,31 @@
+PREFIX locn: <http://www.w3.org/ns/locn#>
+PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# Addresses of the exported units' sites, reached through organisatie:bestaatUit. Properties
+# per Lokale Verkenner's export.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?site organisatie:bestaatUit ?s .
+
+  ?s a locn:Address ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    locn:fullAddress
+    locn:thoroughfare
+    locn:postName
+    locn:postCode
+    locn:adminUnitL1
+    locn:adminUnitL2
+    <https://data.vlaanderen.be/ns/adres#gemeentenaam>
+    <https://data.vlaanderen.be/ns/adres#land>
+    <https://data.vlaanderen.be/ns/adres#adresIsGelegenIn>
+    <http://purl.org/dc/terms/source>
+    <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.huisnummer>
+    <https://data.vlaanderen.be/ns/adres#Adresvoorstelling.busnummer>
+  }
+}

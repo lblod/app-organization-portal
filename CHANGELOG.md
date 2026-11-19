@@ -1,5 +1,6 @@
 # Changelog
 ## Unreleased
+- Add three delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: organizations to `administrative-unit`, municipality and province identities to `shared`, composed werkingsgebieden to `public`; worship data stays out [RVS-29] [RVS-30]
 - Added report assisstant [RVS-58]
 - Update frontend
  - [v1.52.0](https://github.com/lblod/frontend-organization-portal/blob/v1.52.0/CHANGELOG.md#1520-2026-11-18) [OP-3959] [RVS-30] [OP-3962]
@@ -13,7 +14,7 @@
 # PRD, before the migration: dump what the migration deletes with the dump queries on OP-3953, to files outside the stack; compare the counts with the dry run on the ticket
 drc restart migrations migrations-triggering-indexing     # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migration does not invalidate the cache
-drc up -d frontend
+drc up -d frontend lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer lokale-verkenner-locations-consumer
 ```
 ##### Report-assistant
 Ensure the keys are set on `docker-compose.override.yml`. Ask colleague.
@@ -37,6 +38,38 @@ drc restart migrations;
 drc up -d frontend-dashboard report-assistant;
 drc restart resource dispatcher db deltanotifier;
 ```
+
+To start the Lokale Verkenner sync:
+
+1. Add all three consumers to `docker-compose.override.yml` per environment: point `DCR_SYNC_BASE_URL` at the
+   Lokale Verkenner deployed app (match the env you're on) and set `DCR_DISABLE_INITIAL_SYNC` to `"false"`.
+   The base `docker-compose.yml` ships `"true"`, so a consumer stays idle until its override enables it.
+   Never point ACC or PRD at the Lokale Verkenner dev app. Dev placeholder to use until Lokale Verkenner
+   has a production URL: `https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/`.
+   This implies that Lokale Verkenner's producer has been already deployed and initialized.
+```
+  lokale-verkenner-organizations-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+
+  lokale-verkenner-organizations-shared-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+
+  lokale-verkenner-locations-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://dev.lokale-verkenner.abb-bogtrotter.s.redhost.be/"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+```
+   Also make sure Lokale Verkenner's dispatcher serves `/sync/public-organization-data/files/*`.
+2. `drc up -d` all three consumers. Each starts its initial sync once it is up.
+   An environment that already ran the two organizations consumers needs the `lokale-verkenner-locations-consumer`
+   added to its override too: without it, werkingsgebieden stay in the landing zone and units point at a scope
+   OP does not have.
+3. The dump loads straight on Virtuoso, so the mapping produces no deltas: after the initial sync,
+   rebuild Elasticsearch (`sh scripts/reset-elastic.sh`) and run `drc restart resource cache`.
 
 ## v1.44.0 (2026-11-12)
 - Update frontend

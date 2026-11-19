@@ -1,0 +1,15 @@
+PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+# The members of a composed werkingsgebied: <member> geo:sfWithin <composed scope>. A member is a
+# base location, which OP owns, so only its link to the composed scope is constructed. Both
+# patterns share the top-level bgp, so the link lands whether it arrives before or after the
+# scope's level, and a retraction of the member location itself leaves OP's location alone.
+CONSTRUCT {
+  ?s geosparql:sfWithin ?scope.
+} WHERE {
+  ?s geosparql:sfWithin ?scope.
+  ?scope ext:werkingsgebiedNiveau ?level.
+
+  FILTER (STR(?level) = "Samengesteld werkingsgebied")
+}
