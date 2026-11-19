@@ -252,6 +252,32 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://resource/kbo-organizations/")
   end
 
+  ###############################################################
+  # CHAT
+  # To the resource service, not the cache: the data is per user and
+  # changes every few seconds.
+  # Only the verbs the dashboard uses. The browser starts a conversation;
+  # the report-assistant service writes the messages and deletes a
+  # conversation with its spec files (/assistant below). A client that
+  # could write messages itself could attach any file to one.
+  ###############################################################
+
+  get "/chat-conversations/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-conversations/")
+  end
+
+  post "/chat-conversations/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-conversations/")
+  end
+
+  get "/chat-messages/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-messages/")
+  end
+
+  get "/chat-agents/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-agents/")
+  end
+
   # Dashboard
   match "/jobs/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://cache/jobs/")
@@ -271,6 +297,15 @@ defmodule Dispatcher do
 
   match "/reports/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://resource/reports/")
+  end
+
+  # The service writes a report spec; the browser only sets its bookmark.
+  get "/report-specs/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/report-specs/")
+  end
+
+  patch "/report-specs/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/report-specs/")
   end
 
   match "/log-entries/*path", %{accept: [:json], layer: :api} do
@@ -419,6 +454,17 @@ defmodule Dispatcher do
 
   match "/error-reports/*path", %{layer: :api_services, accept: %{json: true}} do
     forward(conn, path, "http://error-report-service/error-reports/")
+  end
+
+  #################################################################
+  # REPORT ASSISTANT
+  # POST   /assistant/conversations/:id/turns
+  # DELETE /assistant/conversations/:id
+  # POST   /assistant/report-specs/:id/run
+  #################################################################
+
+  match "/assistant/*path" do
+    forward(conn, path, "http://report-assistant/assistant/")
   end
 
   #################################################################
