@@ -5,19 +5,25 @@ PREFIX geosparql: <http://www.opengis.net/ont/geosparql#>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
-# Werkingsgebied locations, keyed on the location's own type: the link from a unit or a
-# registered organization is written by its own query. Lokale Verkenner publishes only the
-# composed ones (dcterms:creator is scope-of-operation), so the base set (gemeenten,
-# provincies, regio's) never arrives from Lokale Verkenner; it stays OP's. dcterms:creator is
-# not carried: it is Lokale Verkenner's bookkeeping, not data. Properties per Lokale
-# Verkenner's export.
+# Composed werkingsgebieden, keyed on the location's own type and level: the link from a unit or
+# a registered organization is written by its own query, the links of the member locations by
+# locatie-lid.sparql. Lokale Verkenner composes them with scope-of-operation; dcterms:creator is
+# not exported, so the level tells them apart (compared with STR, whatever its datatype or tag).
+#
+# Lokale Verkenner also exports the base locations (gemeenten, provincies, regio's) that sit in a
+# composed scope, for their link to it. The base set is OP's: no query here constructs a base
+# location's own triples, or a retraction in Lokale Verkenner would delete them from OP's public
+# graph.
 #
 # OP keeps its locations in the public graph, so this consumer remaps to that graph.
 CONSTRUCT {
   ?s ?p ?o.
 } WHERE {
   ?s a prov:Location ;
+    ext:werkingsgebiedNiveau ?level ;
     ?p ?o.
+
+  FILTER (STR(?level) = "Samengesteld werkingsgebied")
 
   VALUES ?p {
     <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
