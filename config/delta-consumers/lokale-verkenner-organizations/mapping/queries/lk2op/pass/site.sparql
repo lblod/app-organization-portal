@@ -2,6 +2,7 @@ PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX organisatie: <https://data.vlaanderen.be/ns/organisatie#>
 PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
 
 # Sites of the exported units: the primary site and every other site the unit lists. The site
 # is a companion subject of the organization: its contact points and the addresses under it
@@ -23,5 +24,6 @@ CONSTRUCT {
     ere:vestigingstype
     org:siteAddress
     organisatie:bestaatUit
+    dcterms:description
   }
 }
