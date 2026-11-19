@@ -1,9 +1,6 @@
 # Changelog
 ## Unreleased
-- Add three delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: one lands organizations in `administrative-unit`, one lands unit identities in `shared`, and one lands werkingsgebieden in `public`. Their initial sync stays disabled until their override turns it on; worship data stays out [RVS-29] [RVS-30]
-- Start no consumer's initial sync without the per-environment override, and load its dump straight on Virtuoso: it no longer reaches OP's own publication graph [RVS-30]
-- Give units and registered organizations their `org:Organization` and `dcterms:Agent` types through inheritance queries [RVS-30]
-- Keep a site's deletion from removing the organization's link to it, and make identifiers land whichever of its triples arrives first [RVS-30]
+- Add three delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: organizations to `administrative-unit`, municipality and province identities to `shared`, composed werkingsgebieden to `public`; worship data stays out [RVS-29] [RVS-30]
 - Added report assisstant [RVS-58]
 - Update frontend
  - [v1.52.0](https://github.com/lblod/frontend-organization-portal/blob/v1.52.0/CHANGELOG.md#1520-2026-11-18) [OP-3959] [RVS-30] [OP-3962]
@@ -42,28 +39,6 @@ drc up -d frontend-dashboard report-assistant;
 drc restart resource dispatcher db deltanotifier;
 ```
 
-## v1.44.0 (2026-11-12)
-- Update frontend
-  - [v1.51.0](https://github.com/lblod/frontend-organization-portal/blob/v1.51.0/CHANGELOG.md#v1510-2026-11-09) [OP-3950] [OP-3940] [OP-3973] [OP-3969]
-  - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
-- Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
-- Set the legal form (Juridische vorm) of existing organizations based on their organization type [OP-3830]
-- Add an inactive flag to some municipality locations [OP-3973]
-- Add support for storing "original values" when creating change events [OP-3950]
-- Update some related organization role labels [OP-3940]
-- Bump link-adressenregister-uri-service to v0.3.0: addresses without a country are matched as Belgian [OP-3831]
-- Add mu-script to export data to Lokale Verkenner [RVS-40]
-
-### Deploy notes
-```
-drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
-drc restart migrations                                    # wait for "All migrations executed"
-drc restart migrations-triggering-indexing                # wait for "All migrations executed"
-drc restart resource cache report-generation              # the migrations do not invalidate the cache
-drc up -d frontend link-adressenregister-uri
-# once the maintainer log shows "Remaining number of tasks" for public (the OP-3830 legal forms come from a raw migration):
-drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
-```
 To start the Lokale Verkenner sync:
 
 1. Add all three consumers to `docker-compose.override.yml` per environment: point `DCR_SYNC_BASE_URL` at the
@@ -94,7 +69,30 @@ To start the Lokale Verkenner sync:
    added to its override too: without it, werkingsgebieden stay in the landing zone and units point at a scope
    OP does not have.
 3. The dump loads straight on Virtuoso, so the mapping produces no deltas: after the initial sync,
-   rebuild Elasticsearch (`sh scripts/reset-elastic.sh`) and restart `resource` to clear its cache.
+   rebuild Elasticsearch (`sh scripts/reset-elastic.sh`) and run `drc restart resource cache`.
+
+## v1.44.0 (2026-11-12)
+- Update frontend
+  - [v1.51.0](https://github.com/lblod/frontend-organization-portal/blob/v1.51.0/CHANGELOG.md#v1510-2026-11-09) [OP-3950] [OP-3940] [OP-3973] [OP-3969]
+  - [v1.50.2](https://github.com/lblod/frontend-organization-portal/blob/v1.50.2/CHANGELOG.md#v1502-2026-10-29) [OP-3960]
+- Add the missing "Maatschappelijke zetel" site type to the primary site of IGSs [OP-3960]
+- Set the legal form (Juridische vorm) of existing organizations based on their organization type [OP-3830]
+- Add an inactive flag to some municipality locations [OP-3973]
+- Add support for storing "original values" when creating change events [OP-3950]
+- Update some related organization role labels [OP-3940]
+- Bump link-adressenregister-uri-service to v0.3.0: addresses without a country are matched as Belgian [OP-3831]
+- Add mu-script to export data to Lokale Verkenner [RVS-40]
+
+### Deploy notes
+```
+drc restart delta-producer-publication-graph-maintainer   # reads export.json at start; wait until it is up
+drc restart migrations                                    # wait for "All migrations executed"
+drc restart migrations-triggering-indexing                # wait for "All migrations executed"
+drc restart resource cache report-generation              # the migrations do not invalidate the cache
+drc up -d frontend link-adressenregister-uri
+# once the maintainer log shows "Remaining number of tasks" for public (the OP-3830 legal forms come from a raw migration):
+drc exec delta-producer-background-jobs-initiator curl -X POST http://localhost/public/healing-jobs
+```
 
 ## v1.43.0 (2026-10-29)
 - Update frontend
