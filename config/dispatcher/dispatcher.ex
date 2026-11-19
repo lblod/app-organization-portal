@@ -274,10 +274,6 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://resource/chat-messages/")
   end
 
-  get "/chat-instant-messages/*path", %{accept: [:json], layer: :api} do
-    Proxy.forward(conn, path, "http://resource/chat-instant-messages/")
-  end
-
   get "/chat-agents/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://resource/chat-agents/")
   end

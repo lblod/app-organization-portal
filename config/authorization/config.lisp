@@ -57,7 +57,6 @@
     :oslc "http://open-services.net/ns/core#"
     :cogs "http://vocab.deri.ie/cogs#"
     :sioc "http://rdfs.org/sioc/ns#"
-    :sioct "http://rdfs.org/sioc/types#"
   )
 
 (type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
@@ -205,8 +204,7 @@
   ("nfo:DataContainer" -> _)
   ("nfo:FileDataObject" -> _)
   ("sioc:Thread" -> _)
-  ("sioc:Post" -> _)
-  ("sioct:InstantMessage" -> _))
+  ("sioc:Post" -> _))
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
   ("org:Role" -> _)
