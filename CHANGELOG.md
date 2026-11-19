@@ -8,10 +8,34 @@
 
 ### Deploy notes
 ```
+
+
 # PRD, before the migration: dump what the migration deletes with the dump queries on OP-3953, to files outside the stack; compare the counts with the dry run on the ticket
 drc restart migrations migrations-triggering-indexing     # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migration does not invalidate the cache
 drc up -d frontend
+```
+##### Report-assistant
+Ensure the keys are set on `docker-compose.override.yml`. Ask colleague.
+```
+  report-assistant:
+    environment:
+      LLM_BASE_URL: ""
+      LLM_API_KEY: ""
+      LLM_MODEL: ""
+```
+#### Dev only
+```
+cd config/migrations/local/2026
+cp ../../../../config/dev-migrations/20261102120000-add-chat-user.sparql .
+cp ../../../../config/dev-migrations/20261103094900-add-chat-user-2.sparql .
+cd -
+```
+#### all envs
+```
+drc restart migrations;
+drc up -d frontend-dashboard report-assistant;
+drc restart resource dispatcher db deltanotifier;
 ```
 
 ## v1.44.0 (2026-11-12)
