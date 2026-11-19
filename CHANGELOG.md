@@ -4,14 +4,42 @@
 - Start no consumer's initial sync without the per-environment override, and load its dump straight on Virtuoso: it no longer reaches OP's own publication graph [RVS-30]
 - Give units and registered organizations their `org:Organization` and `dcterms:Agent` types through inheritance queries [RVS-30]
 - Keep a site's deletion from removing the organization's link to it, and make identifiers land whichever of its triples arrives first [RVS-30]
+- Added report assisstant [RVS-58]
+- Update frontend
+ - [v1.52.0](https://github.com/lblod/frontend-organization-portal/blob/v1.52.0/CHANGELOG.md#1520-2026-11-18) [OP-3959] [RVS-30] [OP-3962]
 - Delete the generic "Heeft een relatie met" relations of non-worship organizations that do not impact a hierarchy link, with their periods [OP-3953]
+- Rename Regio Oostende to Regio Middenkust [OP-3977]
 
 ### Deploy notes
 ```
+
+
 # PRD, before the migration: dump what the migration deletes with the dump queries on OP-3953, to files outside the stack; compare the counts with the dry run on the ticket
-drc restart migrations-triggering-indexing                # wait for "All migrations executed"
+drc restart migrations migrations-triggering-indexing     # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migration does not invalidate the cache
 drc up -d frontend lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer lokale-verkenner-locations-consumer
+```
+##### Report-assistant
+Ensure the keys are set on `docker-compose.override.yml`. Ask colleague.
+```
+  report-assistant:
+    environment:
+      LLM_BASE_URL: ""
+      LLM_API_KEY: ""
+      LLM_MODEL: ""
+```
+#### Dev only
+```
+cd config/migrations/local/2026
+cp ../../../../config/dev-migrations/20261102120000-add-chat-user.sparql .
+cp ../../../../config/dev-migrations/20261103094900-add-chat-user-2.sparql .
+cd -
+```
+#### all envs
+```
+drc restart migrations;
+drc up -d frontend-dashboard report-assistant;
+drc restart resource dispatcher db deltanotifier;
 ```
 
 ## v1.44.0 (2026-11-12)

@@ -56,6 +56,7 @@
     :reporting "http://lblod.data.gift/vocabularies/reporting/"
     :oslc "http://open-services.net/ns/core#"
     :cogs "http://vocab.deri.ie/cogs#"
+    :sioc "http://rdfs.org/sioc/ns#"
   )
 
 (type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
@@ -189,6 +190,22 @@
   ("org:Membership" -> _)
   ("time:ProperInterval" -> _))
 
+;; Report assistant: one graph per user, http://mu.semte.ch/graphs/users/<user uuid>.
+;; Only that user reads or writes it. Reports and report specs fit no other
+;; graph an admin may write. Files do: admins may also write the jobs graphs,
+;; so a file of the assistant can land there.
+(define-graph chat ("http://mu.semte.ch/graphs/users/")
+  ("reporting:Report" -> _)
+  ("reporting:ReportSpec" -> _)
+  ("oslc:Error" -> _)
+  ("nfo:DataContainer" -> _)
+  ("nfo:FileDataObject" -> _)
+  ("cogs:Job" -> _)
+  ("nfo:DataContainer" -> _)
+  ("nfo:FileDataObject" -> _)
+  ("sioc:Thread" -> _)
+  ("sioc:Post" -> _))
+
 (define-graph public ("http://mu.semte.ch/graphs/public")
   ("org:Role" -> _)
   ("besluit:Bestuurseenheid" -> _)
@@ -220,7 +237,8 @@
   ("code:EredienstBeroepen" -> _)
   ("code:Rechtsvormtype" -> _)
   ("prov:Location" -> _)
-  ("code:BijkomendeKwalificatieCode" -> _))
+  ("code:BijkomendeKwalificatieCode" -> _)
+  ("prov:SoftwareAgent" -> _))
 
 (define-graph shared ("http://mu.semte.ch/graphs/shared")
   ("foaf:Image" -> _)
@@ -273,6 +291,19 @@
   :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
     SELECT DISTINCT ?session WHERE {
       <SESSION_ID> ext:sessionRole \"LoketLB-AdminDashboardOrganisatiePortaalGebruiker\" .
+    }")
+
+(supply-allowed-group "report-assistant-user"
+  :parameters ("user_uuid")
+  :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+    PREFIX session: <http://mu.semte.ch/vocabularies/session/>
+    PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+    PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+    SELECT DISTINCT ?user_uuid WHERE {
+      <SESSION_ID> ext:sessionRole \"LoketLB-AdminDashboardOrganisatiePortaalGebruiker\" ;
+                   session:account ?account .
+      ?user foaf:account ?account ;
+            mu:uuid ?user_uuid .
     }")
 
 (supply-allowed-group "ABBOrganisatiePortaalGebruiker-lezer"
@@ -364,6 +395,23 @@
   :to-graph (public shared)
   :for-allowed-group "public")
 
-(grant (read write)
-  :to-graph (reports jobs system-jobs)
+(grant (read)
+  :to-graph (reports)
   :for-allowed-group "o-admin-rwf")
+
+(grant (read write)
+  :to-graph (jobs system-jobs)
+  :for-allowed-group "o-admin-rwf")
+
+(grant (read write)
+  :to-graph (chat)
+  :for-allowed-group "report-assistant-user")
+
+(grant (read)
+  :to-graph (acmidm-editeerder acmidm-worship-editeerder acmidm-vendor)
+  :for-allowed-group "o-admin-rwf")
+
+(with-scope "http://services.semantic.works/report-assistant"
+  (grant (read)
+    :to-graph public
+    :for-allowed-group "public"))

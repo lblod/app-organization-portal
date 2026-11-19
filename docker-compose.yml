@@ -216,7 +216,7 @@ services:
     restart: always
     logging: *default-logging
   frontend:
-    image: lblod/frontend-organization-portal:1.51.0
+    image: lblod/frontend-organization-portal:1.52.0
     volumes:
       - ./config/frontend/add-x-frame-options-header.conf:/config/add-x-frame-options.conf
     environment:
@@ -232,7 +232,7 @@ services:
     restart: always
     logging: *default-logging
   frontend-dashboard:
-    image: lblod/frontend-dashboard:1.10.0
+    image: lblod/frontend-dashboard:1.11.0
     environment:
       EMBER_LOGIN_ROUTE: "acmidm-login"
       EMBER_ACMIDM_CLIENT_ID: "<CLIENT_ID>"
@@ -241,6 +241,7 @@ services:
       EMBER_ACMIDM_LOGOUT_URL: "<LOGOUT_URL>"
       EMBER_ACMIDM_SCOPE: "openid vo profile abb_organisatieportaal"
       EMBER_ENGLISH_ACCOUNTS_MODEL: true
+      EMBER_ENABLE_REPORT_ASSISTANT: "true"
     labels:
       - "logging=true"
     restart: always
@@ -781,6 +782,27 @@ services:
     restart: always
     logging: *default-logging
 
+  ################################################################################
+  # REPORT ASSISTANT
+  ################################################################################
+  report-assistant:
+    image: lblod/report-assistant-service:0.1.0
+    volumes:
+      - ./data/files:/share
+      - ./config/report-profiles/:/config/profiles/
+    environment:
+      MU_SPARQL_ENDPOINT: "http://db:8890/sparql"
+      LOG_SINK_URL: "http://sink/llm"
+      CSV_SEPARATOR: ";"
+      SUBJECT_CHUNK_SIZE: "10"
+      ROW_LIMIT: "200000"
+      MAX_PATH_DEPTH: "12"
+      INLINE_VALUES_MAX: "50"
+      LOG_SPARQL_ALL: "true"
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   ###################################################################################
   # MU SCRIPTS
   # #################################################################################
