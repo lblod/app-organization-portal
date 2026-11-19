@@ -1,19 +1,20 @@
-# Profiel "Erediensten": eredienstbestuurseenheden (besturen van de
-# eredienst, centrale besturen), representatieve organen, eredienst-
-# mandatarissen, bedienaren (ministers) met hun posities, voorwaarden
-# en financiering, betrokken lokale besturen.
+# Profile "Worship services": worship administrative units (worship
+# authorities, central authorities), representative bodies, worship
+# mandatories, ministers with their positions, conditions and funding,
+# involved local authorities.
 #
-# Bron: config/resources/domain.json is de autoriteit (worship-
+# Source: config/resources/domain.json is the authority (worship-
 # administrative-units, worship-services, central-worship-services,
 # representative-bodies, worship-mandatories, ministers,
-# minister-positions, minister-conditions en de bijhorende codes),
-# aangevuld met de contact- en mandaatvelden van de oudertypes.
+# minister-positions, minister-conditions and the matching codes),
+# supplemented with the contact and mandate fields of the parent types.
 #
-# Datatypes volgen de resource-config (number → xsd:decimal,
-# datetime → xsd:dateTime, boolean → xsd:boolean). De triplestore stond
-# niet aan tijdens het opstellen; waar de data afwijkt wint later de data.
+# Datatypes follow the resource config (number → xsd:decimal,
+# datetime → xsd:dateTime, boolean → xsd:boolean). The triplestore was not
+# running while this was written; where the data differs, the data wins
+# later.
 #
-# Niet opgenomen (geen rapportvelden): harvest-velden en vendor-relaties.
+# Not included (no report fields): harvest fields and vendor relations.
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .

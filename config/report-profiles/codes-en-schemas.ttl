@@ -1,12 +1,12 @@
-# Profiel "Codes en schemas": skos:Concept en skos:ConceptScheme.
-# De codelijsten van de andere profielen zijn skos:Concept-instanties die bij
-# een schema horen via skos:inScheme. Met dit profiel kan de LLM een schema
-# opzoeken en de concepten eruit tonen (bijvoorbeeld om een filterwaarde te
-# kiezen). De andere profielen verwijzen naar ent:Concept via sh:node; dit
-# profiel maakt van die entiteiten zelfstandig bevraagbare rapportonderwerpen.
+# Profile "Codes and schemas": skos:Concept and skos:ConceptScheme.
+# The codelists of the other profiles are skos:Concept instances that belong
+# to a schema via skos:inScheme. This profile lets the LLM look up a schema
+# and show the concepts in it (for example to choose a filter value). The
+# other profiles point to ent:Concept via sh:node; this profile turns those
+# entities into independently queryable report subjects.
 #
-# Rapporten hier zijn leeslijsten: een lijst van de concepten van één schema,
-# of van schemas zelf. Ze landen in de publieke grafiek.
+# Reports here are reading lists: a list of the concepts of one schema, or
+# of the schemas themselves. They land in the public graph.
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .

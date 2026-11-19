@@ -1,26 +1,25 @@
-# Profiel "Organisaties": organisaties (incl. bestuurseenheden en
-# geregistreerde organisaties), vestigingen, adressen, contacten,
-# identificatoren, werkingsgebieden, KBO-gegevens, lidmaatschappen en
-# veranderingsgebeurtenissen.
+# Profile "Organisations": organisations (incl. administrative units and
+# registered organisations), sites, addresses, contacts, identifiers,
+# areas of operation, KBO data, memberships and change events.
 #
-# Bron: config/resources/domain.json is de autoriteit (organizations,
+# Source: config/resources/domain.json is the authority (organizations,
 # administrative-units, registered-organizations, kbo-organizations,
 # sites, addresses, contact-points, identifiers, locations, memberships,
-# concepts, sectors, nace-bel-codes en de classificatie- en statuscodes),
-# aangevuld met config/resources/change-events.json (change-events,
-# change-event-results, change-event-types, decisions,
+# concepts, sectors, nace-bel-codes and the classification and status
+# codes), supplemented with config/resources/change-events.json
+# (change-events, change-event-results, change-event-types, decisions,
 # decision-activities).
 #
-# Datatypes volgen de resource-config (number → xsd:decimal,
+# Datatypes follow the resource config (number → xsd:decimal,
 # datetime → xsd:dateTime, date → xsd:date, boolean → xsd:boolean).
-# De triplestore stond niet aan tijdens het opstellen; waar de data afwijkt
-# wint later de data.
+# The triplestore was not running while this was written; where the data
+# differs, the data wins later.
 #
-# Niet opgenomen (geen rapportvelden): sync- en harvest-velden
+# Not included (no report fields): sync and harvest fields
 # (prov:wasGeneratedBy, owl:sameAs, task:modifiedOn, task:modifiedBy,
-# rdfs:seeAlso), vendor-relaties (muAccount:canActOnBehalfOf,
-# prov:wasAssociatedWith). De eredienst-tak van het organigram staat in
-# erediensten.ttl; de bestuursorgaan-/mandaatketen in mandaten.ttl.
+# rdfs:seeAlso), vendor relations (muAccount:canActOnBehalfOf,
+# prov:wasAssociatedWith). The worship branch of the organisation chart is
+# in erediensten.ttl; the governing body / mandate chain in mandaten.ttl.
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:     <http://www.w3.org/2002/07/owl#> .

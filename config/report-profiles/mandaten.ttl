@@ -1,44 +1,44 @@
-# Profiel "Mandaten": bestuursorganen (in tijd), mandaten,
-# bestuursfuncties, mandatarissen, functionarissen (leidinggevenden),
-# personen en hun contacten.
+# Profile "Mandates": governing bodies (in time), mandates, board
+# positions, mandatories, functionaries (senior managers), people and
+# their contacts.
 #
-# Bron: config/resources/domain.json is de autoriteit (governing-bodies,
+# Source: config/resources/domain.json is the authority (governing-bodies,
 # mandates, board-positions, mandatories, functionaries, people,
-# agents-in-position, posts en de status- en classificatiecodes).
+# agents-in-position, posts and the status and classification codes).
 #
-# Datatypes volgen de resource-config (number → xsd:decimal,
-# datetime → xsd:dateTime). De triplestore stond niet aan tijdens het
-# opstellen; waar de data afwijkt wint later de data.
+# Datatypes follow the resource config (number → xsd:decimal,
+# datetime → xsd:dateTime). The triplestore was not running while this was
+# written; where the data differs, the data wins later.
 #
-# Keten: bestuurseenheid <- bestuursorgaan ("bestuurt", omgekeerd) ->
-# bestuursorgaan in tijd (generiek:isTijdspecialisatieVan,
-# mandaat:bindingStart/-Einde) -> mandaat (org:hasPost) -> mandataris
-# (org:holds) -> persoon (mandaat:isBestuurlijkeAliasVan).
+# Chain: administrative unit <- governing body ("bestuurt", reversed) ->
+# governing body in time (generiek:isTijdspecialisatieVan,
+# mandaat:bindingStart/-Einde) -> mandate (org:hasPost) -> mandatory
+# (org:holds) -> person (mandaat:isBestuurlijkeAliasVan).
 #
-# Keten leidinggevenden: functionaris -> bestuursfunctie (org:holds) <-
-# leidinggevend orgaan in tijd (lblodlg:heeftBestuursfunctie) ->
-# leidinggevend bestuursorgaan (generiek:isTijdspecialisatieVan) ->
-# bestuurseenheid (besluit:bestuurt). Elke leidinggevende functie heeft een
-# eigen orgaan per eenheid (bv. "Algemeen directeur Gemeente Lille"), zonder
-# mandaten. Naar de mandatarissen van dezelfde eenheid gaat het dus via de
-# eenheid terug naar haar politieke organen.
+# Chain for senior managers: functionary -> board position (org:holds) <-
+# senior management body in time (lblodlg:heeftBestuursfunctie) ->
+# senior management governing body (generiek:isTijdspecialisatieVan) ->
+# administrative unit (besluit:bestuurt). Each senior management position
+# has its own body per unit (e.g. "Algemeen directeur Gemeente Lille"),
+# without mandates. To reach the mandatories of the same unit, you
+# therefore go back via the unit to its political bodies.
 #
-# Vier entiteiten delen besluit:Bestuursorgaan als sh:targetClass;
-# rep:discriminator houdt ze in de seed uit elkaar (alle voorwaarden gelden
-# samen): een orgaan in tijd heeft generiek:isTijdspecialisatieVan, een vast
-# orgaan niet; een leidinggevend orgaan heeft een classificatie uit
-# ent:LeidinggevendeOrgaanClassificaties, een orgaan in tijd via zijn vaste
-# orgaan. De classificatie beslist, niet of er een functie aan hangt: zo
-# blijft een leidinggevend orgaan zonder functie zichtbaar als fout in de
-# data. Een spec kiest er één met rep:entity. Let op: in zuivere SHACL moet
-# elk besluit:Bestuursorgaan aan alle vier de shapes voldoen;
-# rep:discriminator (een eigen uitbreiding) beperkt sh:targetClass. Zie de
-# README van report-assistant-service.
+# Four entities share besluit:Bestuursorgaan as sh:targetClass;
+# rep:discriminator keeps them apart in the seed (all conditions apply
+# together): a body in time has generiek:isTijdspecialisatieVan, a fixed
+# body does not; a senior management body has a classification from
+# ent:LeidinggevendeOrgaanClassificaties, a body in time through its fixed
+# body. The classification decides, not whether a position is attached:
+# this way a senior management body without a position stays visible as an
+# error in the data. A spec picks one with rep:entity. Note: in pure SHACL
+# every besluit:Bestuursorgaan must satisfy all four shapes;
+# rep:discriminator (a custom extension) limits sh:targetClass. See the
+# README of report-assistant-service.
 #
-# Niet opgenomen (geen rapportvelden): harvest-velden en vendor-relaties.
-# Een generiek org:Post (posts) deelt org:role met het mandaat; hier wint
-# de lezing van het mandaat (bestuursfunctie). De eredienst-varianten
-# (EredienstMandataris) staan in erediensten.ttl.
+# Not included (no report fields): harvest fields and vendor relations.
+# A generic org:Post (posts) shares org:role with the mandate; here the
+# reading of the mandate (board position) wins. The worship variants
+# (EredienstMandataris) are in erediensten.ttl.
 @prefix sh:      <http://www.w3.org/ns/shacl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
@@ -87,18 +87,18 @@
     sh:declare [ sh:prefix "xsd"      ; sh:namespace "http://www.w3.org/2001/XMLSchema#"^^xsd:anyURI ] ;
   ] .
 
-# De classificaties van leidinggevende organen, zoals de migraties ze
-# gebruiken (bv. 2024/20241028125621). Eén lijst voor de rep:discriminator
-# van de vier organen hieronder.
+# The classifications of senior management bodies, as the migrations use
+# them (e.g. 2024/20241028125621). One list for the rep:discriminator of
+# the four bodies below.
 ent:LeidinggevendeOrgaanClassificaties
-  rdf:first <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> ;  # Algemeen directeur
+  rdf:first <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/39854196-f214-4688-87a1-d6ad12baa2fa> ;  # General director
   rdf:rest (
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc>  # Adjunct-algemeen directeur
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35>  # Financieel directeur
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0>  # Adjunct-financieel directeur
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/3e9f22c1-0d35-445b-8a37-494addedf2d8>  # Financieel beheerder
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4>  # Leidend ambtenaar
-    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab19107-82d2-4273-a986-3da86fda050d>  # Griffier
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/11f0af9e-016c-4e0b-983a-d8bc73804abc>  # Deputy general director
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/62644b9c-4514-41dd-a660-4c35257f2b35>  # Financial director
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/ed40469e-3b6f-4f38-99ba-18912ee352b0>  # Deputy financial director
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/3e9f22c1-0d35-445b-8a37-494addedf2d8>  # Financial manager
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/41caf7e6-b040-4720-9cc2-a96cfffed5b4>  # Leading official
+    <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab19107-82d2-4273-a986-3da86fda050d>  # Clerk
   ) .
 
 ent:Bestuursorgaan
