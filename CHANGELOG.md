@@ -4,6 +4,7 @@
  - [v1.52.0](https://github.com/lblod/frontend-organization-portal/blob/v1.52.0/CHANGELOG.md#1520-2026-11-18) [OP-3959] [RVS-30] [OP-3962]
 - Delete the generic "Heeft een relatie met" relations of non-worship organizations that do not impact a hierarchy link, with their periods [OP-3953]
 - Rename Regio Oostende to Regio Middenkust [OP-3977]
+- Index the legal form (Juridische vorm), content themes (Inhoudelijk thema) and additional qualifications (Bijkomende kwalificatie) of organizations in mu-search, in preparation for new filters on the organizations search page in the frontend [OP-3963]
 
 ### Deploy notes
 ```
@@ -11,6 +12,8 @@
 drc restart migrations migrations-triggering-indexing     # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migration does not invalidate the cache
 drc up -d frontend
+# reindex mu-search (required for the new legal form / content theme / additional qualification filters):
+/bin/bash scripts/reset-elastic.sh
 ```
 
 ## v1.44.0 (2026-11-12)
