@@ -1,5 +1,6 @@
 # Changelog
 ## Unreleased
+- Added report assisstant [RVS-58]
 - Update frontend
  - [v1.52.0](https://github.com/lblod/frontend-organization-portal/blob/v1.52.0/CHANGELOG.md#1520-2026-11-18) [OP-3959] [RVS-30] [OP-3962]
 - Delete the generic "Heeft een relatie met" relations of non-worship organizations that do not impact a hierarchy link, with their periods [OP-3953]
