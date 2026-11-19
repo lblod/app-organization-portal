@@ -58,7 +58,6 @@
     :cogs "http://vocab.deri.ie/cogs#"
     :sioc "http://rdfs.org/sioc/ns#"
     :sioct "http://rdfs.org/sioc/types#"
-    :as "https://www.w3.org/ns/activitystreams#"
   )
 
 (type-cache::add-type-for-prefix "http://mu.semte.ch/sessions/" "http://mu.semte.ch/vocabularies/session/Session")
@@ -207,8 +206,7 @@
   ("nfo:FileDataObject" -> _)
   ("sioc:Thread" -> _)
   ("sioc:Post" -> _)
-  ("sioct:InstantMessage" -> _)
-  ("as:Document" -> _))
+  ("sioct:InstantMessage" -> _))
 
 (define-graph public ("http://mu.semte.ch/graphs/public")
   ("org:Role" -> _)

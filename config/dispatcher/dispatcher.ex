@@ -256,25 +256,29 @@ defmodule Dispatcher do
   # CHAT
   # To the resource service, not the cache: the data is per user and
   # changes every few seconds.
+  # Only the verbs the dashboard uses. The browser starts a conversation;
+  # the report-assistant service writes the messages and deletes a
+  # conversation with its spec files (/assistant below). A client that
+  # could write messages itself could attach any file to one.
   ###############################################################
 
-  match "/chat-conversations/*path", %{accept: [:json], layer: :api} do
+  get "/chat-conversations/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://resource/chat-conversations/")
   end
 
-  match "/chat-messages/*path", %{accept: [:json], layer: :api} do
+  post "/chat-conversations/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/chat-conversations/")
+  end
+
+  get "/chat-messages/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://resource/chat-messages/")
   end
 
-  match "/chat-instant-messages/*path", %{accept: [:json], layer: :api} do
+  get "/chat-instant-messages/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://resource/chat-instant-messages/")
   end
 
-  match "/chat-documents/*path", %{accept: [:json], layer: :api} do
-    Proxy.forward(conn, path, "http://resource/chat-documents/")
-  end
-
-  match "/chat-agents/*path", %{accept: [:json], layer: :api} do
+  get "/chat-agents/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://resource/chat-agents/")
   end
 
@@ -299,7 +303,12 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://resource/reports/")
   end
 
-  match "/report-specs/*path", %{accept: [:json], layer: :api} do
+  # The service writes a report spec; the browser only sets its bookmark.
+  get "/report-specs/*path", %{accept: [:json], layer: :api} do
+    Proxy.forward(conn, path, "http://resource/report-specs/")
+  end
+
+  patch "/report-specs/*path", %{accept: [:json], layer: :api} do
     Proxy.forward(conn, path, "http://resource/report-specs/")
   end
 
@@ -452,8 +461,10 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # CHAT ASSISTANT
-  # The chat's turn endpoint: POST /assistant/conversations/:id/turns
+  # REPORT ASSISTANT
+  # POST   /assistant/conversations/:id/turns
+  # DELETE /assistant/conversations/:id
+  # POST   /assistant/report-specs/:id/run
   #################################################################
 
   match "/assistant/*path" do
@@ -532,20 +543,6 @@ defmodule Dispatcher do
     # *_path allows a path to be supplied, but will not yield
     # an error that we don't use the path variable.
     forward conn, [], "http://frontend-dashboard/index.html"
-  end
-
-  # The chat frontend (frontend-lblod-chat). Hosted on the "chat"
-  # subdomain (reverse_host), so the SPA stays a separate app.
-  get "/assets/*path", %{ reverse_host: ["chat" | _rest], layer: :api } do
-    forward conn, path, "http://chat/assets/"
-  end
-
-  get "/@appuniversum/*path", %{ reverse_host: ["chat" | _rest], layer: :api } do
-    forward conn, path, "http://chat/@appuniversum/"
-  end
-
-  match "/*_path", %{ reverse_host: ["chat" | _rest], layer: :api, accept: [:html] } do
-    forward conn, [], "http://chat/index.html"
   end
 
   match "/assets/*path", %{layer: :api} do
