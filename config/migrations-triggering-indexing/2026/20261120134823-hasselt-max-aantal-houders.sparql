@@ -1,0 +1,21 @@
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+DELETE {
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?old.
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?new.
+  }
+}
+WHERE {
+  VALUES (?mandaat ?new) {
+    ( <http://data.lblod.info/id/mandaten/273adda009e28c3512472f2e1e5bda0ee49272fca353eebde0f045e461c174d9> 7 ) # schepen hasselt
+  }
+  GRAPH ?g {
+    ?mandaat mandaat:aantalHouders ?old.
+  }
+}
+
