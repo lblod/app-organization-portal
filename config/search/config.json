@@ -675,6 +675,18 @@
           "http://www.w3.org/ns/regorg#orgStatus",
           "http://mu.semte.ch/vocabularies/core/uuid"
         ],
+        "legal_form_id": [
+          "https://data.vlaanderen.be/ns/organisatie#rechtsvorm",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "content_theme_id": [
+          "http://lblod.data.gift/vocabularies/organisatie/inhoudelijkThema",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
+        "additional_qualification_id": [
+          "http://lblod.data.gift/vocabularies/organisatie/bijkomendeKwalificatie",
+          "http://mu.semte.ch/vocabularies/core/uuid"
+        ],
         "recognized_worship_type_id": [
           "http://data.lblod.info/vocabularies/erediensten/typeEredienst",
           "http://mu.semte.ch/vocabularies/core/uuid"
@@ -790,6 +802,15 @@
             }
           },
           "status_id": {
+            "type": "text"
+          },
+          "legal_form_id": {
+            "type": "text"
+          },
+          "content_theme_id": {
+            "type": "text"
+          },
+          "additional_qualification_id": {
             "type": "text"
           },
           "recognized_worship_type_id": {
