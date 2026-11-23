@@ -60,6 +60,8 @@ services:
     restart: "no"
   uri-info:
     restart: "no"
+  jobs-controller:
+    restart: "no"
   delta-producer-background-jobs-initiator:
     restart: "no"
   delta-producer-publication-graph-maintainer:
@@ -84,6 +86,10 @@ services:
     restart: "no"
   scope-of-operation:
     restart: "no"
+  report-generation:
+    restart: "no"
+  download-exports:
+    restart: "no"
   mandatarissen-consumer:
     restart: "no"
   leidinggevenden-consumer:
@@ -92,12 +98,16 @@ services:
     restart: "no"
   worship-services-private-info-consumer:
     restart: "no"
+  vendor-management-consumer:
+    restart: "no"
   ldes-backend:
     environment:
       BASE_URL: "http://localhost/ldes/"
   kbo-data-sync:
     restart: "no"
   link-adressenregister-uri:
+    restart: "no"
+  error-report-service:
     restart: "no"
   error-alert:
     environment:
@@ -109,6 +119,8 @@ services:
       EMAIL_CRON_PATTERN: "*/5 * * * *"
       WELL_KNOWN_SERVICE: "test"
       FROM_NAME: "Your Name"
+    restart: "no"
+  roles:
     restart: "no"
   report-assistant:
     restart: "no"
