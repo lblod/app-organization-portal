@@ -3,9 +3,11 @@
 - Add three delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: organizations to `administrative-unit`, municipality and province identities to `shared`, composed werkingsgebieden to `public`; worship data stays out [RVS-29] [RVS-30]
 - Added report assisstant [RVS-58]
 - Update frontend
+ - [v1.53.0](https://github.com/lblod/frontend-organization-portal/blob/118f2ac331a33bd76a3cf52f5852fb401df8a2f7/CHANGELOG.md#1530-2026-11-23) [OP-3963] [OP-3951]
  - [v1.52.0](https://github.com/lblod/frontend-organization-portal/blob/v1.52.0/CHANGELOG.md#1520-2026-11-18) [OP-3959] [RVS-30] [OP-3962]
 - Delete the generic "Heeft een relatie met" relations of non-worship organizations that do not impact a hierarchy link, with their periods [OP-3953]
 - Rename Regio Oostende to Regio Middenkust [OP-3977]
+- Index the legal form (Juridische vorm), content themes (Inhoudelijk thema) and additional qualifications (Bijkomende kwalificatie) of organizations in mu-search, in preparation for new filters on the organizations search page in the frontend [OP-3963]
 
 ### Deploy notes
 ```
@@ -15,6 +17,8 @@
 drc restart migrations migrations-triggering-indexing     # wait for "All migrations executed"
 drc restart resource cache report-generation              # the migration does not invalidate the cache
 drc up -d frontend lokale-verkenner-organizations-consumer lokale-verkenner-organizations-shared-consumer lokale-verkenner-locations-consumer
+# reindex mu-search (required for the new legal form / content theme / additional qualification filters):
+/bin/bash scripts/reset-elastic.sh
 ```
 ##### Report-assistant
 Ensure the keys are set on `docker-compose.override.yml`. Ask colleague.
