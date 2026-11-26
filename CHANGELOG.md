@@ -1,6 +1,6 @@
 # Changelog
 ## Unreleased
-- Add three delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: organizations to `administrative-unit`, municipality and province identities to `shared`, composed werkingsgebieden to `public`; worship data stays out [RVS-29] [RVS-30]
+- Add three delta consumers of Lokale Verkenner's organization data, on `lblod/delta-consumer:0.4.1`: organizations to `administrative-unit`, municipality and province identities to `shared`, composed werkingsgebieden to `public`; worship data stays out [RVS-29]
 - Added report assisstant [RVS-58]
 - Update frontend
  - [v1.53.0](https://github.com/lblod/frontend-organization-portal/blob/118f2ac331a33bd76a3cf52f5852fb401df8a2f7/CHANGELOG.md#1530-2026-11-23) [OP-3963] [OP-3951]
