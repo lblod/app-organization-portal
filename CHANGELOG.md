@@ -68,11 +68,19 @@ To start the Lokale Verkenner sync:
       DCR_DISABLE_INITIAL_SYNC: "false"
 ```
    Also make sure Lokale Verkenner's dispatcher serves `/sync/public-organization-data/files/*`.
-2. `drc up -d` all three consumers. Each starts its initial sync once it is up.
+2. Switch on the edit lock in the same override, then `drc up -d frontend`. Once the sync runs, Lokale Verkenner
+   is where non-worship organisation data is edited: the consumers copy its values in again on every edit
+   there, next to whatever OP changed in between.
+```
+  frontend:
+    environment:
+      EMBER_ENABLE_DISABLE_RVS_ORGANIZATIONS_EDITS_FEATURE: "true"
+```
+3. `drc up -d` all three consumers. Each starts its initial sync once it is up.
    An environment that already ran the two organizations consumers needs the `lokale-verkenner-locations-consumer`
    added to its override too: without it, werkingsgebieden stay in the landing zone and units point at a scope
    OP does not have.
-3. The dump loads straight on Virtuoso, so the mapping produces no deltas: after the initial sync,
+4. The dump loads straight on Virtuoso, so the mapping produces no deltas: after the initial sync,
    rebuild Elasticsearch (`sh scripts/reset-elastic.sh`) and run `drc restart resource cache`.
 
 ## v1.44.0 (2026-11-12)
