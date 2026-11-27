@@ -1,0 +1,27 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX contacthub: <http://data.lblod.info/vocabularies/contacthub/>
+PREFIX organisatie: <http://lblod.data.gift/vocabularies/organisatie/>
+PREFIX m8g: <http://data.europa.eu/m8g/>
+
+# Change events: created by Lokale Verkenner's change-event aggregate for non-worship organizations.
+# Change requests themselves (cr:*) are not exported by Lokale Verkenner and are not queried here.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a org:ChangeEvent ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    dcterms:date
+    dcterms:description
+    contacthub:typeWijziging
+    org:resultingOrganization
+    org:originalOrganization
+    organisatie:veranderingsgebeurtenisResultaat
+    m8g:hasFormalFramework
+  }
+}
