@@ -1,0 +1,29 @@
+PREFIX schema: <http://schema.org/>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+
+# Contact points of the exported units, reached through the site that carries them. Lokale
+# Verkenner exports no contact points of the organization itself. Properties per Lokale
+# Verkenner's export.
+#
+# The query keys on the contact point's own rdf:type only, not on the site link. The consumer
+# remaps per incoming triple, binding the triple's subject, and runs every query naming that
+# subject. Keying on the link as well drops a contact point created in the same edit as its
+# site: its rdf:type triple arrives before the link is in the landing zone, so the query
+# matches nothing and the contact point never reaches the main graph. The site link itself is
+# written by site.sparql.
+CONSTRUCT {
+  ?s ?p ?o.
+} WHERE {
+  ?s a schema:ContactPoint ;
+    ?p ?o.
+
+  VALUES ?p {
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>
+    mu:uuid
+    schema:contactType
+    schema:email
+    schema:telephone
+    <http://xmlns.com/foaf/0.1/page>
+  }
+}
